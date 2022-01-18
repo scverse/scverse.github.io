@@ -241,7 +241,7 @@ body {
 			border-bottom: 1px solid $linkunderline;
 			transition: border 200ms, color 200ms;
 			&:hover, &:active {
-                border-bottom: 1px solid inherit;
+                border-bottom: 1px solid black;
 			}
 		}
 	}
