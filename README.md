@@ -1,3 +1,0 @@
-# scverse website
-
-
