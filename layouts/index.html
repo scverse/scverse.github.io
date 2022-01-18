@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ .Title }}</title>
+    {{ $styles := resources.Get "main.scss" | toCSS | minify }}
+    <link rel="stylesheet" type="text/css" href="{{ $styles.Permalink }}">
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="content">
+        <div id="cover">
+				  <div id="cover-heading">
+					  <div id="title">
+					    <span id="title-name">{{ .Title }}</span>
+					    <span id="title-desc">{{ .Description }}</span>
+					  </div>
+					  <div id="badges">
+					  	<a href="https://github.com/scverse" target="_blank">
+					  		<img src="https://img.shields.io/badge/GitHub-100000?logo=github&logoColor=white&label=%40scverse"/>
+					  	</a>
+					  	<a href="https://twitter.com/scanpy_team" target="_blank">
+					  		<img src="https://img.shields.io/twitter/follow/scanpy_team?label=%40scverse&logoColor=black&style=social"/>
+					  	</a>
+					  </div>
+				  </div>
+				  {{ partial "projects" . }}
+				  {{ partial "mission" . }}
+				  {{ partial "team" . }}
+					{{ partial "references" . }}
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div id="footer-content">
+        <div>
+          <p>Page content by scverse core team.</p>
+          <p>Page design by Danila Bredikhin.</p>
+        </div>
+        <div class="signature">
+          <p>scverse core team, 2022</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<section id="references">
+	<div class="section-heading">
+	  References
+	</div>
+	<div class="section-content">
+		{{ if .Params.references }}
+	  	<div>
+	  		<p><span class="backticked">scverse</span> tools are used in numerous research and industry projects across the globe and are referenced in <a href="https://scholar.google.ru/scholar?cites=14568046068402025757" target="_blank">thousands</a> of academic publication. Consider consulting the following references for more information about core <span class="backticked">scverse</span> libraries and citing the relevant articles when using them in your work:</p>
+	  	</div>
+	  	<div class="tiles-list" id="refs-list">
+		    {{ $refs := .Params.references }}
+		    {{ range $i, $e := $refs  }}
+			<a href="{{ .url }}" target="_blank">
+				<div class="ref-tile" id="{{ .id }}-ref-tile">
+					<div class="ref-text">
+						{{ .text }}
+					</div>
+				</div>
+			</a>
+			{{ end }}
+		</div>
+		{{ end }}
+	</div>
+</section>

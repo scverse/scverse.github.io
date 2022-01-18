@@ -1,0 +1,295 @@
+$greydesc: #777777;
+$greyheader: #AAAAAA;
+
+$tilebg: #F0F0F0;
+$tilebg2: #D9D9D9;
+$tilebg3: #E0E0E0;
+$tiletext: #333333;
+$tiletext2: #555555;
+$tiletext3: black;
+
+$anndataorange: #E5864B;
+$scanpycerise: #DE367B;
+$scanpymandy: #E05559;
+$mudatagreen: #4AB274;
+$muonaquamarine: #6CF1A1;
+
+$linkunderline: #AAAAAA;
+$backtickbg: #F9F9F9;
+$backticktext: #333333;
+
+$footerbg: #F0F0F0;
+$footertext: #333333;
+
+$maxwidth: 800px;
+$contentwidth: 80%;
+
+@font-face {
+    font-family: "Nunito";
+    src: url("fonts/Nunito/Nunito-VariableFont_wght.ttf");
+}
+
+html, body {
+	width: 100%;
+    height: 100%;
+
+	-webkit-font-smoothing: antialiased;
+	scroll-behavior: smooth;
+	-webkit-scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+
+	#wrapper {
+	    width: 100%;
+	    flex: 1;
+
+		#content {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			align-self: center;
+			#cover {
+				max-width: $maxwidth;
+				width: $contentwidth;
+				#cover-heading {
+					margin-top: 40%;
+					#title {
+						#title-name {
+							display: block;
+							font-size: 5rem;
+							font-family: "Nunito", sans-serif;
+							font-weight: 800;
+							line-height: 5rem;
+							letter-spacing: .4rem;
+						}
+						#title-desc {
+							display: block;
+							font-family: sans-serif;
+							font-size: 1.1rem;
+							color: $greydesc;
+						}
+					}
+					#badges {
+						display: flex;
+						flex-wrap: wrap;
+						gap: .5rem;
+						margin: 1rem 0;
+					}
+				}
+
+				section {
+					margin-top: 20%;
+					.section-heading {
+						font-size: 1.2rem;
+						text-transform: uppercase;
+						color: $greyheader;
+						font-weight: 700;
+						font-family: sans-serif;
+					}
+					.section-content {
+						margin-top: 2rem;
+						.tiles-list {
+				     		display: grid;
+
+							@media (max-width: 800px) {
+								grid-template-columns: 1fr;
+							}
+
+							a {
+								text-decoration: none;
+							}
+						}
+						.chips-list {
+							a {
+								text-decoration: none;
+								color: inherit;
+							}
+						}
+					}
+				}
+				#projects {
+					#projects-list {
+  						grid-auto-flow: row;
+  						grid-template-columns: 1fr 1fr;
+				    	gap: 2rem;
+						.project-tile {
+			    			display: flex;
+			    			flex-direction: row;
+			    			padding: 1rem;
+			    			height: 5rem;
+			    			align-items: center;
+			    			background-color: $tilebg;
+			    			color: $tiletext;
+			    			transition: all 200ms ease-out;
+			    			border-radius: .5rem;
+			    			.project-icon {
+			    				margin: 1rem;
+			    				padding: auto;
+			    				img {
+			    					width: 4rem;
+			    					height: 4rem;
+			    				}
+			    			}
+			    			.project-text {
+			    				margin-left: 1rem;
+				    			.project-name {
+				    				font-size: 1.2rem;
+				    				font-family: sans-serif;
+				    				display: block;
+				    				color: $tiletext;
+				    			}
+				    			.project-desc {
+				    				font-size: 1.0rem;
+				    				font-family: sans-serif;
+				    				display: block;
+				    				color: $tiletext2;
+				    			}
+			    			}
+			    			&:hover {
+			    				cursor: pointer;
+			    				background-color: $tilebg2;
+			    			}
+			    			&#anndata-tile {
+			    				&:hover {
+			    					background-color: rgba($anndataorange, .2);
+			    				}
+			    			}
+			    			&#scanpy-tile:hover {
+			    				background-color: rgba($scanpymandy, .2);
+			    			}
+			    			&#mudata-tile:hover {
+			    				background-color: rgba($mudatagreen, .2);
+			    			}
+			    			&#muon-tile:hover {
+			    				background-color: rgba($muonaquamarine, .2);
+			    			}
+			    		}
+					}
+				}
+				#mission {
+					.section-content {
+						p {
+							font-size: 1.2rem;
+						}
+					}
+				}
+				#team {
+					.section-content {
+						#team-list {
+							display: flex;
+							flex-wrap: wrap;
+							gap: .5rem;
+							.team-chip {
+								background-color: $tilebg;
+								text-decoration: none;
+								color: $tiletext;
+								padding: .4rem;
+								text-align: center;
+				    			border-radius: .5rem;
+				    			transition: all 200ms ease-out;
+								&:hover {
+									color: $tiletext3;
+									background-color: $tilebg2;
+								}
+							}
+						}
+					}
+				}
+				#references {
+					p {
+						font-size: 1.2rem;
+					}
+					#refs-list {
+						.ref-tile {
+							display: flex;
+							margin: 0 -1rem;
+							padding: 1rem;
+							width: 100%;
+							min-height: 1rem;
+							align-items: center;
+							background-color: #FF000000;
+							color: $tiletext;
+							transition: all 200ms ease-out;
+							border-radius: .5rem;
+							&:hover {
+								cursor: pointer;
+								background-color: $tilebg3;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		span.backticked {
+			font-family: Nunito;
+			// background-color: $backtickbg;
+			// border-radius: .5rem;
+		 	// padding: .3rem;
+		    color: $backticktext;
+		    font-weight: 500;
+		}
+
+		p > a {
+			text-decoration: none;
+			color: inherit;
+			border-bottom: 1px solid $linkunderline;
+			transition: border 200ms, color 200ms;
+			&:hover, &:active {
+                border-bottom: 1px solid inherit;
+			}
+		}
+	}
+
+	footer {
+		height: auto;
+		width: 100%;
+		margin-top: 10rem;
+		background-color: $footerbg;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		align-self: center;
+
+		#footer-content {
+			width: $contentwidth;
+			padding: 3% 0;
+
+			div {
+				max-width: $maxwidth;
+				margin: 2rem auto;
+				color: $footertext;
+				text-align: right;
+
+				p {
+					font-weight: 100;
+					margin: .2rem 0;
+				}
+				a {
+					color: inherit;
+					text-decoration: none;
+					border-bottom: 1px solid $linkunderline;
+					transition: border 200ms, color 200ms;
+				}
+				a:hover, a:active {
+					color: black;
+					border-bottom: 1px solid black;
+				}
+				&.signature {
+					p {
+						font-family: sans-serif;
+						font-weight: 500;
+						color: black;
+					}
+				}
+			}
+		}
+	}
+}
