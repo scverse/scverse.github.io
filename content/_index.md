@@ -41,7 +41,7 @@ description = "Foundational tools for omics data in the life sciences"
 
 [[team]]
 	name = "Ilia Kats"
-	url = "https://github.com/ilia"
+	url = "https://github.com/ilia-kats"
 
 [[team]]
 	name = "Giovanni Palla"
