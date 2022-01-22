@@ -1,5 +1,6 @@
 $greydesc: #777777;
 $greyheader: #AAAAAA;
+$greyheaderhover: #555555;
 
 $tilebg: #F0F0F0;
 $tilebg2: #D9D9D9;
@@ -14,12 +15,22 @@ $scanpymandy: #E05559;
 $mudatagreen: #4AB274;
 $muonaquamarine: #6CF1A1;
 
+$overline: #E0E0E0;
 $linkunderline: #AAAAAA;
 $backtickbg: #F9F9F9;
 $backticktext: #333333;
 
+$navtext: #555555;
+$navtexthover: #000000;
+$navtextactive: #000000;
+$navbg: #FFFFFF00;
+$navbghover: $tilebg;
+$navbgactive: $tilebg3;
+
 $footerbg: #F0F0F0;
 $footertext: #333333;
+
+$postlinktext: #333333;
 
 $maxwidth: 800px;
 $contentwidth: 80%;
@@ -59,25 +70,32 @@ body {
 				#cover-heading {
 					margin-top: 40%;
 					#title {
-						#title-name {
-							display: block;
-							font-size: 5rem;
-							font-family: "Nunito", sans-serif;
-							font-weight: 800;
-							line-height: 5rem;
-							letter-spacing: .4rem;
-						}
-						#title-desc {
-							display: block;
-							font-family: sans-serif;
-							font-size: 1.1rem;
-							color: $greydesc;
+						display: flex;
+						flex-direction: row;
+						align-items: center;
+						gap: 2rem;
+						#title-text {
+							height: 7rem;
+							#title-name {
+								display: block;
+								font-size: 5rem;
+								font-family: "Nunito", sans-serif;
+								font-weight: 800;
+								line-height: 5rem;
+								letter-spacing: .4rem;
+							}
+							#title-desc {
+								display: block;
+								font-family: sans-serif;
+								font-size: 1.1rem;
+								color: $greydesc;
+							}
 						}
 					}
 					#badges {
 						display: flex;
 						flex-wrap: wrap;
-						gap: .5rem;
+						gap: 1rem;
 						margin: 1rem 0;
 					}
 				}
@@ -85,20 +103,21 @@ body {
 				section {
 					margin-top: 20%;
 					.section-heading {
-						font-size: 1.2rem;
+						font-size: 1.3rem;
 						text-transform: uppercase;
 						color: $greyheader;
 						font-weight: 700;
 						font-family: sans-serif;
+						transition: all 200ms ease-in-out;
+						&.clickable-heading:hover {
+							color: $greyheaderhover;
+							cursor: pointer;
+						}
 					}
 					.section-content {
 						margin-top: 2rem;
 						.tiles-list {
 				     		display: grid;
-
-							@media (max-width: 800px) {
-								grid-template-columns: 1fr;
-							}
 
 							a {
 								text-decoration: none;
@@ -113,10 +132,14 @@ body {
 					}
 				}
 				#projects {
+					margin-top: 40%;
 					#projects-list {
   						grid-auto-flow: row;
   						grid-template-columns: 1fr 1fr;
 				    	gap: 2rem;
+				    	@media (max-width: 800px) {
+							grid-template-columns: 1fr;
+						}
 						.project-tile {
 			    			display: flex;
 			    			flex-direction: row;
@@ -125,9 +148,10 @@ body {
 			    			align-items: center;
 			    			background-color: $tilebg;
 			    			color: $tiletext;
-			    			transition: all 200ms ease-out;
+			    			transition: all 200ms ease-in-out;
 			    			border-radius: .5rem;
 			    			.project-icon {
+			    				transition: all 200ms ease-in-out;
 			    				margin: 1rem;
 			    				padding: auto;
 			    				img {
@@ -153,6 +177,9 @@ body {
 			    			&:hover {
 			    				cursor: pointer;
 			    				background-color: $tilebg2;
+			    				.project-icon {
+			    					transform: scale(1.03);
+			    				}
 			    			}
 			    			&#anndata-tile {
 			    				&:hover {
@@ -191,7 +218,7 @@ body {
 								padding: .4rem;
 								text-align: center;
 				    			border-radius: .5rem;
-				    			transition: all 200ms ease-out;
+				    			transition: all 200ms ease-in-out;
 								&:hover {
 									color: $tiletext3;
 									background-color: $tilebg2;
@@ -214,7 +241,7 @@ body {
 							align-items: center;
 							background-color: #FF000000;
 							color: $tiletext;
-							transition: all 200ms ease-out;
+							transition: all 200ms ease-in-out;
 							border-radius: .5rem;
 							&:hover {
 								cursor: pointer;
@@ -228,9 +255,6 @@ body {
 
 		span.backticked {
 			font-family: Nunito;
-			// background-color: $backtickbg;
-			// border-radius: .5rem;
-		 	// padding: .3rem;
 		    color: $backticktext;
 		    font-weight: 500;
 		}
@@ -245,6 +269,125 @@ body {
 			}
 		}
 	}
+
+	header {
+		height: auto;
+		width: 100%;
+		margin-top: 1rem;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		align-self: center;
+
+		#header-content {
+			display: flex;
+			flex-direction: column;
+			max-width: $maxwidth;
+			width: $contentwidth;
+			#nav {
+				display: flex;
+				flex-direction: row;
+				gap: 1rem;
+				align-items: center;
+
+				#logo-wrapper {
+					margin-right: auto;
+				}
+
+				a {
+					text-decoration: none;
+				}
+
+				.nav-button {
+					font-family: sans-serif;
+					background-color: $navbg;
+					border-radius: .5rem;
+				 	padding: .5rem .8rem;
+				    color: $navtext;
+				    cursor: pointer;
+				    transition: all 500ms ease-in-out;
+				    &:hover {
+				    	background-color: $navbghover;
+				    	color: $navtexthover;
+				    }
+				    &.active {
+				    	background-color: $navbgactive;
+				    	color: $navtextactive;
+				    }
+				}
+
+		    	@media (max-width: 800px) {
+					flex-direction: column;
+					align-items: flex-start;
+					.nav-button {
+						margin-left: -0.5rem;
+					}
+				}
+			}
+		}
+	}
+
+	#logo {
+		height: 3rem;
+		display: flex;
+		align-items: center;
+		user-select: none;
+		cursor: pointer;
+		svg {
+			#grad-s {
+				.grad-s-start {
+					stop-color: rgba(255,106,0,1);
+				}
+				.grad-s-end {
+					stop-color: rgba(176,30,233,1);
+				}
+			}
+			#grad-c {
+				.grad-c-start {
+					stop-color: rgba(176,30,233,1);
+				}
+				.grad-c-end {
+					stop-color: rgba(0,255,188,1);
+				}
+			}
+			path {
+				transition: all 500ms ease-in-out;
+				&.logo-s {
+					fill: url(#grad-s);
+				}
+				&.logo-c {
+					fill: url(#grad-c);
+				}
+				&.logo-s-0 {
+					opacity: 1;
+				}
+				&.logo-c-0 {
+					opacity: 1;
+				}
+			}
+		}
+		&:hover {
+			.logo-s-0 {
+				opacity: 0 !important;
+			}
+			.logo-c-0 {
+				opacity: 0 !important;
+			}
+		}
+		.logo-name {
+			color: black;
+			font-size: 1.5rem;
+			line-height: 1.5rem;
+			font-family: "Nunito", sans-serif;
+			font-weight: 600;
+			line-height: 5rem;
+			letter-spacing: .2rem;
+			margin-left: 1rem;
+		}
+	}
+
 
 	footer {
 		height: auto;
@@ -291,5 +434,232 @@ body {
 				}
 			}
 		}
+	}
+}
+
+
+#page-content {
+	display: flex;
+	flex-direction: column;
+	width: $contentwidth;
+	max-width: $maxwidth;
+	margin-top: 3rem;
+	h1 {
+		font-size: 2.5rem;
+		font-family: sans-serif;
+		font-weight: 800;
+	}
+	&.items-list {
+		a {
+			text-decoration: none;
+		}
+	}
+	.page-item {
+		display: flex;
+		flex-direction: row;
+		font-family: sans-serif;
+		
+    	@media (max-width: 800px) {
+			flex-direction: column;
+			align-items: flex-start;
+			h2 {
+				margin: .5rem 0 !important;
+			}
+		}
+		
+		margin: 0 -1rem;
+		padding: 1rem;
+
+		background-color: #FF000000;
+		transition: all 200ms ease-in-out;
+		border-radius: .5rem;
+
+		&:hover {
+			cursor: pointer;
+			background-color: $tilebg3;
+		}
+
+		h2 {
+			color: $tiletext;
+			margin: 0 0 .5rem 0;
+			line-height: 1.5rem;
+		}
+		span {
+			font-size: 1.0rem;
+			color: $greydesc;
+			line-height: 1.5rem;
+		}
+		.page-item-date {
+			flex: 1;
+		}
+		.page-item-content {
+			flex: 2;
+			display: flex;
+			flex-direction: column;
+		}
+	}
+	.post {
+		h1 {
+			margin-bottom: 0;
+		}
+		span {
+			font-size: 1.0rem;
+			color: $greydesc;
+			line-height: 1.5rem;
+		}
+		.post-content {
+			margin: 3rem 0;
+			font-size: 1.2rem;
+		}
+		h2, h3, h4 {
+			font-family: sans-serif;
+			margin: 4rem 0 0 0;
+		}
+		a {
+			color: $postlinktext;
+			&:hover {
+				color: black;
+			}
+		}
+	}
+}
+
+
+// Speficif to /libs
+
+#projects-content {
+	#projects-list {
+		.project-section {
+			display: flex;
+			flex-direction: row;
+			margin: 4rem 0;
+			&:first-of-type {
+				margin-top: 2rem;
+			}
+			gap: 5rem;
+			.project-img {
+				flex: 1;
+				img {
+					flex: 0 0 auto;
+					align-self: center;
+					object-fit: scale-down;
+					margin: auto;
+					max-width: 100%;
+					max-height: 100%;
+	  				
+				}
+			}
+			.project-info {
+				flex: 3;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				.project-text {
+					.project-name {
+						font-family: sans-serif;
+						font-size: 1.5rem;
+						font-weight: 800;
+						color: black;
+						display: block;
+					}
+					.project-details {
+						display: block;
+						font-size: 1.1rem;
+						margin: 1rem 0;
+						color: $tiletext;
+					}
+				}
+				.project-links {
+					a {
+						background-color: $tilebg;
+						text-decoration: none;
+						font-size: 1.0rem;
+						color: $tiletext;
+						padding: .4rem .8rem;
+						text-align: center;
+		    			border-radius: .5rem;
+		    			transition: all 200ms ease-in-out;
+						&:hover {
+							color: $tiletext3;
+							background-color: $tilebg2;
+						}
+					}
+				}
+			}
+		}	
+	}
+	margin-top: 1rem !important;
+	h2:first-of-type {
+		margin-top: 0 !important;
+	}
+}
+
+
+// Speficif to /people
+
+#people-content {
+	#projects-list {
+		.project-section {
+			display: flex;
+			flex-direction: row;
+			margin: 4rem 0;
+			&:first-of-type {
+				margin-top: 2rem;
+			}
+			gap: 5rem;
+			.project-img {
+				flex: 1;
+				img {
+					flex: 0 0 auto;
+					align-self: center;
+					object-fit: scale-down;
+					margin: auto;
+					max-width: 100%;
+					max-height: 100%;
+	  				
+				}
+			}
+			.project-info {
+				flex: 3;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				.project-text {
+					.project-name {
+						font-family: sans-serif;
+						font-size: 1.5rem;
+						font-weight: 800;
+						color: black;
+						display: block;
+					}
+					.project-details {
+						display: block;
+						font-size: 1.1rem;
+						margin: 1rem 0;
+						color: $tiletext;
+					}
+				}
+				.project-links {
+					a {
+						background-color: $tilebg;
+						text-decoration: none;
+						font-size: 1.0rem;
+						color: $tiletext;
+						padding: .4rem .8rem;
+						text-align: center;
+		    			border-radius: .5rem;
+		    			transition: all 200ms ease-in-out;
+						&:hover {
+							color: $tiletext3;
+							background-color: $tilebg2;
+						}
+					}
+				}
+			}
+		}	
+	}
+	margin-top: 1rem !important;
+	h2:first-of-type {
+		margin-top: 0 !important;
 	}
 }
