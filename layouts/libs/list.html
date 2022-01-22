@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {{ partial "head" . }}
+  </head>
+  <body>
+    <header>
+      {{ partial "header" . }}
+    </header>
+    <div id="wrapper">
+      <div id="content">
+        <div id="page-content">
+        	<h1>{{ .Title }}</h1>
+		      <article class="post">
+            <div class="post-content" id="projects-content">
+            {{ if .Params.projects }}
+                <h2>Core packages</h2>
+                <div id="projects-list">
+                  {{ $projects := .Params.projects }}
+                  {{ range $i, $e := $projects  }}
+                    <div class="project-section">
+                      <div class="project-img">
+                        <img src="{{ .img }}"/>
+                      </div>
+                      <div class="project-info">
+                        <div class="project-text">
+                          <span class="project-name">{{ .name }}</span>
+                          <span class="project-details">{{ .details }}</span>
+                        </div>
+                        <div class="project-links">
+                          {{ range $k, $v := $e.links }}
+                            <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
+                          {{ end }}
+                        </div>
+                      </div>
+                    </div>
+                  {{ end }}
+                </div>
+             {{ end }}
+             {{ .Content }}
+             </div>
+		      </article>
+        </div>
+      </div>
+    </div>
+    {{ partial "footer" . }}
+  </body>
+</html>
