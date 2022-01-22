@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{ .Title }}</title>
-    {{ $styles := resources.Get "main.scss" | toCSS | minify }}
-    <link rel="stylesheet" type="text/css" href="{{ $styles.Permalink }}">
+    {{ partial "head" . }}
   </head>
   <body>
+  	<header>
+  		{{ partial "header" . }}
+  	</header>
     <div id="wrapper">
       <div id="content">
         <div id="cover">
 				  <div id="cover-heading">
 					  <div id="title">
-					    <span id="title-name">{{ .Title }}</span>
-					    <span id="title-desc">{{ .Description }}</span>
+					  	<div id="title-text">
+						    <span id="title-name">{{ .Title }}</span>
+						    <span id="title-desc">{{ .Description }}</span>
+						   </div>
 					  </div>
 					  <div id="badges">
 					  	<a href="https://github.com/scverse" target="_blank">
@@ -21,25 +24,18 @@
 					  	<a href="https://twitter.com/scanpy_team" target="_blank">
 					  		<img src="https://img.shields.io/twitter/follow/scanpy_team?label=%40scverse&logoColor=black&style=social"/>
 					  	</a>
+					  	<a href="https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA" target="_blank">
+					  		<img src="https://img.shields.io/youtube/channel/views/UCpsvsIAW3R5OdftJKKuLNMA?label=%40scverse&style=social"/>
+					  	</a>
 					  </div>
 				  </div>
-				  {{ partial "projects" . }}
-				  {{ partial "mission" . }}
-				  {{ partial "team" . }}
-					{{ partial "references" . }}
+				  {{ partial "main/projects" . }}
+				  {{ partial "main/mission" . }}
+				  {{ partial "main/team" . }}
+					{{ partial "main/references" . }}
         </div>
       </div>
     </div>
-    <footer>
-      <div id="footer-content">
-        <div>
-          <p>Page content by scverse core team.</p>
-          <p>Page design by Danila Bredikhin.</p>
-        </div>
-        <div class="signature">
-          <p>scverse core team, 2022</p>
-        </div>
-      </div>
-    </footer>
+    {{ partial "footer" . }}
   </body>
 </html>
