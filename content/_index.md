@@ -5,9 +5,9 @@ description = "Foundational tools for omics data in the life sciences"
 # Projects
 
 [[projects]]
-		name = "anndata"
-		description = "Standard for annotated matrices"
-		url = "https://anndata.readthedocs.io/en/latest/"
+	name = "anndata"
+	description = "Standard for annotated matrices"
+	url = "https://anndata.readthedocs.io/en/latest/"
 
 [[projects]]
 	name = "mudata"
@@ -23,7 +23,11 @@ description = "Foundational tools for omics data in the life sciences"
 	name = "muon"
 	description = "Multi-omics analysis framework"
 	url = "https://gtca.github.io/muon"
-	icon = "img/icons/muon.svg"
+
+# Mission
+
+[mission]
+	text = """<p><span class="backticked">scverse</span> is a consortium for joint maintenance of core packages in omics data analysis in life sciences. It has been founded to ensure the long-term maintenance of the core infrastructure in the field.</p>"""
 
 # Team
 
@@ -31,9 +35,9 @@ description = "Foundational tools for omics data in the life sciences"
 	name = "Danila Bredikhin"
 	url = "https://gtca.github.io/"
 
-[[team]]
-	name = "Max Frank"
-	url = "https://github.com/mffrank"
+#[[team]]
+#	name = "Max Frank"
+#	url = "https://github.com/mffrank"
 
 [[team]]
 	name = "Lukas Heumos"
@@ -43,9 +47,9 @@ description = "Foundational tools for omics data in the life sciences"
 	name = "Ilia Kats"
 	url = "https://github.com/ilia-kats"
 
-[[team]]
-	name = "Giovanni Palla"
-	url = "https://twitter.com/g_palla1"
+#[[team]]
+#	name = "Giovanni Palla"
+#	url = "https://twitter.com/g_palla1"
 
 [[team]]
 	name = "Isaac Virshup"
@@ -73,3 +77,4 @@ description = "Foundational tools for omics data in the life sciences"
     text = "Virshup I, Rybakov S, Theis FJ, Angerer P, Wolf FA. anndata: Annotated data. bioRxiv. 2021 Dec 19."
 
 +++
+
