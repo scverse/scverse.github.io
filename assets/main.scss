@@ -369,12 +369,12 @@ body {
 
 	#logo {
 		height: 3rem;
-		width: 3rem;
 		display: flex;
 		align-items: center;
 		user-select: none;
 		cursor: pointer;
 		svg {
+			width: 3rem;
 			#grad-s {
 				.grad-s-start {
 					stop-color: rgba(255,106,0,1);
