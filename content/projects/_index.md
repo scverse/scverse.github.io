@@ -1,5 +1,5 @@
 +++
-title = "Packages"
+title = "Projects"
 
 [[projects]]
 	name = "anndata"

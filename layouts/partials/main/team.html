@@ -6,7 +6,7 @@
 		{{ $peoplepage := index (where $.Site.Pages "Title" "People") 0 }}
 		{{ if $peoplepage.Params }}
 		{{ $coreteam := index (where $peoplepage.Params.teams "name" "Core team") 0 }}
-		<div><span class="backticked">scverse</span> is currently governed by 
+		<div class="section-paragraph"><span class="backticked">scverse</span> is currently governed by 
 			<div id="team-list">
 			    <!-- {{ $members := .Params.team }} -->
 				{{ $members := $coreteam.members }}
@@ -18,5 +18,8 @@
 			</div>
 		</div>
 		{{ end }}
+		<div class="more">
+			<a href="/people">Learn more about scverse community</a>
+		</div>
 	</div>
 </section>
