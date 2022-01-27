@@ -1,5 +1,5 @@
 $greydesc: #777777;
-$greyheader: #AAAAAA;
+$greyheader: #333333;
 $greyheaderhover: #555555;
 
 $tilebg: #F0F0F0;
@@ -29,6 +29,7 @@ $navbgactive: $tilebg3;
 
 $footerbg: #F0F0F0;
 $footertext: #333333;
+$footertextmuted: #AAAAAA;
 
 $postlinktext: #333333;
 
@@ -40,6 +41,20 @@ $contentwidth: 80%;
     src: url("fonts/Nunito/Nunito-VariableFont_wght.ttf");
 }
 
+@mixin person-chip {
+	background-color: $tilebg;
+	text-decoration: none;
+	color: $tiletext;
+	padding: .4rem;
+	text-align: center;
+	border-radius: .5rem;
+	transition: all 200ms ease-in-out;
+	&:hover {
+		color: $tiletext3;
+		background-color: $tilebg2;
+	}
+}
+
 html, body {
 	width: 100%;
     height: 100%;
@@ -47,6 +62,7 @@ html, body {
 	-webkit-font-smoothing: antialiased;
 	scroll-behavior: smooth;
 	-webkit-scroll-behavior: smooth;
+  	-moz-osx-font-smoothing: grayscale;
 }
 body {
     margin: 0;
@@ -115,6 +131,13 @@ body {
 						}
 					}
 					.section-content {
+						p, div {
+							font-family: Open Sans, sans-serif;
+						}
+						span.backticked {
+							font-size: 1.2rem;
+							line-height: 1.1rem;
+						}
 						margin-top: 2rem;
 						.tiles-list {
 				     		display: grid;
@@ -201,41 +224,46 @@ body {
 				#mission {
 					.section-content {
 						p {
-							font-size: 1.2rem;
+							font-size: 1.1rem;
 						}
 					}
 				}
 				#team {
 					.section-content {
-						#team-list {
-							display: flex;
-							flex-wrap: wrap;
-							gap: .5rem;
-							.team-chip {
-								background-color: $tilebg;
-								text-decoration: none;
-								color: $tiletext;
-								padding: .4rem;
-								text-align: center;
-				    			border-radius: .5rem;
-				    			transition: all 200ms ease-in-out;
-								&:hover {
-									color: $tiletext3;
-									background-color: $tilebg2;
-								}
+						p, div {
+							font-size: 1.1rem;
+						}
+						a {
+							color: inherit;
+							text-decoration: none;
+							border-bottom: 1px solid $linkunderline;
+							transition: border 200ms, color 200ms;
+						
+							&:hover, &:active {
+								color: black;
+								border-bottom: 1px solid black;
 							}
+						}
+						#team-list {
+							display: inline;
+							// display: flex;
+							// flex-wrap: wrap;
+							// gap: .5rem;
+							// .team-chip {
+							// 	@include person-chip;
+							// }
 						}
 					}
 				}
 				#references {
 					p {
-						font-size: 1.2rem;
+						font-size: 1.1rem;
 					}
 					#refs-list {
 						.ref-tile {
 							display: flex;
-							margin: 0 -1rem;
-							padding: 1rem;
+							margin: 0 -.8rem;
+							padding: .8rem;
 							width: 100%;
 							min-height: 1rem;
 							align-items: center;
@@ -247,6 +275,7 @@ body {
 								cursor: pointer;
 								background-color: $tilebg3;
 							}
+							font-size: 0.9rem;
 						}
 					}
 				}
@@ -300,28 +329,37 @@ body {
 					text-decoration: none;
 				}
 
-				.nav-button {
-					font-family: sans-serif;
-					background-color: $navbg;
-					border-radius: .5rem;
-				 	padding: .5rem .8rem;
-				    color: $navtext;
-				    cursor: pointer;
-				    transition: all 500ms ease-in-out;
-				    &:hover {
-				    	background-color: $navbghover;
-				    	color: $navtexthover;
-				    }
-				    &.active {
-				    	background-color: $navbgactive;
-				    	color: $navtextactive;
-				    }
+				#nav-button-wrapper {
+					display: flex;
+					flex-direction: row;
+					gap: 1rem;
+					align-items: center;
+					.nav-button {
+						font-family: sans-serif;
+						background-color: $navbg;
+						border-radius: .5rem;
+					 	padding: .5rem .8rem;
+					    color: $navtext;
+					    cursor: pointer;
+					    transition: all 500ms ease-in-out;
+					    &:hover {
+					    	background-color: $navbghover;
+					    	color: $navtexthover;
+					    }
+					    &.active {
+					    	background-color: $navbgactive;
+					    	color: $navtextactive;
+					    }
+					}
 				}
 
 		    	@media (max-width: 800px) {
 					flex-direction: column;
 					align-items: flex-start;
-					.nav-button {
+					#logo-wrapper {
+						margin-right: auto;
+					}
+					#nav-button-wrapper {
 						margin-left: -0.5rem;
 					}
 				}
@@ -403,17 +441,19 @@ body {
 
 		#footer-content {
 			width: $contentwidth;
-			padding: 3% 0;
+			padding: 2%;
 
 			div {
 				max-width: $maxwidth;
-				margin: 2rem auto;
+				margin: 1rem auto;
 				color: $footertext;
 				text-align: right;
 
-				p {
+				a, p {
 					font-weight: 100;
 					margin: .2rem 0;
+					font-family: sans-serif;
+					font-weight: 500;
 				}
 				a {
 					color: inherit;
@@ -425,12 +465,31 @@ body {
 					color: black;
 					border-bottom: 1px solid black;
 				}
-				&.signature {
+				&.footer-links {
 					p {
-						font-family: sans-serif;
-						font-weight: 500;
-						color: black;
+						color: $footertextmuted;
+						a {
+							color: $footertext;
+							&:hover {
+								color: black;
+							}
+						}
 					}
+				}
+				&.signature {
+					margin-bottom: 0;
+				}
+				&.acknowledgement {
+					margin-top: 0;
+					p {
+						margin-top: 0;
+						color: $footertextmuted;
+					}
+				}
+			}
+			.footer-links {
+				a {
+					display: inline-block;
 				}
 			}
 		}
@@ -444,6 +503,7 @@ body {
 	width: $contentwidth;
 	max-width: $maxwidth;
 	margin-top: 3rem;
+	font-family: sans-serif;
 	h1 {
 		font-size: 2.5rem;
 		font-family: sans-serif;
@@ -452,6 +512,9 @@ body {
 	&.items-list {
 		a {
 			text-decoration: none;
+			&:first-of-type {
+				margin-top: 3rem;
+			}
 		}
 	}
 	.page-item {
@@ -507,15 +570,49 @@ body {
 			color: $greydesc;
 			line-height: 1.5rem;
 		}
+		.post-subtitle {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: flex-start;
+			line-height: 1.5rem;
+			gap: .5rem;
+			.rss-icon {
+				width: 1rem;
+				height: auto;
+				a {
+					width: 100%;
+					display: flex;
+					align-items: center;
+					text-decoration: none;
+					svg {
+						fill: $greydesc;
+					}
+					&:hover {
+						svg {
+							fill: $navtexthover;
+						}
+					}
+				}
+			}
+		}
 		.post-content {
 			margin: 3rem 0;
-			font-size: 1.2rem;
+			font-size: 1.1rem;
+			span.backticked {
+				font-size: 1.2rem;
+				line-height: 1.1rem;
+			}
+			p, div {
+				font-family: Open Sans, sans-serif;
+			}
 		}
 		h2, h3, h4 {
 			font-family: sans-serif;
 			margin: 4rem 0 0 0;
 		}
 		a {
+			font-family: sans-serif;
 			color: $postlinktext;
 			&:hover {
 				color: black;
@@ -525,21 +622,25 @@ body {
 }
 
 
-// Speficif to /libs
+// Specific to /libs
 
 #projects-content {
 	#projects-list {
+		display: flex;
+		flex-direction: column;
+		gap: 5rem;
 		.project-section {
 			display: flex;
 			flex-direction: row;
-			margin: 4rem 0;
+			margin: .5rem 0;
 			&:first-of-type {
 				margin-top: 2rem;
 			}
-			gap: 5rem;
+			gap: 3rem;
 			.project-img {
 				flex: 1;
 				img {
+					padding: 0.5rem;
 					flex: 0 0 auto;
 					align-self: center;
 					object-fit: scale-down;
@@ -548,118 +649,100 @@ body {
 					max-height: 100%;
 	  				
 				}
+		    	transition: all 200ms ease-in-out;
+		    	@media (max-width: 800px) {
+					display: none;
+				}
 			}
 			.project-info {
 				flex: 3;
 				display: flex;
 				flex-direction: column;
 				align-items: flex-start;
-				.project-text {
-					.project-name {
-						font-family: sans-serif;
-						font-size: 1.5rem;
-						font-weight: 800;
-						color: black;
-						display: block;
-					}
-					.project-details {
-						display: block;
-						font-size: 1.1rem;
-						margin: 1rem 0;
-						color: $tiletext;
-					}
-				}
-				.project-links {
-					a {
-						background-color: $tilebg;
-						text-decoration: none;
-						font-size: 1.0rem;
-						color: $tiletext;
-						padding: .4rem .8rem;
-						text-align: center;
-		    			border-radius: .5rem;
-		    			transition: all 200ms ease-in-out;
-						&:hover {
-							color: $tiletext3;
-							background-color: $tilebg2;
+				gap: 0;
+				.project-tile {
+					// padding: 2rem;
+					border-radius: 1rem;
+					// box-shadow: 0 .2rem .2rem .05rem rgba(0, 0, 0, .3);
+					.project-text {
+						.project-name {
+							font-family: sans-serif;
+							font-size: 1.3rem;
+							font-weight: 800;
+							color: black;
+							display: block;
+						}
+						.project-details {
+							display: block;
+							font-size: 1.1rem;
+							margin: 1rem 0;
+							color: $tiletext;
 						}
 					}
 				}
+				// #anndata-tile {
+				// 	background-color: rgba(#fa8e4b, .9);
+				// }
+				// #mudata-tile {
+				// 	background-color: rgba($mudatagreen, .7);
+				// }
+				// #scanpy-tile {
+				// 	background-color: rgba($scanpymandy, .7);
+				// }
+				// #muon-tile {
+				// 	background-color: rgba($muonaquamarine, .8);
+				// }
 			}
-		}	
+		}
 	}
-	margin-top: 1rem !important;
-	h2:first-of-type {
-		margin-top: 0 !important;
+	// margin-top: 1rem !important;
+	// h2:first-of-type {
+	// 	margin-top: 0 !important;
+	// }
+	.project-links {
+		a {
+			display: inline-block;
+			background-color: $tilebg;
+			text-decoration: none;
+			font-size: 1.0rem;
+			color: $tiletext;
+			padding: .4rem .8rem;
+			margin: .5rem 0;
+			text-align: center;
+			border-radius: .5rem;
+			transition: all 200ms ease-in-out;
+			&:hover {
+				color: $tiletext3;
+				background-color: $tilebg2;
+			}
+		}
 	}
 }
 
 
-// Speficif to /people
+// Specific to /people
 
 #people-content {
-	#projects-list {
-		.project-section {
+	.team {
+		.team-list {
+			font-size: 1.1rem;
 			display: flex;
-			flex-direction: row;
-			margin: 4rem 0;
-			&:first-of-type {
-				margin-top: 2rem;
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: .5rem;
+			justify-content: flex-start;
+			.person-chip {
+				@include person-chip;
+				font-size: 1.0rem;
+				font-family: sans-serif;
 			}
-			gap: 5rem;
-			.project-img {
-				flex: 1;
-				img {
-					flex: 0 0 auto;
-					align-self: center;
-					object-fit: scale-down;
-					margin: auto;
-					max-width: 100%;
-					max-height: 100%;
-	  				
-				}
+			a {
+				text-decoration: none;
 			}
-			.project-info {
-				flex: 3;
-				display: flex;
-				flex-direction: column;
-				align-items: flex-start;
-				.project-text {
-					.project-name {
-						font-family: sans-serif;
-						font-size: 1.5rem;
-						font-weight: 800;
-						color: black;
-						display: block;
-					}
-					.project-details {
-						display: block;
-						font-size: 1.1rem;
-						margin: 1rem 0;
-						color: $tiletext;
-					}
-				}
-				.project-links {
-					a {
-						background-color: $tilebg;
-						text-decoration: none;
-						font-size: 1.0rem;
-						color: $tiletext;
-						padding: .4rem .8rem;
-						text-align: center;
-		    			border-radius: .5rem;
-		    			transition: all 200ms ease-in-out;
-						&:hover {
-							color: $tiletext3;
-							background-color: $tilebg2;
-						}
-					}
-				}
-			}
-		}	
+		}
 	}
-	margin-top: 1rem !important;
-	h2:first-of-type {
-		margin-top: 0 !important;
-	}
+	// margin-top: 1rem !important;
+	// h2:first-of-type {
+	// 	margin-top: 0 !important;
+	// }
 }
