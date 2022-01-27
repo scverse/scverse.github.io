@@ -7,7 +7,7 @@
 		    <div class="tiles-list" id="projects-list">
 		    	{{ $projects := .Params.projects }}
 		    	{{ range $i, $e := $projects  }}
-		    		<a href={{ .url }} target="_blank">
+		    		<a href={{ .url }} target="_blank" onclick="">
 						<div class="project-tile" id="{{ .name }}-tile">
 							<div class="project-icon">
 								<img src="img/icons/{{ .name }}.svg"/>
