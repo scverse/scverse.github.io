@@ -12,7 +12,8 @@
 				{{ $members := $coreteam.members }}
 			    {{ range $i, $e := $members  }}
 		    	   <!-- <a href={{ .url }} target="_blank"><div class="team-chip">{{ .name }}</div></a> -->
-		    	   <a href={{ .url }} target="_blank">{{ .name }}</a>,
+		    	   <a href={{ .url }} target="_blank">{{ .name }}</a>
+		    	   {{ if ne $i (sub (len $members) 1) }}, {{ else }}.{{ end }}
 				{{ end }}
 			</div>
 		</div>
