@@ -1,9 +1,10 @@
 +++
 title = "People"
-preface = "For people participaing in and interacting with the consortium, there are different roles."
+preface = "For people participaing in and interacting with the consortium, there are different roles. Core developers are deeply involved in developing and maintaining <span class=\"backticked\">scverse</span> projects. Project developers are more focused on individual projects. And all this work makes sense only in the context of the larger community of contributors and users of <span class=\"backticked\">scverse</span> projects. As we strive to make <span class=\"backticked\">scverse</span> governing and communication as transparent as possible, <a href='https://github.com/scverse/governance' target='_blank'>respective documentation</a> is available for everyone to view and comment."
 
 [[teams]]
-	name = "Core team"
+	name = "Steering committee"
+	hide = true
 
 [[teams.members]]
 	name = "Danila Bredikhin"
@@ -23,8 +24,16 @@ preface = "For people participaing in and interacting with the consortium, there
 	name = "Core developers"
 
 [[teams.members]]
+	name = "Danila Bredikhin"
+	url = "https://gtca.github.io/"
+
+[[teams.members]]
 	name = "Max Frank"
 	url = "https://github.com/mffrank"
+
+[[teams.members]]
+	name = "Lukas Heumos"
+	url = "https://lukasheumos.com/"
 
 [[teams.members]]
 	name = "Ilia Kats"
@@ -33,6 +42,10 @@ preface = "For people participaing in and interacting with the consortium, there
 [[teams.members]]
 	name = "Giovanni Palla"
 	url = "https://twitter.com/g_palla1"
+
+[[teams.members]]
+	name = "Isaac Virshup"
+	url = "https://twitter.com/ivirshup"
 
 # ----------
 
@@ -61,6 +74,6 @@ preface = "For people participaing in and interacting with the consortium, there
 
 [[teams]]
 	name = "Community"
-	text = "Everyone who uses <span class='backticked'>scverse</span> software is part of the community. There are multiple ways to engage with its other members. For a start, join us on our <a href='https://discord.gg/zDVDtFFcNe' target='_blank'>Discord server</a> and keep an eye on our <a href='https://twitter.com/scanpy_team' target='_blank'>Twitter account</a> for the events we organise."
+	text = "Everyone who uses <span class='backticked'>scverse</span> software is part of the community! There are multiple ways to engage with its other members. For a start, join us on our <a href='https://discord.gg/zDVDtFFcNe' target='_blank'>Discord server</a> and keep an eye on our <a href='https://twitter.com/scanpy_team' target='_blank'>Twitter account</a> for the events we organise."
 
 +++
