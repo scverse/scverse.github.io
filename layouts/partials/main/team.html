@@ -1,0 +1,21 @@
+<section id="team">
+	<div class="section-heading">
+	  Core team
+	</div>
+	<div class="section-content">
+		{{ $peoplepage := index (where $.Site.Pages "Title" "People") 0 }}
+		{{ if $peoplepage.Params }}
+		{{ $coreteam := index (where $peoplepage.Params.teams "name" "Core team") 0 }}
+		<div><span class="backticked">scverse</span> is currently governed by 
+			<div id="team-list">
+			    <!-- {{ $members := .Params.team }} -->
+				{{ $members := $coreteam.members }}
+			    {{ range $i, $e := $members  }}
+		    	   <!-- <a href={{ .url }} target="_blank"><div class="team-chip">{{ .name }}</div></a> -->
+		    	   <a href={{ .url }} target="_blank">{{ .name }}</a>,
+				{{ end }}
+			</div>
+		</div>
+		{{ end }}
+	</div>
+</section>

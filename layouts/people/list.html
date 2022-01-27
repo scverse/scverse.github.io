@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {{ partial "head" . }}
+  </head>
+  <body>
+    <header>
+      {{ partial "header" . }}
+    </header>
+    <div id="wrapper">
+      <div id="content">
+        <div id="page-content">
+          <h1>{{ .Title }}</h1>
+          <article class="post">
+            <div class="post-content" id="people-content">
+
+              <p>
+                {{ .Params.preface }}
+              </p>
+            
+            {{ if .Params.teams }}
+              {{ range $team := .Params.teams }}
+              <div class="team">
+                <h3>{{ $team.name }}</h3>
+                {{ if $team.members }}
+                  <p></p>
+                  <div class="team-list">
+                    {{ range $person := $team.members }}
+                      <a href={{ .url }} target="_blank"><div class="person-chip">{{ .name }}</div></a>
+                    {{ end }}
+                  </div>
+                {{ else }}
+                  <p>{{ $team.text | markdownify | safeHTML }}</p>
+                {{ end }}
+              </div>
+              {{ end }}
+            {{ end }}
+
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+    {{ partial "footer" . }}
+  </body>
+</html>
