@@ -160,6 +160,8 @@ body {
 							font-family: sans-serif;
 							color: $tiletext2;
 							transition: all 200ms ease-in-out;
+		    				padding: 0.5rem;
+		    				margin-left: -0.5rem;
 							&:after {
 								content: "\232A";
 								font-size: .6rem;
@@ -167,6 +169,8 @@ body {
 							}
 			    			&:hover {
 			    				color: $tiletext3;
+			    				background-color: $tilebg;
+			    				border-radius: 0.5rem;
 			    				&:after {
 			    					padding-left: .2rem;
 			    				}
@@ -222,25 +226,23 @@ body {
 				    				color: $tiletext2;
 				    			}
 			    			}
-			    			&:hover {
+			    			&:hover, &:active {
 			    				cursor: pointer;
 			    				background-color: $tilebg2;
 			    				.project-icon {
 			    					transform: scale(1.03);
 			    				}
 			    			}
-			    			&#anndata-tile {
-			    				&:hover {
-			    					background-color: rgba($anndataorange, .2);
-			    				}
+			    			&#anndata-tile:hover, &#anndata-tile:active {
+			    				background-color: rgba($anndataorange, .2);
 			    			}
-			    			&#scanpy-tile:hover {
+			    			&#scanpy-tile:hover, &#scanpy-tile:active {
 			    				background-color: rgba($scanpymandy, .2);
 			    			}
-			    			&#mudata-tile:hover {
+			    			&#mudata-tile:hover, &#mudata-tile:active {
 			    				background-color: rgba($mudatagreen, .2);
 			    			}
-			    			&#muon-tile:hover {
+			    			&#muon-tile:hover, &#muon-tile:active {
 			    				background-color: rgba($muonaquamarine, .2);
 			    			}
 			    		}
@@ -259,12 +261,6 @@ body {
 							margin-bottom: 1rem;
 							#team-list {
 								display: inline;
-								// display: flex;
-								// flex-wrap: wrap;
-								// gap: .5rem;
-								// .team-chip {
-								// 	@include person-chip;
-								// }
 							}
 							p, div {
 								font-size: 1.1rem;
@@ -370,7 +366,7 @@ body {
 					    color: $navtext;
 					    cursor: pointer;
 					    transition: all 500ms ease-in-out;
-					    &:hover {
+					    &:hover, &:active {
 					    	background-color: $navbghover;
 					    	color: $navtexthover;
 					    }
@@ -435,7 +431,7 @@ body {
 				}
 			}
 		}
-		&:hover {
+		&:hover, &:active {
 			.logo-s-0 {
 				opacity: 0 !important;
 			}
@@ -740,7 +736,7 @@ body {
 			text-align: center;
 			border-radius: .5rem;
 			transition: all 200ms ease-in-out;
-			&:hover {
+			&:hover, &:active {
 				color: $tiletext3;
 				background-color: $tilebg2;
 			}
