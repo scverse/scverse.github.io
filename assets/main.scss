@@ -226,23 +226,23 @@ body {
 				    				color: $tiletext2;
 				    			}
 			    			}
-			    			&:hover, &:active {
+			    			&:hover {
 			    				cursor: pointer;
 			    				background-color: $tilebg2;
 			    				.project-icon {
 			    					transform: scale(1.03);
 			    				}
 			    			}
-			    			&#anndata-tile:hover, &#anndata-tile:active {
+			    			&#anndata-tile:hover {
 			    				background-color: rgba($anndataorange, .2);
 			    			}
-			    			&#scanpy-tile:hover, &#scanpy-tile:active {
+			    			&#scanpy-tile:hover {
 			    				background-color: rgba($scanpymandy, .2);
 			    			}
-			    			&#mudata-tile:hover, &#mudata-tile:active {
+			    			&#mudata-tile:hover {
 			    				background-color: rgba($mudatagreen, .2);
 			    			}
-			    			&#muon-tile:hover, &#muon-tile:active {
+			    			&#muon-tile:hover {
 			    				background-color: rgba($muonaquamarine, .2);
 			    			}
 			    		}
