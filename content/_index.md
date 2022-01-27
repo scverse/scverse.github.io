@@ -31,33 +31,10 @@ description = "Foundational tools for omics data in the life sciences"
 
 # Team
 
-[[team]]
-	name = "Danila Bredikhin"
-	url = "https://gtca.github.io/"
+[team]
 
-#[[team]]
-#	name = "Max Frank"
-#	url = "https://github.com/mffrank"
+# People information is recorded in the people/_index.md file
 
-[[team]]
-	name = "Lukas Heumos"
-	url = "https://lukasheumos.com/"
-
-[[team]]
-	name = "Ilia Kats"
-	url = "https://github.com/ilia-kats"
-
-#[[team]]
-#	name = "Giovanni Palla"
-#	url = "https://twitter.com/g_palla1"
-
-[[team]]
-	name = "Isaac Virshup"
-	url = "https://twitter.com/ivirshup"
-
-[[team]]
-	name = "Alex Wolf"
-	url = "https://falexwolf.de/"
 
 # References
 

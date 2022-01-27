@@ -5,8 +5,8 @@ title = "Packages"
 	name = "anndata"
 	description = "Standard for annotated matrices"
 	url = "https://anndata.readthedocs.io/en/latest/"
-	img = "https://anndata.readthedocs.io/en/latest/_images/anndata_schema.svg"
-	details = "anndata is a Python package for handling annotated data matrices in memory and on disk, positioned between pandas and xarray. anndata offers a broad range of computationally efficient features including, among others, sparse data support, lazy operations, and a PyTorch interface."
+	img = "../img/libs/anndata_schema.svg"
+	details = "Anndata is a Python package for handling annotated data matrices in memory and on disk, positioned between pandas and xarray. anndata offers a broad range of computationally efficient features including, among others, sparse data support, lazy operations, and a PyTorch interface."
 	[[projects.links]]
 	text = "GitHub"
 	url = "https://github.com/theislab/anndata"
@@ -24,7 +24,7 @@ title = "Packages"
 	name = "mudata"
 	description = "Multimodal data format"
 	url = "https://mudata.readthedocs.io/en/latest/"
-	img = "https://mudata.readthedocs.io/en/latest/_static/mudata.png"
+	img = "../img/libs/mudata_flat.svg"
 	details = "MuData is a format for annotated multimodal datasets where each modality is represented by an AnnData object. MuData's reference implementation is in Python, and the cross-language functionality via HDF5-based .h5mu files with libraries in R and Julia."
 	[[projects.links]]
 	text = "GitHub"
@@ -35,12 +35,16 @@ title = "Packages"
 	[[projects.links]]
 	text = "PyPI"
 	url = "https://pypi.org/project/mudata/"
+	[[projects.links]]
+	text = "Muon.jl GitHub"
+	url = "https://github.com/scverse/Muon.jl"
 
 [[projects]]
 	name = "scanpy"
 	description = "Single-cell analysis framework"
 	url = "https://scanpy.readthedocs.io/en/latest/"
-	img = "https://scanpy.readthedocs.io/en/stable/_static/Scanpy_Logo_BrightFG.svg"
+	#img = "https://scanpy.readthedocs.io/en/stable/_static/Scanpy_Logo_BrightFG.svg"
+	img = "../img/icons/scanpy.svg"
 	details = "Scanpy is a scalable toolkit for analyzing single-cell gene expression data built jointly with anndata. It includes preprocessing, visualization, clustering, trajectory inference and differential expression testing. The Python-based implementation efficiently deals with datasets of more than one million cells."
 	[[projects.links]]
 	text = "GitHub"
@@ -59,7 +63,8 @@ title = "Packages"
 	name = "muon"
 	description = "Multi-omics analysis framework"
 	url = "https://gtca.github.io/muon"
-	img = "https://muon.readthedocs.io/en/latest/_static/muon_logo.png"
+	#img = "https://muon.readthedocs.io/en/latest/_static/muon_logo.png"
+	img = "../img/icons/muon.svg"
 	details = "muon is a Python framework for multimodal omics analysis. While there are many features that muon brings to the table, there are three key areas that its functionality is focused on."
 	[[projects.links]]
 	text = "GitHub"
@@ -77,8 +82,60 @@ title = "Packages"
 	text = "Website"
 	url = "https://gtca.github.io/muon/"
 
+
+[[ecosystem]]
+	text = "Many popular packages rely on scverse functionality. For instance, they take advantage of established data format standards such as anndata and mudata, or are designed to be integrated into the workflow of analysis frameworks. Here are just a few of them."
+	[[ecosystem.libs]]
+	name = "CellBender"
+	url = "https://github.com/broadinstitute/CellBender"
+	[[ecosystem.libs]]
+	name = "CellPhoneDB"
+	url = "https://github.com/Teichlab/cellphonedb" 
+	[[ecosystem.libs]]
+	name = "CellRank"
+	url = "https://github.com/theislab/cellrank" 
+	[[ecosystem.libs]]
+	name = "cellxgene"
+	url = "https://github.com/chanzuckerberg/cellxgene" 
+	[[ecosystem.libs]]
+	name = "diffxpy"
+	url = "https://github.com/theislab/diffxpy" 
+	[[ecosystem.libs]]
+	name = "dynamo-release"
+	url = "https://github.com/aristoteleo/dynamo-release" 
+	[[ecosystem.libs]]
+	name = "epiScanpy"
+	url = "https://github.com/colomemaria/epiScanpy" 
+	[[ecosystem.libs]]
+	name = "pySCENIC"
+	url = "https://github.com/aertslab/pySCENIC" 
+	[[ecosystem.libs]]
+	name = "scArches"
+	url = "https://github.com/theislab/scarches" 
+	[[ecosystem.libs]]
+	name = "scGen"
+	url = "https://github.com/theislab/scgen" 
+	[[ecosystem.libs]]
+	name = "scvelo"
+	url = "https://github.com/theislab/scvelo" 
+	[[ecosystem.libs]]
+	name = "scvi-tools"
+	url = "https://scvi-tools.org/" 
+	[[ecosystem.libs]]
+	name = "scirpy"
+	url = "https://github.com/icbi-lab/scirpy" 
+	[[ecosystem.libs]]
+	name = "sfaira"
+	url = "https://github.com/theislab/sfaira" 
+	[[ecosystem.libs]]
+	name = "squidpy"
+	url = "https://github.com/theislab/squidpy" 
+	[[ecosystem.libs]]
+	name = "vitesse"
+	url = "https://github.com/vitessce/vitessce" 
+	[[ecosystem.libs]]
+	name = "wot"
+	url = "https://github.com/broadinstitute/wot)"
 +++
 
-## Ecosystem
 
-Many popular packages rely on scverse functionality. For instance, they take advantage of established data format standards such as anndata and mudata, or are designed to be integrated into the workflow of analysis frameworks. To name a few, check out [CellBender](https://github.com/broadinstitute/CellBender), [CellPhoneDB](https://github.com/Teichlab/cellphonedb), [CellRank](https://github.com/theislab/cellrank), [cellxgene](https://github.com/chanzuckerberg/cellxgene), [diffxpy](https://github.com/theislab/diffxpy), [dynamo-release](https://github.com/aristoteleo/dynamo-release), [epiScanpy](https://github.com/colomemaria/epiScanpy), [pySCENIC](https://github.com/aertslab/pySCENIC), [scArches](https://github.com/theislab/scarches), [scGen](https://github.com/theislab/scgen), [scvelo](https://github.com/theislab/scvelo), [scvi-tools](https://scvi-tools.org/), [sfaira](https://github.com/theislab/sfaira), [squidpy](https://github.com/theislab/squidpy), [vitesse](https://github.com/vitessce/vitessce), [wot](https://github.com/broadinstitute/wot).
