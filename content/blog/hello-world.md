@@ -14,11 +14,11 @@ Our primary experience lies in the field of computational genomics and lately si
 
 {{< rawhtml >}}<span class="backticked">scverse</span>{{< /rawhtml >}} is a consortium for joint maintenance of core packages in omics data analysis in life sciences. It has been founded to ensure the long-term maintenance of the core infrastructure in the field.
 
-## What we busy with
+## What we are busy with
 
 While we're continuing to work on the scverse libraries, we're trying to improve how they work and are tested together.
 
 ## What is coming next
 
-We're particularly excited about the community coming together for this effort with so many brilliant people involved who design tools, write code, manage and analyse data, visualise results... Please feel invited to {{< rawhtml >}}<a href="https://discord.gg/zDVDtFFcNe" target="_blank">join us on Discord</a>{{< /rawhtml >}}, and make sure to {{< rawhtml >}}<a href="https://twitter.com/scanpy_team" target="_blank">follow us on Twitter</a>{{< /rawhtml >}} to keep track of scverse updates.
+We're particularly excited about the community coming together for this effort with so many brilliant people involved who design tools, write code, manage and analyse data, visualise results. Please feel invited to {{< rawhtml >}}<a href="https://discord.gg/zDVDtFFcNe" target="_blank">join us on Discord</a>{{< /rawhtml >}}, and make sure to {{< rawhtml >}}<a href="https://twitter.com/scanpy_team" target="_blank">follow us on Twitter</a>{{< /rawhtml >}} to keep track of scverse updates.
 
