@@ -152,33 +152,35 @@ body {
 								color: inherit;
 							}
 						}
-						.more {
-							display: inline-block;
-							margin: 0;
-							font-size: .8rem;
-							font-weight: 800;
-							font-family: sans-serif;
-							color: $tiletext2;
-							transition: all 200ms ease-in-out;
-		    				padding: 0.5rem;
-		    				margin-left: -0.5rem;
-							&:after {
-								content: "\232A";
-								font-size: .6rem;
+		    			a {
+		    				text-decoration: none;
+		    				color: inherit;
+		    			
+							.more {
+								display: inline-block;
+								margin: 0;
+								font-size: .8rem;
+								font-weight: 800;
+								font-family: sans-serif;
+								color: $tiletext2;
 								transition: all 200ms ease-in-out;
+			    				padding: 0.5rem;
+			    				margin-left: -0.5rem;
+								&:after {
+									content: "\232A";
+									font-size: .6rem;
+									transition: all 200ms ease-in-out;
+									padding-left: .2rem;
+								}
+				    			&:hover {
+				    				color: $tiletext3;
+				    				background-color: $tilebg;
+				    				border-radius: 0.5rem;
+				    				&:after {
+				    					padding-left: .4rem;
+				    				}
+				    			}
 							}
-			    			&:hover {
-			    				color: $tiletext3;
-			    				background-color: $tilebg;
-			    				border-radius: 0.5rem;
-			    				&:after {
-			    					padding-left: .2rem;
-			    				}
-			    			}
-			    			a {
-			    				text-decoration: none;
-			    				color: inherit;
-			    			}
 						}
 					}
 				}
