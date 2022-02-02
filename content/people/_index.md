@@ -77,7 +77,7 @@ preface = "For people participaing in and interacting with the consortium, there
 
 [[teams]]
 	name = "Contributors"
-	text = "Open-source <span class=\"backticked\">scverse</span> projects are open to contributions. Over 100 people have contributed to <span class=\"backticked\">scverse</span> packages."
+	text = "Open-source <span class=\"backticked\">scverse</span> projects are open to contributions. Over 150 people have contributed to <span class=\"backticked\">scverse</span> packages."
 
 # ----------
 
