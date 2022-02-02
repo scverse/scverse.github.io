@@ -26,7 +26,7 @@ description = "Foundational tools for omics data in the life sciences"
 
 [[projects]]
 	name = "scvi-tools"
-	description = "Single-cell machine learning model development library and zoo"
+	description = "Single-cell machine learning framework"
 	url = "https://scvi-tools.org/"
 
 # Mission
