@@ -18,7 +18,7 @@ title = "Projects"
 	url = "https://pypi.org/project/anndata/"
 	[[projects.links]]
 	text = "Conda"
-	url = "https://anaconda.org/conda-forge/anndata" 
+	url = "https://anaconda.org/conda-forge/anndata"
 
 [[projects]]
 	name = "mudata"
@@ -57,7 +57,7 @@ title = "Projects"
 	url = "https://pypi.org/project/scanpy/"
 	[[projects.links]]
 	text = "Conda"
-	url = "https://anaconda.org/conda-forge/scanpy" 
+	url = "https://anaconda.org/conda-forge/scanpy"
 
 [[projects]]
 	name = "muon"
@@ -82,6 +82,25 @@ title = "Projects"
 	text = "Website"
 	url = "https://gtca.github.io/muon/"
 
+[[projects]]
+	name = "scvi-tools"
+	description = "Machine learning model development library and model zoo"
+	url = "https://scvi-tools.org/"
+	img = "../img/libs/scvi_tools_graph_model.svg"
+	details = "scvi-tools is a library for developing and deploying machine learning models based on PyTorch and AnnData. With an emphasis on probablistic models, scvi-tools steamlines the development process via training, data management, and user interface abstractions. scvi-tools also contains easy-to-use implementations of more than 14 state-of-the-art probabilistic models in the field."
+	[[projects.links]]
+	text = "GitHub"
+	url = "https://github.com/yoseflab/scvi-tools"
+	[[projects.links]]
+	text = "Documentation and tutorials"
+	url = "https://docs.scvi-tools.org/en/stable/"
+	[[projects.links]]
+	text = "PyPI"
+	url = "https://pypi.org/project/scvi-tools/"
+	[[projects.links]]
+	text = "Website"
+	url = "https://scvi-tools.org/"
+
 
 [[ecosystem]]
 	text = "Many popular packages rely on scverse functionality. For instance, they take advantage of established data format standards such as anndata and mudata, or are designed to be integrated into the workflow of analysis frameworks. Here are just a few of them."
@@ -90,49 +109,46 @@ title = "Projects"
 	url = "https://github.com/broadinstitute/CellBender"
 	[[ecosystem.libs]]
 	name = "CellPhoneDB"
-	url = "https://github.com/Teichlab/cellphonedb" 
+	url = "https://github.com/Teichlab/cellphonedb"
 	[[ecosystem.libs]]
 	name = "CellRank"
-	url = "https://github.com/theislab/cellrank" 
+	url = "https://github.com/theislab/cellrank"
 	[[ecosystem.libs]]
 	name = "cellxgene"
-	url = "https://github.com/chanzuckerberg/cellxgene" 
+	url = "https://github.com/chanzuckerberg/cellxgene"
 	[[ecosystem.libs]]
 	name = "diffxpy"
-	url = "https://github.com/theislab/diffxpy" 
+	url = "https://github.com/theislab/diffxpy"
 	[[ecosystem.libs]]
 	name = "dynamo-release"
-	url = "https://github.com/aristoteleo/dynamo-release" 
+	url = "https://github.com/aristoteleo/dynamo-release"
 	[[ecosystem.libs]]
 	name = "epiScanpy"
-	url = "https://github.com/colomemaria/epiScanpy" 
+	url = "https://github.com/colomemaria/epiScanpy"
 	[[ecosystem.libs]]
 	name = "pySCENIC"
-	url = "https://github.com/aertslab/pySCENIC" 
+	url = "https://github.com/aertslab/pySCENIC"
 	[[ecosystem.libs]]
 	name = "scArches"
-	url = "https://github.com/theislab/scarches" 
+	url = "https://github.com/theislab/scarches"
 	[[ecosystem.libs]]
 	name = "scGen"
-	url = "https://github.com/theislab/scgen" 
+	url = "https://github.com/theislab/scgen"
 	[[ecosystem.libs]]
 	name = "scvelo"
-	url = "https://github.com/theislab/scvelo" 
-	[[ecosystem.libs]]
-	name = "scvi-tools"
-	url = "https://scvi-tools.org/" 
+	url = "https://github.com/theislab/scvelo"
 	[[ecosystem.libs]]
 	name = "scirpy"
-	url = "https://github.com/icbi-lab/scirpy" 
+	url = "https://github.com/icbi-lab/scirpy"
 	[[ecosystem.libs]]
 	name = "sfaira"
-	url = "https://github.com/theislab/sfaira" 
+	url = "https://github.com/theislab/sfaira"
 	[[ecosystem.libs]]
 	name = "squidpy"
-	url = "https://github.com/theislab/squidpy" 
+	url = "https://github.com/theislab/squidpy"
 	[[ecosystem.libs]]
 	name = "vitesse"
-	url = "https://github.com/vitessce/vitessce" 
+	url = "https://github.com/vitessce/vitessce"
 	[[ecosystem.libs]]
 	name = "wot"
 	url = "https://github.com/broadinstitute/wot)"
