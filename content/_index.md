@@ -24,6 +24,11 @@ description = "Foundational tools for omics data in the life sciences"
 	description = "Multi-omics analysis framework"
 	url = "https://gtca.github.io/muon"
 
+[[projects]]
+	name = "scvi-tools"
+	description = "Single-cell machine learning framework"
+	url = "https://scvi-tools.org/"
+
 # Mission
 
 [mission]
