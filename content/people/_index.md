@@ -47,6 +47,10 @@ preface = "For people participaing in and interacting with the consortium, there
 	name = "Isaac Virshup"
 	url = "https://twitter.com/ivirshup"
 
+[[teams.members]]
+	name = "Adam Gayoso"
+	url = "https://adamgayoso.com/"
+
 # ----------
 
 [[teams]]
@@ -63,6 +67,11 @@ preface = "For people participaing in and interacting with the consortium, there
 [[teams.members]]
 	name = "Alex Wolf"
 	url = "https://falexwolf.de/"
+
+
+[[teams.members]]
+	name = "Nir Yosef"
+	url = "https://yoseflab.github.io/"
 
 # ----------
 
