@@ -1,65 +1,68 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    {{ partial "head" . }}
-  </head>
-  <body>
-    <header>
-      {{ partial "header" . }}
-    </header>
-    <div id="wrapper">
-      <div id="content">
-        <div id="page-content">
-        	<h1>{{ .Title }}</h1>
-		      <article class="post">
-            <div class="post-content" id="projects-content">
-            
+
+<head>
+  {{ partial "head" . }}
+</head>
+
+<body>
+  <header>
+    {{ partial "header" . }}
+  </header>
+  <div id="wrapper">
+    <div id="content">
+      <div id="page-content">
+        <h1>{{ .Title }}</h1>
+        <article class="post">
+          <div class="post-content" id="projects-content">
+
             {{ if .Params.projects }}
-              <h2>Core projects</h2>
-              <div id="projects-list">
-                {{ $projects := .Params.projects }}
-                {{ range $i, $e := $projects  }}
-                  <div class="project-section">
-                    <div class="project-img">
-                      <img src="{{ .img }}"/>
-                    </div>
-                    <div class="project-info">
-                      <div class="project-tile" id="{{ .name }}-tile">
-                        <div class="project-text">
-                            <span class="project-name">{{ .name }}</span>
-                            <span class="project-details">{{ .details }}</span>
-                        </div>
-                      </div>
-                      <div class="project-links">
-                        {{ range $k, $v := $e.links }}
-                          <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
-                        {{ end }}
-                      </div>
+            <h2>Core projects</h2>
+            <div id="projects-list">
+              {{ $projects := .Params.projects }}
+              {{ range $i, $e := $projects }}
+              <div class="project-section">
+                <div class="project-img">
+                  <img style="max-height:225px;display:block;" src="{{ .img }}" />
+                </div>
+                <div class="project-info">
+                  <div class="project-tile" id="{{ .name }}-tile">
+                    <div class="project-text">
+                      <span class="project-name">{{ .name }}</span>
+                      <span class="project-details">{{ .details }}</span>
                     </div>
                   </div>
-                {{ end }}
+                  <div class="project-links">
+                    {{ range $k, $v := $e.links }}
+                    <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
+                    {{ end }}
+                  </div>
+                </div>
               </div>
+              {{ end }}
+            </div>
             {{ end }}
-             
+
             {{ if .Params.ecosystem }}
             {{ $eco := index .Params.ecosystem 0 }}
-              <h2>Ecosystem</h2>
-              <div>
-                <p>{{ $eco.text }}</p>
-              </div>
-              <div class="project-links">
+            <h2>Ecosystem</h2>
+            <div>
+              <p>{{ $eco.text }}</p>
+            </div>
+            <div class="project-links">
 
-               {{ range $lib := $eco.libs }}
-                 <a href="{{ $lib.url }}" target="_blank">{{ $lib.name }}</a>
-               {{ end }}
-              </div>
+              {{ range $lib := $eco.libs }}
+              <a href="{{ $lib.url }}" target="_blank">{{ $lib.name }}</a>
+              {{ end }}
+            </div>
             {{ end }}
 
             <div>
-		      </article>
-        </div>
+        </article>
       </div>
     </div>
-    {{ partial "footer" . }}
-  </body>
+  </div>
+  {{ partial "footer" . }}
+</body>
+
 </html>
