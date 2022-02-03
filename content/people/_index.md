@@ -32,6 +32,10 @@ preface = "For people participaing in and interacting with the consortium, there
 	url = "https://github.com/mffrank"
 
 [[teams.members]]
+	name = "Adam Gayoso"
+	url = "https://adamgayoso.com/"
+
+[[teams.members]]
 	name = "Lukas Heumos"
 	url = "https://lukasheumos.com/"
 
@@ -44,12 +48,12 @@ preface = "For people participaing in and interacting with the consortium, there
 	url = "https://twitter.com/g_palla1"
 
 [[teams.members]]
-	name = "Isaac Virshup"
-	url = "https://twitter.com/ivirshup"
+	name = "Gregor Sturm"
+	url = "https://twitter.com/grsturm"
 
 [[teams.members]]
-	name = "Adam Gayoso"
-	url = "https://adamgayoso.com/"
+	name = "Isaac Virshup"
+	url = "https://twitter.com/ivirshup"
 
 # ----------
 
