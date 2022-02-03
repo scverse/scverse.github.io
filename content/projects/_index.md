@@ -103,9 +103,9 @@ title = "Projects"
 
 [[projects]]
 	name = "scirpy"
-	description = "Single-cell immune sequencing framework"
+	description = "Single-cell immune-cell receptor sequencing framework"
 	url = "https://icbi-lab.github.io/scirpy/stable/"
-	img = "../img/icons/scirpy.svg"
+	img = "../img/libs/scirpy-full.svg"
 	details = "Scirpy is a scalable toolkit to analyse T-cell receptor or B-cell receptor repertoires from single-cell RNA sequencing data. It seamlessly integrates with scanpy and provides various modules for data import, analysis and visualization."
 	[[projects.links]]
 	text = "GitHub"

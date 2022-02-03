@@ -51,6 +51,10 @@ preface = "For people participaing in and interacting with the consortium, there
 	name = "Adam Gayoso"
 	url = "https://adamgayoso.com/"
 
+[[teams.members]]
+	name = "Gregor Sturm"
+	url = "https://grst.github.io/"
+
 # ----------
 
 [[teams]]
