@@ -734,11 +734,10 @@ body {
 					padding: 0.5rem;
 					flex: 0 0 auto;
 					align-self: center;
-					object-fit: scale-down;
+					object-fit: contain;
 					margin: auto;
 					max-width: 100%;
 					max-height: 225px;
-	  				
 				}
 		    	transition: all 200ms ease-in-out;
 		    	@media (max-width: 50rem), (max-device-width: 40rem) {
