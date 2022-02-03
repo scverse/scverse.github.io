@@ -101,6 +101,24 @@ title = "Projects"
 	text = "Website"
 	url = "https://scvi-tools.org/"
 
+[[projects]]
+	name = "scirpy"
+	description = "Single-cell immune sequencing framework"
+	url = "https://icbi-lab.github.io/scirpy/stable/"
+	img = "../img/icons/scirpy.svg"
+	details = "Scirpy is a scalable toolkit to analyse T-cell receptor or B-cell receptor repertoires from single-cell RNA sequencing data. It seamlessly integrates with scanpy and provides various modules for data import, analysis and visualization."
+	[[projects.links]]
+	text = "GitHub"
+	url = "https://github.com/icbi-lab/scirpy"
+	[[projects.links]]
+	text = "Documentation and tutorials"
+	url = "https://icbi-lab.github.io/scirpy/latest/"
+	[[projects.links]]
+	text = "PyPI"
+	url = "https://pypi.org/project/scirpy/"
+	[[projects.links]]
+	text = "Conda"
+	url = "https://anaconda.org/bioconda/scirpy"
 
 [[ecosystem]]
 	text = "Many popular packages rely on scverse functionality. For instance, they take advantage of established data format standards such as anndata and mudata, or are designed to be integrated into the workflow of analysis frameworks. Here are just a few of them."
@@ -137,9 +155,6 @@ title = "Projects"
 	[[ecosystem.libs]]
 	name = "scvelo"
 	url = "https://github.com/theislab/scvelo"
-	[[ecosystem.libs]]
-	name = "scirpy"
-	url = "https://github.com/icbi-lab/scirpy"
 	[[ecosystem.libs]]
 	name = "sfaira"
 	url = "https://github.com/theislab/sfaira"
