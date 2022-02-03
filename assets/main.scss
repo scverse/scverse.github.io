@@ -5,6 +5,7 @@ $greyheaderhover: #555555;
 $tilebg: #F0F0F0;
 $tilebg2: #D9D9D9;
 $tilebg3: #E0E0E0;
+$tilebg4: #F5F5F5;
 $tiletext: #333333;
 $tiletext2: #555555;
 $tiletext3: black;
@@ -34,7 +35,9 @@ $footertextmuted: #AAAAAA;
 $postlinktext: #333333;
 
 $maxwidth: 800px;
+$maxwidthwide: 1000px;
 $contentwidth: 80%;
+$contentwidthwide: 92%;
 
 @font-face {
     font-family: "Nunito";
@@ -63,6 +66,10 @@ html, body {
 	scroll-behavior: smooth;
 	-webkit-scroll-behavior: smooth;
   	-moz-osx-font-smoothing: grayscale;
+
+  	@media (max-width: 50rem), (max-device-width: 40rem) {
+  		font-size: 3rem;
+  	}
 }
 body {
     margin: 0;
@@ -83,8 +90,15 @@ body {
 			#cover {
 				max-width: $maxwidth;
 				width: $contentwidth;
+				@media (max-width: 50rem), (max-device-width: 40rem) {
+					max-width: $maxwidthwide;
+					width: $contentwidthwide;
+				}
 				#cover-heading {
 					margin-top: 40%;
+					@media (max-width: 50rem), (max-device-width: 40rem) {
+						margin-top: 20%;
+					}
 					#title {
 						display: flex;
 						flex-direction: row;
@@ -99,6 +113,10 @@ body {
 								font-weight: 800;
 								line-height: 5rem;
 								letter-spacing: .4rem;
+							  	@media (max-width: 50rem), (max-device-width: 40rem) {
+							  		letter-spacing: .1rem;
+							  		font-size: 4rem;
+							  	}
 							}
 							#title-desc {
 								display: block;
@@ -113,6 +131,15 @@ body {
 						flex-wrap: wrap;
 						gap: 1rem;
 						margin: 1rem 0;
+					  	@media (max-width: 50rem), (max-device-width: 40rem) {
+					  		width: 100%;
+					  		a {
+					  			flex: 1;
+					  			img {
+					  				width: 90%;
+					  			}
+					  		}
+					  	}
 					}
 				}
 
@@ -166,6 +193,7 @@ body {
 								transition: all 200ms ease-in-out;
 			    				padding: 0.5rem;
 			    				margin-left: -0.5rem;
+				    			border-radius: 0.5rem;
 								&:after {
 									content: "\232A";
 									font-size: .6rem;
@@ -175,11 +203,13 @@ body {
 				    			&:hover {
 				    				color: $tiletext3;
 				    				background-color: $tilebg;
-				    				border-radius: 0.5rem;
 				    				&:after {
 				    					padding-left: .4rem;
 				    				}
 				    			}
+							  	@media (max-width: 50rem), (max-device-width: 40rem) {
+							  		background-color: $tilebg4;
+							  	}
 							}
 						}
 					}
@@ -191,7 +221,7 @@ body {
   						grid-template-columns: 1fr 1fr;
 				    	gap: 2rem;
 				    	margin-bottom: 2rem;
-				    	@media (max-width: 800px) {
+				    	@media (max-width: 50rem), (max-device-width: 40rem) {
 							grid-template-columns: 1fr;
 						}
 						.project-tile {
@@ -208,6 +238,8 @@ body {
 			    				transition: all 200ms ease-in-out;
 			    				margin: 1rem;
 			    				padding: auto;
+			    				display: flex;
+			    				align-items: center;
 			    				img {
 			    					width: 4rem;
 			    					height: 4rem;
@@ -264,7 +296,7 @@ body {
 							#team-list {
 								display: inline;
 							}
-							p, div {
+							p, & {
 								font-size: 1.1rem;
 							}
 							a {
@@ -341,6 +373,10 @@ body {
 			flex-direction: column;
 			max-width: $maxwidth;
 			width: $contentwidth;
+			@media (max-width: 50rem), (max-device-width: 40rem) {
+				max-width: $maxwidthwide;
+				width: $contentwidthwide;
+			}
 			#nav {
 				display: flex;
 				flex-direction: row;
@@ -379,7 +415,7 @@ body {
 					}
 				}
 
-		    	@media (max-width: 800px) {
+		    	@media (max-width: 50rem), (max-device-width: 40rem) {
 					flex-direction: column;
 					align-items: flex-start;
 					#logo-wrapper {
@@ -387,7 +423,12 @@ body {
 					}
 					#nav-button-wrapper {
 						margin-left: -0.5rem;
+						.nav-button {
+							padding: .5rem .5rem;
+						}
 					}
+					font-size: 0.8rem;
+					max-width: 100%;
 				}
 			}
 		}
@@ -468,6 +509,9 @@ body {
 
 		#footer-content {
 			width: $contentwidth;
+			@media (max-width: 50rem), (max-device-width: 40rem) {
+				width: $contentwidthwide;
+			}
 			padding: 2%;
 
 			div {
@@ -477,10 +521,13 @@ body {
 				text-align: right;
 
 				a, p {
-					font-weight: 100;
 					margin: .2rem 0;
 					font-family: sans-serif;
 					font-weight: 500;
+					font-size: 1rem;
+				  	@media (max-width: 50rem), (max-device-width: 40rem) {
+				  		font-size: 0.8rem;
+				  	}
 				}
 				a {
 					color: inherit;
@@ -527,9 +574,14 @@ body {
 #page-content {
 	display: flex;
 	flex-direction: column;
-	width: $contentwidth;
 	max-width: $maxwidth;
+	width: $contentwidth;
 	margin-top: 3rem;
+	@media (max-width: 50rem), (max-device-width: 40rem) {
+		max-width: $maxwidthwide;
+		width: $contentwidthwide;
+		gap: 1rem;
+	}
 	font-family: sans-serif;
 	h1 {
 		font-size: 2.5rem;
@@ -549,12 +601,16 @@ body {
 		flex-direction: row;
 		font-family: sans-serif;
 		
-    	@media (max-width: 800px) {
+    	@media (max-width: 50rem), (max-device-width: 40rem) {
 			flex-direction: column;
 			align-items: flex-start;
+			justify-content: center;
 			h2 {
 				margin: .5rem 0 !important;
 			}
+			margin: 0 -.5rem;
+			padding: .5rem;
+			padding-bottom: 1.3rem;
 		}
 		
 		margin: 0 -1rem;
@@ -569,6 +625,11 @@ body {
 			background-color: $tilebg3;
 		}
 
+
+	  	@media (max-width: 50rem), (max-device-width: 40rem) {
+			background-color: $tilebg4;
+	  	}
+
 		h2 {
 			color: $tiletext;
 			margin: 0 0 .5rem 0;
@@ -581,11 +642,13 @@ body {
 		}
 		.page-item-date {
 			flex: 1;
+			line-height: 1.5rem;
 		}
 		.page-item-content {
 			flex: 2;
 			display: flex;
 			flex-direction: column;
+			font-size: 1.0rem;
 		}
 	}
 	.post {
@@ -678,7 +741,7 @@ body {
 	  				
 				}
 		    	transition: all 200ms ease-in-out;
-		    	@media (max-width: 800px) {
+		    	@media (max-width: 50rem), (max-device-width: 40rem) {
 					display: none;
 				}
 			}
