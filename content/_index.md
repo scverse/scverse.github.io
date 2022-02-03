@@ -29,6 +29,11 @@ description = "Foundational tools for omics data in the life sciences"
 	description = "Single-cell machine learning framework"
 	url = "https://scvi-tools.org/"
 
+[[projects]]
+	name = "scirpy"
+	description = "Single-cell immune sequencing analysis framework"
+	url = "https://icbi-lab.github.io/scirpy/latest/"
+
 # Mission
 
 [mission]
