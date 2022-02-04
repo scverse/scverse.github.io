@@ -18,7 +18,7 @@ preface = "For people participaing in and interacting with the consortium, there
 	name = "Isaac Virshup"
 	url = "https://twitter.com/ivirshup"
 
-# ----------
+# ---------- core developers, in alphabetical order
 
 [[teams]]
 	name = "Core developers"
@@ -55,10 +55,14 @@ preface = "For people participaing in and interacting with the consortium, there
 	name = "Isaac Virshup"
 	url = "https://twitter.com/ivirshup"
 
-# ----------
+# ---------- scientific advisors, in alphabetical order
 
 [[teams]]
 	name = "Scientific advisors"
+	
+[[teams.members]]
+	name = "Francesca Finotello"
+	url = "https://computationalbiomedicinegroup.github.io/"
 
 [[teams.members]]
 	name = "Oliver Stegle"
@@ -75,10 +79,6 @@ preface = "For people participaing in and interacting with the consortium, there
 [[teams.members]]
 	name = "Nir Yosef"
 	url = "https://yoseflab.github.io/"
-	
-[[teams.members]]
-	name = "Francesca Finotello"
-	url = "https://computationalbiomedicinegroup.github.io/"
 
 # ----------
 
