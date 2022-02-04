@@ -51,7 +51,7 @@ description = "Foundational tools for omics data in the life sciences"
 [[references]]
 	id = "scanpy"
 	url = "https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1382-0"
-	text = "Wolf, F., Angerer, P. & Theis, F. SCANPY: large-scale single-cell gene expression data analysis. Genome Biol 19, 15 (2018)"
+	text = "Wolf F, Angerer P, Theis FJ. SCANPY: large-scale single-cell gene expression data analysis. Genome Biol 19, 15 (2018)"
 
 [[references]]
     id = "muon"
@@ -62,6 +62,16 @@ description = "Foundational tools for omics data in the life sciences"
     id = "anndata"
     url = "https://www.biorxiv.org/content/10.1101/2021.12.16.473007"
     text = "Virshup I, Rybakov S, Theis FJ, Angerer P, Wolf FA. anndata: Annotated data. bioRxiv. 2021 Dec 19."
+
+[[references]]
+    id = "scvi-tools"
+    url = "https://www.biorxiv.org/content/early/2021/04/29/2021.04.28.441833"
+    text = "Gayoso A, Lopez R, Xing G, Boyeau P, Wu K, Jayasuriya M, Melhman E, Langevin M, Liu Y, Samaran J, Misrachi G. Scvi-tools: A library for deep probabilistic analysis of single-cell omics data. bioRxiv. 2021 Apr 29."
+
+[[references]]
+    id = "scirpy"
+    url = "https://academic.oup.com/bioinformatics/article/36/18/4817/5866543"
+    text = "Sturm G, Szabo T, Fotakis G, Haider M, Rieder D, Trajanoski Z, Finotello F. Scirpy: a Scanpy extension for analyzing single-cell T-cell receptor-sequencing data. Bioinformatics. 2020 Sep 15;36(18):4817-8."
 
 +++
 
