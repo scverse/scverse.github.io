@@ -56,7 +56,7 @@ description = "Foundational tools for omics data in the life sciences"
 [[references]]
     id = "muon"
     url = "https://genomebiology.biomedcentral.com/articles/10.1186/s13059-021-02577-8"
-    text = "Bredikhin D, Kats I, Stegle O. Muon: multimodal omics analysis framework. Genome Biol 23, 42 (2022)"
+    text = "Bredikhin D, Kats I, Stegle O. MUON: multimodal omics analysis framework. Genome Biol 23, 42 (2022)"
 
 [[references]]
     id = "anndata"
