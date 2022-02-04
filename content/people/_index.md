@@ -25,7 +25,7 @@ preface = "For people participaing in and interacting with the consortium, there
 
 [[teams.members]]
 	name = "Danila Bredikhin"
-	url = "https://gtca.github.io/"
+	url = "https://github.com/gtca"
 
 [[teams.members]]
 	name = "Max Frank"
@@ -33,11 +33,11 @@ preface = "For people participaing in and interacting with the consortium, there
 
 [[teams.members]]
 	name = "Adam Gayoso"
-	url = "https://adamgayoso.com/"
+	url = "https://github.com/adamgayoso"
 
 [[teams.members]]
 	name = "Lukas Heumos"
-	url = "https://lukasheumos.com/"
+	url = "https://github.com/Zethson"
 
 [[teams.members]]
 	name = "Ilia Kats"
@@ -45,15 +45,15 @@ preface = "For people participaing in and interacting with the consortium, there
 
 [[teams.members]]
 	name = "Giovanni Palla"
-	url = "https://twitter.com/g_palla1"
+	url = "https://github.com/giovp"
 
 [[teams.members]]
 	name = "Gregor Sturm"
-	url = "https://twitter.com/grsturm"
+	url = "https://github.com/grst"
 
 [[teams.members]]
 	name = "Isaac Virshup"
-	url = "https://twitter.com/ivirshup"
+	url = "https://github.com/ivirshup"
 
 # ---------- scientific advisors, in alphabetical order
 
