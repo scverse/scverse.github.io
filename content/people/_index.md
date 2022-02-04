@@ -66,7 +66,7 @@ preface = "For people participaing in and interacting with the consortium, there
 
 [[teams.members]]
 	name = "Fabian Theis"
-	url = "twitter.com/fabian_theis"
+	url = "https://twitter.com/fabian_theis"
 
 [[teams.members]]
 	name = "Alex Wolf"
