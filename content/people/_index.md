@@ -72,10 +72,13 @@ preface = "For people participaing in and interacting with the consortium, there
 	name = "Alex Wolf"
 	url = "https://falexwolf.de/"
 
-
 [[teams.members]]
 	name = "Nir Yosef"
 	url = "https://yoseflab.github.io/"
+	
+[[teams.members]]
+	name = "Francesca Finotello"
+	url = "https://computationalbiomedicinegroup.github.io/"
 
 # ----------
 
