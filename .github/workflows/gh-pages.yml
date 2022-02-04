@@ -33,6 +33,7 @@ jobs:
 
       - name: Upload page build as artifact
         uses: actions/upload-artifact@v2
+        if: github.ref != 'refs/heads/main'
         with:
           name: scverse.github.io
           path: ./public
