@@ -28,10 +28,6 @@ preface = "For people participaing in and interacting with the consortium, there
 	url = "https://github.com/gtca"
 
 [[teams.members]]
-	name = "Max Frank"
-	url = "https://github.com/mffrank"
-
-[[teams.members]]
 	name = "Adam Gayoso"
 	url = "https://github.com/adamgayoso"
 
