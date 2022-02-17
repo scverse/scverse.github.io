@@ -54,7 +54,7 @@ preface = "For people participaing in and interacting with the consortium, there
 # ---------- scientific advisors, in alphabetical order
 
 [[teams]]
-	name = "Scientific advisors"
+	name = "Organizing committee"
 	
 [[teams.members]]
 	name = "Francesca Finotello"
