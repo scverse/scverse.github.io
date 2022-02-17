@@ -65,8 +65,8 @@ description = "Foundational tools for omics data in the life sciences"
 
 [[references]]
     id = "scvi-tools"
-    url = "https://www.biorxiv.org/content/early/2021/04/29/2021.04.28.441833"
-    text = "Gayoso A, Lopez R, Xing G, Boyeau P, Wu K, Jayasuriya M, Melhman E, Langevin M, Liu Y, Samaran J, Misrachi G. Scvi-tools: A library for deep probabilistic analysis of single-cell omics data. bioRxiv. 2021 Apr 29."
+    url = "https://www.nature.com/articles/s41587-021-01206-w"
+    text = "Gayoso A, Lopez R, Xing G, Boyeau P, Valiollah Pour Amiri V, Hong J, Wu K, Jayasuriya M, Mehlman E, Langevin M, Liu Y. A Python library for probabilistic analysis of single-cell omics data. Nature Biotechnology. 2022 Feb 7:1-4."
 
 [[references]]
     id = "scirpy"
