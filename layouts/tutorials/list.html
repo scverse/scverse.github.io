@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {{ partial "head" . }}
+</head>
+
+<body>
+  <header>
+    {{ partial "header" . }}
+  </header>
+  <div id="wrapper">
+    <div id="content">
+      <div id="page-content">
+        <h1>{{ .Title }}</h1>
+        <article class="post">
+          <div class="post-content" id="tutorials-content">
+
+            {{ if .Params.tutorials }}
+            <!-- <h2>Core tutorials</h2> -->
+            <div id="tutorials-list">
+              {{ $tutorials := .Params.tutorials }}
+              {{ range $i, $t := $tutorials }}
+              <div class="tutorial-item">
+                <a href="{{ $t.url }}" target="_blank">{{ $t.name }}</a>
+              </div>
+              {{ end }}
+            </div>
+            {{ end }}
+
+            <div>
+        </article>
+      </div>
+    </div>
+  </div>
+  {{ partial "footer" . }}
+</body>
+
+</html>

@@ -409,6 +409,7 @@ body {
 				#nav-button-wrapper {
 					display: flex;
 					flex-direction: row;
+					flex-wrap: wrap;
 					gap: 1rem;
 					align-items: center;
 					.nav-button {
@@ -444,9 +445,6 @@ body {
 					}
 					font-size: 1.0rem;
 					max-width: 100%;
-				}
-				@media (max-device-width: 40rem) {
-					font-size: 0.8rem;
 				}
 			}
 		}
@@ -730,7 +728,7 @@ body {
 }
 
 
-// Specific to /libs
+// Specific to /projects
 
 #projects-content {
 	#projects-list {
@@ -822,6 +820,29 @@ body {
 			&:hover, &:active {
 				color: $tiletext3;
 				background-color: $tilebg2;
+			}
+		}
+	}
+}
+
+// Specific to /tutorials
+
+#tutorials-content {
+	#tutorials-list {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		.tutorial-item {
+			a {
+				color: $tiletext2;
+				text-decoration: none;
+				border-bottom: 1px solid $linkunderline;
+				transition: border 200ms, color 200ms;
+			
+				&:hover, &:active {
+					color: black;
+					border-bottom: 1px solid black;
+				}
 			}
 		}
 	}
