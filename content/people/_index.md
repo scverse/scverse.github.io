@@ -1,9 +1,11 @@
 +++
 title = "People"
-preface = "For people participaing in and interacting with the consortium, there are different roles. Core developers are deeply involved in developing and maintaining <span class=\"backticked\">scverse</span> projects. Project developers are more focused on individual projects. And all this work makes sense only in the context of the larger community of contributors and users of <span class=\"backticked\">scverse</span> projects. As we strive to make <span class=\"backticked\">scverse</span> governing and communication as transparent as possible, <a href='https://github.com/scverse/governance' target='_blank'>respective documentation</a> is available for everyone to view and comment."
+preface = "For people participaing in and interacting with the consortium, there are different roles — from core developers to contributors and community memebers. As we strive to make <span class=\"backticked\">scverse</span> governing and communication as transparent as possible, <a href='https://github.com/scverse/governance' target='_blank'>respective documentation</a> is available for everyone to view and comment on."
+
+# ---------- steering committee, in alphabetical order
 
 [[teams]]
-	name = "Steering committee"
+	name = "Steering Committee"
 	hide = true
 
 [[teams.members]]
@@ -21,7 +23,8 @@ preface = "For people participaing in and interacting with the consortium, there
 # ---------- core developers, in alphabetical order
 
 [[teams]]
-	name = "Core developers"
+	name = "Core Developers"
+	text = "Core Developers are deeply involved in developing and maintaining <span class=\"backticked\">scverse</span> projects. Those are members of the core team who have made signifigant code contributions to <span class=\"backticked\">scverse</span>."
 
 [[teams.members]]
 	name = "Danila Bredikhin"
@@ -54,7 +57,8 @@ preface = "For people participaing in and interacting with the consortium, there
 # ---------- scientific advisors, in alphabetical order
 
 [[teams]]
-	name = "Organizing committee"
+	name = "Management Committee"
+	text = "Management Committee is committed to supporting <span class=\"backticked\">scverse</span> and is directly involved in investing in its progress."
 	
 [[teams.members]]
 	name = "Francesca Finotello"
@@ -62,11 +66,11 @@ preface = "For people participaing in and interacting with the consortium, there
 
 [[teams.members]]
 	name = "Oliver Stegle"
-	url = "https://twitter.com/OliverStegle"
+	url = "https://www.embl.org/groups/stegle/"
 
 [[teams.members]]
 	name = "Fabian Theis"
-	url = "https://twitter.com/fabian_theis"
+	url = "https://www.helmholtz-munich.de/icb/institute/staff/staff/ma/2494/index.html"
 
 [[teams.members]]
 	name = "Alex Wolf"
@@ -80,12 +84,12 @@ preface = "For people participaing in and interacting with the consortium, there
 
 [[teams]]
 	name = "Contributors"
-	text = "Open-source <span class=\"backticked\">scverse</span> projects are open to contributions. Over 150 people have contributed to <span class=\"backticked\">scverse</span> packages."
+	text = "All this work makes sense only in the context of the larger community of contributors and users of <span class=\"backticked\">scverse</span> projects. Open-source <span class=\"backticked\">scverse</span> projects are open to contributions, and over 150 people have contributed to <span class=\"backticked\">scverse</span> packages."
 
 # ----------
 
 [[teams]]
 	name = "Community"
-	text = "Everyone who uses <span class='backticked'>scverse</span> software is part of the community! There are multiple ways to engage with its other members. For a start, join us on our <a href='https://discord.gg/zDVDtFFcNe' target='_blank'>Discord server</a> and keep an eye on our <a href='https://twitter.com/scanpy_team' target='_blank'>Twitter account</a> for the events we organise."
+	text = "Everyone who uses <span class='backticked'>scverse</span> software is part of the community! There are multiple ways to engage with its other members. For a start, join us on our <a href='https://scanpy.discourse.group/' target='_blank'>Discourse forum</a> and keep an eye on our <a href='https://twitter.com/scanpy_team' target='_blank'>Twitter account</a> for the events we organise."
 
 +++

@@ -25,7 +25,7 @@ title = "Projects"
 	description = "Multimodal data format"
 	url = "https://mudata.readthedocs.io/en/latest/"
 	img = "../img/libs/mudata_flat.svg"
-	details = "MuData is a format for annotated multimodal datasets where each modality is represented by an AnnData object. MuData's reference implementation is in Python, and the cross-language functionality via HDF5-based .h5mu files with libraries in R and Julia."
+	details = "MuData is a format for annotated multimodal datasets where each modality is represented by an AnnData object. MuData's reference implementation is in Python, and the cross-language functionality is achieved via HDF5-based .h5mu files with libraries in R and Julia."
 	[[projects.links]]
 	text = "GitHub"
 	url = "https://github.com/scverse/mudata"
