@@ -67,7 +67,7 @@ html, body {
 	-webkit-scroll-behavior: smooth;
   	-moz-osx-font-smoothing: grayscale;
 
-  	@media (max-width: 50rem), (max-device-width: 40rem) {
+  	@media (max-device-width: 40rem) {
   		font-size: 3rem;
   	}
 }
@@ -90,13 +90,13 @@ body {
 			#cover {
 				max-width: $maxwidth;
 				width: $contentwidth;
-				@media (max-width: 50rem), (max-device-width: 40rem) {
+				@media (max-device-width: 40rem) {
 					max-width: $maxwidthwide;
 					width: $contentwidthwide;
 				}
 				#cover-heading {
 					margin-top: 40%;
-					@media (max-width: 50rem), (max-device-width: 40rem) {
+					@media (max-device-width: 40rem) {
 						margin-top: 20%;
 					}
 					#title {
@@ -113,7 +113,7 @@ body {
 								font-weight: 800;
 								line-height: 5rem;
 								letter-spacing: .4rem;
-							  	@media (max-width: 50rem), (max-device-width: 40rem) {
+							  	@media (max-device-width: 40rem) {
 							  		letter-spacing: .1rem;
 							  		font-size: 4rem;
 							  	}
@@ -131,7 +131,7 @@ body {
 						flex-wrap: wrap;
 						gap: 1rem;
 						margin: 1rem 0;
-					  	@media (max-width: 50rem), (max-device-width: 40rem) {
+					  	@media (max-device-width: 40rem) {
 					  		width: 100%;
 					  		a {
 					  			flex: 1;
@@ -207,7 +207,7 @@ body {
 				    					padding-left: .4rem;
 				    				}
 				    			}
-							  	@media (max-width: 50rem), (max-device-width: 40rem) {
+							  	@media (max-device-width: 40rem) {
 							  		background-color: $tilebg4;
 							  	}
 							}
@@ -388,7 +388,7 @@ body {
 			flex-direction: column;
 			max-width: $maxwidth;
 			width: $contentwidth;
-			@media (max-width: 50rem), (max-device-width: 40rem) {
+			@media (max-device-width: 40rem) {
 				max-width: $maxwidthwide;
 				width: $contentwidthwide;
 			}
@@ -442,8 +442,11 @@ body {
 							padding: .5rem .5rem;
 						}
 					}
-					font-size: 0.8rem;
+					font-size: 1.0rem;
 					max-width: 100%;
+				}
+				@media (max-device-width: 40rem) {
+					font-size: 0.8rem;
 				}
 			}
 		}
@@ -524,7 +527,7 @@ body {
 
 		#footer-content {
 			width: $contentwidth;
-			@media (max-width: 50rem), (max-device-width: 40rem) {
+			@media (max-device-width: 40rem) {
 				width: $contentwidthwide;
 			}
 			padding: 2%;
@@ -540,7 +543,7 @@ body {
 					font-family: sans-serif;
 					font-weight: 500;
 					font-size: 1rem;
-				  	@media (max-width: 50rem), (max-device-width: 40rem) {
+				  	@media (max-device-width: 40rem) {
 				  		font-size: 0.8rem;
 				  	}
 				}
@@ -592,7 +595,7 @@ body {
 	max-width: $maxwidth;
 	width: $contentwidth;
 	margin-top: 3rem;
-	@media (max-width: 50rem), (max-device-width: 40rem) {
+	@media (max-device-width: 40rem) {
 		max-width: $maxwidthwide;
 		width: $contentwidthwide;
 		gap: 1rem;
@@ -616,7 +619,7 @@ body {
 		flex-direction: row;
 		font-family: sans-serif;
 		
-    	@media (max-width: 50rem), (max-device-width: 40rem) {
+    	@media (max-device-width: 40rem) {
 			flex-direction: column;
 			align-items: flex-start;
 			justify-content: center;
@@ -641,7 +644,7 @@ body {
 		}
 
 
-	  	@media (max-width: 50rem), (max-device-width: 40rem) {
+	  	@media (max-device-width: 40rem) {
 			background-color: $tilebg4;
 	  	}
 
@@ -755,7 +758,7 @@ body {
 					max-height: 225px;
 				}
 		    	transition: all 200ms ease-in-out;
-		    	@media (max-width: 50rem), (max-device-width: 40rem) {
+		    	@media (max-device-width: 40rem) {
 					display: none;
 				}
 			}
