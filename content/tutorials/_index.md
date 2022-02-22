@@ -19,7 +19,7 @@ url = "https://muon-tutorials.readthedocs.io/en/latest/cite-seq/2-CITE-seq-PBMC-
 
 [[tutorials]]
 name = "Joint analysis of paired and unpaired multiomic data with MultiVI"
-url = https://docs.scvi-tools.org/en/stable/tutorials/notebooks/MultiVI_tutorial.html
+url = "https://docs.scvi-tools.org/en/stable/tutorials/notebooks/MultiVI_tutorial.html"
 
 [[tutorials]]
 name = "Loading adaptive immune receptor-sequencing data with scirpy"
