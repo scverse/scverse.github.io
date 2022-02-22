@@ -23,6 +23,11 @@
               {{ if not $team.hide }}
                 <div class="team">
                   <h3>{{ $team.name }}</h3>
+                  {{ if $team.text }}
+                    <p class="team-text">
+                      {{ $team.text | safeHTML }}
+                    </p>
+                  {{ end }}
                   {{ if $team.members }}
                     <p></p>
                     <div class="team-list">
@@ -30,8 +35,6 @@
                         <a href={{ .url }} target="_blank"><div class="person-chip">{{ .name }}</div></a>
                       {{ end }}
                     </div>
-                  {{ else }}
-                    <p>{{ $team.text | safeHTML }}</p>
                   {{ end }}
                 </div>
               {{ end }}
