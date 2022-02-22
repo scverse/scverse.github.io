@@ -36,7 +36,10 @@ title = "Projects"
 	text = "PyPI"
 	url = "https://pypi.org/project/mudata/"
 	[[projects.links]]
-	text = "Muon.jl GitHub"
+	text = "Conda"
+	url = "https://anaconda.org/conda-forge/mudata"
+	[[projects.links]]
+	text = "Muon.jl"
 	url = "https://github.com/scverse/Muon.jl"
 
 [[projects]]
