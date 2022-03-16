@@ -828,20 +828,76 @@ body {
 // Specific to /tutorials
 
 #tutorials-content {
+	h2 {
+		margin-bottom: 1rem !important;
+	}
 	#tutorials-list {
 		display: flex;
-		flex-direction: column;
-		gap: 1rem;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: left;
+		margin-bottom: 5rem;
+		gap: 2rem;
 		.tutorial-item {
+			$cardborder: 1rem;
+			$cardpad: 1.5rem;
+			// margin-left: -$cardborder;
+
+			flex: 1 1;
+			max-width: 60%;
+			min-height: 10rem;
+			border-radius: 1rem;
+			transition: all 200ms ease-in-out;
+
+			display: flex;
+			flex-direction: column;
+			align-self: flex-start;
+			justify-content: flex-end;
+
+			background-color: #FAFAFA;
+
 			a {
-				color: $tiletext2;
-				text-decoration: none;
-				border-bottom: 1px solid $linkunderline;
-				transition: border 200ms, color 200ms;
-			
-				&:hover, &:active {
+				color: $navtext;
+			    display: block;
+			    height: 100%;
+			    width: 100%;
+			    text-decoration: none;
+			}
+
+			img {
+				border-radius: 1rem;
+				border: 1px solid #EEEEEE;
+				width: 90%;
+				max-height: 20rem;
+				object-fit: cover;
+    			margin: $cardpad $cardborder .2rem $cardborder;
+    			transition: all 200ms ease-in-out;
+			}
+
+			.tutorial-img-placeholder {
+				width: 1rem;
+				height: 5rem;
+			}
+
+			p {
+				font-weight: 700;
+				font-size: 1rem;
+				margin: 0;
+				padding: .2rem $cardborder $cardpad $cardborder;
+    			transition: all 200ms ease-in-out;
+			}
+
+			&:hover, &:active {
+				background-color: $tilebg;
+				box-shadow: 0 .2rem 1rem .05rem rgba(0, 0, 0, .1);
+				transform: scale(1.02);
+				p {
 					color: black;
-					border-bottom: 1px solid black;
+					// transform: scale(1.02);
+					// padding-top: .4rem;
+				}
+				img {
+					// transform: scale(1.02);
 				}
 			}
 		}

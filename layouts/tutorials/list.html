@@ -17,15 +17,29 @@
           <div class="post-content" id="tutorials-content">
 
             {{ if .Params.tutorials }}
-            <!-- <h2>Core tutorials</h2> -->
-            <div id="tutorials-list">
-              {{ $tutorials := .Params.tutorials }}
-              {{ range $i, $t := $tutorials }}
-              <div class="tutorial-item">
-                <a href="{{ $t.url }}" target="_blank">{{ $t.name }}</a>
+            
+            {{ $tutorials := .Params.tutorials }}
+            {{ range $i, $section := $tutorials }}
+
+              <h2>{{ $section.name }}</h2>
+
+              <div id="tutorials-list">
+                {{ range $j, $t := $section.section}}
+                <div class="tutorial-item">
+                  <a href="{{ $t.url }}" target="_blank">
+                    {{ if $t.img }}
+                      <img src="{{ $t.img }}"/>
+                    {{ else }}
+                      <div class="tutorial-img-placeholder">
+                      </div>
+                    {{ end }}
+                    <p>{{ $t.name }}</p>
+                  </a>
+                </div>
+                {{ end }}
               </div>
-              {{ end }}
-            </div>
+
+            {{ end }}
             {{ end }}
 
             <div>
