@@ -90,6 +90,6 @@ preface = "For people participaing in and interacting with the consortium, there
 
 [[teams]]
 	name = "Community"
-	text = "Everyone who uses <span class='backticked'>scverse</span> software is part of the community! There are multiple ways to engage with its other members. For a start, join us on our <a href='https://scanpy.discourse.group/' target='_blank'>Discourse forum</a> and keep an eye on our <a href='https://twitter.com/scanpy_team' target='_blank'>Twitter account</a> for the events we organise."
+	text = "Everyone who uses <span class='backticked'>scverse</span> software is part of the community! There are multiple ways to engage with its other members. For a start, join us on our <a href='https://discourse.scverse.org/' target='_blank'>Discourse forum</a> and keep an eye on our <a href='https://twitter.com/scanpy_team' target='_blank'>Twitter account</a> for the events we organise."
 
 +++

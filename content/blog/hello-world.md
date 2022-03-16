@@ -24,5 +24,5 @@ There are already a few visible outcomes of our joint work including improved {{
 
 ## What is coming next
 
-We're particularly excited about the community coming together for this effort with so many brilliant people involved who design tools, write code, manage and analyse data, visualise results. Please feel invited to {{< rawhtml >}}<a href="https://scanpy.discourse.group/" target="_blank">join us on Discourse</a>{{< /rawhtml >}}, and make sure to {{< rawhtml >}}<a href="https://twitter.com/scanpy_team" target="_blank">follow us on Twitter</a>{{< /rawhtml >}} to keep track of scverse updates.
+We're particularly excited about the community coming together for this effort with so many brilliant people involved who design tools, write code, manage and analyse data, visualise results. Please feel invited to {{< rawhtml >}}<a href="https://discourse.scverse.org/" target="_blank">join us on Discourse</a>{{< /rawhtml >}}, and make sure to {{< rawhtml >}}<a href="https://twitter.com/scanpy_team" target="_blank">follow us on Twitter</a>{{< /rawhtml >}} to keep track of scverse updates.
 
