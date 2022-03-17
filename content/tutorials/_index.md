@@ -43,8 +43,8 @@ title = "Tutorials"
 	name = "Immune receptors"
 	[[tutorials.section]]
 	name = "Loading adaptive immune receptor-sequencing data with scirpy"
-	url = "https://icbi-lab.github.io/scirpy/latest/tutorials/tutorial_io.html"
-	img = "https://docs.scvi-tools.org/en/stable/_images/tutorials_notebooks_MultiVI_tutorial_31_1.png"
+	url = "https://scverse.org/scirpy/latest/tutorials/tutorial_io.html"
+	img = "https://scverse.org/scirpy/latest/_images/tutorials_tutorial_io_21_5.png"
 
 +++
 

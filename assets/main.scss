@@ -837,7 +837,14 @@ body {
 		flex-wrap: wrap;
 		justify-content: left;
 		margin-bottom: 5rem;
+
+		grid-auto-flow: row;
+		grid-template-columns: 1fr 1fr;
 		gap: 2rem;
+    	@media (max-width: 50rem), (max-device-width: 40rem) {
+			grid-template-columns: 1fr;
+		}
+
 		.tutorial-item {
 			$cardborder: 1rem;
 			$cardpad: 1.5rem;
@@ -845,6 +852,12 @@ body {
 
 			flex: 1 1;
 			max-width: 60%;
+    		@media (max-width: 50rem), (max-device-width: 40rem) {
+				max-width: 100%;
+				width: 100%;
+				flex: auto;
+			}
+
 			min-height: 10rem;
 			border-radius: 1rem;
 			transition: all 200ms ease-in-out;
@@ -868,7 +881,7 @@ body {
 				border-radius: 1rem;
 				border: 1px solid #EEEEEE;
 				width: 90%;
-				max-height: 20rem;
+				height: 16rem;
 				object-fit: cover;
     			margin: $cardpad $cardborder .2rem $cardborder;
     			transition: all 200ms ease-in-out;
