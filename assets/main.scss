@@ -832,10 +832,8 @@ body {
 		margin-bottom: 1rem !important;
 	}
 	#tutorials-list {
-		display: flex;
-		flex-direction: row;
+		display: grid;
 		flex-wrap: wrap;
-		justify-content: left;
 		margin-bottom: 5rem;
 
 		grid-auto-flow: row;
@@ -851,7 +849,7 @@ body {
 			// margin-left: -$cardborder;
 
 			flex: 1 1;
-			max-width: 60%;
+			max-width: 100%;
     		@media (max-width: 50rem), (max-device-width: 40rem) {
 				max-width: 100%;
 				width: 100%;
@@ -882,7 +880,7 @@ body {
 				border: 1px solid #EEEEEE;
 				width: 90%;
 				height: 16rem;
-				object-fit: cover;
+				object-fit: contain;
     			margin: $cardpad $cardborder .2rem $cardborder;
     			transition: all 200ms ease-in-out;
 			}
