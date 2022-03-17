@@ -15,3 +15,11 @@ For style sheets, [SCSS](https://sass-lang.com/) is used. Modify [`/assets/main.
 ### Layout
 
 Modifying layout is only required when pages have to be restuctured or new pages are to be added. Look inside [`/layout`](/layout) for that. [Hugo Templating](https://gohugo.io/templates/introduction/) is used to work with content from [`/content`](/content).
+
+## Running locally
+
+To build the website (with hot reload), [install Hugo](https://gohugo.io/getting-started/installing/) and run 
+
+```sh
+hugo server -D
+```
