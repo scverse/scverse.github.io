@@ -74,7 +74,7 @@ preface = "For people participaing in and interacting with the consortium, there
 
 [[teams.members]]
 	name = "Alex Wolf"
-	url = "https://falexwolf.de/"
+	url = "https://falexwolf.me/"
 
 [[teams.members]]
 	name = "Nir Yosef"
