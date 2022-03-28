@@ -22,7 +22,7 @@ Our management committee, consisting of **Fabian Theis**, **Oliver Stegle**, **N
 
 ## What tools does scverse maintain?
 
-We start with the two most important data structures, [AnnData](https://github.com/scverse/anndata) and [MuData](https://github.com/scverse/mudata), together with [Scanpy](https://github.com/scverse/scanpy) for general purpose single-cell analysis, [Muon](https://github.com/scverse/muon) for multimodal single-cell analysis, [scvi-tools](https://github.com/scverse/scvi-tools) for deep probablistic analysis of single-cell data and [scirpy](https://github.com/scverse/scirpy) for T-cell receptor analysis. We are planning to expand very soon and are actively looking for major libraries and frameworks which fit our vision.
+We start with the two most important data structures, [AnnData](https://github.com/scverse/anndata) and [MuData](https://github.com/scverse/mudata), together with [Scanpy](https://github.com/scverse/scanpy) for general purpose single-cell analysis, [Muon](https://github.com/scverse/muon) for multimodal single-cell analysis, [scvi-tools](https://github.com/scverse/scvi-tools) for deep probabilistic analysis of single-cell data and [scirpy](https://github.com/scverse/scirpy) for T-cell receptor analysis. We are planning to expand very soon and are actively looking for major libraries and frameworks which fit our vision.
 
 ## What are we doing?
 
