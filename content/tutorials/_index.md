@@ -1,5 +1,5 @@
 +++
-title = "Tutorials"
+title = "Getting started"
 
 [[tutorials]]
 	name = "Data structures"
@@ -30,11 +30,11 @@ title = "Tutorials"
 	url = "https://scverse.org/scirpy/latest/tutorials/tutorial_3k_tcr.html"
 	img = "https://scverse.org/scirpy/latest/_images/tutorials_tutorial_3k_tcr_86_1.png"
 	[[tutorials.section]]
-	name = "ATAC"
+	name = "ATAC-seq"
 	url = "https://muon-tutorials.readthedocs.io/en/latest/single-cell-rna-atac/pbmc10k/2-Chromatin-Accessibility-Processing.html"
 	img = "https://muon-tutorials.readthedocs.io/en/latest/_images/single-cell-rna-atac_pbmc10k_2-Chromatin-Accessibility-Processing_85_0.png"
 	[[tutorials.section]]
-	name = "CITE-seq"
+	name = "Analysis and processing of surface marker data (CITE-seq)"
 	url = "https://muon-tutorials.readthedocs.io/en/latest/cite-seq/1-CITE-seq-PBMC-5k.html"
 	img = "https://muon-tutorials.readthedocs.io/en/latest/_images/cite-seq_1-CITE-seq-PBMC-5k_38_1.png"
 
