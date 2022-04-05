@@ -11,12 +11,28 @@
 				  		{{ if ne .Section `` }}<span class="logo-name">scverse</span>{{ end }}
 				  	</div>
 				</a>
-				<div id="nav-button-wrapper">
-		  			<a href="/projects"><div class="nav-button{{ if eq .Section `projects` }} active{{end}}">Projects</div></a>
-		  			<a href="/tutorials"><div class="nav-button{{ if eq .Section `tutorials` }} active{{end}}">Tutorials</div></a>
-		  			<a href="/people"><div class="nav-button{{ if eq .Section `people` }} active{{end}}">People</div></a>
-		  			<a href="/blog"><div class="nav-button{{ if eq .Section `blog` }} active{{end}}">Blog</div></a>
-		  			<a href="/about"><div class="nav-button{{ if eq .Section `about` }} active{{end}}">About</div></a>
+				<div id="nav-wrapper">
+		  			<div class="nav-button-wrapper">
+		  				<a class="nav-button{{ if eq .Section `projects` }} active{{end}}" href="/projects">Projects</a>
+		  			</div>
+		  			<div class="nav-button-wrapper">
+		  				<a class="nav-button{{ if eq .Section `tutorials` }} active{{end}}" href="/tutorials">Tutorials</a>
+		  			</div>
+		  			<div class="nav-button-wrapper">
+		  				<a class="nav-button{{ if eq .Section `people` }} active{{end}}" href="/people">People</a>
+		  			</div>
+		  			<div class="nav-button-wrapper">
+		  				<a class="nav-button{{ if eq .Section `blog` }} active{{end}}" href="/blog">Blog</a>
+		  			</div>
+		  			<div class="nav-button-wrapper">
+		  				<a class="nav-button{{ if eq .Section `about` }} active{{end}}" href="/about">About</a>
+						<div class="nav-dropdown-content">
+							<h3>Join scverse</h3>
+							<a href="https://github.com/scverse" target="_blank" class="link-external">GitHub</a>
+							<a href="https://scverse.zulipchat.com/join/dthx4by4kc2wzavvmsvdk46o/" target="_blank" class="link-external">Zulip</a>
+							<a href="https://discourse.scverse.org/" target="_blank" class="link-external">Discourse</a>
+						</div>
+		  			</div>
 		  		</div>
 	  		</div>
   		</div>
