@@ -5,7 +5,7 @@ description = "Introducing scverse"
 draft = false
 +++
 
-With the increasing reliance of scientific research on infrastructural and analytical software, foundational tools in life sciences have outgrown individual labs and institutes in terms of their scale and impact. That has encouraged us to start something more than a code repository for an exciting new project – we are starting a new organisation to maintain and support foundational tools in the life sciences in the Python ecosystem.
+Due to the increasing reliance of scientific research on complex computational pipelines, foundational software in the life sciences has outgrown individual labs and institutes in terms of its scale and impact. This has motivated us to start something more than a code repository for an exciting new project – we are starting a new organisation to maintain and support foundational tools in the life sciences in the Python ecosystem.
 
 Our primary experience lies in the field of computational genomics and lately single-cell sequencing technologies, and this has defined our initial scope and focus in the very beginning of our journey. We are excited to announce **scverse** – a consortium for joint maintenance of core packages in omics data analysis in life sciences.
 
