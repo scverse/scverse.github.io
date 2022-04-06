@@ -9,9 +9,11 @@ Due to the increasing reliance of scientific research on complex computational p
 
 ## What tools are part of scverse?
 
-Our primary experience lies in the field of computational biology with an emphasis on single-cell omics technologies. This experience has defined our initial scope and focus in the very beginning of our journey. Hence, we start with the two most important data structures for single-cell data in the Python ecosystem, [AnnData](https://github.com/scverse/anndata) and [MuData](https://github.com/scverse/mudata), together with [Scanpy](https://github.com/scverse/scanpy) for general purpose single-cell analysis, [muon](https://github.com/scverse/muon) for multimodal single-cell analysis, [scvi-tools](https://github.com/scverse/scvi-tools) for deep probabilistic analysis of single-cell data and [scirpy](https://github.com/scverse/scirpy) for T-cell receptor analysis. We are looking forward to expanding with more major libraries and frameworks which fit our vision soon.
+Our primary experience lies in the field of computational biology with an emphasis on single-cell omics technologies. This experience has defined our initial scope and focus in the very beginning of our journey. Hence, we start with the two most important data structures for single-cell data in the Python ecosystem, [AnnData](https://github.com/scverse/anndata) for uni-modal data and [MuData](https://github.com/scverse/mudata) for multi-modal data, together with [Scanpy](https://github.com/scverse/scanpy) for general purpose single-cell analysis, [muon](https://github.com/scverse/muon) for multimodal single-cell analysis, [scvi-tools](https://github.com/scverse/scvi-tools) for deep probabilistic analysis of single-cell data and [scirpy](https://github.com/scverse/scirpy) for T-cell receptor analysis. We are looking forward to expanding with more major libraries and frameworks which fit our vision soon.
 
 ## What are we doing?
+
+Our first priority is to build a strong and lasting community around the tools and the associated analysis. The knowledge to build and maintain our tools should be shared among many to avoid single points of failures. Therefore, we are building tooling to more easily generate scverse based packages and analyses to grow the ecosystem. Furthermore, to bring the community together we are planning workshops and hackathons which will be open to the general community. We are also hoping that a healthy scverse community will naturally guide the field to develop tooling where it is the most required.
 
 There are already a few visible outcomes of our joint work including improved 
 [mudata performance](https://mudata.readthedocs.io/en/latest/changelog.html#v0-1-2) and
@@ -19,8 +21,6 @@ There are already a few visible outcomes of our joint work including improved
 [scvi-tools is now using MuData](https://github.com/scverse/scvi-tools/pull/1444) for the representation of multimodal data. 
 [Scanpy has gained new workshop notebooks](https://github.com/scverse/scanpy-tutorials/pull/52), and, moreover, we have started 
 [a new page with tutorials for scverse libraries](https://scverse.org/tutorials/).
-
-While we're continuing to work on the scverse libraries and frameworks, we're trying to improve how they work and are tested together. Hence, we are looking into the development of infrastructure which cross tests release candidates of our tools. Further, we are building tooling to more easily generate scverse based packages and analyses to grow the ecosystem. Beyond technical challenges we are looking to build a community around scverse, for instance with workshops and hackathons.
 
 ## Who is a part of scverse?
 
