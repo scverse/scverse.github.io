@@ -27,13 +27,13 @@ While we're continuing to work on the scverse libraries and frameworks, we're tr
 ## Who is a part of scverse?
 
 scverse is explicitly an effort beyond just a single research group. Only together can we continue to ensure that the ecosystem grows and stays interoperable.
-We therefore define several [roles](https://scverse.org/people/) of which only the most relevant are denoted below.
+We therefore define several [roles](https://scverse.org/people/) of which only a subset are denoted below.
 
 [Isaac Virshup](https://github.com/ivirshup), [Danila Bredikhin](https://github.com/gtca) and [Lukas Heumos](https://github.com/Zethson), who are also a part of the steering committee, belong to the core developers together with [Adam Gayoso](https://github.com/adamgayoso), [Giovanni Palla](https://github.com/giovp), [Gregor Sturm](https://github.com/grst), and [Ilia Kats](https://github.com/ilia-kats). The core developers have made significant contributions to the ecosystem and are jointly developing and maintaining the major libraries.
 
 Our management committee, consisting of [Fabian Theis](https://www.helmholtz-munich.de/icb/institute/staff/staff/ma/2494/index.html), [Oliver Stegle](https://www.embl.org/groups/stegle/), [Nir Yosef](https://yoseflab.github.io/), [Alex Wolf](https://falexwolf.me/) and [Francesca Finotello](https://computationalbiomedicinegroup.github.io/), are providing resources and academic freedom to scverse to develop our tools.
 
-[Aviv Regev](https://biology.mit.edu/profile/aviv-regev/), [Sarah Teichmann](https://www.sanger.ac.uk/group/teichmann-group/), [Dana Pe'er](https://www.mskcc.org/research/ski/labs/dana-pe-er) and [Bonnie Berger](https://people.csail.mit.edu/bab/) are our scientific advisory board which will help to shape the overall vision and to define the right priorities.
+[Aviv Regev](https://biology.mit.edu/profile/aviv-regev/), [Sarah Teichmann](https://www.sanger.ac.uk/group/teichmann-group/), [Dana Pe'er](https://www.mskcc.org/research/ski/labs/dana-pe-er) and [Bonnie Berger](https://people.csail.mit.edu/bab/) are our scientific advisory board which helps shaping the overall vision and defining the right priorities.
 
 ## How can I join and contribute?
 
