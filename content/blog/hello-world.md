@@ -5,13 +5,11 @@ description = "Introducing scverse"
 draft = false
 +++
 
-Due to the increasing reliance of scientific research on complex computational pipelines, foundational software in the life sciences has outgrown individual labs and institutes in terms of its scale and impact. This has motivated us to start something more than a code repository for an exciting new project – we are starting a new organisation to maintain and support foundational tools in the life sciences in the Python ecosystem.
-
-Our primary experience lies in the field of computational biology with an emphasis on single-cell omics technologies. This experience has defined our initial scope and focus in the very beginning of our journey. We are excited to announce **scverse** – a consortium for joint maintenance of core packages in omics data analysis in life sciences.
+Due to the increasing reliance of scientific research on complex computational pipelines, foundational software in the life sciences has outgrown individual labs and institutes in terms of its scale and impact. This has motivated us to start something more than a code repository for an exciting new project – a new organisation to maintain and support foundational tools in the life sciences in the Python ecosystem. We are therefore very excited to announce **scverse** – a consortium for joint development of major packages in omics data analysis in life sciences.
 
 ## What tools are part of scverse?
 
-We start with the two most important data structures, [AnnData](https://github.com/scverse/anndata) and [MuData](https://github.com/scverse/mudata), together with [Scanpy](https://github.com/scverse/scanpy) for general purpose single-cell analysis, [muon](https://github.com/scverse/muon) for multimodal single-cell analysis, [scvi-tools](https://github.com/scverse/scvi-tools) for deep probabilistic analysis of single-cell data and [scirpy](https://github.com/scverse/scirpy) for T-cell receptor analysis. We are looking forward to expanding with more major libraries and frameworks which fit our vision.
+Our primary experience lies in the field of computational biology with an emphasis on single-cell omics technologies. This experience has defined our initial scope and focus in the very beginning of our journey. Hence, we start with the two most important data structures for single-cell data in the Python ecosystem, [AnnData](https://github.com/scverse/anndata) and [MuData](https://github.com/scverse/mudata), together with [Scanpy](https://github.com/scverse/scanpy) for general purpose single-cell analysis, [muon](https://github.com/scverse/muon) for multimodal single-cell analysis, [scvi-tools](https://github.com/scverse/scvi-tools) for deep probabilistic analysis of single-cell data and [scirpy](https://github.com/scverse/scirpy) for T-cell receptor analysis. We are looking forward to expanding with more major libraries and frameworks which fit our vision soon.
 
 ## What are we doing?
 
