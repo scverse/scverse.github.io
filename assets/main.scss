@@ -68,7 +68,7 @@ html, body {
   	-moz-osx-font-smoothing: grayscale;
 
   	@media (max-device-width: 40rem) {
-  		font-size: 3rem;
+  		font-size: 2.2rem;
   	}
 }
 body {
@@ -810,6 +810,10 @@ body {
 			p, div, ul, ol {
 				font-family: Open Sans, sans-serif;
 			}
+	    	@media (max-device-width: 40rem) {
+				font-size: 1rem;
+				line-height: 1.8rem;
+			}
 		}
 		h2, h3, h4 {
 			font-family: sans-serif;
@@ -881,6 +885,10 @@ body {
 							font-size: 1.1rem;
 							margin: 1rem 0;
 							color: $tiletext;
+					    	@media (max-device-width: 40rem) {
+								font-size: 1rem;
+								line-height: 1.8rem;
+							}
 						}
 					}
 				}
