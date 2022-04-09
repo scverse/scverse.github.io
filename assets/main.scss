@@ -434,6 +434,16 @@ body {
 						    	background-color: $navbgactive;
 						    	color: $navtextactive;
 						    }
+						    &.nav-button-hl {
+						    	color: white;
+						    	background-color: #4557c4;
+						    	background: linear-gradient(135deg, #4FB9DF, #4557c4);
+							    transition: background 1s ease-out;  
+						    	&:hover {
+						    		background: linear-gradient(135deg, #90afe0, #263AAE, #263AAE);
+						    		color: white;
+						    	}
+						    }
 						}
 
 						.nav-dropdown-content {
@@ -441,10 +451,10 @@ body {
     						opacity: 0;
 							position: absolute;
 							margin-top: .2rem;
-							padding: 1rem .5rem 2rem .5rem;
+							padding: 1rem .5rem 1rem .5rem;
 							background-color: $navbghover;
 							min-width: 12rem;
-							box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+							box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.05);
 							z-index: 1;
 
 							$brdrd: .5rem;
