@@ -8,6 +8,6 @@ title = "Join scverse"
 
 * [Follow us on Twitter](https://twitter.com/scanpy_org)
 
-* [Subsribe to our YouTube channel](https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA)
+* [Subscribe to our YouTube channel](https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA)
 
 * [Follow our organisation on GitHub](https://github.com/scverse)
