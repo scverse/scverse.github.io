@@ -22,6 +22,11 @@ title = "Getting started"
 	name = "Analyzing scRNA-seq with scvi-tools"
 	url = "https://docs.scvi-tools.org/en/stable/tutorials/notebooks/api_overview.html"
 	img = "https://docs.scvi-tools.org/en/stable/_images/tutorials_notebooks_api_overview_45_1.png"
+	[[tutorials.section]]
+	name = "Integration of the Lung Cell Atlas with scANVI"
+	url = "https://docs.scvi-tools.org/en/stable/tutorials/notebooks/tabula_muris.html"
+	img = "https://docs.scvi-tools.org/en/stable/_images/tutorials_notebooks_harmonization_22_0.png"
+
 
 [[tutorials]]
 	name = "Other modalities"
@@ -48,6 +53,10 @@ title = "Getting started"
 	name = "Analysis of seqFISH data with squidpy"
 	url = "https://squidpy.readthedocs.io/en/stable/auto_tutorials/tutorial_seqfish.html"
 	img = "https://squidpy.readthedocs.io/en/stable/_images/sphx_glr_tutorial_seqfish_003.png"
+	[[tutorials.section]]
+	name = "Deconvolution of Visium data with DestVI"
+	url = "https://docs.scvi-tools.org/en/stable/tutorials/notebooks/DestVI_tutorial.html"
+	img = "https://docs.scvi-tools.org/en/stable/_images/tutorials_notebooks_DestVI_tutorial_36_0.png"
 
 [[tutorials]]
 	name = "scATAC-seq & scRNA-seq"
