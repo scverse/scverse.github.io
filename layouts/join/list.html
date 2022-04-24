@@ -21,11 +21,11 @@
                         <a href="{{ $item.link }}" class="stretched-link" target="_blank"></a>
                         <!-- Some of the items can have icons -->
                         {{ if eq $item.id "twitter" }}
-                          <h5 class="card-title bi-twitter"> {{ $item.title }}</h5>
+                          <h5 class="card-title bi-twitter">&nbsp;{{ $item.title }}</h5>
                         {{ else if eq $item.id "github" }}
-                          <h5 class="card-title bi-github"> {{ $item.title }}</h5>
+                          <h5 class="card-title bi-github">&nbsp;{{ $item.title }}</h5>
                         {{ else if eq $item.id "youtube" }}
-                          <h5 class="card-title bi-youtube"> {{ $item.title }}</h5>
+                          <h5 class="card-title bi-youtube">&nbsp;{{ $item.title }}</h5>
                         {{ else }}
                           <h5 class="card-title">{{ $item.title }}</h5>
                         {{ end }}
