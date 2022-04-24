@@ -1,13 +1,34 @@
 +++
 title = "Join scverse"
+
+[[resources]]
+	id = "github"
+	title = "GitHub"
+	text = "Follow our organisation on GitHub"
+	link = "https://github.com/scverse"
+
+[[resources]]
+	id = "twitter"
+	title = "Twitter"
+	text = "Follow us on Twitter"
+	link = "https://twitter.com/scanpy_team"
+
+[[resources]]
+	id = "zulip"
+	title = "Zulip"
+	text = "Talk to us on Zulip"
+	link = "https://scverse.zulipchat.com/"
+
+[[resources]]
+	id = "discourse"
+	title = "Discourse"
+	text = "Ask questions on Discourse"
+	link = "https://discourse.scverse.org/"
+
+[[resources]]
+	id = "youtube"
+	title = "YouTube"
+	text = "Subsribe to our YouTube channel"
+	link = "https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA"
+
 +++
-
-* [Talk to us on Zulip](https://scverse.zulipchat.com/)
-
-* [Ask questions on Discourse](https://discourse.scverse.org/)
-
-* [Follow us on Twitter](https://twitter.com/scanpy_org)
-
-* [Subscribe to our YouTube channel](https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA)
-
-* [Follow our organisation on GitHub](https://github.com/scverse)

@@ -16,6 +16,12 @@ $scanpymandy: #E05559;
 $mudatagreen: #4AB274;
 $muonaquamarine: #6CF1A1;
 
+$github-black: #171B21;
+$twitter-blue: #469BE5;
+$discourse-yellow: #F7F0B1;
+$youtube-red: #E03021;
+$zulip-blue: #62A3F0;
+
 $overline: #E0E0E0;
 $linkunderline: #AAAAAA;
 $backtickbg: #F9F9F9;
@@ -40,8 +46,8 @@ $contentwidth: 80%;
 $contentwidthwide: 92%;
 
 @font-face {
-    font-family: "Nunito";
-    src: url("fonts/Nunito/Nunito-VariableFont_wght.ttf");
+    font-family: "Inter";
+    src: url("fonts/Inter/Inter-VariableFont_slnt,wght.ttf");
 }
 
 @mixin person-chip {
@@ -57,6 +63,8 @@ $contentwidthwide: 92%;
 		background-color: $tilebg2;
 	}
 }
+
+
 
 html, body {
 	width: 100%;
@@ -109,8 +117,8 @@ body {
 							#title-name {
 								display: block;
 								font-size: 5rem;
-								font-family: "Nunito", sans-serif;
-								font-weight: 800;
+								font-family: "Inter", sans-serif;
+								font-weight: 500;
 								line-height: 5rem;
 								letter-spacing: .4rem;
 							  	@media (max-device-width: 40rem) {
@@ -120,7 +128,7 @@ body {
 							}
 							#title-desc {
 								display: block;
-								font-family: sans-serif;
+								font-family: "Inter", sans-serif;
 								font-size: 1.1rem;
 								color: $greydesc;
 							}
@@ -150,7 +158,7 @@ body {
 						text-transform: uppercase;
 						color: $greyheader;
 						font-weight: 700;
-						font-family: sans-serif;
+						font-family: "Inter", sans-serif;
 						transition: all 200ms ease-in-out;
 						&.clickable-heading:hover {
 							color: $greyheaderhover;
@@ -159,7 +167,7 @@ body {
 					}
 					.section-content {
 						p, div {
-							font-family: Open Sans, sans-serif;
+							font-family: "Inter", Open Sans, sans-serif;
 						}
 						span.backticked {
 							font-size: 1.2rem;
@@ -188,7 +196,7 @@ body {
 								margin: 0;
 								font-size: .8rem;
 								font-weight: 800;
-								font-family: sans-serif;
+								font-family: "Inter", sans-serif;
 								color: $tiletext2;
 								transition: all 200ms ease-in-out;
 			    				padding: 0.5rem;
@@ -228,7 +236,7 @@ body {
 			    			display: flex;
 			    			flex-direction: row;
 			    			padding: 1rem;
-			    			height: 5rem;
+			    			height: 7rem;
 			    			align-items: center;
 			    			background-color: $tilebg;
 			    			color: $tiletext;
@@ -341,7 +349,7 @@ body {
 		}
 
 		span.backticked {
-			font-family: Nunito;
+			font-family: Inter, sans-serif;
 		    color: $backticktext;
 		    font-weight: 500;
 		}
@@ -377,7 +385,7 @@ body {
 			color: white;
 			font-weight: 800;
 			text-transform: uppercase;
-			font-family: sans-serif;
+			font-family: "Inter", sans-serif;
 			font-size: 1.2rem;
 			padding: 1rem 0;
 			margin-bottom: 1rem;
@@ -416,7 +424,7 @@ body {
 					.nav-button-wrapper {
 						.nav-button {
 							display: block;
-							font-family: sans-serif;
+							font-family: "Inter", sans-serif;
 							background-color: $navbg;
 							border-radius: .5rem;
 						 	padding: .5rem .8rem;
@@ -437,10 +445,10 @@ body {
 						    &.nav-button-hl {
 						    	color: white;
 						    	background-color: #4557c4;
-						    	background: linear-gradient(135deg, #4FB9DF, #4557c4);
-							    transition: background 1s ease-out;  
+						    	background: linear-gradient(135deg, #78CBD9, #2D719D);
+							    transition: background 200ms ease-out;  
 						    	&:hover {
-						    		background: linear-gradient(135deg, #90afe0, #263AAE, #263AAE);
+						    		background: linear-gradient(135deg, #4FB9DF, #4557c4);
 						    		color: white;
 						    	}
 						    }
@@ -466,7 +474,7 @@ body {
 								padding: .5rem .8rem;
 						    	color: $navtext;
 								text-decoration: none;
-								font-family: sans-serif;
+								font-family: "Inter", sans-serif;
 								font-size: .9rem;
 								display: block;
 						    	cursor: pointer;
@@ -505,7 +513,7 @@ body {
 
 							h3 {
 								font-size: .8rem;
-								font-family: sans-serif;
+								font-family: "Inter", sans-serif;
 								font-weight: 700;
 								color: $navtext;
 								margin: 1rem 0 .4rem .8rem;
@@ -600,10 +608,10 @@ body {
 			color: black;
 			font-size: 1.5rem;
 			line-height: 1.5rem;
-			font-family: "Nunito", sans-serif;
-			font-weight: 600;
+			font-family: "Inter", sans-serif;
+			font-weight: 500;
 			line-height: 5rem;
-			letter-spacing: .2rem;
+			letter-spacing: .15rem;
 			margin-left: 1rem;
 		}
 	}
@@ -636,7 +644,7 @@ body {
 
 				a, p {
 					margin: .2rem 0;
-					font-family: sans-serif;
+					font-family: "Inter", sans-serif;
 					font-weight: 500;
 					font-size: 1rem;
 				  	@media (max-device-width: 40rem) {
@@ -684,6 +692,40 @@ body {
 	}
 }
 
+#join-content {
+	.card {
+		h5 {
+			font-family: "Inter", sans-serif;
+			font-weight: 700;
+		}
+		transition: all 200ms ease-in-out;
+		color: navtext;
+		&:hover {
+			background: #78CBD9 !important;
+			transform: scale(1.02);
+		}
+		&#github:hover {
+			color: white;
+			background-color: $github-black !important;
+		}
+		&#twitter:hover {
+			color: white;
+			background-color: $twitter-blue !important;
+		}
+		&#zulip:hover {
+			color: white;
+			background-color: $zulip-blue !important;
+		}
+		&#discourse:hover {
+			background-color: $discourse-yellow !important;
+		}
+		&#youtube:hover {
+			color: white;
+			background-color: $youtube-red !important;
+		}
+	}
+}
+
 
 #page-content {
 	display: flex;
@@ -696,10 +738,10 @@ body {
 		width: $contentwidthwide;
 		gap: 1rem;
 	}
-	font-family: sans-serif;
+	font-family: "Inter", sans-serif;
 	h1 {
 		font-size: 2.5rem;
-		font-family: sans-serif;
+		font-family: "Inter", sans-serif;
 		font-weight: 800;
 	}
 	&.items-list {
@@ -713,7 +755,7 @@ body {
 	.page-item {
 		display: flex;
 		flex-direction: row;
-		font-family: sans-serif;
+		font-family: "Inter", sans-serif;
 		
     	@media (max-device-width: 40rem) {
 			flex-direction: column;
@@ -808,7 +850,7 @@ body {
 				line-height: 1.1rem;
 			}
 			p, div, ul, ol {
-				font-family: Open Sans, sans-serif;
+				font-family: "Inter", Open Sans, sans-serif;
 			}
 	    	@media (max-device-width: 40rem) {
 				font-size: 1rem;
@@ -816,11 +858,11 @@ body {
 			}
 		}
 		h2, h3, h4 {
-			font-family: sans-serif;
+			font-family: "Inter", sans-serif;
 			margin: 4rem 0 0 0;
 		}
 		a {
-			font-family: sans-serif;
+			font-family: "Inter", sans-serif;
 			color: $postlinktext;
 			&:hover {
 				color: black;
@@ -874,7 +916,7 @@ body {
 					// box-shadow: 0 .2rem .2rem .05rem rgba(0, 0, 0, .3);
 					.project-text {
 						.project-name {
-							font-family: sans-serif;
+							font-family: "Inter", sans-serif;
 							font-size: 1.5rem;
 							font-weight: 800;
 							color: black;
@@ -1039,7 +1081,7 @@ body {
 			.person-chip {
 				@include person-chip;
 				font-size: 1.0rem;
-				font-family: sans-serif;
+				font-family: "Inter", sans-serif;
 			}
 			a {
 				text-decoration: none;
