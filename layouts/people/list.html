@@ -4,9 +4,10 @@
     {{ partial "head" . }}
   </head>
   <body>
-    <header>
-      {{ partial "header" . }}
-    </header>
+  <header>
+	{{ partial "header" . }}
+  </header>
+
     <script>
       window.onload = function () {
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -15,6 +16,7 @@
         })
       }
     </script>
+
     <div id="wrapper">
       <div id="content">
         <div id="page-content">
