@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    {{ partial "head" . }}
-  </head>
-  <body>
-  	<header>
-  		{{ partial "header" . }}
-  	</header>
+<head>
+	{{ partial "head" . }}
+</head>
+<body>
+	{{ partial "header" . }}
     <div id="wrapper">
-      <div id="content">
-        <div id="cover" class="mw-10">
-				  {{ partial "main/cover" . }}
-				  {{ partial "main/projects" . }}
-				  {{ partial "main/mission" . }}
-				  {{ partial "main/team" . }}
-					{{ partial "main/references" . }}
-        </div>
-      </div>
-    </div>
+		<div id="content">
+			<div id="cover" class="mw-10">
+				{{ partial "main/cover" . }}
+				{{ partial "main/projects" . }}
+				{{ partial "main/mission" . }}
+				{{ partial "main/team" . }}
+				{{ partial "main/references" . }}
+			</div>
+		</div>
+	</div>
     <!-- {{ partial "footer" . }} -->
-    <footer>
+	<footer>
 		<div id="footer-content">
 		  <div class="footer-links">
 		    <p><a href="https://github.com/scverse" target="_blank">GitHub</a> | 

@@ -1,3 +1,4 @@
+<header>
 <div id="banner">
 	<div id="banner-content">
 		🚧 Under construction 🚧
@@ -7,8 +8,7 @@
 	<div id="nav">
 		<a id="logo-wrapper" href="/" onclick="">
 			<div id="logo">
-
-				<svg width="100%" height="100%" viewBox="0 0 87 92" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:10;"><g><path id="path2431" d="M33.386,90.578c-22.3,-3.403 -30.601,-19.801 -30.601,-19.801c10.801,16.898 43,9.101 52.902,2.5c12.399,-8.301 8,-15.301 6.797,-18.102c5.402,7.203 5.301,23.5 -1.098,29.403c-5.601,5.097 -15.3,7.898 -28,6Z" style="fill:#fff;fill-rule:nonzero;stroke:#000;stroke-width:1px;"/><path id="path2433" d="M82.285,44.476c2.902,-7.098 0.801,-12.5 0.5,-13.301c-0.699,-1.297 -1.5,-2.297 -2.399,-3.097c-16.101,-12.602 -55.902,1 -70.902,16.8c-10.898,11.5 -10.098,20 -6.699,25.797c3.101,4.801 7.902,7.602 13.402,9c-11.5,-12.398 9.797,-31.097 29,-38c21,-7.5 32.5,-3 37.098,2.801Z" style="fill:#343434;fill-rule:nonzero;stroke:#000;stroke-width:1px;"/><path id="path2435" d="M77.984,51.378c9,-10.5 5,-19.703 4.801,-20.402c-0,-0 4.402,7.101 2.199,22.602c-1.199,8.499 -5.398,15.999 -10.098,11.8c-2.101,-1.8 -3,-6.902 3.098,-14Z" style="fill:#fff;fill-rule:nonzero;stroke:#000;stroke-width:1px;"/><path id="path2437" d="M62.386,55.175c-3.3,-4.797 -8.101,-7.398 -12.3,-10.797c-2.2,-1.703 -16.399,-11.203 -19.2,-15.101c-6.402,-6.399 -9.5,-16.899 -3.402,-23.102c-4.398,-0.797 -8.199,0.203 -10.598,1.5c-1.101,0.602 -2.101,1.203 -2.8,2c-6.7,6.203 -5.801,17 -1.602,24.301c4.5,7.801 13.203,15.402 24.301,22.801c5.101,3.398 15.601,8.398 19.301,16c11.699,-8.102 7.601,-14.899 6.3,-17.602Z" style="fill:#b4b4b4;fill-rule:nonzero;stroke:#000;stroke-width:1px;"/><path id="path2439" d="M37.086,10.777c7.898,6.3 12.398,9.801 20,8.5c5.699,-1 4.898,-7.899 -4,-13.602c-4.399,-2.797 -9.399,-4.199 -15.7,-4.199c-7.5,-0 -16.3,3.902 -20.601,6.402c4,-2.301 11.902,-3.801 20.301,2.899Z" style="fill:#fff;fill-rule:nonzero;stroke:#000;stroke-width:1px;"/></g></svg>
+				<img src="/img/icons/scverse_bw_logo.svg" height=48 width=48>
 
 				{{ if ne .Section `` }}<span class="logo-name">scverse</span>{{ end }}
 			</div>
@@ -39,4 +39,50 @@
 			</div>
 		</div>
 	</div>
+</div>
+</header>
+<div class="container" style="max-width: 850px;">
+	<nav class="navbar navbar-expand-lg navbar-light">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/" >
+				<img src="/img/icons/scverse_bw_logo.svg" alt="" height="50">
+				{{ if ne .Section `` }}<span class="logo-name">scverse</span>{{ end }}
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+				<ul class="navbar-nav mb-2 mb-lg-0">  <!-- class="nav-pills" for button-like-->
+					<li class="nav-item">
+						<a class="nav-link{{ if eq .Section `projects` }} active{{end}}" href="/projects">Projects</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link{{ if eq .Section `tutorials` }} active{{end}}" href="/tutorials">Tutorials</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link{{ if eq .Section `people` }} active{{end}}" href="/people">People</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link{{ if eq .Section `blog` }} active{{end}}" href="/blog">Blog</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							About
+						</a>
+						<!-- <a class="nav-button{{ if eq .Section `about` }} active{{end}}" href="/about">About &#9662;</a> -->
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<h3></h3>
+							<li><a class="dropdown-item" href="/about">About scverse</a></li>
+							<li><a class="dropdown-item" href="/about/mission">Mission statement</a></li>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link nav-button-hl" href="/join">Join</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 </div>
