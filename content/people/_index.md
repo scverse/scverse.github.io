@@ -92,11 +92,16 @@ preface = "For people participaing in and interacting with the consortium, there
 	name = "Contributors"
 	text = "All this work makes sense only in the context of the larger community of contributors and users of <span class=\"backticked\">scverse</span> projects. Open-source <span class=\"backticked\">scverse</span> projects are open to contributions, and over 150 people have contributed to <span class=\"backticked\">scverse</span> packages."
 
-
 [[contributors.members]]
     name = "Adam Gayoso"
     url = "https://github.com/adamgayoso"
     img = "https://avatars.githubusercontent.com/u/10859440?v=4"
+
+
+[[contributors.members]]
+    name = "Alex Wolf"
+    url = "https://github.com/falexwolf"
+    img = "https://avatars.githubusercontent.com/u/16916678?v=4"
 
 
 [[contributors.members]]
@@ -130,6 +135,12 @@ preface = "For people participaing in and interacting with the consortium, there
 
 
 [[contributors.members]]
+    name = "Danila"
+    url = "https://github.com/gtca"
+    img = "https://avatars.githubusercontent.com/u/32863903?v=4"
+
+
+[[contributors.members]]
     name = "David S. Fischer"
     url = "https://github.com/davidsebfischer"
     img = "https://avatars.githubusercontent.com/u/11200205?v=4"
@@ -139,18 +150,6 @@ preface = "For people participaing in and interacting with the consortium, there
     name = "Davide Cittaro"
     url = "https://github.com/dawe"
     img = "https://avatars.githubusercontent.com/u/121868?v=4"
-
-
-[[contributors.members]]
-    name = "Alex Wolf"
-    url = "https://github.com/falexwolf"
-    img = "https://avatars.githubusercontent.com/u/16916678?v=4"
-
-
-[[contributors.members]]
-    name = "Philipp A."
-    url = "https://github.com/flying-sheep"
-    img = "https://avatars.githubusercontent.com/u/291575?v=4"
 
 
 [[contributors.members]]
@@ -166,15 +165,9 @@ preface = "For people participaing in and interacting with the consortium, there
 
 
 [[contributors.members]]
-    name = "Danila"
-    url = "https://github.com/gtca"
-    img = "https://avatars.githubusercontent.com/u/32863903?v=4"
-
-
-[[contributors.members]]
-    name = "Karin Hrovatin"
-    url = "https://github.com/Hrovatin"
-    img = "https://avatars.githubusercontent.com/u/47607471?v=4"
+    name = "Gökçen Eraslan"
+    url = "https://github.com/gokceneraslan"
+    img = "https://avatars.githubusercontent.com/u/1140359?v=4"
 
 
 [[contributors.members]]
@@ -190,9 +183,21 @@ preface = "For people participaing in and interacting with the consortium, there
 
 
 [[contributors.members]]
+    name = "Jan Lause"
+    url = "https://github.com/jlause"
+    img = "https://avatars.githubusercontent.com/u/34481813?v=4"
+
+
+[[contributors.members]]
     name = "Jeffrey Regier"
     url = "https://github.com/jeff-regier"
     img = "https://avatars.githubusercontent.com/u/8953355?v=4"
+
+
+[[contributors.members]]
+    name = "Jonathan Manning"
+    url = "https://github.com/pinin4fjords"
+    img = "https://avatars.githubusercontent.com/u/5775915?v=4"
 
 
 [[contributors.members]]
@@ -202,9 +207,15 @@ preface = "For people participaing in and interacting with the consortium, there
 
 
 [[contributors.members]]
-    name = "Jan Lause"
-    url = "https://github.com/jlause"
-    img = "https://avatars.githubusercontent.com/u/34481813?v=4"
+    name = "Karin Hrovatin"
+    url = "https://github.com/Hrovatin"
+    img = "https://avatars.githubusercontent.com/u/47607471?v=4"
+
+
+[[contributors.members]]
+    name = "Kathy Wu"
+    url = "https://github.com/wukathy"
+    img = "https://avatars.githubusercontent.com/u/45545133?v=4"
 
 
 [[contributors.members]]
@@ -214,15 +225,15 @@ preface = "For people participaing in and interacting with the consortium, there
 
 
 [[contributors.members]]
-    name = "Sergei Rybakov"
-    url = "https://github.com/Koncopd"
-    img = "https://avatars.githubusercontent.com/u/3065736?v=4"
-
-
-[[contributors.members]]
     name = "@LucaMarconato"
     url = "https://github.com/LucaMarconato"
     img = "https://avatars.githubusercontent.com/u/2664412?v=4"
+
+
+[[contributors.members]]
+    name = "Lukas Heumos"
+    url = "https://github.com/Zethson"
+    img = "https://avatars.githubusercontent.com/u/21954664?v=4"
 
 
 [[contributors.members]]
@@ -256,27 +267,9 @@ preface = "For people participaing in and interacting with the consortium, there
 
 
 [[contributors.members]]
-    name = "Pierre Boyeau"
-    url = "https://github.com/PierreBoyeau"
-    img = "https://avatars.githubusercontent.com/u/23222597?v=4"
-
-
-[[contributors.members]]
-    name = "Jonathan Manning"
-    url = "https://github.com/pinin4fjords"
-    img = "https://avatars.githubusercontent.com/u/5775915?v=4"
-
-
-[[contributors.members]]
-    name = "Romain Lopez"
-    url = "https://github.com/romain-lopez"
-    img = "https://avatars.githubusercontent.com/u/21249167?v=4"
-
-
-[[contributors.members]]
-    name = "Valeh Valiollah Pour Amiri"
-    url = "https://github.com/watiss"
-    img = "https://avatars.githubusercontent.com/u/4193454?v=4"
+    name = "Philipp A."
+    url = "https://github.com/flying-sheep"
+    img = "https://avatars.githubusercontent.com/u/291575?v=4"
 
 
 [[contributors.members]]
@@ -286,27 +279,9 @@ preface = "For people participaing in and interacting with the consortium, there
 
 
 [[contributors.members]]
-    name = "Kathy Wu"
-    url = "https://github.com/wukathy"
-    img = "https://avatars.githubusercontent.com/u/45545133?v=4"
-
-
-[[contributors.members]]
-    name = "Lukas Heumos"
-    url = "https://github.com/Zethson"
-    img = "https://avatars.githubusercontent.com/u/21954664?v=4"
-
-
-[[contributors.members]]
-    name = "@zoepiran"
-    url = "https://github.com/zoepiran"
-    img = "https://avatars.githubusercontent.com/u/43661890?v=4"
-
-
-[[contributors.members]]
-    name = "Zoë Steier"
-    url = "https://github.com/zoesteier"
-    img = "https://avatars.githubusercontent.com/u/25038766?v=4"
+    name = "Pierre Boyeau"
+    url = "https://github.com/PierreBoyeau"
+    img = "https://avatars.githubusercontent.com/u/23222597?v=4"
 
 
 [[contributors.members]]
@@ -316,9 +291,33 @@ preface = "For people participaing in and interacting with the consortium, there
 
 
 [[contributors.members]]
-    name = "Gökçen Eraslan"
-    url = "https://github.com/gokceneraslan"
-    img = "https://avatars.githubusercontent.com/u/1140359?v=4"
+    name = "Romain Lopez"
+    url = "https://github.com/romain-lopez"
+    img = "https://avatars.githubusercontent.com/u/21249167?v=4"
+
+
+[[contributors.members]]
+    name = "Sergei Rybakov"
+    url = "https://github.com/Koncopd"
+    img = "https://avatars.githubusercontent.com/u/3065736?v=4"
+
+
+[[contributors.members]]
+    name = "@talashuach"
+    url = "https://github.com/talashuach"
+    img = "https://avatars.githubusercontent.com/u/22898826?v=4"
+
+
+[[contributors.members]]
+    name = "Tommaso Biancalani"
+    url = "https://github.com/lewlin"
+    img = "https://avatars.githubusercontent.com/u/15822760?v=4"
+
+
+[[contributors.members]]
+    name = "Valeh Valiollah Pour Amiri"
+    url = "https://github.com/watiss"
+    img = "https://avatars.githubusercontent.com/u/4193454?v=4"
 
 
 [[contributors.members]]
@@ -334,15 +333,15 @@ preface = "For people participaing in and interacting with the consortium, there
 
 
 [[contributors.members]]
-    name = "Tommaso Biancalani"
-    url = "https://github.com/lewlin"
-    img = "https://avatars.githubusercontent.com/u/15822760?v=4"
+    name = "@zoepiran"
+    url = "https://github.com/zoepiran"
+    img = "https://avatars.githubusercontent.com/u/43661890?v=4"
 
 
 [[contributors.members]]
-    name = "@talashuach"
-    url = "https://github.com/talashuach"
-    img = "https://avatars.githubusercontent.com/u/22898826?v=4"
+    name = "Zoë Steier"
+    url = "https://github.com/zoesteier"
+    img = "https://avatars.githubusercontent.com/u/25038766?v=4"
 
 
 +++

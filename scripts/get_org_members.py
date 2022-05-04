@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 This script generates toml entries for the contributors section of the People page.
 
@@ -20,9 +21,18 @@ extra_users = [
 
 
 def get_contributors() -> list[dict]:
+    def _name_key(user_json: dict) -> str:
+        if user_json["name"] is not None:
+            name = user_json["name"]
+        else:
+            name = user_json["login"]
+        return name.lower()
+
     g = Github(os.environ["GITHUB_TOKEN"])
+
     members = list(g.get_organization("scverse").get_members())
     members.extend([g.get_user(user) for user in extra_users])
+
     results = []
     for m in members:
         results.append(
@@ -32,6 +42,8 @@ def get_contributors() -> list[dict]:
                 "name": m.name,
             }
         )
+    results.sort(key=_name_key)
+
     return results
 
 
