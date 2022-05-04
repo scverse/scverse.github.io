@@ -40,7 +40,32 @@
               {{ end }}
               {{ end }}
             {{ end }}
-
+            {{ with .Params.contributors }}
+              <div class="team">
+                <h3>{{ .name }}</h3>
+                {{ if .text }}
+                <p class="team-text">
+                  {{ .text | safeHTML }}
+                </p>
+                {{ end }}
+                {{ if .members }}
+                <p></p>
+                <div class="pt-3">
+                  {{ range $person := .members }}
+                  <a href={{ .url }} target="_blank">
+                    <img 
+                      src={{ .img }}
+                      alt={{ .name }}
+                      class="border rounded-circle me-1 mb-1" 
+                      height=100
+                      width=100
+                    >
+                  </a>
+                  {{ end }}
+                </div>
+                {{ end }}
+              </div>
+            {{ end }}
             </div>
           </article>
         </div>
