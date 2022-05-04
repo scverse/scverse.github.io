@@ -92,7 +92,7 @@ html, body {
 
 .nav-buttons > li > a{
 	font-family: "Inter", sans-serif;
-	color: $navtext !important;
+	color: $navtext;
 
 	padding: .5rem .8rem !important;
 	border-radius: .5rem;
@@ -113,7 +113,7 @@ html, body {
 	}
 }
 
-.nav-button-hl {
+#join-button {
 	color: white;
 	background-color: #4557c4;
 	background: linear-gradient(135deg, #78CBD9, #2D719D);
@@ -121,7 +121,7 @@ html, body {
 
 	&:hover {
 		background: linear-gradient(135deg, #4FB9DF, #4557c4);
-		color: white !important;
+		color: white;
 	}
 }
 
@@ -461,209 +461,6 @@ body {
 			margin-bottom: 1rem;
 		}
 
-		#header-content {
-			display: flex;
-			flex-direction: column;
-			max-width: $maxwidth;
-			width: $contentwidth;
-			@media (max-device-width: 40rem) {
-				max-width: $maxwidthwide;
-				width: $contentwidthwide;
-			}
-			#nav {
-				display: flex;
-				flex-direction: row;
-				gap: 1rem;
-				align-items: center;
-
-				#logo-wrapper {
-					margin-right: auto;
-				}
-
-				a {
-					text-decoration: none;
-				}
-
-				#nav-wrapper {
-					display: flex;
-					flex-direction: row;
-					flex-wrap: wrap;
-					gap: 1rem;
-					align-items: center;
-
-					.nav-button-wrapper {
-						.nav-button {
-							display: block;
-							font-family: "Inter", sans-serif;
-							background-color: $navbg;
-							border-radius: .5rem;
-						 	padding: .5rem .8rem;
-						    color: $navtext;
-						    cursor: pointer;
-						    transition: all 300ms ease-in-out, transform 100ms ease-in-out;
-						    &:hover, &:active {
-						    	background-color: $navbghover;
-						    	color: $navtexthover;
-						    }
-						    &:active {
-						    	transform: scale(0.95);
-						    }
-						    &.active {
-						    	background-color: $navbgactive;
-						    	color: $navtextactive;
-						    }
-						}
-
-						.nav-dropdown-content {
-							visibility: hidden;
-    						opacity: 0;
-							position: absolute;
-							margin-top: .2rem;
-							padding: 1rem .5rem 1rem .5rem;
-							background-color: $navbghover;
-							min-width: 12rem;
-							box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.05);
-							z-index: 1;
-
-							$brdrd: .5rem;
-
-							border-radius: $brdrd;
-						    transition: all 200ms ease-in-out;
-
-							a {
-								padding: .5rem .8rem;
-						    	color: $navtext;
-								text-decoration: none;
-								font-family: "Inter", sans-serif;
-								font-size: .9rem;
-								display: block;
-						    	cursor: pointer;
-								// &:first-of-type {
-								// 	border-radius: $brdrd $brdrd 0 0;
-								// }
-								// &:last-of-type {
-								// 	border-radius: 0 0 $brdrd $brdrd;
-								// }
-								border-radius: $brdrd;
-								&:hover {
-						    		background-color: $navbghover;
-						    		color: $navtexthover;
-								}
-
-								&.link-external {
-									&::after {
-									  	content: "";
-									  	margin-left: .5rem;
-									  	display: inline-block;
-									  	height: .9rem;
-									  	width: .9rem;
-									  	color: $navtext;
-										background-image: url("img/icons/launch_black_24dp.svg");
-										background-repeat: no-repeat;
-										background-size: 1rem 1rem;
-										opacity: .7;
-									}
-								}
-							}
-					
-							a:hover {
-					    		background-color: $navbgactive;
-					    		color: $navtextactive;
-							}
-
-							h3 {
-								font-size: .8rem;
-								font-family: "Inter", sans-serif;
-								font-weight: 700;
-								color: $navtext;
-								margin: 1rem 0 .4rem .8rem;
-								&:first-of-type {
-									margin-top: 0rem;
-								}
-								text-transform: uppercase;
-							}
-
-						}
-
-						&:hover .nav-dropdown-content {
-							visibility: visible;
-							opacity: 1;
-						}
-
-						&:hover .nav-button {
-						    background-color: $navbghover;
-						    color: $navtexthover;
-						}
-					}
-				}
-
-		    	@media (max-width: 50rem), (max-device-width: 40rem) {
-					flex-direction: column;
-					align-items: flex-start;
-					#logo-wrapper {
-						margin-right: auto;
-					}
-					#nav-button-wrapper {
-						margin-left: -0.5rem;
-						.nav-button {
-							padding: .5rem .5rem;
-						}
-					}
-					font-size: 1.0rem;
-					max-width: 100%;
-				}
-			}
-		}
-	}
-
-	#logo {
-		height: 3rem;
-		display: flex;
-		align-items: center;
-		user-select: none;
-		cursor: pointer;
-		svg {
-			width: 3rem;
-			#grad-s {
-				.grad-s-start {
-					stop-color: rgba(255,106,0,1);
-				}
-				.grad-s-end {
-					stop-color: rgba(176,30,233,1);
-				}
-			}
-			#grad-c {
-				.grad-c-start {
-					stop-color: rgba(176,30,233,1);
-				}
-				.grad-c-end {
-					stop-color: rgba(0,255,188,1);
-				}
-			}
-			path {
-				transition: all 500ms ease-in-out;
-				&.logo-s {
-					fill: url(#grad-s);
-				}
-				&.logo-c {
-					fill: url(#grad-c);
-				}
-				&.logo-s-0 {
-					opacity: 1;
-				}
-				&.logo-c-0 {
-					opacity: 1;
-				}
-			}
-		}
-		&:hover, &:active {
-			.logo-s-0 {
-				opacity: 0 !important;
-			}
-			.logo-c-0 {
-				opacity: 0 !important;
-			}
-		}
 	}
 
 
