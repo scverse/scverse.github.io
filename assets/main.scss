@@ -50,6 +50,11 @@ $contentwidthwide: 92%;
     src: url("fonts/Inter/Inter-VariableFont_slnt,wght.ttf");
 }
 
+// Had underlines poking out around images
+.contributor-list > a {
+	text-decoration: none;
+}
+
 @mixin person-chip {
 	background-color: $tilebg;
 	text-decoration: none;
