@@ -60,13 +60,18 @@
                 <p></p>
                 <div class="contributor-list pt-3">
                   {{ range $person := .members }}
-                  <a href={{ .url }} data-bs-toggle="tooltip" title={{ .name }} target="_blank">
-                    <img 
+                  <a href={{ .url }}>
+                    <img
                       src={{ .img }}
-                      alt={{ .name }}
                       class="border rounded-circle me-1 mb-1" 
                       height=100
                       width=100
+
+                      title={{ .name }}
+                      data-bs-toggle="tooltip"
+                      target="_blank"
+
+                      alt={{ .name }}
                     >
                   </a>
                   {{ end }}
