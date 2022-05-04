@@ -84,6 +84,35 @@ html, body {
   	}
 }
 
+// Nav bar
+
+.nav-buttons > li {
+	padding: .5rem .5rem;
+}
+
+.nav-buttons > li > a{
+	font-family: "Inter", sans-serif;
+	color: $navtext !important;
+
+	padding: .5rem .8rem !important;
+	border-radius: .5rem;
+	transition: all 300ms ease-in-out, transform 100ms ease-in-out;
+	&:hover, &:active {
+		background-color: $navbghover;
+		color: $navtexthover;
+	}
+
+	&:hover {
+		color: $navtexthover;
+	}
+
+	&.active {
+		transform: scale(0.95);
+		background-color: $navbgactive;
+		color: $navtextactive;
+	}
+}
+
 .nav-button-hl {
 	color: white;
 	background-color: #4557c4;
@@ -108,9 +137,12 @@ html, body {
 }
 
 .dropdown:hover .dropdown-menu {
+	transition: background 200ms ease-out;
 	display: block;
 	margin-top: 0; // remove the gap so it doesn't close
 }
+
+// Custom
 
 body {
     margin: 0;
