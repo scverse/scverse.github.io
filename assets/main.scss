@@ -41,7 +41,7 @@ $footertextmuted: #AAAAAA;
 $postlinktext: #333333;
 
 $maxwidth: 800px;
-$maxwidthwide: 1000px;
+$maxwidthwide: 1400px;
 $contentwidth: 80%;
 $contentwidthwide: 92%;
 
@@ -96,55 +96,64 @@ body {
 			align-items: center;
 			align-self: center;
 			#cover {
-				max-width: $maxwidth;
-				width: $contentwidth;
+				max-width: $maxwidthwide;
+				width: $contentwidthwide;
 				@media (max-device-width: 40rem) {
 					max-width: $maxwidthwide;
 					width: $contentwidthwide;
 				}
 				#cover-heading {
-					margin-top: 40%;
+					margin-top: 10%;
 					@media (max-device-width: 40rem) {
-						margin-top: 20%;
+						margin-top: 10%;
+						max-height: 20rem;
+					}
+					max-width: $maxwidthwide;
+					border-radius: 1rem;
+					background: linear-gradient(90deg, #F0F0F0, #F0F0F0);
+					padding: 6rem 4rem;
+					@media (max-device-width: 40rem) {
+						padding: 2rem 1rem;
 					}
 					#title {
-						display: flex;
-						flex-direction: row;
-						align-items: center;
-						gap: 2rem;
 						#title-text {
-							height: 7rem;
 							#title-name {
-								display: block;
-								font-size: 5rem;
+								font-size: 6rem;
 								font-family: "Inter", sans-serif;
-								font-weight: 500;
-								line-height: 5rem;
-								letter-spacing: .4rem;
+								font-weight: 900;
+								letter-spacing: .2rem;
 							  	@media (max-device-width: 40rem) {
 							  		letter-spacing: .1rem;
-							  		font-size: 4rem;
+							  		font-size: 2rem;
 							  	}
 							}
 							#title-desc {
 								display: block;
 								font-family: "Inter", sans-serif;
-								font-size: 1.1rem;
-								color: $greydesc;
+								font-size: 1.4rem;
+								color: $greyheader;
+							  	@media (max-device-width: 40rem) {
+							  		font-size: 0.8rem;
+							  	}
 							}
+						}
+					}
+					#cover-image {
+						img {
 						}
 					}
 					#badges {
 						display: flex;
 						flex-wrap: wrap;
 						gap: 1rem;
-						margin: 1rem 0;
+						margin: 4rem 0;
 					  	@media (max-device-width: 40rem) {
+					  		margin: 1rem 0;
+					  		padding: 0;
 					  		width: 100%;
 					  		a {
 					  			flex: 1;
 					  			img {
-					  				width: 90%;
 					  			}
 					  		}
 					  	}
@@ -152,7 +161,10 @@ body {
 				}
 
 				section {
-					margin-top: 20%;
+					max-width: $maxwidth;
+					width: $contentwidth;
+					margin: 0 auto;
+					margin-top: 5%;
 					.section-heading {
 						font-size: 1.3rem;
 						text-transform: uppercase;
@@ -173,7 +185,7 @@ body {
 							font-size: 1.2rem;
 							line-height: 1.1rem;
 						}
-						margin-top: 2rem;
+						margin-top: 1rem;
 						.tiles-list {
 				     		display: grid;
 
@@ -223,48 +235,40 @@ body {
 					}
 				}
 				#projects {
-					margin-top: 40%;
+					margin-top: 15%;
 					#projects-list {
-  						grid-auto-flow: row;
-  						grid-template-columns: 1fr 1fr;
-				    	gap: 2rem;
-				    	margin-bottom: 2rem;
-				    	@media (max-width: 50rem), (max-device-width: 40rem) {
-							grid-template-columns: 1fr;
-						}
-						.project-tile {
+						.card {
 			    			display: flex;
 			    			flex-direction: row;
-			    			padding: 1rem;
-			    			height: 7rem;
 			    			align-items: center;
 			    			background-color: $tilebg;
-			    			color: $tiletext;
-			    			transition: all 200ms ease-in-out;
 			    			border-radius: .5rem;
+			    			transition: all 200ms ease-in-out;
 			    			.project-icon {
 			    				transition: all 200ms ease-in-out;
-			    				margin: 1rem;
+			    				align-items: center;
+			    				justify-content: center;
 			    				padding: auto;
 			    				display: flex;
-			    				align-items: center;
+			    				min-width: 6rem;
+			    				max-width: 6rem;
+							  	@media (max-device-width: 40rem) {
+							  		display: none;
+							  	}
+
 			    				img {
-			    					width: 4rem;
+			    					max-width: 4rem;
 			    					height: 4rem;
 			    				}
 			    			}
 			    			.project-text {
-			    				margin-left: 1rem;
 				    			.project-name {
-				    				font-size: 1.2rem;
-				    				font-family: sans-serif;
-				    				display: block;
+				    				font-family: "Inter", sans-serif;
 				    				color: $tiletext;
 				    			}
 				    			.project-desc {
-				    				font-size: 1.0rem;
-				    				font-family: sans-serif;
-				    				display: block;
+				    				font-family: "Inter", sans-serif;
+				    				font-size: 0.9rem;
 				    				color: $tiletext2;
 				    			}
 			    			}
@@ -272,8 +276,9 @@ body {
 			    				cursor: pointer;
 			    				background-color: $tilebg2;
 			    				.project-icon {
-			    					transform: scale(1.03);
+			    					transform: scale(1.1);
 			    				}
+			    				transform: scale(1.05);
 			    			}
 			    			&#anndata-tile:hover {
 			    				background-color: rgba($anndataorange, .2);
@@ -917,7 +922,7 @@ body {
 					.project-text {
 						.project-name {
 							font-family: "Inter", sans-serif;
-							font-size: 1.5rem;
+							font-size: 2.0rem;
 							font-weight: 800;
 							color: black;
 							display: block;
