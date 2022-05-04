@@ -31,7 +31,10 @@ def get_contributors() -> list[dict]:
     g = Github(os.environ["GITHUB_TOKEN"])
 
     members = list(g.get_organization("scverse").get_members())
-    members.extend([g.get_user(user) for user in extra_users])
+    for user in extra_users:
+        member = g.get_user(user)
+        if member not in members:
+            members.append(member)
 
     results = []
     for m in members:

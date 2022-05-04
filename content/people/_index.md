@@ -285,12 +285,6 @@ preface = "For people participaing in and interacting with the consortium, there
 
 
 [[contributors.members]]
-    name = "Pierre Boyeau"
-    url = "https://github.com/PierreBoyeau"
-    img = "https://avatars.githubusercontent.com/u/23222597?v=4"
-
-
-[[contributors.members]]
     name = "Romain Lopez"
     url = "https://github.com/romain-lopez"
     img = "https://avatars.githubusercontent.com/u/21249167?v=4"
