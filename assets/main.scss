@@ -50,6 +50,62 @@ $contentwidthwide: 92%;
     src: url("fonts/Inter/Inter-VariableFont_slnt,wght.ttf");
 }
 
+// Global
+
+// TODO: Should this be necessary?
+p {
+	font-family: "Inter", Open Sans, sans-serif;
+}
+
+h1 {
+	font-weight: 800;
+}
+
+// Main page
+.section-paragraph {
+	font-size: 1.1rem;
+	margin-bottom: 1rem;
+	strong {
+		font-weight: 475;
+		font-size: 1.2rem;
+	}
+}
+
+a .more {
+	display: inline-block;
+	margin: 0;
+	font-size: .8rem;
+	font-weight: 800;
+	font-family: "Inter", sans-serif;
+	color: $tiletext2;
+	transition: all 200ms ease-in-out;
+	padding: 0.5rem;
+	margin-left: -0.5rem;
+	border-radius: 0.5rem;
+
+	&:after {
+		content: "\232A";
+		font-size: .6rem;
+		transition: all 200ms ease-in-out;
+		padding-left: .2rem;
+	}
+
+	&:hover {
+		color: $tiletext3;
+		background-color: $tilebg;
+
+		&:after {
+			padding-left: .4rem;
+		}
+	}
+
+	@media (max-device-width: 40rem) {
+		background-color: $tilebg4;
+	}
+}
+
+// People
+
 // Had underlines poking out around images
 .contributor-list > a {
 	text-decoration: none;
@@ -131,7 +187,6 @@ html, body {
 	line-height: 1.5rem;
 	font-family: "Inter", sans-serif;
 	font-weight: 500;
-	line-height: 5rem;
 	letter-spacing: .15rem;
 	margin-left: 1rem;
 }
@@ -216,11 +271,6 @@ body {
 					  		margin: 1rem 0;
 					  		padding: 0;
 					  		width: 100%;
-					  		a {
-					  			flex: 1;
-					  			img {
-					  			}
-					  		}
 					  	}
 					}
 				}
@@ -243,58 +293,11 @@ body {
 						}
 					}
 					.section-content {
-						p, div {
-							font-family: "Inter", Open Sans, sans-serif;
-						}
-						span.backticked {
-							font-size: 1.2rem;
-							line-height: 1.1rem;
-						}
 						margin-top: 1rem;
 						.tiles-list {
 				     		display: grid;
-
 							a {
 								text-decoration: none;
-							}
-						}
-						.chips-list {
-							a {
-								text-decoration: none;
-								color: inherit;
-							}
-						}
-		    			a {
-		    				text-decoration: none;
-		    				color: inherit;
-		    			
-							.more {
-								display: inline-block;
-								margin: 0;
-								font-size: .8rem;
-								font-weight: 800;
-								font-family: "Inter", sans-serif;
-								color: $tiletext2;
-								transition: all 200ms ease-in-out;
-			    				padding: 0.5rem;
-			    				margin-left: -0.5rem;
-				    			border-radius: 0.5rem;
-								&:after {
-									content: "\232A";
-									font-size: .6rem;
-									transition: all 200ms ease-in-out;
-									padding-left: .2rem;
-								}
-				    			&:hover {
-				    				color: $tiletext3;
-				    				background-color: $tilebg;
-				    				&:after {
-				    					padding-left: .4rem;
-				    				}
-				    			}
-							  	@media (max-device-width: 40rem) {
-							  		background-color: $tilebg4;
-							  	}
 							}
 						}
 					}
@@ -370,16 +373,10 @@ body {
 				#team {
 					.section-content {
 						.section-paragraph {
-							margin-bottom: 1rem;
 							#team-list {
 								display: inline;
 							}
-							p, & {
-								font-size: 1.1rem;
-							}
 							a {
-								color: inherit;
-								text-decoration: none;
 								border-bottom: 1px solid $linkunderline;
 								transition: border 200ms, color 200ms;
 							
@@ -392,9 +389,6 @@ body {
 					}
 				}
 				#references {
-					p {
-						font-size: 1.1rem;
-					}
 					#refs-list {
 						.ref-tile {
 							display: flex;
@@ -586,11 +580,6 @@ body {
 		gap: 1rem;
 	}
 	font-family: "Inter", sans-serif;
-	h1 {
-		font-size: 2.5rem;
-		font-family: "Inter", sans-serif;
-		font-weight: 800;
-	}
 	&.items-list {
 		a {
 			text-decoration: none;
@@ -654,15 +643,8 @@ body {
 			font-size: 1.0rem;
 		}
 	}
+	// TODO: Much of this does nothing AFAICT
 	.post {
-		h1 {
-			margin-bottom: 0;
-		}
-		span {
-			font-size: 1.0rem;
-			color: $greydesc;
-			line-height: 1.5rem;
-		}
 		.post-subtitle {
 			display: flex;
 			flex-direction: row;
@@ -670,6 +652,7 @@ body {
 			justify-content: flex-start;
 			line-height: 1.5rem;
 			gap: .5rem;
+			color: $greydesc;
 			.rss-icon {
 				width: 1rem;
 				height: auto;
@@ -841,56 +824,25 @@ body {
 		.tutorial-item {
 			$cardborder: 1rem;
 			$cardpad: 1.5rem;
-			// margin-left: -$cardborder;
-
-			flex: 1 1;
-			max-width: 100%;
-    		@media (max-width: 50rem), (max-device-width: 40rem) {
-				max-width: 100%;
-				width: 100%;
-				flex: auto;
-			}
-
-			min-height: 10rem;
 			border-radius: 1rem;
+			background-color: #FAFAFA;
+
 			transition: all 200ms ease-in-out;
 
-			display: flex;
-			flex-direction: column;
-			align-self: flex-start;
 			justify-content: flex-end;
-
-			background-color: #FAFAFA;
 
 			a {
 				color: $navtext;
-			    display: block;
-			    height: 100%;
-			    width: 100%;
 			    text-decoration: none;
 			}
 
 			img {
-				border-radius: 1rem;
-				border: 1px solid #EEEEEE;
+				// border-radius: 1rem;
+				// border: 1px solid #EEEEEE;
 				width: 90%;
 				height: 16rem;
 				object-fit: contain;
     			margin: $cardpad $cardborder .2rem $cardborder;
-    			transition: all 200ms ease-in-out;
-			}
-
-			.tutorial-img-placeholder {
-				width: 1rem;
-				height: 5rem;
-			}
-
-			p {
-				font-weight: 700;
-				font-size: 1rem;
-				margin: 0;
-				padding: .2rem $cardborder $cardpad $cardborder;
-    			transition: all 200ms ease-in-out;
 			}
 
 			&:hover, &:active {
@@ -901,9 +853,6 @@ body {
 					color: black;
 					// transform: scale(1.02);
 					// padding-top: .4rem;
-				}
-				img {
-					// transform: scale(1.02);
 				}
 			}
 		}
