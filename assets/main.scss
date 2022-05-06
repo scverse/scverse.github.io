@@ -16,6 +16,12 @@ $scanpymandy: #E05559;
 $mudatagreen: #4AB274;
 $muonaquamarine: #6CF1A1;
 
+$github-black: #171B21;
+$twitter-blue: #469BE5;
+$discourse-yellow: #F7F0B1;
+$youtube-red: #E03021;
+$zulip-blue: #62A3F0;
+
 $overline: #E0E0E0;
 $linkunderline: #AAAAAA;
 $backtickbg: #F9F9F9;
@@ -35,13 +41,18 @@ $footertextmuted: #AAAAAA;
 $postlinktext: #333333;
 
 $maxwidth: 800px;
-$maxwidthwide: 1000px;
+$maxwidthwide: 1400px;
 $contentwidth: 80%;
 $contentwidthwide: 92%;
 
 @font-face {
-    font-family: "Nunito";
-    src: url("fonts/Nunito/Nunito-VariableFont_wght.ttf");
+    font-family: "Inter";
+    src: url("fonts/Inter/Inter-VariableFont_slnt,wght.ttf");
+}
+
+// Had underlines poking out around images
+.contributor-list > a {
+	text-decoration: none;
 }
 
 @mixin person-chip {
@@ -58,6 +69,7 @@ $contentwidthwide: 92%;
 	}
 }
 
+
 html, body {
 	width: 100%;
     height: 100%;
@@ -68,9 +80,70 @@ html, body {
   	-moz-osx-font-smoothing: grayscale;
 
   	@media (max-device-width: 40rem) {
-  		font-size: 3rem;
+  		font-size: 2.2rem;
   	}
 }
+
+// Nav bar
+
+.nav-buttons > li {
+	padding: .5rem .5rem;
+}
+
+.nav-buttons > li > a{
+	font-family: "Inter", sans-serif;
+	color: $navtext;
+
+	padding: .5rem .8rem !important;
+	border-radius: .5rem;
+	transition: all 300ms ease-in-out, transform 100ms ease-in-out;
+	&:hover, &:active {
+		background-color: $navbghover;
+		color: $navtexthover;
+	}
+
+	&:hover {
+		color: $navtexthover;
+	}
+
+	&.active {
+		transform: scale(0.95);
+		background-color: $navbgactive;
+		color: $navtextactive;
+	}
+}
+
+#join-button {
+	color: white;
+	background-color: #4557c4;
+	background: linear-gradient(135deg, #78CBD9, #2D719D);
+	transition: background 200ms ease-out;
+
+	&:hover {
+		background: linear-gradient(135deg, #4FB9DF, #4557c4);
+		color: white;
+	}
+}
+
+.logo-name {
+	color: black;
+	font-size: 1.5rem;
+	line-height: 1.5rem;
+	font-family: "Inter", sans-serif;
+	font-weight: 500;
+	line-height: 5rem;
+	letter-spacing: .15rem;
+	margin-left: 1rem;
+}
+
+.dropdown:hover .dropdown-menu {
+	transition: background 200ms ease-out;
+	display: block;
+	margin-top: 0; // remove the gap so it doesn't close
+}
+
+// Custom
+
 body {
     margin: 0;
 
@@ -88,55 +161,64 @@ body {
 			align-items: center;
 			align-self: center;
 			#cover {
-				max-width: $maxwidth;
-				width: $contentwidth;
+				max-width: $maxwidthwide;
+				width: $contentwidthwide;
 				@media (max-device-width: 40rem) {
 					max-width: $maxwidthwide;
 					width: $contentwidthwide;
 				}
 				#cover-heading {
-					margin-top: 40%;
+					margin-top: 10%;
 					@media (max-device-width: 40rem) {
-						margin-top: 20%;
+						margin-top: 10%;
+						max-height: 20rem;
+					}
+					max-width: $maxwidthwide;
+					border-radius: 1rem;
+					background: linear-gradient(90deg, #F0F0F0, #F0F0F0);
+					padding: 6rem 4rem;
+					@media (max-device-width: 40rem) {
+						padding: 2rem 1rem;
 					}
 					#title {
-						display: flex;
-						flex-direction: row;
-						align-items: center;
-						gap: 2rem;
 						#title-text {
-							height: 7rem;
 							#title-name {
-								display: block;
-								font-size: 5rem;
-								font-family: "Nunito", sans-serif;
-								font-weight: 800;
-								line-height: 5rem;
-								letter-spacing: .4rem;
+								font-size: 6rem;
+								font-family: "Inter", sans-serif;
+								font-weight: 900;
+								letter-spacing: .2rem;
 							  	@media (max-device-width: 40rem) {
 							  		letter-spacing: .1rem;
-							  		font-size: 4rem;
+							  		font-size: 2rem;
 							  	}
 							}
 							#title-desc {
 								display: block;
-								font-family: sans-serif;
-								font-size: 1.1rem;
-								color: $greydesc;
+								font-family: "Inter", sans-serif;
+								font-size: 1.4rem;
+								color: $greyheader;
+							  	@media (max-device-width: 40rem) {
+							  		font-size: 0.8rem;
+							  	}
 							}
+						}
+					}
+					#cover-image {
+						img {
 						}
 					}
 					#badges {
 						display: flex;
 						flex-wrap: wrap;
 						gap: 1rem;
-						margin: 1rem 0;
+						margin: 4rem 0;
 					  	@media (max-device-width: 40rem) {
+					  		margin: 1rem 0;
+					  		padding: 0;
 					  		width: 100%;
 					  		a {
 					  			flex: 1;
 					  			img {
-					  				width: 90%;
 					  			}
 					  		}
 					  	}
@@ -144,13 +226,16 @@ body {
 				}
 
 				section {
-					margin-top: 20%;
+					max-width: $maxwidth;
+					width: $contentwidth;
+					margin: 0 auto;
+					margin-top: 5%;
 					.section-heading {
 						font-size: 1.3rem;
 						text-transform: uppercase;
 						color: $greyheader;
 						font-weight: 700;
-						font-family: sans-serif;
+						font-family: "Inter", sans-serif;
 						transition: all 200ms ease-in-out;
 						&.clickable-heading:hover {
 							color: $greyheaderhover;
@@ -159,13 +244,13 @@ body {
 					}
 					.section-content {
 						p, div {
-							font-family: Open Sans, sans-serif;
+							font-family: "Inter", Open Sans, sans-serif;
 						}
 						span.backticked {
 							font-size: 1.2rem;
 							line-height: 1.1rem;
 						}
-						margin-top: 2rem;
+						margin-top: 1rem;
 						.tiles-list {
 				     		display: grid;
 
@@ -188,7 +273,7 @@ body {
 								margin: 0;
 								font-size: .8rem;
 								font-weight: 800;
-								font-family: sans-serif;
+								font-family: "Inter", sans-serif;
 								color: $tiletext2;
 								transition: all 200ms ease-in-out;
 			    				padding: 0.5rem;
@@ -215,48 +300,40 @@ body {
 					}
 				}
 				#projects {
-					margin-top: 40%;
+					margin-top: 15%;
 					#projects-list {
-  						grid-auto-flow: row;
-  						grid-template-columns: 1fr 1fr;
-				    	gap: 2rem;
-				    	margin-bottom: 2rem;
-				    	@media (max-width: 50rem), (max-device-width: 40rem) {
-							grid-template-columns: 1fr;
-						}
-						.project-tile {
+						.card {
 			    			display: flex;
 			    			flex-direction: row;
-			    			padding: 1rem;
-			    			height: 5rem;
 			    			align-items: center;
 			    			background-color: $tilebg;
-			    			color: $tiletext;
-			    			transition: all 200ms ease-in-out;
 			    			border-radius: .5rem;
+			    			transition: all 200ms ease-in-out;
 			    			.project-icon {
 			    				transition: all 200ms ease-in-out;
-			    				margin: 1rem;
+			    				align-items: center;
+			    				justify-content: center;
 			    				padding: auto;
 			    				display: flex;
-			    				align-items: center;
+			    				min-width: 6rem;
+			    				max-width: 6rem;
+							  	@media (max-device-width: 40rem) {
+							  		display: none;
+							  	}
+
 			    				img {
-			    					width: 4rem;
+			    					max-width: 4rem;
 			    					height: 4rem;
 			    				}
 			    			}
 			    			.project-text {
-			    				margin-left: 1rem;
 				    			.project-name {
-				    				font-size: 1.2rem;
-				    				font-family: sans-serif;
-				    				display: block;
+				    				font-family: "Inter", sans-serif;
 				    				color: $tiletext;
 				    			}
 				    			.project-desc {
-				    				font-size: 1.0rem;
-				    				font-family: sans-serif;
-				    				display: block;
+				    				font-family: "Inter", sans-serif;
+				    				font-size: 0.9rem;
 				    				color: $tiletext2;
 				    			}
 			    			}
@@ -264,8 +341,9 @@ body {
 			    				cursor: pointer;
 			    				background-color: $tilebg2;
 			    				.project-icon {
-			    					transform: scale(1.03);
+			    					transform: scale(1.1);
 			    				}
+			    				transform: scale(1.05);
 			    			}
 			    			&#anndata-tile:hover {
 			    				background-color: rgba($anndataorange, .2);
@@ -341,7 +419,7 @@ body {
 		}
 
 		span.backticked {
-			font-family: Nunito;
+			font-family: Inter, sans-serif;
 		    color: $backticktext;
 		    font-weight: 500;
 		}
@@ -377,137 +455,12 @@ body {
 			color: white;
 			font-weight: 800;
 			text-transform: uppercase;
-			font-family: sans-serif;
+			font-family: "Inter", sans-serif;
 			font-size: 1.2rem;
 			padding: 1rem 0;
 			margin-bottom: 1rem;
 		}
 
-		#header-content {
-			display: flex;
-			flex-direction: column;
-			max-width: $maxwidth;
-			width: $contentwidth;
-			@media (max-device-width: 40rem) {
-				max-width: $maxwidthwide;
-				width: $contentwidthwide;
-			}
-			#nav {
-				display: flex;
-				flex-direction: row;
-				gap: 1rem;
-				align-items: center;
-
-				#logo-wrapper {
-					margin-right: auto;
-				}
-
-				a {
-					text-decoration: none;
-				}
-
-				#nav-button-wrapper {
-					display: flex;
-					flex-direction: row;
-					flex-wrap: wrap;
-					gap: 1rem;
-					align-items: center;
-					.nav-button {
-						font-family: sans-serif;
-						background-color: $navbg;
-						border-radius: .5rem;
-					 	padding: .5rem .8rem;
-					    color: $navtext;
-					    cursor: pointer;
-					    transition: all 500ms ease-in-out;
-					    &:hover, &:active {
-					    	background-color: $navbghover;
-					    	color: $navtexthover;
-					    }
-					    &.active {
-					    	background-color: $navbgactive;
-					    	color: $navtextactive;
-					    }
-					}
-				}
-
-		    	@media (max-width: 50rem), (max-device-width: 40rem) {
-					flex-direction: column;
-					align-items: flex-start;
-					#logo-wrapper {
-						margin-right: auto;
-					}
-					#nav-button-wrapper {
-						margin-left: -0.5rem;
-						.nav-button {
-							padding: .5rem .5rem;
-						}
-					}
-					font-size: 1.0rem;
-					max-width: 100%;
-				}
-			}
-		}
-	}
-
-	#logo {
-		height: 3rem;
-		display: flex;
-		align-items: center;
-		user-select: none;
-		cursor: pointer;
-		svg {
-			width: 3rem;
-			#grad-s {
-				.grad-s-start {
-					stop-color: rgba(255,106,0,1);
-				}
-				.grad-s-end {
-					stop-color: rgba(176,30,233,1);
-				}
-			}
-			#grad-c {
-				.grad-c-start {
-					stop-color: rgba(176,30,233,1);
-				}
-				.grad-c-end {
-					stop-color: rgba(0,255,188,1);
-				}
-			}
-			path {
-				transition: all 500ms ease-in-out;
-				&.logo-s {
-					fill: url(#grad-s);
-				}
-				&.logo-c {
-					fill: url(#grad-c);
-				}
-				&.logo-s-0 {
-					opacity: 1;
-				}
-				&.logo-c-0 {
-					opacity: 1;
-				}
-			}
-		}
-		&:hover, &:active {
-			.logo-s-0 {
-				opacity: 0 !important;
-			}
-			.logo-c-0 {
-				opacity: 0 !important;
-			}
-		}
-		.logo-name {
-			color: black;
-			font-size: 1.5rem;
-			line-height: 1.5rem;
-			font-family: "Nunito", sans-serif;
-			font-weight: 600;
-			line-height: 5rem;
-			letter-spacing: .2rem;
-			margin-left: 1rem;
-		}
 	}
 
 
@@ -538,7 +491,7 @@ body {
 
 				a, p {
 					margin: .2rem 0;
-					font-family: sans-serif;
+					font-family: "Inter", sans-serif;
 					font-weight: 500;
 					font-size: 1rem;
 				  	@media (max-device-width: 40rem) {
@@ -586,6 +539,40 @@ body {
 	}
 }
 
+#join-content {
+	.card {
+		h5 {
+			font-family: "Inter", sans-serif;
+			font-weight: 700;
+		}
+		transition: all 200ms ease-in-out;
+		color: navtext;
+		&:hover {
+			background: #78CBD9 !important;
+			transform: scale(1.02);
+		}
+		&#github:hover {
+			color: white;
+			background-color: $github-black !important;
+		}
+		&#twitter:hover {
+			color: white;
+			background-color: $twitter-blue !important;
+		}
+		&#zulip:hover {
+			color: white;
+			background-color: $zulip-blue !important;
+		}
+		&#discourse:hover {
+			background-color: $discourse-yellow !important;
+		}
+		&#youtube:hover {
+			color: white;
+			background-color: $youtube-red !important;
+		}
+	}
+}
+
 
 #page-content {
 	display: flex;
@@ -598,10 +585,10 @@ body {
 		width: $contentwidthwide;
 		gap: 1rem;
 	}
-	font-family: sans-serif;
+	font-family: "Inter", sans-serif;
 	h1 {
 		font-size: 2.5rem;
-		font-family: sans-serif;
+		font-family: "Inter", sans-serif;
 		font-weight: 800;
 	}
 	&.items-list {
@@ -615,7 +602,7 @@ body {
 	.page-item {
 		display: flex;
 		flex-direction: row;
-		font-family: sans-serif;
+		font-family: "Inter", sans-serif;
 		
     	@media (max-device-width: 40rem) {
 			flex-direction: column;
@@ -709,16 +696,20 @@ body {
 				font-size: 1.2rem;
 				line-height: 1.1rem;
 			}
-			p, div {
-				font-family: Open Sans, sans-serif;
+			p, div, ul, ol {
+				font-family: "Inter", Open Sans, sans-serif;
+			}
+	    	@media (max-device-width: 40rem) {
+				font-size: 1rem;
+				line-height: 1.8rem;
 			}
 		}
 		h2, h3, h4 {
-			font-family: sans-serif;
+			font-family: "Inter", sans-serif;
 			margin: 4rem 0 0 0;
 		}
 		a {
-			font-family: sans-serif;
+			font-family: "Inter", sans-serif;
 			color: $postlinktext;
 			&:hover {
 				color: black;
@@ -772,8 +763,8 @@ body {
 					// box-shadow: 0 .2rem .2rem .05rem rgba(0, 0, 0, .3);
 					.project-text {
 						.project-name {
-							font-family: sans-serif;
-							font-size: 1.3rem;
+							font-family: "Inter", sans-serif;
+							font-size: 2.0rem;
 							font-weight: 800;
 							color: black;
 							display: block;
@@ -783,6 +774,10 @@ body {
 							font-size: 1.1rem;
 							margin: 1rem 0;
 							color: $tiletext;
+					    	@media (max-device-width: 40rem) {
+								font-size: 1rem;
+								line-height: 1.8rem;
+							}
 						}
 					}
 				}
@@ -828,7 +823,7 @@ body {
 // Specific to /tutorials
 
 #tutorials-content {
-	h2 {
+	h1, h2 {
 		margin-bottom: 1rem !important;
 	}
 	#tutorials-list {
@@ -933,7 +928,7 @@ body {
 			.person-chip {
 				@include person-chip;
 				font-size: 1.0rem;
-				font-family: sans-serif;
+				font-family: "Inter", sans-serif;
 			}
 			a {
 				text-decoration: none;

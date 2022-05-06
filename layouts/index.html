@@ -1,46 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    {{ partial "head" . }}
-  </head>
-  <body>
-  	<header>
-  		{{ partial "header" . }}
-  	</header>
-    <div id="wrapper">
-      <div id="content">
-        <div id="cover">
-				  <div id="cover-heading">
-					  <div id="title">
-					  	<div id="title-text">
-						    <span id="title-name">{{ .Title }}</span>
-						    <span id="title-desc">{{ .Description }}</span>
-						   </div>
-					  </div>
-					  <div id="badges">
-					  	<a href="https://github.com/scverse" target="_blank">
-					  		<img src="https://img.shields.io/badge/GitHub-100000?logo=github&logoColor=white&label=%40scverse"/>
-					  	</a>
-					  	<a href="https://discourse.scverse.org/" target="_blank">
-					  		<img src="https://img.shields.io/discourse/posts?color=yellow&logo=discourse&server=https%3A%2F%2Fdiscourse.scverse.org"/>
-					  	</a>
-					  	<a href="https://twitter.com/scanpy_team" target="_blank">
-					  		<img src="https://img.shields.io/twitter/follow/scanpy_team?label=%40scverse&logoColor=black&style=social"/>
-					  	</a>
-					  	<a href="https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA" target="_blank">
-					  		<img src="https://img.shields.io/youtube/channel/views/UCpsvsIAW3R5OdftJKKuLNMA?label=%40scverse&style=social"/>
-					  	</a>
-					  </div>
-				  </div>
-				  {{ partial "main/projects" . }}
-				  {{ partial "main/mission" . }}
-				  {{ partial "main/team" . }}
-					{{ partial "main/references" . }}
-        </div>
-      </div>
-    </div>
+<head>
+	{{ partial "head" . }}
+</head>
+<body>
+	<header>
+	{{ partial "header" . }}
+	</header>
+	<div id="wrapper">
+		<div id="content">
+			<div id="cover" class="mw-10">
+				{{ partial "main/cover" . }}
+				{{ partial "main/projects" . }}
+				{{ partial "main/mission" . }}
+				{{ partial "main/team" . }}
+				{{ partial "main/references" . }}
+			</div>
+		</div>
+	</div>
     <!-- {{ partial "footer" . }} -->
-    <footer>
+	<footer>
 		<div id="footer-content">
 		  <div class="footer-links">
 		    <p><a href="https://github.com/scverse" target="_blank">GitHub</a> | 
@@ -59,3 +38,4 @@
 		
   </body>
 </html>
+

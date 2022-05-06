@@ -4,9 +4,19 @@
     {{ partial "head" . }}
   </head>
   <body>
-    <header>
-      {{ partial "header" . }}
-    </header>
+  <header>
+	{{ partial "header" . }}
+  </header>
+
+    <script>
+      window.onload = function () {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+      }
+    </script>
+
     <div id="wrapper">
       <div id="content">
         <div id="page-content">
@@ -40,7 +50,37 @@
               {{ end }}
               {{ end }}
             {{ end }}
+            {{ with .Params.contributors }}
+              <div class="team">
+                <h3>{{ .name }}</h3>
+                {{ if .text }}
+                <p class="team-text">
+                  {{ .text | safeHTML }}
+                </p>
+                {{ end }}
+                {{ if .members }}
+                <p></p>
+                <div class="contributor-list pt-3">
+                  {{ range $person := .members }}
+                  <a href={{ .url }}>
+                    <img
+                      src={{ .img }}
+                      class="border rounded-circle me-1 mb-1" 
+                      height=100
+                      width=100
 
+                      title={{ .name }}
+                      data-bs-toggle="tooltip"
+                      target="_blank"
+
+                      alt={{ .name }}
+                    >
+                  </a>
+                  {{ end }}
+                </div>
+                {{ end }}
+              </div>
+            {{ end }}
             </div>
           </article>
         </div>

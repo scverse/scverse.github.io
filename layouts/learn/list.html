@@ -7,7 +7,7 @@
 
 <body>
   <header>
-    {{ partial "header" . }}
+  {{ partial "header" . }}
   </header>
   <div id="wrapper">
     <div id="content">
@@ -17,7 +17,7 @@
           <div class="post-content" id="tutorials-content">
 
             {{ if .Params.tutorials }}
-            
+            {{ .Params.tutorials_intro | markdownify }}
             {{ $tutorials := .Params.tutorials }}
             {{ range $i, $section := $tutorials }}
 

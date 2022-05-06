@@ -6,7 +6,7 @@ This is a website for [scverse.org](https://scverse.org). This version uses [Hug
 
 ### Content
 
-Most of the times, only the content has to be modified. Content is stored as [TOML](https://toml.io/en/) in `.md` files in [`/content`](/content). E.g. to modify the contents of the tutorials page, one has to look inside [`/content/tutorials/_index.md`](/content/tutorials/_index.md).
+Most of the times, only the content has to be modified. Content is stored as [TOML](https://toml.io/en/) in `.md` files in [`/content`](/content). E.g. to modify the contents of the tutorials page, one has to look inside [`/content/learn/_index.md`](/content/learn/_index.md).
 
 ### Styles
 

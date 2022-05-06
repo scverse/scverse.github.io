@@ -1,5 +1,7 @@
 <title>{{ .Title }}</title>
 {{ $styles := resources.Get "main.scss" | toCSS | minify }}
+<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/bootstrap/icons/bootstrap-icons.css">
 <link rel="stylesheet" type="text/css" href="{{ $styles.Permalink }}">
 
 <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon/apple-touch-icon.png">
@@ -14,3 +16,8 @@
 
 <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 <meta content="utf-8" http-equiv="encoding">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="/bootstrap/js/bootstrap.bundle.min.js" async></script>

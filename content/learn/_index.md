@@ -1,5 +1,12 @@
 +++
-title = "Tutorials"
+tutorials_intro = """\
+# Getting started
+
+If you are new to the scverse, get started with this set of tutorials covering basic analysis and functionality of the core pacakges.
+For more tutorials as well as API documentation and user guides, see the sites of [individual projects](/projects/).
+
+You can also find recordings of past talks and workshops on our [YouTube channel](https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA).
+"""
 
 [[tutorials]]
 	name = "Data structures"
@@ -22,6 +29,11 @@ title = "Tutorials"
 	name = "Analyzing scRNA-seq with scvi-tools"
 	url = "https://docs.scvi-tools.org/en/stable/tutorials/notebooks/api_overview.html"
 	img = "https://docs.scvi-tools.org/en/stable/_images/tutorials_notebooks_api_overview_45_1.png"
+	[[tutorials.section]]
+	name = "Integration of the Lung Cell Atlas with scANVI"
+	url = "https://docs.scvi-tools.org/en/stable/tutorials/notebooks/tabula_muris.html"
+	img = "https://docs.scvi-tools.org/en/stable/_images/tutorials_notebooks_harmonization_22_0.png"
+
 
 [[tutorials]]
 	name = "Other modalities"
@@ -30,11 +42,11 @@ title = "Tutorials"
 	url = "https://scverse.org/scirpy/latest/tutorials/tutorial_3k_tcr.html"
 	img = "https://scverse.org/scirpy/latest/_images/tutorials_tutorial_3k_tcr_86_1.png"
 	[[tutorials.section]]
-	name = "ATAC"
+	name = "ATAC-seq"
 	url = "https://muon-tutorials.readthedocs.io/en/latest/single-cell-rna-atac/pbmc10k/2-Chromatin-Accessibility-Processing.html"
 	img = "https://muon-tutorials.readthedocs.io/en/latest/_images/single-cell-rna-atac_pbmc10k_2-Chromatin-Accessibility-Processing_85_0.png"
 	[[tutorials.section]]
-	name = "CITE-seq"
+	name = "Analysis and processing of surface marker data (CITE-seq)"
 	url = "https://muon-tutorials.readthedocs.io/en/latest/cite-seq/1-CITE-seq-PBMC-5k.html"
 	img = "https://muon-tutorials.readthedocs.io/en/latest/_images/cite-seq_1-CITE-seq-PBMC-5k_38_1.png"
 
@@ -48,6 +60,10 @@ title = "Tutorials"
 	name = "Analysis of seqFISH data with squidpy"
 	url = "https://squidpy.readthedocs.io/en/stable/auto_tutorials/tutorial_seqfish.html"
 	img = "https://squidpy.readthedocs.io/en/stable/_images/sphx_glr_tutorial_seqfish_003.png"
+	[[tutorials.section]]
+	name = "Deconvolution of Visium data with DestVI"
+	url = "https://docs.scvi-tools.org/en/stable/tutorials/notebooks/DestVI_tutorial.html"
+	img = "https://docs.scvi-tools.org/en/stable/_images/tutorials_notebooks_DestVI_tutorial_36_0.png"
 
 [[tutorials]]
 	name = "scATAC-seq & scRNA-seq"
