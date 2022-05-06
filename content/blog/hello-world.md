@@ -20,7 +20,7 @@ There are already a few visible outcomes of our joint work including improved
 [mudata documentation](https://mudata.readthedocs.io/en/latest/). Additionally, 
 [scvi-tools is now using MuData](https://github.com/scverse/scvi-tools/pull/1444) for the representation of multimodal data. 
 [Scanpy has gained new workshop notebooks](https://github.com/scverse/scanpy-tutorials/pull/52), and, moreover, we have started 
-[a new page with tutorials for scverse libraries](https://scverse.org/tutorials/).
+[a collection of learning resources for scverse libraries](https://scverse.org/learn/).
 
 ## Who is a part of scverse?
 
