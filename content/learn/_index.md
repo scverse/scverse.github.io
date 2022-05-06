@@ -1,7 +1,7 @@
 +++
-tutorials_intro = """\
-# Getting started
+title = "Getting Started"
 
+tutorials_intro = """\
 If you are new to the scverse, get started with this set of tutorials covering basic analysis and functionality of the core pacakges.
 For more tutorials as well as API documentation and user guides, see the sites of [individual projects](/projects/).
 
@@ -97,5 +97,6 @@ You can also find recordings of past talks and workshops on our [YouTube channel
 	[[tutorials.section]]
 	name = "Combining AnnData objects"
 	url = "https://anndata.readthedocs.io/en/latest/concatenation.html"
+	# img = "..."
 
 +++

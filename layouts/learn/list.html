@@ -9,6 +9,7 @@
   <header>
   {{ partial "header" . }}
   </header>
+
   <div id="wrapper">
     <div id="content">
       <div id="page-content">
@@ -25,16 +26,16 @@
 
               <div id="tutorials-list">
                 {{ range $j, $t := $section.section}}
-                <div class="tutorial-item">
+                <div class="card tutorial-item border-0">
                   <a href="{{ $t.url }}" target="_blank">
-                    {{ if $t.img }}
-                      <img src="{{ $t.img }}"/>
-                    {{ else }}
-                      <div class="tutorial-img-placeholder">
-                      </div>
-                    {{ end }}
-                    <p>{{ $t.name }}</p>
+                  {{ if $t.img }}
+                  <img class="card-img-top" src="{{ $t.img }}" />
+                  {{ end }}
+                  <div class="card-body">
+                    <h5 class="card-title">{{ $t.name }}</h5>
+                  </div>
                   </a>
+
                 </div>
                 {{ end }}
               </div>
