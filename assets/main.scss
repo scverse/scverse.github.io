@@ -50,6 +50,12 @@ $contentwidthwide: 92%;
     src: url("fonts/Inter/Inter-VariableFont_slnt,wght.ttf");
 }
 
+// Global
+
+h1 {
+	font-weight: 800;
+}
+
 // Had underlines poking out around images
 .contributor-list > a {
 	text-decoration: none;
@@ -586,11 +592,6 @@ body {
 		gap: 1rem;
 	}
 	font-family: "Inter", sans-serif;
-	h1 {
-		font-size: 2.5rem;
-		font-family: "Inter", sans-serif;
-		font-weight: 800;
-	}
 	&.items-list {
 		a {
 			text-decoration: none;
@@ -654,15 +655,8 @@ body {
 			font-size: 1.0rem;
 		}
 	}
+	// TODO: Much of this does nothing AFAICT
 	.post {
-		h1 {
-			margin-bottom: 0;
-		}
-		span {
-			font-size: 1.0rem;
-			color: $greydesc;
-			line-height: 1.5rem;
-		}
 		.post-subtitle {
 			display: flex;
 			flex-direction: row;
@@ -670,6 +664,7 @@ body {
 			justify-content: flex-start;
 			line-height: 1.5rem;
 			gap: .5rem;
+			color: $greydesc;
 			.rss-icon {
 				width: 1rem;
 				height: auto;
