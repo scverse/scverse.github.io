@@ -13,7 +13,11 @@ Our primary experience lies in the field of computational biology with an emphas
 
 ## What are we doing?
 
-Our first priority is to build a strong and lasting community around the tools and the associated analysis. The knowledge to build and maintain our tools should be shared among many to avoid single points of failures. Therefore, we are building tooling to more easily generate scverse based packages and analyses to grow the ecosystem. Furthermore, to bring the community together we are planning workshops and hackathons which will be open to the general community. We are also hoping that a healthy scverse community will naturally guide us to develop tooling where it is the most required.
+Our first priority is to build a strong and lasting community around the core tools powering single cell analysis today.
+The knowledge to build and maintain these tools should be shared among many to avoid single points of failures.
+Therefore, we are creating open community channels, creating shared infrastructure to ease package development, and building tooling to make creation of scverse based packages easier.
+Furthermore, to bring the community together we are planning workshops and hackathons which will be open to the general community.
+As we grow, we are hoping to recruit more members into governance roles as well as find even more ways to support and connect our community of developers and users.
 
 There are already a few visible outcomes of our joint work including improved 
 [mudata performance](https://mudata.readthedocs.io/en/latest/changelog.html#v0-1-2) and
