@@ -7,6 +7,7 @@
 		{{ if $peoplepage.Params }}
 		{{ $coreteam := index (where $peoplepage.Params.teams "name" "Steering Committee") 0 }}
 		<div class="section-paragraph">
+			<!-- TODO: Just hardcode this -->
 			<span class="backticked">scverse</span> is currently governed by 
 				<div id="team-list">
 				    <!-- {{ $members := .Params.team }} -->

@@ -56,6 +56,12 @@ h1 {
 	font-weight: 800;
 }
 
+// Main page
+.section-paragraph {
+	font-size: 1.1rem;
+	margin-bottom: 1rem;
+}
+
 // Had underlines poking out around images
 .contributor-list > a {
 	text-decoration: none;
@@ -375,16 +381,10 @@ body {
 				#team {
 					.section-content {
 						.section-paragraph {
-							margin-bottom: 1rem;
 							#team-list {
 								display: inline;
 							}
-							p, & {
-								font-size: 1.1rem;
-							}
 							a {
-								color: inherit;
-								text-decoration: none;
 								border-bottom: 1px solid $linkunderline;
 								transition: border 200ms, color 200ms;
 							
