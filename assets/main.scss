@@ -52,6 +52,11 @@ $contentwidthwide: 92%;
 
 // Global
 
+// TODO: Should this be necessary?
+p {
+	font-family: "Inter", Open Sans, sans-serif;
+}
+
 h1 {
 	font-weight: 800;
 }
@@ -60,7 +65,46 @@ h1 {
 .section-paragraph {
 	font-size: 1.1rem;
 	margin-bottom: 1rem;
+	strong {
+		font-weight: 475;
+		font-size: 1.2rem;
+	}
 }
+
+a .more {
+	display: inline-block;
+	margin: 0;
+	font-size: .8rem;
+	font-weight: 800;
+	font-family: "Inter", sans-serif;
+	color: $tiletext2;
+	transition: all 200ms ease-in-out;
+	padding: 0.5rem;
+	margin-left: -0.5rem;
+	border-radius: 0.5rem;
+
+	&:after {
+		content: "\232A";
+		font-size: .6rem;
+		transition: all 200ms ease-in-out;
+		padding-left: .2rem;
+	}
+
+	&:hover {
+		color: $tiletext3;
+		background-color: $tilebg;
+
+		&:after {
+			padding-left: .4rem;
+		}
+	}
+
+	@media (max-device-width: 40rem) {
+		background-color: $tilebg4;
+	}
+}
+
+// People
 
 // Had underlines poking out around images
 .contributor-list > a {
@@ -254,58 +298,11 @@ body {
 						}
 					}
 					.section-content {
-						p, div {
-							font-family: "Inter", Open Sans, sans-serif;
-						}
-						span.backticked {
-							font-size: 1.2rem;
-							line-height: 1.1rem;
-						}
 						margin-top: 1rem;
 						.tiles-list {
 				     		display: grid;
-
 							a {
 								text-decoration: none;
-							}
-						}
-						.chips-list {
-							a {
-								text-decoration: none;
-								color: inherit;
-							}
-						}
-		    			a {
-		    				text-decoration: none;
-		    				color: inherit;
-		    			
-							.more {
-								display: inline-block;
-								margin: 0;
-								font-size: .8rem;
-								font-weight: 800;
-								font-family: "Inter", sans-serif;
-								color: $tiletext2;
-								transition: all 200ms ease-in-out;
-			    				padding: 0.5rem;
-			    				margin-left: -0.5rem;
-				    			border-radius: 0.5rem;
-								&:after {
-									content: "\232A";
-									font-size: .6rem;
-									transition: all 200ms ease-in-out;
-									padding-left: .2rem;
-								}
-				    			&:hover {
-				    				color: $tiletext3;
-				    				background-color: $tilebg;
-				    				&:after {
-				    					padding-left: .4rem;
-				    				}
-				    			}
-							  	@media (max-device-width: 40rem) {
-							  		background-color: $tilebg4;
-							  	}
 							}
 						}
 					}
@@ -397,9 +394,6 @@ body {
 					}
 				}
 				#references {
-					p {
-						font-size: 1.1rem;
-					}
 					#refs-list {
 						.ref-tile {
 							display: flex;
