@@ -32,9 +32,7 @@
                         </div>
                         <div class="project-links">
                           {{ range $k, $v := $e.links }}
-                            <a href="{{ $v.url }}" target="_blank"
-                              >{{ $v.text }}</a
-                            >
+                            <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
                           {{ end }}
                         </div>
                       </div>

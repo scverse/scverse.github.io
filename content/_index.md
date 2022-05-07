@@ -85,4 +85,3 @@ text = """\
     text = "Sturm G, Szabo T, Fotakis G, Haider M, Rieder D, Trajanoski Z, Finotello F. Scirpy: a Scanpy extension for analyzing single-cell T-cell receptor-sequencing data. Bioinformatics. 2020 Sep 15;36(18):4817-8."
 
 +++
-
