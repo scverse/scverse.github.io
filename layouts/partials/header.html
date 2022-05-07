@@ -1,51 +1,96 @@
 <div id="banner">
-	<div id="banner-content">
-		🚧 Under construction 🚧
-	</div>
+  <div id="banner-content">🚧 Under construction 🚧</div>
 </div>
 
 <div class="container" style="max-width: 850px;">
-	<nav class="navbar navbar-expand-lg navbar-light">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="/" >
-				<img src="/img/icons/scverse_bw_logo.svg" alt="" height="50">
-				{{ if ne .Section `` }}<span class="logo-name">scverse</span>{{ end }}
-			</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-				<ul class="navbar-nav mb-2 mb-lg-0 nav-buttons">
-					<li class="nav-item">
-						<a class="nav-link{{ if eq .Section `projects` }} active{{end}}" href="/projects">Projects</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link{{ if eq .Section `learn` }} active{{end}}" href="/learn">Learn</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link{{ if eq .Section `people` }} active{{end}}" href="/people">People</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link{{ if eq .Section `blog` }} active{{end}}" href="/blog">Blog</a>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle{{ if eq .Section `about` }} active{{end}}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-							aria-expanded="false">
-							About
-						</a>
-						<!-- <a class="nav-button{{ if eq .Section `about` }} active{{end}}" href="/about">About &#9662;</a> -->
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<h3></h3>
-							<li><a class="dropdown-item" href="/about">About scverse</a></li>
-							<li><a class="dropdown-item" href="/about/mission">Mission statement</a></li>
-						</ul>
-					</li>
-					<li class="nav-item">
-						<a id="join-button" class="nav-link nav-button-hl" href="/join">Join</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="/img/icons/scverse_bw_logo.svg" alt="" height="50" />
+        {{ if ne .Section `` }}
+          <span class="logo-name">scverse</span>
+        {{ end }}
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav mb-2 mb-lg-0 nav-buttons">
+          <li class="nav-item">
+            <a
+              class="nav-link{{ if eq .Section `projects` }}
+                active
+              {{ end }}"
+              href="/projects"
+              >Projects</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link{{ if eq .Section `learn` }}
+                active
+              {{ end }}"
+              href="/learn"
+              >Learn</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link{{ if eq .Section `people` }}
+                active
+              {{ end }}"
+              href="/people"
+              >People</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link{{ if eq .Section `blog` }}
+                active
+              {{ end }}"
+              href="/blog"
+              >Blog</a
+            >
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle{{ if eq .Section `about` }}
+                active
+              {{ end }}"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              About
+            </a>
+            <!-- <a class="nav-button{{ if eq .Section `about` }}
+              active
+            {{ end }}" href="/about">About &#9662;</a> -->
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <h3></h3>
+              <li>
+                <a class="dropdown-item" href="/about">About scverse</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/about/mission">Mission statement</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a id="join-button" class="nav-link nav-button-hl" href="/join">Join</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </div>

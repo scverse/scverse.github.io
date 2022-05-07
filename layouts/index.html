@@ -1,86 +1,89 @@
 <!DOCTYPE html>
 <html>
-<head>
-	{{ partial "head" . }}
-</head>
-<body>
-	<header>
-	{{ partial "header" . }}
-	</header>
-	<div id="wrapper">
-		<div id="content">
-			<div id="cover" class="mw-10">
-				{{ partial "main/cover" . }}
-				{{ partial "main/projects" . }}
+  <head>
+    {{ partial "head" . }}
+  </head>
+  <body>
+    <header>
+      {{ partial "header" . }}
+    </header>
+    <div id="wrapper">
+      <div id="content">
+        <div id="cover" class="mw-10">
+          {{ partial "main/cover" . }}
+          {{ partial "main/projects" . }}
 
-				<section id="mission">
-					<div class="section-heading">
-						Mission
-					</div>
-					<div class="section-content">
-						<p class="section-paragraph">{{ .Params.mission.text | markdownify }}</p>
-						<a href="/about">
-							<div class="more">Read more about scverse</div>
-						</a>
-					</div>
-				</section>
 
-				<section id="team">
-					<div class="section-heading">
-						Core team
-					</div>
-					<div class="section-content">
-						<p class="section-paragraph"> {{ .Params.team.text | markdownify }} </p>
-						<a href="/people">
-							<div class="more">Learn more about scverse community</div>
-						</a>
-					</div>
-				</section>
+          <section id="mission">
+            <div class="section-heading">Mission</div>
+            <div class="section-content">
+              <p class="section-paragraph">
+                {{ .Params.mission.text | markdownify }}
+              </p>
+              <a href="/about">
+                <div class="more">Read more about scverse</div>
+              </a>
+            </div>
+          </section>
 
-				<section id="references">
-					<div class="section-heading">
-						References
-					</div>
-					<div class="section-content">
-						{{ if .Params.references }}
-						<p class="section-paragraph"> {{ .Params.references.text | markdownify }} </p>
-						<div class="tiles-list" id="refs-list">
-							{{ $refs := .Params.references.citations }}
-							{{ range $i, $e := $refs }}
-							<a href="{{ .url }}" target="_blank">
-								<div class="ref-tile" id="{{ .id }}-ref-tile">
-									<div class="ref-text">
-										{{ .text }}
-									</div>
-								</div>
-							</a>
-							{{ end }}
-						</div>
-						{{ end }}
-					</div>
-				</section>
+          <section id="team">
+            <div class="section-heading">Core team</div>
+            <div class="section-content">
+              <p class="section-paragraph">
+                {{ .Params.team.text | markdownify }}
+              </p>
+              <a href="/people">
+                <div class="more">Learn more about scverse community</div>
+              </a>
+            </div>
+          </section>
 
-			</div>
-		</div>
-	</div>
+          <section id="references">
+            <div class="section-heading">References</div>
+            <div class="section-content">
+              {{ if .Params.references }}
+                <p class="section-paragraph">
+                  {{ .Params.references.text | markdownify }}
+                </p>
+                <div class="tiles-list" id="refs-list">
+                  {{ $refs := .Params.references.citations }}
+                  {{ range $i, $e := $refs }}
+                    <a href="{{ .url }}" target="_blank">
+                      <div class="ref-tile" id="{{ .id }}-ref-tile">
+                        <div class="ref-text">
+                          {{ .text }}
+                        </div>
+                      </div>
+                    </a>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
     <!-- {{ partial "footer" . }} -->
-	<footer>
-		<div id="footer-content">
-		  <div class="footer-links">
-		    <p><a href="https://github.com/scverse" target="_blank">GitHub</a> | 
-	      <a href="https://discourse.scverse.org/" target="_blank">Discourse</a> | 
-	      <a href="https://twitter.com/scanpy_team" target="_blank">Twitter</a> | 
-	      <a href="https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA" target="_blank">YouTube</a></p>
-		  </div>
-		  <div class="signature">
-		    <p>scverse core team, 2022</p>
-		  </div>
-		  <div class="acknowledgement">
-		    <p>Website design by Danila Bredikhin.</p>
-		  </div>
-		</div>
-		</footer>
-		
+    <footer>
+      <div id="footer-content">
+        <div class="footer-links">
+          <p>
+            <a href="https://github.com/scverse" target="_blank">GitHub</a>
+            |
+            <a href="https://discourse.scverse.org/" target="_blank">Discourse</a>
+            |
+            <a href="https://twitter.com/scanpy_team" target="_blank">Twitter</a>
+            |
+            <a href="https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA" target="_blank">YouTube</a>
+          </p>
+        </div>
+        <div class="signature">
+          <p>scverse core team, 2022</p>
+        </div>
+        <div class="acknowledgement">
+          <p>Website design by Danila Bredikhin.</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
-

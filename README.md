@@ -18,7 +18,7 @@ Modifying layout is only required when pages have to be restuctured or new pages
 
 ## Running locally
 
-To build the website (with hot reload), [install Hugo](https://gohugo.io/getting-started/installing/) and run 
+To build the website (with hot reload), [install Hugo](https://gohugo.io/getting-started/installing/) and run
 
 ```sh
 hugo server -D

@@ -171,5 +171,3 @@ title = "Projects"
 	name = "wot"
 	url = "https://github.com/broadinstitute/wot)"
 +++
-
-

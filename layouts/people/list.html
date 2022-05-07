@@ -4,17 +4,17 @@
     {{ partial "head" . }}
   </head>
   <body>
-  <header>
-	{{ partial "header" . }}
-  </header>
+    <header>
+      {{ partial "header" . }}
+    </header>
 
     <script>
       window.onload = function () {
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-          return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
-      }
+          return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+      };
     </script>
 
     <div id="wrapper">
@@ -23,64 +23,65 @@
           <h1>{{ .Title }}</h1>
           <article class="post">
             <div class="post-content" id="people-content">
-
               <p>
                 {{ .Params.preface | safeHTML }}
               </p>
-            
-            {{ if .Params.teams }}
-              {{ range $team := .Params.teams }}
-              {{ if not $team.hide }}
+
+              {{ if .Params.teams }}
+                {{ range $team := .Params.teams }}
+                  {{ if not $team.hide }}
+                    <div class="team">
+                      <h3>{{ $team.name }}</h3>
+                      {{ if $team.text }}
+                        <p class="team-text">
+                          {{ $team.text | safeHTML }}
+                        </p>
+                      {{ end }}
+                      {{ if $team.members }}
+                        <p></p>
+                        <div class="team-list">
+                          {{ range $person := $team.members }}
+                            <a href="{{ .url }}" target="_blank"
+                              ><div class="person-chip">
+                                {{ .name }}
+                              </div>
+                            </a>
+                          {{ end }}
+                        </div>
+                      {{ end }}
+                    </div>
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+              {{ with .Params.contributors }}
                 <div class="team">
-                  <h3>{{ $team.name }}</h3>
-                  {{ if $team.text }}
+                  <h3>{{ .name }}</h3>
+                  {{ if .text }}
                     <p class="team-text">
-                      {{ $team.text | safeHTML }}
+                      {{ .text | safeHTML }}
                     </p>
                   {{ end }}
-                  {{ if $team.members }}
+                  {{ if .members }}
                     <p></p>
-                    <div class="team-list">
-                      {{ range $person := $team.members }}
-                        <a href={{ .url }} target="_blank"><div class="person-chip">{{ .name }}</div></a>
+                    <div class="contributor-list pt-3">
+                      {{ range $person := .members }}
+                        <a href="{{ .url }}">
+                          <img
+                            src="{{ .img }}"
+                            class="border rounded-circle me-1 mb-1"
+                            height="100"
+                            width="100"
+                            title="{{ .name }}"
+                            data-bs-toggle="tooltip"
+                            target="_blank"
+                            alt="{{ .name }}"
+                          />
+                        </a>
                       {{ end }}
                     </div>
                   {{ end }}
                 </div>
               {{ end }}
-              {{ end }}
-            {{ end }}
-            {{ with .Params.contributors }}
-              <div class="team">
-                <h3>{{ .name }}</h3>
-                {{ if .text }}
-                <p class="team-text">
-                  {{ .text | safeHTML }}
-                </p>
-                {{ end }}
-                {{ if .members }}
-                <p></p>
-                <div class="contributor-list pt-3">
-                  {{ range $person := .members }}
-                  <a href={{ .url }}>
-                    <img
-                      src={{ .img }}
-                      class="border rounded-circle me-1 mb-1" 
-                      height=100
-                      width=100
-
-                      title={{ .name }}
-                      data-bs-toggle="tooltip"
-                      target="_blank"
-
-                      alt={{ .name }}
-                    >
-                  </a>
-                  {{ end }}
-                </div>
-                {{ end }}
-              </div>
-            {{ end }}
             </div>
           </article>
         </div>
