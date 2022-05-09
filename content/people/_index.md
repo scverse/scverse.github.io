@@ -1,6 +1,6 @@
 +++
 title = "People"
-preface = "For people participaing in and interacting with the consortium, there are different roles — from core developers to contributors and community memebers. As we strive to make <span class=\"backticked\">scverse</span> governing and communication as transparent as possible, <a href='https://github.com/scverse/governance' target='_blank'>respective documentation</a> is available for everyone to view and comment on."
+preface = "For people participating in and interacting with the consortium, there are <a href='/about/roles'>different roles</a> — from core developers to contributors and community memebers."
 
 # ---------- steering committee, in alphabetical order
 

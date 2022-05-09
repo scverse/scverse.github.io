@@ -204,6 +204,7 @@ body {
         background-color: $navbghover;
         color: $navtexthover;
     }
+    &:active { transform: scale(0.95); }
 
     &:hover {
         color: $navtexthover;
