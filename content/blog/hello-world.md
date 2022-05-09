@@ -31,7 +31,7 @@ There are already a few visible outcomes of our joint work including improved
 ## Who is a part of scverse?
 
 `scverse` is explicitly an effort beyond just a single research group.
-As a community effort we ensure continued interoperablility, promote growth, and increase our bus number. 
+As a community effort we strive for interoperability, shared growth, and democratized governance.
 In our initial form, we have divided responsibilities into several [roles](https://scverse.org/people/), including:
 
 [Isaac Virshup](https://github.com/ivirshup), [Danila Bredikhin](https://github.com/gtca) and [Lukas Heumos](https://github.com/Zethson) form the steering committee and also belong to the core developers together with [Adam Gayoso](https://github.com/adamgayoso), [Giovanni Palla](https://github.com/giovp), [Gregor Sturm](https://github.com/grst), and [Ilia Kats](https://github.com/ilia-kats). The core developers have made significant contributions to the ecosystem and are jointly developing and maintaining the major libraries.
