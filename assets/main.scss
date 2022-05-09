@@ -2,41 +2,41 @@ $greydesc: #777777;
 $greyheader: #333333;
 $greyheaderhover: #555555;
 
-$tilebg: #F0F0F0;
-$tilebg2: #D9D9D9;
-$tilebg3: #E0E0E0;
-$tilebg4: #F5F5F5;
+$tilebg: #f0f0f0;
+$tilebg2: #d9d9d9;
+$tilebg3: #e0e0e0;
+$tilebg4: #f5f5f5;
 $tiletext: #333333;
 $tiletext2: #555555;
 $tiletext3: black;
 
-$anndataorange: #E5864B;
-$scanpycerise: #DE367B;
-$scanpymandy: #E05559;
-$mudatagreen: #4AB274;
-$muonaquamarine: #6CF1A1;
+$anndataorange: #e5864b;
+$scanpycerise: #de367b;
+$scanpymandy: #e05559;
+$mudatagreen: #4ab274;
+$muonaquamarine: #6cf1a1;
 
-$github-black: #171B21;
-$twitter-blue: #469BE5;
-$discourse-yellow: #F7F0B1;
-$youtube-red: #E03021;
-$zulip-blue: #62A3F0;
+$github-black: #171b21;
+$twitter-blue: #469be5;
+$discourse-yellow: #f7f0b1;
+$youtube-red: #e03021;
+$zulip-blue: #62a3f0;
 
-$overline: #E0E0E0;
-$linkunderline: #AAAAAA;
-$backtickbg: #F9F9F9;
+$overline: #e0e0e0;
+$linkunderline: #aaaaaa;
+$backtickbg: #f9f9f9;
 $backticktext: #333333;
 
 $navtext: #555555;
 $navtexthover: #000000;
 $navtextactive: #000000;
-$navbg: #FFFFFF00;
+$navbg: #ffffff00;
 $navbghover: $tilebg;
 $navbgactive: $tilebg3;
 
-$footerbg: #F0F0F0;
+$footerbg: #f0f0f0;
 $footertext: #333333;
-$footertextmuted: #AAAAAA;
+$footertextmuted: #aaaaaa;
 
 $postlinktext: #333333;
 
@@ -50,96 +50,152 @@ $contentwidthwide: 92%;
     src: url("fonts/Inter/Inter-VariableFont_slnt,wght.ttf");
 }
 
+// Global
+
+// TODO: Should this be necessary?
+p {
+    font-family: "Inter", Open Sans, sans-serif;
+}
+
+h1 {
+    font-weight: 800;
+}
+
+// Main page
+.section-paragraph {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    strong {
+        font-weight: 475;
+        font-size: 1.2rem;
+    }
+}
+
+a .more {
+    display: inline-block;
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 800;
+    font-family: "Inter", sans-serif;
+    color: $tiletext2;
+    transition: all 200ms ease-in-out;
+    padding: 0.5rem;
+    margin-left: -0.5rem;
+    border-radius: 0.5rem;
+
+    &:after {
+        content: "\232A";
+        font-size: 0.6rem;
+        transition: all 200ms ease-in-out;
+        padding-left: 0.2rem;
+    }
+
+    &:hover {
+        color: $tiletext3;
+        background-color: $tilebg;
+
+        &:after {
+            padding-left: 0.4rem;
+        }
+    }
+
+    @media (max-device-width: 40rem) {
+        background-color: $tilebg4;
+    }
+}
+
+// People
+
 // Had underlines poking out around images
 .contributor-list > a {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 @mixin person-chip {
-	background-color: $tilebg;
-	text-decoration: none;
-	color: $tiletext;
-	padding: .4rem;
-	text-align: center;
-	border-radius: .5rem;
-	transition: all 200ms ease-in-out;
-	&:hover {
-		color: $tiletext3;
-		background-color: $tilebg2;
-	}
+    background-color: $tilebg;
+    text-decoration: none;
+    color: $tiletext;
+    padding: 0.4rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    transition: all 200ms ease-in-out;
+    &:hover {
+        color: $tiletext3;
+        background-color: $tilebg2;
+    }
 }
 
-
-html, body {
-	width: 100%;
+html,
+body {
+    width: 100%;
     height: 100%;
 
-	-webkit-font-smoothing: antialiased;
-	scroll-behavior: smooth;
-	-webkit-scroll-behavior: smooth;
-  	-moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+    -webkit-scroll-behavior: smooth;
+    -moz-osx-font-smoothing: grayscale;
 
-  	@media (max-device-width: 40rem) {
-  		font-size: 2.2rem;
-  	}
+    @media (max-device-width: 40rem) {
+        font-size: 2.2rem;
+    }
 }
 
 // Nav bar
 
 .nav-buttons > li {
-	padding: .5rem .5rem;
+    padding: 0.5rem 0.5rem;
 }
 
-.nav-buttons > li > a{
-	font-family: "Inter", sans-serif;
-	color: $navtext;
+.nav-buttons > li > a {
+    font-family: "Inter", sans-serif;
+    color: $navtext;
 
-	padding: .5rem .8rem !important;
-	border-radius: .5rem;
-	transition: all 300ms ease-in-out, transform 100ms ease-in-out;
-	&:hover, &:active {
-		background-color: $navbghover;
-		color: $navtexthover;
-	}
+    padding: 0.5rem 0.8rem !important;
+    border-radius: 0.5rem;
+    transition: all 300ms ease-in-out, transform 100ms ease-in-out;
+    &:hover,
+    &:active {
+        background-color: $navbghover;
+        color: $navtexthover;
+    }
 
-	&:hover {
-		color: $navtexthover;
-	}
+    &:hover {
+        color: $navtexthover;
+    }
 
-	&.active {
-		transform: scale(0.95);
-		background-color: $navbgactive;
-		color: $navtextactive;
-	}
+    &.active {
+        transform: scale(0.95);
+        background-color: $navbgactive;
+        color: $navtextactive;
+    }
 }
 
 #join-button {
-	color: white;
-	background-color: #4557c4;
-	background: linear-gradient(135deg, #78CBD9, #2D719D);
-	transition: background 200ms ease-out;
+    color: white;
+    background-color: #4557c4;
+    background: linear-gradient(135deg, #78cbd9, #2d719d);
+    transition: background 200ms ease-out;
 
-	&:hover {
-		background: linear-gradient(135deg, #4FB9DF, #4557c4);
-		color: white;
-	}
+    &:hover {
+        background: linear-gradient(135deg, #4fb9df, #4557c4);
+        color: white;
+    }
 }
 
 .logo-name {
-	color: black;
-	font-size: 1.5rem;
-	line-height: 1.5rem;
-	font-family: "Inter", sans-serif;
-	font-weight: 500;
-	line-height: 5rem;
-	letter-spacing: .15rem;
-	margin-left: 1rem;
+    color: black;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.15rem;
+    margin-left: 1rem;
 }
 
 .dropdown:hover .dropdown-menu {
-	transition: background 200ms ease-out;
-	display: block;
-	margin-top: 0; // remove the gap so it doesn't close
+    transition: background 200ms ease-out;
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
 }
 
 // Custom
@@ -150,793 +206,693 @@ body {
     display: flex;
     flex-direction: column;
 
-	#wrapper {
-	    width: 100%;
-	    flex: 1;
+    #wrapper {
+        width: 100%;
+        flex: 1;
 
-		#content {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			align-self: center;
-			#cover {
-				max-width: $maxwidthwide;
-				width: $contentwidthwide;
-				@media (max-device-width: 40rem) {
-					max-width: $maxwidthwide;
-					width: $contentwidthwide;
-				}
-				#cover-heading {
-					margin-top: 10%;
-					@media (max-device-width: 40rem) {
-						margin-top: 10%;
-						max-height: 20rem;
-					}
-					max-width: $maxwidthwide;
-					border-radius: 1rem;
-					background: linear-gradient(90deg, #F0F0F0, #F0F0F0);
-					padding: 6rem 4rem;
-					@media (max-device-width: 40rem) {
-						padding: 2rem 1rem;
-					}
-					#title {
-						#title-text {
-							#title-name {
-								font-size: 6rem;
-								font-family: "Inter", sans-serif;
-								font-weight: 900;
-								letter-spacing: .2rem;
-							  	@media (max-device-width: 40rem) {
-							  		letter-spacing: .1rem;
-							  		font-size: 2rem;
-							  	}
-							}
-							#title-desc {
-								display: block;
-								font-family: "Inter", sans-serif;
-								font-size: 1.4rem;
-								color: $greyheader;
-							  	@media (max-device-width: 40rem) {
-							  		font-size: 0.8rem;
-							  	}
-							}
-						}
-					}
-					#cover-image {
-						img {
-						}
-					}
-					#badges {
-						display: flex;
-						flex-wrap: wrap;
-						gap: 1rem;
-						margin: 4rem 0;
-					  	@media (max-device-width: 40rem) {
-					  		margin: 1rem 0;
-					  		padding: 0;
-					  		width: 100%;
-					  		a {
-					  			flex: 1;
-					  			img {
-					  			}
-					  		}
-					  	}
-					}
-				}
+        #content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            align-self: center;
+            #cover {
+                max-width: $maxwidthwide;
+                width: $contentwidthwide;
+                @media (max-device-width: 40rem) {
+                    max-width: $maxwidthwide;
+                    width: $contentwidthwide;
+                }
+                #cover-heading {
+                    margin-top: 10%;
+                    @media (max-device-width: 40rem) {
+                        margin-top: 10%;
+                        max-height: 20rem;
+                    }
+                    max-width: $maxwidthwide;
+                    border-radius: 1rem;
+                    background: linear-gradient(90deg, #f0f0f0, #f0f0f0);
+                    padding: 6rem 4rem;
+                    @media (max-device-width: 40rem) {
+                        padding: 2rem 1rem;
+                    }
+                    #title {
+                        #title-text {
+                            #title-name {
+                                font-size: 6rem;
+                                font-family: "Inter", sans-serif;
+                                font-weight: 900;
+                                letter-spacing: 0.2rem;
+                                @media (max-device-width: 40rem) {
+                                    letter-spacing: 0.1rem;
+                                    font-size: 2rem;
+                                }
+                            }
+                            #title-desc {
+                                display: block;
+                                font-family: "Inter", sans-serif;
+                                font-size: 1.4rem;
+                                color: $greyheader;
+                                @media (max-device-width: 40rem) {
+                                    font-size: 0.8rem;
+                                }
+                            }
+                        }
+                    }
+                    #cover-image {
+                        img {
+                        }
+                    }
+                    #badges {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 1rem;
+                        margin: 4rem 0;
+                        @media (max-device-width: 40rem) {
+                            margin: 1rem 0;
+                            padding: 0;
+                            width: 100%;
+                        }
+                    }
+                }
 
-				section {
-					max-width: $maxwidth;
-					width: $contentwidth;
-					margin: 0 auto;
-					margin-top: 5%;
-					.section-heading {
-						font-size: 1.3rem;
-						text-transform: uppercase;
-						color: $greyheader;
-						font-weight: 700;
-						font-family: "Inter", sans-serif;
-						transition: all 200ms ease-in-out;
-						&.clickable-heading:hover {
-							color: $greyheaderhover;
-							cursor: pointer;
-						}
-					}
-					.section-content {
-						p, div {
-							font-family: "Inter", Open Sans, sans-serif;
-						}
-						span.backticked {
-							font-size: 1.2rem;
-							line-height: 1.1rem;
-						}
-						margin-top: 1rem;
-						.tiles-list {
-				     		display: grid;
+                section {
+                    max-width: $maxwidth;
+                    width: $contentwidth;
+                    margin: 0 auto;
+                    margin-top: 5%;
+                    .section-heading {
+                        font-size: 1.3rem;
+                        text-transform: uppercase;
+                        color: $greyheader;
+                        font-weight: 700;
+                        font-family: "Inter", sans-serif;
+                        transition: all 200ms ease-in-out;
+                        &.clickable-heading:hover {
+                            color: $greyheaderhover;
+                            cursor: pointer;
+                        }
+                    }
+                    .section-content {
+                        margin-top: 1rem;
+                        .tiles-list {
+                            display: grid;
+                            a {
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+                #projects {
+                    margin-top: 15%;
+                    #projects-list {
+                        .card {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            background-color: $tilebg;
+                            border-radius: 0.5rem;
+                            transition: all 200ms ease-in-out;
+                            .project-icon {
+                                transition: all 200ms ease-in-out;
+                                align-items: center;
+                                justify-content: center;
+                                padding: auto;
+                                display: flex;
+                                min-width: 6rem;
+                                max-width: 6rem;
+                                @media (max-device-width: 40rem) {
+                                    display: none;
+                                }
 
-							a {
-								text-decoration: none;
-							}
-						}
-						.chips-list {
-							a {
-								text-decoration: none;
-								color: inherit;
-							}
-						}
-		    			a {
-		    				text-decoration: none;
-		    				color: inherit;
-		    			
-							.more {
-								display: inline-block;
-								margin: 0;
-								font-size: .8rem;
-								font-weight: 800;
-								font-family: "Inter", sans-serif;
-								color: $tiletext2;
-								transition: all 200ms ease-in-out;
-			    				padding: 0.5rem;
-			    				margin-left: -0.5rem;
-				    			border-radius: 0.5rem;
-								&:after {
-									content: "\232A";
-									font-size: .6rem;
-									transition: all 200ms ease-in-out;
-									padding-left: .2rem;
-								}
-				    			&:hover {
-				    				color: $tiletext3;
-				    				background-color: $tilebg;
-				    				&:after {
-				    					padding-left: .4rem;
-				    				}
-				    			}
-							  	@media (max-device-width: 40rem) {
-							  		background-color: $tilebg4;
-							  	}
-							}
-						}
-					}
-				}
-				#projects {
-					margin-top: 15%;
-					#projects-list {
-						.card {
-			    			display: flex;
-			    			flex-direction: row;
-			    			align-items: center;
-			    			background-color: $tilebg;
-			    			border-radius: .5rem;
-			    			transition: all 200ms ease-in-out;
-			    			.project-icon {
-			    				transition: all 200ms ease-in-out;
-			    				align-items: center;
-			    				justify-content: center;
-			    				padding: auto;
-			    				display: flex;
-			    				min-width: 6rem;
-			    				max-width: 6rem;
-							  	@media (max-device-width: 40rem) {
-							  		display: none;
-							  	}
+                                img {
+                                    max-width: 4rem;
+                                    height: 4rem;
+                                }
+                            }
+                            .project-text {
+                                .project-name {
+                                    font-family: "Inter", sans-serif;
+                                    color: $tiletext;
+                                }
+                                .project-desc {
+                                    font-family: "Inter", sans-serif;
+                                    font-size: 0.9rem;
+                                    color: $tiletext2;
+                                }
+                            }
+                            &:hover {
+                                cursor: pointer;
+                                background-color: $tilebg2;
+                                .project-icon {
+                                    transform: scale(1.1);
+                                }
+                                transform: scale(1.05);
+                            }
+                            &#anndata-tile:hover {
+                                background-color: rgba($anndataorange, 0.2);
+                            }
+                            &#scanpy-tile:hover {
+                                background-color: rgba($scanpymandy, 0.2);
+                            }
+                            &#mudata-tile:hover {
+                                background-color: rgba($mudatagreen, 0.2);
+                            }
+                            &#muon-tile:hover {
+                                background-color: rgba($muonaquamarine, 0.2);
+                            }
+                        }
+                    }
+                }
+                #mission {
+                    .section-content {
+                        p {
+                            font-size: 1.1rem;
+                        }
+                    }
+                }
+                #team {
+                    .section-content {
+                        .section-paragraph {
+                            #team-list {
+                                display: inline;
+                            }
+                            a {
+                                border-bottom: 1px solid $linkunderline;
+                                transition: border 200ms, color 200ms;
 
-			    				img {
-			    					max-width: 4rem;
-			    					height: 4rem;
-			    				}
-			    			}
-			    			.project-text {
-				    			.project-name {
-				    				font-family: "Inter", sans-serif;
-				    				color: $tiletext;
-				    			}
-				    			.project-desc {
-				    				font-family: "Inter", sans-serif;
-				    				font-size: 0.9rem;
-				    				color: $tiletext2;
-				    			}
-			    			}
-			    			&:hover {
-			    				cursor: pointer;
-			    				background-color: $tilebg2;
-			    				.project-icon {
-			    					transform: scale(1.1);
-			    				}
-			    				transform: scale(1.05);
-			    			}
-			    			&#anndata-tile:hover {
-			    				background-color: rgba($anndataorange, .2);
-			    			}
-			    			&#scanpy-tile:hover {
-			    				background-color: rgba($scanpymandy, .2);
-			    			}
-			    			&#mudata-tile:hover {
-			    				background-color: rgba($mudatagreen, .2);
-			    			}
-			    			&#muon-tile:hover {
-			    				background-color: rgba($muonaquamarine, .2);
-			    			}
-			    		}
-					}
-				}
-				#mission {
-					.section-content {
-						p {
-							font-size: 1.1rem;
-						}
-					}
-				}
-				#team {
-					.section-content {
-						.section-paragraph {
-							margin-bottom: 1rem;
-							#team-list {
-								display: inline;
-							}
-							p, & {
-								font-size: 1.1rem;
-							}
-							a {
-								color: inherit;
-								text-decoration: none;
-								border-bottom: 1px solid $linkunderline;
-								transition: border 200ms, color 200ms;
-							
-								&:hover, &:active {
-									color: black;
-									border-bottom: 1px solid black;
-								}
-							}
-						}
-					}
-				}
-				#references {
-					p {
-						font-size: 1.1rem;
-					}
-					#refs-list {
-						.ref-tile {
-							display: flex;
-							margin: 0 -.8rem;
-							padding: .8rem;
-							width: 100%;
-							min-height: 1rem;
-							align-items: center;
-							background-color: #FF000000;
-							color: $tiletext;
-							transition: all 200ms ease-in-out;
-							border-radius: .5rem;
-							&:hover {
-								cursor: pointer;
-								background-color: $tilebg3;
-							}
-							font-size: 0.9rem;
-						}
-					}
-				}
-			}
-		}
+                                &:hover,
+                                &:active {
+                                    color: black;
+                                    border-bottom: 1px solid black;
+                                }
+                            }
+                        }
+                    }
+                }
+                #references {
+                    #refs-list {
+                        .ref-tile {
+                            display: flex;
+                            margin: 0 -0.8rem;
+                            padding: 0.8rem;
+                            width: 100%;
+                            min-height: 1rem;
+                            align-items: center;
+                            background-color: #ff000000;
+                            color: $tiletext;
+                            transition: all 200ms ease-in-out;
+                            border-radius: 0.5rem;
+                            &:hover {
+                                cursor: pointer;
+                                background-color: $tilebg3;
+                            }
+                            font-size: 0.9rem;
+                        }
+                    }
+                }
+            }
+        }
 
-		span.backticked {
-			font-family: Inter, sans-serif;
-		    color: $backticktext;
-		    font-weight: 500;
-		}
+        span.backticked {
+            font-family: Inter, sans-serif;
+            color: $backticktext;
+            font-weight: 500;
+        }
 
-		p > a {
-			text-decoration: none;
-			color: inherit;
-			border-bottom: 1px solid $linkunderline;
-			transition: border 200ms, color 200ms;
-			&:hover, &:active {
+        p > a {
+            text-decoration: none;
+            color: inherit;
+            border-bottom: 1px solid $linkunderline;
+            transition: border 200ms, color 200ms;
+            &:hover,
+            &:active {
                 border-bottom: 1px solid black;
-			}
-		}
-	}
+            }
+        }
+    }
 
-	header {
-		height: auto;
-		width: 100%;
-		// margin-top: 1rem;
+    header {
+        height: auto;
+        width: 100%;
+        // margin-top: 1rem;
 
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		align-self: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
 
-		#banner {
-			width: 100%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			background-color: #f65058;
-			color: white;
-			font-weight: 800;
-			text-transform: uppercase;
-			font-family: "Inter", sans-serif;
-			font-size: 1.2rem;
-			padding: 1rem 0;
-			margin-bottom: 1rem;
-		}
+        #banner {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f65058;
+            color: white;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-family: "Inter", sans-serif;
+            font-size: 1.2rem;
+            padding: 1rem 0;
+            margin-bottom: 1rem;
+        }
+    }
 
-	}
+    footer {
+        height: auto;
+        width: 100%;
+        margin-top: 10rem;
+        background-color: $footerbg;
 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
 
-	footer {
-		height: auto;
-		width: 100%;
-		margin-top: 10rem;
-		background-color: $footerbg;
+        #footer-content {
+            width: $contentwidth;
+            @media (max-device-width: 40rem) {
+                width: $contentwidthwide;
+            }
+            padding: 2%;
 
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		align-self: center;
+            div {
+                max-width: $maxwidth;
+                margin: 1rem auto;
+                color: $footertext;
+                text-align: right;
 
-		#footer-content {
-			width: $contentwidth;
-			@media (max-device-width: 40rem) {
-				width: $contentwidthwide;
-			}
-			padding: 2%;
-
-			div {
-				max-width: $maxwidth;
-				margin: 1rem auto;
-				color: $footertext;
-				text-align: right;
-
-				a, p {
-					margin: .2rem 0;
-					font-family: "Inter", sans-serif;
-					font-weight: 500;
-					font-size: 1rem;
-				  	@media (max-device-width: 40rem) {
-				  		font-size: 0.8rem;
-				  	}
-				}
-				a {
-					color: inherit;
-					text-decoration: none;
-					border-bottom: 1px solid $linkunderline;
-					transition: border 200ms, color 200ms;
-				}
-				a:hover, a:active {
-					color: black;
-					border-bottom: 1px solid black;
-				}
-				&.footer-links {
-					p {
-						color: $footertextmuted;
-						a {
-							color: $footertext;
-							&:hover {
-								color: black;
-							}
-						}
-					}
-				}
-				&.signature {
-					margin-bottom: 0;
-				}
-				&.acknowledgement {
-					margin-top: 0;
-					p {
-						margin-top: 0;
-						color: $footertextmuted;
-					}
-				}
-			}
-			.footer-links {
-				a {
-					display: inline-block;
-				}
-			}
-		}
-	}
+                a,
+                p {
+                    margin: 0.2rem 0;
+                    font-family: "Inter", sans-serif;
+                    font-weight: 500;
+                    font-size: 1rem;
+                    @media (max-device-width: 40rem) {
+                        font-size: 0.8rem;
+                    }
+                }
+                a {
+                    color: inherit;
+                    text-decoration: none;
+                    border-bottom: 1px solid $linkunderline;
+                    transition: border 200ms, color 200ms;
+                }
+                a:hover,
+                a:active {
+                    color: black;
+                    border-bottom: 1px solid black;
+                }
+                &.footer-links {
+                    p {
+                        color: $footertextmuted;
+                        a {
+                            color: $footertext;
+                            &:hover {
+                                color: black;
+                            }
+                        }
+                    }
+                }
+                &.signature {
+                    margin-bottom: 0;
+                }
+                &.acknowledgement {
+                    margin-top: 0;
+                    p {
+                        margin-top: 0;
+                        color: $footertextmuted;
+                    }
+                }
+            }
+            .footer-links {
+                a {
+                    display: inline-block;
+                }
+            }
+        }
+    }
 }
 
 #join-content {
-	.card {
-		h5 {
-			font-family: "Inter", sans-serif;
-			font-weight: 700;
-		}
-		transition: all 200ms ease-in-out;
-		color: navtext;
-		&:hover {
-			background: #78CBD9 !important;
-			transform: scale(1.02);
-		}
-		&#github:hover {
-			color: white;
-			background-color: $github-black !important;
-		}
-		&#twitter:hover {
-			color: white;
-			background-color: $twitter-blue !important;
-		}
-		&#zulip:hover {
-			color: white;
-			background-color: $zulip-blue !important;
-		}
-		&#discourse:hover {
-			background-color: $discourse-yellow !important;
-		}
-		&#youtube:hover {
-			color: white;
-			background-color: $youtube-red !important;
-		}
-	}
+    .card {
+        h5 {
+            font-family: "Inter", sans-serif;
+            font-weight: 700;
+        }
+        transition: all 200ms ease-in-out;
+        color: navtext;
+        &:hover {
+            background: #78cbd9 !important;
+            transform: scale(1.02);
+        }
+        &#github:hover {
+            color: white;
+            background-color: $github-black !important;
+        }
+        &#twitter:hover {
+            color: white;
+            background-color: $twitter-blue !important;
+        }
+        &#zulip:hover {
+            color: white;
+            background-color: $zulip-blue !important;
+        }
+        &#discourse:hover {
+            background-color: $discourse-yellow !important;
+        }
+        &#youtube:hover {
+            color: white;
+            background-color: $youtube-red !important;
+        }
+    }
 }
-
 
 #page-content {
-	display: flex;
-	flex-direction: column;
-	max-width: $maxwidth;
-	width: $contentwidth;
-	margin-top: 3rem;
-	@media (max-device-width: 40rem) {
-		max-width: $maxwidthwide;
-		width: $contentwidthwide;
-		gap: 1rem;
-	}
-	font-family: "Inter", sans-serif;
-	h1 {
-		font-size: 2.5rem;
-		font-family: "Inter", sans-serif;
-		font-weight: 800;
-	}
-	&.items-list {
-		a {
-			text-decoration: none;
-			&:first-of-type {
-				margin-top: 3rem;
-			}
-		}
-	}
-	.page-item {
-		display: flex;
-		flex-direction: row;
-		font-family: "Inter", sans-serif;
-		
-    	@media (max-device-width: 40rem) {
-			flex-direction: column;
-			align-items: flex-start;
-			justify-content: center;
-			h2 {
-				margin: .5rem 0 !important;
-			}
-			margin: 0 -.5rem;
-			padding: .5rem;
-			padding-bottom: 1.3rem;
-		}
-		
-		margin: 0 -1rem;
-		padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    max-width: $maxwidth;
+    width: $contentwidth;
+    margin-top: 3rem;
+    @media (max-device-width: 40rem) {
+        max-width: $maxwidthwide;
+        width: $contentwidthwide;
+        gap: 1rem;
+    }
+    font-family: "Inter", sans-serif;
+    &.items-list {
+        a {
+            text-decoration: none;
+            &:first-of-type {
+                margin-top: 3rem;
+            }
+        }
+    }
+    .page-item {
+        display: flex;
+        flex-direction: row;
+        font-family: "Inter", sans-serif;
 
-		background-color: #FF000000;
-		transition: all 200ms ease-in-out;
-		border-radius: .5rem;
+        @media (max-device-width: 40rem) {
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            h2 {
+                margin: 0.5rem 0 !important;
+            }
+            margin: 0 -0.5rem;
+            padding: 0.5rem;
+            padding-bottom: 1.3rem;
+        }
 
-		&:hover {
-			cursor: pointer;
-			background-color: $tilebg3;
-		}
+        margin: 0 -1rem;
+        padding: 1rem;
 
+        background-color: #ff000000;
+        transition: all 200ms ease-in-out;
+        border-radius: 0.5rem;
 
-	  	@media (max-device-width: 40rem) {
-			background-color: $tilebg4;
-	  	}
+        &:hover {
+            cursor: pointer;
+            background-color: $tilebg3;
+        }
 
-		h2 {
-			color: $tiletext;
-			margin: 0 0 .5rem 0;
-			line-height: 1.5rem;
-		}
-		span {
-			font-size: 1.0rem;
-			color: $greydesc;
-			line-height: 1.5rem;
-		}
-		.page-item-date {
-			flex: 1;
-			line-height: 1.5rem;
-		}
-		.page-item-content {
-			flex: 2;
-			display: flex;
-			flex-direction: column;
-			font-size: 1.0rem;
-		}
-	}
-	.post {
-		h1 {
-			margin-bottom: 0;
-		}
-		span {
-			font-size: 1.0rem;
-			color: $greydesc;
-			line-height: 1.5rem;
-		}
-		.post-subtitle {
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			justify-content: flex-start;
-			line-height: 1.5rem;
-			gap: .5rem;
-			.rss-icon {
-				width: 1rem;
-				height: auto;
-				a {
-					width: 100%;
-					display: flex;
-					align-items: center;
-					text-decoration: none;
-					svg {
-						fill: $greydesc;
-					}
-					&:hover {
-						svg {
-							fill: $navtexthover;
-						}
-					}
-				}
-			}
-		}
-		.post-content {
-			margin: 3rem 0;
-			font-size: 1.1rem;
-			span.backticked {
-				font-size: 1.2rem;
-				line-height: 1.1rem;
-			}
-			p, div, ul, ol {
-				font-family: "Inter", Open Sans, sans-serif;
-			}
-	    	@media (max-device-width: 40rem) {
-				font-size: 1rem;
-				line-height: 1.8rem;
-			}
-		}
-		h2, h3, h4 {
-			font-family: "Inter", sans-serif;
-			margin: 4rem 0 0 0;
-		}
-		a {
-			font-family: "Inter", sans-serif;
-			color: $postlinktext;
-			&:hover {
-				color: black;
-			}
-		}
-	}
+        @media (max-device-width: 40rem) {
+            background-color: $tilebg4;
+        }
+
+        h2 {
+            color: $tiletext;
+            margin: 0 0 0.5rem 0;
+            line-height: 1.5rem;
+        }
+        span {
+            font-size: 1rem;
+            color: $greydesc;
+            line-height: 1.5rem;
+        }
+        .page-item-date {
+            flex: 1;
+            line-height: 1.5rem;
+        }
+        .page-item-content {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            font-size: 1rem;
+        }
+    }
+    // TODO: Much of this does nothing AFAICT
+    .post {
+        .post-subtitle {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            line-height: 1.5rem;
+            gap: 0.5rem;
+            color: $greydesc;
+            .rss-icon {
+                width: 1rem;
+                height: auto;
+                a {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                    svg {
+                        fill: $greydesc;
+                    }
+                    &:hover {
+                        svg {
+                            fill: $navtexthover;
+                        }
+                    }
+                }
+            }
+        }
+        .post-content {
+            margin: 3rem 0;
+            font-size: 1.1rem;
+            span.backticked {
+                font-size: 1.2rem;
+                line-height: 1.1rem;
+            }
+            p,
+            div,
+            ul,
+            ol {
+                font-family: "Inter", Open Sans, sans-serif;
+            }
+            @media (max-device-width: 40rem) {
+                font-size: 1rem;
+                line-height: 1.8rem;
+            }
+        }
+        h2,
+        h3,
+        h4 {
+            font-family: "Inter", sans-serif;
+            margin: 4rem 0 0 0;
+        }
+        a {
+            font-family: "Inter", sans-serif;
+            color: $postlinktext;
+            &:hover {
+                color: black;
+            }
+        }
+    }
 }
-
 
 // Specific to /projects
 
 #projects-content {
-	#projects-list {
-		display: flex;
-		flex-direction: column;
-		gap: 5rem;
-		.project-section {
-			display: flex;
-			flex-direction: row;
-			margin: .5rem 0;
-			&:first-of-type {
-				margin-top: 2rem;
-			}
-			gap: 3rem;
-			.project-img {
-				flex: 1;
-				img {
-					display: block;
-					padding: 0.5rem;
-					flex: 0 0 auto;
-					align-self: center;
-					object-fit: contain;
-					margin: auto;
-					max-width: 100%;
-					max-height: 225px;
-				}
-		    	transition: all 200ms ease-in-out;
-		    	@media (max-device-width: 40rem) {
-					display: none;
-				}
-			}
-			.project-info {
-				flex: 3;
-				display: flex;
-				flex-direction: column;
-				align-items: flex-start;
-				gap: 0;
-				.project-tile {
-					// padding: 2rem;
-					border-radius: 1rem;
-					// box-shadow: 0 .2rem .2rem .05rem rgba(0, 0, 0, .3);
-					.project-text {
-						.project-name {
-							font-family: "Inter", sans-serif;
-							font-size: 2.0rem;
-							font-weight: 800;
-							color: black;
-							display: block;
-						}
-						.project-details {
-							display: block;
-							font-size: 1.1rem;
-							margin: 1rem 0;
-							color: $tiletext;
-					    	@media (max-device-width: 40rem) {
-								font-size: 1rem;
-								line-height: 1.8rem;
-							}
-						}
-					}
-				}
-				// #anndata-tile {
-				// 	background-color: rgba(#fa8e4b, .9);
-				// }
-				// #mudata-tile {
-				// 	background-color: rgba($mudatagreen, .7);
-				// }
-				// #scanpy-tile {
-				// 	background-color: rgba($scanpymandy, .7);
-				// }
-				// #muon-tile {
-				// 	background-color: rgba($muonaquamarine, .8);
-				// }
-			}
-		}
-	}
-	// margin-top: 1rem !important;
-	// h2:first-of-type {
-	// 	margin-top: 0 !important;
-	// }
-	.project-links {
-		a {
-			display: inline-block;
-			background-color: $tilebg;
-			text-decoration: none;
-			font-size: 1.0rem;
-			color: $tiletext;
-			padding: .4rem .8rem;
-			margin: .5rem 0;
-			text-align: center;
-			border-radius: .5rem;
-			transition: all 200ms ease-in-out;
-			&:hover, &:active {
-				color: $tiletext3;
-				background-color: $tilebg2;
-			}
-		}
-	}
+    #projects-list {
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+        .project-section {
+            display: flex;
+            flex-direction: row;
+            margin: 0.5rem 0;
+            &:first-of-type {
+                margin-top: 2rem;
+            }
+            gap: 3rem;
+            .project-img {
+                flex: 1;
+                img {
+                    display: block;
+                    padding: 0.5rem;
+                    flex: 0 0 auto;
+                    align-self: center;
+                    object-fit: contain;
+                    margin: auto;
+                    max-width: 100%;
+                    max-height: 225px;
+                }
+                transition: all 200ms ease-in-out;
+                @media (max-device-width: 40rem) {
+                    display: none;
+                }
+            }
+            .project-info {
+                flex: 3;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                .project-tile {
+                    // padding: 2rem;
+                    border-radius: 1rem;
+                    // box-shadow: 0 .2rem .2rem .05rem rgba(0, 0, 0, .3);
+                    .project-text {
+                        .project-name {
+                            font-family: "Inter", sans-serif;
+                            font-size: 2rem;
+                            font-weight: 800;
+                            color: black;
+                            display: block;
+                        }
+                        .project-details {
+                            display: block;
+                            font-size: 1.1rem;
+                            margin: 1rem 0;
+                            color: $tiletext;
+                            @media (max-device-width: 40rem) {
+                                font-size: 1rem;
+                                line-height: 1.8rem;
+                            }
+                        }
+                    }
+                }
+                // #anndata-tile {
+                // 	background-color: rgba(#fa8e4b, .9);
+                // }
+                // #mudata-tile {
+                // 	background-color: rgba($mudatagreen, .7);
+                // }
+                // #scanpy-tile {
+                // 	background-color: rgba($scanpymandy, .7);
+                // }
+                // #muon-tile {
+                // 	background-color: rgba($muonaquamarine, .8);
+                // }
+            }
+        }
+    }
+    // margin-top: 1rem !important;
+    // h2:first-of-type {
+    // 	margin-top: 0 !important;
+    // }
+    .project-links {
+        a {
+            display: inline-block;
+            background-color: $tilebg;
+            text-decoration: none;
+            font-size: 1rem;
+            color: $tiletext;
+            padding: 0.4rem 0.8rem;
+            margin: 0.5rem 0;
+            text-align: center;
+            border-radius: 0.5rem;
+            transition: all 200ms ease-in-out;
+            &:hover,
+            &:active {
+                color: $tiletext3;
+                background-color: $tilebg2;
+            }
+        }
+    }
 }
 
 // Specific to /tutorials
 
 #tutorials-content {
-	h1, h2 {
-		margin-bottom: 1rem !important;
-	}
-	#tutorials-list {
-		display: grid;
-		flex-wrap: wrap;
-		margin-bottom: 5rem;
+    h1,
+    h2 {
+        margin-bottom: 1rem !important;
+    }
+    #tutorials-list {
+        display: grid;
+        flex-wrap: wrap;
+        margin-bottom: 5rem;
 
-		grid-auto-flow: row;
-		grid-template-columns: 1fr 1fr;
-		gap: 2rem;
-    	@media (max-width: 50rem), (max-device-width: 40rem) {
-			grid-template-columns: 1fr;
-		}
+        grid-auto-flow: row;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        @media (max-width: 50rem), (max-device-width: 40rem) {
+            grid-template-columns: 1fr;
+        }
 
-		.tutorial-item {
-			$cardborder: 1rem;
-			$cardpad: 1.5rem;
-			// margin-left: -$cardborder;
+        .tutorial-item {
+            $cardborder: 1rem;
+            $cardpad: 1.5rem;
+            border-radius: 1rem;
+            background-color: #fafafa;
 
-			flex: 1 1;
-			max-width: 100%;
-    		@media (max-width: 50rem), (max-device-width: 40rem) {
-				max-width: 100%;
-				width: 100%;
-				flex: auto;
-			}
+            transition: all 200ms ease-in-out;
 
-			min-height: 10rem;
-			border-radius: 1rem;
-			transition: all 200ms ease-in-out;
+            justify-content: flex-end;
 
-			display: flex;
-			flex-direction: column;
-			align-self: flex-start;
-			justify-content: flex-end;
+            a {
+                color: $navtext;
+                text-decoration: none;
+            }
 
-			background-color: #FAFAFA;
+            img {
+                // border-radius: 1rem;
+                // border: 1px solid #EEEEEE;
+                width: 90%;
+                height: 16rem;
+                object-fit: contain;
+                margin: $cardpad $cardborder 0.2rem $cardborder;
+            }
 
-			a {
-				color: $navtext;
-			    display: block;
-			    height: 100%;
-			    width: 100%;
-			    text-decoration: none;
-			}
-
-			img {
-				border-radius: 1rem;
-				border: 1px solid #EEEEEE;
-				width: 90%;
-				height: 16rem;
-				object-fit: contain;
-    			margin: $cardpad $cardborder .2rem $cardborder;
-    			transition: all 200ms ease-in-out;
-			}
-
-			.tutorial-img-placeholder {
-				width: 1rem;
-				height: 5rem;
-			}
-
-			p {
-				font-weight: 700;
-				font-size: 1rem;
-				margin: 0;
-				padding: .2rem $cardborder $cardpad $cardborder;
-    			transition: all 200ms ease-in-out;
-			}
-
-			&:hover, &:active {
-				background-color: $tilebg;
-				box-shadow: 0 .2rem 1rem .05rem rgba(0, 0, 0, .1);
-				transform: scale(1.02);
-				p {
-					color: black;
-					// transform: scale(1.02);
-					// padding-top: .4rem;
-				}
-				img {
-					// transform: scale(1.02);
-				}
-			}
-		}
-	}
+            &:hover,
+            &:active {
+                background-color: $tilebg;
+                box-shadow: 0 0.2rem 1rem 0.05rem rgba(0, 0, 0, 0.1);
+                transform: scale(1.02);
+                p {
+                    color: black;
+                    // transform: scale(1.02);
+                    // padding-top: .4rem;
+                }
+            }
+        }
+    }
 }
-
 
 // Specific to /people
 
 #people-content {
-	.team {
-		.team-text {
-			margin: 1rem 0;
-		}
-		.team-list {
-			font-size: 1.1rem;
-			display: flex;
-			justify-content: center;
-			flex-wrap: wrap;
-			gap: .5rem;
-			justify-content: flex-start;
-			.person-chip {
-				@include person-chip;
-				font-size: 1.0rem;
-				font-family: "Inter", sans-serif;
-			}
-			a {
-				text-decoration: none;
-			}
-		}
-	}
-	// margin-top: 1rem !important;
-	// h2:first-of-type {
-	// 	margin-top: 0 !important;
-	// }
+    .team {
+        .team-text {
+            margin: 1rem 0;
+        }
+        .team-list {
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: flex-start;
+            .person-chip {
+                @include person-chip;
+                font-size: 1rem;
+                font-family: "Inter", sans-serif;
+            }
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+    // margin-top: 1rem !important;
+    // h2:first-of-type {
+    // 	margin-top: 0 !important;
+    // }
 }

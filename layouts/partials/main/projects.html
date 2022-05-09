@@ -1,29 +1,31 @@
 <section id="projects">
-	<div class="section-heading">
-	  Core projects
-	</div>
-	<div class="section-content">
-		{{ if .Params.projects }}
-			<div class="row" id="projects-list">
-		    	{{ $projects := .Params.projects }}
-		    	{{ range $i, $e := $projects  }}
-		    		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 py-3">
-						<div class="card border-0 bh-light px-3" id="{{ .name }}-tile">
-							<div class="project-icon my-4">
-								<img src="img/icons/{{ .name }}.svg"/>
-							</div>
-							<div class="card-body project-text p-2">
-	                    		<a href="{{ .url }}" class="stretched-link" target="_blank"  onclick=""></a>
-								<h5 class="card-title mb-1 project-name">{{ .name }}</h5>
-								<p class="card-text project-desc">{{ .description }}</p>
-							</div>
-						</div>
-					</div>
-				{{ end }}
-			</div>
-		{{ end }}
-		<a href="/projects">
-			<div class="more">View all scverse projects</div>
-		</a>
-	</div>
+  <div class="section-heading">Core projects</div>
+  <div class="section-content">
+    {{ if .Params.projects }}
+      <div class="row" id="projects-list">
+        {{ $projects := .Params.projects }}
+        {{ range $i, $e := $projects }}
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 py-3">
+            <div class="card border-0 bh-light px-3" id="{{ .name }}-tile">
+              <div class="project-icon my-4">
+                <img src="img/icons/{{ .name }}.svg" />
+              </div>
+              <div class="card-body project-text p-2">
+                <a href="{{ .url }}" class="stretched-link" target="_blank" onclick=""></a>
+                <h5 class="card-title mb-1 project-name">
+                  {{ .name }}
+                </h5>
+                <p class="card-text project-desc">
+                  {{ .description }}
+                </p>
+              </div>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    {{ end }}
+    <a href="/projects">
+      <div class="more">View all scverse projects</div>
+    </a>
+  </div>
 </section>

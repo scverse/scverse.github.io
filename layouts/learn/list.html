@@ -1,53 +1,50 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    {{ partial "head" . }}
+  </head>
 
-<head>
-  {{ partial "head" . }}
-</head>
+  <body>
+    <header>
+      {{ partial "header" . }}
+    </header>
 
-<body>
-  <header>
-  {{ partial "header" . }}
-  </header>
-  <div id="wrapper">
-    <div id="content">
-      <div id="page-content">
-        <h1>{{ .Title }}</h1>
-        <article class="post">
-          <div class="post-content" id="tutorials-content">
+    <div id="wrapper">
+      <div id="content">
+        <div id="page-content">
+          <h1>{{ .Title }}</h1>
+          <article class="post">
+            <div class="post-content" id="tutorials-content">
+              {{ if .Params.tutorials }}
+                {{ .Params.tutorials_intro | markdownify }}
+                {{ $tutorials := .Params.tutorials }}
+                {{ range $i, $section := $tutorials }}
 
-            {{ if .Params.tutorials }}
-            {{ .Params.tutorials_intro | markdownify }}
-            {{ $tutorials := .Params.tutorials }}
-            {{ range $i, $section := $tutorials }}
+                  <h2>{{ $section.name }}</h2>
 
-              <h2>{{ $section.name }}</h2>
-
-              <div id="tutorials-list">
-                {{ range $j, $t := $section.section}}
-                <div class="tutorial-item">
-                  <a href="{{ $t.url }}" target="_blank">
-                    {{ if $t.img }}
-                      <img src="{{ $t.img }}"/>
-                    {{ else }}
-                      <div class="tutorial-img-placeholder">
+                  <div id="tutorials-list">
+                    {{ range $j, $t := $section.section }}
+                      <div class="card tutorial-item border-0">
+                        <a href="{{ $t.url }}" target="_blank">
+                          {{ if $t.img }}
+                            <img class="card-img-top" src="{{ $t.img }}" />
+                          {{ end }}
+                          <div class="card-body">
+                            <h5 class="card-title">
+                              {{ $t.name }}
+                            </h5>
+                          </div>
+                        </a>
                       </div>
                     {{ end }}
-                    <p>{{ $t.name }}</p>
-                  </a>
-                </div>
+                  </div>
                 {{ end }}
-              </div>
-
-            {{ end }}
-            {{ end }}
-
-            <div>
-        </article>
+              {{ end }}
+            </div>
+          </article>
+        </div>
       </div>
     </div>
-  </div>
-  {{ partial "footer" . }}
-</body>
-
+    {{ partial "footer" . }}
+  </body>
 </html>
