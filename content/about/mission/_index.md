@@ -2,57 +2,46 @@
 
 ## Goals
 
-We want to make single cell omics data analysis as accessible as possible. This means
+We want to make analysis tools for omics data in the life sciences as accessible as possible. This means:
 
--   Interoperability -- we focus on developing open, standardized, and interchangeable file formats and keep our data openly accessible.
--   Diversity -- we believe in removing barriers to participation in research, including economic factors and institutional culture. Our tools will have the most impact if they are developed by and for a diverse community.
--   Transparency -- we do our work as openly as possible and welcome our community to join the decision making process.
--   Simplicity -- invent as little as possible and work with standard pydata types. We strive for easy-to-use interfaces that reduce mental overhead.
+* Interoperability -- we focus on developing open, standardized, and efficient file formats to encourage data sharing and re-use.
+* Diversity -- we believe in removing barriers to participation in research, including economic factors and institutional culture. Our tools will have the most impact if they are developed by and for a diverse community.
+* Transparency -- we do our work as openly as possible and welcome our community to join the decision making process.
+* Simplicity -- invent as little as possible and work with standard pydata types. We strive for easy-to-use interfaces that reduce mental overhead.
+* Efficiency -- our tools should require as little computational resources as possible. This makes analysis of large datasets more accessible, and makes cutting edge research possible.
 
 ## Abstract
 
-The growing adoption of Python for single-cell omics data analysis has been catalyzed by [Scanpy](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1382-0) and [AnnData](https://anndata.readthedocs.io/en/latest/).
-Around this infrastructure an ecosystem of packages has been contributed by various developers and institutions — extending single-cell analysis to different modalities and addressing challenges at the cutting-edge of single-cell research.
-To further nurture the growth of this ecosystem, we've formed a new organization -- **`scverse`**.
+The growing adoption of Python for single-cell omics data analysis has been catalyzed by [Scanpy](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1382-0) and [AnnData](https://anndata.readthedocs.io/en/latest/). 
+Around this infrastructure an ecosystem of packages has been created by various developers and institutions — extending single-cell analysis to different modalities and addressing challenges at the cutting-edge of single-cell research. We believe that progress in this field can't be silo'd to a few groups. To further nurture the growth of this ecosystem, we've formed a new organization -- **`scverse`**.
 
-scverse is a consortium of tools with users and developers across the world. To sustain the utility and growth of the ecosystem, it’s essential the core analytic tools are robust and well-maintained. This entails consistent support and improvement tools beyond what's possible in the conventional single-lab academic setting.
+`scverse` is a consortium of tools with users and developers across the world. To sustain the utility and growth of the ecosystem, it’s essential that the core analytic tools are robust and well-maintained. This entails consistent support and improvement of tools beyond what's possible in the conventional single-lab academic setting.
 
-Tools within `scverse` are deliberately not unified under a single package, and instead form a consortium of core analytic tools with shared maintenance responsibilities.
-We define "core tools" as those which facilitate sharing data through common formats, or provide foundational support for single cell datatypes (e.g. modality-specific IO, toolkits) and analyses.
-These tools are placed under shared maintenance in the `scverse` GitHub organization.
+`scverse` provides high quality infrastructure for analysis of single cell omics data. These *core* tools are well documented, tested, and provide broad functionality. They work with standardized data structures which use common Python numeric types and have interchange-friendly on-disk formats.
 
-We are committed to keeping this community open.
-`scverse` core tools are expected to interface with and be supplemented by other tools in the ecosystem.
-However, development of core packages is not restricted – contributions to the core packages are welcomed and publicly acknowledged.
+We define *core* tools as those which facilitate sharing data through common formats, or provide foundational support for single cell datatypes (e.g. modality-specific IO, toolkits) and analyses. 
+These tools are placed under shared maintenance and development in the `scverse` GitHub organization.
 
-This document lays out our vision and processes around the project.
-It may serve as an entry point for third parties into the structure of the scverse environment.
+`scverse` *core* tools are expected to interface with and be supplemented by other tools in the ecosystem. `scverse` strives for synergy and interoperability with the ecosystem of packages built around these *core* tools, to ultimately provide users to cutting-edge and varied selection of analysis methods.
 
 ## User engagement
 
-`scverse` provides a set of high quality core packages for performing analysis on single cell data.
-These packages provide are well documented, tested, and provide broad functionality.
-All of these packages work with standardized data structures which use common python numeric types and have interchange-friendly on-disk formats.
-Beyond these standard packages, users have access to cutting-edge and alternative analysis methods through the large ecosystem of packages built around these core tools.
+We are community-driven and committed to keeping the `scverse` community open. We strive to actively foster a community where everyone is and feels welcomed, and where there are no barriers to contributions in any form. We welcome newcomers and pledge to build an environment where they can grow as contributors, developers and community members. Together with technical and development support, we also support our users through:
 
-Beyond the purely technical, we support our users through:
-
--   clear documentation of code and usage of tutorial notebooks,
--   participation in development through issues and pull requests,
--   community forums, such as our Discourse, Zulip, and Twitter account, and
--   workshops at which we teach analysis workflows based on the `scverse` ecosystem
+* Clear documentation of code and usage via docs and tutorials.
+* Participation in development through issues and pull requests.
+* Community forums, such as our Discourse, Zulip, and Twitter.
+* Workshops at which we teach analysis workflows based on the `scverse` ecosystem.
 
 ## Developer engagement
 
-Apart from a collection of analysis tools, `scverse` aims to support the development of new approaches to analyze and work with single cell data.
-We believe that progress in this field can't be silo'd to a few groups.
-
+Tools within `scverse` are deliberately not unified under a single package, and instead form a consortium of *core* analytic tools with shared maintenance responsibilities. `scverse` aims to support the development of new approaches to analyze and work with single cell data. However, development of *core* packages is not restricted – contributions to the *core* packages are welcomed and publicly acknowledged.
 We support the development of third party tools by:
 
--   Providing stable APIs to build on top of
--   Providing standardized and well supported data structure to pass around data
--   Making sure all contributions are recognized in our change logs and documentation
--   Promoting 3rd party packages that rely on scverse via our websites and social media feeds.
--   Establishing open communication channels for
-    -   Discussion and collaboration between developers
-    -   A common forum for user support and engagement
+* Providing stable APIs to build on top of.
+* Providing standardized and well supported data structure to pass around data.
+* Making sure all contributions are recognized in our change logs and documentation.
+* Promoting 3rd party packages that rely on `scverse` via our websites and social media feeds.
+* Establishing open communication channels for:
+  * Discussion and collaboration between developers.
+  * A common forum for user support and engagement.
