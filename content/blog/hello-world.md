@@ -15,7 +15,7 @@ Our primary experience lies in the field of computational biology with an emphas
 
 ## What are we doing?
 
-Our first priority is to build a strong and lasting community around the core tools powering single cell analysis today.
+Our first priority is to build a strong and lasting community around the core tools powering single cell data analysis today.
 The knowledge to build and maintain these tools should be shared among many to avoid single points of failures.
 Therefore, we are creating open community channels, creating shared infrastructure to ease package development, and building tooling to make creation of scverse based packages easier.
 Furthermore, to bring the community together we are planning workshops and hackathons which will be open to the general community.
