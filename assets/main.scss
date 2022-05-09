@@ -54,51 +54,51 @@ $contentwidthwide: 92%;
 
 // Customise bootstrap
 .dropdown-menu {
-	margin-top: .3rem !important;
-	padding: 1rem .5rem 1rem .5rem;
-	background-color: $navbghover;
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.05);
+    margin-top: 0.3rem !important;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    background-color: $navbghover;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.05);
 
-	$brdrd: .5rem;
-	border: 0;
-	border-radius: $brdrd;
+    $brdrd: 0.5rem;
+    border: 0;
+    border-radius: $brdrd;
     transition: all 200ms ease-in-out !important;
 
-	a {
-    	color: $navtext;
-    	border-radius: $brdrd;
-		&:hover {
-    		background-color: $navbghover;
-    		color: $navtexthover;
-		}
-	}
+    a {
+        color: $navtext;
+        border-radius: $brdrd;
+        &:hover {
+            background-color: $navbghover;
+            color: $navtexthover;
+        }
+    }
 
-	a:hover {
-		background-color: $navbgactive;
-		color: $navtextactive;
-	}
+    a:hover {
+        background-color: $navbgactive;
+        color: $navtextactive;
+    }
 }
 
 // Cover buttons
 .btn-github:hover {
-	border-color: $github-black;
-	background-color: $github-black;
+    border-color: $github-black;
+    background-color: $github-black;
 }
 .btn-discourse:hover {
-	background-color: $discourse-yellow;
-	color: black;
+    background-color: $discourse-yellow;
+    color: black;
 }
 .btn-zulip:hover {
-	border-color: $zulip-blue;
-	background-color: $zulip-blue;
+    border-color: $zulip-blue;
+    background-color: $zulip-blue;
 }
 .btn-twitter:hover {
-	border-color: $twitter-blue;
-	background-color: $twitter-blue;
+    border-color: $twitter-blue;
+    background-color: $twitter-blue;
 }
 .btn-youtube:hover {
-	border-color: $youtube-red;
-	background-color: $youtube-red;
+    border-color: $youtube-red;
+    background-color: $youtube-red;
 }
 
 // TODO: Should this be necessary?
@@ -222,23 +222,23 @@ body {
 #join-button {
     color: white;
     background-color: #4557c4;
-    background: linear-gradient(135deg, #262FB5, #74C8FA);
+    background: linear-gradient(135deg, #262fb5, #74c8fa);
     transition: background 200ms ease-out;
 
     &:hover {
-        background: linear-gradient(135deg, #74C8FA, #D4AC00);
+        background: linear-gradient(135deg, #74c8fa, #d4ac00);
         color: white;
     }
 }
 
 #scverse-logo {
-	width: 3rem;
-	height: 3rem;
-	background: url("/img/icons/scverse_bw_logo.svg") no-repeat top left;
-	&:hover {
-		background: url("/img/icons/scverse_color_logo.svg") no-repeat top left;
-	}
-	transition: background 200ms ease-out;
+    width: 3rem;
+    height: 3rem;
+    background: url("/img/icons/scverse_bw_logo.svg") no-repeat top left;
+    &:hover {
+        background: url("/img/icons/scverse_color_logo.svg") no-repeat top left;
+    }
+    transition: background 200ms ease-out;
 }
 
 .logo-name {
