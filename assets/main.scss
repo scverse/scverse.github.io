@@ -183,10 +183,6 @@ body {
     scroll-behavior: smooth;
     -webkit-scroll-behavior: smooth;
     -moz-osx-font-smoothing: grayscale;
-
-    @media (max-device-width: 40rem) {
-        font-size: 2.2rem;
-    }
 }
 
 // Nav bar
