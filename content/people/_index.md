@@ -54,7 +54,7 @@ preface = "For people participaing in and interacting with the consortium, there
 	name = "Isaac Virshup"
 	url = "https://github.com/ivirshup"
 
-# ---------- scientific advisors, in alphabetical order
+# ---------- management committee, in alphabetical order
 
 [[teams]]
 	name = "Management Committee"
@@ -79,6 +79,28 @@ preface = "For people participaing in and interacting with the consortium, there
 [[teams.members]]
 	name = "Nir Yosef"
 	url = "https://yoseflab.github.io/"
+
+# ---------- advisory committee, in alphabetical order
+
+[[teams]]
+	name = "Advisory Committee"
+	text = "Advisory Committee helps to shape the overall vision for <span class=\"backticked\">scverse</span> and to define its priorities."
+
+[[teams.members]]
+	name = "Bonnie Berger"
+	url = "https://people.csail.mit.edu/bab/"
+
+[[teams.members]]
+	name = "Dana Pe'er"
+	url = "https://www.mskcc.org/research/ski/labs/dana-pe-er"
+
+[[teams.members]]
+	name = "Aviv Regev"
+	url = "https://biology.mit.edu/profile/aviv-regev/"
+
+[[teams.members]]
+	name = "Sarah Teichmann"
+	url = "https://www.sanger.ac.uk/group/teichmann-group/"
 
 # ----------
 
