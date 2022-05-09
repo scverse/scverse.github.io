@@ -367,6 +367,9 @@ body {
                             background-color: $tilebg;
                             border-radius: 0.5rem;
                             transition: all 200ms ease-in-out;
+                            @media (max-device-width: 40rem) {
+                                min-height: 6rem;
+                            }
                             .project-icon {
                                 transition: all 200ms ease-in-out;
                                 align-items: center;
