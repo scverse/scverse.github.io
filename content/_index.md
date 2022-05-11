@@ -39,7 +39,7 @@ description = "Foundational tools for omics data in the life sciences"
 [mission]
 
 text = """\
-**scverse** is a consortium for joint maintenance of core packages in omics data analysis in life sciences. It has been founded to ensure the long-term maintenance of the core infrastructure in the field."""
+**scverse** is a consortium of foundational tools (mostly in Python) for omics data in life sciences. It has been founded to ensure the long-term maintenance of these core tools."""
 
 # Team
 
