@@ -204,7 +204,9 @@ body {
         background-color: $navbghover;
         color: $navtexthover;
     }
-    &:active { transform: scale(0.95); }
+    &:active {
+        transform: scale(0.95);
+    }
 
     &:hover {
         color: $navtexthover;
@@ -547,7 +549,7 @@ body {
                 text-align: left;
 
                 ul {
-                	list-style: none;
+                    list-style: none;
                 }
 
                 a,
@@ -555,7 +557,7 @@ body {
                     margin: 0.2rem 0;
                     font-family: "Inter", sans-serif;
                     font-weight: 500;
-                    font-size: .9rem;
+                    font-size: 0.9rem;
                 }
                 a {
                     color: inherit;
@@ -563,17 +565,17 @@ body {
                     transition: color 200ms;
                 }
                 h5 {
-                	color: $footertextlight;
+                    color: $footertextlight;
                 }
                 li {
-	                color: $footertextmuted;
-	                a {
-	                    color: $footertextlight;
-	                    &:hover {
-	                        color: black;
-	                    }
-	                }
-	            }
+                    color: $footertextmuted;
+                    a {
+                        color: $footertextlight;
+                        &:hover {
+                            color: black;
+                        }
+                    }
+                }
                 &.signature {
                     margin-bottom: 0;
                     text-align: right;
