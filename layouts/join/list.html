@@ -32,6 +32,14 @@
                           <h5 class="card-title bi-youtube">
                             &nbsp;{{ $item.title }}
                           </h5>
+                        {{ else if eq $item.id "zulip" }}
+                          <h5 class="card-title i-zulip">
+                            &nbsp;{{ $item.title }}
+                          </h5>
+                        {{ else if eq $item.id "discourse" }}
+                          <h5 class="card-title i-discourse">
+                            &nbsp;{{ $item.title }}
+                          </h5>
                         {{ else }}
                           <h5 class="card-title">
                             {{ $item.title }}
