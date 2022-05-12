@@ -123,6 +123,22 @@ title = "Projects"
 	text = "Conda"
 	url = "https://anaconda.org/bioconda/scirpy"
 
+[[projects]]
+	name = "squidpy"
+	description = "Spatial Single Cell Analysis"
+	url = "https://squidpy.readthedocs.io/"
+	img = "../img/icons/squidpy.svg"
+	details = "Squidpy is a tool for the analysis and visualization of spatial molecular data. It builds on top of scanpy and anndata, from which it inherits modularity and scalability. It provides analysis tools that leverages the spatial coordinates of the data, as well as tissue images if available."
+	[[project.links]]
+	text = "GitHub"
+	url = "https://github.com/theislab/scirpy"
+		[[projects.links]]
+	text = "Documentation and tutorials"
+	url = "https://squidpy.readthedocs.io/"
+	[[projects.links]]
+	text = "PyPI"
+	url = "https://pypi.org/project/squidpy/"
+
 [[ecosystem]]
 	text = "Many popular packages rely on scverse functionality. For instance, they take advantage of established data format standards such as anndata and mudata, or are designed to be integrated into the workflow of analysis frameworks. Here are just a few of them."
 	[[ecosystem.libs]]

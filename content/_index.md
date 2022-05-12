@@ -34,6 +34,11 @@ description = "Foundational tools for omics data in the life sciences"
 	description = "Single-cell immune sequencing analysis framework"
 	url = "https://icbi-lab.github.io/scirpy/latest/"
 
+[[projects]]
+	name = "squidpy"
+	description = "Spatial single cell analysis"
+	url = "https://squidpy.readthedocs.io/"
+
 # Mission
 
 [mission]
@@ -83,5 +88,10 @@ text = """\
     id = "scirpy"
     url = "https://academic.oup.com/bioinformatics/article/36/18/4817/5866543"
     text = "Sturm G, Szabo T, Fotakis G, Haider M, Rieder D, Trajanoski Z, Finotello F. Scirpy: a Scanpy extension for analyzing single-cell T-cell receptor-sequencing data. Bioinformatics. 2020 Sep 15;36(18):4817-8."
+
+[[references.citations]]
+    id = "Squidpy"
+    url = "https://doi.org/10.1038/s41592-021-01358-2"
+    text = "Palla G, Spitzer H, Klein M, Fischer D, Schaar AC, Kuemmerle LB, Rybakov S, Ibarra IL, Holmberg O, Virshup I, Lotfollahi M, Richter S, Theis FJ. Squidpy: a scalable framework for spatial omics analysis. Nat Methods 19, 171–178 (2022)."
 
 +++
