@@ -80,6 +80,25 @@ $contentwidthwide: 92%;
     }
 }
 
+@mixin button-icon {
+        display: inline-block;
+        height: 1rem;
+        width: 1rem;
+        content: "";
+        padding: 0;
+        margin: 0;
+}
+
+.i-zulip::before {
+        background: url("/img/icons/zulip.svg") no-repeat top left;
+        @include button-icon;
+}
+.i-discourse::before {
+        background: url("/img/icons/discourse.svg") no-repeat top left;
+        @include button-icon;
+}
+
+
 // Cover buttons
 .btn-github:hover {
     border-color: $github-black;
