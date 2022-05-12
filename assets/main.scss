@@ -91,12 +91,24 @@ $contentwidthwide: 92%;
 
 .i-zulip::before {
     background: url("/img/icons/zulip.svg") no-repeat top left;
+    transition: background 200ms ease-out;
     @include button-icon;
 }
 .i-discourse::before {
-    background: url("/img/icons/discourse.svg") no-repeat top left;
-    @include button-icon;
+        background: url("/img/icons/discourse.svg") no-repeat top left;
+        transition: background 200ms ease-out;
+        @include button-icon;
 }
+
+.card:hover {
+    .i-zulip::before {
+        background: url("/img/icons/zulip_inv.svg") no-repeat top left;
+    }
+    .i-discourse::before {
+        background: url("/img/icons/discourse_inv.svg") no-repeat top left;
+    }
+}
+
 
 // Cover buttons
 .btn-github:hover {
