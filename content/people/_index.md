@@ -2,24 +2,6 @@
 title = "People"
 preface = "For people participating in and interacting with the consortium, there are <a href='/about/roles'>different roles</a> — from core developers to contributors and community memebers."
 
-# ---------- steering committee, in alphabetical order
-
-[[teams]]
-	name = "Steering Committee"
-	hide = true
-
-[[teams.members]]
-	name = "Danila Bredikhin"
-	url = "https://gtca.github.io/"
-
-[[teams.members]]
-	name = "Lukas Heumos"
-	url = "https://lukasheumos.com/"
-
-[[teams.members]]
-	name = "Isaac Virshup"
-	url = "https://twitter.com/ivirshup"
-
 # ---------- core developers, in alphabetical order
 
 [[teams]]
@@ -53,6 +35,25 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Isaac Virshup"
 	url = "https://github.com/ivirshup"
+
+
+# ---------- steering committee, in alphabetical order
+
+[[teams]]
+	name = "Steering Council"
+    text = "The Steering Council (SC) consists of a fixed number of core team members who have additional responsibilities to ensure the smooth running of the project."
+
+[[teams.members]]
+	name = "Danila Bredikhin"
+	url = "https://github.com/gtca"
+
+[[teams.members]]
+	name = "Lukas Heumos"
+	url = "https://github.com/Zethson"
+
+[[teams.members]]
+	name = "Isaac Virshup"
+	url = "https://twitter.com/ivirshup"
 
 # ---------- management committee, in alphabetical order
 
@@ -96,7 +97,7 @@ preface = "For people participating in and interacting with the consortium, ther
 
 [[teams.members]]
 	name = "Aviv Regev"
-	url = "https://biology.mit.edu/profile/aviv-regev/"
+	url = "https://www.gene.com/scientists/our-scientists/aviv-regev"
 
 [[teams.members]]
 	name = "Sarah Teichmann"
