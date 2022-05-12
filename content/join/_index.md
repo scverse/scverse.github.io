@@ -28,7 +28,7 @@ title = "Join scverse"
 [[resources]]
 	id = "youtube"
 	title = "YouTube"
-	text = "Subsribe to our YouTube channel"
+	text = "Subscribe to our YouTube channel"
 	link = "https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA"
 
 +++
