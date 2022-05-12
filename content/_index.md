@@ -34,6 +34,11 @@ description = "Foundational tools for omics data in the life sciences"
 	description = "Single-cell immune sequencing analysis framework"
 	url = "https://icbi-lab.github.io/scirpy/latest/"
 
+[[projects]]
+	name = "squidpy"
+	description = "Spatial single cell analysis"
+	url = "https://squidpy.readthedocs.io/"
+
 # Mission
 
 [mission]
