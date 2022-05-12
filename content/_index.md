@@ -46,7 +46,7 @@ text = """\
 [team]
 
 text = """\
-**scverse** is currently governed by the developers with of the core packages with [Danila Bredikhin](https://gtca.github.io/), [Lukas Heumos](https://lukasheumos.com/), and [Isaac Virshup](https://twitter.com/ivirshup) serving as the steering council.
+**scverse** is a community project currently governed by the developers of the core packages. Please [reach out](/join) if you'd like to be involved!
 """
 
 # People information is recorded in the people/_index.md file
