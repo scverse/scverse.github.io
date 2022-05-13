@@ -95,9 +95,9 @@ $contentwidthwide: 92%;
     @include button-icon;
 }
 .i-discourse::before {
-        background: url("/img/icons/discourse.svg") no-repeat top left;
-        transition: background 200ms ease-out;
-        @include button-icon;
+    background: url("/img/icons/discourse.svg") no-repeat top left;
+    transition: background 200ms ease-out;
+    @include button-icon;
 }
 
 .card:hover {
