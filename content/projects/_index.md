@@ -142,8 +142,17 @@ title = "Projects"
 [[ecosystem]]
 	text = "Many popular packages rely on scverse functionality. For instance, they take advantage of established data format standards such as anndata and mudata, or are designed to be integrated into the workflow of analysis frameworks. Here are just a few of them."
 	[[ecosystem.libs]]
+	name = "bbknn"
+	url = "https://github.com/Teichlab/bbknn"
+	[[ecosystem.libs]]
+	name = "cell2location"
+	url = "https://cell2location.readthedocs.io"
+	[[ecosystem.libs]]
 	name = "CellBender"
 	url = "https://github.com/broadinstitute/CellBender"
+	[[ecosystem.libs]]
+	name = "CellOracle"
+	url = "https://morris-lab.github.io/CellOracle.documentation/"
 	[[ecosystem.libs]]
 	name = "CellPhoneDB"
 	url = "https://github.com/Teichlab/cellphonedb"
@@ -154,6 +163,18 @@ title = "Projects"
 	name = "cellxgene"
 	url = "https://github.com/chanzuckerberg/cellxgene"
 	[[ecosystem.libs]]
+	name = "cNMF"
+	url = "https://github.com/dylkot/cNMF"
+	[[ecosystem.libs]]
+	name = "CPA"
+	url = "https://github.com/facebookresearch/CPA"
+	[[ecosystem.libs]]
+	name = "dca"
+	url = "https://github.com/theislab/dca"
+	[[ecosystem.libs]]
+	name = "decoupler"
+	url = "https://github.com/saezlab/decoupler-py"
+	[[ecosystem.libs]]
 	name = "diffxpy"
 	url = "https://github.com/theislab/diffxpy"
 	[[ecosystem.libs]]
@@ -163,8 +184,32 @@ title = "Projects"
 	name = "epiScanpy"
 	url = "https://github.com/colomemaria/epiScanpy"
 	[[ecosystem.libs]]
+	name = "SnapATAC2"
+	url = "https://github.com/kaizhang/SnapATAC2"
+	[[ecosystem.libs]]
+	name = "MARS"
+	url = "https://github.com/snap-stanford/mars"
+	[[ecosystem.libs]]
+	name = "novoSpaRc"
+	url = "https://novosparc.readthedocs.io"
+	[[ecosystem.libs]]
+	name = "Open Problems"
+	url = "https://openproblems.bio"
+	[[ecosystem.libs]]
+	name = "PathML"
+	url = "https://pathml.org"
+	[[ecosystem.libs]]
+	name = "Palantir"
+	url = "https://github.com/dpeerlab/Palantir"
+	[[ecosystem.libs]]
+	name = "pegasus"
+	url = "https://pegasus.readthedocs.io/en/stable/"
+	[[ecosystem.libs]]
 	name = "pySCENIC"
 	url = "https://github.com/aertslab/pySCENIC"
+	[[ecosystem.libs]]
+	name = "scCODA"
+	url = "https://sccoda.readthedocs.io/en/latest/"
 	[[ecosystem.libs]]
 	name = "scArches"
 	url = "https://github.com/theislab/scarches"
@@ -172,14 +217,23 @@ title = "Projects"
 	name = "scGen"
 	url = "https://github.com/theislab/scgen"
 	[[ecosystem.libs]]
+	name = "scrublet"
+	url = "https://github.com/swolock/scrublet"
+	[[ecosystem.libs]]
 	name = "scvelo"
 	url = "https://github.com/theislab/scvelo"
 	[[ecosystem.libs]]
 	name = "sfaira"
 	url = "https://github.com/theislab/sfaira"
 	[[ecosystem.libs]]
+	name = "SpaGCN"
+	url = "https://github.com/jianhuupenn/SpaGCN"
+	[[ecosystem.libs]]
 	name = "squidpy"
 	url = "https://github.com/theislab/squidpy"
+	[[ecosystem.libs]]
+	name = "Tangram"
+	url = "https://tangram-sc.readthedocs.io/en/latest/index.html"
 	[[ecosystem.libs]]
 	name = "vitesse"
 	url = "https://github.com/vitessce/vitessce"
