@@ -163,6 +163,15 @@ title = "Projects"
 	name = "cellxgene"
 	url = "https://github.com/chanzuckerberg/cellxgene"
 	[[ecosystem.libs]]
+	name = "cellxgene_VIP"
+	url = "https://github.com/interactivereport/cellxgene_VIP"
+	[[ecosystem.libs]]
+	name = "Cell_BLAST"
+	url = "https://github.com/gao-lab/Cell_BLAST"
+	[[ecosystem.libs]]
+	name = "Cirrocumulus"
+	url = "https://cirrocumulus.readthedocs.io/en/latest/"
+	[[ecosystem.libs]]
 	name = "cNMF"
 	url = "https://github.com/dylkot/cNMF"
 	[[ecosystem.libs]]
@@ -178,11 +187,17 @@ title = "Projects"
 	name = "diffxpy"
 	url = "https://github.com/theislab/diffxpy"
 	[[ecosystem.libs]]
+	name = "DoubletDetection"
+	url = "https://github.com/JonathanShor/DoubletDetection"
+	[[ecosystem.libs]]
 	name = "dynamo-release"
 	url = "https://github.com/aristoteleo/dynamo-release"
 	[[ecosystem.libs]]
 	name = "epiScanpy"
 	url = "https://github.com/colomemaria/epiScanpy"
+	[[ecosystem.libs]]
+	name = "scanorama"
+	url = "http://cb.csail.mit.edu/cb/scanorama/"
 	[[ecosystem.libs]]
 	name = "SnapATAC2"
 	url = "https://github.com/kaizhang/SnapATAC2"
@@ -201,6 +216,9 @@ title = "Projects"
 	[[ecosystem.libs]]
 	name = "Palantir"
 	url = "https://github.com/dpeerlab/Palantir"
+	[[ecosystem.libs]]
+	name = "PASTE"
+	url = "https://github.com/raphael-group/paste"
 	[[ecosystem.libs]]
 	name = "pegasus"
 	url = "https://pegasus.readthedocs.io/en/stable/"
