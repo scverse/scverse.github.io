@@ -31,7 +31,7 @@ You can also find recordings of past talks and workshops on our [YouTube channel
 	img = "https://docs.scvi-tools.org/en/stable/_images/tutorials_notebooks_api_overview_45_1.png"
 	[[tutorials.section]]
 	name = "Integration of the Lung Cell Atlas with scANVI"
-	url = "https://docs.scvi-tools.org/en/stable/tutorials/notebooks/tabula_muris.html"
+	url = "https://docs.scvi-tools.org/en/stable/tutorials/notebooks/harmonization.html"
 	img = "https://docs.scvi-tools.org/en/stable/_images/tutorials_notebooks_harmonization_22_0.png"
 
 
