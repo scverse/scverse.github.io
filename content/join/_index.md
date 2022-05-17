@@ -11,7 +11,7 @@ title = "Join scverse"
 	id = "twitter"
 	title = "Twitter"
 	text = "Follow us on Twitter"
-	link = "https://twitter.com/scanpy_team"
+	link = "https://twitter.com/scverse_team"
 
 [[resources]]
 	id = "zulip"
