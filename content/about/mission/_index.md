@@ -10,7 +10,7 @@ We want to make analysis tools for omics data in the life sciences as accessible
 * Simplicity -- invent as little as possible and work with standard pydata types. We strive for easy-to-use interfaces that reduce mental overhead.
 * Efficiency -- our tools should require as little computational resources as possible. This makes analysis of large datasets more accessible, and makes cutting edge research possible.
 
-## Abstract
+## Organization and vision
 
 The growing adoption of Python for single-cell omics data analysis has been catalyzed by [Scanpy](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1382-0) and [AnnData](https://anndata.readthedocs.io/en/latest/). 
 Around this infrastructure an ecosystem of packages has been created by various developers and institutions — extending single-cell analysis to different modalities and addressing challenges at the cutting-edge of single-cell research. We believe that progress in this field can't be silo'd to a few groups. To further nurture the growth of this ecosystem, we've formed a new organization -- **`scverse`**.
