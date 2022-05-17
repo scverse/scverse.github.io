@@ -1,6 +1,6 @@
 +++
 title = "Hello world"
-date = 2022-01-19T14:28:05+01:00
+date = 2022-05-17T00:00:05+01:00
 description = "Introducing scverse"
 draft = false
 +++
@@ -11,7 +11,7 @@ We are excited to announce **scverse**.
 
 ## What tools are part of scverse?
 
-Our primary experience lies in the field of computational biology with an emphasis on single-cell omics technologies. This experience has defined our initial scope and focus in the very beginning of our journey. Hence, we start with two key data structures for single-cell data in the Python ecosystem, [AnnData](https://github.com/scverse/anndata) for uni-modal data and [MuData](https://github.com/scverse/mudata) for multi-modal data, together with [Scanpy](https://github.com/scverse/scanpy) for general purpose single-cell analysis, [muon](https://github.com/scverse/muon) for multimodal single-cell analysis, [scvi-tools](https://github.com/scverse/scvi-tools) for deep probabilistic analysis of single-cell data and [scirpy](https://github.com/scverse/scirpy) for T-cell receptor analysis. We are looking forward to expanding with more major libraries and frameworks which fit our vision soon.
+Our primary experience lies in the field of computational biology with an emphasis on single-cell omics technologies. This experience has defined our initial scope and focus in the very beginning of our journey. Hence, we start with two key data structures for single-cell data in the Python ecosystem, [AnnData](https://github.com/scverse/anndata) for uni-modal data and [MuData](https://github.com/scverse/mudata) for multi-modal data, together with [Scanpy](https://github.com/scverse/scanpy) for general purpose single-cell analysis, [muon](https://github.com/scverse/muon) for multimodal single-cell analysis, [scvi-tools](https://github.com/scverse/scvi-tools) for deep probabilistic analysis of single-cell data, [scirpy](https://github.com/scverse/scirpy) for T-cell receptor analysis, and [squidpy](https://github.com/scverse/squidpy) for spatial omics analysis. We are looking forward to expanding with more major libraries and frameworks which fit our vision soon.
 
 ## What are we doing?
 
