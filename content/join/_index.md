@@ -16,7 +16,7 @@ title = "Join scverse"
 [[resources]]
 	id = "zulip"
 	title = "Zulip"
-	text = "Chat with us Zulip"
+	text = "Chat with us on Zulip"
 	link = "https://scverse.zulipchat.com/"
 
 [[resources]]
