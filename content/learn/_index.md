@@ -16,7 +16,7 @@ You can also find recordings of past talks and workshops on our [YouTube channel
 	img = "../../img/libs/anndata_schema.svg"
 	[[tutorials.section]]
 	name = "MuData Quickstart"
-	url = "https://mudata.readthedocs.io/en/latest/notebooks/nuances.html"
+	url = "https://mudata.readthedocs.io/en/latest/notebooks/quickstart_mudata.html"
 	img = "../../img/libs/mudata_flat.svg"
 
 [[tutorials]]
