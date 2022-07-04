@@ -1,6 +1,8 @@
 +++
 title = "Join scverse"
 
+email_stmt = "You can also reach the steering council at: [steering-council@scverse.org](steering-council@scverse.org)"
+
 [[resources]]
 	id = "github"
 	title = "GitHub"
@@ -30,5 +32,4 @@ title = "Join scverse"
 	title = "YouTube"
 	text = "Subscribe to our YouTube channel"
 	link = "https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA"
-
 +++
