@@ -1,6 +1,6 @@
 +++
 title = "scverse"
-description = "Foundational tools for omics data in the life sciences"
+description = "Foundational tools for single-cell omics data analysis"
 
 # Projects
 
