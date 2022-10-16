@@ -43,14 +43,28 @@
 
               {{ if .Params.ecosystem }}
                 {{ $eco := index .Params.ecosystem 0 }}
-                <h2>Ecosystem</h2>
+                <h2 id="ecosystem">Ecosystem</h2>
                 <div>
                   <p>{{ $eco.text }}</p>
                 </div>
-                <div class="project-links">
-                  {{ range $lib := $eco.libs }}
-                    <a href="{{ $lib.url }}" target="_blank">{{ $lib.name }}</a>
-                  {{ end }}
+                <div id="ecosystem-packages">
+			<input type="text" id="eco-filter" onkeyup="filterPackages()" placeholder="Search through {{ len $eco.libs }} packages" title="Type in your search query">
+		  <table id="eco-table">
+		    <colgroup>
+			    <col class="eco-col-name"/>
+			    <col class="eco-col-description"/>
+		    </colgroup>
+		    <tr class="eco-table-header">
+			    <th>Package</th>
+			    <th>Description</th>
+		    </tr>
+			    {{ range $lib := $eco.libs }}
+			    <tr class="eco-table-row project-links">
+				    <th class="eco-package-name"><a href="{{ $lib.url }}" target="_blank">{{ $lib.name }}</a></th>
+				    <th class="eco-package-description">{{ $lib.description }}</th>
+			    {{ end }}
+			    </tr>
+		  </table>
                 </div>
               {{ end }}
 

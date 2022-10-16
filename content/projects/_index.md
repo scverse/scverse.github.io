@@ -144,12 +144,15 @@ title = "Projects"
 	[[ecosystem.libs]]
 	name = "bbknn"
 	url = "https://github.com/Teichlab/bbknn"
+	description = "Batch balanced KNN"
 	[[ecosystem.libs]]
 	name = "cell2location"
 	url = "https://cell2location.readthedocs.io"
+	description = "Comprehensive mapping of tissue cell architecture via integrated single cell and spatial transcriptomics"
 	[[ecosystem.libs]]
 	name = "CellBender"
 	url = "https://github.com/broadinstitute/CellBender"
+	description = "Eliminating technical artifacts from scRNA-seq data"
 	[[ecosystem.libs]]
 	name = "CellOracle"
 	url = "https://morris-lab.github.io/CellOracle.documentation/"
@@ -183,6 +186,7 @@ title = "Projects"
 	[[ecosystem.libs]]
 	name = "decoupler"
 	url = "https://github.com/saezlab/decoupler-py"
+	description = "Python package to infer biological activities from omics data using a collection of methods"
 	[[ecosystem.libs]]
 	name = "diffxpy"
 	url = "https://github.com/theislab/diffxpy"
@@ -240,6 +244,7 @@ title = "Projects"
 	[[ecosystem.libs]]
 	name = "scvelo"
 	url = "https://github.com/theislab/scvelo"
+	description = "RNA Velocity generalized through dynamical modeling"
 	[[ecosystem.libs]]
 	name = "sfaira"
 	url = "https://github.com/theislab/sfaira"
