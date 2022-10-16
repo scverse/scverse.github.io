@@ -200,6 +200,10 @@ title = "Projects"
 	name = "epiScanpy"
 	url = "https://github.com/colomemaria/epiScanpy"
 	[[ecosystem.libs]]
+	name = "infercnvpy"
+	url = "https://github.com/icbi-lab/infercnvpy"
+	description = "Infer copy number variation from scRNA-seq data"
+	[[ecosystem.libs]]
 	name = "scanorama"
 	url = "http://cb.csail.mit.edu/cb/scanorama/"
 	[[ecosystem.libs]]
