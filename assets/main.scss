@@ -867,23 +867,23 @@ body {
                     }
                 }
                 // #anndata-tile {
-                // 	background-color: rgba(#fa8e4b, .9);
+                //  background-color: rgba(#fa8e4b, .9);
                 // }
                 // #mudata-tile {
-                // 	background-color: rgba($mudatagreen, .7);
+                //  background-color: rgba($mudatagreen, .7);
                 // }
                 // #scanpy-tile {
-                // 	background-color: rgba($scanpymandy, .7);
+                //  background-color: rgba($scanpymandy, .7);
                 // }
                 // #muon-tile {
-                // 	background-color: rgba($muonaquamarine, .8);
+                //  background-color: rgba($muonaquamarine, .8);
                 // }
             }
         }
     }
     // margin-top: 1rem !important;
     // h2:first-of-type {
-    // 	margin-top: 0 !important;
+    //  margin-top: 0 !important;
     // }
     .project-links {
         a {
@@ -912,46 +912,46 @@ body {
         width: 100%;
         border: none;
         border-bottom: 1px solid lightgrey;
-	transition: all 200ms ease-in-out;
-	margin: 2rem 0 1rem 0;
-	&:focus {
-	    outline-width: 0;
-	    border-bottom: 1px solid black;
-	}
+        transition: all 200ms ease-in-out;
+        margin: 2rem 0 1rem 0;
+        &:focus {
+            outline-width: 0;
+            border-bottom: 1px solid black;
+        }
     }
     #eco-table {
         .eco-table-header {
-	    color: $greydesc;
-	    position: sticky; 
-	    top: 0;
-	    background: rgba(255, 255, 255, .9);
-	    padding: 1rem 0;
-	}
-	colgroup {
-	    .eco-col-name {
-		min-width: 14rem;
-		width: 14rem;
-	    }
-	    .eco-col-description {
-	    }
-	}
-	.eco-table-row {
-	    height: 4rem;
-	    vertical-align: top;
-	    width: 100%;
-	    .eco-package-name {
-		font-weight: 300;
-	    }
-	    .eco-package-description {
-		font-weight: 300;
-	        color: grey;
-	    }
-	}
-	display: block;
-	max-height: 40rem;
-	overflow: auto;
-	table-layout: fixed;
-	width: 100%;
+            color: $greydesc;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem 0;
+        }
+        colgroup {
+            .eco-col-name {
+                min-width: 14rem;
+                width: 14rem;
+            }
+            .eco-col-description {
+            }
+        }
+        .eco-table-row {
+            height: 4rem;
+            vertical-align: top;
+            width: 100%;
+            .eco-package-name {
+                font-weight: 300;
+            }
+            .eco-package-description {
+                font-weight: 300;
+                color: grey;
+            }
+        }
+        display: block;
+        max-height: 40rem;
+        overflow: auto;
+        table-layout: fixed;
+        width: 100%;
     }
 }
 
@@ -1039,6 +1039,6 @@ body {
     }
     // margin-top: 1rem !important;
     // h2:first-of-type {
-    // 	margin-top: 0 !important;
+    //  margin-top: 0 !important;
     // }
 }
