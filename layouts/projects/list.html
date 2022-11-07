@@ -43,7 +43,8 @@
 
               {{ if .Params.ecosystem }}
                 {{ $eco := index .Params.ecosystem 0 }}
-                {{ $pkgs := .Site.Data.ecosystem.packages }}
+		<!-- {{ $pkgs := .Site.Data.ecosystem.packages }} -->
+		{{ $pkgs := getJSON "https://scverse.org/ecosystem-packages/ecosystem.json" }}
                 <h2 id="ecosystem">Ecosystem</h2>
                 <div>
                   <p>{{ $eco.text }}</p>
