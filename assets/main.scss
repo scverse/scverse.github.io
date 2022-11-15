@@ -906,53 +906,9 @@ body {
     }
 }
 
-// Ecosystem in /projects#ecosystem
-#ecosystem-packages {
-    #eco-filter {
-        width: 100%;
-        border: none;
-        border-bottom: 1px solid lightgrey;
-        transition: all 200ms ease-in-out;
-        margin: 2rem 0 1rem 0;
-        &:focus {
-            outline-width: 0;
-            border-bottom: 1px solid black;
-        }
-    }
-    #eco-table {
-        .eco-table-header {
-            color: $greydesc;
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 1rem 0;
-        }
-        colgroup {
-            .eco-col-name {
-                min-width: 14rem;
-                width: 14rem;
-            }
-            .eco-col-description {
-            }
-        }
-        .eco-table-row {
-            height: 4rem;
-            vertical-align: top;
-            width: 100%;
-            .eco-package-name {
-                font-weight: 300;
-            }
-            .eco-package-description {
-                font-weight: 300;
-                color: grey;
-            }
-        }
-        display: block;
-        max-height: 40rem;
-        overflow: auto;
-        table-layout: fixed;
-        width: 100%;
-    }
+#eco-table tbody {
+    // TODO: I think this shouldn't be neccesary
+    border-top: 0px;
 }
 
 // Specific to /tutorials

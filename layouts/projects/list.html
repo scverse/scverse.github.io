@@ -58,23 +58,23 @@
                       placeholder="Search through {{ len $pkgs }} packages"
                       title="Type in your search query"
                     />
-                    <table id="eco-table">
-                      <colgroup>
-                        <col class="eco-col-name" />
-                        <col class="eco-col-description" />
-                      </colgroup>
-                      <tr class="eco-table-header">
-                        <th>Package</th>
-                        <th>Description</th>
-                      </tr>
-                      {{ range $lib := $pkgs }}
-                        <tr class="eco-table-row project-links">
-                          <td class="eco-package-name" scope="row">
-                            <a href="{{ $lib.project_home }}" target="_blank">{{ $lib.name }}</a>
-                          </td>
-                          <td class="eco-package-description">{{ $lib.description }}</td>
+                    <table class="table" id="eco-table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Package</th>
+                          <th scope="col">Description</th>
                         </tr>
-                      {{ end }}
+                      </thead>
+                      <tbody>
+                        {{ range $lib := $pkgs }}
+                          <tr class="project-links eco-table-row">
+                            <td>
+                              <a href="{{ $lib.project_home }}" target="_blank">{{ $lib.name }}</a>
+                            </td>
+                            <td>{{ $lib.description }}</td>
+                          </tr>
+                        {{ end }}
+                      </tbody>
                     </table>
                   </div>
                 {{ end }}
