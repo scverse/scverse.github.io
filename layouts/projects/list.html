@@ -69,10 +69,10 @@
                       </tr>
                       {{ range $lib := $pkgs }}
                         <tr class="eco-table-row project-links">
-                          <th class="eco-package-name">
+                          <td class="eco-package-name" scope="row">
                             <a href="{{ $lib.project_home }}" target="_blank">{{ $lib.name }}</a>
-                          </th>
-                          <th class="eco-package-description">{{ $lib.description }}</th>
+                          </td>
+                          <td class="eco-package-description">{{ $lib.description }}</td>
                         </tr>
                       {{ end }}
                     </table>
