@@ -47,7 +47,7 @@
                 {{ $pkgs := getJSON "https://scverse.org/ecosystem-packages/ecosystem.json" }}
                 <h2 id="ecosystem">Ecosystem</h2>
                 <div>
-                  <p>{{ $eco.text }}</p>
+                  <p>{{ $eco.text | markdownify }}</p>
                 </div>
                 {{ if $pkgs }}
                   <div id="ecosystem-packages">
