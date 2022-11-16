@@ -20,14 +20,26 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav mb-2 mb-lg-0 nav-buttons">
-          <li class="nav-item">
+          <li class="nav-item dropdown">
             <a
-              class="nav-link{{ if eq .Section `projects` }}
+              class="nav-link dropdown-toggle{{ if eq .Section `about` }}
                 active
               {{ end }}"
               href="/projects"
-              >Projects</a
+              id="projects-dropdown"
+              role="button"
+              aria-expanded="false"
             >
+              Projects
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="projects-dropdown">
+              <li>
+                <a class="dropdown-item" href="/projects#core-projects">Core</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/projects#ecosystem">Ecosystem</a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a
@@ -62,17 +74,13 @@
                 active
               {{ end }}"
               href="/about"
-              id="navbarDropdown"
+              id="about-dropdown"
               role="button"
               aria-expanded="false"
             >
               About
             </a>
-            <!-- <a class="nav-button{{ if eq .Section `about` }}
-              active
-            {{ end }}" href="/about">About &#9662;</a> -->
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <h3></h3>
+            <ul class="dropdown-menu" aria-labelledby="about-dropdown">
               <li>
                 <a class="dropdown-item" href="/about">About scverse</a>
               </li>

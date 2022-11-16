@@ -15,7 +15,7 @@
           <article class="post">
             <div class="post-content" id="projects-content">
               {{ if .Params.projects }}
-                <h2>Core projects</h2>
+                <h2 id="core-projects">Core projects</h2>
                 <div id="projects-list">
                   {{ $projects := .Params.projects }}
                   {{ range $i, $e := $projects }}
@@ -43,17 +43,42 @@
 
               {{ if .Params.ecosystem }}
                 {{ $eco := index .Params.ecosystem 0 }}
-                <h2>Ecosystem</h2>
+                {{ $pkgs := getJSON "https://scverse.org/ecosystem-packages/ecosystem.json" }}
+                <h2 id="ecosystem">Ecosystem</h2>
                 <div>
-                  <p>{{ $eco.text }}</p>
+                  <p>{{ $eco.text | markdownify }}</p>
                 </div>
-                <div class="project-links">
-                  {{ range $lib := $eco.libs }}
-                    <a href="{{ $lib.url }}" target="_blank">{{ $lib.name }}</a>
-                  {{ end }}
-                </div>
+                {{ if $pkgs }}
+                  <div id="ecosystem-packages">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="eco-filter"
+                      onkeyup="filterPackages()"
+                      placeholder="Search through {{ len $pkgs }} packages"
+                      title="Type in your search query"
+                    />
+                    <table class="table" id="eco-table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Package</th>
+                          <th scope="col">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{ range $lib := $pkgs }}
+                          <tr class="project-links eco-table-row">
+                            <td>
+                              <a href="{{ $lib.project_home }}" target="_blank">{{ $lib.name }}</a>
+                            </td>
+                            <td>{{ $lib.description | markdownify }}</td>
+                          </tr>
+                        {{ end }}
+                      </tbody>
+                    </table>
+                  </div>
+                {{ end }}
               {{ end }}
-
             </div>
           </article>
         </div>

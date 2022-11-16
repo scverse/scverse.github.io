@@ -867,23 +867,23 @@ body {
                     }
                 }
                 // #anndata-tile {
-                // 	background-color: rgba(#fa8e4b, .9);
+                //  background-color: rgba(#fa8e4b, .9);
                 // }
                 // #mudata-tile {
-                // 	background-color: rgba($mudatagreen, .7);
+                //  background-color: rgba($mudatagreen, .7);
                 // }
                 // #scanpy-tile {
-                // 	background-color: rgba($scanpymandy, .7);
+                //  background-color: rgba($scanpymandy, .7);
                 // }
                 // #muon-tile {
-                // 	background-color: rgba($muonaquamarine, .8);
+                //  background-color: rgba($muonaquamarine, .8);
                 // }
             }
         }
     }
     // margin-top: 1rem !important;
     // h2:first-of-type {
-    // 	margin-top: 0 !important;
+    //  margin-top: 0 !important;
     // }
     .project-links {
         a {
@@ -904,6 +904,11 @@ body {
             }
         }
     }
+}
+
+#eco-table tbody {
+    // TODO: I think this shouldn't be neccesary
+    border-top: 0px;
 }
 
 // Specific to /tutorials
@@ -990,6 +995,6 @@ body {
     }
     // margin-top: 1rem !important;
     // h2:first-of-type {
-    // 	margin-top: 0 !important;
+    //  margin-top: 0 !important;
     // }
 }
