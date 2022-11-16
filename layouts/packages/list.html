@@ -58,24 +58,19 @@
                       placeholder="Search through {{ len $pkgs }} packages"
                       title="Type in your search query"
                     />
-                    <table class="table" id="eco-table">
-                      <thead>
-                        <tr>
-                          <th scope="col">Package</th>
-                          <th scope="col">Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {{ range $lib := $pkgs }}
-                          <tr class="package-links eco-table-row">
-                            <td>
-                              <a href="{{ $lib.package_home }}" target="_blank">{{ $lib.name }}</a>
-                            </td>
-                            <td>{{ $lib.description | markdownify }}</td>
-                          </tr>
-                        {{ end }}
-                      </tbody>
-                    </table>
+                    <!-- <div class="grid ecosystem-grid"> -->
+                    <div class="row row-cols-1 eco-table">
+                      {{ range $lib := $pkgs }}
+                        <div class="card eco-table-entry">
+                          <div class="card-body">
+                            <h5 class="card-title">
+                              <a href="{{ $lib.package_home }}">{{ $lib.name }}</a>
+                            </h5>
+                            <p class="card-text">{{ $lib.description | markdownify }}</p>
+                          </div>
+                        </div>
+                      {{ end }}
+                    </div>
                   </div>
                 {{ end }}
               {{ end }}
