@@ -1,141 +1,142 @@
 +++
-title = "Projects"
+title = "Packages"
+aliases = ["/projects/"]
 
-[[projects]]
+[[packages]]
 	name = "anndata"
 	description = "Standard for annotated matrices"
 	url = "https://anndata.readthedocs.io/en/latest/"
 	img = "../img/libs/anndata_schema.svg"
 	details = "Anndata is a Python package for handling annotated data matrices in memory and on disk, positioned between pandas and xarray. anndata offers a broad range of computationally efficient features including, among others, sparse data support, lazy operations, and a PyTorch interface."
-	[[projects.links]]
+	[[packages.links]]
 	text = "GitHub"
 	url = "https://github.com/theislab/anndata"
-	[[projects.links]]
+	[[packages.links]]
 	text = "Documentation"
 	url = "https://anndata.readthedocs.io/en/latest/"
-	[[projects.links]]
+	[[packages.links]]
 	text = "PyPI"
 	url = "https://pypi.org/project/anndata/"
-	[[projects.links]]
+	[[packages.links]]
 	text = "Conda"
 	url = "https://anaconda.org/conda-forge/anndata"
 
-[[projects]]
+[[packages]]
 	name = "mudata"
 	description = "Multimodal data format"
 	url = "https://mudata.readthedocs.io/en/latest/"
 	img = "../img/libs/mudata_flat.svg"
 	details = "MuData is a format for annotated multimodal datasets where each modality is represented by an AnnData object. MuData's reference implementation is in Python, and the cross-language functionality is achieved via HDF5-based .h5mu files with libraries in R and Julia."
-	[[projects.links]]
+	[[packages.links]]
 	text = "GitHub"
 	url = "https://github.com/scverse/mudata"
-	[[projects.links]]
+	[[packages.links]]
 	text = "Documentation"
 	url = "https://mudata.readthedocs.io/en/latest/"
-	[[projects.links]]
+	[[packages.links]]
 	text = "PyPI"
 	url = "https://pypi.org/project/mudata/"
-	[[projects.links]]
+	[[packages.links]]
 	text = "Conda"
 	url = "https://anaconda.org/conda-forge/mudata"
-	[[projects.links]]
+	[[packages.links]]
 	text = "Muon.jl"
 	url = "https://github.com/scverse/Muon.jl"
 
-[[projects]]
+[[packages]]
 	name = "scanpy"
 	description = "Single-cell analysis framework"
 	url = "https://scanpy.readthedocs.io/en/latest/"
 	#img = "https://scanpy.readthedocs.io/en/stable/_static/Scanpy_Logo_BrightFG.svg"
 	img = "../img/icons/scanpy.svg"
 	details = "Scanpy is a scalable toolkit for analyzing single-cell gene expression data built jointly with anndata. It includes preprocessing, visualization, clustering, trajectory inference and differential expression testing. The Python-based implementation efficiently deals with datasets of more than one million cells."
-	[[projects.links]]
+	[[packages.links]]
 	text = "GitHub"
 	url = "https://github.com/theislab/scanpy"
-	[[projects.links]]
+	[[packages.links]]
 	text = "Documentation and tutorials"
 	url = "https://scanpy.readthedocs.io/en/latest/"
-	[[projects.links]]
+	[[packages.links]]
 	text = "PyPI"
 	url = "https://pypi.org/project/scanpy/"
-	[[projects.links]]
+	[[packages.links]]
 	text = "Conda"
 	url = "https://anaconda.org/conda-forge/scanpy"
 
-[[projects]]
+[[packages]]
 	name = "muon"
 	description = "Multi-omics analysis framework"
 	url = "https://gtca.github.io/muon"
 	#img = "https://muon.readthedocs.io/en/latest/_static/muon_logo.png"
 	img = "../img/icons/muon.svg"
 	details = "muon is a Python framework for multimodal omics analysis. While there are many features that muon brings to the table, there are three key areas that its functionality is focused on."
-	[[projects.links]]
+	[[packages.links]]
 	text = "GitHub"
 	url = "https://github.com/scverse/muon"
-	[[projects.links]]
+	[[packages.links]]
 	text = "Documentation"
 	url = "https://muon.readthedocs.io/en/latest/"
-	[[projects.links]]
+	[[packages.links]]
 	text = "Tutorials"
 	url = "https://muon-tutorials.readthedocs.io/en/latest/"
-	[[projects.links]]
+	[[packages.links]]
 	text = "PyPI"
 	url = "https://pypi.org/project/muon/"
-	[[projects.links]]
+	[[packages.links]]
 	text = "Website"
 	url = "https://gtca.github.io/muon/"
 
-[[projects]]
+[[packages]]
 	name = "scvi-tools"
 	description = "Machine learning model development library and model zoo"
 	url = "https://scvi-tools.org/"
 	img = "../img/libs/scvi_tools_graph_model.svg"
 	details = "scvi-tools is a library for developing and deploying machine learning models based on PyTorch and AnnData. With an emphasis on probablistic models, scvi-tools steamlines the development process via training, data management, and user interface abstractions. scvi-tools also contains easy-to-use implementations of more than 14 state-of-the-art probabilistic models in the field."
-	[[projects.links]]
+	[[packages.links]]
 	text = "GitHub"
 	url = "https://github.com/yoseflab/scvi-tools"
-	[[projects.links]]
+	[[packages.links]]
 	text = "Documentation and tutorials"
 	url = "https://docs.scvi-tools.org/en/stable/"
-	[[projects.links]]
+	[[packages.links]]
 	text = "PyPI"
 	url = "https://pypi.org/project/scvi-tools/"
-	[[projects.links]]
+	[[packages.links]]
 	text = "Website"
 	url = "https://scvi-tools.org/"
 
-[[projects]]
+[[packages]]
 	name = "scirpy"
 	description = "Single-cell immune sequencing framework"
 	url = "https://icbi-lab.github.io/scirpy/stable/"
 	img = "../img/icons/scirpy.svg"
 	details = "Scirpy is a scalable toolkit to analyse T-cell receptor or B-cell receptor repertoires from single-cell RNA sequencing data. It seamlessly integrates with scanpy and provides various modules for data import, analysis and visualization."
-	[[projects.links]]
+	[[packages.links]]
 	text = "GitHub"
 	url = "https://github.com/icbi-lab/scirpy"
-	[[projects.links]]
+	[[packages.links]]
 	text = "Documentation and tutorials"
 	url = "https://icbi-lab.github.io/scirpy/latest/"
-	[[projects.links]]
+	[[packages.links]]
 	text = "PyPI"
 	url = "https://pypi.org/project/scirpy/"
-	[[projects.links]]
+	[[packages.links]]
 	text = "Conda"
 	url = "https://anaconda.org/bioconda/scirpy"
 
-[[projects]]
+[[packages]]
 	name = "squidpy"
 	description = "Spatial Single Cell Analysis"
 	url = "https://squidpy.readthedocs.io/"
 	img = "../img/icons/squidpy.svg"
 	details = "Squidpy is a tool for the analysis and visualization of spatial molecular data. It builds on top of scanpy and anndata, from which it inherits modularity and scalability. It provides analysis tools that leverages the spatial coordinates of the data, as well as tissue images if available."
-	[[project.links]]
+	[[package.links]]
 	text = "GitHub"
 	url = "https://github.com/theislab/scirpy"
-		[[projects.links]]
+		[[packages.links]]
 	text = "Documentation and tutorials"
 	url = "https://squidpy.readthedocs.io/"
-	[[projects.links]]
+	[[packages.links]]
 	text = "PyPI"
 	url = "https://pypi.org/project/squidpy/"
 

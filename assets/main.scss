@@ -393,9 +393,9 @@ body {
                         }
                     }
                 }
-                #projects {
+                #packages {
                     margin-top: 15%;
-                    #projects-list {
+                    #packages-list {
                         .card {
                             display: flex;
                             flex-direction: row;
@@ -406,7 +406,7 @@ body {
                             @media (max-device-width: 40rem) {
                                 min-height: 6rem;
                             }
-                            .project-icon {
+                            .package-icon {
                                 transition: all 200ms ease-in-out;
                                 align-items: center;
                                 justify-content: center;
@@ -423,12 +423,12 @@ body {
                                     height: 4rem;
                                 }
                             }
-                            .project-text {
-                                .project-name {
+                            .package-text {
+                                .package-name {
                                     font-family: "Inter", sans-serif;
                                     color: $tiletext;
                                 }
-                                .project-desc {
+                                .package-desc {
                                     font-family: "Inter", sans-serif;
                                     font-size: 0.9rem;
                                     color: $tiletext2;
@@ -437,7 +437,7 @@ body {
                             &:hover {
                                 cursor: pointer;
                                 background-color: $tilebg2;
-                                .project-icon {
+                                .package-icon {
                                     transform: scale(1.1);
                                 }
                                 transform: scale(1.05);
@@ -804,14 +804,14 @@ body {
     }
 }
 
-// Specific to /projects
+// Specific to /packages
 
-#projects-content {
-    #projects-list {
+#packages-content {
+    #packages-list {
         display: flex;
         flex-direction: column;
         gap: 5rem;
-        .project-section {
+        .package-section {
             display: flex;
             flex-direction: row;
             margin: 0.5rem 0;
@@ -819,7 +819,7 @@ body {
                 margin-top: 2rem;
             }
             gap: 3rem;
-            .project-img {
+            .package-img {
                 flex: 1;
                 img {
                     display: block;
@@ -836,25 +836,25 @@ body {
                     display: none;
                 }
             }
-            .project-info {
+            .package-info {
                 flex: 3;
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 0;
-                .project-tile {
+                .package-tile {
                     // padding: 2rem;
                     border-radius: 1rem;
                     // box-shadow: 0 .2rem .2rem .05rem rgba(0, 0, 0, .3);
-                    .project-text {
-                        .project-name {
+                    .package-text {
+                        .package-name {
                             font-family: "Inter", sans-serif;
                             font-size: 2rem;
                             font-weight: 800;
                             color: black;
                             display: block;
                         }
-                        .project-details {
+                        .package-details {
                             display: block;
                             font-size: 1.1rem;
                             margin: 1rem 0;
@@ -885,7 +885,7 @@ body {
     // h2:first-of-type {
     //  margin-top: 0 !important;
     // }
-    .project-links {
+    .package-links {
         a {
             display: inline-block;
             background-color: $tilebg;
