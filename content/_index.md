@@ -2,39 +2,39 @@
 title = "scverse"
 description = "Foundational tools for single-cell omics data analysis"
 
-# Projects
+# Packages
 
-[[projects]]
+[[packages]]
 	name = "anndata"
 	description = "Standard for annotated matrices"
 	url = "https://anndata.readthedocs.io/en/latest/"
 
-[[projects]]
+[[packages]]
 	name = "mudata"
 	description = "Multimodal data format"
 	url = "https://mudata.readthedocs.io/en/latest/"
 
-[[projects]]
+[[packages]]
 	name = "scanpy"
 	description = "Single-cell analysis framework"
 	url = "https://scanpy.readthedocs.io/en/latest/"
 
-[[projects]]
+[[packages]]
 	name = "muon"
 	description = "Multi-omics analysis framework"
 	url = "https://gtca.github.io/muon"
 
-[[projects]]
+[[packages]]
 	name = "scvi-tools"
 	description = "Single-cell machine learning framework"
 	url = "https://scvi-tools.org/"
 
-[[projects]]
+[[packages]]
 	name = "scirpy"
 	description = "Single-cell immune sequencing analysis framework"
 	url = "https://icbi-lab.github.io/scirpy/latest/"
 
-[[projects]]
+[[packages]]
 	name = "squidpy"
 	description = "Spatial single cell analysis"
 	url = "https://squidpy.readthedocs.io/"

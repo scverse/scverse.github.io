@@ -6,7 +6,7 @@ preface = "For people participating in and interacting with the consortium, ther
 
 [[teams]]
 	name = "Core Developers"
-	text = "Core Developers are deeply involved in developing and maintaining <span class=\"backticked\">scverse</span> projects. Those are members of the core team who have made signifigant code contributions to <span class=\"backticked\">scverse</span>."
+	text = "Core Developers are deeply involved in developing and maintaining <span class=\"backticked\">scverse</span> packages. Those are members of the core team who have made signifigant code contributions to <span class=\"backticked\">scverse</span>."
 
 [[teams.members]]
 	name = "Danila Bredikhin"

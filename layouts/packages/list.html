@@ -13,24 +13,24 @@
         <div id="page-content">
           <h1>{{ .Title }}</h1>
           <article class="post">
-            <div class="post-content" id="projects-content">
-              {{ if .Params.projects }}
-                <h2 id="core-projects">Core projects</h2>
-                <div id="projects-list">
-                  {{ $projects := .Params.projects }}
-                  {{ range $i, $e := $projects }}
-                    <div class="project-section">
-                      <div class="project-img">
+            <div class="post-content" id="packages-content">
+              {{ if .Params.packages }}
+                <h2 id="core-packages">Core packages</h2>
+                <div id="packages-list">
+                  {{ $packages := .Params.packages }}
+                  {{ range $i, $e := $packages }}
+                    <div class="package-section">
+                      <div class="package-img">
                         <img src="{{ .img }}" />
                       </div>
-                      <div class="project-info">
-                        <div class="project-tile" id="{{ .name }}-tile">
-                          <div class="project-text">
-                            <span class="project-name">{{ .name }}</span>
-                            <span class="project-details">{{ .details }}</span>
+                      <div class="package-info">
+                        <div class="package-tile" id="{{ .name }}-tile">
+                          <div class="package-text">
+                            <span class="package-name">{{ .name }}</span>
+                            <span class="package-details">{{ .details }}</span>
                           </div>
                         </div>
-                        <div class="project-links">
+                        <div class="package-links">
                           {{ range $k, $v := $e.links }}
                             <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
                           {{ end }}
@@ -67,9 +67,9 @@
                       </thead>
                       <tbody>
                         {{ range $lib := $pkgs }}
-                          <tr class="project-links eco-table-row">
+                          <tr class="package-links eco-table-row">
                             <td>
-                              <a href="{{ $lib.project_home }}" target="_blank">{{ $lib.name }}</a>
+                              <a href="{{ $lib.package_home }}" target="_blank">{{ $lib.name }}</a>
                             </td>
                             <td>{{ $lib.description | markdownify }}</td>
                           </tr>
