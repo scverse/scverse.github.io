@@ -1,5 +1,6 @@
 +++
 title = "Packages"
+aliases = ["/projects/"]
 
 [[packages]]
 	name = "anndata"
