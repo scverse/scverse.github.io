@@ -5,3 +5,8 @@ description = "Foundational tools for omics data in the life sciences"
 # images = ["https://scverse.org/img/icons/scverse_bw_logo.svg"]
 [taxonomies]
     series = 'series'
+
+[caches]
+[caches.getjson]
+dir = ":cacheDir/:project"
+maxAge = "10s"
