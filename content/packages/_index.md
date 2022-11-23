@@ -130,10 +130,10 @@ aliases = ["/projects/"]
 	url = "https://squidpy.readthedocs.io/"
 	img = "../img/icons/squidpy.svg"
 	details = "Squidpy is a tool for the analysis and visualization of spatial molecular data. It builds on top of scanpy and anndata, from which it inherits modularity and scalability. It provides analysis tools that leverages the spatial coordinates of the data, as well as tissue images if available."
-	[[package.links]]
+	[[packages.links]]
 	text = "GitHub"
-	url = "https://github.com/theislab/scirpy"
-		[[packages.links]]
+	url = "https://github.com/theislab/squidpy"
+	[[packages.links]]
 	text = "Documentation and tutorials"
 	url = "https://squidpy.readthedocs.io/"
 	[[packages.links]]
