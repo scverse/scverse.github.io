@@ -13,6 +13,17 @@
           {{ partial "main/cover" . }}
           {{ partial "main/packages" . }}
 
+          <section id="ecosystem">
+            <div class="section-heading">Ecosystem</div>
+            <div class="section-content">
+              <p class="section-paragraph">
+                {{ .Params.ecosystem.text | markdownify }}
+              </p>
+              <a href="/packages#ecosystem">
+                <div class="more">Continue to scverse ecosystem</div>
+              </a>
+            </div>
+          </section>
 
           <section id="mission">
             <div class="section-heading">Mission</div>

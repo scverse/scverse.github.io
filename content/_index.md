@@ -46,6 +46,13 @@ description = "Foundational tools for single-cell omics data analysis"
 text = """\
 **scverse** is a consortium of foundational tools (mostly in Python) for omics data in life sciences. It has been founded to ensure the long-term maintenance of these core tools."""
 
+# Ecosystem
+
+[ecosystem]
+
+text = """\
+Many packages rely on the functionality of the **scverse** core packages. They implement models and analytical approaches to tackle challenges in spatial omics, regulatory genomics, trajectory inference, visualization, etc. We are also building a listing of such packages that follow development best practices."""
+
 # Team
 
 [team]
