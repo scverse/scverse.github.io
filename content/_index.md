@@ -51,7 +51,7 @@ text = """\
 [ecosystem]
 
 text = """\
-Many packages rely on the functionality of the **scverse** core packages. They implement models and analytical approaches to tackle challenges in spatial omics, regulatory genomics, trajectory inference, visualization, etc. We are also building [a listing of such packages](/packages#ecosystem) that follow development best practices."""
+A broader ecosystem of packages builds on the **scverse** core packages. [These tools](/packages#ecosystem) implement models and analytical approaches to tackle challenges in spatial omics, regulatory genomics, trajectory inference, visualization, and more.
 
 # Team
 
