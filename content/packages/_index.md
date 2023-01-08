@@ -141,5 +141,5 @@ aliases = ["/projects/"]
 	url = "https://pypi.org/project/squidpy/"
 
 [[ecosystem]]
-	text = "Many popular packages rely on scverse functionality. For instance, they take advantage of established data format standards such as AnnData and MuData, or are designed to be integrated into the workflow of analysis frameworks. Here, we list ecosystem packages following development best practices (continuous testing, documented, available through standard distribution tools).\n\n *This listing is a work in progress. See [https://github.com/scverse/ecosystem-packages]() for inclusion criteria, and to submit more packages.*"
+	text = "Many popular packages rely on scverse functionality. For instance, they take advantage of established data format standards such as AnnData and MuData, or are designed to be integrated into the workflow of analysis frameworks. Here, we list ecosystem packages following development best practices (continuous testing, documented, available through standard distribution tools).\n\n *This listing is a work in progress. See [https://github.com/scverse/ecosystem-packages](https://github.com/scverse/ecosystem-packages) for inclusion criteria, and to submit more packages.*"
 +++
