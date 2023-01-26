@@ -51,7 +51,7 @@ text = """\
 [ecosystem]
 
 text = """\
-A broader ecosystem of packages builds on the **scverse** core packages. [These tools](/packages#ecosystem) implement models and analytical approaches to tackle challenges in spatial omics, regulatory genomics, trajectory inference, visualization, and more."""
+A broader ecosystem of packages builds on the **scverse** core packages. [These tools](/packages/#ecosystem) implement models and analytical approaches to tackle challenges in spatial omics, regulatory genomics, trajectory inference, visualization, and more."""
 
 # Team
 
