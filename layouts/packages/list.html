@@ -69,7 +69,7 @@
                         {{ range $lib := $pkgs }}
                           <tr class="package-links eco-table-row">
                             <td>
-                              <a href="{{ $lib.package_home }}" target="_blank">{{ $lib.name }}</a>
+                              <a href="{{ $lib.project_home }}" target="_blank">{{ $lib.name }}</a>
                             </td>
                             <td>{{ $lib.description | markdownify }}</td>
                           </tr>
