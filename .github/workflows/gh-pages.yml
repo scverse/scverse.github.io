@@ -5,6 +5,7 @@ on:
         branches:
             - main # Set a branch to deploy
     pull_request:
+    repository_dispatch:  # For triggering rebuild on ecosystem update
 
 jobs:
     deploy:
