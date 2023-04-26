@@ -40,21 +40,18 @@ description = "Foundational tools for single-cell omics data analysis"
 	url = "https://squidpy.readthedocs.io/"
 
 # Mission
-
 [mission]
 
 text = """\
 **scverse** is a consortium of foundational tools (mostly in Python) for omics data in life sciences. It has been founded to ensure the long-term maintenance of these core tools."""
 
 # Ecosystem
-
 [ecosystem]
 
 text = """\
 A broader ecosystem of packages builds on the **scverse** core packages. [These tools](/packages/#ecosystem) implement models and analytical approaches to tackle challenges in spatial omics, regulatory genomics, trajectory inference, visualization, and more."""
 
 # Team
-
 [team]
 
 text = """\
@@ -72,14 +69,19 @@ text = """\
 """
 
 [[references.citations]]
+	id = "scverse"
+	url = "https://www.nature.com/articles/s41587-023-01733-8"
+	text = "Virshup I, Bredikhin D, Heumos L, Palla G, Sturm G, Gayoso A, Kats I, Koutrouli M, scverse community, Berger B, Pe'er D, Regev A, Teichmann S, Finotello F, Wolf F, Yosef N, Stegle O, Theis F: The scverse project provides a computational ecosystem for single-cell omics data analysis. Nature Biotechnology. 2023 April 10"
+
+[[references.citations]]
 	id = "scanpy"
 	url = "https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1382-0"
-	text = "Wolf F, Angerer P, Theis FJ. SCANPY: large-scale single-cell gene expression data analysis. Genome Biol 19, 15 (2018)"
+	text = "Wolf F, Angerer P, Theis FJ. SCANPY: large-scale single-cell gene expression data analysis. Genome Biology 19, 15 (2018)"
 
 [[references.citations]]
     id = "muon"
     url = "https://genomebiology.biomedcentral.com/articles/10.1186/s13059-021-02577-8"
-    text = "Bredikhin D, Kats I, Stegle O. MUON: multimodal omics analysis framework. Genome Biol 23, 42 (2022)"
+    text = "Bredikhin D, Kats I, Stegle O. MUON: multimodal omics analysis framework. Genome Biology 23, 42 (2022)"
 
 [[references.citations]]
     id = "anndata"
@@ -99,6 +101,6 @@ text = """\
 [[references.citations]]
     id = "Squidpy"
     url = "https://doi.org/10.1038/s41592-021-01358-2"
-    text = "Palla G, Spitzer H, Klein M, Fischer D, Schaar AC, Kuemmerle LB, Rybakov S, Ibarra IL, Holmberg O, Virshup I, Lotfollahi M, Richter S, Theis FJ. Squidpy: a scalable framework for spatial omics analysis. Nat Methods 19, 171–178 (2022)."
+    text = "Palla G, Spitzer H, Klein M, Fischer D, Schaar AC, Kuemmerle LB, Rybakov S, Ibarra IL, Holmberg O, Virshup I, Lotfollahi M, Richter S, Theis FJ. Squidpy: a scalable framework for spatial omics analysis. Nature Methods 19, 171–178 (2022)."
 
 +++
