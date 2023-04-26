@@ -25,7 +25,7 @@ Join us for the Scverse Hackathon taking place from **Wednesday, April 26th, 12:
     - 13:00 – 15:30 — Hack + short updates
     - 15:30 – 16:00 — Coffee break
     - 16:00 – 18:30 — Hack + short updates
-    - 19:30 (approx.) — Group dinner (location TBA)
+    - 19:30 (approx.) — Group dinner ([directions](https://goo.gl/maps/DFSDb7LgMS5DJ2LP6))
 
 - **Friday, April 28th (SR042 & SR043)**
     - 08:30 – 09:00 — Coffee in the morning
