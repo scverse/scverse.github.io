@@ -1,6 +1,8 @@
 +++
 title = "Join scverse"
 
+email_stmt = "You can also reach the steering council at: [steering-council@scverse.org](steering-council@scverse.org)"
+
 [[resources]]
 	id = "github"
 	title = "GitHub"
