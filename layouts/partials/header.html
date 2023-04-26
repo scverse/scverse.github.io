@@ -68,6 +68,15 @@
               >Blog</a
             >
           </li>
+          <li class="nav-item">
+            <a
+              class="nav-link{{ if eq .Section `events` }}
+                active
+              {{ end }}"
+              href="/events"
+              >Events</a
+            >
+          </li>
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle{{ if eq .Section `about` }}

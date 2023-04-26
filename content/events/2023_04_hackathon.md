@@ -37,7 +37,6 @@ Join us for the Scverse Hackathon taking place from **Wednesday, April 26th, 12:
     - 16:30 — Feedback and brainstorming session
     - 19:00 — Self-organized going out
 
-
 ## Hackathon Focus Areas
 
 1. **Interoperability** - Improve compatibility with other languages and tools.
@@ -58,4 +57,11 @@ See [this google doc](https://docs.google.com/document/d/1ieBoCQx9IdZsPCHzsaJMw6
 - Enable access to genomic annotations through Bioconductor AnnotationHub.
 - Implement knowledge-guided sparsity for factor models.
 
+### House keeping Tasks
 
+- Integrating scverse tutorials
+- Implement scverse example datasets package
+- Improve cookiecutter template
+- Generate scverse branding content
+
+See [this hackmd](https://hackmd.io/JTTFFI6kRHm2U7WSpsWJjg) for more information.

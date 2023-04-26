@@ -1,24 +1,16 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    {{ partial "head" . }}
-  </head>
-  <body>
-    <header>
-      {{ partial "header" . }}
-    </header>
-    <div id="wrapper">
-      <div id="content">
-        <div id="page-content">
-          <h1>{{ .Title }}</h1>
-          <article class="post">
-            <div class="post-content">
-              {{ .Content }}
-            </div>
-          </article>
+{{ define "main" }}
+  <h1>Events</h1>
+  {{ range .Pages }}
+    <a href="{{ .Permalink }}">
+      <article class="page-item">
+        <div class="page-item-date">
+          <span>{{ .Date.Format "January 02, 2006" }}</span>
         </div>
-      </div>
-    </div>
-    {{ partial "footer" . }}
-  </body>
-</html>
+        <div class="page-item-content">
+          <h2>{{ .Title }}</h2>
+          <span>{{ .Description }}</span>
+        </div>
+      </article>
+    </a>
+  {{ end }}
+{{ end }}
