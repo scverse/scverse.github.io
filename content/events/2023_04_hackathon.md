@@ -5,8 +5,11 @@ description = "Hackathon on interoperability and knowledge representation"
 draft = false
 +++
 
+## Welcome
 
-Join us for the Scverse Hackathon taking place from **Wednesday, April 26th, 12:00 PM** to **Friday, April 28th, afternoon** at **BioQuant ([Im Neuenheimer Feld 267, 69120 Heidelberg, Germany](https://goo.gl/maps/Qo5xD9pFkBYHTjHs6))**.
+Join us for the scverse Hackathon taking place from **Wednesday, April 26th, 12:00 PM** to **Friday, April 28th, afternoon** at **BioQuant ([Neuenheimer Feld 267, 69120 Heidelberg, Germany](https://goo.gl/maps/Qo5xD9pFkBYHTjHs6))**.
+
+The scverse hackathon is free. The event was invite only. We will try to make future editions open to everyone.
 
 ## Event Schedule
 
@@ -41,6 +44,7 @@ Join us for the Scverse Hackathon taking place from **Wednesday, April 26th, 12:
 
 1. **Interoperability** - Improve compatibility with other languages and tools.
 2. **Biological Knowledge Representation** - Enhance the integration of biological information in the scverse ecosystem.
+3. **House keeping** - Solve the issues that were forgotten about
 
 ### Interoperability Tasks
 
@@ -63,5 +67,13 @@ See [this google doc](https://docs.google.com/document/d/1ieBoCQx9IdZsPCHzsaJMw6
 - Implement scverse example datasets package
 - Improve cookiecutter template
 - Generate scverse branding content
+- Add events page to scverse website
 
 See [this hackmd](https://hackmd.io/JTTFFI6kRHm2U7WSpsWJjg) for more information.
+
+## Hackathon checklist
+
+- Check that you agree with the [scverse code of conduct](https://scverse.org/about/code_of_conduct/).
+- Ensure that you have a [Github](https://github.com/) account.
+- Join our [zulip](https://scverse.zulipchat.com/) where you'll be added to the hackathon stream. [Say hi](https://scverse.zulipchat.com/#narrow/stream/319076-introductions) if this is your first time on the scverse zulip!
+- Have [python](https://www.python.org/) and any scverse package that you might work on installed.
