@@ -11,7 +11,7 @@ Join us for the Scverse Hackathon taking place from **Wednesday, April 26th, 12:
 ## Event Schedule
 
 - **Wednesday, April 26th (SR041)**
-    - 13:30 – 14:00 — PI introductions
+    - 13:30 – 14:00 — PI introductions (Julio Saez-Rodriguez, Wolfgang Huber)
     - 14:00 – 14:30 — Hackathon introduction
     - 14:30 – 15:00 — State of the scverse + Q&A
     - 15:00 – 15:30 — Coffee break
@@ -45,8 +45,9 @@ Join us for the Scverse Hackathon taking place from **Wednesday, April 26th, 12:
 
 ### Interoperability Tasks
 
-- Develop AnnData/MuData reader for Bioconductor and Julia.
-- Develop AnnData/MuData reader for R.
+- Develop AnnData/MuData reader for Julia.
+- Develop AnnData/MuData reader for Bioconductor/R.
+- Create OME-ZARR reader and writer in R using Rarr.
 - Establish a test suite of scverse data files for various implementations.
 
 See [this google doc](https://docs.google.com/document/d/1ieBoCQx9IdZsPCHzsaJMw66rsG0enIqaNQwvfGT1U7M/edit) for more information.
