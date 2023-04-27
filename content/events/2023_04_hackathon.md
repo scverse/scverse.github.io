@@ -7,7 +7,7 @@ draft = false
 
 ## Welcome
 
-Join us for the scverse Hackathon taking place from **Wednesday, April 26th, 12:00 PM** to **Friday, April 28th, afternoon** at **BioQuant ([Neuenheimer Feld 267, 69120 Heidelberg, Germany](https://goo.gl/maps/Qo5xD9pFkBYHTjHs6))**.
+Join us for the scverse Hackathon taking place from **Wednesday, April 26th, 12:00 PM** to **Friday, April 28th, afternoon** at **BioQuant** ([Neuenheimer Feld 267, 69120 Heidelberg, Germany](https://goo.gl/maps/Qo5xD9pFkBYHTjHs6)).
 
 The scverse hackathon is free. The event was invite only. We will try to make future editions open to everyone.
 
@@ -28,7 +28,7 @@ The scverse hackathon is free. The event was invite only. We will try to make fu
     - 13:00 – 15:30 — Hack + short updates
     - 15:30 – 16:00 — Coffee break
     - 16:00 – 18:30 — Hack + short updates
-    - 19:30 (approx.) — Group dinner ([directions](https://goo.gl/maps/DFSDb7LgMS5DJ2LP6))
+    - 19:30 — Group dinner
 
 - **Friday, April 28th (SR042 & SR043)**
     - 08:30 – 09:00 — Coffee in the morning
@@ -52,8 +52,6 @@ The scverse hackathon is free. The event was invite only. We will try to make fu
 - Develop AnnData/MuData reader for Bioconductor/R.
 - Create OME-ZARR reader and writer in R using Rarr.
 - Establish a test suite of scverse data files for various implementations.
-
-See [this google doc](https://docs.google.com/document/d/1ieBoCQx9IdZsPCHzsaJMw66rsG0enIqaNQwvfGT1U7M/edit) for more information.
 
 ### Knowledge Representation Tasks
 
