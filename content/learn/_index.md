@@ -32,7 +32,7 @@ You can also find recordings of past talks and workshops on our [YouTube channel
 	[[tutorials.section]]
 	name = "Integration of the Lung Cell Atlas with scANVI"
 	url = "https://docs.scvi-tools.org/en/stable/tutorials/notebooks/harmonization.html"
-	img = "https://docs.scvi-tools.org/en/stable/_images/tutorials_notebooks_harmonization_22_0.png"
+	img = "../../img/learn/lung.png"
 
 
 [[tutorials]]
@@ -63,7 +63,7 @@ You can also find recordings of past talks and workshops on our [YouTube channel
 	[[tutorials.section]]
 	name = "Deconvolution of Visium data with DestVI"
 	url = "https://docs.scvi-tools.org/en/stable/tutorials/notebooks/DestVI_tutorial.html"
-	img = "https://docs.scvi-tools.org/en/stable/_images/tutorials_notebooks_DestVI_tutorial_36_0.png"
+	img = "../../img/learn/tissue.png"
 
 [[tutorials]]
 	name = "scATAC-seq & scRNA-seq"
@@ -74,7 +74,7 @@ You can also find recordings of past talks and workshops on our [YouTube channel
 	[[tutorials.section]]
 	name = "Joint analysis of paired and unpaired multiomic data with MultiVI"
 	url = "https://docs.scvi-tools.org/en/stable/tutorials/notebooks/MultiVI_tutorial.html"
-	img = "https://docs.scvi-tools.org/en/stable/_images/tutorials_notebooks_MultiVI_tutorial_31_1.png"
+	img = "../../img/learn/chromosome.png"
 
 [[tutorials]]
 	name = "CITE-seq"
@@ -85,7 +85,7 @@ You can also find recordings of past talks and workshops on our [YouTube channel
 	[[tutorials.section]]
 	name = "CITE-seq analysis with totalVI"
 	url = "https://docs.scvi-tools.org/en/stable/tutorials/notebooks/totalVI.html"
-	img = "https://docs.scvi-tools.org/en/stable/_images/tutorials_notebooks_totalVI_25_0.png"
+	img = "../../img/learn/protein.png"
 
 [[tutorials]]
 	name = "Other topics"
@@ -97,6 +97,6 @@ You can also find recordings of past talks and workshops on our [YouTube channel
 	[[tutorials.section]]
 	name = "Combining AnnData objects"
 	url = "https://anndata.readthedocs.io/en/latest/concatenation.html"
-	# img = "..."
+	img = "../../img/libs/anndata_schema.svg"
 
 +++
