@@ -32,43 +32,50 @@
                       placeholder="Search through {{ len $content.tutorials }} tutorials"
                       title="Type in your search query"
                     />
-                    
+
                     {{ range $cat := $content.categories }}
                       {{ range $catname, $catmore := $cat }}
-                          {{ $ts := where $content.tutorials "primary_category" $catname }}
-                          {{ if (gt ($ts | len) 0) }}
-                            <h3>{{ $catname }}</h3>
-                            <p>{{ $catmore.description }}</p>
-                            
-                            <div class="tutorials-list">
-                              {{ range $t := $ts }}
-                                <div class="card tutorial-item border-0">
-                                  <a href="{{ $t.link }}" target="_blank">
-                                      {{ if $t.image }}
-                                        <img class="card-img-top" src="https://scverse.org/scverse-tutorials/{{ $t.image }}" />
-                                      {{ end }}
-                                      <div class="card-body">
-                                        <h5 class="card-title">
-                                          {{ $t.name }}
-                                        </h5>
-                                        <p>{{ $t.description | markdownify }}</p>
-                                      </div>
-                                  </a>
-                                </div>
-                              {{ end }}  
-                            </div>
-                          {{ end }}
+                        {{ $ts := where $content.tutorials "primary_category" $catname }}
+                        {{ if (gt ($ts | len) 0) }}
+                          <h3>{{ $catname }}</h3>
+                          <p>{{ $catmore.description }}</p>
+
+                          <div class="tutorials-list">
+                            {{ range $t := $ts }}
+                              <div class="card tutorial-item border-0">
+                                <a href="{{ $t.link }}" target="_blank">
+                                  {{ if $t.image }}
+                                    <img
+                                      class="card-img-top"
+                                      src="https://scverse.org/scverse-tutorials/{{ $t.image }}"
+                                    />
+                                  {{ end }}
+                                  <div class="card-body">
+                                    <h5 class="card-title">
+                                      {{ $t.name }}
+                                    </h5>
+                                    <p>{{ $t.description | markdownify }}</p>
+                                  </div>
+                                </a>
+                              </div>
+                            {{ end }}
+                          </div>
+                        {{ end }}
 
                       {{ end }}
                     {{ end }}
 
-
                   </div>
                 {{ end }}
 
-                <hr/>
 
-                <p>As we are working on a new page for the tutorials, you can still find the tutorials previously displayed here below. New tutorials will be rendered using the newly created <a href="https://github.com/scverse/scverse-tutorials" target="_blank">tutorials registry</a>.</p>
+                <hr />
+
+                <p>
+                  As we are working on a new page for the tutorials, you can still find the tutorials previously
+                  displayed here below. New tutorials will be rendered using the newly created
+                  <a href="https://github.com/scverse/scverse-tutorials" target="_blank">tutorials registry</a>.
+                </p>
 
                 {{ $tutorials := .Params.tutorials }}
                 {{ range $i, $section := $tutorials }}
@@ -92,7 +99,6 @@
                     {{ end }}
                   </div>
                 {{ end }}
-
 
               {{ end }}
             </div>
