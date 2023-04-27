@@ -17,12 +17,65 @@
             <div class="post-content" id="tutorials-content">
               {{ if .Params.tutorials }}
                 {{ .Params.tutorials_intro | markdownify }}
+
+                {{ $content := getJSON "./tutorials.json" }}
+                {{ if $content }}
+
+                  <h2 id="tutorials">Tutorials</h2>
+
+                  <div id="ecosystem-tutorials">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="tutorial-filter"
+                      onkeyup="filterTutorials()"
+                      placeholder="Search through {{ len $content.tutorials }} tutorials"
+                      title="Type in your search query"
+                    />
+                    
+                    {{ range $cat := $content.categories }}
+                      {{ range $catname, $catmore := $cat }}
+                          {{ $ts := where $content.tutorials "primary_category" $catname }}
+                          {{ if (gt ($ts | len) 0) }}
+                            <h3>{{ $catname }}</h3>
+                            <p>{{ $catmore.description }}</p>
+                            
+                            <div class="tutorials-list">
+                              {{ range $t := $ts }}
+                                <div class="card tutorial-item border-0">
+                                  <a href="{{ $t.link }}" target="_blank">
+                                      {{ if $t.image }}
+                                        <img class="card-img-top" src="https://scverse.org/scverse-tutorials/{{ $t.image }}" />
+                                      {{ end }}
+                                      <div class="card-body">
+                                        <h5 class="card-title">
+                                          {{ $t.name }}
+                                        </h5>
+                                        <p>{{ $t.description | markdownify }}</p>
+                                      </div>
+                                  </a>
+                                </div>
+                              {{ end }}  
+                            </div>
+                          {{ end }}
+
+                      {{ end }}
+                    {{ end }}
+
+
+                  </div>
+                {{ end }}
+
+                <hr/>
+
+                <p>As we are working on a new page for the tutorials, you can still find the tutorials previously displayed here below. New tutorials will be rendered using the newly created <a href="https://github.com/scverse/scverse-tutorials" target="_blank">tutorials registry</a>.</p>
+
                 {{ $tutorials := .Params.tutorials }}
                 {{ range $i, $section := $tutorials }}
 
                   <h2>{{ $section.name }}</h2>
 
-                  <div id="tutorials-list">
+                  <div class="tutorials-list">
                     {{ range $j, $t := $section.section }}
                       <div class="card tutorial-item border-0">
                         <a href="{{ $t.url }}" target="_blank">
@@ -39,6 +92,8 @@
                     {{ end }}
                   </div>
                 {{ end }}
+
+
               {{ end }}
             </div>
           </article>
