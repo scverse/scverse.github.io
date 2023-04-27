@@ -26,7 +26,7 @@ preface = "For people participating in and interacting with the consortium, ther
 	
 [[team.members]]
 	name = "Martin Kim"
-	url = "https://github.com/martinkim0
+	url = "https://github.com/martinkim0"
 
 [[teams.members]]
 	name = "Giovanni Palla"
