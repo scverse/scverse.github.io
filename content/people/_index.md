@@ -23,6 +23,10 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Ilia Kats"
 	url = "https://github.com/ilia-kats"
+	
+[[team.members]]
+	name = "Martin Kim"
+	url = "https://github.com/martinkim0"
 
 [[teams.members]]
 	name = "Giovanni Palla"
