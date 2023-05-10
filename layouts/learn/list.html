@@ -68,38 +68,6 @@
                   </div>
                 {{ end }}
 
-
-                <hr />
-
-                <p>
-                  As we are working on a new page for the tutorials, you can still find the tutorials previously
-                  displayed here below. New tutorials will be rendered using the newly created
-                  <a href="https://github.com/scverse/scverse-tutorials" target="_blank">tutorials registry</a>.
-                </p>
-
-                {{ $tutorials := .Params.tutorials }}
-                {{ range $i, $section := $tutorials }}
-
-                  <h2>{{ $section.name }}</h2>
-
-                  <div class="tutorials-list">
-                    {{ range $j, $t := $section.section }}
-                      <div class="card tutorial-item border-0">
-                        <a href="{{ $t.url }}" target="_blank">
-                          {{ if $t.img }}
-                            <img class="card-img-top" src="{{ $t.img }}" />
-                          {{ end }}
-                          <div class="card-body">
-                            <h5 class="card-title">
-                              {{ $t.name }}
-                            </h5>
-                          </div>
-                        </a>
-                      </div>
-                    {{ end }}
-                  </div>
-                {{ end }}
-
               {{ end }}
             </div>
           </article>
