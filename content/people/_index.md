@@ -13,10 +13,6 @@ preface = "For people participating in and interacting with the consortium, ther
 	url = "https://github.com/gtca"
 
 [[teams.members]]
-	name = "Adam Gayoso"
-	url = "https://github.com/adamgayoso"
-
-[[teams.members]]
 	name = "Lukas Heumos"
 	url = "https://github.com/Zethson"
 
@@ -27,6 +23,10 @@ preface = "For people participating in and interacting with the consortium, ther
 [[team.members]]
 	name = "Martin Kim"
 	url = "https://github.com/martinkim0"
+	
+[[teams.members]]
+	name = "Mikaela Koutrouli"
+	url = "https://github.com/mikelkou"
 
 [[teams.members]]
 	name = "Giovanni Palla"
@@ -112,6 +112,16 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams]]
 	name = "Community"
 	text = "Everyone who uses <span class='backticked'>scverse</span> software is part of the community! There are multiple ways to engage with its other members. For a start, join us on our <a href='https://discourse.scverse.org/' target='_blank'>Discourse forum</a> and keep an eye on our <a href='https://twitter.com/scverse_team' target='_blank'>Twitter account</a> for the events we organise."
+
+# ----------
+
+[[teams]]
+	name = "Honorary Members"
+	text = "Former core team members who made essential contributions to scverse."
+
+[[teams.members]]
+	name = "Adam Gayoso"
+	url = "https://github.com/adamgayoso"
 
 # ----------
 
@@ -371,6 +381,6 @@ preface = "For people participating in and interacting with the consortium, ther
     img = "https://avatars.githubusercontent.com/u/25038766?v=4"
 
 
-
-
 +++
+
+
