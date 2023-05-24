@@ -20,7 +20,7 @@ preface = "For people participating in and interacting with the consortium, ther
 	name = "Ilia Kats"
 	url = "https://github.com/ilia-kats"
 	
-[[team.members]]
+[[teams.members]]
 	name = "Martin Kim"
 	url = "https://github.com/martinkim0"
 	
