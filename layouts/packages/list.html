@@ -16,13 +16,13 @@
         <article class="post">
           <div class="post-content" id="packages-content">
             {{ if .Params.datastructures }}
-            <h2 id="core-packages">Data structures</h2>
+            <h2 id="datastructures">Data structures</h2>
             Data structures are the foundational building block for all
             ecosystem packages. Building upon common data structures ensures
             interoperability.
             <div id="packages-list">
-              {{ $packages := .Params.packages }}
-              {{ range $i, $e := $packages }}
+              {{ $datastructures := .Params.datastructures }}
+              {{ range $i, $e := $datastructures }}
               <div class="package-section">
                 <div class="package-img">
                   <img src="{{ .img }}" />

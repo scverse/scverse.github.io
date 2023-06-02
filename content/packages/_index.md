@@ -2,44 +2,44 @@
 title = "Packages"
 aliases = ["/projects/"]
 
-[[packages]]
+[[datastructures]]
 	name = "anndata"
 	description = "Standard for annotated matrices"
 	url = "https://anndata.readthedocs.io/en/latest/"
 	img = "../img/libs/anndata_schema.svg"
 	details = "Anndata is a Python package for handling annotated data matrices in memory and on disk, positioned between pandas and xarray. anndata offers a broad range of computationally efficient features including, among others, sparse data support, lazy operations, and a PyTorch interface."
-	[[packages.links]]
+	[[datastructures.links]]
 	text = "GitHub"
 	url = "https://github.com/theislab/anndata"
-	[[packages.links]]
+	[[datastructures.links]]
 	text = "Documentation"
 	url = "https://anndata.readthedocs.io/en/latest/"
-	[[packages.links]]
+	[[datastructures.links]]
 	text = "PyPI"
 	url = "https://pypi.org/project/anndata/"
-	[[packages.links]]
+	[[datastructures.links]]
 	text = "Conda"
 	url = "https://anaconda.org/conda-forge/anndata"
 
-[[packages]]
+[[datastructures]]
 	name = "mudata"
 	description = "Multimodal data format"
 	url = "https://mudata.readthedocs.io/en/latest/"
 	img = "../img/libs/mudata_flat.svg"
 	details = "MuData is a format for annotated multimodal datasets where each modality is represented by an AnnData object. MuData's reference implementation is in Python, and the cross-language functionality is achieved via HDF5-based .h5mu files with libraries in R and Julia."
-	[[packages.links]]
+	[[datastructures.links]]
 	text = "GitHub"
 	url = "https://github.com/scverse/mudata"
-	[[packages.links]]
+	[[datastructures.links]]
 	text = "Documentation"
 	url = "https://mudata.readthedocs.io/en/latest/"
-	[[packages.links]]
+	[[datastructures.links]]
 	text = "PyPI"
 	url = "https://pypi.org/project/mudata/"
-	[[packages.links]]
+	[[datastructures.links]]
 	text = "Conda"
 	url = "https://anaconda.org/conda-forge/mudata"
-	[[packages.links]]
+	[[datastructures.links]]
 	text = "Muon.jl"
 	url = "https://github.com/scverse/Muon.jl"
 
