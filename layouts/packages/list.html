@@ -16,8 +16,7 @@
             <div class="post-content" id="packages-content">
               {{ if .Params.datastructures }}
                 <h2 id="datastructures">Data structures</h2>
-                Data structures are the foundational building block for all scverse packages. Building upon common data
-                structures ensures interoperability.
+                
                 <div id="packages-list">
                   {{ $datastructures := .Params.datastructures }}
                   {{ range $i, $e := $datastructures }}
@@ -29,7 +28,7 @@
                         <div class="package-tile" id="{{ .name }}-tile">
                           <div class="package-text">
                             <span class="package-name">{{ .name }}</span>
-                            <span class="package-details">{{ .details }}</span>
+                            <span class="package-details">{{ .details | markdownify }}</span>
                           </div>
                         </div>
                         <div class="package-links">
@@ -56,7 +55,7 @@
                         <div class="package-tile" id="{{ .name }}-tile">
                           <div class="package-text">
                             <span class="package-name">{{ .name }}</span>
-                            <span class="package-details">{{ .details }}</span>
+                            <span class="package-details">{{ .details | markdownify }}</span>
                           </div>
                         </div>
                         <div class="package-links">

@@ -2,6 +2,11 @@
 title = "Packages"
 aliases = ["/projects/"]
 
+[[sections]]
+	datstructures = "Data structures are the foundational building block for all scverse packages. Building upon common data structures ensures interoperability."
+	core_packages = "These packages are considered foundational in that many other packages build upon them. Joint maintenance by the core team guarantees long-term stability."
+	ecosystem = "Many popular packages rely on scverse functionality. For instance, they take advantage of established data format standards such as AnnData and MuData, or are designed to be integrated into the workflow of analysis frameworks. Here, we list ecosystem packages following development best practices (continuous testing, documented, available through standard distribution tools).\n\n *This listing is a work in progress. See [scverse/ecosystem-packages](https://github.com/scverse/ecosystem-packages) for inclusion criteria, and to submit more packages.*"
+
 [[datastructures]]
 	name = "anndata"
 	description = "Standard for annotated matrices"
@@ -164,6 +169,5 @@ aliases = ["/projects/"]
 	text = "PyPI"
 	url = "https://pypi.org/project/squidpy/"
 
-[[ecosystem]]
-	text = "Many popular packages rely on scverse functionality. For instance, they take advantage of established data format standards such as AnnData and MuData, or are designed to be integrated into the workflow of analysis frameworks. Here, we list ecosystem packages following development best practices (continuous testing, documented, available through standard distribution tools).\n\n *This listing is a work in progress. See [scverse/ecosystem-packages](https://github.com/scverse/ecosystem-packages) for inclusion criteria, and to submit more packages.*"
+
 +++
