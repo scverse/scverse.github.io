@@ -43,6 +43,25 @@ aliases = ["/projects/"]
 	text = "Muon.jl"
 	url = "https://github.com/scverse/Muon.jl"
 
+[[datastructures]]
+	name = "spatialdata"
+	description = "Data format for data with spatial resolution"
+	url = "https://spatialdata.scverse.org/en/latest/"
+	img = "../img/libs/spatialdata_logo.png"
+	details = "SpatialData is a data framework that comprises a FAIR storage format and a collection of python libraries for performant access, alignment, and processing of uni- and multi-modal spatial omics datasets. This repository contains the core spatialdata library. See the links below to learn more about other packages in the SpatialData ecosystem."
+	[[datastructures.links]]
+	text = "GitHub"
+	url = "https://github.com/scverse/spatialdata"
+	[[datastructures.links]]
+	text = "Documentation"
+	url = "https://spatialdata.scverse.org/en/latest/"
+	[[datastructures.links]]
+	text = "PyPI"
+	url = "https://pypi.org/project/spatialdata/"
+	[[datastructures.links]]
+	text = "spatialdata-io"
+	url = "https://github.com/scverse/spatialdata-io"
+
 [[packages]]
 	name = "scanpy"
 	description = "Single-cell analysis framework"
