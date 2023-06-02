@@ -3,7 +3,8 @@ title = "Packages"
 aliases = ["/projects/"]
 
 [[sections]]
-	datstructures = "Data structures are the foundational building block for all scverse packages. Building upon common data structures ensures interoperability."
+	datastructures = "Data structures are the foundational building block for all scverse packages. Building upon common data structures ensures interoperability."
+	datastructures_post = "AIRR extension"
 	core_packages = "These packages are considered foundational in that many other packages build upon them. Joint maintenance by the core team guarantees long-term stability."
 	ecosystem = "Many popular packages rely on scverse functionality. For instance, they take advantage of established data format standards such as AnnData and MuData, or are designed to be integrated into the workflow of analysis frameworks. Here, we list ecosystem packages following development best practices (continuous testing, documented, available through standard distribution tools).\n\n *This listing is a work in progress. See [scverse/ecosystem-packages](https://github.com/scverse/ecosystem-packages) for inclusion criteria, and to submit more packages.*"
 
@@ -12,11 +13,8 @@ aliases = ["/projects/"]
 	description = "Standard for annotated matrices"
 	url = "https://anndata.readthedocs.io/en/latest/"
 	img = "../img/libs/anndata_schema.svg"
-	details = """AnnData is a Python package for handling annotated data matrices in memory and on disk, positioned between pandas and xarray. anndata offers a broad range of computationally *efficient* features including, among others, sparse data support, lazy operations, and a PyTorch interface.
-	* test
-	
-	### Modality-specific extensions
-	 * AIRR
+	details = """
+	AnnData is a Python package for handling annotated data matrices in memory and on disk, positioned between pandas and xarray. anndata offers a broad range of computationally efficient features including, among others, sparse data support, lazy operations, and a PyTorch interface.
 	"""
 	[[datastructures.links]]
 	text = "GitHub"

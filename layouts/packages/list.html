@@ -13,10 +13,11 @@
         <div id="page-content">
           <h1>{{ .Title }}</h1>
           <article class="post">
+            {{ $sections := index .Params.sections 0 }}
             <div class="post-content" id="packages-content">
               {{ if .Params.datastructures }}
                 <h2 id="datastructures">Data structures</h2>
-                
+                {{ $sections.datastructures | markdownify }}
                 <div id="packages-list">
                   {{ $datastructures := .Params.datastructures }}
                   {{ range $i, $e := $datastructures }}
@@ -41,9 +42,11 @@
                   {{ end }}
                 </div>
               {{ end }}
+              {{ $sections.datastructures_post | markdownify }}
 
               {{ if .Params.packages }}
                 <h2 id="core-packages">Packages maintained by core team</h2>
+                {{ $sections.core_packages | markdownify }}
                 <div id="packages-list">
                   {{ $packages := .Params.packages }}
                   {{ range $i, $e := $packages }}
@@ -69,43 +72,40 @@
                 </div>
               {{ end }}
 
-              {{ if .Params.ecosystem }}
-                {{ $eco := index .Params.ecosystem 0 }}
-                {{ $pkgs := getJSON "https://scverse.org/ecosystem-packages/ecosystem.json" }}
-                <h2 id="ecosystem">Ecosystem packages maintained by scverse community</h2>
-                <div>
-                  <p>{{ $eco.text | markdownify }}</p>
-                </div>
-                {{ if $pkgs }}
-                  <div id="ecosystem-packages">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="eco-filter"
-                      onkeyup="filterPackages()"
-                      placeholder="Search through {{ len $pkgs }} packages"
-                      title="Type in your search query"
-                    />
-                    <table class="table" id="eco-table">
-                      <thead>
-                        <tr>
-                          <th scope="col">Package</th>
-                          <th scope="col">Description</th>
+              {{ $pkgs := getJSON "https://scverse.org/ecosystem-packages/ecosystem.json" }}
+              <h2 id="ecosystem">Ecosystem packages maintained by scverse community</h2>
+              <div>
+                <p>{{ $sections.ecosystem | markdownify }}</p>
+              </div>
+              {{ if $pkgs }}
+                <div id="ecosystem-packages">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="eco-filter"
+                    onkeyup="filterPackages()"
+                    placeholder="Search through {{ len $pkgs }} packages"
+                    title="Type in your search query"
+                  />
+                  <table class="table" id="eco-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Package</th>
+                        <th scope="col">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {{ range $lib := $pkgs }}
+                        <tr class="package-links eco-table-row">
+                          <td>
+                            <a href="{{ $lib.project_home }}" target="_blank">{{ $lib.name }}</a>
+                          </td>
+                          <td>{{ $lib.description | markdownify }}</td>
                         </tr>
-                      </thead>
-                      <tbody>
-                        {{ range $lib := $pkgs }}
-                          <tr class="package-links eco-table-row">
-                            <td>
-                              <a href="{{ $lib.project_home }}" target="_blank">{{ $lib.name }}</a>
-                            </td>
-                            <td>{{ $lib.description | markdownify }}</td>
-                          </tr>
-                        {{ end }}
-                      </tbody>
-                    </table>
-                  </div>
-                {{ end }}
+                      {{ end }}
+                    </tbody>
+                  </table>
+                </div>
               {{ end }}
             </div>
           </article>
