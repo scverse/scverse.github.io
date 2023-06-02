@@ -1,89 +1,115 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    {{ partial "head" . }}
-  </head>
 
-  <body>
-    <header>
-      {{ partial "header" . }}
-    </header>
-    <div id="wrapper">
-      <div id="content">
-        <div id="page-content">
-          <h1>{{ .Title }}</h1>
-          <article class="post">
-            <div class="post-content" id="packages-content">
-              {{ if .Params.packages }}
-                <h2 id="core-packages">Core packages</h2>
-                <div id="packages-list">
-                  {{ $packages := .Params.packages }}
-                  {{ range $i, $e := $packages }}
-                    <div class="package-section">
-                      <div class="package-img">
-                        <img src="{{ .img }}" />
-                      </div>
-                      <div class="package-info">
-                        <div class="package-tile" id="{{ .name }}-tile">
-                          <div class="package-text">
-                            <span class="package-name">{{ .name }}</span>
-                            <span class="package-details">{{ .details }}</span>
-                          </div>
-                        </div>
-                        <div class="package-links">
-                          {{ range $k, $v := $e.links }}
-                            <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
-                          {{ end }}
-                        </div>
-                      </div>
+<head>
+  {{ partial "head" . }}
+</head>
+
+<body>
+  <header>
+    {{ partial "header" . }}
+  </header>
+  <div id="wrapper">
+    <div id="content">
+      <div id="page-content">
+        <h1>{{ .Title }}</h1>
+        <article class="post">
+          <div class="post-content" id="packages-content">
+            {{ if .Params.datastructures }}
+            <h2 id="core-packages">Data structures</h2>
+            Data structures are the foundational building block for all
+            ecosystem packages. Building upon common data structures ensures
+            interoperability.
+            <div id="packages-list">
+              {{ $packages := .Params.packages }}
+              {{ range $i, $e := $packages }}
+              <div class="package-section">
+                <div class="package-img">
+                  <img src="{{ .img }}" />
+                </div>
+                <div class="package-info">
+                  <div class="package-tile" id="{{ .name }}-tile">
+                    <div class="package-text">
+                      <span class="package-name">{{ .name }}</span>
+                      <span class="package-details">{{ .details }}</span>
                     </div>
-                  {{ end }}
-                </div>
-              {{ end }}
-
-              {{ if .Params.ecosystem }}
-                {{ $eco := index .Params.ecosystem 0 }}
-                {{ $pkgs := getJSON "https://scverse.org/ecosystem-packages/ecosystem.json" }}
-                <h2 id="ecosystem">Ecosystem</h2>
-                <div>
-                  <p>{{ $eco.text | markdownify }}</p>
-                </div>
-                {{ if $pkgs }}
-                  <div id="ecosystem-packages">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="eco-filter"
-                      onkeyup="filterPackages()"
-                      placeholder="Search through {{ len $pkgs }} packages"
-                      title="Type in your search query"
-                    />
-                    <table class="table" id="eco-table">
-                      <thead>
-                        <tr>
-                          <th scope="col">Package</th>
-                          <th scope="col">Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {{ range $lib := $pkgs }}
-                          <tr class="package-links eco-table-row">
-                            <td>
-                              <a href="{{ $lib.project_home }}" target="_blank">{{ $lib.name }}</a>
-                            </td>
-                            <td>{{ $lib.description | markdownify }}</td>
-                          </tr>
-                        {{ end }}
-                      </tbody>
-                    </table>
                   </div>
-                {{ end }}
+                  <div class="package-links">
+                    {{ range $k, $v := $e.links }}
+                    <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
+                    {{ end }}
+                  </div>
+                </div>
+              </div>
               {{ end }}
             </div>
-          </article>
-        </div>
+            {{ end }}
+
+            {{ if .Params.packages }}
+            <h2 id="core-packages">Packages maintained by core team</h2>
+            <div id="packages-list">
+              {{ $packages := .Params.packages }}
+              {{ range $i, $e := $packages }}
+              <div class="package-section">
+                <div class="package-img">
+                  <img src="{{ .img }}" />
+                </div>
+                <div class="package-info">
+                  <div class="package-tile" id="{{ .name }}-tile">
+                    <div class="package-text">
+                      <span class="package-name">{{ .name }}</span>
+                      <span class="package-details">{{ .details }}</span>
+                    </div>
+                  </div>
+                  <div class="package-links">
+                    {{ range $k, $v := $e.links }}
+                    <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
+                    {{ end }}
+                  </div>
+                </div>
+              </div>
+              {{ end }}
+            </div>
+            {{ end }}
+
+            {{ if .Params.ecosystem }}
+            {{ $eco := index .Params.ecosystem 0 }}
+            {{ $pkgs := getJSON "https://scverse.org/ecosystem-packages/ecosystem.json" }}
+            <h2 id="ecosystem">Ecosystem packages maintained by scverse community</h2>
+            <div>
+              <p>{{ $eco.text | markdownify }}</p>
+            </div>
+            {{ if $pkgs }}
+            <div id="ecosystem-packages">
+              <input type="text" class="form-control" id="eco-filter" onkeyup="filterPackages()"
+                placeholder="Search through {{ len $pkgs }} packages" title="Type in your search query" />
+              <table class="table" id="eco-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Package</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{ range $lib := $pkgs }}
+                  <tr class="package-links eco-table-row">
+                    <td>
+                      <a href="{{ $lib.project_home }}" target="_blank">{{ $lib.name }}</a>
+                    </td>
+                    <td>{{ $lib.description | markdownify }}</td>
+                  </tr>
+                  {{ end }}
+                </tbody>
+              </table>
+            </div>
+            {{ end }}
+            {{ end }}
+          </div>
+        </article>
       </div>
     </div>
-    {{ partial "footer" . }}
-  </body>
+  </div>
+  {{ partial "footer" . }}
+</body>
+
 </html>
