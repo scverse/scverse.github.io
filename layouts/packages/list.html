@@ -42,7 +42,8 @@
                   {{ end }}
                 </div>
               {{ end }}
-              {{ $sections.datastructures_post | markdownify }}
+              <h3>Modality-specific extensions</h3>
+              <p>{{ $sections.datastructures_post | markdownify }}</p>
 
               {{ if .Params.packages }}
                 <h2 id="core-packages">Packages maintained by core team</h2>
