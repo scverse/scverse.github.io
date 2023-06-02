@@ -9,6 +9,10 @@ preface = "For people participating in and interacting with the consortium, ther
 	text = "Core Developers are deeply involved in developing and maintaining <span class=\"backticked\">scverse</span> packages. Those are members of the core team who have made signifigant code contributions to <span class=\"backticked\">scverse</span>."
 
 [[teams.members]]
+	name = "Anna Schaar"
+	url = "https://github.com/AnnaChristina"
+
+[[teams.members]]
 	name = "Danila Bredikhin"
 	url = "https://github.com/gtca"
 
