@@ -53,7 +53,7 @@ aliases = ["/projects/"]
 	name = "spatialdata"
 	description = "Data format for data with spatial resolution"
 	url = "https://spatialdata.scverse.org/en/latest/"
-	img = "../img/libs/spatialdata_logo.png"
+	img = "../img/libs/spatialdata.svg"
 	details = "SpatialData is a data framework that comprises a FAIR storage format and a collection of python libraries for performant access, alignment, and processing of uni- and multi-modal spatial omics datasets. This repository contains the core spatialdata library. See the links below to learn more about other packages in the SpatialData ecosystem."
 	[[datastructures.links]]
 	text = "GitHub"
