@@ -2,46 +2,72 @@
 title = "Packages"
 aliases = ["/projects/"]
 
-[[packages]]
+[[sections]]
+	datastructures = "Data structures are the foundational building block for all scverse packages. Building upon common data structures ensures interoperability."
+	datastructures_post = "In addition to these packages, we define standards on how to represent certain data types in these data structures. For now, such a specification is available for [Adaptive Immune Receptor Repertoire (AIRR) data](https://scirpy.scverse.org/en/latest/data-structure.html#storing-airr-rearrangement-data-in-anndata). Representations for other data types (e.g. scATAC-seq) will follow."
+	core_packages = "These packages are considered foundational in that many other packages build upon them. Joint maintenance by the core team guarantees long-term stability."
+	ecosystem = "Many popular packages rely on scverse functionality. For instance, they take advantage of established data format standards such as AnnData and MuData, or are designed to be integrated into the workflow of analysis frameworks. Here, we list ecosystem packages following development best practices (continuous testing, documented, available through standard distribution tools).\n\n *This listing is a work in progress. See [scverse/ecosystem-packages](https://github.com/scverse/ecosystem-packages) for inclusion criteria, and to submit more packages.*"
+
+[[datastructures]]
 	name = "anndata"
 	description = "Standard for annotated matrices"
 	url = "https://anndata.readthedocs.io/en/latest/"
 	img = "../img/libs/anndata_schema.svg"
-	details = "Anndata is a Python package for handling annotated data matrices in memory and on disk, positioned between pandas and xarray. anndata offers a broad range of computationally efficient features including, among others, sparse data support, lazy operations, and a PyTorch interface."
-	[[packages.links]]
+	details = "AnnData is a Python package for handling annotated data matrices in memory and on disk, positioned between pandas and xarray. anndata offers a broad range of computationally efficient features including, among others, sparse data support, lazy operations, and a PyTorch interface."
+	[[datastructures.links]]
 	text = "GitHub"
 	url = "https://github.com/theislab/anndata"
-	[[packages.links]]
+	[[datastructures.links]]
 	text = "Documentation"
 	url = "https://anndata.readthedocs.io/en/latest/"
-	[[packages.links]]
+	[[datastructures.links]]
 	text = "PyPI"
 	url = "https://pypi.org/project/anndata/"
-	[[packages.links]]
+	[[datastructures.links]]
 	text = "Conda"
 	url = "https://anaconda.org/conda-forge/anndata"
 
-[[packages]]
+[[datastructures]]
 	name = "mudata"
 	description = "Multimodal data format"
 	url = "https://mudata.readthedocs.io/en/latest/"
 	img = "../img/libs/mudata_flat.svg"
 	details = "MuData is a format for annotated multimodal datasets where each modality is represented by an AnnData object. MuData's reference implementation is in Python, and the cross-language functionality is achieved via HDF5-based .h5mu files with libraries in R and Julia."
-	[[packages.links]]
+	[[datastructures.links]]
 	text = "GitHub"
 	url = "https://github.com/scverse/mudata"
-	[[packages.links]]
+	[[datastructures.links]]
 	text = "Documentation"
 	url = "https://mudata.readthedocs.io/en/latest/"
-	[[packages.links]]
+	[[datastructures.links]]
 	text = "PyPI"
 	url = "https://pypi.org/project/mudata/"
-	[[packages.links]]
+	[[datastructures.links]]
 	text = "Conda"
 	url = "https://anaconda.org/conda-forge/mudata"
-	[[packages.links]]
+	[[datastructures.links]]
 	text = "Muon.jl"
 	url = "https://github.com/scverse/Muon.jl"
+
+[[datastructures]]
+	name = "spatialdata"
+	description = "Data format for data with spatial resolution"
+	url = "https://spatialdata.scverse.org/en/latest/"
+	img = "../img/libs/spatialdata.svg"
+	details = "SpatialData is a data framework that comprises a FAIR storage format and a collection of python libraries for performant access, alignment, and processing of uni- and multi-modal spatial omics datasets. This repository contains the core spatialdata library. See the links below to learn more about other packages in the SpatialData ecosystem."
+	[[datastructures.links]]
+	text = "GitHub"
+	url = "https://github.com/scverse/spatialdata"
+	[[datastructures.links]]
+	text = "Documentation"
+	url = "https://spatialdata.scverse.org/en/latest/"
+	[[datastructures.links]]
+	text = "PyPI"
+	url = "https://pypi.org/project/spatialdata/"
+	[[datastructures.links]]
+	text = "spatialdata-io"
+	url = "https://github.com/scverse/spatialdata-io"
+
 
 [[packages]]
 	name = "scanpy"
@@ -140,6 +166,5 @@ aliases = ["/projects/"]
 	text = "PyPI"
 	url = "https://pypi.org/project/squidpy/"
 
-[[ecosystem]]
-	text = "Many popular packages rely on scverse functionality. For instance, they take advantage of established data format standards such as AnnData and MuData, or are designed to be integrated into the workflow of analysis frameworks. Here, we list ecosystem packages following development best practices (continuous testing, documented, available through standard distribution tools).\n\n *This listing is a work in progress. See [scverse/ecosystem-packages](https://github.com/scverse/ecosystem-packages) for inclusion criteria, and to submit more packages.*"
+
 +++
