@@ -5,12 +5,12 @@ preface = "For people participating in and interacting with the consortium, ther
 # ---------- core developers, in alphabetical order
 
 [[teams]]
-	name = "Core Developers"
-	text = "Core Developers are deeply involved in developing and maintaining <span class=\"backticked\">scverse</span> packages. Those are members of the core team who have made signifigant code contributions to <span class=\"backticked\">scverse</span>."
+	name = "Core Team"
+	text = "The Core Team is governing scverse and is deeply involved in developing and maintaining <span class=\"backticked\">scverse</span> packages."
 
 [[teams.members]]
-	name = "Anna Schaar"
-	url = "https://github.com/AnnaChristina"
+	name = "Philipp Angerer"
+	url = "https://github.com/flying-sheep"
 
 [[teams.members]]
 	name = "Danila Bredikhin"
@@ -35,6 +35,10 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Giovanni Palla"
 	url = "https://github.com/giovp"
+	
+[[teams.members]]
+	name = "Anna Schaar"
+	url = "https://github.com/AnnaChristina"
 
 [[teams.members]]
 	name = "Gregor Sturm"
