@@ -1,6 +1,6 @@
 +++
 title = "People"
-preface = "For people participating in and interacting with the consortium, there are <a href='/about/roles'>different roles</a> — from core developers to contributors and community memebers."
+preface = "For people participating in and interacting with the consortium, there are <a href='/about/roles'>different roles</a> — from core developers to contributors and community members."
 
 # ---------- core developers, in alphabetical order
 
@@ -83,7 +83,7 @@ preface = "For people participating in and interacting with the consortium, ther
 
 [[teams.members]]
 	name = "Fabian Theis"
-	url = "https://www.helmholtz-munich.de/icb/institute/staff/staff/ma/2494/index.html"
+	url = "https://www.helmholtz-munich.de/en/icb/pi/fabian-theis"
 
 [[teams.members]]
 	name = "Alex Wolf"
