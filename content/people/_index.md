@@ -1,6 +1,6 @@
 +++
 title = "People"
-preface = "For people participating in and interacting with the consortium, there are <a href='/about/roles'>different roles</a> — from core developers to contributors and community memebers."
+preface = "For people participating in and interacting with the consortium, there are <a href='/about/roles'>different roles</a> — from core developers to contributors and community members."
 
 # ---------- core developers, in alphabetical order
 
