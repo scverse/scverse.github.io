@@ -33,6 +33,10 @@ preface = "For people participating in and interacting with the consortium, ther
 	url = "https://github.com/mikelkou"
 
 [[teams.members]]
+    name = "Luca Marconato"
+    url = "https://github.com/LucaMarconato"
+
+[[teams.members]]
 	name = "Giovanni Palla"
 	url = "https://github.com/giovp"
 	
