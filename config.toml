@@ -6,6 +6,9 @@ description = "Foundational tools for omics data in the life sciences"
 [taxonomies]
     series = 'series'
 
+[markup.goldmark.renderer]
+unsafe= true
+
 [caches]
 [caches.getjson]
 dir = ":cacheDir/:project"
