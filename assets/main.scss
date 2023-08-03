@@ -942,7 +942,11 @@ body {
         margin-bottom: 5rem;
 
         grid-auto-flow: row;
+<<<<<<< HEAD
         grid-template-columns: 1.5fr 1fr 1fr;
+=======
+        grid-template-columns: 1fr 1fr 1fr;
+>>>>>>> tutorials
         gap: 1rem;
         @media (max-width: 50rem), (max-device-width: 40rem) {
             grid-template-columns: 1fr;
@@ -952,22 +956,25 @@ body {
             $cardborder: 1rem;
             $cardpad: 1.5rem;
             border-radius: 1rem;
-            background-color: #fdfdfd;
+            background-color: #fbfbfb;
 
             transition: all 200ms ease-in-out;
 
-            justify-content: flex-end;
+            justify-content: flex-start;
+            height: 25rem;
 
             a {
                 color: $navtext;
                 text-decoration: none;
+                height: 100%;
             }
 
             img {
                 // border-radius: 1rem;
                 // border: 1px solid #EEEEEE;
                 width: 90%;
-                height: 10rem;
+
+                height: 40%;
                 object-fit: contain;
                 margin: $cardpad $cardborder 0.2rem $cardborder;
             }
@@ -977,10 +984,36 @@ body {
                 background-color: $tilebg;
                 // box-shadow: 0 0.2rem 1rem 0.05rem rgba(0, 0, 0, 0.1);
                 transform: scale(1.02);
+                h5 {
+                    color: black;
+                }
                 p {
                     color: black;
-                    // transform: scale(1.02);
-                    // padding-top: .4rem;
+                }
+            }
+
+            .card-body {
+                height: 60%;
+                flex: 1;
+                overflow: hidden;
+
+                h5 {
+                    font-size: 1.1rem;
+                    font-weight: 900;
+                    transition: all 200ms ease-in-out;
+                }
+
+                p {
+                    flex: 1;
+                    width: 100%;
+
+                    overflow: hidden;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 6;
+                    -webkit-box-orient: vertical;  
+
+                    font-size: 0.8rem;
+                    transition: all 200ms ease-in-out;
                 }
             }
 
