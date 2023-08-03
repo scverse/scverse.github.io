@@ -942,11 +942,7 @@ body {
         margin-bottom: 5rem;
 
         grid-auto-flow: row;
-<<<<<<< HEAD
-        grid-template-columns: 1.5fr 1fr 1fr;
-=======
         grid-template-columns: 1fr 1fr 1fr;
->>>>>>> tutorials
         gap: 1rem;
         @media (max-width: 50rem), (max-device-width: 40rem) {
             grid-template-columns: 1fr;
