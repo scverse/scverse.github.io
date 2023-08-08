@@ -1,0 +1,31 @@
+<section id="packages">
+  <div class="section-heading">Core packages</div>
+  <div class="section-content">
+    {{ if .Params.packages }}
+      <div class="row" id="packages-list">
+        {{ $packages := .Params.packages }}
+        {{ range $i, $e := $packages }}
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 py-3">
+            <div class="card border-0 bh-light px-3" id="{{ .name }}-tile">
+              <div class="package-icon my-4">
+                <img src="img/icons/{{ .name }}.svg" />
+              </div>
+              <div class="card-body package-text p-2">
+                <a href="{{ .url }}" class="stretched-link" target="_blank" onclick=""></a>
+                <h5 class="card-title mb-1 package-name">
+                  {{ .name }}
+                </h5>
+                <p class="card-text package-desc">
+                  {{ .description }}
+                </p>
+              </div>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    {{ end }}
+    <a href="/packages">
+      <div class="more">View all scverse packages</div>
+    </a>
+  </div>
+</section>
