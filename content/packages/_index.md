@@ -110,7 +110,7 @@ aliases = ["/projects/"]
 	url = "https://pypi.org/project/muon/"
 	[[packages.links]]
 	text = "Website"
-	url = "https://gtca.github.io/muon/"
+	url = "https://muon.scverse.org/"
 
 [[packages]]
 	name = "scvi-tools"
