@@ -22,7 +22,7 @@ description = "Foundational tools for single-cell omics data analysis"
 [[packages]]
 	name = "muon"
 	description = "Multi-omics analysis framework"
-	url = "https://gtca.github.io/muon"
+	url = "https://muon.scverse.org/"
 
 [[packages]]
 	name = "scvi-tools"
