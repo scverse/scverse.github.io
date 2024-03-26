@@ -60,6 +60,11 @@ preface = "For people participating in and interacting with the consortium, ther
 	name = "Emma Dann"
 	url = "https://github.com/emdann"
 
+[[teams.members]]
+	name = "Roshan Sharma"
+	url = "https://github.com/roshan9128"
+
+
 # ---------- steering committee, in alphabetical order
 
 [[teams]]
