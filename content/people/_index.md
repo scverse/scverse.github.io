@@ -63,7 +63,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Roshan Sharma"
 	url = "https://github.com/roshan9128"
-=======
+
 
 # ---------- steering committee, in alphabetical order
 
