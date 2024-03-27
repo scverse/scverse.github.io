@@ -1,6 +1,6 @@
 +++
-title = "Scverse Hackathon 2023-04 Boston"
-date = 2023-04-02T00:00:05+01:00
+title = "Scverse Hackathon 2024-04 Boston"
+date = 2024-04-02T00:00:05+01:00
 description = "Hackathon on single-cell, spatial biology, and genomics"
 draft = false
 +++
