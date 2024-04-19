@@ -11,40 +11,6 @@ Join us for the scverse Hackathon taking place from **Monday, November 27th, 9:0
 
 The scverse hackathon is free. Local and international attendees could register through an open application.
 
-## Event Schedule
-
-**Mon, Nov 27: 9:00 – 18:00 — EMBL-EBI Main Building, Garden room** 
-8.30 – 9:30 — Bus transfer from Cambridge to WGC (pick-up at 8.30 at St Paul’s Road bus stop or Centennial Hotel)
-9:30 – 10:00 — Intro + state of the scverse + Q&A
-10:00 - 10:30 — mingle and split into groups
-10:30 – 11:00 — coffee break
-11:00 – 12:30 — hack
-12:30 – 13:30 — lunch
-13:30 – 15:30 — hack 
-15:30 – 17:00 — Software/methods flash-talks + mingle (Sulston building, room C3-02)
-17:00 – 17:30 — Update from teams
-17:30 – 18:00 — Bus transfer from WGC to Cambridge 
-19:00 – Dinner @ BrewDog 
-
-**Tue, Nov 28: 09:00 – 19:00 — EMBL-EBI Main Building, Garden room** 
-8.30 – 9:00 — (pick-up at 8.30 at St Paul’s Road bus stop or Centennial Hotel)
-9:00 – 10:30 — hack
-10:30 – 11:00 — coffee break
-11:00 – 12:30 — split into groups and hack
-12:30 – 13:30 — lunch
-13:30 – 17:00 — hack 
-17:00 – 18:00 — Update from teams
-17:30 – 18:00 — Bus transfer from WGC to Cambridge
-19:00 – Dinner @ St John’s college
-
-**Wed, Nov 29: 09:00 – 12:00 — EMBL-EBI Main Building, Garden room**
-8.30 – 9:00 — (pick-up at 8.30 at St Paul’s Road bus stop or Centennial Hotel)
-9:00 – 10:30 — hack
-10:30 – 11:00 — coffee break
-11:00 – 12:30 — Updates + closing remarks
-12:30 – 13:30 — lunch
-14:00 – 14:30 — Bus transfer from WGC to Cambridge & departure
-
 ## Hackathon Focus Areas
 
 1. **Multi-condition analysis** - Improve tools for analysis, visualization & tutorials for comparative analysis of single-cell datasets.
