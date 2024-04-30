@@ -1,19 +1,25 @@
 {{ define "upcoming" }}
   <h1>{{ .Title }}</h1>
   {{ .Content }}
-  <h2>Upcoming events</h2>
-  {{ range where .Data.Pages "Date.Unix" ">" now.Unix }}
-    <a href="{{ .Permalink }}">
-      <article class="page-item">
-        <div class="page-item-date">
-          <span>{{ .Date.Format "January 02, 2006" }}</span>
-        </div>
-        <div class="page-item-content">
-          <h2>{{ .Title }}</h2>
-          <span>{{ .Description }}</span>
-        </div>
-      </article>
-    </a>
+
+  <!-- Only show if there are any -->
+  {{ with where .Data.Pages "Date.Unix" ">" now.Unix }}
+    <h2>Upcoming events</h2>
+    {{ range . }}
+      <a href="{{ .Permalink }}">
+        <article class="page-item">
+          <div class="page-item-date">
+            <span>{{ .Date.Format "January 02, 2006" }}</span>
+          </div>
+          <div class="page-item-content">
+            <h2>{{ .Title }}</h2>
+            <span>{{ .Description }}</span>
+          </div>
+        </article>
+      </a>
+    {{ end }}
+  {{ else }}
+    <!-- No upcoming events -->
   {{ end }}
 {{ end }}
 
