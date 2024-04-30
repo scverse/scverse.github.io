@@ -13,6 +13,9 @@
     <div id="wrapper">
       <div id="content">
         <div id="page-content" class="items-list">
+          {{ block "upcoming" . }}
+          {{ end }}
+
           {{ block "main" . }}
           {{ end }}
         </div>
