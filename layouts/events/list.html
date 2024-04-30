@@ -17,7 +17,6 @@
   {{ end }}
 {{ end }}
 
-
 {{ define "main" }}
   <h2>Past events</h2>
   {{ range where .Data.Pages "Date.Unix" "<=" now.Unix }}
