@@ -1,7 +1,26 @@
-{{ define "main" }}
+{{ define "upcoming" }}
   <h1>{{ .Title }}</h1>
   {{ .Content }}
-  {{ range .Pages }}
+  <h2>Upcoming events</h2>
+  {{ range where .Data.Pages "Date.Unix" ">" now.Unix }}
+    <a href="{{ .Permalink }}">
+      <article class="page-item">
+        <div class="page-item-date">
+          <span>{{ .Date.Format "January 02, 2006" }}</span>
+        </div>
+        <div class="page-item-content">
+          <h2>{{ .Title }}</h2>
+          <span>{{ .Description }}</span>
+        </div>
+      </article>
+    </a>
+  {{ end }}
+{{ end }}
+
+
+{{ define "main" }}
+  <h2>Past events</h2>
+  {{ range where .Data.Pages "Date.Unix" "<=" now.Unix }}
     <a href="{{ .Permalink }}">
       <article class="page-item">
         <div class="page-item-date">

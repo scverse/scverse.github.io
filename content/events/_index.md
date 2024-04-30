@@ -16,6 +16,3 @@ you would like to bring up a topic, feel free to add it before or during the mee
 
 **Agenda**, **next dates**, **meeting notes** and **zoom link** are available from the
 [meeting document](https://hackmd.io/VfVLKb3ETGKN2j_7tn8ZJQ?view).
-
-
-## Upcoming and past events
