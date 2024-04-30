@@ -2,6 +2,7 @@
   <h1>{{ .Title }}</h1>
   {{ .Content }}
 
+
   <!-- Only show if there are any -->
   {{ with where .Data.Pages "Date.Unix" ">" now.Unix }}
     <h2>Upcoming events</h2>
