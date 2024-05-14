@@ -268,11 +268,19 @@ body {
 #scverse-logo {
     width: 3rem;
     height: 3rem;
-    background: url("/img/icons/scverse_bw_logo.svg") no-repeat top left;
-    &:hover {
-        background: url("/img/icons/scverse_color_logo.svg") no-repeat top left;
+    display: flex;
+    #logo-img {
+        width: 3rem;
+        height: 3rem;
+        justify-content: center;
+        align-self: center;
+        margin: 0;
+        background: url("/img/icons/scverse_bw_logo.svg") no-repeat top left;
+        &:hover {
+            transform: scale(1.1);
+        }
+        transition: all 200ms ease-in-out;
     }
-    transition: background 200ms ease-out;
 }
 
 .logo-name {
@@ -280,9 +288,10 @@ body {
     font-size: 1.5rem;
     line-height: 1.5rem;
     font-family: "Inter", sans-serif;
-    font-weight: 500;
+    font-weight: 900;
     letter-spacing: 0.15rem;
     margin-left: 1rem;
+    transition: background 200ms ease-in-out;
 }
 
 .dropdown:hover .dropdown-menu {
