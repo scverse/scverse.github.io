@@ -39,6 +39,11 @@ description = "Foundational tools for single-cell omics data analysis"
 	description = "Spatial single cell analysis"
 	url = "https://squidpy.readthedocs.io/"
 
+[[packages]]
+	name = "spatialdata"
+	description = "Spatial data format"
+	url = "https://spatialdata.scverse.org/en/latest/"
+
 # Mission
 [mission]
 
@@ -99,8 +104,13 @@ text = """\
     text = "Sturm G, Szabo T, Fotakis G, Haider M, Rieder D, Trajanoski Z, Finotello F. Scirpy: a Scanpy extension for analyzing single-cell T-cell receptor-sequencing data. Bioinformatics. 2020 Sep 15;36(18):4817-8."
 
 [[references.citations]]
-    id = "Squidpy"
+    id = "squidpy"
     url = "https://doi.org/10.1038/s41592-021-01358-2"
     text = "Palla G, Spitzer H, Klein M, Fischer D, Schaar AC, Kuemmerle LB, Rybakov S, Ibarra IL, Holmberg O, Virshup I, Lotfollahi M, Richter S, Theis FJ. Squidpy: a scalable framework for spatial omics analysis. Nature Methods 19, 171–178 (2022)."
+
+[[references.ciatations]]
+    id = "spatialdata"
+    url = "https://doi.org/10.1038/s41592-024-02212-x"
+    text = "Marconato L, Palla G, Yamauchi KA, Virshup I, Heidari E, Treis T, Vierdag WM, Toth M, Stockhaus S, Shrestha RB, Rombaut B. SpatialData: an open and universal data framework for spatial omics. Nature Methods. 2024 Mar 20:1-5"
 
 +++
