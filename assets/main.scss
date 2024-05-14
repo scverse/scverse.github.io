@@ -268,19 +268,13 @@ body {
 #scverse-logo {
     width: 3rem;
     height: 3rem;
-    display: flex;
-    #logo-img {
-        width: 3rem;
-        height: 3rem;
-        justify-content: center;
-        align-self: center;
-        margin: 0;
-        background: url("/img/icons/scverse_bw_logo.svg") no-repeat top left;
-        &:hover {
-            transform: scale(1.1);
-        }
-        transition: all 200ms ease-in-out;
+    width: 3rem;
+    height: 3rem;
+    background: url("/img/icons/scverse_bw_logo.svg") no-repeat top left;
+    &:hover {
+        transform: scale(1.1);
     }
+    transition: all 200ms ease-in-out;
 }
 
 .logo-name {
