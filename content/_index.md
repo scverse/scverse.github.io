@@ -36,7 +36,7 @@ description = "Foundational tools for single-cell omics data analysis"
 
 [[packages]]
 	name = "squidpy"
-	description = "Spatial single cell analysis"
+	description = "Spatial single-cell analysis"
 	url = "https://squidpy.readthedocs.io/"
 
 [[packages]]
