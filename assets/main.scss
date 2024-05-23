@@ -375,71 +375,70 @@ body {
                     margin: 3rem auto;
                     margin-bottom: -3rem;
                     @media (max-width: 40rem) {
-                       width: 100%;
-                       margin-bottom: 3rem;
+                        width: 100%;
+                        margin-bottom: 3rem;
                     }
-display: flex;
-justify-content: center;
-&:hover {
-cursor: pointer;
-}
+                    display: flex;
+                    justify-content: center;
+                    &:hover {
+                        cursor: pointer;
+                    }
 
-.event-chip {
-    width: auto;
-    display: inline-flex;
-    align-items: center;
-    background-color: none;
-    border-radius: 2.2rem;
-    padding: .1rem 1rem .1rem 0;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: black;
-    transition: all 0.3s ease;
-    outline: 1px solid black;
+                    .event-chip {
+                        width: auto;
+                        display: inline-flex;
+                        align-items: center;
+                        background-color: none;
+                        border-radius: 2.2rem;
+                        padding: 0.1rem 1rem 0.1rem 0;
+                        font-size: 0.8rem;
+                        font-weight: 500;
+                        color: black;
+                        transition: all 0.3s ease;
+                        outline: 1px solid black;
 
-    .event-date {
-        background-color: black;
-        color: white;
-        padding: .5rem 1rem;
-        border-radius: 2rem;
-        margin: .1rem 1rem .1rem .2rem;
-        align-self: start;
-    }
+                        .event-date {
+                            background-color: black;
+                            color: white;
+                            padding: 0.5rem 1rem;
+                            border-radius: 2rem;
+                            margin: 0.1rem 1rem 0.1rem 0.2rem;
+                            align-self: start;
+                        }
 
-    .event-text {
-        position: relative;
+                        .event-text {
+                            position: relative;
 
-        .arrow {
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-    }
+                            .arrow {
+                                display: inline-block;
+                                transition: transform 0.3s ease;
+                            }
+                        }
 
-    &:hover {
-        color: #4557c4;
-        transform: scale(1.05);
-       
-        .event-date {
-           background: linear-gradient(135deg, #262fb5, #74c8fa);
-        }
+                        &:hover {
+                            color: #4557c4;
+                            transform: scale(1.05);
 
-        .event-text .arrow {
-            transform: translateX(.2rem);
-        }
-    }
+                            .event-date {
+                                background: linear-gradient(135deg, #262fb5, #74c8fa);
+                            }
 
-position: relative;
+                            .event-text .arrow {
+                                transform: translateX(0.2rem);
+                            }
+                        }
 
-a {
-position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-overflow: hidden;
-}
-}
+                        position: relative;
 
+                        a {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            overflow: hidden;
+                        }
+                    }
                 }
 
                 section {
