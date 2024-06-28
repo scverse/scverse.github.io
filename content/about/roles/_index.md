@@ -3,7 +3,7 @@
 The purpose of this document is to formalize the governance process used by the `scverse` project, to clarify how decisions are made and how the various groups within our community interact.
 
 As a whole, we are a consensus-based community project.
-However, any subproject within the scverse can have their own governance system as long as they do not conflict with the rules set out here.
+However, any subproject within the scverse can have its own governance system as long as they do not conflict with the rules set out here.
 Anyone with an interest in the project can join the community, contribute to the project design, and participate in the decision making process.
 This document describes how that participation takes place, how to find consensus, and how deadlocks are resolved.
 
@@ -23,7 +23,7 @@ among other possibilities.
 Any community member can become a contributor, and all are encouraged to do so.
 By contributing to the project, community members can directly help to shape its future.
 
-All community members are required to adhere by our [code of conduct](https://scverse.org/about/code_of_conduct/).
+All community members are required to adhere to our [code of conduct](https://scverse.org/about/code_of_conduct/).
 Potential contributors are encouraged to read the [Contributing Guide](https://scanpy.readthedocs.io/en/stable/dev/index.html).
 
 A community member becomes a contributor when the following criteria are met:
@@ -38,7 +38,7 @@ This includes who gets commit rights to their projects.
 
 ## Core team
 
-The core team are community members that have demonstrated continued commitment to the project through ongoing contributions.
+The core team are community members who have demonstrated continued commitment to the project through ongoing contributions.
 They have shown they can be trusted to maintain scverse with care.
 Team members appear as organization members on the scverse [GitHub organization](https://github.com/orgs/scverse/people) and are on our [@scverse/core](https://github.com/orgs/scverse/teams/core) GitHub team.
 
@@ -46,7 +46,7 @@ There are sub-roles within the core team depending on the kinds covering differe
 
 ### Core developers
 
-Core developers are members of the core team who have made signifigant code contributions to `scverse`.
+Core developers are members of the core team who have made significant code contributions to `scverse`.
 They are granted additional rights so they can more easily carry on with their `scverse` related activities.
 These rights include: merging approved pull requests, voting for and against contested pull-requests, and being involved in deciding major changes to the API.
 Core developers are on our [@scverse/core-devs](https://github.com/orgs/scverse/teams/core-devs) GitHub team. 
@@ -60,7 +60,7 @@ While there is no hard-and-fast rule about who can be nominated, ideally, they s
 * Contributed to the discussion and review of others' work
 * Collaborated in a way befitting our community values
 
-After nomination admission will be decided by two-thirds majority vote on a private mailing list by the core team.
+After nomination, admission will be decided by two-thirds majority vote on a private mailing list by the core team.
 
 Primary maintainers of new core packages, who are not already core developers, will be invited to join.
 
@@ -91,17 +91,17 @@ During that time deadlocked votes of the SC will be postponed until the new memb
 
 The `scverse` steering council may be contacted at `steering-council@scverse.org`, or via the [@scverse/steering-council](https://github.com/orgs/scverse/teams/steering-council) GitHub team.
 
-## Management committee
+## Management Committee
 
 The management committee consists of PIs that support the development of scverse core projects. Members of the management committee are expected to secure funding and allocate resources to the continuous development of one or more core projects. 
 
 PIs supervising the development of new core packages, who are not already part of the managment committee, will be invited to join.
 
-## Scientific advisory board
+## Scientific Advisory Board
 
 The scientific advisory boards consists of highly experienced scientists devoted to research in single cell omics analysis. In an annual meeting, the scientific advisory boards assesses the progress of scverse and suggests priorities for the next year based on the latests developments in the field. 
 
-Members of the scientific adivsory boards are nominated by the core team. 
+Members of the scientific advisory boards are nominated by the core team. 
 
 # Decision Making Process
 
