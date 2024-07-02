@@ -64,6 +64,10 @@ preface = "For people participating in and interacting with the consortium, ther
 	name = "Roshan Sharma"
 	url = "https://github.com/roshan9128"
 
+[[teams.members]]
+	name = "Wouter-Michiel Vierdag"
+	url = "https://github.com/melonora"
+
 
 # ---------- steering committee, in alphabetical order
 
