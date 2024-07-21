@@ -25,10 +25,6 @@ preface = "For people participating in and interacting with the consortium, ther
 	url = "https://github.com/Zethson"
 
 [[teams.members]]
-	name = "Ilia Kats"
-	url = "https://github.com/ilia-kats"
-	
-[[teams.members]]
 	name = "Martin Kim"
 	url = "https://github.com/martinkim0"
 	
