@@ -21,6 +21,10 @@ preface = "For people participating in and interacting with the consortium, ther
 	url = "https://github.com/canergen"
 
 [[teams.members]]
+	name = "Emma Dann"
+	url = "https://github.com/emdann"
+
+[[teams.members]]
 	name = "Lukas Heumos"
 	url = "https://github.com/Zethson"
 
@@ -51,10 +55,6 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Isaac Virshup"
 	url = "https://github.com/ivirshup"
-
-[[teams.members]]
-	name = "Emma Dann"
-	url = "https://github.com/emdann"
 
 [[teams.members]]
 	name = "Roshan Sharma"
