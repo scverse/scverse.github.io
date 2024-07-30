@@ -26,7 +26,7 @@ These tools are placed under shared maintenance and development in the `scverse`
 
 ## User engagement
 
-We are community-driven and committed to keeping the `scverse` community open. We strive to actively foster a community where everyone is and feels welcomed, and where there are no barriers to contributions in any form. We welcome newcomers and pledge to build an environment where they can grow as contributors, developers and community members. Together with technical and development support, we also support our users through:
+We are community-driven and committed to keeping the `scverse` community open. We strive to actively foster a community where everyone is and feels welcomed, and where there are no barriers to contributions in any form. We welcome newcomers and pledge to build an environment where they can grow as contributors, developers, and community members. Together with technical and development support, we also support our users through:
 
 * Clear documentation of code and usage via docs and tutorials.
 * Participation in development through issues and pull requests.
@@ -40,10 +40,10 @@ Development of these packages is not restricted – contributions are welcomed a
 However, `scverse` aims to support the external development of new approaches to analyze and work with single cell data.
 We encourage the creation of new methods and tools on top of the *core* packages and data-structures.
 
-We support the development these ecosystem packages by:
+We support the development of these ecosystem packages by:
 
 * Providing stable APIs to build on top of.
-* Providing standardized and well supported data structure to pass around data.
+* Providing standardized and well-supported data structure to pass around data.
 * Making sure all contributions are recognized in our change logs and documentation.
 * Promoting 3rd party packages that rely on `scverse` via our websites and social media feeds.
 * Establishing open communication channels for:
