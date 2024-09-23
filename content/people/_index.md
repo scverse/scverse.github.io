@@ -61,8 +61,16 @@ preface = "For people participating in and interacting with the consortium, ther
 	url = "https://github.com/roshan9128"
 
 [[teams.members]]
+	name = "Ilan Gold"
+	url = "https://github.com/ilan-gold"
+
+[[teams.members]]
 	name = "Wouter-Michiel Vierdag"
 	url = "https://github.com/melonora"
+
+[[teams.members]]
+	name = "Tim Treis"
+	url = "https://github.com/timtreis"
 
 
 # ---------- steering committee, in alphabetical order
