@@ -24,6 +24,10 @@ preface = "For people participating in and interacting with the consortium, ther
 	name = "Emma Dann"
 	url = "https://github.com/emdann"
 
+ [[teams.members]]
+	name = "Severin Dicks"
+	url = "https://github.com/Intron7"
+
 [[teams.members]]
 	name = "Lukas Heumos"
 	url = "https://github.com/Zethson"
