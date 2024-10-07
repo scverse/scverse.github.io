@@ -18,7 +18,9 @@
               {{ if .Params.tutorials }}
                 {{ .Params.tutorials_intro | markdownify }}
 
-                {{ $content := getJSON "https://scverse.org/scverse-tutorials/tutorials.json" }}
+                {{ $jsonURL := "https://scverse.org/scverse-tutorials/tutorials.json" }}
+                {{ $remoteData := resources.GetRemote $jsonURL }}
+                {{ $content := transform.Unmarshal $remoteData.Content }}
                 {{ if $content }}
 
                   <h2 id="tutorials">Tutorials</h2>
