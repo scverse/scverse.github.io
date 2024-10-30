@@ -1,8 +1,8 @@
 +++
 title = "People"
-preface = "For people participating in and interacting with the consortium, there are <a href='/about/roles'>different roles</a> — from core developers to contributors and community members."
+preface = "For people participating in and interacting with the consortium, there are <a href='/about/roles'>different roles</a> — from core team to developers, contributors and community members."
 
-# ---------- core developers, in alphabetical order
+# ---------- core team, in alphabetical order
 
 [[teams]]
 	name = "Core Team"
@@ -87,37 +87,37 @@ preface = "For people participating in and interacting with the consortium, ther
 
 [[teams]]
 	name = "Management Committee"
-	text = "Management Committee is committed to supporting <span class=\"backticked\">scverse</span> and is directly involved in investing in its progress."
+	text = "The Management Committee is committed to supporting <span class=\"backticked\">scverse</span> and is directly involved in investing in its progress."
 	
 [[teams.members]]
 	name = "Francesca Finotello"
-	url = "https://computationalbiomedicinegroup.github.io/"
+	url = "https://computationalbiomedicinegroup.github.io"
 
 [[teams.members]]
 	name = "Oliver Stegle"
-	url = "https://www.embl.org/groups/stegle/"
+	url = "https://www.embl.org/groups/stegle"
 
 [[teams.members]]
 	name = "Fabian Theis"
 	url = "https://www.helmholtz-munich.de/en/icb/pi/fabian-theis"
 
 [[teams.members]]
-	name = "Alex Wolf"
-	url = "https://falexwolf.me/"
-
-[[teams.members]]
 	name = "Nir Yosef"
-	url = "https://yoseflab.github.io/"
+	url = "https://yoseflab.github.io"
 
 # ---------- advisory committee, in alphabetical order
 
 [[teams]]
 	name = "Advisory Committee"
-	text = "Advisory Committee helps to shape the overall vision for <span class=\"backticked\">scverse</span> and to define its priorities."
+	text = "The Advisory Committee helps to shape the overall vision for <span class=\"backticked\">scverse</span> and to define its priorities."
+
+[[teams.members]]
+	name = "Alex Wolf"
+	url = "https://falexwolf.me"
 
 [[teams.members]]
 	name = "Bonnie Berger"
-	url = "https://people.csail.mit.edu/bab/"
+	url = "https://people.csail.mit.edu/bab"
 
 [[teams.members]]
 	name = "Dana Pe'er"
@@ -129,13 +129,14 @@ preface = "For people participating in and interacting with the consortium, ther
 
 [[teams.members]]
 	name = "Sarah Teichmann"
-	url = "https://www.sanger.ac.uk/group/teichmann-group/"
+	url = "http://www.teichlab.org"
 
 # ----------
 
 [[teams]]
 	name = "Community"
-	text = "Everyone who uses <span class='backticked'>scverse</span> software is part of the community! There are multiple ways to engage with its other members. For a start, join us on our <a href='https://discourse.scverse.org/' target='_blank'>Discourse forum</a> and keep an eye on our <a href='https://twitter.com/scverse_team' target='_blank'>Twitter account</a> for the events we organise."
+	text = "Everyone who uses <span class='backticked'>scverse</span> software is part of the community! There are multiple ways to engage with its other members. For a start, join us on our <a href='https://https://scverse.zulipchat.com' target='_blank'>Zulip chat</a>,    
+    our <a href='https://discourse.scverse.org/' target='_blank'>Discourse forum</a>, and keep an eye on our <a href='https://twitter.com/scverse_team' target='_blank'>Twitter account</a> for the events we organise."
 
 # ----------
 
@@ -178,7 +179,7 @@ preface = "For people participating in and interacting with the consortium, ther
 
 
 [[contributors.members]]
-    name = "@brianhie"
+    name = "Brian Hie"
     url = "https://github.com/brianhie"
     img = "https://avatars.githubusercontent.com/u/6365340?v=4"
 
@@ -196,7 +197,7 @@ preface = "For people participating in and interacting with the consortium, ther
 
 
 [[contributors.members]]
-    name = "Danila"
+    name = "Danila Bredikhin"
     url = "https://github.com/gtca"
     img = "https://avatars.githubusercontent.com/u/32863903?v=4"
 
@@ -232,7 +233,7 @@ preface = "For people participating in and interacting with the consortium, ther
 
 
 [[contributors.members]]
-    name = "@ilia-kats"
+    name = "Ilia Kats"
     url = "https://github.com/ilia-kats"
     img = "https://avatars.githubusercontent.com/u/3499574?v=4"
 
@@ -286,7 +287,7 @@ preface = "For people participating in and interacting with the consortium, ther
 
 
 [[contributors.members]]
-    name = "@LucaMarconato"
+    name = "Luca Marconato"
     url = "https://github.com/LucaMarconato"
     img = "https://avatars.githubusercontent.com/u/2664412?v=4"
 
@@ -298,13 +299,13 @@ preface = "For people participating in and interacting with the consortium, ther
 
 
 [[contributors.members]]
-    name = "@M0hammadL"
+    name = "Mohammad Lotfollahi"
     url = "https://github.com/M0hammadL"
     img = "https://avatars.githubusercontent.com/u/33202701?v=4"
 
 
 [[contributors.members]]
-    name = "MalteDLuecken"
+    name = "Malte D. Luecken"
     url = "https://github.com/LuckyMD"
     img = "https://avatars.githubusercontent.com/u/13019956?v=4"
 
@@ -328,13 +329,13 @@ preface = "For people participating in and interacting with the consortium, ther
 
 
 [[contributors.members]]
-    name = "@michalk8"
+    name = "Michal Klein"
     url = "https://github.com/michalk8"
     img = "https://avatars.githubusercontent.com/u/46717574?v=4"
 
 
 [[contributors.members]]
-    name = "Philipp A."
+    name = "Philipp Angerer"
     url = "https://github.com/flying-sheep"
     img = "https://avatars.githubusercontent.com/u/291575?v=4"
 
@@ -364,7 +365,7 @@ preface = "For people participating in and interacting with the consortium, ther
 
 
 [[contributors.members]]
-    name = "@talashuach"
+    name = "Tal Ashuach"
     url = "https://github.com/talashuach"
     img = "https://avatars.githubusercontent.com/u/22898826?v=4"
 
@@ -394,7 +395,7 @@ preface = "For people participating in and interacting with the consortium, ther
 
 
 [[contributors.members]]
-    name = "@zoepiran"
+    name = "Zoe Piran"
     url = "https://github.com/zoepiran"
     img = "https://avatars.githubusercontent.com/u/43661890?v=4"
 
@@ -406,5 +407,3 @@ preface = "For people participating in and interacting with the consortium, ther
 
 
 +++
-
-
