@@ -46,9 +46,6 @@ $maxwidthwide: 1400px;
 $contentwidth: 80%;
 $contentwidthwide: 92%;
 
-$coreMemberBgColor: #f0f0f0; // Example background color
-$coreMemberTextColor: #333333; // Example text color
-$coreMemberBorderColor: #cccccc; // Example border color
 $additionalInfoColor: #666666; // Example additional info color
 
 @font-face {
@@ -1147,19 +1144,19 @@ body {
                 font-family: "Inter", sans-serif;
             }
             .core-member {
-                @include core-chip;
+                @include person-chip;
                 font-size: 1rem;
                 font-family: "Inter", sans-serif;
                 .additional-info {
                     display: none; // Hide additional info by default
                     font-size: 0.9rem;
+                    color: $additionalInfoColor;
                     line-height: 0.4; // Adjust line height for tighter fit
                     top: 100%; // Position below the core-member
                     left: 0;
                     width: 100%;
                     padding: 0.5rem; // Add padding for better readability
-                    padding-bottom: 0rem; // Remove bottom padding
-                    border: 0px solid $coreMemberBorderColor; // Match border color
+                    padding-bottom: 0;
                 }
                 &:hover .additional-info {
                     display: block; // Show additional info on hover
