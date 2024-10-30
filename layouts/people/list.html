@@ -42,18 +42,18 @@
                         <div class="team-list">
                           {{ range $person := $team.members }}
                             <a href="{{ .url }}" target="_blank">
-                                <div class="person-chip {{ if .isCoreMember }}core-member{{ end }}">
-                                    {{ .name }}
-                                    {{ if .isCoreMember }}
-                                        <div class="additional-info">
-                                            <p>{{ .role }}</p>
-                                            <p>{{ .email }}</p>
-                                            <p>{{ .affiliation }}</p>
-                                        </div>
-                                    {{ end }}
-                                </div>
+                              <div class="person-chip {{ if .isCoreMember }}core-member{{ end }}">
+                                {{ .name }}
+                                {{ if .isCoreMember }}
+                                  <div class="additional-info">
+                                    <p>{{ .role }}</p>
+                                    <p>{{ .email }}</p>
+                                    <p>{{ .affiliation }}</p>
+                                  </div>
+                                {{ end }}
+                              </div>
                             </a>
-                        {{ end }}
+                          {{ end }}
                         </div>
                       {{ end }}
                     </div>
