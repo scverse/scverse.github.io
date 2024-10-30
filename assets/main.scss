@@ -46,6 +46,13 @@ $maxwidthwide: 1400px;
 $contentwidth: 80%;
 $contentwidthwide: 92%;
 
+$coreMemberBgColor: #f0f0f0; // Example background color
+$coreMemberTextColor: #333333; // Example text color
+$coreMemberBorderColor: #cccccc; // Example border color
+$additionalInfoColor: #666666; // Example additional info color
+
+
+
 @font-face {
     font-family: "Inter";
     src: url("fonts/Inter/Inter-VariableFont_slnt,wght.ttf");
@@ -194,6 +201,20 @@ a .more {
 }
 
 @mixin person-chip {
+    background-color: $tilebg;
+    text-decoration: none;
+    color: $tiletext;
+    padding: 0.4rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    transition: all 200ms ease-in-out;
+    &:hover {
+        color: $tiletext3;
+        background-color: $tilebg2;
+    }
+}
+
+@mixin core-chip {
     background-color: $tilebg;
     text-decoration: none;
     color: $tiletext;
@@ -1126,6 +1147,25 @@ body {
                 @include person-chip;
                 font-size: 1rem;
                 font-family: "Inter", sans-serif;
+            }
+            .core-member {
+                @include core-chip;
+                font-size: 1rem;
+                font-family: "Inter", sans-serif;
+                .additional-info {
+                    display: none; // Hide additional info by default
+                    font-size: 0.9rem;
+                    line-height: 0.4; // Adjust line height for tighter fit
+                    top: 100%; // Position below the core-member
+                    left: 0;
+                    width: 100%;
+                    padding: 0.5rem; // Add padding for better readability
+                    padding-bottom: 0rem; // Remove bottom padding
+                    border: 0px solid $coreMemberBorderColor; // Match border color
+                }
+                &:hover .additional-info {
+                    display: block; // Show additional info on hover
+                }
             }
             a {
                 text-decoration: none;
