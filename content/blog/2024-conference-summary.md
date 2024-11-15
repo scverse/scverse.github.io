@@ -24,11 +24,15 @@ The conference had 6 keynotes from leaders of the field and founders of Scanpy/s
 
 Every keynote was followed with an engaging Q\&A session, which highlighted the success of the keynotes. 
 
+<img src="/img/blog/conference2024-keynote.png" style="max-width: 100%;" alt="conference-keynotes" />
+
 ### Short talks
 
 The conference also featured several 15-minute short talks, each followed by a Q\&A session. These talks were carefully selected from 72 abstract submissions based on their relevance, impact, and contribution to the field. The topics spanned a wide range of computational techniques in single-cell genomics, including methods for scaling analyses to millions of cells, integrating single-cell data with dynamic models to develop *velocyto*\-like metrics, user-friendly exploration of epigenomic data, and innovative approaches for representing and analyzing spatial data.
 
 The presenters were primarily graduate students and postdoctoral researchers from various academic labs. We believe that providing opportunities for junior scientists to showcase their work and receive constructive feedback is crucial to fostering their growth. This format also allowed the audience to delve into the finer details of each method, complementing the broader discussions. Each short talk sparked extensive conversations, a testament to the effectiveness of this approach. Many attendees expressed their appreciation (some vignettes below) for the inclusion of these talks, particularly for highlighting the contributions of early-career researchers and promoting their visibility within the community.
+
+<img src="/img/blog/conference2024-shorttalk.png" style="max-width: 100%;" alt="conference-short-talk-speakers" />
 
 ### Workshops
 
@@ -38,9 +42,13 @@ The workshops covered a wide range of topics, from live-coding demonstrations an
 
 The workshops were widely regarded as one of the conference’s major highlights, as reflected in the enthusiastic feedback from participants (see examples below).
 
+<img src="/img/blog/conference2024-workshop.png" style="max-width: 100%;" alt="conference-workshops" />
+
 ### Poster session
 
 The conference also featured a poster session, where participants showcased their research and engaged in discussions with attendees. A total of 51 posters were presented during the two-hour session, providing ample opportunity for in-depth conversations and knowledge exchange.
+
+<img src="/img/blog/conference2024-poster.png" style="max-width: 100%;" alt="conference-poster-session" />
 
 ### Sponsor talks
 
