@@ -3,6 +3,7 @@ title = "Highlights from the inaugural scverse conference"
 date = 2024-11-14T00:00:05+01:00
 description = "A recap from the very first scverse conference"
 draft = false
+author = Roshan Sharma
 +++
 
 <img src="/img/blog/conference2024.png" style="max-width: 100%;" alt="conference-group-picture" />
@@ -74,4 +75,4 @@ Anna Diamant \- IPMC, Université Nice Côte d'Azur (FRA)
 
 The inaugural scverse conference surpassed our expectations, both in terms of participant numbers and the overwhelmingly positive feedback we received. Energized by this success, we look forward to many more years of impactful events, including conferences and hackathons, driving innovation with scverse tools in the single-cell genomics field.
 
-\[[Roshan Sharma](https://github.com/roshan9128), scverse core\]
+\[Photo credits: Ilan Gold\]
