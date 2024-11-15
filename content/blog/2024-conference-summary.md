@@ -56,3 +56,5 @@ Anna Diamant \- IPMC, Université Nice Côte d'Azur (FRA)
 ### Conclusion 
 
 The inaugural scverse conference surpassed our expectations, both in terms of participant numbers and the overwhelmingly positive feedback we received. Energized by this success, we look forward to many more years of impactful events, including conferences and hackathons, driving innovation with scverse tools in the single-cell genomics field.
+
+\[[Roshan Sharma](https://github.com/roshan9128), scverse core\]
