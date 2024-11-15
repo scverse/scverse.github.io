@@ -5,9 +5,9 @@ description = "A recap from the very first scverse conference"
 draft = false
 +++
 
-# Highlights from the inaugural scverse conference
-
 <img src="/img/blog/conference2024.png" style="max-width: 100%;" alt="conference-group-picture" />
+
+
 
 The first scverse conference held in Munich, Germany from 10-12 September, 2024 brought together leading scientists, developers, and researchers from the single-cell genomics and spatial biology community. The conference was organized around five main events: (A) 6 keynotes from leaders in the field (B) 13 short talks from developers, graduate students, postdocs (C) 14 workshops with hands-on experience on various aspects of data analysis and software development (D) Poster session showcasing more than 50 posters (E) Talks from our sponsors showcasing their latest advancements. This year, the focus was on latest community-driven developments in multi-modal and spatial data analysis, broadening scverse accessibility and outreach, and enhancing interoperability. With over 170 participants from 17 different countries, the inaugural scverse conference was a success. Here, we provide major highlights from the conference. 
 
@@ -50,14 +50,16 @@ The conference would not have been possible without the generous support of our 
 
 ### Vignettes from participants
 
-*Hearing the speakers discuss their thought processes and motivations behind developing bioinformatics tools gave me a deeper understanding of the development process and reinforced my desire to create my own tools in the future. This conference has inspired me to explore new frontiers in single-cell and spatial transcriptomics research, and I look*  
-*forward to future opportunities to share my work and learn from others in the field.*  
+> Hearing the speakers discuss their thought processes and motivations behind developing bioinformatics tools gave me a deeper understanding of the development process and reinforced my desire to create my own tools in the future. This conference has inspired me to explore new frontiers in single-cell and spatial transcriptomics research, and I look forward to future opportunities to share my work and learn from others in the field.
+
 Yejin Kwak \- Pusan National University (KOR)
 
-*One of the highlights of the conference was the carefully curated series of workshops. These sessions provided not just immediate skill acquisition, but also valuable resources for continued learning post-conference. My only regret is that I couldn't attend all of them at the same time. For future events, I echo the suggestion made in Zulip that recording these workshops would be great for attendees who couldn't participate in person.*  
+> One of the highlights of the conference was the carefully curated series of workshops. These sessions provided not just immediate skill acquisition, but also valuable resources for continued learning post-conference. My only regret is that I couldn't attend all of them at the same time. For future events, I echo the suggestion made in Zulip that recording these workshops would be great for attendees who couldn't participate in person.
+
 Jiri Bruthans \- Charles University Prague (CZE)
 
-*My software is still very much in the early stages of development, and I went through a period of doubts before applying to present at a poster session during the conference. In the end, I’m pleased I pushed past my hesitation and showcased my project. \[...\] The conference provided an excellent platform to present my research and gather invaluable feedback from peers. Since this was my first time presenting at a bioinformatics conference, I had plenty of beginner-level questions on “how to…” present research where the method itself is the main deliverable. Engaging with the bioinformatics community was a fantastic opportunity, and I’m now motivated to integrate the constructive feedback I received to improve its functionality. It was also nice to find colleagues working in the same field who proposed their datasets to test the functionality of my software.*   
+> My software is still very much in the early stages of development, and I went through a period of doubts before applying to present at a poster session during the conference. In the end, I’m pleased I pushed past my hesitation and showcased my project. \[...\] The conference provided an excellent platform to present my research and gather invaluable feedback from peers. Since this was my first time presenting at a bioinformatics conference, I had plenty of beginner-level questions on “how to…” present research where the method itself is the main deliverable. Engaging with the bioinformatics community was a fantastic opportunity, and I’m now motivated to integrate the constructive feedback I received to improve its functionality. It was also nice to find colleagues working in the same field who proposed their datasets to test the functionality of my software.
+
 Anna Diamant \- IPMC, Université Nice Côte d'Azur (FRA)
 
 ### Conclusion 
