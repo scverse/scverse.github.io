@@ -1,4 +1,11 @@
-# Highlights from the inaugural scverse conference 2024
++++
+title = "Highlights from the inaugural scverse conference"
+date = 2024-11-14T00:00:05+01:00
+description = "A recap from the very first scverse conference"
+draft = false
++++
+
+# Highlights from the inaugural scverse conference
 
 <img src="/img/blog/conference2024.png" style="max-width: 100%;" alt="conference-group-picture" />
 
