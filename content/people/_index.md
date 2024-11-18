@@ -11,6 +11,10 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Philipp Angerer"
 	url = "https://github.com/flying-sheep"
+    isCoreMember = true
+    role = "scanpy"
+    email = "test.test@scverse.org"
+    affiliation = "Helmholtz-Munich"
 
 [[teams.members]]
 	name = "Danila Bredikhin"
