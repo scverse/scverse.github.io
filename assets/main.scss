@@ -307,7 +307,9 @@ body {
         z-index: -1;
         border-radius: inherit;
         transform: scale(1.05);
-        transition: opacity 200ms ease-out, transform 100ms ease-out;
+        transition:
+            opacity 200ms ease-out,
+            transform 100ms ease-out;
     }
 
     &:hover::before {
