@@ -107,6 +107,14 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Francesca Finotello"
 	url = "https://computationalbiomedicinegroup.github.io"
+ 
+[[teams.members]]
+	name = "Panos Roussos"
+	url = "https://profiles.mountsinai.org/panagiotis-roussos"
+ 
+[[teams.members]]
+	name = "Rob Patro"
+	url = "https://combine-lab.github.io/members/rob-patro.html"
 
 [[teams.members]]
 	name = "Oliver Stegle"
@@ -120,9 +128,6 @@ preface = "For people participating in and interacting with the consortium, ther
 	name = "Nir Yosef"
 	url = "https://yoseflab.github.io"
 
-[[teams.members]]
-	name = "Panos Roussos"
-	url = "https://profiles.mountsinai.org/panagiotis-roussos"
 
 # ---------- advisory committee, in alphabetical order
 

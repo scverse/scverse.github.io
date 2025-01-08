@@ -21,6 +21,7 @@ $twitter-blue: #469be5;
 $discourse-yellow: #f7f0b1;
 $youtube-red: #e03021;
 $zulip-blue: #62a3f0;
+$bluesky-blue: #0a7aff;
 
 $overline: #e0e0e0;
 $linkunderline: #aaaaaa;
@@ -101,6 +102,16 @@ $additionalInfoColor: #666666; // Example additional info color
     transition: background 200ms ease-out;
     @include button-icon;
 }
+.i-xcom::before {
+    content: "𝕏";
+    font-weight: 900;
+    transition: background 200ms ease-out;
+}
+.i-bluesky::before {
+    background: center / contain no-repeat url("/img/icons/bluesky.svg");
+    transition: all 200ms ease-out;
+    @include button-icon;
+}
 
 .card:hover {
     .i-zulip::before {
@@ -108,6 +119,9 @@ $additionalInfoColor: #666666; // Example additional info color
     }
     .i-discourse::before {
         background: url("/img/icons/discourse_inv.svg") no-repeat top left;
+    }
+    .i-bluesky::before {
+        filter: invert(1);
     }
 }
 
@@ -127,6 +141,10 @@ $additionalInfoColor: #666666; // Example additional info color
 .btn-twitter:hover {
     border-color: $twitter-blue;
     background-color: $twitter-blue;
+}
+.btn-bluesky:hover {
+    border-color: $bluesky-blue;
+    background-color: $bluesky-blue;
 }
 .btn-youtube:hover {
     border-color: $youtube-red;
@@ -273,11 +291,27 @@ body {
     color: white;
     background-color: #4557c4;
     background: linear-gradient(135deg, #262fb5, #74c8fa);
-    transition: background 200ms ease-out;
+    position: relative;
+    z-index: 1;
 
-    &:hover {
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         background: linear-gradient(135deg, #74c8fa, #d4ac00);
         color: white;
+        opacity: 0;
+        z-index: -1;
+        border-radius: inherit;
+        transform: scale(1.05);
+        transition: opacity 200ms ease-out, transform 100ms ease-out;
+    }
+
+    &:hover::before {
+        opacity: 1;
     }
 }
 
@@ -761,6 +795,10 @@ body {
         &#youtube:hover {
             color: white;
             background-color: $youtube-red !important;
+        }
+        &#bluesky:hover {
+            color: white;
+            background-color: $bluesky-blue !important;
         }
     }
 }

@@ -10,16 +10,22 @@ email_stmt = "You can also reach the steering council at: [steering-council@scve
 	link = "https://github.com/scverse"
 
 [[resources]]
-	id = "twitter"
-	title = "Twitter"
-	text = "Follow us on Twitter"
-	link = "https://twitter.com/scverse_team"
-
-[[resources]]
 	id = "zulip"
 	title = "Zulip"
 	text = "Chat with us on Zulip"
 	link = "https://scverse.zulipchat.com/"
+
+[[resources]]
+	id = "twitter"
+	title = ""
+	text = "Follow us on X (fka Twitter)"
+	link = "https://x.com/scverse_team"
+
+[[resources]]
+	id = "bluesky"
+	title = "Bluesky"
+	text = "Follow us on Bluesky"
+	link = "https://bsky.app/profile/scverse.bsky.social"
 
 [[resources]]
 	id = "discourse"
