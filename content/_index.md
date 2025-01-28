@@ -32,7 +32,7 @@ description = "Foundational tools for single-cell omics data analysis"
 [[packages]]
 	name = "scirpy"
 	description = "Single-cell immune sequencing analysis framework"
-	url = "https://icbi-lab.github.io/scirpy/latest/"
+	url = "https://scirpy.scverse.org/"
 
 [[packages]]
 	name = "squidpy"
