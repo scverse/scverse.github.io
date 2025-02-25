@@ -29,16 +29,24 @@ preface = "For people participating in and interacting with the consortium, ther
 	url = "https://github.com/Intron7"
 
 [[teams.members]]
-	name = "Lukas Heumos"
-	url = "https://github.com/Zethson"
+    name = "Jennifer Foltz"
+    url = "https://jfoltzlab.org/"
 
 [[teams.members]]
-	name = "Martin Kim"
-	url = "https://github.com/martinkim0"
+	name = "Ilan Gold"
+	url = "https://github.com/ilan-gold"
+
+[[teams.members]]
+	name = "Lukas Heumos"
+	url = "https://github.com/Zethson"
 	
 [[teams.members]]
 	name = "Mikaela Koutrouli"
 	url = "https://github.com/mikelkou"
+
+[[teams.members]]
+	name = "Ori Ori Kronfeld"
+	url = "https://github.com/ori-kron-wis"
 
 [[teams.members]]
     name = "Luca Marconato"
@@ -53,28 +61,24 @@ preface = "For people participating in and interacting with the consortium, ther
 	url = "https://github.com/AnnaChristina"
 
 [[teams.members]]
-	name = "Gregor Sturm"
-	url = "https://github.com/grst"
-
-[[teams.members]]
-	name = "Isaac Virshup"
-	url = "https://github.com/ivirshup"
-
-[[teams.members]]
 	name = "Roshan Sharma"
 	url = "https://github.com/roshan9128"
 
 [[teams.members]]
-	name = "Ilan Gold"
-	url = "https://github.com/ilan-gold"
+	name = "Gregor Sturm"
+	url = "https://github.com/grst"
+
+[[teams.members]]
+	name = "Tim Treis"
+	url = "https://github.com/timtreis"
 
 [[teams.members]]
 	name = "Wouter-Michiel Vierdag"
 	url = "https://github.com/melonora"
 
 [[teams.members]]
-	name = "Tim Treis"
-	url = "https://github.com/timtreis"
+	name = "Isaac Virshup"
+	url = "https://github.com/ivirshup"
 
 # ---------- steering committee, in alphabetical order
 
@@ -166,6 +170,10 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Adam Gayoso"
 	url = "https://github.com/adamgayoso"
+
+[[teams.members]]
+	name = "Martin Kim"
+	url = "https://github.com/martinkim0"
 
 # ----------
 
