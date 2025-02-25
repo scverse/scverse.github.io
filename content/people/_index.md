@@ -45,7 +45,7 @@ preface = "For people participating in and interacting with the consortium, ther
 	url = "https://github.com/mikelkou"
 
 [[teams.members]]
-	name = "Ori Ori Kronfeld"
+	name = "Ori Kronfeld"
 	url = "https://github.com/ori-kron-wis"
 
 [[teams.members]]
@@ -115,6 +115,10 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Rob Patro"
 	url = "https://combine-lab.github.io/members/rob-patro.html"
+
+[[teams.members]]
+    name = "Julio Saez-Rodriguez"
+    url = "https://saezlab.org/"
 
 [[teams.members]]
 	name = "Oliver Stegle"
