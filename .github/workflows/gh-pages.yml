@@ -33,7 +33,7 @@ jobs:
           publish_dir: ./public
 
       - name: Upload page build as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: github.ref != 'refs/heads/main'
         with:
           name: scverse.github.io
