@@ -163,7 +163,7 @@ preface = "For people participating in and interacting with the consortium, ther
 
 [[teams]]
 	name = "Community"
-	text = "Everyone who uses <span class='backticked'>scverse</span> software is part of the community! There are multiple ways to engage with its other members. For a start, join us on our <a href='https://https://scverse.zulipchat.com' target='_blank'>Zulip chat</a>, our <a href='https://discourse.scverse.org/' target='_blank'>Discourse forum</a>, and keep an eye on our <a href='https://twitter.com/scverse_team' target='_blank'>Twitter account</a> for the events we organise."
+	text = "Everyone who uses <span class='backticked'>scverse</span> software is part of the community! There are multiple ways to engage with its other members. For a start, join us on our <a href='https://https://scverse.zulipchat.com' target='_blank'>Zulip chat</a>, our <a href='https://discourse.scverse.org/' target='_blank'>Discourse forum</a>, and keep an eye on our <a href='https://x.com/scverse_team' target='_blank'>X (Twitter)</a> and <a href='https://bsky.app/profile/scverse.bsky.social' target='_blank'>Bluesky</a> accounts for the events we organise."
 
 # ----------
 
