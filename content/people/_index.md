@@ -84,7 +84,7 @@ preface = "For people participating in and interacting with the consortium, ther
 
 [[teams]]
 	name = "Steering Council"
-    text = "The Steering Council (SC) consists of a fixed number of core team members who have additional responsibilities to ensure the smooth running of the project."
+        text = "The Steering Council consists of a fixed number of core team members who have additional responsibilities to ensure the smooth running of the project."
 
 [[teams.members]]
 	name = "Danila Bredikhin"
@@ -93,6 +93,10 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Lukas Heumos"
 	url = "https://github.com/Zethson"
+
+[[teams.members]]
+	name = "Mikaela Koutrouli"
+	url = "https://github.com/mikelkou"
 
 [[teams.members]]
 	name = "Isaac Virshup"
