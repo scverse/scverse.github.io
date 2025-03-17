@@ -33,11 +33,11 @@ document.addEventListener('DOMContentLoaded', function() {
   if (ecoFilter) {
     ecoFilter.addEventListener('input', filterPackages)
   }
-  
+
   const tutorialFilter = document.querySelector('#tutorial-filter')
   if (tutorialFilter) {
     tutorialFilter.addEventListener('input', filterTutorials)
   }
-  
+
   setupCoreMemberHovers()
 })

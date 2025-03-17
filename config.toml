@@ -1,4 +1,3 @@
-baseURL = "https://scverse.org"
 languageCode = "en-us"
 title = "scverse"
 description = "Foundational tools for omics data in the life sciences"
