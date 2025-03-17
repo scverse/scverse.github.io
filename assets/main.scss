@@ -1234,6 +1234,7 @@ body {
     -ms-user-select: text;
     cursor: auto;
     z-index: 100;
+    padding-top: 0.75rem;
 }
 
 .additional-info .email-link {
@@ -1251,7 +1252,7 @@ body {
 }
 
 .additional-info p {
-    margin: 0.2rem 0;
-    line-height: 1.2;
+    margin: 0.5rem 0;
+    line-height: 1.5;
     margin-top: 0.5rem;
 }
