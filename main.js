@@ -38,6 +38,4 @@ document.addEventListener('DOMContentLoaded', function() {
   if (tutorialFilter) {
     tutorialFilter.addEventListener('input', filterTutorials)
   }
-
-  setupCoreMemberHovers()
 })
