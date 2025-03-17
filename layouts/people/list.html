@@ -42,7 +42,7 @@
                           {{ range $person := $team.members }}
                             <a href="{{ .url }}" target="_blank">
                               <div class="person-chip {{ if .isCoreMember }}core-member{{ end }}">
-                                {{ .name }}
+                                <span class="member-name">{{ .name }}</span>
                                 {{ if .isCoreMember }}
                                   <div class="additional-info">
                                     <p>{{ .role }}</p>

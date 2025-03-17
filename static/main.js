@@ -27,10 +27,22 @@ const filterTutorials = () => {
 }
 
 const setupCoreMemberHovers = () => {
+ // Convert email text to mailto links
+ const emailElements = document.querySelectorAll('.additional-info p:nth-child(2)')
+ emailElements.forEach(element => {
+   const emailText = element.textContent.trim()
+   if (emailText && emailText.includes('@')) {
+     element.innerHTML = `<a href="mailto:${emailText}" class="email-link">${emailText}</a>`
+   }
+ })
+
   // Hide all additional info boxes immediately
   const allInfoBoxes = document.querySelectorAll('.additional-info')
   allInfoBoxes.forEach(box => {
     box.style.display = 'none'
+    box.addEventListener('mousedown', e => {
+      e.stopPropagation()
+    })
   })
   
   const coreMembers = document.querySelectorAll('.core-member')
@@ -61,6 +73,13 @@ const setupCoreMemberHovers = () => {
         }
       }
     }, { passive: true })
+  })
+
+   // Email links should prevent closing the info box when clicked
+   document.querySelectorAll('.email-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.stopPropagation()
+    })
   })
   
   // Close all info boxes when clicking outside
