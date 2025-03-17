@@ -41,17 +41,18 @@
                         <div class="team-list">
                           {{ range $person := $team.members }}
                             <div class="team-member">
-                              <a href="{{ .url }}" target="_blank" class="person-chip {{ if .isCoreMember }}core-member{{ end }}">
+                              <a
+                                href="{{ .url }}"
+                                target="_blank"
+                                class="person-chip {{ if .isCoreMember }}core-member{{ end }}"
+                              >
                                 <span class="member-name">{{ .name }}</span>
                               </a>
                               {{ if .isCoreMember }}
                                 <div class="additional-info">
                                   <p>{{ .role }}</p>
                                   <p>
-                                    <a
-                                      href="mailto:{{ .email }}"
-                                      target="_blank"
-                                    >{{ .email }}</a>
+                                    <a href="mailto:{{ .email }}" target="_blank">{{ .email }}</a>
                                   </p>
                                   <p>{{ .affiliation }}</p>
                                 </div>
