@@ -37,7 +37,7 @@ $navbgactive: $tilebg3;
 
 $footerbg: #f0f0f0;
 $footertext: #333333;
-$footertextlight: #777777;
+$footertextlight: #555555;
 $footertextmuted: #aaaaaa;
 
 $postlinktext: #333333;
@@ -723,10 +723,6 @@ body {
                 color: $footertext;
                 text-align: left;
 
-                ul {
-                    list-style: none;
-                }
-
                 a,
                 p {
                     margin: 0.2rem 0;
@@ -917,6 +913,7 @@ body {
         .post-content {
             margin: 3rem 0;
             font-size: 1.1rem;
+            text-wrap: pretty;
             span.backticked {
                 font-size: 1.2rem;
                 line-height: 1.1rem;
@@ -1199,12 +1196,14 @@ body {
     width: 100%;
 }
 
-.team-member:hover .person-chip {
+.team-member:hover .person-chip,
+.team-member:focus-within .person-chip {
     background-color: var(--tilebg2, #e5e5e5);
     color: var(--tiletext3, #000);
 }
 
-.team-member:has(.additional-info):hover .person-chip {
+.team-member:has(.additional-info):hover .person-chip,
+.team-member:has(.additional-info):focus-within .person-chip {
     border-radius: 0.5rem 0.5rem 0 0;
 }
 
@@ -1222,7 +1221,8 @@ body {
     width: 100%;
 }
 
-.team-member:hover .additional-info {
+.team-member:hover .additional-info,
+.team-member:focus-within .additional-info {
     visibility: visible;
 }
 

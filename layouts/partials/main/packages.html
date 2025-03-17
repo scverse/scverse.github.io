@@ -11,7 +11,12 @@
                 <img src="img/icons/{{ .name }}.svg" alt="Logo for {{ .name }}" />
               </div>
               <div class="card-body package-text p-2">
-                <a href="{{ .url }}" class="stretched-link" target="_blank" onclick=""></a>
+                <a
+                  href="{{ .url }}"
+                  class="stretched-link"
+                  target="_blank"
+                  aria-label="Link to the {{ .name }} website"
+                ></a>
                 <h5 class="card-title mb-1 package-name">
                   {{ .name }}
                 </h5>
