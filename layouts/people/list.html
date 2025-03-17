@@ -88,58 +88,6 @@
                   {{ end }}
                 </div>
               {{ end }}
-
-
-              <!-- Inline JavaScript -->
-              <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                  // Find all core members
-                  const coreMembers = document.querySelectorAll(".core-member")
-
-                  // Add event listeners for both mouse and touch events
-                  coreMembers.forEach((member) => {
-                    // Mouse events
-                    member.addEventListener("mouseenter", function () {
-                      const info = this.querySelector(".additional-info")
-                      if (info) info.style.display = "block"
-                    })
-
-                    member.addEventListener("mouseleave", function () {
-                      const info = this.querySelector(".additional-info")
-                      if (info) info.style.display = "none"
-                    })
-
-                    // Touch events for mobile
-                    member.addEventListener(
-                      "touchstart",
-                      function (e) {
-                        const info = this.querySelector(".additional-info")
-                        if (info) {
-                          if (info.style.display === "block") {
-                            info.style.display = "none"
-                          } else {
-                            // Hide all other info boxes
-                            document.querySelectorAll(".additional-info").forEach((box) => {
-                              box.style.display = "none"
-                            })
-                            info.style.display = "block"
-                          }
-                        }
-                      },
-                      { passive: true },
-                    )
-                  })
-
-                  // Close all info boxes when clicking outside
-                  document.addEventListener("click", function (e) {
-                    if (!e.target.closest(".core-member")) {
-                      document.querySelectorAll(".additional-info").forEach((box) => {
-                        box.style.display = "none"
-                      })
-                    }
-                  })
-                })
-              </script>
             </div>
           </article>
         </div>
