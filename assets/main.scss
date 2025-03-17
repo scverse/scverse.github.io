@@ -1166,49 +1166,102 @@ body {
 
 // Specific to /people
 
+// Define mixins first for clarity
+@mixin person-chip {
+    background-color: $tilebg;
+    text-decoration: none;
+    color: $tiletext;
+    padding: 0.4rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    transition: all 200ms ease-in-out;
+    position: relative; // Important for absolute positioning of child elements
+
+    &:hover {
+        color: $tiletext3;
+        background-color: $tilebg2;
+    }
+}
+
+// Main content structure with proper nesting
 #people-content {
+    // Team container
     .team {
+        // Team text styling
         .team-text {
             margin: 1rem 0;
         }
+
+        // Team list container
         .team-list {
             font-size: 1.1rem;
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
             gap: 0.5rem;
             justify-content: flex-start;
+
+            // Remove duplicate property
+            // justify-content: center;
+
+            // Links within team list
+            a {
+                text-decoration: none;
+                display: inline-block; // Helps with hover behavior
+            }
+
+            // Regular person chip
             .person-chip {
                 @include person-chip;
                 font-size: 1rem;
                 font-family: "Inter", sans-serif;
             }
+
+            // Core member styling with hover functionality
             .core-member {
                 @include person-chip;
                 font-size: 1rem;
                 font-family: "Inter", sans-serif;
+                cursor: pointer; // Indicate it's interactive
+
+                // Additional info that shows on hover
                 .additional-info {
-                    display: none; // Hide additional info by default
+                    display: none;
                     font-size: 0.9rem;
                     color: $additionalInfoColor;
-                    line-height: 0.4; // Adjust line height for tighter fit
+                    line-height: 1.2; // Improved readability
+                    position: absolute; // Position absolutely relative to parent
                     top: 100%; // Position below the core-member
                     left: 0;
                     width: 100%;
-                    padding: 0.5rem; // Add padding for better readability
+                    padding: 0.5rem;
                     padding-bottom: 0;
-                }
-                &:hover .additional-info {
-                    display: block; // Show additional info on hover
+                    background-color: $tilebg; // Ensure background color is set
+                    border-radius: 0 0 0.5rem 0.5rem; // Round bottom corners
+                    z-index: 10; // Ensure it appears above other content
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Add shadow for visual separation
                 }
             }
-            a {
-                text-decoration: none;
+
+            // Separate the hover rule for better cross-browser compatibility
+            .core-member:hover .additional-info {
+                display: block !important; // Force display on hover
             }
         }
     }
-    // margin-top: 1rem !important;
-    // h2:first-of-type {
-    //  margin-top: 0 !important;
-    // }
 }
+
+// Media query for responsive behavior
+@media (max-width: 768px) {
+    #people-content .team .team-list {
+        justify-content: center; // Center on smaller screens
+
+        .core-member .additional-info {
+            width: auto; // Adjust width for mobile
+            min-width: 100%; // Ensure minimum width
+        }
+    }
+}
+// margin-top: 1rem !important;
+// h2:first-of-type {
+//  margin-top: 0 !important;
+// }
