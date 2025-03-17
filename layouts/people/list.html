@@ -26,7 +26,6 @@
               <p>
                 {{ .Params.preface | safeHTML }}
               </p>
-
               {{ if .Params.teams }}
                 {{ range $team := .Params.teams }}
                   {{ if not $team.hide }}
@@ -89,6 +88,118 @@
                   {{ end }}
                 </div>
               {{ end }}
+
+
+              <!-- Inline styles -->
+              <style>
+                #people-content .team .team-list {
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 0.5rem;
+                  justify-content: flex-start;
+                  font-size: 1.1rem;
+                }
+
+                #people-content .team .team-list a {
+                  text-decoration: none;
+                }
+
+                .person-chip {
+                  background-color: var(--tilebg, #f5f5f5);
+                  color: var(--tiletext, #333);
+                  padding: 0.4rem;
+                  text-align: center;
+                  border-radius: 0.5rem;
+                  transition: all 200ms ease-in-out;
+                  font-size: 1rem;
+                  font-family: "Inter", sans-serif;
+                  position: relative;
+                }
+
+                .person-chip:hover {
+                  background-color: var(--tilebg2, #e5e5e5);
+                  color: var(--tiletext3, #000);
+                }
+
+                .core-member {
+                  cursor: pointer;
+                }
+
+                .additional-info {
+                  display: none;
+                  position: absolute;
+                  top: 100%;
+                  left: 0;
+                  width: 100%;
+                  background-color: var(--tilebg, #f5f5f5);
+                  padding: 0.5rem;
+                  font-size: 0.9rem;
+                  border-radius: 0 0 0.5rem 0.5rem;
+                  z-index: 10;
+                  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                  color: var(--additionalInfoColor, #666);
+                }
+
+                .core-member:hover .additional-info {
+                  display: block;
+                }
+
+                .additional-info p {
+                  margin: 0.2rem 0;
+                  line-height: 1.2;
+                }
+              </style>
+
+              <!-- Inline JavaScript -->
+              <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                  // Find all core members
+                  const coreMembers = document.querySelectorAll(".core-member")
+
+                  // Add event listeners for both mouse and touch events
+                  coreMembers.forEach((member) => {
+                    // Mouse events
+                    member.addEventListener("mouseenter", function () {
+                      const info = this.querySelector(".additional-info")
+                      if (info) info.style.display = "block"
+                    })
+
+                    member.addEventListener("mouseleave", function () {
+                      const info = this.querySelector(".additional-info")
+                      if (info) info.style.display = "none"
+                    })
+
+                    // Touch events for mobile
+                    member.addEventListener(
+                      "touchstart",
+                      function (e) {
+                        const info = this.querySelector(".additional-info")
+                        if (info) {
+                          if (info.style.display === "block") {
+                            info.style.display = "none"
+                          } else {
+                            // Hide all other info boxes
+                            document.querySelectorAll(".additional-info").forEach((box) => {
+                              box.style.display = "none"
+                            })
+                            info.style.display = "block"
+                          }
+                        }
+                      },
+                      { passive: true },
+                    )
+                  })
+
+                  // Close all info boxes when clicking outside
+                  document.addEventListener("click", function (e) {
+                    if (!e.target.closest(".core-member")) {
+                      document.querySelectorAll(".additional-info").forEach((box) => {
+                        box.style.display = "none"
+                      })
+                    }
+                  })
+                })
+              </script>
             </div>
           </article>
         </div>
