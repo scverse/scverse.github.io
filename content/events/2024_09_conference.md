@@ -9,4 +9,4 @@ Join us for the first scverse conference taking place from **Tuesday, September 
 
 [The registration is now open!](https://scverse.org/conference2024/)
 
-<a href="https://scverse.org/conference2024/"> <img src="/img/events/2024_09_conference_savethedate.jpeg" style="max-width: 100%;" alt="conference save-the-date" /> </a>
+<a href="https://scverse.org/conference2024/"> <img src="/img/events/2024_09_conference_savethedate.jpeg" style="max-width: 100%;" alt="Save the date info card, highlighting speakers and workshops as well as the September 10-12th date and Munich location" /> </a>
