@@ -333,18 +333,17 @@ body {
 .social-badges {
     display: flex;
     gap: 1rem;
-    margin-left: 2rem !important;
-    margin-right: 1rem !important;
+    margin-left: 2rem;
+    margin-right: 1rem;
 }
 
 .social-badge {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px !important;
-    height: 32px !important;
-    min-width: 36px !important;
-    margin: 0 !important;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
     background-color: #f8f9fa;
     transition: background-color 0.2s;
 }
