@@ -1166,23 +1166,6 @@ body {
 
 // Specific to /people
 
-// Define mixins first for clarity
-@mixin person-chip {
-    background-color: $tilebg;
-    text-decoration: none;
-    color: $tiletext;
-    padding: 0.4rem;
-    text-align: center;
-    border-radius: 0.5rem;
-    transition: all 200ms ease-in-out;
-    position: relative; // Important for absolute positioning of child elements
-
-    &:hover {
-        color: $tiletext3;
-        background-color: $tilebg2;
-    }
-}
-
 #people-content .team .team-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -1213,7 +1196,6 @@ body {
     text-align: center;
     display: block;
     border-radius: 0.5rem;
-    position: relative;
     width: 100%;
 }
 
@@ -1222,7 +1204,7 @@ body {
     color: var(--tiletext3, #000);
 }
 
-.team-member:hover .person-chip {
+.team-member:has(.additional-info):hover .person-chip {
     border-radius: 0.5rem 0.5rem 0 0;
 }
 
