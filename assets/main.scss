@@ -341,9 +341,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 36px !important;
+    margin: 0 !important;
     background-color: #f8f9fa;
     transition: background-color 0.2s;
 }
