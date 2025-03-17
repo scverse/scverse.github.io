@@ -1183,85 +1183,59 @@ body {
     }
 }
 
-// Main content structure with proper nesting
-#people-content {
-    // Team container
-    .team {
-        // Team text styling
-        .team-text {
-            margin: 1rem 0;
-        }
-
-        // Team list container
-        .team-list {
-            font-size: 1.1rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: flex-start;
-
-            // Remove duplicate property
-            // justify-content: center;
-
-            // Links within team list
-            a {
-                text-decoration: none;
-                display: inline-block; // Helps with hover behavior
-            }
-
-            // Regular person chip
-            .person-chip {
-                @include person-chip;
-                font-size: 1rem;
-                font-family: "Inter", sans-serif;
-            }
-
-            // Core member styling with hover functionality
-            .core-member {
-                @include person-chip;
-                font-size: 1rem;
-                font-family: "Inter", sans-serif;
-                cursor: pointer; // Indicate it's interactive
-
-                // Additional info that shows on hover
-                .additional-info {
-                    display: none;
-                    font-size: 0.9rem;
-                    color: $additionalInfoColor;
-                    line-height: 1.2; // Improved readability
-                    position: absolute; // Position absolutely relative to parent
-                    top: 100%; // Position below the core-member
-                    left: 0;
-                    width: 100%;
-                    padding: 0.5rem;
-                    padding-bottom: 0;
-                    background-color: $tilebg; // Ensure background color is set
-                    border-radius: 0 0 0.5rem 0.5rem; // Round bottom corners
-                    z-index: 10; // Ensure it appears above other content
-                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Add shadow for visual separation
-                }
-            }
-
-            // Separate the hover rule for better cross-browser compatibility
-            .core-member:hover .additional-info {
-                display: block !important; // Force display on hover
-            }
-        }
-    }
+#people-content .team .team-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-start;
+    font-size: 1.1rem;
 }
 
-// Media query for responsive behavior
-@media (max-width: 768px) {
-    #people-content .team .team-list {
-        justify-content: center; // Center on smaller screens
-
-        .core-member .additional-info {
-            width: auto; // Adjust width for mobile
-            min-width: 100%; // Ensure minimum width
-        }
-    }
+#people-content .team .team-list a {
+    text-decoration: none;
 }
-// margin-top: 1rem !important;
-// h2:first-of-type {
-//  margin-top: 0 !important;
-// }
+
+.person-chip {
+    background-color: var(--tilebg, #f5f5f5);
+    color: var(--tiletext, #333);
+    padding: 0.4rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    transition: all 200ms ease-in-out;
+    font-size: 1rem;
+    font-family: "Inter", sans-serif;
+    position: relative;
+}
+
+.person-chip:hover {
+    background-color: var(--tilebg2, #e5e5e5);
+    color: var(--tiletext3, #000);
+}
+
+.core-member {
+    cursor: pointer;
+}
+
+.additional-info {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--tilebg, #f5f5f5);
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    color: var(--additionalInfoColor, #666);
+}
+
+.core-member:hover .additional-info {
+    display: block;
+}
+
+.additional-info p {
+    margin: 0.2rem 0;
+    line-height: 1.2;
+}
