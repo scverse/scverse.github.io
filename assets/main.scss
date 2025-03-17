@@ -1226,9 +1226,24 @@ body {
     padding: 0.5rem;
     font-size: 0.9rem;
     border-radius: 0 0 0.5rem 0.5rem;
-    z-index: 10;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     color: var(--additionalInfoColor, #666);
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    cursor: auto;
+    z-index: 100;
+}
+
+.additional-info .email-link {
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.additional-info .email-link:hover {
+    color: #0056b3;
 }
 
 .core-member:hover .additional-info {
@@ -1238,4 +1253,5 @@ body {
 .additional-info p {
     margin: 0.2rem 0;
     line-height: 1.2;
+    margin-top: 0.5rem;
 }
