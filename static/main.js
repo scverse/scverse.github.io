@@ -26,16 +26,6 @@ const filterTutorials = () => {
   trs.forEach(toggleTrs);
 }
 
-const setupCoreMemberHovers = () => {
- // Convert email text to mailto links
- const emailElements = document.querySelectorAll('.additional-info p:nth-child(2)')
- emailElements.forEach(element => {
-   const emailText = element.textContent.trim()
-   if (emailText && emailText.includes('@')) {
-     element.innerHTML = `<a href="mailto:${emailText}" class="email-link">${emailText}</a>`
-   }
- })
-
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
   // Set up event listeners for filters if they exist
