@@ -26,7 +26,6 @@
               <p>
                 {{ .Params.preface | safeHTML }}
               </p>
-
               {{ if .Params.teams }}
                 {{ range $team := .Params.teams }}
                   {{ if not $team.hide }}
@@ -41,11 +40,24 @@
                         <p></p>
                         <div class="team-list">
                           {{ range $person := $team.members }}
-                            <a href="{{ .url }}" target="_blank"
-                              ><div class="person-chip">
-                                {{ .name }}
-                              </div>
-                            </a>
+                            <div class="team-member">
+                              <a
+                                href="{{ .url }}"
+                                target="_blank"
+                                class="person-chip {{ if .isCoreMember }}core-member{{ end }}"
+                              >
+                                <span class="member-name">{{ .name }}</span>
+                              </a>
+                              {{ if .isCoreMember }}
+                                <div class="additional-info">
+                                  <p>{{ .role }}</p>
+                                  <p>
+                                    <a href="mailto:{{ .email }}" target="_blank">{{ .email }}</a>
+                                  </p>
+                                  <p>{{ .affiliation }}</p>
+                                </div>
+                              {{ end }}
+                            </div>
                           {{ end }}
                         </div>
                       {{ end }}

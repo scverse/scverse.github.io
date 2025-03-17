@@ -25,3 +25,19 @@ const filterTutorials = () => {
   };
   trs.forEach(toggleTrs);
 }
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Set up event listeners for filters if they exist
+  const ecoFilter = document.querySelector('#eco-filter')
+  if (ecoFilter) {
+    ecoFilter.addEventListener('input', filterPackages)
+  }
+
+  const tutorialFilter = document.querySelector('#tutorial-filter')
+  if (tutorialFilter) {
+    tutorialFilter.addEventListener('input', filterTutorials)
+  }
+
+  setupCoreMemberHovers()
+})

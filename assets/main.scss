@@ -47,6 +47,8 @@ $maxwidthwide: 1400px;
 $contentwidth: 80%;
 $contentwidthwide: 92%;
 
+$additionalInfoColor: #666666;
+
 @font-face {
     font-family: "Inter";
     src: url("fonts/Inter/Inter-VariableFont_slnt,wght.ttf");
@@ -212,6 +214,20 @@ a .more {
 }
 
 @mixin person-chip {
+    background-color: $tilebg;
+    text-decoration: none;
+    color: $tiletext;
+    padding: 0.4rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    transition: all 200ms ease-in-out;
+    &:hover {
+        color: $tiletext3;
+        background-color: $tilebg2;
+    }
+}
+
+@mixin core-chip {
     background-color: $tilebg;
     text-decoration: none;
     color: $tiletext;
@@ -1150,30 +1166,82 @@ body {
 
 // Specific to /people
 
-#people-content {
-    .team {
-        .team-text {
-            margin: 1rem 0;
-        }
-        .team-list {
-            font-size: 1.1rem;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: flex-start;
-            .person-chip {
-                @include person-chip;
-                font-size: 1rem;
-                font-family: "Inter", sans-serif;
-            }
-            a {
-                text-decoration: none;
-            }
-        }
-    }
-    // margin-top: 1rem !important;
-    // h2:first-of-type {
-    //  margin-top: 0 !important;
-    // }
+#people-content .team .team-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.5rem;
+    justify-content: flex-start;
+    font-size: 1.1rem;
+}
+
+#people-content .team .team-list a {
+    text-decoration: none;
+}
+
+.team-member {
+    background-color: var(--tilebg, #f5f5f5);
+    color: var(--tiletext, #333);
+    text-align: center;
+    border-radius: 0.5rem;
+    transition: all 200ms ease-in-out;
+    font-size: 1rem;
+    font-family: "Inter", sans-serif;
+    position: relative;
+}
+
+.person-chip {
+    background-color: var(--tilebg, #f5f5f5);
+    color: var(--tiletext, #333);
+    padding: 0.4rem;
+    text-align: center;
+    display: block;
+    border-radius: 0.5rem;
+    width: 100%;
+}
+
+.team-member:hover .person-chip {
+    background-color: var(--tilebg2, #e5e5e5);
+    color: var(--tiletext3, #000);
+}
+
+.team-member:has(.additional-info):hover .person-chip {
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.core-member {
+    cursor: pointer;
+}
+
+.additional-info {
+    background-color: var(--tilebg2, #e5e5e5);
+    color: var(--tiletext3, #000);
+    position: absolute;
+    visibility: hidden;
+    z-index: 50;
+    border-radius: 0 0rem 0.5rem 0.5rem;
+    width: 100%;
+}
+
+.team-member:hover .additional-info {
+    visibility: visible;
+}
+
+.additional-info .email-link {
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.additional-info .email-link:hover {
+    color: #0056b3;
+}
+
+.core-member:hover .additional-info {
+    display: block;
+}
+
+.additional-info p {
+    margin: 0.5rem 0;
+    line-height: 1.5;
+    margin-top: 0.5rem;
 }

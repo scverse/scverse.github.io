@@ -11,74 +11,146 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Philipp Angerer"
 	url = "https://github.com/flying-sheep"
+    isCoreMember = true
+    role = "anndata & scanpy"
+    email = "philipp.angerer@scverse.org"
+    affiliation = "Helmholtz-Munich"
 
 [[teams.members]]
 	name = "Danila Bredikhin"
 	url = "https://github.com/gtca"
+    isCoreMember = true
+    role = "mudata & muon"
+    email = "danila.bredikhin@scverse.org"
+    affiliation = "Stanford University"
 
 [[teams.members]]
 	name = "Can Ergen-Behr"
 	url = "https://github.com/canergen"
+    isCoreMember = true
+    role = "scvi-tools"
+    email = "can.ergen@scverse.org"
+    affiliation = "University of California, Berkely"
 
 [[teams.members]]
 	name = "Emma Dann"
 	url = "https://github.com/emdann"
+    isCoreMember = true
+    role = "community & events"
+    email = "emma.dann@scverse.org"
+    affiliation = "Stanford University"
 
  [[teams.members]]
 	name = "Severin Dicks"
 	url = "https://github.com/Intron7"
+    isCoreMember = true
+    role = "rapids-singlecell"
+    email = "severin.dicks@scverse.org"
+    affiliation = "NVIDIA"
 
 [[teams.members]]
     name = "Jennifer Foltz"
     url = "https://jfoltzlab.org/"
+    isCoreMember = true
+    role = "community"
+    email = "jennifer.foltz@scverse.org"
+    affiliation = "Washington University"
 
 [[teams.members]]
 	name = "Ilan Gold"
 	url = "https://github.com/ilan-gold"
+    isCoreMember = true
+    role = "anndata & scanpy"
+    email = "ilan.gold@scverse.org"
+    affiliation = "Helmholtz Munich"
 
 [[teams.members]]
 	name = "Lukas Heumos"
 	url = "https://github.com/Zethson"
+    isCoreMember = true
+    role = "pertpy & operations"
+    email = "lukas.heumos@scverse.org"
+    affiliation = "Lamin Labs & Helmholtz Munich"
 	
 [[teams.members]]
 	name = "Mikaela Koutrouli"
 	url = "https://github.com/mikelkou"
+    isCoreMember = true
+    role = "operations"
+    email = "mikaela.koutrouli@scverse.org"
+    affiliation = "Genentech"
 
 [[teams.members]]
 	name = "Ori Kronfeld"
 	url = "https://github.com/ori-kron-wis"
+    isCoreMember = true
+    role = "scvi-tools"
+    email = "ori.kronfeld@scverse.org"
+    affiliation = "Weizmann Institute of Science"
 
 [[teams.members]]
     name = "Luca Marconato"
     url = "https://github.com/LucaMarconato"
+    isCoreMember = true
+    role = "spatialdata"
+    email = "luca.marconato@scverse.org"
+    affiliation = "EMBL Heidelberg"
 
 [[teams.members]]
 	name = "Giovanni Palla"
 	url = "https://github.com/giovp"
+    isCoreMember = true
+    role = "spatialdata & squipy"
+    email = "giovanni.palla@scverse.org"
+    affiliation = "CZI"
 	
 [[teams.members]]
 	name = "Anna Schaar"
 	url = "https://github.com/AnnaChristina"
+    isCoreMember = true
+    role = "events"
+    email = "anna.schaar@scverse.org"
+    affiliation = "Bioptimus"
 
 [[teams.members]]
 	name = "Roshan Sharma"
 	url = "https://github.com/roshan9128"
+    isCoreMember = true
+    role = "grants & workshops"
+    email = "roshan.sharma@scverse.org"
+    affiliation = "Memorial Sloan Kettering Cancer Center"
 
 [[teams.members]]
 	name = "Gregor Sturm"
 	url = "https://github.com/grst"
+    isCoreMember = true
+    role = "scirpy"
+    email = "gregor.sturm@scverse.org"
+    affiliation = "Böhringer Ingelheim"
 
 [[teams.members]]
 	name = "Tim Treis"
 	url = "https://github.com/timtreis"
+    isCoreMember = true
+    role = "spatialdata-plot & squidpy"
+    email = "tim.treis@scverse.org"
+    affiliation = "Helmholtz Munich"
 
 [[teams.members]]
 	name = "Wouter-Michiel Vierdag"
 	url = "https://github.com/melonora"
+    isCoreMember = true
+    role = "spatialdata"
+    email = "michiel.vierdag@scverse.org"
+    affiliation = "EMBL Heidelberg"
 
 [[teams.members]]
 	name = "Isaac Virshup"
 	url = "https://github.com/ivirshup"
+    isCoreMember = true
+    role = "anndata & scanpy"
+    email = "isaac.virshup@scverse.org"
+    affiliation = "CZI"
 
 # ---------- steering committee, in alphabetical order
 
@@ -89,18 +161,34 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Danila Bredikhin"
 	url = "https://github.com/gtca"
+    isCoreMember = true
+    role = "mudata & muon"
+    email = "danila.bredikhin@scverse.org"
+    affiliation = "Stanford University"
 
 [[teams.members]]
 	name = "Lukas Heumos"
 	url = "https://github.com/Zethson"
+    isCoreMember = true
+    role = "pertpy & operations"
+    email = "lukas.heumos@scverse.org"
+    affiliation = "Lamin Labs & Helmholtz Munich"
 
 [[teams.members]]
 	name = "Mikaela Koutrouli"
 	url = "https://github.com/mikelkou"
+    isCoreMember = true
+    role = "operations"
+    email = "mikaela.koutrouli@scverse.org"
+    affiliation = "Genentech"
 
 [[teams.members]]
 	name = "Isaac Virshup"
 	url = "https://twitter.com/ivirshup"
+    isCoreMember = true
+    role = "anndata & scanpy"
+    email = "isaac.virshup@scverse.org"
+    affiliation = "CZI"
 
 # ---------- management committee, in alphabetical order
 
