@@ -33,16 +33,24 @@ preface = "For people participating in and interacting with the consortium, ther
 	url = "https://github.com/Intron7"
 
 [[teams.members]]
-	name = "Lukas Heumos"
-	url = "https://github.com/Zethson"
+    name = "Jennifer Foltz"
+    url = "https://jfoltzlab.org/"
 
 [[teams.members]]
-	name = "Martin Kim"
-	url = "https://github.com/martinkim0"
+	name = "Ilan Gold"
+	url = "https://github.com/ilan-gold"
+
+[[teams.members]]
+	name = "Lukas Heumos"
+	url = "https://github.com/Zethson"
 	
 [[teams.members]]
 	name = "Mikaela Koutrouli"
 	url = "https://github.com/mikelkou"
+
+[[teams.members]]
+	name = "Ori Kronfeld"
+	url = "https://github.com/ori-kron-wis"
 
 [[teams.members]]
     name = "Luca Marconato"
@@ -57,34 +65,30 @@ preface = "For people participating in and interacting with the consortium, ther
 	url = "https://github.com/AnnaChristina"
 
 [[teams.members]]
-	name = "Gregor Sturm"
-	url = "https://github.com/grst"
-
-[[teams.members]]
-	name = "Isaac Virshup"
-	url = "https://github.com/ivirshup"
-
-[[teams.members]]
 	name = "Roshan Sharma"
 	url = "https://github.com/roshan9128"
 
 [[teams.members]]
-	name = "Ilan Gold"
-	url = "https://github.com/ilan-gold"
+	name = "Gregor Sturm"
+	url = "https://github.com/grst"
+
+[[teams.members]]
+	name = "Tim Treis"
+	url = "https://github.com/timtreis"
 
 [[teams.members]]
 	name = "Wouter-Michiel Vierdag"
 	url = "https://github.com/melonora"
 
 [[teams.members]]
-	name = "Tim Treis"
-	url = "https://github.com/timtreis"
+	name = "Isaac Virshup"
+	url = "https://github.com/ivirshup"
 
 # ---------- steering committee, in alphabetical order
 
 [[teams]]
 	name = "Steering Council"
-    text = "The Steering Council (SC) consists of a fixed number of core team members who have additional responsibilities to ensure the smooth running of the project."
+        text = "The Steering Council consists of a fixed number of core team members who have additional responsibilities to ensure the smooth running of the project."
 
 [[teams.members]]
 	name = "Danila Bredikhin"
@@ -93,6 +97,10 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Lukas Heumos"
 	url = "https://github.com/Zethson"
+
+[[teams.members]]
+	name = "Mikaela Koutrouli"
+	url = "https://github.com/mikelkou"
 
 [[teams.members]]
 	name = "Isaac Virshup"
@@ -115,6 +123,10 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Rob Patro"
 	url = "https://combine-lab.github.io/members/rob-patro.html"
+
+[[teams.members]]
+    name = "Julio Saez-Rodriguez"
+    url = "https://saezlab.org/"
 
 [[teams.members]]
 	name = "Oliver Stegle"
@@ -159,7 +171,7 @@ preface = "For people participating in and interacting with the consortium, ther
 
 [[teams]]
 	name = "Community"
-	text = "Everyone who uses <span class='backticked'>scverse</span> software is part of the community! There are multiple ways to engage with its other members. For a start, join us on our <a href='https://https://scverse.zulipchat.com' target='_blank'>Zulip chat</a>, our <a href='https://discourse.scverse.org/' target='_blank'>Discourse forum</a>, and keep an eye on our <a href='https://twitter.com/scverse_team' target='_blank'>Twitter account</a> for the events we organise."
+	text = "Everyone who uses <span class='backticked'>scverse</span> software is part of the community! There are multiple ways to engage with its other members. For a start, join us on our <a href='https://https://scverse.zulipchat.com' target='_blank'>Zulip chat</a>, our <a href='https://discourse.scverse.org/' target='_blank'>Discourse forum</a>, and keep an eye on our <a href='https://x.com/scverse_team' target='_blank'>X (Twitter)</a> and <a href='https://bsky.app/profile/scverse.bsky.social' target='_blank'>Bluesky</a> accounts for the events we organise."
 
 # ----------
 
@@ -170,6 +182,10 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Adam Gayoso"
 	url = "https://github.com/adamgayoso"
+
+[[teams.members]]
+	name = "Martin Kim"
+	url = "https://github.com/martinkim0"
 
 # ----------
 

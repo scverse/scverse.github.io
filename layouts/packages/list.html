@@ -15,39 +15,40 @@
           <article class="post">
             {{ $sections := index .Params.sections 0 }}
             <div class="post-content" id="packages-content">
-              {{ if .Params.datastructures }}
-                <h2 id="datastructures">Data structures</h2>
-                {{ $sections.datastructures | markdownify }}
-                <div id="packages-list">
-                  {{ $datastructures := .Params.datastructures }}
-                  {{ range $i, $e := $datastructures }}
-                    <div class="package-section">
-                      <div class="package-img">
-                        <img src="{{ .img }}" />
-                      </div>
-                      <div class="package-info">
-                        <div class="package-tile" id="{{ .name }}-tile">
-                          <div class="package-text">
-                            <span class="package-name">{{ .name }}</span>
-                            <span class="package-details">{{ .details | markdownify }}</span>
-                          </div>
-                        </div>
-                        <div class="package-links">
-                          {{ range $k, $v := $e.links }}
-                            <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
-                          {{ end }}
-                        </div>
-                      </div>
-                    </div>
-                  {{ end }}
-                </div>
-              {{ end }}
-              <h3>Modality-specific extensions</h3>
-              <p>{{ $sections.datastructures_post | markdownify }}</p>
-
               {{ if .Params.packages }}
                 <h2 id="core-packages">Packages maintained by core team</h2>
                 {{ $sections.core_packages | markdownify }}
+                {{ if .Params.datastructures }}
+                  <h3 id="datastructures">Data structures</h3>
+                  {{ $sections.datastructures | markdownify }}
+                  <div id="packages-list">
+                    {{ $datastructures := .Params.datastructures }}
+                    {{ range $i, $e := $datastructures }}
+                      <div class="package-section">
+                        <div class="package-img">
+                          <img src="{{ .img }}" />
+                        </div>
+                        <div class="package-info">
+                          <div class="package-tile" id="{{ .name }}-tile">
+                            <div class="package-text">
+                              <span class="package-name">{{ .name }}</span>
+                              <span class="package-details">{{ .details | markdownify }}</span>
+                            </div>
+                          </div>
+                          <div class="package-links">
+                            {{ range $k, $v := $e.links }}
+                              <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
+                            {{ end }}
+                          </div>
+                        </div>
+                      </div>
+                    {{ end }}
+                  </div>
+                {{ end }}
+                <h4>Modality-specific extensions</h4>
+                <p>{{ $sections.datastructures_post | markdownify }}</p>
+                <h3 id="frameworks">Frameworks</h3>
+                {{ $sections.frameworks | markdownify }}
                 <div id="packages-list">
                   {{ $packages := .Params.packages }}
                   {{ range $i, $e := $packages }}
