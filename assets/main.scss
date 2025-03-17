@@ -1184,8 +1184,8 @@ body {
 }
 
 #people-content .team .team-list {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 0.5rem;
     justify-content: flex-start;
     font-size: 1.1rem;
@@ -1195,10 +1195,9 @@ body {
     text-decoration: none;
 }
 
-.person-chip {
+.team-member {
     background-color: var(--tilebg, #f5f5f5);
     color: var(--tiletext, #333);
-    padding: 0.4rem;
     text-align: center;
     border-radius: 0.5rem;
     transition: all 200ms ease-in-out;
@@ -1207,13 +1206,42 @@ body {
     position: relative;
 }
 
-.person-chip:hover {
+.person-chip {
+    background-color: var(--tilebg, #f5f5f5);
+    color: var(--tiletext, #333);
+    padding: 0.4rem;
+    text-align: center;
+    display: block;
+    border-radius: 0.5rem;
+    position: relative;
+    width: 100%;
+}
+
+.team-member:hover .person-chip {
     background-color: var(--tilebg2, #e5e5e5);
     color: var(--tiletext3, #000);
 }
 
+.team-member:hover .person-chip {
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
 .core-member {
     cursor: pointer;
+}
+
+.additional-info {
+    background-color: var(--tilebg2, #e5e5e5);
+    color: var(--tiletext3, #000);
+    position: absolute;
+    visibility: hidden;
+    z-index: 50;
+    border-radius: 0 0rem 0.5rem 0.5rem;
+    width: 100%;
+}
+
+.team-member:hover .additional-info {
+    visibility: visible;
 }
 
 .additional-info .email-link {

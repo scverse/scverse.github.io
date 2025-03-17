@@ -36,62 +36,6 @@ const setupCoreMemberHovers = () => {
    }
  })
 
-  // Hide all additional info boxes immediately
-  const allInfoBoxes = document.querySelectorAll('.additional-info')
-  allInfoBoxes.forEach(box => {
-    box.style.display = 'none'
-    box.addEventListener('mousedown', e => {
-      e.stopPropagation()
-    })
-  })
-  
-  const coreMembers = document.querySelectorAll('.core-member')
-  
-  // Add event listeners for both mouse and touch events
-  coreMembers.forEach(member => {
-    member.addEventListener('mouseenter', function() {
-      const info = this.querySelector('.additional-info')
-      if (info) info.style.display = 'block'
-    })
-    
-    member.addEventListener('mouseleave', function() {
-      const info = this.querySelector('.additional-info')
-      if (info) info.style.display = 'none'
-    })
-    
-    // Touch events for mobile
-    member.addEventListener('touchstart', function(e) {
-      const info = this.querySelector('.additional-info')
-      if (info) {
-        if (info.style.display === 'block') {
-          info.style.display = 'none'
-        } else {
-          document.querySelectorAll('.additional-info').forEach(box => {
-            box.style.display = 'none'
-          })
-          info.style.display = 'block'
-        }
-      }
-    }, { passive: true })
-  })
-
-   // Email links should prevent closing the info box when clicked
-   document.querySelectorAll('.email-link').forEach(link => {
-    link.addEventListener('click', e => {
-      e.stopPropagation()
-    })
-  })
-  
-  // Close all info boxes when clicking outside
-  document.addEventListener('click', function(e) {
-    if (!e.target.closest('.core-member')) {
-      document.querySelectorAll('.additional-info').forEach(box => {
-        box.style.display = 'none'
-      })
-    }
-  })
-}
-
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
   // Set up event listeners for filters if they exist
