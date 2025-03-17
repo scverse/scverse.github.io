@@ -26,7 +26,6 @@ const filterTutorials = () => {
   trs.forEach(toggleTrs);
 }
 
-// Core member hover functionality
 const setupCoreMemberHovers = () => {
   // Hide all additional info boxes immediately
   const allInfoBoxes = document.querySelectorAll('.additional-info')
@@ -34,12 +33,10 @@ const setupCoreMemberHovers = () => {
     box.style.display = 'none'
   })
   
-  // Find all core members
   const coreMembers = document.querySelectorAll('.core-member')
   
   // Add event listeners for both mouse and touch events
   coreMembers.forEach(member => {
-    // Mouse events
     member.addEventListener('mouseenter', function() {
       const info = this.querySelector('.additional-info')
       if (info) info.style.display = 'block'
@@ -57,7 +54,6 @@ const setupCoreMemberHovers = () => {
         if (info.style.display === 'block') {
           info.style.display = 'none'
         } else {
-          // Hide all other info boxes
           document.querySelectorAll('.additional-info').forEach(box => {
             box.style.display = 'none'
           })
@@ -90,14 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
     tutorialFilter.addEventListener('input', filterTutorials)
   }
   
-  // Setup core member hover functionality
   setupCoreMemberHovers()
 })
 
-// Run again when window loads to ensure all elements are fully rendered
-window.addEventListener('load', function() {
-  // Hide all info boxes again to be absolutely sure
-  document.querySelectorAll('.additional-info').forEach(box => {
-    box.style.display = 'none'
-  })
-})
+
