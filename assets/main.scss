@@ -330,6 +330,40 @@ body {
     margin-top: 0; // remove the gap so it doesn't close
 }
 
+.social-badges {
+    display: flex;
+    gap: 1rem;
+    margin-left: 2rem;
+    margin-right: 1rem;
+}
+
+.social-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #f8f9fa;
+    transition: background-color 0.2s;
+}
+
+.social-badge:hover {
+    background-color: #e9ecef;
+}
+
+.social-badge i {
+    font-size: 1rem;
+    color: #495057;
+}
+
+@media (max-width: 992px) {
+    .social-badges {
+        margin: 0.5rem 0;
+        justify-content: center;
+    }
+}
+
 // Custom
 
 body {

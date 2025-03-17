@@ -17,7 +17,7 @@ email_stmt = "You can also reach the steering council at: [steering-council@scve
 
 [[resources]]
 	id = "twitter"
-	title = ""
+	title = "Twitter"
 	text = "Follow us on X (fka Twitter)"
 	link = "https://x.com/scverse_team"
 
