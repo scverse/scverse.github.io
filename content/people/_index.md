@@ -76,7 +76,7 @@ preface = "For people participating in and interacting with the consortium, ther
 	name = "Mikaela Koutrouli"
 	url = "https://github.com/mikelkou"
     isCoreMember = true
-    role = "operations"
+    role = "sc-proteomics & operations"
     email = "mikaela.koutrouli@scverse.org"
     affiliation = "Genentech"
 
