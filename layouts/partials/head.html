@@ -2,7 +2,7 @@
 {{ $styles := resources.Get "main.scss" | toCSS | minify }}
 <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/bootstrap/icons/bootstrap-icons.css" />
-<link rel="stylesheet" type="text/css" href="{{ $styles.Permalink }}" />
+<link rel="stylesheet" type="text/css" href="{{ $styles.RelPermalink }}" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png" />
