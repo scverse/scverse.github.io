@@ -28,6 +28,12 @@ const filterTutorials = () => {
 
 // Core member hover functionality
 const setupCoreMemberHovers = () => {
+  // Hide all additional info boxes immediately
+  const allInfoBoxes = document.querySelectorAll('.additional-info')
+  allInfoBoxes.forEach(box => {
+    box.style.display = 'none'
+  })
+  
   // Find all core members
   const coreMembers = document.querySelectorAll('.core-member')
   
@@ -86,4 +92,12 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Setup core member hover functionality
   setupCoreMemberHovers()
+})
+
+// Run again when window loads to ensure all elements are fully rendered
+window.addEventListener('load', function() {
+  // Hide all info boxes again to be absolutely sure
+  document.querySelectorAll('.additional-info').forEach(box => {
+    box.style.display = 'none'
+  })
 })
