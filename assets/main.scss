@@ -1216,27 +1216,6 @@ body {
     cursor: pointer;
 }
 
-.additional-info {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: var(--tilebg, #f5f5f5);
-    padding: 0.5rem;
-    font-size: 0.9rem;
-    border-radius: 0 0 0.5rem 0.5rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    color: var(--additionalInfoColor, #666);
-    user-select: text;
-    -webkit-user-select: text;
-    -moz-user-select: text;
-    -ms-user-select: text;
-    cursor: auto;
-    z-index: 100;
-    padding-top: 0.75rem;
-}
-
 .additional-info .email-link {
     color: inherit;
     text-decoration: underline;
