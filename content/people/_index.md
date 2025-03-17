@@ -39,7 +39,6 @@ preface = "For people participating in and interacting with the consortium, ther
     role = "community & events"
     email = "emma.dann@scverse.org"
     affiliation = "Stanford University"
-    
 
  [[teams.members]]
 	name = "Severin Dicks"
@@ -162,18 +161,34 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Danila Bredikhin"
 	url = "https://github.com/gtca"
+    isCoreMember = true
+    role = "mudata & muon"
+    email = "danila.bredikhin@scverse.org"
+    affiliation = "Stanford University"
 
 [[teams.members]]
 	name = "Lukas Heumos"
 	url = "https://github.com/Zethson"
+    isCoreMember = true
+    role = "pertpy & operations"
+    email = "lukas.heumos@scverse.org"
+    affiliation = "Lamin Labs & Helmholtz Munich"
 
 [[teams.members]]
 	name = "Mikaela Koutrouli"
 	url = "https://github.com/mikelkou"
+    isCoreMember = true
+    role = "operations"
+    email = "mikaela.koutrouli@scverse.org"
+    affiliation = "Genentech"
 
 [[teams.members]]
 	name = "Isaac Virshup"
 	url = "https://twitter.com/ivirshup"
+    isCoreMember = true
+    role = "anndata & scanpy"
+    email = "isaac.virshup@scverse.org"
+    affiliation = "CZI"
 
 # ---------- management committee, in alphabetical order
 
