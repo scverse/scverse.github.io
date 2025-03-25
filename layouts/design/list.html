@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+  <head>
+    {{ partial "head" . }}
+  </head>
+
+  <body>
+    <header>
+      {{ partial "header" . }}
+    </header>
+    <div id="wrapper">
+      <div id="content">
+        <div id="page-content">
+          <h1>{{ .Title }}</h1>
+          <article class="post">
+            {{ if .Params.sections }}
+              {{ $sections := index .Params.sections 0 }}
+              <div class="post-content" id="media-kit-content">
+                {{ if or .Params.primarylogos .Params.packageicons }}
+                  <h2 id="primary-logos">Primary Logos</h2>
+                  <br/>{{ $sections.primary_logos | markdownify }}
+                  {{ if .Params.primarylogos }}
+                  <div id="logos-list">
+                    {{ $primarylogos := .Params.primarylogos }}
+                    {{ range $i, $e := $primarylogos }}
+                      <div class="logo-section"
+                           style="--hover-color: var(--{{ .name | lower }}-color);"
+                           id="{{ .name | lower }}-tile">
+                        <div class="logo-img">
+                          <img src="{{ .img }}" />
+                        </div>
+                        <div class="logo-info">
+                          <div class="logo-tile">
+                            <div class="logo-text">
+                              <span class="logo-name">{{ .name }}</span>
+                              <span class="logo-details">{{ .details | markdownify }}</span>
+                            </div>
+                          </div>
+                          <div class="logo-links">
+                            {{ range $k, $v := $e.links }}
+                              <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
+                            {{ end }}
+                          </div>
+                        </div>
+                      </div>
+                    {{ end }}
+                  </div>
+                  {{ end }}
+                  <h2 id="logo-guidelines">Logo Usage Guidelines</h2>
+                  <br/>{{ $sections.logo_guidelines | markdownify }}
+                  <div class="guidelines-container">
+                    <div class="do-section">
+                      <h3>Do's</h3>
+                      {{ $sections.do_guidelines | markdownify }}
+                    </div>
+                    <div class="dont-section">
+                      <h3>Don'ts</h3>
+                      {{ $sections.dont_guidelines | markdownify }}
+                    </div>
+                  </div>
+                  <h2 id="logo-examples">Logo in Action</h2>
+                  <div class="logo-examples-gallery">
+                    <div class="example-item">
+                      <div class="example-image">
+                        <img src="../img/logo/scverse-munich.png" alt="scverse logo - Munich example">
+                      </div>
+                      <div class="example-caption">
+                        <strong>Conference Branding</strong> - scverse conference in Munich in 2024
+                      </div>
+                    </div>
+                    <div class="example-item">
+                      <div class="example-image">
+                        <img src="../img/logo/scverse-palms.png" alt="scverse logo - Palm tree example">
+                      </div>
+                      <div class="example-caption">
+                        <strong>Light Backgrounds</strong> - scverse icon with the concentric circles reminding of the multi-layered scverse ecosystem
+                      </div>
+                    </div>
+                  </div>
+                  <h2 id="package-icons">Package Logos</h2>
+                  <br/>{{ $sections.package_icons | markdownify }}
+                  <div class="icon-display-toggle">
+                    <span class="toggle-label">Display logos:</span>
+                    <div class="toggle-switch">
+                      <input type="checkbox" id="icon-display-mode" class="toggle-checkbox">
+                      <label for="icon-display-mode" class="toggle-label">
+                        <span class="toggle-inner" data-text-on="with text" data-text-off="icons only"></span>
+                        <span class="toggle-switch-button"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div id="icons-list" class="icons-only-mode">
+                    {{ $packageicons := .Params.packageicons }}
+                    {{ range $i, $e := $packageicons }}
+                      <div class="icon-section" 
+                           style="--hover-color: var(--{{ .name | lower }}-color);"
+                           id="{{ .name | lower }}-tile">
+                        <div class="icon-img">
+                          <!-- Store both image versions in data attributes -->
+                          <img src="{{ .img }}" 
+                               data-icon="{{ .img }}" 
+                               data-icon-with-text="{{ if .imgWithText }}{{ .imgWithText }}{{ else }}{{ .img }}{{ end }}"/>
+                        </div>
+                        <div class="icon-info">
+                          <div class="icon-tile">
+                            <div class="icon-text">
+                              <span class="icon-name">{{ .name }}</span>
+                              <span class="icon-details">{{ .details | markdownify }}</span>
+                            </div>
+                          </div>
+                          <div class="icon-links">
+                            {{ range $k, $v := $e.links }}
+                              <!-- Add data attributes to store both versions of the URL -->
+                              <a href="{{ $v.url }}" 
+                                 target="_blank"
+                                 class="icon-link"
+                                 data-icon-url="{{ $v.url }}"
+                                 data-with-text-url="{{ if $v.urlWithText }}{{ $v.urlWithText }}{{ else }}{{ $v.url }}{{ end }}">
+                                {{ $v.text }}
+                              </a>
+                            {{ end }}
+                          </div>
+                        </div>
+                      </div>
+                    {{ end }}
+                  </div>
+                {{ end }}
+                
+                <div id="contact">
+                  <h2>Contact and Additional Resources</h2>
+                  <br/>{{ $sections.contact | markdownify }}
+                </div>
+              </div>
+              {{ end }}
+          </article>
+        </div>
+      </div>
+    </div>
+    {{ partial "footer" . }}
+  </body>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggleSwitch = document.getElementById('icon-display-mode');
+      const iconsList = document.getElementById('icons-list');
+      
+      toggleSwitch.addEventListener('change', function() {
+        if (this.checked) {
+          // Switch to logos with text mode
+          iconsList.classList.remove('icons-only-mode');
+          iconsList.classList.add('icons-with-text-mode');
+          
+          // Update all displayed images to the text version
+          document.querySelectorAll('#icons-list .icon-img img').forEach(img => {
+            img.src = img.dataset.iconWithText;
+          });
+          
+          // Update download links to point to the text versions
+          document.querySelectorAll('#icons-list .icon-link').forEach(link => {
+            link.href = link.dataset.withTextUrl;
+          });
+        } else {
+          // Switch to icons only mode
+          iconsList.classList.remove('icons-with-text-mode');
+          iconsList.classList.add('icons-only-mode');
+          
+          // Update all displayed images to the icon-only version
+          document.querySelectorAll('#icons-list .icon-img img').forEach(img => {
+            img.src = img.dataset.icon;
+          });
+          
+          // Update download links to point to the icon-only versions
+          document.querySelectorAll('#icons-list .icon-link').forEach(link => {
+            link.href = link.dataset.iconUrl;
+          });
+        }
+      });
+    });
+  </script>
+
+</html>
