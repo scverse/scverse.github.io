@@ -1,4 +1,6 @@
-# Code of Conduct
++++
+title = "Code of Conduct"
++++
 
 ## Our Pledge
 

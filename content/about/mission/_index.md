@@ -1,4 +1,7 @@
-# Mission Statement
++++
+title = "Mission statement"
++++
+
 
 ## Goals
 
