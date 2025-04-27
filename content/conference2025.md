@@ -1,5 +1,5 @@
 ---
-title: "Standalone Page"
+title: "scverse conference 2025"
 layout: "conference"
 type: "page"
 url: "/conference2025"
