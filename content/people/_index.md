@@ -152,6 +152,14 @@ preface = "For people participating in and interacting with the consortium, ther
     email = "isaac.virshup@scverse.org"
     affiliation = "CZI"
 
+[[teams.members]]
+	name = "Kai Zhang"
+	url = "https://lab.kaizhang.org/"
+    isCoreMember = true
+    role = "SnapATAC2"
+    email = "zhangkai33@westlake.edu.cn"
+    affiliation = "Westlake University"
+
 # ---------- steering committee, in alphabetical order
 
 [[teams]]
