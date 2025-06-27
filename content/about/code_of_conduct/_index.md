@@ -1,7 +1,4 @@
 # NUMFOCUS CODE OF CONDUCT
-+++
-title = "Code of Conduct"
-+++
 
 You can find the whole document here https://numfocus.org/code-of-conduct. 
 
