@@ -1,8 +1,11 @@
-# Mission Statement
++++
+title = "Mission statement"
++++
+
 
 ## Goals
 
-We want to make analysis tools for omics data in the life sciences as accessible as possible. This means:
+We as scverse® want to make analysis tools for omics data in the life sciences as accessible as possible. This means:
 
 * Interoperability -- we focus on developing open, standardized, and efficient file formats to encourage data sharing and re-use.
 * Diversity -- we believe in removing barriers to participation in research, including economic factors and institutional culture. Our tools will have the most impact if they are developed by and for a diverse community.

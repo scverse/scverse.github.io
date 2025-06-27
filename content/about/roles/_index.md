@@ -1,17 +1,21 @@
-# Roles And Responsibilities
++++
+title = "Roles and Decisions"
++++
 
-The purpose of this document is to formalize the governance process used by the `scverse` project, to clarify how decisions are made and how the various groups within our community interact.
+## Roles and Responsibilities
+
+The purpose of this document is to formalize the governance process used by the `scverse®` project, to clarify how decisions are made and how the various groups within our community interact.
 
 As a whole, we are a consensus-based community project.
 However, any subproject within the scverse can have its own governance system as long as they do not conflict with the rules set out here.
 Anyone with an interest in the project can join the community, contribute to the project design, and participate in the decision making process.
 This document describes how that participation takes place, how to find consensus, and how deadlocks are resolved.
 
-## The Community
+### The Community
 
 The scverse community consists of anyone using or working with the project in any way.
 
-## Contributors
+### Contributors
 
 A community member can become a contributor by interacting directly with the project in concrete ways, such as:
 
@@ -31,12 +35,12 @@ A community member becomes a contributor when the following criteria are met:
 - At least two core team members support their addition
 - The new member has supported the project several times, either through code or otherwise
 
-### Project developers
+#### Project Developers
 
 Individual projects within scverse have a lot of freedom in deciding how their projects are developed.
 This includes who gets commit rights to their projects.
 
-## Core team
+### Core Team
 
 The core team are community members who have demonstrated continued commitment to the project through ongoing contributions.
 They have shown they can be trusted to maintain scverse with care.
@@ -44,7 +48,7 @@ Team members appear as organization members on the scverse [GitHub organization]
 
 There are sub-roles within the core team depending on the kinds covering different kinds of contributions and responsibilities.
 
-### Core developers
+#### Core Developers
 
 Core developers are members of the core team who have made significant code contributions to `scverse`.
 They are granted additional rights so they can more easily carry on with their `scverse` related activities.
@@ -64,7 +68,7 @@ After nomination, admission will be decided by two-thirds majority vote on a pri
 
 Primary maintainers of new core packages, who are not already core developers, will be invited to join.
 
-## Steering Council
+### Steering Council
 
 The Steering Council (SC) members are core team members who have additional responsibilities to ensure the smooth running of the project.
 SC members are expected to participate in strategic planning, approve changes to the governance model, and make decisions about funding granted to `scverse` itself (funding to community members is theirs to pursue and manage). Changes that impact the full project require analysis informed by extensive experience with both the project and the larger ecosystem.
@@ -91,19 +95,19 @@ During that time deadlocked votes of the SC will be postponed until the new memb
 
 The `scverse` steering council may be contacted at `steering-council@scverse.org`, or via the [@scverse/steering-council](https://github.com/orgs/scverse/teams/steering-council) GitHub team.
 
-## Management Committee
+### Management Committee
 
 The management committee consists of PIs that support the development of scverse core projects. Members of the management committee are expected to secure funding and allocate resources to the continuous development of one or more core projects. 
 
 PIs supervising the development of new core packages, who are not already part of the managment committee, will be invited to join.
 
-## Scientific Advisory Board
+### Scientific Advisory Board
 
 The scientific advisory boards consists of highly experienced scientists devoted to research in single cell omics analysis. In an annual meeting, the scientific advisory boards assesses the progress of scverse and suggests priorities for the next year based on the latests developments in the field. 
 
 Members of the scientific advisory boards are nominated by the core team. 
 
-# Decision Making Process
+## Decision Making Process
 
 Decisions about the future of the project are made through discussion with members of the community.
 All non-sensitive project management discussion takes place on the issue trackers of the https://github.com/scverse repositories, in public channels of our chat, or on the forums.
