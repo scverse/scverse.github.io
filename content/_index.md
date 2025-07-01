@@ -15,6 +15,11 @@ description = "Foundational tools for single-cell omics data analysis"
 	url = "https://mudata.readthedocs.io/en/latest/"
 
 [[packages]]
+	name = "spatialdata"
+	description = "Spatial data format"
+	url = "https://spatialdata.scverse.org/en/latest/"
+
+[[packages]]
 	name = "scanpy"
 	description = "Single-cell analysis framework"
 	url = "https://scanpy.readthedocs.io/en/latest/"
@@ -23,6 +28,11 @@ description = "Foundational tools for single-cell omics data analysis"
 	name = "muon"
 	description = "Multi-omics analysis framework"
 	url = "https://muon.scverse.org/"
+
+[[packages]]
+	name = "squidpy"
+	description = "Spatial single-cell analysis"
+	url = "https://squidpy.readthedocs.io/"
 
 [[packages]]
 	name = "scvi-tools"
@@ -35,14 +45,25 @@ description = "Foundational tools for single-cell omics data analysis"
 	url = "https://scirpy.scverse.org/"
 
 [[packages]]
-	name = "squidpy"
-	description = "Spatial single-cell analysis"
-	url = "https://squidpy.readthedocs.io/"
+	name = "SnapATAC2"
+	description = "Single-cell ATAC analysis framework"
+	url = "https://scverse.org/SnapATAC2/"
 
 [[packages]]
-	name = "spatialdata"
-	description = "Spatial data format"
-	url = "https://spatialdata.scverse.org/en/latest/"
+	name = "rapids-singlecell"
+	description = "A GPU-accelerated tool for scRNA analysis"
+	url = "https://rapids-singlecell.readthedocs.io/en/latest/"
+
+[[packages]]
+	name = "pertpy"
+	description = "Perturbation data analysis framework"
+	url = "https://github.com/scverse/pertpy/"
+
+[[packages]]
+	name = "decoupler"
+	description = "Enrichment analysis framework"
+	url = "https://decoupler.readthedocs.io/en/latest/"
+
 
 # Mission
 [mission]

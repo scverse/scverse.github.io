@@ -5,8 +5,8 @@ aliases = ["/projects/"]
 [[sections]]
 	core_packages = "These packages are considered foundational in that many other packages build upon them. Joint maintenance by the core team guarantees long-term stability."
 	datastructures = "Data structures are the foundational building block for all scverse packages. Building upon common data structures ensures interoperability."
-	datastructures_post = "In addition to these packages, we define standards on how to represent certain data types in these data structures. For now, such a specification is available for [Adaptive Immune Receptor Repertoire (AIRR) data](https://scirpy.scverse.org/en/latest/data-structure.html#storing-airr-rearrangement-data-in-anndata). Representations for other data types (e.g. scATAC-seq) will follow."
-	frameworks = ""
+	datastructures_post = "In addition to these packages, we define standards on how to represent certain data types in these data structures. For now, such a specification is available for [Adaptive Immune Receptor Repertoire (AIRR) data](https://scirpy.scverse.org/en/latest/data-structure.html#storing-airr-rearrangement-data-in-anndata)."
+	frameworks = "Frameworks provide essential algorithms and plotting functions for specific analysis steps, building on our data structures."
 	ecosystem = "Many popular packages rely on scverse functionality. For instance, they take advantage of established data format standards such as AnnData and MuData, or are designed to be integrated into the workflow of analysis frameworks. Here, we list ecosystem packages following development best practices (continuous testing, documented, available through standard distribution tools).\n\n *This listing is a work in progress. See [scverse/ecosystem-packages](https://github.com/scverse/ecosystem-packages) for inclusion criteria, and to submit more packages.*"
 
 [[datastructures]]
@@ -113,6 +113,24 @@ aliases = ["/projects/"]
 	text = "Website"
 	url = "https://muon.scverse.org/"
 
+
+[[packages]]
+	name = "squidpy"
+	description = "Spatial Single Cell Analysis"
+	url = "https://squidpy.readthedocs.io/"
+	img = "../img/icons/squidpy.svg"
+	details = "Squidpy is a tool for the analysis and visualization of spatial molecular data. It builds on top of scanpy and anndata, from which it inherits modularity and scalability. It provides analysis tools that leverages the spatial coordinates of the data, as well as tissue images if available."
+	[[packages.links]]
+	text = "GitHub"
+	url = "https://github.com/theislab/squidpy"
+	[[packages.links]]
+	text = "Documentation and tutorials"
+	url = "https://squidpy.readthedocs.io/"
+	[[packages.links]]
+	text = "PyPI"
+	url = "https://pypi.org/project/squidpy/"
+
+
 [[packages]]
 	name = "scvi-tools"
 	description = "Machine learning model development library and model zoo"
@@ -152,20 +170,76 @@ aliases = ["/projects/"]
 	url = "https://anaconda.org/bioconda/scirpy"
 
 [[packages]]
-	name = "squidpy"
-	description = "Spatial Single Cell Analysis"
-	url = "https://squidpy.readthedocs.io/"
-	img = "../img/icons/squidpy.svg"
-	details = "Squidpy is a tool for the analysis and visualization of spatial molecular data. It builds on top of scanpy and anndata, from which it inherits modularity and scalability. It provides analysis tools that leverages the spatial coordinates of the data, as well as tissue images if available."
+	name = "SnapATAC2"
+	description = "Single-cell ATAC analysis framework"
+	url = "https://scverse.org/SnapATAC2/"
+	img = "../img/icons/snapatac2.svg"
+	details = "SnapATAC2 is a scalable and modular pipeline for analyzing single-cell ATAC-seq data, enabling efficient preprocessing, dimensionality reduction, clustering, and integration with single-cell RNA-seq."
 	[[packages.links]]
 	text = "GitHub"
-	url = "https://github.com/theislab/squidpy"
+	url = "https://github.com/scverse/SnapATAC2"
 	[[packages.links]]
 	text = "Documentation and tutorials"
-	url = "https://squidpy.readthedocs.io/"
+	url = "https://scverse.org/SnapATAC2/"
 	[[packages.links]]
 	text = "PyPI"
-	url = "https://pypi.org/project/squidpy/"
+	url = "https://pypi.org/project/snapatac2/"
+	[[packages.links]]
+	text = "Conda"
+	url = "https://anaconda.org/bioconda/snapatac2"
 
+[[packages]]
+	name = "Rapids-singlecell"
+	description = "A GPU-accelerated tool for scRNA analysis"
+	url = "https://rapids-singlecell.readthedocs.io/en/latest/"
+	img = "../img/icons/rapids-singlecell.svg"
+	details = "Rapids-singlecell is a GPU-accelerated single-cell analysis library that serves as a drop-in replacement for scanpy, squidpy, and decoupler."
+	[[packages.links]]
+	text = "GitHub"
+	url = "https://github.com/scverse/rapids_singlecell"
+	[[packages.links]]
+	text = "Documentation and tutorials"
+	url = "https://rapids-singlecell.readthedocs.io/en/latest/"
+	[[packages.links]]
+	text = "PyPI"
+	url = "https://pypi.org/project/rapids-singlecell/"
+
+[[packages]]
+	name = "pertpy"
+	description = "Perturbation data analysis framework"
+	url = "https://pertpy.readthedocs.io/en/stable/"
+	img = "../img/icons/pertpy.svg"
+	details = "Pertpy is a framework for analyzing large-scale single-cell perturbation experiments. It harmonizes datasets, automates metadata annotation, calculates perturbation distances, and analyzes cellular responses to genetic modifications, drugs, and environmental changes."
+	[[packages.links]]
+	text = "GitHub"
+	url = "https://github.com/scverse/pertpy"
+	[[packages.links]]
+	text = "Documentation and tutorials"
+	url = "https://pertpy.readthedocs.io/en/stable/"
+	[[packages.links]]
+	text = "PyPI"
+	url = "https://pypi.org/project/pertpy/"
+	[[packages.links]]
+	text = "Conda"
+	url = "https://anaconda.org/conda-forge/pertpy"
+
+[[packages]]
+	name = "decoupler"
+	description = "Enrichment analysis framework"
+	url = "https://decoupler.readthedocs.io/en/latest/"
+	img = "../img/icons/decoupler.svg"
+	details = "decoupler is a framework containing different enrichment statistical methods to extract biologically driven scores from omics data within a unified framework."
+	[[packages.links]]
+	text = "GitHub"
+	url = "https://github.com/scverse/decoupler"
+	[[packages.links]]
+	text = "Documentation and tutorials"
+	url = "https://decoupler.readthedocs.io/en/latest/"
+	[[packages.links]]
+	text = "PyPI"
+	url = "https://pypi.org/project/decoupler/"
+	[[packages.links]]
+	text = "Conda"
+	url = "https://anaconda.org/conda-forge/decoupler-py"
 
 +++
