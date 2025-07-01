@@ -189,11 +189,11 @@ aliases = ["/projects/"]
 	url = "https://anaconda.org/bioconda/snapatac2"
 
 [[packages]]
-	name = "Rapids-singlecell"
-	description = "A GPU-accelerated tool for scRNA analysis"
+	name = "rapids-singlecell"
+	description = "GPU-accelerated framework for scRNA analysis"
 	url = "https://rapids-singlecell.readthedocs.io/en/latest/"
 	img = "../img/icons/rapids-singlecell.svg"
-	details = "Rapids-singlecell is a GPU-accelerated single-cell analysis library that serves as a drop-in replacement for scanpy, squidpy, and decoupler."
+	details = "rapids-singlecell is a GPU-accelerated single-cell analysis library that serves as a drop-in replacement for scanpy, squidpy, and decoupler."
 	[[packages.links]]
 	text = "GitHub"
 	url = "https://github.com/scverse/rapids_singlecell"

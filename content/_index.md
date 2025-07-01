@@ -51,7 +51,7 @@ description = "Foundational tools for single-cell omics data analysis"
 
 [[packages]]
 	name = "rapids-singlecell"
-	description = "A GPU-accelerated tool for scRNA analysis"
+	description = "GPU-accelerated framework for scRNA analysis"
 	url = "https://rapids-singlecell.readthedocs.io/en/latest/"
 
 [[packages]]
