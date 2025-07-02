@@ -1,6 +1,6 @@
 +++
-title = "New scverse Core Packages"
-date = 2025-07-15T00:00:05+01:00
+title = "Four new scverse core packages"
+date = 2025-07-01T00:00:05+01:00
 description = "scverse expands with new core packages."
 author = "Lukas Heumos"
 draft = false
@@ -10,13 +10,12 @@ draft = false
 
 We're happy to announce that four new packages have joined the scverse core ecosystem: [SnapATAC2](https://github.com/scverse/snapatac2), [rapids-singlecell](https://github.com/scverse/rapids_singlecell), [pertpy](https://github.com/scverse/pertpy), and [decoupler](https://github.com/scverse/decoupler).
 This broadens the scope of scverse beyond our so far supported modalities and brings in new functionality for epigenomics, perturbation screens, GPU acceleration, and functional inference.
-Each package is already built on top of our scverse core data structures and integrates with the broader scverse tooling.
+
 Single-cell analysis is evolving rapidly, with new experimental modalities and larger datasets becoming the norm.
 To keep up with this, we’re expanding scverse to support more domains, more data types, and more scalable computing backends.
 By bringing these mature, well-maintained tools into the core, we aim to provide a consistent and interoperable foundation across all stages of single-cell analysis.
-This helps you build richer workflows and helps developers avoid reinventing common infrastructure.
 
-We're also welcoming the following lead maintainers to the scverse core team:  
+We're also welcoming the following lead maintainers to the scverse core developer team:  
 - **Kai Zhang** for **snapatac2**
 - **Pau Badia i Mompel** for **decoupler**
 
