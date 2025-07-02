@@ -26,6 +26,8 @@ Built in Rust with a Python front end, it handles millions of cells efficiently.
 The package offers preprocessing, dimensionality reduction, clustering, and visualization methods.  
 All outputs are stored in AnnData and integrate seamlessly with scanpy and other scverse frameworks.
 
+<img src="/img/blog/snapatac2_overview.png" style="max-width: 100%;" alt="SnapATAC2 overview" />
+
 ## rapids-singlecell
 
 [rapids-singlecell](https://github.com/scverse/rapids_singlecell) accelerates single-cell workflows using NVIDIA’s RAPIDS libraries.  
@@ -42,12 +44,16 @@ It supports differential analysis, signature scoring, and dose-response modeling
 Metadata handling and visualization are tailored for perturbation-specific use cases.  
 Built on AnnData and scverse libraries, pertpy fits smoothly into existing pipelines.
 
+<img src="https://github.com/user-attachments/assets/d2e32d69-b767-4be3-a938-77a9dce45d3f" alt="pertpy figure" style="max-width: 100%;" />
+
 ## decoupler
 
 [decoupler](https://github.com/scverse/decoupler) enables inference biological activity from omics data using prior knowledge resources.  
 Compatible with transcriptomics and proteomics, it links data to transcription factors, pathways, or kinases.  
 It includes multiple inference methods such as enrichment scoring and linear models.  
 Designed for both bulk and single-cell, decoupler works directly with our scverse core data structures.
+
+<img src="/img/blog/decoupler_overview.png" style="max-width: 100%;" alt="decoupler overview" />
 
 ## What this means
 
