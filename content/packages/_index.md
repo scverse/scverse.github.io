@@ -227,7 +227,7 @@ aliases = ["/projects/"]
 	name = "decoupler"
 	description = "Enrichment analysis framework"
 	url = "https://decoupler.readthedocs.io/en/latest/"
-	img = "../img/icons/snapatac2.svg"
+	img = "../img/icons/decoupler.svg"
 	details = "decoupler is a framework containing different enrichment statistical methods to extract biologically driven scores from omics data within a unified framework."
 	[[packages.links]]
 	text = "GitHub"
