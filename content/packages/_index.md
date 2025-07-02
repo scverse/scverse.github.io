@@ -208,7 +208,7 @@ aliases = ["/projects/"]
 	name = "pertpy"
 	description = "Perturbation data analysis framework"
 	url = "https://pertpy.readthedocs.io/en/stable/"
-	img = "../img/icons/pertpy.svg"
+	img = "../img/icons/snapatac2.svg"
 	details = "Pertpy is a framework for analyzing large-scale single-cell perturbation experiments. It harmonizes datasets, automates metadata annotation, calculates perturbation distances, and analyzes cellular responses to genetic modifications, drugs, and environmental changes."
 	[[packages.links]]
 	text = "GitHub"
