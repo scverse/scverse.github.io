@@ -48,10 +48,9 @@ Built on AnnData and scverse libraries, pertpy fits smoothly into existing pipel
 
 ## decoupler
 
-[decoupler](https://github.com/scverse/decoupler) enables inference biological activity from omics data using prior knowledge resources.  
-Compatible with transcriptomics and proteomics, it links data to transcription factors, pathways, or kinases.  
-It includes multiple inference methods such as enrichment scoring and linear models.  
-Designed for both bulk and single-cell, decoupler works directly with our scverse core data structures.
+[decoupler](https://github.com/scverse/decoupler) enables the inference of enrichment scores from omics data using prior knowledge.  
+It maps omics profiles to annotated biological sets, such as transcription factors, pathways, or kinases, using methods like GSEA, GSVA, and linear models.
+Designed for bulk, single-cell and spatial data, decoupler works directly with our scverse core data structures.
 
 <img src="/img/blog/decoupler_overview.png" style="max-width: 100%;" alt="decoupler overview" />
 
