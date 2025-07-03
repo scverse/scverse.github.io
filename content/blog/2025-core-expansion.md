@@ -30,10 +30,11 @@ All outputs are stored in AnnData and integrate seamlessly with scanpy and other
 
 ## rapids-singlecell
 
-[rapids-singlecell](https://github.com/scverse/rapids_singlecell) accelerates single-cell workflows using NVIDIA’s RAPIDS libraries.  
-Key steps like PCA, neighborhood graph construction, and clustering run on GPU via cuML and cuGraph.  
-Functions follow AnnData conventions and can directly replace scanpy or sklearn-based code.  
-This enables practical analysis of massive datasets that would be too slow on CPU.
+[rapids-singlecell](https://github.com/scverse/rapids_singlecell) accelerates the full single-cell analysis pipeline through GPU acceleration with CuPy and NVIDIA RAPIDS.
+Core steps—including PCA, neighborhood graph construction, and clustering—are executed on GPU using cuML, cuGraph, and custom CUDA/CuPy kernels for peak performance.
+
+RSC integrates directly with AnnData and offers near drop-in replacements not only for scanpy, but also for selected functions from decoupler and squidpy.
+By preserving familiar APIs and data structures, it enables seamless GPU acceleration of existing workflows—scaling to millions of cells without the computational bottlenecks of CPU-based analysis.
 
 For more details, we refer to a recent blog post by NVIDIA: [Driving Toward Billion-Cell Analysis and Biological Breakthroughs with RAPIDS-singlecell](https://developer.nvidia.com/blog/driving-toward-billion-cell-analysis-and-biological-breakthroughs-with-rapids-singlecell)
 
