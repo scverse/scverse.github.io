@@ -36,6 +36,8 @@ Core steps—including PCA, neighborhood graph construction, and clustering—ar
 RSC integrates directly with AnnData and offers near drop-in replacements not only for scanpy, but also for selected functions from decoupler and squidpy.
 By preserving familiar APIs and data structures, it enables seamless GPU acceleration of existing workflows—scaling to millions of cells without the computational bottlenecks of CPU-based analysis.
 
+<img src="/img/blog/rsc_overview.png" style="max-width: 100%;" alt="RSC overview" />
+
 For more details, we refer to a recent blog post by NVIDIA: [Driving Toward Billion-Cell Analysis and Biological Breakthroughs with RAPIDS-singlecell](https://developer.nvidia.com/blog/driving-toward-billion-cell-analysis-and-biological-breakthroughs-with-rapids-singlecell)
 
 ## pertpy
@@ -45,7 +47,7 @@ It supports differential analysis, signature scoring, and dose-response modeling
 Metadata handling and visualization are tailored for perturbation-specific use cases.  
 Built on AnnData and scverse libraries, pertpy fits smoothly into existing pipelines.
 
-<img src="https://github.com/user-attachments/assets/d2e32d69-b767-4be3-a938-77a9dce45d3f" alt="pertpy figure" style="max-width: 100%;" />
+<img src="https://github.com/user-attachments/assets/d2e32d69-b767-4be3-a938-77a9dce45d3f" alt="pertpy overview" style="max-width: 100%;" />
 
 ## decoupler
 
