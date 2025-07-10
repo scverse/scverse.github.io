@@ -99,13 +99,13 @@ The `scverse` steering council may be contacted at `steering-council@scverse.org
 
 The management committee consists of PIs that support the development of scverse core projects. Members of the management committee are expected to secure funding and allocate resources to the continuous development of one or more core projects. 
 
-PIs supervising the development of new core packages, who are not already part of the managment committee, will be invited to join.
+PIs supervising the development of new core packages, who are not already part of the management committee, will be invited to join.
 
 ### Scientific Advisory Board
 
-The scientific advisory boards consists of highly experienced scientists devoted to research in single cell omics analysis. In an annual meeting, the scientific advisory boards assesses the progress of scverse and suggests priorities for the next year based on the latests developments in the field. 
+The scientific advisory board consists of highly experienced scientists devoted to research in single cell omics analysis. In an annual meeting, the scientific advisory board assesses the progress of scverse and suggests priorities for the next year based on the latest developments in the field. 
 
-Members of the scientific advisory boards are nominated by the core team. 
+Members of the scientific advisory board are nominated by the core team. 
 
 ## Decision Making Process
 

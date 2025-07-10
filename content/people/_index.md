@@ -30,7 +30,7 @@ preface = "For people participating in and interacting with the consortium, ther
     isCoreMember = true
     role = "scvi-tools"
     email = "can.ergen@scverse.org"
-    affiliation = "University of California, Berkely"
+    affiliation = "University of California, Berkeley"
 
 [[teams.members]]
 	name = "Emma Dann"
@@ -108,7 +108,7 @@ preface = "For people participating in and interacting with the consortium, ther
 	name = "Giovanni Palla"
 	url = "https://github.com/giovp"
     isCoreMember = true
-    role = "spatialdata & squipy"
+    role = "spatialdata & squidpy"
     email = "giovanni.palla@scverse.org"
     affiliation = "CZI"
 	
@@ -271,7 +271,7 @@ preface = "For people participating in and interacting with the consortium, ther
 
 [[teams]]
 	name = "Community"
-	text = "Everyone who uses <span class='backticked'>scverse</span> software is part of the community! There are multiple ways to engage with its other members. For a start, join us on our <a href='https://https://scverse.zulipchat.com' target='_blank'>Zulip chat</a>, our <a href='https://discourse.scverse.org/' target='_blank'>Discourse forum</a>, and keep an eye on our <a href='https://x.com/scverse_team' target='_blank'>X (Twitter)</a> and <a href='https://bsky.app/profile/scverse.bsky.social' target='_blank'>Bluesky</a> accounts for the events we organise."
+	text = "Everyone who uses <span class='backticked'>scverse</span> software is part of the community! There are multiple ways to engage with its other members. For a start, join us on our <a href='https://scverse.zulipchat.com' target='_blank'>Zulip chat</a>, our <a href='https://discourse.scverse.org/' target='_blank'>Discourse forum</a>, and keep an eye on our <a href='https://x.com/scverse_team' target='_blank'>X (Twitter)</a> and <a href='https://bsky.app/profile/scverse.bsky.social' target='_blank'>Bluesky</a> accounts for the events we organise."
 
 # ----------
 
