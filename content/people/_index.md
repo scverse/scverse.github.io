@@ -71,7 +71,15 @@ preface = "For people participating in and interacting with the consortium, ther
     role = "pertpy & operations"
     email = "lukas.heumos@scverse.org"
     affiliation = "Lamin Labs & Helmholtz Munich"
-	
+
+[[teams.members]]
+	name = "Sara Jimenez"
+	url = "https://github.com/sarajimenez"
+    isCoreMember = true
+    role = "grants & workshops"
+    email = "sara.jimenez@scverse.org"
+    affiliation = "Helmholtz Munich"
+
 [[teams.members]]
 	name = "Mikaela Koutrouli"
 	url = "https://github.com/mikelkou"
