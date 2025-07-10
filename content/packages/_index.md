@@ -136,7 +136,7 @@ aliases = ["/projects/"]
 	description = "Machine learning model development library and model zoo"
 	url = "https://scvi-tools.org/"
 	img = "../img/libs/scvi_tools_graph_model.svg"
-	details = "scvi-tools is a library for developing and deploying machine learning models based on PyTorch and AnnData. With an emphasis on probablistic models, scvi-tools steamlines the development process via training, data management, and user interface abstractions. scvi-tools also contains easy-to-use implementations of more than 14 state-of-the-art probabilistic models in the field."
+	details = "scvi-tools is a library for developing and deploying machine learning models based on PyTorch and AnnData. With an emphasis on probabilistic models, scvi-tools streamlines the development process via training, data management, and user interface abstractions. scvi-tools also contains easy-to-use implementations of more than 14 state-of-the-art probabilistic models in the field."
 	[[packages.links]]
 	text = "GitHub"
 	url = "https://github.com/yoseflab/scvi-tools"
