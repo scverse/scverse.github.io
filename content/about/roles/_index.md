@@ -44,7 +44,7 @@ This includes who gets commit rights to their projects.
 
 The core team are community members who have demonstrated continued commitment to the project through ongoing contributions.
 They have shown they can be trusted to maintain scverse with care.
-Team members appear as organization members on the scverse [GitHub organization](https://github.com/orgs/scverse/people) and are on our [@scverse/core](https://github.com/orgs/scverse/teams/core) GitHub team.
+Team members appear as organization members on the scverse [GitHub organization](https://github.com/orgs/scverse/people) and are on our [@scverse/core](https://github.com/orgs/scverse/teams/core) GitHub team, but can also be reached by e-mail at [core@scverse.org](core@scverse.org).
 
 There are sub-roles within the core team depending on the kinds covering different kinds of contributions and responsibilities.
 
@@ -93,7 +93,7 @@ Nominees should have demonstrated long-term, continued commitment to the project
 A nomination will result in discussion that cannot take more than a month and then admission to the SC by consensus.
 During that time deadlocked votes of the SC will be postponed until the new member has joined and another vote can be held.
 
-The `scverse` steering council may be contacted at `steering-council@scverse.org`, or via the [@scverse/steering-council](https://github.com/orgs/scverse/teams/steering-council) GitHub team.
+The `scverse` steering council may be contacted at [steering-council@scverse.org](mailto:steering-council@scverse.org).
 
 ### Management Committee
 
