@@ -48,6 +48,7 @@ description = "Foundational tools for single-cell omics data analysis"
 	name = "SnapATAC2"
 	description = "Single-cell ATAC analysis framework"
 	url = "https://scverse.org/SnapATAC2/"
+        no_icon = true
 
 [[packages]]
 	name = "rapids-singlecell"
