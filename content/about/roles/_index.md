@@ -44,7 +44,7 @@ This includes who gets commit rights to their projects.
 
 The core team are community members who have demonstrated continued commitment to the project through ongoing contributions.
 They have shown they can be trusted to maintain scverse with care.
-Team members appear as organization members on the scverse [GitHub organization](https://github.com/orgs/scverse/people) and are on our [@scverse/core](https://github.com/orgs/scverse/teams/core) GitHub team.
+Team members appear as organization members on the scverse [GitHub organization](https://github.com/orgs/scverse/people) and are on our [@scverse/core](https://github.com/orgs/scverse/teams/core) GitHub team, but can also be reached by e-mail at [core@scverse.org](core@scverse.org).
 
 There are sub-roles within the core team depending on the kinds covering different kinds of contributions and responsibilities.
 
@@ -93,19 +93,19 @@ Nominees should have demonstrated long-term, continued commitment to the project
 A nomination will result in discussion that cannot take more than a month and then admission to the SC by consensus.
 During that time deadlocked votes of the SC will be postponed until the new member has joined and another vote can be held.
 
-The `scverse` steering council may be contacted at `steering-council@scverse.org`, or via the [@scverse/steering-council](https://github.com/orgs/scverse/teams/steering-council) GitHub team.
+The `scverse` steering council may be contacted at [steering-council@scverse.org](mailto:steering-council@scverse.org).
 
 ### Management Committee
 
 The management committee consists of PIs that support the development of scverse core projects. Members of the management committee are expected to secure funding and allocate resources to the continuous development of one or more core projects. 
 
-PIs supervising the development of new core packages, who are not already part of the managment committee, will be invited to join.
+PIs supervising the development of new core packages, who are not already part of the management committee, will be invited to join.
 
 ### Scientific Advisory Board
 
-The scientific advisory boards consists of highly experienced scientists devoted to research in single cell omics analysis. In an annual meeting, the scientific advisory boards assesses the progress of scverse and suggests priorities for the next year based on the latests developments in the field. 
+The scientific advisory board consists of highly experienced scientists devoted to research in single cell omics analysis. In an annual meeting, the scientific advisory board assesses the progress of scverse and suggests priorities for the next year based on the latest developments in the field. 
 
-Members of the scientific advisory boards are nominated by the core team. 
+Members of the scientific advisory board are nominated by the core team. 
 
 ## Decision Making Process
 
