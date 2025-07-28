@@ -16,6 +16,14 @@ preface = "For people participating in and interacting with the consortium, ther
     email = "philipp.angerer@scverse.org"
     affiliation = "Helmholtz-Munich"
 
+ [[teams.members]]
+	name = "Pau Badia i Mompel"
+	url = "https://github.com/PauBadiaM"
+    isCoreMember = true
+    role = "decoupler"
+    email = "paubim@stanford.edu"
+    affiliation = "Stanford University"
+	
 [[teams.members]]
 	name = "Danila Bredikhin"
 	url = "https://github.com/gtca"
