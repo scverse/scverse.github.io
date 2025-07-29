@@ -35,4 +35,4 @@ The group is making decisions independently from the project, PyData, NumFOCUS o
 
 You can learn more about the current group members, as well as the reporting procedure on the [NumFOCUS Code of Conduct][] page.
 
-[NumFOCUS Code of Conduct](https://numfocus.org/code-of-conduct)
+[NumFOCUS Code of Conduct]: https://numfocus.org/code-of-conduct

@@ -9,7 +9,7 @@ everyone! If you are new to scverse, these meetings are a great way to get to kn
 the people behind the project. 
 
 We usually start off the meetings with a short presentation about a development-related
-topic or a new [ecosystem package](https://scverse.org/packages/#ecosystem). 
+topic or a new [ecosystem package](/packages/#ecosystem). 
 
 The meetings have an [open agenda](https://hackmd.io/VfVLKb3ETGKN2j_7tn8ZJQ?edit). If
 you would like to bring up a topic, feel free to add it before or during the meeting!
