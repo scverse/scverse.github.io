@@ -18,7 +18,7 @@
               {{ if .Params.tutorials }}
                 {{ .Params.tutorials_intro | markdownify }}
 
-                {{ $jsonURL := "https://scverse.org/scverse-tutorials/tutorials.json" }}
+                {{ $jsonURL := "/scverse-tutorials/tutorials.json" }}
                 {{ $remoteData := resources.GetRemote $jsonURL }}
                 {{ $content := transform.Unmarshal $remoteData.Content }}
                 {{ if $content }}
@@ -49,7 +49,7 @@
                                   {{ if $t.image }}
                                     <img
                                       class="card-img-top"
-                                      src="https://scverse.org/scverse-tutorials/{{ $t.image }}"
+                                      src="/scverse-tutorials/{{ $t.image }}"
                                       alt="Tutorial logo"
                                     />
                                   {{ end }}

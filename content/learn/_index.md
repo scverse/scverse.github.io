@@ -39,8 +39,8 @@ You can also find recordings of past talks and workshops on our [YouTube channel
 	name = "Other modalities"
 	[[tutorials.section]]
 	name = "TCR and BCR receptor sequencing with scirpy"
-	url = "https://scverse.org/scirpy/latest/tutorials/tutorial_3k_tcr.html"
-	img = "https://scverse.org/scirpy/latest/_images/tutorials_tutorial_3k_tcr_86_1.png"
+	url = "https://scirpy.scverse.org/en/latest/tutorials/tutorial_3k_tcr.html"
+	img = "https://scirpy.scverse.org/en/latest/_static/scirpy_logo.png"
 	[[tutorials.section]]
 	name = "ATAC-seq"
 	url = "https://muon-tutorials.readthedocs.io/en/latest/single-cell-rna-atac/pbmc10k/2-Chromatin-Accessibility-Processing.html"
