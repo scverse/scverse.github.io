@@ -18,8 +18,7 @@
               {{ if .Params.tutorials }}
                 {{ .Params.tutorials_intro | markdownify }}
 
-                {{ $jsonURL := "/scverse-tutorials/tutorials.json" }}
-                {{ $remoteData := resources.GetRemote $jsonURL }}
+                {{ $remoteData := resources.Get "/scverse-tutorials/tutorials.json" }}
                 {{ $content := transform.Unmarshal $remoteData.Content }}
                 {{ if $content }}
 
