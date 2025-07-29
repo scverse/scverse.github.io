@@ -27,7 +27,7 @@ among other possibilities.
 Any community member can become a contributor, and all are encouraged to do so.
 By contributing to the project, community members can directly help to shape its future.
 
-All community members are required to adhere to our [code of conduct](https://scverse.org/about/code_of_conduct/).
+All community members are required to adhere to our [code of conduct](/about/code_of_conduct/).
 Potential contributors are encouraged to read the [Contributing Guide](https://scanpy.readthedocs.io/en/stable/dev/index.html).
 
 A community member becomes a contributor when the following criteria are met:
