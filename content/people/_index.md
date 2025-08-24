@@ -165,7 +165,7 @@ preface = "For people participating in and interacting with the consortium, ther
 	url = "https://github.com/ivirshup"
     isCoreMember = true
     role = "anndata & scanpy"
-    email = "isaac.virshup@scverse.org"
+    email = "isaac@scverse.org"
     affiliation = "CZI"
 
 [[teams.members]]
@@ -211,7 +211,7 @@ preface = "For people participating in and interacting with the consortium, ther
 	url = "https://twitter.com/ivirshup"
     isCoreMember = true
     role = "anndata & scanpy"
-    email = "isaac.virshup@scverse.org"
+    email = "isaac@scverse.org"
     affiliation = "CZI"
 
 # ---------- management committee, in alphabetical order
