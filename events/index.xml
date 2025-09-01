@@ -1,59 +1,59 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Events on scverse</title><link>https://scverse.org/events/</link><description>Recent scverse news</description><language>en-us</language><lastBuildDate>Mon, 17 Mar 2025 00:00:05 +0100</lastBuildDate><atom:link href="https://scverse.org/events/index.xml" rel="self" type="application/rss+xml"/><item><title>Scverse Hackathon 2025-03 Paris</title><link>https://scverse.org/events/2025_03_hackathon/</link><pubDate>Mon, 17 Mar 2025 00:00:05 +0100</pubDate><guid>https://scverse.org/events/2025_03_hackathon/</guid><description>&lt;h2 id="welcome">Welcome&lt;/h2>
-&lt;p>Join us for the joint &lt;a href="https://scverse.org">scverse&lt;/a> x &lt;a href="https://www.owkin.com/">Owkin&lt;/a> hackathon on &lt;strong>March 17-19, 2025&lt;/strong> at the Owkin office in Paris.&lt;/p>
-&lt;p>This hackathon aims to bring together users and developers of scverse tools, researchers, and owkinautes. The main topic of this hackathon will be spatial transcriptomics. During this hackathon, you will have the opportunity to improve existing code bases and add new features to scverse tools. All contributions will be made publicly available on GitHub under an open source license.&lt;/p></description></item><item><title>Scverse Conference 2024-09 Munich</title><link>https://scverse.org/events/2024_09_conference/</link><pubDate>Tue, 10 Sep 2024 00:00:05 +0100</pubDate><guid>https://scverse.org/events/2024_09_conference/</guid><description>&lt;p>Join us for the first scverse conference taking place from &lt;strong>Tuesday, September 10&lt;/strong> to &lt;strong>Thursday, September 12&lt;/strong> in &lt;strong>Munich, Germany&lt;/strong>. Stay tuned for the registrations, speaker announcements, and more!&lt;/p>
-&lt;p>&lt;a href="https://scverse.org/conference2024/">The registration is now open!&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://scverse.org/conference2024/"> &lt;img src="https://scverse.org/img/events/2024_09_conference_savethedate.jpeg" style="max-width: 100%;" alt="Save the date info card, highlighting speakers and workshops as well as the September 10-12th date and Munich location" /> &lt;/a>&lt;/p></description></item><item><title>Scverse Hackathon 2024-04 Boston</title><link>https://scverse.org/events/2024_04_hackathon/</link><pubDate>Tue, 02 Apr 2024 00:00:05 +0100</pubDate><guid>https://scverse.org/events/2024_04_hackathon/</guid><description>&lt;h2 id="welcome">Welcome&lt;/h2>
-&lt;p>Join us for the scverse Hackathon taking place from &lt;strong>Tuesday, April 2nd, 09:00 AM&lt;/strong> to &lt;strong>Thursday, April 4th, 06:00 PM&lt;/strong> at &lt;strong>Harvard Medical School&lt;/strong> (&lt;a href="https://hms.harvard.edu/about-hms/contact-hms/harvard-longwood-campus-maps-directions">Boston, MA&lt;/a>).&lt;/p>
-&lt;p>The scverse hackathon is free. Local and international attendees could register through an open application. More information can be found at the &lt;a href="https://hms-dbmi.github.io/scverse-hackathon-spring-2024/">website&lt;/a>&lt;/p>
-&lt;h2 id="hackathon-tasks">Hackathon Tasks&lt;/h2>
-&lt;ul>
-&lt;li>Visualizing remote SpatialData Zarr datasets with Vitessce&lt;/li>
-&lt;li>Unified plotting for SpatialData: static, Napari, Vitessce&lt;/li>
-&lt;li>Pseudotime trajectory explorer widget in Jupyter based on jupyter-scatter&lt;/li>
-&lt;li>Genomic range DataFrame operations in scverse with genomic-features and bioframe&lt;/li>
-&lt;li>Better interactive widgets for scverse with anywidget&lt;/li>
-&lt;/ul></description></item><item><title>Scverse Hackathon 2023-11 Cambridge</title><link>https://scverse.org/events/2023_11_hackathon/</link><pubDate>Sun, 26 Nov 2023 00:00:05 +0100</pubDate><guid>https://scverse.org/events/2023_11_hackathon/</guid><description>&lt;h2 id="welcome">Welcome&lt;/h2>
-&lt;p>Join us for the scverse Hackathon taking place from &lt;strong>Monday, November 27th, 9:00 AM&lt;/strong> to &lt;strong>Wednesday, November 29th, afternoon&lt;/strong> at &lt;strong>Wellcome Genome Campus&lt;/strong> (&lt;a href="https://www.google.com/maps/place/Wellcome+Genome+Campus/@52.0802014,0.1871654,15z/data=!4m6!3m5!1s0x47d87ccc6d10a9c9:0x3f7ad92339a765b6!8m2!3d52.0802014!4d0.1871654!16s%2Fm%2F02rttyd?entry=ttu">(Hinxton CB10 1SA, Cambridge, UK)&lt;/a>).&lt;/p>
-&lt;p>The scverse hackathon is free. Local and international attendees could register through an open application.&lt;/p>
-&lt;h2 id="hackathon-focus-areas">Hackathon Focus Areas&lt;/h2>
-&lt;ol>
-&lt;li>&lt;strong>Multi-condition analysis&lt;/strong> - Improve tools for analysis, visualization &amp;amp; tutorials for comparative analysis of single-cell datasets.&lt;/li>
-&lt;li>&lt;strong>Data 4 AI&lt;/strong> - writing new packages and docs for pytorch data loaders for single-cell omics datasets from scverse data objects&lt;/li>
-&lt;li>&lt;strong>scverse template repos&lt;/strong> - improvements to scverse cookiecutter templates for tools and analysis repos&lt;/li>
-&lt;/ol>
-&lt;p>An overview of the outcomes of the hackathon can be found &lt;a href="https://twitter.com/scverse_team/status/1735257738916102575">here&lt;/a>.&lt;/p></description></item><item><title>Scverse Hackathon 2023-04 Heidelberg</title><link>https://scverse.org/events/2023_04_hackathon/</link><pubDate>Wed, 26 Apr 2023 00:00:05 +0100</pubDate><guid>https://scverse.org/events/2023_04_hackathon/</guid><description>&lt;h2 id="welcome">Welcome&lt;/h2>
-&lt;p>Join us for the scverse Hackathon taking place from &lt;strong>Wednesday, April 26th, 12:00 PM&lt;/strong> to &lt;strong>Friday, April 28th, afternoon&lt;/strong> at &lt;strong>BioQuant&lt;/strong> (&lt;a href="https://goo.gl/maps/Qo5xD9pFkBYHTjHs6">Neuenheimer Feld 267, 69120 Heidelberg, Germany&lt;/a>).&lt;/p>
-&lt;p>The scverse hackathon is free. The event was invite only. We will try to make future editions open to everyone.&lt;/p>
-&lt;h2 id="event-schedule">Event Schedule&lt;/h2>
-&lt;ul>
-&lt;li>
-&lt;p>&lt;strong>Wednesday, April 26th (SR041)&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>13:30 – 14:00 — PI introductions (Julio Saez-Rodriguez, Wolfgang Huber)&lt;/li>
-&lt;li>14:00 – 14:30 — Hackathon introduction&lt;/li>
-&lt;li>14:30 – 15:00 — State of the scverse + Q&amp;amp;A&lt;/li>
-&lt;li>15:00 – 15:30 — Coffee break&lt;/li>
-&lt;li>15:30 – 18:30 — Split into groups and hack&lt;/li>
-&lt;li>18:30 – 19:00 — Short updates from teams&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Thursday, April 27th (SR042 &amp;amp; SR044)&lt;/strong>&lt;/p></description></item><item><title>Scverse Hackathon 2022-12 Innsbruck</title><link>https://scverse.org/events/2022_12_hackathon/</link><pubDate>Thu, 08 Dec 2022 00:00:05 +0100</pubDate><guid>https://scverse.org/events/2022_12_hackathon/</guid><description>&lt;h2 id="welcome">Welcome&lt;/h2>
-&lt;p>Join us for the scverse Hackathon taking place from &lt;strong>Thursday, December 8th, 10:00 AM&lt;/strong> to &lt;strong>Friday, December 9th, afternoon&lt;/strong> In Innsbruck.
-The scverse hackathon is free. The event was invite only. We will try to make future editions open to everyone.&lt;/p>
-&lt;h2 id="hackathon-checklist">Hackathon checklist&lt;/h2>
-&lt;ul>
-&lt;li>Check that you agree with the &lt;a href="https://scverse.org/about/code_of_conduct/">scverse code of conduct&lt;/a>.&lt;/li>
-&lt;li>Ensure that you have a &lt;a href="https://github.com/">Github&lt;/a> account.&lt;/li>
-&lt;li>Join our &lt;a href="https://scverse.zulipchat.com/">zulip&lt;/a> where you&amp;rsquo;ll be added to the hackathon stream. &lt;a href="https://scverse.zulipchat.com/#narrow/stream/319076-introductions">Say hi&lt;/a> if this is your first time on the scverse zulip!&lt;/li>
-&lt;li>Have &lt;a href="https://www.python.org/">python&lt;/a> and any scverse package that you might work on installed.&lt;/li>
-&lt;/ul></description></item><item><title>Scverse Hackathon 2022-05 Munich</title><link>https://scverse.org/events/2022_05_hackathon/</link><pubDate>Mon, 02 May 2022 00:00:05 +0100</pubDate><guid>https://scverse.org/events/2022_05_hackathon/</guid><description>&lt;h2 id="welcome">Welcome&lt;/h2>
-&lt;p>Join us for the scverse Hackathon taking place from &lt;strong>Monday, May 2nd, 9:00 AM&lt;/strong> to &lt;strong>Tuesday, May 3rd, afternoon&lt;/strong> In Munich.
-The scverse hackathon is free. The event was invite only. We will try to make future editions open to everyone.&lt;/p>
-&lt;h2 id="hackathon-checklist">Hackathon checklist&lt;/h2>
-&lt;ul>
-&lt;li>Check that you agree with the &lt;a href="https://scverse.org/about/code_of_conduct/">scverse code of conduct&lt;/a>.&lt;/li>
-&lt;li>Ensure that you have a &lt;a href="https://github.com/">Github&lt;/a> account.&lt;/li>
-&lt;li>Join our &lt;a href="https://scverse.zulipchat.com/">zulip&lt;/a> where you&amp;rsquo;ll be added to the hackathon stream. &lt;a href="https://scverse.zulipchat.com/#narrow/stream/319076-introductions">Say hi&lt;/a> if this is your first time on the scverse zulip!&lt;/li>
-&lt;li>Have &lt;a href="https://www.python.org/">python&lt;/a> and any scverse package that you might work on installed.&lt;/li>
-&lt;/ul></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Events on scverse</title><link>https://scverse.org/events/</link><description>Recent scverse news</description><language>en-us</language><lastBuildDate>Mon, 17 Mar 2025 00:00:05 +0100</lastBuildDate><atom:link href="https://scverse.org/events/index.xml" rel="self" type="application/rss+xml"/><item><title>Scverse Hackathon 2025-03 Paris</title><link>https://scverse.org/events/2025_03_hackathon/</link><pubDate>Mon, 17 Mar 2025 00:00:05 +0100</pubDate><guid>https://scverse.org/events/2025_03_hackathon/</guid><description>&lt;h2 id="welcome"&gt;Welcome&lt;/h2&gt;
+&lt;p&gt;Join us for the joint &lt;a href="https://scverse.org"&gt;scverse&lt;/a&gt; x &lt;a href="https://www.owkin.com/"&gt;Owkin&lt;/a&gt; hackathon on &lt;strong&gt;March 17-19, 2025&lt;/strong&gt; at the Owkin office in Paris.&lt;/p&gt;
+&lt;p&gt;This hackathon aims to bring together users and developers of scverse tools, researchers, and owkinautes. The main topic of this hackathon will be spatial transcriptomics. During this hackathon, you will have the opportunity to improve existing code bases and add new features to scverse tools. All contributions will be made publicly available on GitHub under an open source license.&lt;/p&gt;</description></item><item><title>Scverse Conference 2024-09 Munich</title><link>https://scverse.org/events/2024_09_conference/</link><pubDate>Tue, 10 Sep 2024 00:00:05 +0100</pubDate><guid>https://scverse.org/events/2024_09_conference/</guid><description>&lt;p&gt;Join us for the first scverse conference taking place from &lt;strong&gt;Tuesday, September 10&lt;/strong&gt; to &lt;strong&gt;Thursday, September 12&lt;/strong&gt; in &lt;strong&gt;Munich, Germany&lt;/strong&gt;. Stay tuned for the registrations, speaker announcements, and more!&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://scverse.org/conference2024/"&gt;The registration is now open!&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://scverse.org/conference2024/"&gt; &lt;img src="https://scverse.org/img/events/2024_09_conference_savethedate.jpeg" style="max-width: 100%;" alt="Save the date info card, highlighting speakers and workshops as well as the September 10-12th date and Munich location" /&gt; &lt;/a&gt;&lt;/p&gt;</description></item><item><title>Scverse Hackathon 2024-04 Boston</title><link>https://scverse.org/events/2024_04_hackathon/</link><pubDate>Tue, 02 Apr 2024 00:00:05 +0100</pubDate><guid>https://scverse.org/events/2024_04_hackathon/</guid><description>&lt;h2 id="welcome"&gt;Welcome&lt;/h2&gt;
+&lt;p&gt;Join us for the scverse Hackathon taking place from &lt;strong&gt;Tuesday, April 2nd, 09:00 AM&lt;/strong&gt; to &lt;strong&gt;Thursday, April 4th, 06:00 PM&lt;/strong&gt; at &lt;strong&gt;Harvard Medical School&lt;/strong&gt; (&lt;a href="https://hms.harvard.edu/about-hms/contact-hms/harvard-longwood-campus-maps-directions"&gt;Boston, MA&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;The scverse hackathon is free. Local and international attendees could register through an open application. More information can be found at the &lt;a href="https://hms-dbmi.github.io/scverse-hackathon-spring-2024/"&gt;website&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="hackathon-tasks"&gt;Hackathon Tasks&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Visualizing remote SpatialData Zarr datasets with Vitessce&lt;/li&gt;
+&lt;li&gt;Unified plotting for SpatialData: static, Napari, Vitessce&lt;/li&gt;
+&lt;li&gt;Pseudotime trajectory explorer widget in Jupyter based on jupyter-scatter&lt;/li&gt;
+&lt;li&gt;Genomic range DataFrame operations in scverse with genomic-features and bioframe&lt;/li&gt;
+&lt;li&gt;Better interactive widgets for scverse with anywidget&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Scverse Hackathon 2023-11 Cambridge</title><link>https://scverse.org/events/2023_11_hackathon/</link><pubDate>Sun, 26 Nov 2023 00:00:05 +0100</pubDate><guid>https://scverse.org/events/2023_11_hackathon/</guid><description>&lt;h2 id="welcome"&gt;Welcome&lt;/h2&gt;
+&lt;p&gt;Join us for the scverse Hackathon taking place from &lt;strong&gt;Monday, November 27th, 9:00 AM&lt;/strong&gt; to &lt;strong&gt;Wednesday, November 29th, afternoon&lt;/strong&gt; at &lt;strong&gt;Wellcome Genome Campus&lt;/strong&gt; (&lt;a href="https://www.google.com/maps/place/Wellcome+Genome+Campus/@52.0802014,0.1871654,15z/data=!4m6!3m5!1s0x47d87ccc6d10a9c9:0x3f7ad92339a765b6!8m2!3d52.0802014!4d0.1871654!16s%2Fm%2F02rttyd?entry=ttu"&gt;(Hinxton CB10 1SA, Cambridge, UK)&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;The scverse hackathon is free. Local and international attendees could register through an open application.&lt;/p&gt;
+&lt;h2 id="hackathon-focus-areas"&gt;Hackathon Focus Areas&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Multi-condition analysis&lt;/strong&gt; - Improve tools for analysis, visualization &amp;amp; tutorials for comparative analysis of single-cell datasets.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data 4 AI&lt;/strong&gt; - writing new packages and docs for pytorch data loaders for single-cell omics datasets from scverse data objects&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;scverse template repos&lt;/strong&gt; - improvements to scverse cookiecutter templates for tools and analysis repos&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;An overview of the outcomes of the hackathon can be found &lt;a href="https://twitter.com/scverse_team/status/1735257738916102575"&gt;here&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Scverse Hackathon 2023-04 Heidelberg</title><link>https://scverse.org/events/2023_04_hackathon/</link><pubDate>Wed, 26 Apr 2023 00:00:05 +0100</pubDate><guid>https://scverse.org/events/2023_04_hackathon/</guid><description>&lt;h2 id="welcome"&gt;Welcome&lt;/h2&gt;
+&lt;p&gt;Join us for the scverse Hackathon taking place from &lt;strong&gt;Wednesday, April 26th, 12:00 PM&lt;/strong&gt; to &lt;strong&gt;Friday, April 28th, afternoon&lt;/strong&gt; at &lt;strong&gt;BioQuant&lt;/strong&gt; (&lt;a href="https://goo.gl/maps/Qo5xD9pFkBYHTjHs6"&gt;Neuenheimer Feld 267, 69120 Heidelberg, Germany&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;The scverse hackathon is free. The event was invite only. We will try to make future editions open to everyone.&lt;/p&gt;
+&lt;h2 id="event-schedule"&gt;Event Schedule&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Wednesday, April 26th (SR041)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;13:30 – 14:00 — PI introductions (Julio Saez-Rodriguez, Wolfgang Huber)&lt;/li&gt;
+&lt;li&gt;14:00 – 14:30 — Hackathon introduction&lt;/li&gt;
+&lt;li&gt;14:30 – 15:00 — State of the scverse + Q&amp;amp;A&lt;/li&gt;
+&lt;li&gt;15:00 – 15:30 — Coffee break&lt;/li&gt;
+&lt;li&gt;15:30 – 18:30 — Split into groups and hack&lt;/li&gt;
+&lt;li&gt;18:30 – 19:00 — Short updates from teams&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Thursday, April 27th (SR042 &amp;amp; SR044)&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Scverse Hackathon 2022-12 Innsbruck</title><link>https://scverse.org/events/2022_12_hackathon/</link><pubDate>Thu, 08 Dec 2022 00:00:05 +0100</pubDate><guid>https://scverse.org/events/2022_12_hackathon/</guid><description>&lt;h2 id="welcome"&gt;Welcome&lt;/h2&gt;
+&lt;p&gt;Join us for the scverse Hackathon taking place from &lt;strong&gt;Thursday, December 8th, 10:00 AM&lt;/strong&gt; to &lt;strong&gt;Friday, December 9th, afternoon&lt;/strong&gt; In Innsbruck.
+The scverse hackathon is free. The event was invite only. We will try to make future editions open to everyone.&lt;/p&gt;
+&lt;h2 id="hackathon-checklist"&gt;Hackathon checklist&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Check that you agree with the &lt;a href="https://scverse.org/about/code_of_conduct/"&gt;scverse code of conduct&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Ensure that you have a &lt;a href="https://github.com/"&gt;Github&lt;/a&gt; account.&lt;/li&gt;
+&lt;li&gt;Join our &lt;a href="https://scverse.zulipchat.com/"&gt;zulip&lt;/a&gt; where you&amp;rsquo;ll be added to the hackathon stream. &lt;a href="https://scverse.zulipchat.com/#narrow/stream/319076-introductions"&gt;Say hi&lt;/a&gt; if this is your first time on the scverse zulip!&lt;/li&gt;
+&lt;li&gt;Have &lt;a href="https://www.python.org/"&gt;python&lt;/a&gt; and any scverse package that you might work on installed.&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Scverse Hackathon 2022-05 Munich</title><link>https://scverse.org/events/2022_05_hackathon/</link><pubDate>Mon, 02 May 2022 00:00:05 +0100</pubDate><guid>https://scverse.org/events/2022_05_hackathon/</guid><description>&lt;h2 id="welcome"&gt;Welcome&lt;/h2&gt;
+&lt;p&gt;Join us for the scverse Hackathon taking place from &lt;strong&gt;Monday, May 2nd, 9:00 AM&lt;/strong&gt; to &lt;strong&gt;Tuesday, May 3rd, afternoon&lt;/strong&gt; In Munich.
+The scverse hackathon is free. The event was invite only. We will try to make future editions open to everyone.&lt;/p&gt;
+&lt;h2 id="hackathon-checklist"&gt;Hackathon checklist&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Check that you agree with the &lt;a href="https://scverse.org/about/code_of_conduct/"&gt;scverse code of conduct&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Ensure that you have a &lt;a href="https://github.com/"&gt;Github&lt;/a&gt; account.&lt;/li&gt;
+&lt;li&gt;Join our &lt;a href="https://scverse.zulipchat.com/"&gt;zulip&lt;/a&gt; where you&amp;rsquo;ll be added to the hackathon stream. &lt;a href="https://scverse.zulipchat.com/#narrow/stream/319076-introductions"&gt;Say hi&lt;/a&gt; if this is your first time on the scverse zulip!&lt;/li&gt;
+&lt;li&gt;Have &lt;a href="https://www.python.org/"&gt;python&lt;/a&gt; and any scverse package that you might work on installed.&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>
