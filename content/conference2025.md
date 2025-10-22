@@ -5,7 +5,7 @@ type: "page"
 url: "/conference2025"
 
 # Conference Details
-label: "Register now!"
+label: "Sold out!"
 conferenceTitle: "scverse conference 2025"
 conferenceDates: "November 17 - 19"
 conferenceLocation: "Stanford, CA"
