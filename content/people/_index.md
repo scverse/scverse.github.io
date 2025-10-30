@@ -278,29 +278,29 @@ preface = "For people participating in and interacting with the consortium, ther
 # ----------
 
 [[teams]]
-    name = "Helping hands"
+    name = "Helping Hands"
     text = "Community members who have taken over certain responsiblities without being part of the core team"
 
 [[teams.members]]
 	name = "Malte Kuehl"
 	url = "https://github.com/maltekuehl/"
     showDetails = true
-    role = "website, stats"
+    role = "website, spatial proteomics, agentic ai"
     affiliation = "Aarhus University"
 
 [[teams.members]]
-	name = " Mikkel Niklas Rasmussen"
+	name = "Mikkel Niklas Rasmussen"
 	url = "https://github.com/mikkelnrasmussen"
     showDetails = true
     role = "review of ecosystem packages"
     affiliation = "DTU"
 
 [[teams.members]]
-	name = "Kartik"
+	name = "Kartik Singhal"
 	url = ""
     showDetails = true
     role = "social media"
-    affiliation = ""
+    affiliation = "Washington University, St Louis"
 
 
 # ----------
