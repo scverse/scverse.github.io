@@ -98,7 +98,8 @@
                         <p><strong>Other contributors:</strong></p>
                         <p>
                           {{ range $index, $person := after 49 $data.contributors }}
-                            <a href="{{ .html_url }}" target="_blank">{{ .name }}</a>{{ if lt $index (sub (len (after 49 $data.contributors)) 1) }}, {{ end }}
+                            <a href="{{ .html_url }}" target="_blank">{{ .name }}</a
+                            >{{ if lt $index (sub (len (after 49 $data.contributors)) 1) }},{{ end }}
                           {{ end }}
                         </p>
                       </div>
