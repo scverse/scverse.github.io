@@ -73,24 +73,36 @@
                       {{ .text | safeHTML }}
                     </p>
                   {{ end }}
-                  {{ if .members }}
-                    <p></p>
-                    <div class="contributor-list pt-3">
-                      {{ range $person := .members }}
-                        <a href="{{ .url }}">
-                          <img
-                            src="{{ .img }}"
-                            class="border rounded-circle me-1 mb-1"
-                            height="100"
-                            width="100"
-                            title="{{ .name }}"
-                            data-bs-toggle="tooltip"
-                            target="_blank"
-                            alt="{{ .name }}"
-                          />
-                        </a>
-                      {{ end }}
-                    </div>
+                  <p></p>
+                  {{ $url := "https://scverse.org/stats/contributors.json" }}
+                  {{ $resource := resources.GetRemote $url }}
+                  {{ with $resource }}
+                    {{ $data := . | transform.Unmarshal }}
+                    {{ if $data.contributors }}
+                      <div class="contributor-list pt-3">
+                        {{ range $index, $person := first 49 $data.contributors }}
+                          <a href="{{ .html_url }}" target="_blank">
+                            <img
+                              src="{{ .avatar_url }}"
+                              class="border rounded-circle me-1 mb-1"
+                              height="100"
+                              width="100"
+                              title="{{ .name }}"
+                              data-bs-toggle="tooltip"
+                              alt="{{ .name }}"
+                            />
+                          </a>
+                        {{ end }}
+                      </div>
+                      <div class="mt-4">
+                        <p><strong>Other contributors:</strong></p>
+                        <p>
+                          {{ range $index, $person := after 49 $data.contributors }}
+                            <a href="{{ .html_url }}" target="_blank">{{ .name }}</a>{{ if lt $index (sub (len (after 49 $data.contributors)) 1) }}, {{ end }}
+                          {{ end }}
+                        </p>
+                      </div>
+                    {{ end }}
                   {{ end }}
                 </div>
               {{ end }}
