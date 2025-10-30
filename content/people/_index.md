@@ -11,7 +11,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Philipp Angerer"
 	url = "https://github.com/flying-sheep"
-    isCoreMember = true
+    showDetails = true
     role = "anndata & scanpy"
     email = "philipp.angerer@scverse.org"
     affiliation = "Helmholtz-Munich"
@@ -19,7 +19,7 @@ preface = "For people participating in and interacting with the consortium, ther
  [[teams.members]]
 	name = "Pau Badia i Mompel"
 	url = "https://github.com/PauBadiaM"
-    isCoreMember = true
+    showDetails = true
     role = "decoupler"
     email = "paubim@stanford.edu"
     affiliation = "Stanford University"
@@ -27,7 +27,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Danila Bredikhin"
 	url = "https://github.com/gtca"
-    isCoreMember = true
+    showDetails = true
     role = "mudata & muon"
     email = "danila.bredikhin@scverse.org"
     affiliation = "Stanford University"
@@ -35,7 +35,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Can Ergen-Behr"
 	url = "https://github.com/canergen"
-    isCoreMember = true
+    showDetails = true
     role = "scvi-tools"
     email = "can.ergen@scverse.org"
     affiliation = "University of California, Berkeley"
@@ -43,7 +43,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Emma Dann"
 	url = "https://github.com/emdann"
-    isCoreMember = true
+    showDetails = true
     role = "community & events"
     email = "emma.dann@scverse.org"
     affiliation = "Stanford University"
@@ -51,7 +51,7 @@ preface = "For people participating in and interacting with the consortium, ther
  [[teams.members]]
 	name = "Severin Dicks"
 	url = "https://github.com/Intron7"
-    isCoreMember = true
+    showDetails = true
     role = "rapids-singlecell"
     email = "severin.dicks@scverse.org"
     affiliation = "NVIDIA"
@@ -59,7 +59,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
     name = "Jennifer Foltz"
     url = "https://jfoltzlab.org/"
-    isCoreMember = true
+    showDetails = true
     role = "community"
     email = "jennifer.foltz@scverse.org"
     affiliation = "Washington University"
@@ -67,7 +67,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Ilan Gold"
 	url = "https://github.com/ilan-gold"
-    isCoreMember = true
+    showDetails = true
     role = "anndata & scanpy"
     email = "ilan.gold@scverse.org"
     affiliation = "Helmholtz Munich"
@@ -75,7 +75,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Lukas Heumos"
 	url = "https://github.com/Zethson"
-    isCoreMember = true
+    showDetails = true
     role = "pertpy & operations"
     email = "lukas.heumos@scverse.org"
     affiliation = "Lamin Labs & Helmholtz Munich"
@@ -83,7 +83,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Sara Jimenez"
 	url = "https://github.com/sarajimenez"
-    isCoreMember = true
+    showDetails = true
     role = "grants & workshops"
     email = "sara.jimenez@scverse.org"
     affiliation = "Helmholtz Munich"
@@ -91,7 +91,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Mikaela Koutrouli"
 	url = "https://github.com/mikelkou"
-    isCoreMember = true
+    showDetails = true
     role = "sc-proteomics & operations"
     email = "mikaela.koutrouli@scverse.org"
     affiliation = "Genentech"
@@ -99,7 +99,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Ori Kronfeld"
 	url = "https://github.com/ori-kron-wis"
-    isCoreMember = true
+    showDetails = true
     role = "scvi-tools"
     email = "ori.kronfeld@scverse.org"
     affiliation = "Weizmann Institute of Science"
@@ -107,7 +107,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
     name = "Luca Marconato"
     url = "https://github.com/LucaMarconato"
-    isCoreMember = true
+    showDetails = true
     role = "spatialdata"
     email = "luca.marconato@scverse.org"
     affiliation = "EMBL Heidelberg"
@@ -115,7 +115,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Giovanni Palla"
 	url = "https://github.com/giovp"
-    isCoreMember = true
+    showDetails = true
     role = "spatialdata & squidpy"
     email = "giovanni.palla@scverse.org"
     affiliation = "CZI"
@@ -123,7 +123,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Anna Schaar"
 	url = "https://github.com/AnnaChristina"
-    isCoreMember = true
+    showDetails = true
     role = "events"
     email = "anna.schaar@scverse.org"
     affiliation = "Bioptimus"
@@ -131,7 +131,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Roshan Sharma"
 	url = "https://github.com/roshan9128"
-    isCoreMember = true
+    showDetails = true
     role = "grants & workshops"
     email = "roshan.sharma@scverse.org"
     affiliation = "Memorial Sloan Kettering Cancer Center"
@@ -139,15 +139,15 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Gregor Sturm"
 	url = "https://github.com/grst"
-    isCoreMember = true
+    showDetails = true
     role = "scirpy"
     email = "gregor.sturm@scverse.org"
-    affiliation = "Böhringer Ingelheim"
+    affiliation = "Boehringer Ingelheim"
 
 [[teams.members]]
 	name = "Tim Treis"
 	url = "https://github.com/timtreis"
-    isCoreMember = true
+    showDetails = true
     role = "spatialdata-plot & squidpy"
     email = "tim.treis@scverse.org"
     affiliation = "Helmholtz Munich"
@@ -155,7 +155,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Wouter-Michiel Vierdag"
 	url = "https://github.com/melonora"
-    isCoreMember = true
+    showDetails = true
     role = "spatialdata"
     email = "michiel.vierdag@scverse.org"
     affiliation = "EMBL Heidelberg"
@@ -163,7 +163,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Isaac Virshup"
 	url = "https://github.com/ivirshup"
-    isCoreMember = true
+    showDetails = true
     role = "anndata & scanpy"
     email = "isaac.virshup@scverse.org"
     affiliation = "CZI"
@@ -171,7 +171,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Kai Zhang"
 	url = "https://lab.kaizhang.org/"
-    isCoreMember = true
+    showDetails = true
     role = "SnapATAC2"
     email = "zhangkai33@westlake.edu.cn"
     affiliation = "Westlake University"
@@ -185,7 +185,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Danila Bredikhin"
 	url = "https://github.com/gtca"
-    isCoreMember = true
+    showDetails = true
     role = "mudata & muon"
     email = "danila.bredikhin@scverse.org"
     affiliation = "Stanford University"
@@ -193,7 +193,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Lukas Heumos"
 	url = "https://github.com/Zethson"
-    isCoreMember = true
+    showDetails = true
     role = "pertpy & operations"
     email = "lukas.heumos@scverse.org"
     affiliation = "Lamin Labs & Helmholtz Munich"
@@ -201,7 +201,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Mikaela Koutrouli"
 	url = "https://github.com/mikelkou"
-    isCoreMember = true
+    showDetails = true
     role = "sc-proteomics & operations"
     email = "mikaela.koutrouli@scverse.org"
     affiliation = "Genentech"
@@ -209,7 +209,7 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Isaac Virshup"
 	url = "https://twitter.com/ivirshup"
-    isCoreMember = true
+    showDetails = true
     role = "anndata & scanpy"
     email = "isaac.virshup@scverse.org"
     affiliation = "CZI"
@@ -274,6 +274,34 @@ preface = "For people participating in and interacting with the consortium, ther
 [[teams.members]]
 	name = "Sarah Teichmann"
 	url = "http://www.teichlab.org"
+
+# ----------
+
+[[teams]]
+    name = "Helping hands"
+    text = "Community members who have taken over certain responsiblities without being part of the core team"
+
+[[teams.members]]
+	name = "Malte Kuehl"
+	url = "https://github.com/maltekuehl/"
+    showDetails = true
+    role = "website, stats"
+    affiliation = "Aarhus University"
+
+[[teams.members]]
+	name = " Mikkel Niklas Rasmussen"
+	url = "https://github.com/mikkelnrasmussen"
+    showDetails = true
+    role = "review of ecosystem packages"
+    affiliation = "DTU"
+
+[[teams.members]]
+	name = "Kartik"
+	url = ""
+    showDetails = true
+    role = "social media"
+    affiliation = ""
+
 
 # ----------
 

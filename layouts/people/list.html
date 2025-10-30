@@ -44,11 +44,11 @@
                               <a
                                 href="{{ .url }}"
                                 target="_blank"
-                                class="person-chip {{ if .isCoreMember }}core-member{{ end }}"
+                                class="person-chip {{ if .showDetails }}core-member{{ end }}"
                               >
                                 <span class="member-name">{{ .name }}</span>
                               </a>
-                              {{ if .isCoreMember }}
+                              {{ if .showDetails }}
                                 <div class="additional-info">
                                   <p>{{ .role }}</p>
                                   <p>
