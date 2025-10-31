@@ -273,50 +273,49 @@ preface = "For people participating in and interacting with the consortium, ther
 	name = "Community"
 	text = "Everyone who uses <span class='backticked'>scverse</span> software is part of the community! There are multiple ways to engage with its other members. For a start, join us on our <a href='https://scverse.zulipchat.com' target='_blank'>Zulip chat</a>, our <a href='https://discourse.scverse.org/' target='_blank'>Discourse forum</a>, and keep an eye on our <a href='https://x.com/scverse_team' target='_blank'>X (Twitter)</a> and <a href='https://bsky.app/profile/scverse.bsky.social' target='_blank'>Bluesky</a> accounts for the events we organise."
 
-[[teams]]id = "single-cell-spatial-proteomics-wg"
-title = "Single cell & Spatial Proteomics Working Group"
-summary = "Community members advancing single-cell and spatial proteomics across methods, tooling, and outreach."
+[[teams]]
+        name = "Single cell & Spatial Proteomics Working Group"
+        text = "A collaborative community advancing single-cell and spatial proteomics across methodology, software, and community engagement." 
 
-  [[teams.members]]
-  name = "Jose Nimo"
-  url = "https://github.com/josenimo"
+[[teams.members]]
+	name = "Jose Nimo"
+	url = "https://github.com/josenimo"
 
-  [[teams.members]]
-  name = "Harald Voehringer"
-  url = "https://github.com/sagar87"
+[[teams.members]]
+  	name = "Harald Voehringer"
+  	url = "https://github.com/sagar87"
 
-  [[teams.members]]
-  name = "Lucas Diedrich"
-  url = "https://github.com/lucas-diedrich/"
+[[teams.members]]
+  	name = "Lucas Diedrich"
+  	url = "https://github.com/lucas-diedrich/"
 
-  [[teams.members]]
-  name = "Malte Kuehl"
-  url = "https://github.com/maltekuehl/"
+[[teams.members]]
+  	name = "Malte Kuehl"
+  	url = "https://github.com/maltekuehl/"
 
-  [[teams.members]]
-  name = "Matthias Meyer-Bender"
-  url = "https://github.com/MeyerBender"
+[[teams.members]]
+  	name = "Matthias Meyer-Bender"
+  	url = "https://github.com/MeyerBender"
 
-  [[teams.members]]
-  name = "Pedro Aragon"
-  url = "https://www.linkedin.com/in/pedro-aragon-fernandez-188851206/?originalSubdomain=dk"
+[[teams.members]]
+  	name = "Pedro Aragon"
+  	url = "https://www.linkedin.com/in/pedro-aragon-fernandez-188851206/?originalSubdomain=dk"
 
-  [[teams.members]]
-  name = "Sergio Marco Salas"
-  url = "https://www.linkedin.com/in/sergio-marco-salas-a2ab72166/?originalSubdomain=es"
+[[teams.members]]
+  	name = "Sergio Marco Salas"
+  	url = "https://www.linkedin.com/in/sergio-marco-salas-a2ab72166/?originalSubdomain=es"
 
-  [[teams.members]]
-  name = "Theodoros Visvikis"
-  url = "https://www.linkedin.com/in/theodoros-visvikis-5aa68515b/?originalSubdomain=nl"
+[[teams.members]]
+  	name = "Theodoros Visvikis"
+  	url = "https://www.linkedin.com/in/theodoros-visvikis-5aa68515b/?originalSubdomain=nl"
 
-  [[teams.members]]
-  name = "Vincenth Brennsteiner"
-  url = "https://www.linkedin.com/in/vincenth-brennsteiner-1a4ba21b0/?originalSubdomain=de"
+[[teams.members]]
+  	name = "Vincenth Brennsteiner"
+  	url = "https://www.linkedin.com/in/vincenth-brennsteiner-1a4ba21b0/?originalSubdomain=de"
 
-  [[teams.members]]
-  name = "Benjamin Furtwängler"
-  url = "https://www.linkedin.com/in/benjamin-furtwaengler/"
-
+[[teams.members]]
+  	name = "Benjamin Furtwängler"
+  	url = "https://www.linkedin.com/in/benjamin-furtwaengler/"
 
 # ----------
 
