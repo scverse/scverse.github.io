@@ -297,7 +297,7 @@ preface = "For people participating in and interacting with the consortium, ther
 
 [[teams.members]]
 	name = "Kartik Singhal"
-	url = ""
+	url = "https://github.com/ksinghal28"
     showDetails = true
     role = "social media"
     affiliation = "Washington University, St Louis"
