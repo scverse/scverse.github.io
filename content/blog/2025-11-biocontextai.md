@@ -31,7 +31,7 @@ We're excited to see what the community builds together.
 
 Learn more about BioContextAI in the [Nature Biotechnology correspondence][Nature Biotechnology correspondence] and on the [BioContextAI website][biocontextai].
 
-*— The scverse core & BiocontextAI teams*
+*— The scverse core & BioContextAI teams*
 
 [biocontextai]: https://biocontext.ai/
 [biocontextai-zulip]: https://scverse.zulipchat.com/#narrow/channel/518508-biocontext-ai
