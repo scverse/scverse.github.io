@@ -1,6 +1,6 @@
 +++
 title = "scverse × BioContextAI: Community Infrastructure for Agentic Analysis"
-date = 2025-11-01T00:00:05+01:00
+date = 2025-11-08T00:00:05+01:00
 description = "scverse partners with BioContextAI to build biomedical MCPs."
 author = "Malte Kühl, Lukas Heumos"
 draft = false
@@ -17,9 +17,8 @@ This project was recently published as a [Nature Biotechnology correspondence][N
 
 BioContextAI currently hosts over 40 community-built biomedical MCP servers with hundreds of tools, including the BioContextAI Knowledgebase MCP with access to resources like UniProt, Open Targets, and pathway databases.
 There's a natural synergy here: while scverse packages handle computational analyses, these knowledge resources support the hypothesis generation and interpretation work that happens around those analyses.
-We're working together to build MCP servers for scverse packages, too.
 Through this joint effort, we hope to facilitate exploration of omics data and provide improved code generation for scverse ecosystem-enabled analyses, all while maintaining reproducibility and transparency.
-This is early work and we are actively evaluating patterns for building MCP servers that integrate well with scientific workflows, community standards and existing documentation and best practices, thereby ensuring that automation supports rather than replaces researcher expertise.
+This is early work and we are actively evaluating patterns for building MCP servers that integrate well with existing workflows and best practices.
 
 ## How to get involved
 
