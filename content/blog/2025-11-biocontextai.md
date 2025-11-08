@@ -2,7 +2,7 @@
 title = "scverse × BioContextAI: Community Infrastructure for Agentic Analysis"
 date = 2025-11-08T00:00:05+01:00
 description = "scverse partners with BioContextAI to build biomedical MCPs."
-author = "Malte Kühl, Lukas Heumos"
+author = "Malte Kuehl, Lukas Heumos"
 draft = false
 +++
 
