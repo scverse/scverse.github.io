@@ -1,7 +1,7 @@
 {{ define "main" }}
   <h1>Blog</h1>
   {{ range .Pages }}
-    <a href="{{ .Permalink }}">
+    <a href="{{ .RelPermalink }}">
       <article class="page-item">
         <div class="page-item-date">
           <span>{{ .Date.Format "January 02, 2006" }}</span>

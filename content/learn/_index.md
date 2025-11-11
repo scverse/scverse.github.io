@@ -2,7 +2,7 @@
 title = "Getting Started"
 
 tutorials_intro = """\
-If you are new to the scverse, get started with this set of tutorials covering basic analysis and functionality of the core pacakges.
+If you are new to the scverse, get started with this set of tutorials covering basic analysis and functionality of the core packages.
 For more tutorials as well as API documentation and user guides, see the sites of [individual packages](/packages/).
 
 You can also find recordings of past talks and workshops on our [YouTube channel](https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA).
@@ -39,8 +39,8 @@ You can also find recordings of past talks and workshops on our [YouTube channel
 	name = "Other modalities"
 	[[tutorials.section]]
 	name = "TCR and BCR receptor sequencing with scirpy"
-	url = "https://scverse.org/scirpy/latest/tutorials/tutorial_3k_tcr.html"
-	img = "https://scverse.org/scirpy/latest/_images/tutorials_tutorial_3k_tcr_86_1.png"
+	url = "https://scirpy.scverse.org/en/latest/tutorials/tutorial_3k_tcr.html"
+	img = "https://scirpy.scverse.org/en/latest/_static/scirpy_logo.png"
 	[[tutorials.section]]
 	name = "ATAC-seq"
 	url = "https://muon-tutorials.readthedocs.io/en/latest/single-cell-rna-atac/pbmc10k/2-Chromatin-Accessibility-Processing.html"

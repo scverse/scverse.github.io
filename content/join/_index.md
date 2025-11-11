@@ -1,8 +1,6 @@
 +++
 title = "Join scverse"
 
-email_stmt = "You can also reach the steering council at: [steering-council@scverse.org](steering-council@scverse.org)"
-
 [[resources]]
 	id = "github"
 	title = "GitHub"
@@ -39,3 +37,9 @@ email_stmt = "You can also reach the steering council at: [steering-council@scve
 	text = "Subscribe to our YouTube channel"
 	link = "https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA"
 +++
+
+You can also reach us by e-mail for certain matters:
+
+- [core@scverse.org](core@scverse.org): [core team](/about/roles#core-team)
+- [conference@scverse.org](conference@scverse.org): for matters regarding the [next conference](/conference2025)
+- [steering-council@scverse.org](steering-council@scverse.org): [steering council](/about/roles#steering-council) (e.g. for questions about sponsorships)

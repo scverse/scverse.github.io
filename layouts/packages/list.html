@@ -26,7 +26,7 @@
                     {{ range $i, $e := $datastructures }}
                       <div class="package-section">
                         <div class="package-img">
-                          <img src="{{ .img }}" />
+                          <img src="{{ .img }}" alt="Logo for {{ .name }}" />
                         </div>
                         <div class="package-info">
                           <div class="package-tile" id="{{ .name }}-tile">
@@ -45,7 +45,7 @@
                     {{ end }}
                   </div>
                 {{ end }}
-                <h4>Modality-specific extensions</h4>
+                <h4>Analysis task-specific extensions</h4>
                 <p>{{ $sections.datastructures_post | markdownify }}</p>
                 <h3 id="frameworks">Frameworks</h3>
                 {{ $sections.frameworks | markdownify }}
@@ -54,7 +54,7 @@
                   {{ range $i, $e := $packages }}
                     <div class="package-section">
                       <div class="package-img">
-                        <img src="{{ .img }}" />
+                        <img src="{{ .img }}" alt="Logo for {{ .name }}" />
                       </div>
                       <div class="package-info">
                         <div class="package-tile" id="{{ .name }}-tile">

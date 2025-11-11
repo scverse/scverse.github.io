@@ -6,15 +6,15 @@ author = "Roshan Sharma"
 draft = false
 +++
 
-<img src="/img/blog/conference2024.png" style="max-width: 100%;" alt="conference-group-picture" />
+<img src="/img/blog/conference2024.png" style="max-width: 100%;" alt="Group photo from the scverse conference" />
 
 
 
-The first scverse conference held in Munich, Germany from 10-12 September, 2024 brought together leading scientists, developers, and researchers from the single-cell genomics and spatial biology community. The conference was organized around five main events: (A) 6 keynotes from leaders in the field (B) 13 short talks from developers, graduate students, postdocs (C) 14 workshops with hands-on experience on various aspects of data analysis and software development (D) Poster session showcasing more than 50 posters (E) Talks from our sponsors showcasing their latest advancements. This year, the focus was on latest community-driven developments in multi-modal and spatial data analysis, broadening scverse accessibility and outreach, and enhancing interoperability. With over 170 participants from 17 different countries, the inaugural scverse conference was a success. Here, we provide major highlights from the conference. 
+The first scverse conference, held in Munich, Germany from 10-12 September, 2024 brought together leading scientists, developers, and researchers from the single-cell genomics and spatial biology community. The conference was organized around five main events: (A) 6 keynotes from leaders in the field (B) 13 short talks from developers, graduate students, postdocs (C) 14 workshops with hands-on experience on various aspects of data analysis and software development (D) Poster session showcasing more than 50 posters (E) Talks from our sponsors showcasing their latest advancements. This year, the focus was on latest community-driven developments in multi-modal and spatial data analysis, broadening scverse accessibility and outreach, and enhancing interoperability. With over 170 participants from 17 different countries, the inaugural scverse conference was a success. Here, we provide major highlights from the conference. 
 
 ### Keynotes
 
-The conference had 6 keynotes from leaders of the field and founders of Scanpy/scverse. The keynotes were designed to highlight different aspects of the current data analysis and software development research ecosystem in single-cell genomics. 
+The conference had 6 keynotes from leaders of the field and founders of Scanpy/scverse. The keynotes were designed to highlight different aspects of the current data analysis and software development research ecosystem in single-cell genomics.
 
 1. Rob Patro (University of Maryland) presented his lab’s method called [alevin-fry](https://github.com/COMBINE-lab/alevin-fry) and a framework called simpleaf to use alevin-fry. It is a suite of tools for processing read level data in order to create count matrices. While most labs begin working with the count matrices and downstream analysis, Dr. Patro’s talk highlighted the importance of parameter choices and proper processing of the sequencing reads for effective downstream computation.   
 2. Angela Olivera Pisco (Insitro) presented her lab’s work on collecting and analyzing whole organism atlases ([Tabula Muris](https://www.czbiohub.org/sf/tabula-muris/) and [Tabula Sapiens](https://tabula-sapiens.sf.czbiohub.org/)). Through a centralized platform, Dr. Pisco’s team was able to integrate data from multiple donors and generate a unified atlas for various organs. Her lab is utilizing AI and multimodal information including histology, medical records to eventually design large-scale pooled compound screens for effective drug design.   
@@ -25,7 +25,7 @@ The conference had 6 keynotes from leaders of the field and founders of Scanpy/s
 
 You can learn more about what each of our speakers discussed by checking out the amazing [keynote sketches](https://lazappi.id.au/posts/2024-09-15-scverse-conference/) made by conference attendee Luke Zappia.
 
-<img src="/img/blog/conference2024-keynote.png" style="max-width: 100%;" alt="conference-keynotes" />
+<img src="/img/blog/conference2024-keynote.png" style="max-width: 100%;" alt="Keynote speakers and slides" />
 
 ### Short talks
 
@@ -33,7 +33,7 @@ The conference also featured several 15-minute short talks, each followed by a Q
 
 The presenters were primarily graduate students and postdoctoral researchers from various academic labs. We believe that providing opportunities for junior scientists to showcase their work and receive constructive feedback is crucial to fostering their growth. This format also allowed the audience to delve into the finer details of each method, complementing the broader discussions. Each short talk sparked extensive conversations, a testament to the effectiveness of this approach. Many attendees expressed their appreciation (some vignettes below) for the inclusion of these talks, particularly for highlighting the contributions of early-career researchers and promoting their visibility within the community.
 
-<img src="/img/blog/conference2024-shorttalk.png" style="max-width: 100%;" alt="conference-short-talk-speakers" />
+<img src="/img/blog/conference2024-shorttalk.png" style="max-width: 100%;" alt="Short talks and presenters" />
 
 ### Workshops
 
@@ -43,19 +43,19 @@ The workshops covered a wide range of topics, from live-coding demonstrations an
 
 The workshops were widely regarded as one of the conference’s major highlights, as reflected in the enthusiastic feedback from participants (see examples below).
 
-<img src="/img/blog/conference2024-workshop.png" style="max-width: 100%;" alt="conference-workshops" />
+<img src="/img/blog/conference2024-workshop.png" style="max-width: 100%;" alt="People participating in workshops" />
 
 ### Poster session
 
 The conference also featured a poster session, where participants showcased their research and engaged in discussions with attendees. A total of 51 posters were presented during the two-hour session, providing ample opportunity for in-depth conversations and knowledge exchange.
 
-<img src="/img/blog/conference2024-poster.png" style="max-width: 100%;" alt="conference-poster-session" />
+<img src="/img/blog/conference2024-poster.png" style="max-width: 100%;" alt="Posters and discussions" />
 
 ### Sponsor talks
 
 The conference would not have been possible without the generous support of our sponsors. We were honored to receive sponsorships from [CZI](https://chanzuckerberg.com/) (Diamond), [Immunai](https://www.immunai.com/) (Platinum), [Altos](https://www.altoslabs.com/) (Gold), [10x Genomics](https://www.10xgenomics.com/) (Gold), [tilDB](https://tiledb.com/) (Gold), [Lamin](https://lamin.ai/) (Silver), [Latch Bio](https://latch.bio/) (Silver), [Data Intuitive](https://www.data-intuitive.com/) (Silver) and [Boehringer-Ingelheim](https://www.boehringer-ingelheim.com/de) (Silver). As part of the sponsor engagement, 10x Genomics delivered a brief presentation on their latest initiatives, CZI hosted a workshop and gave a short talk, and Immunai presented their latest research. The conference also provided an excellent opportunity for participants to network with industry leaders, fostering collaboration and knowledge exchange.
 
-<img src="/img/blog/conference2024-sponsors.png" style="max-width: 100%;" alt="conference-sponsors" />
+<img src="/img/blog/conference2024-sponsors.png" style="max-width: 100%;" alt="Logos of the conference sponsors" />
 
 ### Vignettes from participants
 
@@ -71,7 +71,7 @@ Jiri Bruthans \- Charles University Prague (CZE)
 
 Anna Diamant \- IPMC, Université Nice Côte d'Azur (FRA)
 
-### Conclusion 
+### Conclusion
 
 The inaugural scverse conference surpassed our expectations, both in terms of participant numbers and the overwhelmingly positive feedback we received. Energized by this success, we look forward to many more years of impactful events, including conferences and hackathons, driving innovation with scverse tools in the single-cell genomics field.
 

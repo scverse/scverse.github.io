@@ -2,7 +2,7 @@
 title = "About scverse"
 +++
 
-scverse is a consortium of foundational tools for analysis of omics data in life sciences. It has been founded to ensure the long-term maintenance of these core tools.
+scverse® is a consortium of foundational tools for analysis of omics data in life sciences. It has been founded to ensure the long-term maintenance of these core tools.
 
 Check out our [introductory blog post](/blog/hello-world) and [mission statement](/about/mission) for more details.
 
@@ -16,6 +16,7 @@ If you like scverse and want to support our mission, please consider making a [d
         <img 
             src="https://raw.githubusercontent.com/numfocus/templates/master/images/numfocus-logo.png"
             height="60px"
+            alt="NumFOCUS logo"
         >
     </a>
 </div>
