@@ -24,8 +24,8 @@ Our logo is protected as a registered trademark. For details and specifics, cons
 - Don't rotate or change the orientation of the logo
 - Don't use the logo at sizes where details become illegible
 """
-	package_icons = "These logos represent our core packages. They are available for download in both SVG and PNG formats, with or without package names."
-	contact = "For questions about logo usage or requests for additional formats, please contact us at [brand@example.com](mailto:brand@example.com). For more information about our organization, please visit our [About page](/about/)."
+	package_icons = "These logos represent our core packages. They are available for download in SVG or PNG formats, sometimes with variations such as with or without the package name."
+	contact = "For questions about logo usage or requests for additional formats, please contact us at [core@scverse.org](mailto:core@scverse.org). For more information about scverse, please visit our [About page](/about/)."
 
 [[primarylogos]]
 	name = "Primary Logo"
@@ -62,42 +62,32 @@ Our primary logo combines our icon with the full name. Use this version when int
 	[[packageicons.links]]
 	text = "Download SVG"
 	url = "../img/libs/anndata_schema.svg"
-	urlWithText = "../img/libs/anndata_schema.svg"
-	# [[packageicons.links]]
-	# text = "Download PNG"
-	# url = "../img/libs/anndata_schema.png"
-	# urlWithText = "../img/libs/anndata.svg"
 
 [[packageicons]]
 	name = "mudata"
 	description = "MuData package icon"
 	img = "../img/libs/mudata_flat.svg"
-	imgWithText = "../img/libs/mudata.svg"
 	details = "Icon for the MuData package, representing multimodal data format."
 	color = true
 	[[packageicons.links]]
 	text = "Download SVG"
-	url = "../img/icons/mudata.svg"
-	urlWithText = "../img/libs/mudata.svg"
-	# [[packageicons.links]]
-	# text = "Download PNG"
-	# url = "../img/libs/mudata_flat.png"
-	# urlWithText = "../img/icons/mudata.png"
+	url = "../img/libs/mudata_flat.svg"
+	[[packageicons.links]]
+	text = "Download SVG (w/ name)"
+	url = "../img/libs/mudata.svg"
 
 [[packageicons]]
 	name = "spatialdata"
 	description = "SpatialData package icon"
 	img = "../img/icons/spatialdata.svg"
-	imgWithText = "../img/libs/spatialdata_horizontal.png"
 	details = "Icon for the SpatialData package, representing data format for spatial resolution data."
 	color = true
 	[[packageicons.links]]
 	text = "Download SVG"
 	url = "../img/icons/spatialdata.svg"
-	# urlWithText = "../img/libs/spatialdata.svg"
 	[[packageicons.links]]
-	text = "Download PNG"
-	urlWithText = "../img/libs/spatialdata_horizontal.png"
+	text = "Download PNG (w/ name)"
+	url = "../img/libs/spatialdata_horizontal.png"
 
 [[packageicons]]
 	name = "scanpy"
@@ -108,24 +98,15 @@ Our primary logo combines our icon with the full name. Use this version when int
 	[[packageicons.links]]
 	text = "Download SVG"
 	url = "../img/icons/scanpy.svg"
-	[[packageicons.links]]
-	text = "Download PNG"
-	url = "../img/icons/scanpy.png"
 
 [[packageicons]]
 	name = "muon"
 	description = "Muon package icon"
 	img = "../img/icons/muon.svg"
-	imgWithText = "../img/libs/muon.svg"
 	details = "Icon for the Muon package, representing multi-omics analysis framework."
 	[[packageicons.links]]
 	text = "Download SVG"
 	url = "../img/icons/muon.svg"
-	urlWithText = "../img/libs/muon.svg"
-	[[packageicons.links]]
-	text = "Download PNG"
-	url = "../img/icons/muon.png"
-	urlWithText = "../img/libs/muon.png"
 
 [[packageicons]]
 	name = "scirpy"
@@ -135,9 +116,6 @@ Our primary logo combines our icon with the full name. Use this version when int
 	[[packageicons.links]]
 	text = "Download SVG"
 	url = "../img/icons/scirpy.svg"
-	[[packageicons.links]]
-	text = "Download PNG"
-	url = "../img/icons/scirpy.png"
 
 [[packageicons]]
 	name = "squidpy"
@@ -147,9 +125,6 @@ Our primary logo combines our icon with the full name. Use this version when int
 	[[packageicons.links]]
 	text = "Download SVG"
 	url = "../img/icons/squidpy.svg"
-	[[packageicons.links]]
-	text = "Download PNG"
-	url = "../img/icons/squidpy.png"
 
 [[packageicons]]
 	name = "scvi-tools"
@@ -159,7 +134,4 @@ Our primary logo combines our icon with the full name. Use this version when int
 	[[packageicons.links]]
 	text = "Download SVG"
 	url = "../img/icons/scvi-tools.svg"
-	[[packageicons.links]]
-	text = "Download PNG"
-	url = "../img/icons/scvi-tools.png"
 +++

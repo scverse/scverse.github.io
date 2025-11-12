@@ -62,10 +62,34 @@
                   <div class="logo-examples-gallery">
                     <div class="example-item">
                       <div class="example-image">
+                        <img src="../img/logo/scverse-bridge-sketch.png" alt="scverse logo - Golden Gate Bridge example">
+                      </div>
+                      <div class="example-caption">
+                        <strong>Conference Branding</strong> - scverse conference in the Bay Area in 2025
+                      </div>
+                    </div>
+                    <div class="example-item">
+                      <div class="example-image">
+                        <img src="../img/logo/scverse-lettering.png" alt="scverse lettering (no logo)">
+                      </div>
+                      <div class="example-caption">
+                        <strong>Conference Branding</strong> - scverse lettering for the 2025 conference (no icon)
+                      </div>
+                    </div>
+                    <div class="example-item">
+                      <div class="example-image">
                         <img src="../img/logo/scverse-munich.png" alt="scverse logo - Munich example">
                       </div>
                       <div class="example-caption">
                         <strong>Conference Branding</strong> - scverse conference in Munich in 2024
+                      </div>
+                    </div>
+                    <div class="example-item">
+                      <div class="example-image">
+                        <img src="../img/logo/scverse-slide.png" alt="scverse logo - Example slide">
+                      </div>
+                      <div class="example-caption">
+                        <strong>Slide Branding</strong> - example scverse-branded slide
                       </div>
                     </div>
                     <div class="example-item">
@@ -79,16 +103,6 @@
                   </div>
                   <h2 id="package-icons">Package Logos</h2>
                   <br/>{{ $sections.package_icons | markdownify }}
-                  <div class="icon-display-toggle">
-                    <span class="toggle-label">Display logos:</span>
-                    <div class="toggle-switch">
-                      <input type="checkbox" id="icon-display-mode" class="toggle-checkbox">
-                      <label for="icon-display-mode" class="toggle-label">
-                        <span class="toggle-inner" data-text-on="with text" data-text-off="icons only"></span>
-                        <span class="toggle-switch-button"></span>
-                      </label>
-                    </div>
-                  </div>
                   <div id="icons-list" class="icons-only-mode">
                     {{ $packageicons := .Params.packageicons }}
                     {{ range $i, $e := $packageicons }}
@@ -127,7 +141,7 @@
                 {{ end }}
                 
                 <div id="contact">
-                  <h2>Contact and Additional Resources</h2>
+                  <h2>Contact</h2>
                   <br/>{{ $sections.contact | markdownify }}
                 </div>
               </div>
