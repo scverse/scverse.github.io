@@ -18,36 +18,38 @@
               <div class="post-content" id="media-kit-content">
                 {{ if or .Params.primarylogos .Params.packageicons }}
                   <h2 id="primary-logos">Primary Logos</h2>
-                  <br/>{{ $sections.primary_logos | markdownify }}
+                  <br />{{ $sections.primary_logos | markdownify }}
                   {{ if .Params.primarylogos }}
-                  <div id="logos-list">
-                    {{ $primarylogos := .Params.primarylogos }}
-                    {{ range $i, $e := $primarylogos }}
-                      <div class="logo-section"
-                           style="--hover-color: var(--{{ .name | lower }}-color);"
-                           id="{{ .name | lower }}-tile">
-                        <div class="logo-img">
-                          <img src="{{ .img }}" />
-                        </div>
-                        <div class="logo-info">
-                          <div class="logo-tile">
-                            <div class="logo-text">
-                              <span class="logo-name">{{ .name }}</span>
-                              <span class="logo-details">{{ .details | markdownify }}</span>
+                    <div id="logos-list">
+                      {{ $primarylogos := .Params.primarylogos }}
+                      {{ range $i, $e := $primarylogos }}
+                        <div
+                          class="logo-section"
+                          style="--hover-color: var(--{{ .name | lower }}-color);"
+                          id="{{ .name | lower }}-tile"
+                        >
+                          <div class="logo-img">
+                            <img src="{{ .img }}" />
+                          </div>
+                          <div class="logo-info">
+                            <div class="logo-tile">
+                              <div class="logo-text">
+                                <span class="logo-name">{{ .name }}</span>
+                                <span class="logo-details">{{ .details | markdownify }}</span>
+                              </div>
+                            </div>
+                            <div class="logo-links">
+                              {{ range $k, $v := $e.links }}
+                                <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
+                              {{ end }}
                             </div>
                           </div>
-                          <div class="logo-links">
-                            {{ range $k, $v := $e.links }}
-                              <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
-                            {{ end }}
-                          </div>
                         </div>
-                      </div>
-                    {{ end }}
-                  </div>
+                      {{ end }}
+                    </div>
                   {{ end }}
                   <h2 id="logo-guidelines">Logo Usage Guidelines</h2>
-                  <br/>{{ $sections.logo_guidelines | markdownify }}
+                  <br />{{ $sections.logo_guidelines | markdownify }}
                   <div class="guidelines-container">
                     <div class="do-section">
                       <h3>Do's</h3>
@@ -62,7 +64,10 @@
                   <div class="logo-examples-gallery">
                     <div class="example-item">
                       <div class="example-image">
-                        <img src="../img/logo/scverse-bridge-sketch.png" alt="scverse logo - Golden Gate Bridge example">
+                        <img
+                          src="../img/logo/scverse-bridge-sketch.png"
+                          alt="scverse logo - Golden Gate Bridge example"
+                        />
                       </div>
                       <div class="example-caption">
                         <strong>Conference Branding</strong> - scverse conference in the Bay Area in 2025
@@ -70,7 +75,7 @@
                     </div>
                     <div class="example-item">
                       <div class="example-image">
-                        <img src="../img/logo/scverse-lettering.png" alt="scverse lettering (no logo)">
+                        <img src="../img/logo/scverse-lettering.png" alt="scverse lettering (no logo)" />
                       </div>
                       <div class="example-caption">
                         <strong>Conference Branding</strong> - scverse lettering for the 2025 conference (no icon)
@@ -78,7 +83,7 @@
                     </div>
                     <div class="example-item">
                       <div class="example-image">
-                        <img src="../img/logo/scverse-munich.png" alt="scverse logo - Munich example">
+                        <img src="../img/logo/scverse-munich.png" alt="scverse logo - Munich example" />
                       </div>
                       <div class="example-caption">
                         <strong>Conference Branding</strong> - scverse conference in Munich in 2024
@@ -86,34 +91,41 @@
                     </div>
                     <div class="example-item">
                       <div class="example-image">
-                        <img src="../img/logo/scverse-slide.png" alt="scverse logo - Example slide">
+                        <img src="../img/logo/scverse-slide.png" alt="scverse logo - Example slide" />
                       </div>
-                      <div class="example-caption">
-                        <strong>Slide Branding</strong> - example scverse-branded slide
-                      </div>
+                      <div class="example-caption"><strong>Slide Branding</strong> - example scverse-branded slide</div>
                     </div>
                     <div class="example-item">
                       <div class="example-image">
-                        <img src="../img/logo/scverse-palms.png" alt="scverse logo - Palm tree example">
+                        <img src="../img/logo/scverse-palms.png" alt="scverse logo - Palm tree example" />
                       </div>
                       <div class="example-caption">
-                        <strong>Light Backgrounds</strong> - scverse icon with the concentric circles reminding of the multi-layered scverse ecosystem
+                        <strong>Light Backgrounds</strong> - scverse icon with the concentric circles reminding of the
+                        multi-layered scverse ecosystem
                       </div>
                     </div>
                   </div>
                   <h2 id="package-icons">Package Logos</h2>
-                  <br/>{{ $sections.package_icons | markdownify }}
+                  <br />{{ $sections.package_icons | markdownify }}
                   <div id="icons-list" class="icons-only-mode">
                     {{ $packageicons := .Params.packageicons }}
                     {{ range $i, $e := $packageicons }}
-                      <div class="icon-section" 
-                           style="--hover-color: var(--{{ .name | lower }}-color);"
-                           id="{{ .name | lower }}-tile">
+                      <div
+                        class="icon-section"
+                        style="--hover-color: var(--{{ .name | lower }}-color);"
+                        id="{{ .name | lower }}-tile"
+                      >
                         <div class="icon-img">
                           <!-- Store both image versions in data attributes -->
-                          <img src="{{ .img }}" 
-                               data-icon="{{ .img }}" 
-                               data-icon-with-text="{{ if .imgWithText }}{{ .imgWithText }}{{ else }}{{ .img }}{{ end }}"/>
+                          <img
+                            src="{{ .img }}"
+                            data-icon="{{ .img }}"
+                            data-icon-with-text="{{ if .imgWithText }}
+                              {{ .imgWithText }}
+                            {{ else }}
+                              {{ .img }}
+                            {{ end }}"
+                          />
                         </div>
                         <div class="icon-info">
                           <div class="icon-tile">
@@ -125,11 +137,17 @@
                           <div class="icon-links">
                             {{ range $k, $v := $e.links }}
                               <!-- Add data attributes to store both versions of the URL -->
-                              <a href="{{ $v.url }}" 
-                                 target="_blank"
-                                 class="icon-link"
-                                 data-icon-url="{{ $v.url }}"
-                                 data-with-text-url="{{ if $v.urlWithText }}{{ $v.urlWithText }}{{ else }}{{ $v.url }}{{ end }}">
+                              <a
+                                href="{{ $v.url }}"
+                                target="_blank"
+                                class="icon-link"
+                                data-icon-url="{{ $v.url }}"
+                                data-with-text-url="{{ if $v.urlWithText }}
+                                  {{ $v.urlWithText }}
+                                {{ else }}
+                                  {{ $v.url }}
+                                {{ end }}"
+                              >
                                 {{ $v.text }}
                               </a>
                             {{ end }}
@@ -139,13 +157,14 @@
                     {{ end }}
                   </div>
                 {{ end }}
-                
+
+
                 <div id="contact">
                   <h2>Contact</h2>
-                  <br/>{{ $sections.contact | markdownify }}
+                  <br />{{ $sections.contact | markdownify }}
                 </div>
               </div>
-              {{ end }}
+            {{ end }}
           </article>
         </div>
       </div>
@@ -154,42 +173,41 @@
   </body>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const toggleSwitch = document.getElementById('icon-display-mode');
-      const iconsList = document.getElementById('icons-list');
-      
-      toggleSwitch.addEventListener('change', function() {
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggleSwitch = document.getElementById("icon-display-mode")
+      const iconsList = document.getElementById("icons-list")
+
+      toggleSwitch.addEventListener("change", function () {
         if (this.checked) {
           // Switch to logos with text mode
-          iconsList.classList.remove('icons-only-mode');
-          iconsList.classList.add('icons-with-text-mode');
-          
+          iconsList.classList.remove("icons-only-mode")
+          iconsList.classList.add("icons-with-text-mode")
+
           // Update all displayed images to the text version
-          document.querySelectorAll('#icons-list .icon-img img').forEach(img => {
-            img.src = img.dataset.iconWithText;
-          });
-          
+          document.querySelectorAll("#icons-list .icon-img img").forEach((img) => {
+            img.src = img.dataset.iconWithText
+          })
+
           // Update download links to point to the text versions
-          document.querySelectorAll('#icons-list .icon-link').forEach(link => {
-            link.href = link.dataset.withTextUrl;
-          });
+          document.querySelectorAll("#icons-list .icon-link").forEach((link) => {
+            link.href = link.dataset.withTextUrl
+          })
         } else {
           // Switch to icons only mode
-          iconsList.classList.remove('icons-with-text-mode');
-          iconsList.classList.add('icons-only-mode');
-          
-          // Update all displayed images to the icon-only version
-          document.querySelectorAll('#icons-list .icon-img img').forEach(img => {
-            img.src = img.dataset.icon;
-          });
-          
-          // Update download links to point to the icon-only versions
-          document.querySelectorAll('#icons-list .icon-link').forEach(link => {
-            link.href = link.dataset.iconUrl;
-          });
-        }
-      });
-    });
-  </script>
+          iconsList.classList.remove("icons-with-text-mode")
+          iconsList.classList.add("icons-only-mode")
 
+          // Update all displayed images to the icon-only version
+          document.querySelectorAll("#icons-list .icon-img img").forEach((img) => {
+            img.src = img.dataset.icon
+          })
+
+          // Update download links to point to the icon-only versions
+          document.querySelectorAll("#icons-list .icon-link").forEach((link) => {
+            link.href = link.dataset.iconUrl
+          })
+        }
+      })
+    })
+  </script>
 </html>
