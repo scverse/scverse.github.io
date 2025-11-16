@@ -737,10 +737,9 @@ body {
         align-self: center;
 
         #footer-content {
-            max-width: 1200px;
-            width: 100%;
+            width: $contentwidth;
             @media (max-width: 50rem), (max-device-width: 40rem) {
-                width: 100%;
+                width: $contentwidthwide;
             }
             padding: 2%;
 
@@ -1308,7 +1307,8 @@ body {
     }
 
     // Primary Logos Section
-    #logos-list {
+    #logos-list,
+    #trademarked-logos-list {
         display: flex;
         flex-direction: column;
         gap: 3rem;
