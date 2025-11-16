@@ -6,8 +6,8 @@ aliases = ["/brand/", "/logo/"]
 	primary_logos = """scverse&#174; logo is a signature pair of letters **sc**, originally derived from 'single-cell', smoothly interwoven to create perseption of a third dimension.
 	
 Our logo is available in several formats for different use cases. Please use these official versions and follow our guidelines when representing our brand.
-
-Our logo is protected as a registered trademark. For details and specifics, consult the [NumFOCUS trademark guidelines](https://numfocus.org/trademark-guidelines).
+"""
+	trademark = """Our logo is protected as a registered trademark. For details and specifics, consult the [NumFOCUS trademark guidelines](https://numfocus.org/trademark-guidelines).
 """
 	logo_guidelines = "To maintain brand consistency, please follow these guidelines when using our logo."
 	do_guidelines = """
@@ -52,6 +52,15 @@ Our primary logo combines our icon with the full name. Use this version when int
 	[[primarylogos.links]]
 	text = "Download PNG"
 	url = "../img/logo/scverse_symbol.png"
+
+[[trademarkedlogos]]
+	name = "Icon (® version)"
+	description = "Icon trademarked"
+	img = "../img/icons/scverse_bw_logo.svg"
+	details = "Use this version to indicate that scverse is a registered trademark in formal or legal contexts."
+	[[trademarkedlogos.links]]
+	text = "Download SVG"
+	url = "../img/icons/scverse_bw_logo.svg"
 
 [[packageicons]]
 	name = "anndata"
@@ -116,6 +125,9 @@ Our primary logo combines our icon with the full name. Use this version when int
 	[[packageicons.links]]
 	text = "Download SVG"
 	url = "../img/icons/scirpy.svg"
+	[[packageicons.links]]
+	text = "Download SVG (w/ name)"
+	url = "../img/libs/scirpy_logo.svg"
 
 [[packageicons]]
 	name = "squidpy"
