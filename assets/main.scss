@@ -1285,7 +1285,8 @@ body {
     }
 
     // Primary Logos Section
-    #logos-list, #trademarked-logos-list {
+    #logos-list,
+    #trademarked-logos-list {
         display: flex;
         flex-direction: column;
         gap: 3rem;
