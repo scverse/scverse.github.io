@@ -47,36 +47,35 @@
                         </div>
                       {{ end }}
                     </div>
-                  {{ end }}
-                  <br />{{ $sections.trademark | markdownify }}<br />
+                  {{ end }} <br />{{ $sections.trademark | markdownify }}<br />
                   {{ if .Params.trademarkedlogos }}
-                  <div id="trademarked-logos-list">
-                    {{ $trademarkedlogos := .Params.trademarkedlogos }}
-                    {{ range $i, $e := $trademarkedlogos }}
-                      <div
-                        class="logo-section"
-                        style="--hover-color: var(--{{ .name | lower }}-color);"
-                        id="{{ .name | lower }}-tile"
-                      >
-                        <div class="logo-img">
-                          <img src="{{ .img }}" />
-                        </div>
-                        <div class="logo-info">
-                          <div class="logo-tile">
-                            <div class="logo-text">
-                              <span class="logo-name">{{ .name }}</span>
-                              <span class="logo-details">{{ .details | markdownify }}</span>
+                    <div id="trademarked-logos-list">
+                      {{ $trademarkedlogos := .Params.trademarkedlogos }}
+                      {{ range $i, $e := $trademarkedlogos }}
+                        <div
+                          class="logo-section"
+                          style="--hover-color: var(--{{ .name | lower }}-color);"
+                          id="{{ .name | lower }}-tile"
+                        >
+                          <div class="logo-img">
+                            <img src="{{ .img }}" />
+                          </div>
+                          <div class="logo-info">
+                            <div class="logo-tile">
+                              <div class="logo-text">
+                                <span class="logo-name">{{ .name }}</span>
+                                <span class="logo-details">{{ .details | markdownify }}</span>
+                              </div>
+                            </div>
+                            <div class="logo-links">
+                              {{ range $k, $v := $e.links }}
+                                <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
+                              {{ end }}
                             </div>
                           </div>
-                          <div class="logo-links">
-                            {{ range $k, $v := $e.links }}
-                              <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
-                            {{ end }}
-                          </div>
                         </div>
-                      </div>
-                    {{ end }}
-                  </div>
+                      {{ end }}
+                    </div>
                   {{ end }}
                   <h2 id="logo-guidelines">Logo Usage Guidelines</h2>
                   <br />{{ $sections.logo_guidelines | markdownify }}
