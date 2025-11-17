@@ -46,7 +46,8 @@ $footertextmuted: #aaaaaa;
 
 $postlinktext: #333333;
 
-$maxwidth: 800px;
+$maxwidth: 1200px;
+$maxwidthcover: 1200px;
 $maxwidthwide: 1400px;
 $contentwidth: 80%;
 $contentwidthwide: 92%;
@@ -130,29 +131,34 @@ $additionalInfoColor: #666666;
 }
 
 // Cover buttons
-.btn-github:hover {
-    border-color: $github-black;
-    background-color: $github-black;
+#badges .btn {
+    background-color: $tilebg;
+    border: none;
 }
-.btn-discourse:hover {
-    background-color: $discourse-yellow;
-    color: black;
+
+#badges .btn-github:hover {
+    background-color: $github-black !important;
+    color: white !important;
 }
-.btn-zulip:hover {
-    border-color: $zulip-blue;
-    background-color: $zulip-blue;
+#badges .btn-discourse:hover {
+    background-color: $discourse-yellow !important;
+    color: black !important;
 }
-.btn-twitter:hover {
-    border-color: $twitter-blue;
-    background-color: $twitter-blue;
+#badges .btn-zulip:hover {
+    background-color: $zulip-blue !important;
+    color: white !important;
 }
-.btn-bluesky:hover {
-    border-color: $bluesky-blue;
-    background-color: $bluesky-blue;
+#badges .btn-twitter:hover {
+    background-color: $twitter-blue !important;
+    color: white !important;
 }
-.btn-youtube:hover {
-    border-color: $youtube-red;
-    background-color: $youtube-red;
+#badges .btn-bluesky:hover {
+    background-color: $bluesky-blue !important;
+    color: white !important;
+}
+#badges .btn-youtube:hover {
+    background-color: $youtube-red !important;
+    color: white !important;
 }
 
 // TODO: Should this be necessary?
@@ -369,24 +375,30 @@ body {
             align-items: center;
             align-self: center;
             #cover {
-                max-width: $maxwidthwide;
-                width: $contentwidthwide;
+                max-width: $maxwidthcover;
+                width: 100%;
+                padding: 0 1rem;
                 @media (max-width: 50rem), (max-device-width: 40rem) {
-                    max-width: $maxwidthwide;
-                    width: $contentwidthwide;
+                    max-width: $maxwidthcover;
+                    width: 100%;
+                    padding: 0 1rem;
+                }
+                #cover-top-section {
+                    margin-top: 3rem;
+                    padding: 2rem 0;
+                    @media (max-width: 50rem), (max-device-width: 40rem) {
+                        margin-top: 3rem;
+                        padding: 2rem 0;
+                    }
                 }
                 #cover-heading {
-                    margin-top: 10%;
+                    margin: 0;
+                    padding: 0;
                     @media (max-width: 50rem), (max-device-width: 40rem) {
-                        margin-top: 10%;
+                        margin: 0;
+                        padding: 0;
                     }
-                    max-width: $maxwidthwide;
-                    border-radius: 1rem;
-                    background: linear-gradient(90deg, #f0f0f0, #f0f0f0);
-                    padding: 6rem 4rem;
-                    @media (max-width: 50rem), (max-device-width: 40rem) {
-                        padding: 2rem 1rem;
-                    }
+                    max-width: $maxwidthcover;
                     #title {
                         #title-text {
                             #title-name {
@@ -395,8 +407,9 @@ body {
                                 font-weight: 900;
                                 letter-spacing: 0.2rem;
                                 @media (max-width: 50rem), (max-device-width: 40rem) {
-                                    letter-spacing: 0.1rem;
-                                    font-size: 2rem;
+                                    letter-spacing: 0.15rem;
+                                    font-size: 3.5rem;
+                                    font-weight: 900;
                                 }
                             }
                             #title-desc {
@@ -410,15 +423,11 @@ body {
                             }
                         }
                     }
-                    #cover-image {
-                        img {
-                        }
-                    }
                     #badges {
                         display: flex;
                         flex-wrap: wrap;
                         gap: 1rem;
-                        margin: 4rem 0;
+                        margin: 2rem 0;
                         @media (max-width: 50rem), (max-device-width: 40rem) {
                             margin: 1rem 0;
                             padding: 0;
@@ -428,14 +437,15 @@ body {
                 }
 
                 #chip-announcement {
-                    margin: 3rem auto;
-                    margin-bottom: -3rem;
-                    @media (max-width: 40rem) {
+                    margin: 0.5rem auto 0.5rem;
+                    max-width: $maxwidthcover;
+                    width: 100%;
+                    @media (max-width: 50rem), (max-device-width: 40rem) {
                         width: 100%;
-                        margin-bottom: 3rem;
+                        margin: 0.25rem auto 0.25rem;
                     }
                     display: flex;
-                    justify-content: center;
+                    justify-content: flex-start;
                     &:hover {
                         cursor: pointer;
                     }
@@ -453,6 +463,12 @@ body {
                         transition: all 0.3s ease;
                         outline: 1px solid black;
 
+                        @media (max-width: 50rem), (max-device-width: 40rem) {
+                            border-radius: 1.5rem;
+                            padding: 0.05rem 0.6rem 0.05rem 0;
+                            font-size: 0.7rem;
+                        }
+
                         .event-date {
                             background-color: black;
                             color: white;
@@ -460,6 +476,12 @@ body {
                             border-radius: 2rem;
                             margin: 0.1rem 1rem 0.1rem 0.2rem;
                             align-self: start;
+
+                            @media (max-width: 50rem), (max-device-width: 40rem) {
+                                padding: 0.35rem 0.7rem;
+                                border-radius: 1.5rem;
+                                margin: 0.05rem 0.7rem 0.05rem 0.1rem;
+                            }
                         }
 
                         .event-text {
@@ -722,7 +744,7 @@ body {
             padding: 2%;
 
             div {
-                max-width: $maxwidth;
+                max-width: 1200px;
                 margin: 1rem auto;
                 color: $footertext;
                 text-align: left;
@@ -2186,4 +2208,163 @@ body {
             );
         }
     }
+}
+
+// Interactive UMAP Visualization Styles
+#interactive-demo-section {
+    margin-top: 8%;
+    margin-bottom: 5%;
+}
+
+.interactive-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    perspective: 1500px;
+}
+
+.interactive-card {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    transition:
+        transform 0.6s ease-out,
+        box-shadow 0.3s ease;
+    will-change: transform;
+
+    &:hover {
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+    }
+}
+
+.demo-header {
+    background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
+    padding: 25px;
+    border-bottom: 1px solid #e0e0e0;
+    position: relative;
+    z-index: 100;
+}
+
+.command-input {
+    display: flex;
+    align-items: center;
+    background-color: #e8e8e8;
+    padding: 12px 18px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &:hover {
+        background-color: #e0e0e0;
+    }
+}
+
+.command-icon {
+    width: 32px;
+    height: 32px;
+    background-color: #ccc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+    flex-shrink: 0;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: #4285f4;
+        transform: scale(1.1);
+    }
+
+    svg {
+        width: 14px;
+        height: 14px;
+        fill: white;
+    }
+}
+
+.command-text {
+    font-family: "SF Mono", "Monaco", "Inconsolata", "Fira Code", monospace;
+    font-size: 15px;
+    color: #333;
+    flex-grow: 1;
+    pointer-events: none;
+    font-weight: 500;
+}
+
+.command-status {
+    position: absolute;
+    width: 0;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(52, 168, 83, 0.15);
+    transition: width 0.8s ease-out;
+    pointer-events: none;
+}
+
+.visualization {
+    height: 500px;
+    position: relative;
+    padding: 30px;
+    background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+    overflow: hidden;
+    z-index: 1;
+
+    @media (max-width: 768px) {
+        height: 400px;
+        padding: 20px;
+    }
+}
+
+.dot {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    transition:
+        transform 0.5s cubic-bezier(0.17, 0.67, 0.83, 0.67),
+        opacity 0.5s ease,
+        box-shadow 0.3s ease;
+    will-change: transform, opacity;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+}
+
+.animation-pulse {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.executing-animation {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #4285f4, #34a853);
+    transition: width 1s ease-in-out;
+    pointer-events: none;
 }

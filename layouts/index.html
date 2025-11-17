@@ -10,8 +10,47 @@
     <div id="wrapper">
       <div id="content">
         <div id="cover" class="mw-10">
-          {{ partial "main/chip" . }}
-          {{ partial "main/cover" . }}
+          <div id="cover-top-section">
+            {{ partial "main/chip" . }}
+            {{ partial "main/cover" . }}
+          </div>
+
+          <!-- Interactive UMAP Demo Section -->
+          <section id="interactive-demo-section">
+            <div class="interactive-container" id="interactive-container">
+              <div class="interactive-card" id="interactive-card">
+                <div class="demo-header">
+                  <div class="command-input" id="cmd1">
+                    <div class="command-icon" id="run-cmd1">
+                      <svg viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M361 215C375.3 223.8 384 239.3 384 256C384 272.7 375.3 288.2 361 296.1L73.03 472.1C58.21 482 39.66 482.4 24.52 473.9C9.377 465.4 0 449.4 0 432V80C0 62.64 9.377 46.63 24.52 38.13C39.66 29.64 58.21 29.99 73.03 39.04L361 215z"
+                        />
+                      </svg>
+                    </div>
+                    <div class="command-text">import scanpy as sc</div>
+                    <div class="command-status" id="status-cmd1"></div>
+                    <div class="executing-animation" id="exec-anim-1"></div>
+                  </div>
+                  <div class="command-input" id="cmd2">
+                    <div class="command-icon" id="run-cmd2">
+                      <svg viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M361 215C375.3 223.8 384 239.3 384 256C384 272.7 375.3 288.2 361 296.1L73.03 472.1C58.21 482 39.66 482.4 24.52 473.9C9.377 465.4 0 449.4 0 432V80C0 62.64 9.377 46.63 24.52 38.13C39.66 29.64 58.21 29.99 73.03 39.04L361 215z"
+                        />
+                      </svg>
+                    </div>
+                    <div class="command-text">sc.pl.umap(data, color='clusters')</div>
+                    <div class="command-status" id="status-cmd2"></div>
+                    <div class="executing-animation" id="exec-anim-2"></div>
+                  </div>
+                </div>
+
+                <div id="visualization" class="visualization"></div>
+              </div>
+            </div>
+          </section>
+
           {{ partial "main/packages" . }}
 
 
