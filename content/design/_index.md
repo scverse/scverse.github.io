@@ -3,7 +3,7 @@ title = "Media Kit"
 aliases = ["/brand/", "/logo/"]
 
 [[sections]]
-	primary_logos = """scverse&#174; logo is a signature pair of letters **sc**, originally derived from 'single-cell', smoothly interwoven to create perseption of a third dimension.
+	primary_logos = """scverse&#174; logo is a signature pair of letters **sc**, originally derived from 'single-cell', smoothly interwoven to create perception of a third dimension.
 	
 Our logo is available in several formats for different use cases. Please use these official versions and follow our guidelines when representing our brand.
 """
