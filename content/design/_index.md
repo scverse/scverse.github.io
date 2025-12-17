@@ -66,7 +66,7 @@ Our primary logo combines our icon with the full name. Use this version when int
 	name = "anndata"
 	description = "AnnData package icon"
 	img = "../img/libs/anndata_schema.svg"
-	details = "Icon for the AnnData package, representing annotated matrices."
+	details = "Annotated multivariate observation data."
 	color = true
 	[[packageicons.links]]
 	text = "Download SVG"
@@ -76,7 +76,7 @@ Our primary logo combines our icon with the full name. Use this version when int
 	name = "mudata"
 	description = "MuData package icon"
 	img = "../img/libs/mudata_flat.svg"
-	details = "Icon for the MuData package, representing multimodal data format."
+	details = "Multimodal annotated data."
 	color = true
 	[[packageicons.links]]
 	text = "Download SVG"
@@ -89,7 +89,7 @@ Our primary logo combines our icon with the full name. Use this version when int
 	name = "spatialdata"
 	description = "SpatialData package icon"
 	img = "../img/icons/spatialdata.svg"
-	details = "Icon for the SpatialData package, representing data format for spatial resolution data."
+	details = "Spatially resolved omics data."
 	color = true
 	[[packageicons.links]]
 	text = "Download SVG"
@@ -102,7 +102,7 @@ Our primary logo combines our icon with the full name. Use this version when int
 	name = "scanpy"
 	description = "Scanpy package icon"
 	img = "../img/icons/scanpy.svg"
-	details = "Icon for the Scanpy package, representing single-cell analysis framework."
+	details = "Single-cell analysis in Python."
 	color = true
 	[[packageicons.links]]
 	text = "Download SVG"
@@ -112,7 +112,7 @@ Our primary logo combines our icon with the full name. Use this version when int
 	name = "muon"
 	description = "Muon package icon"
 	img = "../img/icons/muon.svg"
-	details = "Icon for the Muon package, representing multi-omics analysis framework."
+	details = "Multi-omics analysis framework."
 	[[packageicons.links]]
 	text = "Download SVG"
 	url = "../img/icons/muon.svg"
@@ -121,7 +121,7 @@ Our primary logo combines our icon with the full name. Use this version when int
 	name = "scirpy"
 	description = "Scirpy package icon"
 	img = "../img/icons/scirpy.svg"
-	details = "Icon for the Scirpy package, representing single-cell immune sequencing framework."
+	details = "Single-cell immune receptor sequencing analysis."
 	[[packageicons.links]]
 	text = "Download SVG"
 	url = "../img/icons/scirpy.svg"
@@ -133,7 +133,7 @@ Our primary logo combines our icon with the full name. Use this version when int
 	name = "squidpy"
 	description = "Squidpy package icon"
 	img = "../img/icons/squidpy.svg"
-	details = "Icon for the Squidpy package, representing spatial single cell analysis."
+	details = "Spatial single-cell analysis."
 	[[packageicons.links]]
 	text = "Download SVG"
 	url = "../img/icons/squidpy.svg"
@@ -142,7 +142,7 @@ Our primary logo combines our icon with the full name. Use this version when int
 	name = "scvi-tools"
 	description = "scvi-tools package icon"
 	img = "../img/icons/scvi-tools.svg"
-	details = "Icon for the scvi-tools package, representing probabilistic modelling framework for single-cell omics data."
+	details = "Probabilistic models for single-cell omics."
 	[[packageicons.links]]
 	text = "Download SVG"
 	url = "../img/icons/scvi-tools.svg"
@@ -151,7 +151,7 @@ Our primary logo combines our icon with the full name. Use this version when int
 	name = "pertpy"
 	description = "pertpy package icon"
 	img = "../img/icons/pertpy.svg"
-	details = "Icon for the pertpy package, representing a perturbation analysis framework for single-cell omics data."
+	details = "Perturbation analysis for single-cell data."
 	[[packageicons.links]]
 	text = "Download SVG"
 	url = "../img/icons/pertpy.svg"
@@ -160,7 +160,7 @@ Our primary logo combines our icon with the full name. Use this version when int
 	name = "rapids-singlecell"
 	description = "rapids-singlecell package icon"
 	img = "../img/icons/rapids-singlecell.svg"
-	details = "Icon for the pertpy package, representing a GPU accelerated framework for single-cell omics data."
+	details = "GPU-accelerated single-cell analysis."
 	[[packageicons.links]]
 	text = "Download SVG"
 	url = "../img/icons/rapids-singlecell.svg"
@@ -169,7 +169,7 @@ Our primary logo combines our icon with the full name. Use this version when int
 	name = "decoupler"
 	description = "decoupler package icon"
 	img = "../img/icons/decoupler.svg"
-	details = "Icon for the decoupler package, representing a pathway enrichment framework for single-cell omics data."
+	details = "Pathway and transcription factor activity inference."
 	[[packageicons.links]]
 	text = "Download SVG"
 	url = "../img/icons/decoupler.svg"
