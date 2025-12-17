@@ -271,7 +271,7 @@ preface = "For people participating in and interacting with the consortium, ther
 
 [[teams]]
     name = "Helping Hands"
-    text = "Community members who have taken over certain responsiblities without being part of the core team"
+    text = "Trusted community members responsible for essential parts of scverse."
 
 [[teams.members]]
 	name = "Malte Kuehl"
@@ -360,8 +360,8 @@ preface = "For people participating in and interacting with the consortium, ther
 	url = "https://github.com/martinkim0"
 
 [[teams.members]]
-        name = "Anna Schaar"
-        url = "https://github.com/AnnaChristina"
+    name = "Anna Schaar"
+    url = "https://github.com/AnnaChristina"
 
 # ----------
 
