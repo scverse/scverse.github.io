@@ -146,4 +146,31 @@ Our primary logo combines our icon with the full name. Use this version when int
 	[[packageicons.links]]
 	text = "Download SVG"
 	url = "../img/icons/scvi-tools.svg"
+
+[[packageicons]]
+	name = "pertpy"
+	description = "pertpy package icon"
+	img = "../img/icons/pertpy.svg"
+	details = "Icon for the pertpy package, representing a perturbation analysis framework for single-cell omics data."
+	[[packageicons.links]]
+	text = "Download SVG"
+	url = "../img/icons/pertpy.svg"
+
+[[packageicons]]
+	name = "rapids-singlecell"
+	description = "rapids-singlecell package icon"
+	img = "../img/icons/rapids-singlecell.svg"
+	details = "Icon for the pertpy package, representing a GPU accelerated framework for single-cell omics data."
+	[[packageicons.links]]
+	text = "Download SVG"
+	url = "../img/icons/rapids-singlecell.svg"
+
+[[packageicons]]
+	name = "decoupler"
+	description = "decoupler package icon"
+	img = "../img/icons/decoupler.svg"
+	details = "Icon for the decoupler package, representing a pathway enrichment framework for single-cell omics data."
+	[[packageicons.links]]
+	text = "Download SVG"
+	url = "../img/icons/decoupler.svg"
 +++
