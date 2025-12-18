@@ -74,7 +74,7 @@
                 </div>
               {{ end }}
 
-              {{ $jsonURL := "https://scverse.org/ecosystem-packages/ecosystem.json" }}
+              {{ $jsonURL := "https://scverse.org/ecosystem-packages/packages.json" }}
               {{ $remoteData := resources.GetRemote $jsonURL }}
               {{ $pkgs := transform.Unmarshal $remoteData.Content }}
               <h2 id="ecosystem">Ecosystem packages maintained by scverse community</h2>
