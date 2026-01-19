@@ -44,7 +44,7 @@ Thanks to our generous sponsors, the scverse conference was also able to provide
 
 <figure style="margin: 1rem 0; text-align: center;">
   <img src="/img/blog/conference2025/conference2025-keynote.jpg" style="max-width: 80%; border-radius: 8px;" alt="John Marioni keynote" />
-  <figcaption style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 0.5rem;">John Marioni, Genentech delivering his keynote presentation</figcaption>
+  <figcaption style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 0.5rem;">John Marioni, Genentech</figcaption>
 </figure>
 
 **John Marioni**
@@ -104,7 +104,7 @@ The discussion revolved around diverse topics, from technical discussions on [Mo
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;">
   <figure style="margin: 0;">
     <img src="/img/blog/conference2025/conference2025-workshop1.jpg" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;" alt="Workshop session" />
-    <figcaption style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Hands-on workshop at Arc Institute</figcaption>
+    <figcaption style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Participants of the Biohub Workshop</figcaption>
   </figure>
   <figure style="margin: 0;">
     <img src="/img/blog/conference2025/conference2025-workshop2.jpg" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;" alt="Workshop session" />
