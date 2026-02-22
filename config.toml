@@ -8,8 +8,3 @@ description = "Foundational tools for omics data in the life sciences"
 
 [markup.goldmark.renderer]
 unsafe= true
-
-[caches]
-[caches.getjson]
-dir = ":cacheDir/:project"
-maxAge = "10s"
