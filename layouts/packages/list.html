@@ -15,7 +15,6 @@
           <article class="post">
             {{ $sections := index .Params.sections 0 }}
             <div class="post-content" id="packages-content">
-
               {{ $jsonURL := "https://scverse.org/ecosystem-packages/packages.json" }}
               {{ $remoteData := resources.GetRemote $jsonURL }}
               {{ $allPkgs := transform.Unmarshal $remoteData.Content }}
@@ -127,6 +126,7 @@
                   {{ end }}
                 </div>
               {{ end }}
+
 
               <h2 id="ecosystem">Ecosystem packages maintained by scverse community</h2>
               <div>
