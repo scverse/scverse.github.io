@@ -940,7 +940,8 @@ body {
             margin: 3rem 0;
             font-size: 1.1rem;
             text-wrap: pretty;
-            img {
+            > img,
+            > p > img {
                 margin-bottom: 1.5rem;
             }
             span.backticked {
