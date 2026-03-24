@@ -80,11 +80,6 @@ twitter account, the [scverse website](https://scverse.org), and other similar s
 
 The steering council is currently fixed in size to three members.
 This number will be increased as our community grows and diversifies, but will always be an odd number to ensure a simple majority vote outcome is always possible. 
-The initial steering council of the `scverse` consists of
-
-* [Isaac Virshup](https://github.com/ivirshup)
-* [Danila Bredikhin](https://github.com/gtca)
-* [Lukas Heumos](https://github.com/Zethson)
 
 The SC membership is revisited every January.
 SC members who do not actively engage with the SC duties are expected to resign.
