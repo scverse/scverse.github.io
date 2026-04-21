@@ -15,29 +15,63 @@
           <article class="post">
             {{ $sections := index .Params.sections 0 }}
             <div class="post-content" id="packages-content">
-              {{ if .Params.packages }}
+              {{ $jsonURL := "https://scverse.org/ecosystem-packages/packages.json" }}
+              {{ $remoteData := resources.GetRemote $jsonURL }}
+              {{ $allPkgs := transform.Unmarshal $remoteData.Content }}
+
+              {{ $datastructures := slice }}
+              {{ $frameworks := slice }}
+              {{ $ecosystem := slice }}
+              {{ range $allPkgs }}
+                {{ if eq .category "core-datastructure" }}
+                  {{ $datastructures = $datastructures | append . }}
+                {{ else if eq .category "core-framework" }}
+                  {{ $frameworks = $frameworks | append . }}
+                {{ else if eq .category "ecosystem" }}
+                  {{ $ecosystem = $ecosystem | append . }}
+                {{ end }}
+              {{ end }}
+
+              {{ if or $datastructures $frameworks }}
                 <h2 id="core-packages">Packages maintained by core team</h2>
                 {{ $sections.core_packages | markdownify }}
-                {{ if .Params.datastructures }}
+
+                {{ if $datastructures }}
                   <h3 id="datastructures">Data structures</h3>
                   {{ $sections.datastructures | markdownify }}
                   <div id="packages-list">
-                    {{ $datastructures := .Params.datastructures }}
-                    {{ range $i, $e := $datastructures }}
+                    {{ range $datastructures }}
                       <div class="package-section">
                         <div class="package-img">
-                          <img src="{{ .img }}" alt="Logo for {{ .name }}" />
+                          {{ if .logo }}
+                            <img src="https://scverse.org/ecosystem-packages/{{ .logo }}" alt="Logo for {{ .name }}" />
+                          {{ end }}
                         </div>
                         <div class="package-info">
-                          <div class="package-tile" id="{{ .name }}-tile">
+                          <div class="package-tile" id="{{ .name | urlize }}-tile">
                             <div class="package-text">
                               <span class="package-name">{{ .name }}</span>
-                              <span class="package-details">{{ .details | markdownify }}</span>
+                              <span class="package-details">{{ .description | markdownify }}</span>
                             </div>
                           </div>
                           <div class="package-links">
-                            {{ range $k, $v := $e.links }}
-                              <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
+                            <a href="{{ .project_home }}" target="_blank">GitHub</a>
+                            {{ with .documentation_home }}
+                              <a href="{{ . }}" target="_blank">Documentation</a>
+                            {{ end }}
+                            {{ with .install }}
+                              {{ with .pypi }}
+                                <a href="https://pypi.org/project/{{ . }}/" target="_blank">PyPI</a>
+                              {{ end }}
+                              {{ with .conda }}
+                                {{ $parts := split . "::" }}
+                                {{ $pkg := index $parts (sub (len $parts) 1) }}
+                                {{ $channel := "conda-forge" }}
+                                {{ if gt (len $parts) 1 }}
+                                  {{ $channel = index $parts 0 }}
+                                {{ end }}
+                                <a href="https://anaconda.org/{{ $channel }}/{{ $pkg }}" target="_blank">Conda</a>
+                              {{ end }}
                             {{ end }}
                           </div>
                         </div>
@@ -50,22 +84,41 @@
                 <h3 id="frameworks">Frameworks</h3>
                 {{ $sections.frameworks | markdownify }}
                 <div id="packages-list">
-                  {{ $packages := .Params.packages }}
-                  {{ range $i, $e := $packages }}
+                  {{ range $frameworks }}
                     <div class="package-section">
                       <div class="package-img">
-                        <img src="{{ .img }}" alt="Logo for {{ .name }}" />
+                        {{ if .logo }}
+                          <img src="https://scverse.org/ecosystem-packages/{{ .logo }}" alt="Logo for {{ .name }}" />
+                        {{ end }}
                       </div>
                       <div class="package-info">
-                        <div class="package-tile" id="{{ .name }}-tile">
+                        <div class="package-tile" id="{{ .name | urlize }}-tile">
                           <div class="package-text">
                             <span class="package-name">{{ .name }}</span>
-                            <span class="package-details">{{ .details | markdownify }}</span>
+                            <span class="package-details">{{ .description | markdownify }}</span>
                           </div>
                         </div>
                         <div class="package-links">
-                          {{ range $k, $v := $e.links }}
-                            <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
+                          <a href="{{ .project_home }}" target="_blank">GitHub</a>
+                          {{ with .documentation_home }}
+                            <a href="{{ . }}" target="_blank">Documentation</a>
+                          {{ end }}
+                          {{ with .tutorials_home }}
+                            <a href="{{ . }}" target="_blank">Tutorials</a>
+                          {{ end }}
+                          {{ with .install }}
+                            {{ with .pypi }}
+                              <a href="https://pypi.org/project/{{ . }}/" target="_blank">PyPI</a>
+                            {{ end }}
+                            {{ with .conda }}
+                              {{ $parts := split . "::" }}
+                              {{ $pkg := index $parts (sub (len $parts) 1) }}
+                              {{ $channel := "conda-forge" }}
+                              {{ if gt (len $parts) 1 }}
+                                {{ $channel = index $parts 0 }}
+                              {{ end }}
+                              <a href="https://anaconda.org/{{ $channel }}/{{ $pkg }}" target="_blank">Conda</a>
+                            {{ end }}
                           {{ end }}
                         </div>
                       </div>
@@ -74,21 +127,19 @@
                 </div>
               {{ end }}
 
-              {{ $jsonURL := "https://scverse.org/ecosystem-packages/packages.json" }}
-              {{ $remoteData := resources.GetRemote $jsonURL }}
-              {{ $pkgs := transform.Unmarshal $remoteData.Content }}
+
               <h2 id="ecosystem">Ecosystem packages maintained by scverse community</h2>
               <div>
                 <p>{{ $sections.ecosystem | markdownify }}</p>
               </div>
-              {{ if $pkgs }}
+              {{ if $ecosystem }}
                 <div id="ecosystem-packages">
                   <input
                     type="text"
                     class="form-control"
                     id="eco-filter"
                     onkeyup="filterPackages()"
-                    placeholder="Search through {{ len $pkgs }} packages"
+                    placeholder="Search through {{ len $ecosystem }} packages"
                     title="Type in your search query"
                   />
                   <table class="table" id="eco-table">
@@ -99,7 +150,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {{ range $lib := $pkgs }}
+                      {{ range $lib := $ecosystem }}
                         <tr class="package-links eco-table-row">
                           <td>
                             <a href="{{ $lib.project_home }}" target="_blank">{{ $lib.name }}</a>
