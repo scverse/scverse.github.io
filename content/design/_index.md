@@ -7,9 +7,9 @@ aliases = ["/brand/", "/logo/"]
 	
 Our logo is available in several formats for different use cases. Please use these official versions and follow our guidelines when representing our brand.
 """
-	trademark = """Our logo is protected as a registered trademark. For details and specifics, consult the [NumFOCUS trademark guidelines](https://numfocus.org/trademark-guidelines).
+	trademark = """Our logo is protected as a registered trademark.
 """
-	logo_guidelines = "To maintain brand consistency, please follow these guidelines when using our logo."
+	logo_guidelines = "To maintain brand consistency, please follow these guidelines when using our logo. Using logo in illustrations within publications and presentations is allowed as long as its use does not suggest that we published, endorsed, or agree with your work. For details and specifics, consult the [NumFOCUS trademark guidelines](https://numfocus.org/trademark-guidelines)."
 	do_guidelines = """
 - Use the logo in its original proportions
 - Maintain adequate white space around the logo
@@ -173,4 +173,5 @@ Our primary logo combines our icon with the full name. Use this version when int
 	[[packageicons.links]]
 	text = "Download SVG"
 	url = "../img/icons/decoupler.svg"
+
 +++
