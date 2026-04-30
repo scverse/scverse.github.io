@@ -1,17 +1,10 @@
 +++
 title = "rapids-singlecell 0.15.0: Prebuilt CUDA Wheels and Compiled Kernels"
 date = 2026-04-30T00:00:05+01:00
-description = "rapids-singlecell 0.15.0 ships GPU kernels as precompiled wheels — no more runtime compilation."
+description = "Why we moved from CuPy RawKernels to nanobind C++ extensions, plus other release highlights."
 author = "Severin Dicks"
 draft = false
 +++
-
-# rapids-singlecell 0.15.0: Prebuilt CUDA Wheels and Compiled Kernels
-
-*rapids-singlecell 0.15.0 now ships GPU kernels as precompiled extensions instead of being compiled at runtime.
-Here's what that means for you.*
-
----
 
 ## Why the packaging changed
 
@@ -208,6 +201,8 @@ Both energy distance and co-occurrence kernels gained multi-GPU support ([#545](
 ```bash
 pip install rapids-singlecell-cu13   # or rapids-singlecell-cu12
 ```
+
+A big thank you to everyone who tested the pre-releases and helped surface issues before this release went out.
 
 For questions and bug reports, visit the [GitHub issue tracker](https://github.com/scverse/rapids_singlecell/issues).
 
