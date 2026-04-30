@@ -50,10 +50,10 @@ Your existing analysis scripts should work without modification.
 Because the kernels are now compiled binaries, we need to ship one wheel per CUDA major version.
 (Python wheel tags don't encode CUDA version, so we encode it in the package name — the same approach used by CuPy, PyTorch, and other CUDA-dependent packages.)
 
-| Package name | Compiled with | Runtime CUDA support | Blackwell GPUs |
-|---|---|---|---|
-| `rapids-singlecell-cu12` | CUDA 12.2 | CUDA 12.2 – 12.9+ | Via PTX JIT (sm_90) |
-| `rapids-singlecell-cu13` | CUDA 13.0 | CUDA 13.0+ | Native binaries |
+| Package                  | Build CUDA | Runtime CUDA | Blackwell (B200, GB200) |
+| :----------------------- | :--------: | :----------: | :---------------------- |
+| `rapids-singlecell-cu12` |    12.2    | 12.2 – 12.9+ | Supported via PTX JIT   |
+| `rapids-singlecell-cu13` |    13.0    |    13.0+     | Native binaries         |
 
 Both wheels are available for **x86_64** and **aarch64** on Linux.
 
