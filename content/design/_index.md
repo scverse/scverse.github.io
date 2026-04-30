@@ -9,7 +9,7 @@ Our logo is available in several formats for different use cases. Please use the
 """
 	trademark = """Our logo is protected as a registered trademark.
 """
-	logo_guidelines = "To maintain brand consistency, please follow these guidelines when using our logo. Using logo in illustrations within publications and presentations is allowed as long as its use does not suggest that we published, endorsed, or agree with your work. For details and specifics, consult the [NumFOCUS trademark guidelines](https://numfocus.org/trademark-guidelines)."
+	logo_guidelines = "To maintain brand consistency, please follow these guidelines when using our logo."
 	do_guidelines = """
 - Use the logo in its original proportions
 - Maintain adequate white space around the logo
