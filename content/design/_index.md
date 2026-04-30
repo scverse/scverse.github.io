@@ -24,6 +24,17 @@ Our logo is available in several formats for different use cases. Please use the
 - Don't rotate or change the orientation of the logo
 - Don't use the logo at sizes where details become illegible
 """
+	logo_usage_faq = """
+Yes, you are encouraged to use the scverse and package logos in your publications and presentations; as long as you fall under the NumFOCUS guidelines.
+
+**Legal Guidelines for Publications & Presentations:**
+
+- **No Implied Endorsement:** Logo must never suggest that NumFOCUS or scverse has published, reviewed, endorsed, or explicitly agrees with your research, findings, or work.
+- **Mandatory Trademark Notice:** You must include a legal trademark legend acknowledging ownership. The notice should read: "scverse is a trademark of NumFOCUS."
+- **Adherence to the Code of Conduct:** The logo must never be used in a context that reflects poorly on the open-source community or promotes behavior prohibited by the [NumFOCUS Code of Conduct](https://numfocus.org/code-of-conduct).
+- **Commercial Use is Restricted:** If your work is tied to commercial goods, or proprietary product branding, this falls outside of standard fair use, and you need written permission from NumFOCUS.
+"""
+	logo_usage_flair = "For the exhaustive legal document detailing all word mark and trademark restrictions, you can refer directly to the [NumFOCUS Trademark Guidelines](https://numfocus.org/trademark-guidelines)."
 	package_icons = "These logos represent our core packages. They are available for download in SVG or PNG formats, sometimes with variations such as with or without the package name."
 	contact = "For questions about logo usage or requests for additional formats, please contact us at [core@scverse.org](mailto:core@scverse.org). For more information about scverse, please visit our [About page](/about/)."
 
