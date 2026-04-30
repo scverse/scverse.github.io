@@ -6,7 +6,11 @@ author = "Severin Dicks"
 draft = false
 +++
 
-## Why the packaging changed
+# Rapids-singlecell release 0.15.0
+
+We are proud to announce rapids-singlecell release 0.15.0 which comes with lots of new features but also changes to the installation process.
+
+## Why the packaging changes
 
 In earlier versions of rapids-singlecell, all GPU kernels were written as CuPy RawKernels.
 These were compiled the first time you called them — in your environment, on your machine.
@@ -24,7 +28,7 @@ That worked, but it came with friction:
 Starting with 0.15.0, these kernels are compiled once at build time and shipped as nanobind/CUDA C++ extension modules inside the wheel.
 The result is a more conventional compiled-extension workflow: you `pip install` the package and every kernel is ready immediately.
 
-## What changed
+### Packaging changes in detail
 
 The GPU kernels that were previously CuPy RawKernels are now nanobind C++ extensions built with `scikit-build-core` and CMake.
 This gives us:
@@ -45,7 +49,7 @@ import rapids_singlecell as rsc
 
 Your existing analysis scripts should work without modification.
 
-## CUDA-specific wheels
+### CUDA-specific wheels
 
 Because the kernels are now compiled binaries, we need to ship one wheel per CUDA major version.
 (Python wheel tags don't encode CUDA version, so we encode it in the package name — the same approach used by CuPy, PyTorch, and other CUDA-dependent packages.)
@@ -60,9 +64,9 @@ Both wheels are available for **x86_64** and **aarch64** on Linux.
 If you have a Blackwell GPU (B200, GB200) and want the best out-of-the-box performance, the CUDA 13 wheel includes native binaries for Blackwell architectures.
 The CUDA 12 wheel still supports Blackwell through PTX just-in-time compilation, so it will work, but the first kernel launch on Blackwell will be slightly slower while the driver JIT-compiles the PTX.
 
-## How to install
+### How to install
 
-### Prebuilt wheel (recommended)
+#### Prebuilt wheel (recommended)
 
 Pick the wheel that matches your CUDA version:
 
@@ -74,7 +78,7 @@ pip install rapids-singlecell-cu12   # CUDA 12
 This installs rapids-singlecell with precompiled kernels, but does **not** pull in the RAPIDS stack (cupy, cuml, cudf, etc.).
 If you manage those dependencies separately — for example, through conda — this is all you need.
 
-### Prebuilt wheel with RAPIDS dependencies
+#### Prebuilt wheel with RAPIDS dependencies
 
 If you want pip to also install the matching RAPIDS and CuPy packages:
 
@@ -87,7 +91,7 @@ Note: on the prebuilt wheels, the dependency extra is always `[rapids]`.
 The CUDA version is determined by which package name you install — `rapids-singlecell-cu12` or `rapids-singlecell-cu13`.
 If you're building from source instead, the extras are `[rapids-cu12]` and `[rapids-cu13]`.
 
-### Conda / Mamba
+#### Conda / Mamba
 
 Environment files are provided in the repository:
 
@@ -98,7 +102,7 @@ conda env create -f conda/rsc_rapids_26.04_cuda12.yml   # Python 3.14, CUDA 12
 
 > **Note:** RAPIDS currently does not support `channel_priority: strict`. Use `channel_priority: flexible` instead.
 
-### Docker / Apptainer
+#### Docker / Apptainer
 
 Pre-built containers are available for both CUDA versions:
 
@@ -114,7 +118,7 @@ apptainer pull rsc.sif docker://ghcr.io/scverse/rapids-singlecell-cu13:latest
 apptainer run --nv rsc.sif
 ```
 
-## Migration from 0.14.x
+### Migration from 0.14.x
 
 For most users, upgrading is straightforward:
 
@@ -126,7 +130,7 @@ For most users, upgrading is straightforward:
    Run `nvidia-smi` or `nvcc --version` to confirm whether you're on CUDA 12.x or CUDA 13.x, and install the matching wheel.
    If you're using conda, make sure the CUDA runtime library version in your environment matches the wheel you install — e.g., `cuda-cudart` from the `nvidia` channel should be 12.x for the cu12 wheel or 13.x for the cu13 wheel.
 
-## What about `pip install rapids-singlecell`?
+### What about `pip install rapids-singlecell`?
 
 The plain install — `pip install rapids-singlecell`, without the `-cu12` or `-cu13` suffix — still works.
 It will compile the CUDA extensions from source during installation.
@@ -195,12 +199,6 @@ Both energy distance and co-occurrence kernels gained multi-GPU support ([#545](
 - **Dask support for `highly_variable_genes`** with the Seurat v3 flavor ([#616](https://github.com/scverse/rapids-singlecell/pull/616)).
 - **CUDA kernel error surfacing** — launch errors are now raised instead of silently continuing ([#619](https://github.com/scverse/rapids-singlecell/pull/619)).
 - **RAPIDS 26.04 and Python 3.14 support** across all CI and conda environments.
-
-## Get started
-
-```bash
-pip install rapids-singlecell-cu13   # or rapids-singlecell-cu12
-```
 
 A big thank you to everyone who tested the pre-releases and helped surface issues before this release went out.
 
