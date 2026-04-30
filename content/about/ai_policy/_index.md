@@ -2,9 +2,6 @@
 title = "AI Policy"
 +++
 
-
-# scverse AI Policy
-
 ## Overview
 
 scverse encourages its users to get involved with the development process, and if a user wishes to write code AI-assisted, that is also great!
