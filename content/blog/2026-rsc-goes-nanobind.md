@@ -1,7 +1,7 @@
 +++
 title = "rapids-singlecell 0.15.0: Prebuilt CUDA Wheels and Compiled Kernels"
 date = 2026-04-30T00:00:05+01:00
-description = "Why we moved from CuPy RawKernels to nanobind C++ extensions, plus other release highlights."
+description = "Why we moved from CuPy RawKernels to nanobind C++ extensions, and other release highlights."
 author = "Severin Dicks"
 draft = false
 +++
