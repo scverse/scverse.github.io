@@ -957,6 +957,26 @@ body {
                     Open Sans,
                     sans-serif;
             }
+            > table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 1.5rem 0;
+                font-family: "Inter", sans-serif;
+                font-size: 1rem;
+                th,
+                td {
+                    padding: 0.6rem 0.9rem;
+                    border: 1px solid $overline;
+                    text-align: left;
+                }
+                th {
+                    background-color: $tilebg;
+                    font-weight: 600;
+                }
+                tbody tr:nth-child(even) {
+                    background-color: $tilebg4;
+                }
+            }
             @media (max-width: 50rem), (max-device-width: 40rem) {
                 font-size: 1rem;
                 line-height: 1.8rem;
