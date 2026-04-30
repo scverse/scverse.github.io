@@ -1,4 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blogs on scverse</title><link>https://scverse.org/blog/</link><description>Recent scverse news</description><language>en-us</language><lastBuildDate>Thu, 20 Nov 2025 00:00:05 -0800</lastBuildDate><atom:link href="https://scverse.org/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Highlights from the scverse conference 2025</title><link>https://scverse.org/blog/2025-conference-summary/</link><pubDate>Thu, 20 Nov 2025 00:00:05 -0800</pubDate><guid>https://scverse.org/blog/2025-conference-summary/</guid><description>&lt;figure style="margin: 1rem 0;"&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blogs on scverse</title><link>https://scverse.org/blog/</link><description>Recent scverse news</description><language>en-us</language><lastBuildDate>Thu, 30 Apr 2026 00:00:05 +0100</lastBuildDate><atom:link href="https://scverse.org/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>rapids-singlecell 0.15.0: Prebuilt CUDA Wheels and Compiled Kernels</title><link>https://scverse.org/blog/2026-rsc-goes-nanobind/</link><pubDate>Thu, 30 Apr 2026 00:00:05 +0100</pubDate><guid>https://scverse.org/blog/2026-rsc-goes-nanobind/</guid><description>&lt;h1 id="rapids-singlecell-release-0150"&gt;Rapids-singlecell release 0.15.0&lt;/h1&gt;
+&lt;p&gt;We are proud to announce rapids-singlecell release 0.15.0 which comes with lots of new features but also changes to the installation process.&lt;/p&gt;
+&lt;h2 id="why-the-packaging-changes"&gt;Why the packaging changes&lt;/h2&gt;
+&lt;p&gt;In earlier versions of rapids-singlecell, all GPU kernels were written as CuPy RawKernels.
+These were compiled the first time you called them — in your environment, on your machine.
+That worked, but it came with friction:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;First-call latency.&lt;/strong&gt;
+The initial invocation of a kernel-backed function could take several seconds while nvrtc compiled the CUDA source.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Silent dtype/layout mismatches.&lt;/strong&gt;
+A RawKernel receives raw pointers.
+If the input array had the wrong dtype or wasn&amp;rsquo;t C-contiguous, the kernel might silently produce garbage rather than raising an error.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CUDA code trapped in Python strings.&lt;/strong&gt;
+RawKernels are defined as CUDA source inside Python string literals.
+That means no syntax highlighting, no autocomplete, and no compiler warnings in your editor — debugging C++ code buried in a Python string is nobody&amp;rsquo;s idea of a good time.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Starting with 0.15.0, these kernels are compiled once at build time and shipped as nanobind/CUDA C++ extension modules inside the wheel.
+The result is a more conventional compiled-extension workflow: you &lt;code&gt;pip install&lt;/code&gt; the package and every kernel is ready immediately.&lt;/p&gt;</description></item><item><title>Highlights from the scverse conference 2025</title><link>https://scverse.org/blog/2025-conference-summary/</link><pubDate>Thu, 20 Nov 2025 00:00:05 -0800</pubDate><guid>https://scverse.org/blog/2025-conference-summary/</guid><description>&lt;figure style="margin: 1rem 0;"&gt;
 &lt;img src="https://scverse.org/img/blog/conference2025/conference2025.jpg" style="max-width: 100%; border-radius: 8px;" alt="Group photo from the scverse conference 2025" /&gt;
 &lt;figcaption style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 0.5rem;"&gt;Attendees gather for a group photo at Stanford University&lt;/figcaption&gt;
 &lt;/figure&gt;
