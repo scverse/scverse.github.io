@@ -2,7 +2,7 @@
 title = "rapids-singlecell 0.15.0: Prebuilt CUDA Wheels and Compiled Kernels"
 date = 2026-04-30T00:00:05+01:00
 description = "Why we moved from CuPy RawKernels to nanobind C++ extensions and other release highlights."
-author = "Severin Dicks"
+author = "Severin Dicks, Lukas Heumos"
 draft = false
 +++
 
@@ -196,9 +196,10 @@ Both energy distance and co-occurrence kernels gained multi-GPU support ([#545](
 
 ### More highlights
 
+- **RAPIDS 26.04 and Python 3.14 support** across all CI and conda environments.
 - **Dask support for `highly_variable_genes`** with the Seurat v3 flavor ([#616](https://github.com/scverse/rapids-singlecell/pull/616)).
 - **CUDA kernel error surfacing** — launch errors are now raised instead of silently continuing ([#619](https://github.com/scverse/rapids-singlecell/pull/619)).
-- **RAPIDS 26.04 and Python 3.14 support** across all CI and conda environments.
+- **Additional tutorials** such as a Pertpy-GPU tutorial ([#645](https://github.com/scverse/rapids-singlecell/pull/645))
 
 A big thank you to everyone who tested the pre-releases and helped surface issues before this release went out.
 
