@@ -78,7 +78,7 @@ preface = "For people participating in and interacting with the consortium, ther
     showDetails = true
     role = "pertpy & operations"
     email = "lukas.heumos@scverse.org"
-    affiliation = "Lamin Labs & Helmholtz Munich"
+    affiliation = "NVIDIA"
 
 [[teams.members]]
 	name = "Sara Jimenez"
