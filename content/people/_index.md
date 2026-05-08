@@ -168,6 +168,14 @@ preface = "For people participating in and interacting with the consortium, ther
     email = "zhangkai33@westlake.edu.cn"
     affiliation = "Westlake University"
 
+[[teams.members]]
+	name = "Jose Nimo"
+	url = "https://github.com/josenimo"
+    showDetails = true
+    role = "sc-proteomics & events"
+    email = "jose.nimo@scverse.org"
+    affiliation = "Max Delbrück Center Berlin"
+
 # ---------- steering committee, in alphabetical order
 
 [[teams]]
