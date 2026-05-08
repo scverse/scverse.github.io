@@ -167,7 +167,7 @@ preface = "For people participating in and interacting with the consortium, ther
     role = "SnapATAC2"
     email = "zhangkai33@westlake.edu.cn"
     affiliation = "Westlake University"
-	-->
+	--> 
 
 [[teams.members]]
 	name = "Jose Nimo"
