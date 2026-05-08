@@ -160,15 +160,6 @@ preface = "For people participating in and interacting with the consortium, ther
     email = "isaac@scverse.org"
     affiliation = "CZI"
 
-<!-- [[teams.members]]
-	name = "Kai Zhang"
-	url = "https://lab.kaizhang.org/"
-    showDetails = true
-    role = "SnapATAC2"
-    email = "zhangkai33@westlake.edu.cn"
-    affiliation = "Westlake University"
-	-->
-
 [[teams.members]]
 	name = "Jose Nimo"
 	url = "https://github.com/josenimo"
@@ -303,6 +294,13 @@ preface = "For people participating in and interacting with the consortium, ther
     role = "social media"
     affiliation = "Washington University, St Louis"
 
+[[teams.members]]
+	name = "Kai Zhang"
+	url = "https://lab.kaizhang.org/"
+    showDetails = true
+    role = "SnapATAC2"
+    email = "zhangkai33@westlake.edu.cn"
+    affiliation = "Westlake University"
 
 # ----------
 
