@@ -78,7 +78,7 @@ preface = "For people participating in and interacting with the consortium, ther
     showDetails = true
     role = "pertpy & operations"
     email = "lukas.heumos@scverse.org"
-    affiliation = "Lamin Labs & Helmholtz Munich"
+    affiliation = "NVIDIA"
 
 [[teams.members]]
 	name = "Sara Jimenez"
@@ -161,12 +161,12 @@ preface = "For people participating in and interacting with the consortium, ther
     affiliation = "CZI"
 
 [[teams.members]]
-	name = "Kai Zhang"
-	url = "https://lab.kaizhang.org/"
+	name = "Jose Nimo"
+	url = "https://github.com/josenimo"
     showDetails = true
-    role = "SnapATAC2"
-    email = "zhangkai33@westlake.edu.cn"
-    affiliation = "Westlake University"
+    role = "sc-proteomics & events"
+    email = "jose.nimo@scverse.org"
+    affiliation = "Max Delbrück Center Berlin"
 
 # ---------- steering committee, in alphabetical order
 
@@ -294,6 +294,13 @@ preface = "For people participating in and interacting with the consortium, ther
     role = "social media"
     affiliation = "Washington University, St Louis"
 
+[[teams.members]]
+	name = "Kai Zhang"
+	url = "https://lab.kaizhang.org/"
+    showDetails = true
+    role = "SnapATAC2"
+    email = "zhangkai33@westlake.edu.cn"
+    affiliation = "Westlake University"
 
 # ----------
 
