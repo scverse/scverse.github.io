@@ -243,10 +243,7 @@
   </head>
   <body>
     <div class="bg-layer">
-      <img
-        src="{{ .Params.backgroundImage | default "/img/events/2026_10_conference_bg.jpg" }}"
-        alt=""
-      />
+      <img src="{{ .Params.backgroundImage | default "/img/events/2026_10_conference_bg.jpg" }}" alt="" />
     </div>
     <div class="vignette"></div>
 
@@ -254,14 +251,15 @@
       {{ with .Params.label }}
         <div class="header-meta"><span>{{ . }}</span></div>
       {{ end }}
-      
+
+
       <h1>{{ .Params.conferenceTitle | default .Title }}</h1>
-      
+
       <div class="info-grid">
         <div class="date">{{ .Params.conferenceDates | default "October 12 - 14, 2026" }}</div>
         <div class="location">{{ .Params.conferenceLocation | default "Copenhagen, Denmark" }}</div>
       </div>
-      
+
       <div class="description">
         {{ .Params.subtitle | safeHTML | default "Exploring the frontier of single-cell biology and computational frameworks.<br>Join us for the third scverse conference." }}
       </div>
