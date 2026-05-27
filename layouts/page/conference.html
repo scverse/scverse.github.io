@@ -7,10 +7,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
     <style>
+        :root {
+            --accent: {{ .Params.highlightColor | default "#4F46E5" }};
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.65);
+            --bg-dark: #0a0a0a;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -19,156 +26,257 @@
 
         body, html {
             height: 100%;
-            font-family: 'Inter', sans-serif;
-            color: white;
-            overflow: hidden;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text-primary);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            background-color: black;
         }
 
-        .background-container {
-            position: absolute;
+        .bg-layer {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            background-color: #000;
+            z-index: 1;
         }
 
-        .background-container img,
-        .background-container video {
+        .bg-layer img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.8;
+            filter: brightness(0.5);
         }
 
-        .overlay {
-            position: absolute;
+        .vignette {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));
-            z-index: -1;
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 120%);
+            z-index: 2;
         }
 
-        .content {
-            height: 100%;
+        .container {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             padding: 2rem;
-            max-width: 1600px;
-            margin: 0 auto;
             text-align: center;
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
-        h1 {
-            font-size: clamp(3rem, 10vw, 5rem);
-            font-weight: 800;
-	    font-family: 'Inter', sans-serif;
-            letter-spacing: -0.02em;
-            margin-bottom: 1rem;
-            line-height: 1;
-            background: linear-gradient(135deg, #ffffff 0%, #d0d0d0 100%);
+        .header-meta {
+            display: inline-block;
+            padding: 0.6rem 1.4rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 100px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: slideDown 0.8s forwards;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-meta span {
+            font-size: 0.8125rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #ffffff 0%, #a3a3a3 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            display: block;
         }
 
-        .preamble {
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            opacity: 0.5;
-	    margin: 1rem 0;
+        h1 {
+            font-size: clamp(1.75rem, 8.5vw, 5.5rem);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s 0.2s forwards;
+            white-space: nowrap;
+            width: 100%;
         }
 
-        .date-location {
-            font-size: clamp(1.5rem, 3vw, 2rem);
+        .info-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 3.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s 0.4s forwards;
+        }
+
+        .date {
+            font-size: clamp(1.25rem, 3vw, 2rem);
             font-weight: 400;
-            margin-bottom: 5rem;
-            opacity: 0.8;
         }
 
-        .subtitle {
+        .location {
             font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
             font-weight: 300;
-            max-width: 700px;
-            margin: 0 auto;
+        }
+
+        .description {
+            font-size: 1.125rem;
             line-height: 1.6;
-        }
-
-        .highlight {
-            color: {{ .Params.highlightColor | default "#64ffda" }};
+            max-width: 640px;
+            margin-bottom: 4rem;
+            color: var(--text-secondary);
             font-weight: 400;
+            opacity: 0;
+            animation: fadeInUp 1s 0.6s forwards;
         }
 
-        .social-links {
-            margin-top: 1rem;
+        .actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 5rem;
+            opacity: 0;
+            animation: fadeInUp 1s 0.8s forwards;
         }
 
-        .social-links a {
-            display: inline-block;
-            margin: 0 0.75rem;
-            color: white;
-            font-size: 1.2rem;
-            transition: transform 0.3s ease, color 0.3s ease;
+        .btn {
+            padding: 0.875rem 2rem;
+            font-size: 0.9375rem;
+            font-weight: 500;
             text-decoration: none;
-            opacity: 0.8;
+            border-radius: 6px;
+            transition: all 0.2s ease;
         }
 
-        .social-links a:hover {
-            color: {{ .Params.highlightColor | default "#ff0000" }};
-            transform: translateY(-.1rem);
-            border-color: transparent;
-            opacity: 1.0;
-            transition: all 0.3s;
+        .btn-primary {
+            background-color: var(--text-primary);
+            color: var(--bg-dark);
         }
 
-        @media (max-width: 768px) {
-            .content {
+        .btn-primary:hover {
+            background-color: #e5e5e5;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 3rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            animation: fadeIn 1s 1.2s forwards;
+        }
+
+        .footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.8125rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer a:hover {
+            color: var(--text-primary);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 640px) {
+            .container {
                 padding: 1.5rem;
+                justify-content: flex-start;
+                padding-top: 20vh;
             }
-
-            .social-links {
+            .actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            .footer {
+                position: relative;
+                bottom: 0;
                 margin-top: 2rem;
+                padding-bottom: 3rem;
+                flex-wrap: wrap;
             }
         }
     </style>
   </head>
   <body>
-    <div class="background-container">
-      {{ if .Params.backgroundVideo }}
-        <video autoplay muted loop>
-          <source src="{{ .Params.backgroundVideo }}" type="video/mp4" />
-        </video>
-      {{ else }}
-        <img
-          src="{{ .Params.backgroundImage | default "/images/conference-background.jpg" }}"
-          alt="Conference background"
-        />
-      {{ end }}
+    <div class="bg-layer">
+      <img src="{{ .Params.backgroundImage | default "/img/events/2026_10_conference_bg.jpg" }}" alt="" />
     </div>
-    <div class="overlay"></div>
+    <div class="vignette"></div>
 
-    <div class="content">
-      <div class="preamble">
-        <span>{{ .Params.label | default " " }}</span>
-      </div>
+    <main class="container">
+      {{ with .Params.label }}
+        <div class="header-meta"><span>{{ . }}</span></div>
+      {{ end }}
+
+
       <h1>{{ .Params.conferenceTitle | default .Title }}</h1>
-      <div class="date-location">
-        {{ .Params.conferenceDates | default "September 1 - 3" }}<br />
-        {{ .Params.conferenceLocation | default "San Francisco, CA" }}
+
+      <div class="info-grid">
+        <div class="date">{{ .Params.conferenceDates | default "October 12 - 14, 2026" }}</div>
+        <div class="location">{{ .Params.conferenceLocation | default "Copenhagen, Denmark" }}</div>
       </div>
-      <p class="subtitle">
-        {{ .Params.subtitle | default "Follow us on our channels to learn more details in the coming weeks. Join us for an unforgettable experience of innovation and collaboration." }}
 
-      </p>
+      <div class="description">
+        {{ .Params.subtitle | safeHTML | default "Exploring the frontier of single-cell biology and computational frameworks.<br>Join us for the third scverse conference." }}
+      </div>
 
-      <div class="social-links">
-        {{ range .Params.socialLinks }}
-          <a href="{{ .url }}" aria-label="{{ .name }}" target="_blank">{{ .name }}</a>
+      <div class="actions">
+        {{ range $index, $element := .Params.buttons }}
+          <a href="{{ $element.url }}" class="btn {{ if eq $index 0 }}btn-primary{{ else }}btn-secondary{{ end }}">
+            {{ $element.name }}
+          </a>
         {{ end }}
       </div>
-    </div>
+
+      <div class="footer">
+        {{ range .Params.socialLinks }}
+          <a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>
+        {{ end }}
+      </div>
+    </main>
   </body>
 </html>
