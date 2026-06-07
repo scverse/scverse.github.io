@@ -1,7 +1,8 @@
 +++
 title = "Scverse Hackathon 2026-09 Vienna"
-date = 2026-03-30T00:00:05+01:00
+date = 2026-09-04T00:00:05+01:00
 description = "scverse x single-cell proteomics hackathon"
+link = "https://scverse.org/sc-proteomics2026/"
 draft = false
 +++
 
