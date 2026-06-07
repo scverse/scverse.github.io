@@ -1,5 +1,5 @@
 +++
-title = "Scverse Conference 2025-11 Stanford"
+title = "scverse Conference 2025-11 Stanford"
 date = 2025-11-17T00:00:00+01:00
 description = "scverse conference"
 draft = false

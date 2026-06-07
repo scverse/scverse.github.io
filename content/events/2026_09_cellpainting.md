@@ -1,7 +1,8 @@
 +++
-title = "Scverse x Cell Painting Hackathon 2026-09 Berlin"
+title = "scverse x Cell Painting Hackathon 2026-09 Berlin"
 date = 2026-09-02T00:00:00+02:00
 description = "scverse × Cell Painting hackathon"
+link = "https://scverse.org/cellpainting2026/"
 draft = false
 +++
 
