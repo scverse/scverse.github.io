@@ -4,7 +4,7 @@ title: Events
 
 ## Open community meeting
 
-Scverse community meetings happen **every two weeks on Tuesday at 6pm CET** and are open to
+scverse community meetings happen **every two weeks on Tuesday at 6pm CET** and are open to
 everyone! If you are new to scverse, these meetings are a great way to get to know
 the people behind the project. 
 

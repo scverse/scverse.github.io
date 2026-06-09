@@ -1,5 +1,5 @@
 +++
-title = "Scverse Hackathon 2022-12 Innsbruck"
+title = "scverse Hackathon 2022-12 Innsbruck"
 date = 2022-12-08T00:00:05+01:00
 description = "Hackathon on documentation"
 draft = false
