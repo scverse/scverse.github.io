@@ -72,7 +72,8 @@ $conf-muted: $greydesc; // #777
 
     // ── Sub-page header ─────────────────────────────────────────────
     .conference-pageheader {
-        background: linear-gradient(135deg, #0f2440 0%, $conf-accent-dark 100%);
+        background-size: cover;
+        background-position: center;
         color: #fff;
         text-align: center;
         padding: 2.75rem 1.5rem 2.25rem;
