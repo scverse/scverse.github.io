@@ -1,5 +1,8 @@
 {{ define "hero" }}
-  <section class="conference-hero" style="background-image: linear-gradient(rgba(10,20,40,0.55), rgba(10,20,40,0.7)), url('{{ .Params.backgroundImage | default "/img/events/2026_10_conference_bg.jpg" }}');">
+  <section
+    class="conference-hero"
+    style="background-image: linear-gradient(rgba(10,20,40,0.55), rgba(10,20,40,0.7)), url('{{ .Params.backgroundImage | default "/img/events/2026_10_conference_bg.jpg" }}');"
+  >
     <div class="conference-hero-inner">
       {{ with .Params.label }}<span class="conference-badge">{{ . }}</span>{{ end }}
       <h1>{{ .Params.conferenceTitle | default .Title }}</h1>
@@ -9,7 +12,15 @@
       {{ with .Params.buttons }}
         <div class="conference-hero-actions">
           {{ range $i, $b := . }}
-            <a href="{{ $b.url }}" class="conf-btn {{ if eq $i 0 }}conf-btn-primary{{ else }}conf-btn-secondary{{ end }}">{{ $b.name }}</a>
+            <a
+              href="{{ $b.url }}"
+              class="conf-btn {{ if eq $i 0 }}
+                conf-btn-primary
+              {{ else }}
+                conf-btn-secondary
+              {{ end }}"
+              >{{ $b.name }}</a
+            >
           {{ end }}
         </div>
       {{ end }}
