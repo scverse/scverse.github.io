@@ -1,0 +1,37 @@
+{{ define "hero" }}
+  <section class="conference-hero" style="background-image: linear-gradient(rgba(10,20,40,0.55), rgba(10,20,40,0.7)), url('{{ .Params.backgroundImage | default "/img/events/2026_10_conference_bg.jpg" }}');">
+    <div class="conference-hero-inner">
+      {{ with .Params.label }}<span class="conference-badge">{{ . }}</span>{{ end }}
+      <h1>{{ .Params.conferenceTitle | default .Title }}</h1>
+      <p class="conference-hero-meta">{{ .Params.conferenceDates | default "October 12 – 14, 2026" }}</p>
+      <p class="conference-hero-location">{{ .Params.conferenceLocation | default "Copenhagen, Denmark" }}</p>
+      {{ with .Params.subtitle }}<p class="conference-hero-subtitle">{{ . | safeHTML }}</p>{{ end }}
+      {{ with .Params.buttons }}
+        <div class="conference-hero-actions">
+          {{ range $i, $b := . }}
+            <a href="{{ $b.url }}" class="conf-btn {{ if eq $i 0 }}conf-btn-primary{{ else }}conf-btn-secondary{{ end }}">{{ $b.name }}</a>
+          {{ end }}
+        </div>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}
+
+{{ define "main" }}
+  <article class="conference-article">
+    {{ .Content }}
+
+    {{ with .Params.keyDates }}
+      <h2 id="key-dates">Key dates</h2>
+      <ul class="key-dates">
+        {{ range . }}
+          <li>
+            <span class="key-date">{{ .date }}</span>
+            <span class="key-event">{{ .event }}</span>
+          </li>
+        {{ end }}
+      </ul>
+      <p class="placeholder-note">Dates are indicative and will be confirmed soon.</p>
+    {{ end }}
+  </article>
+{{ end }}

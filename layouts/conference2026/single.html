@@ -1,0 +1,14 @@
+{{ define "hero" }}
+  <section class="conference-pageheader">
+    <div class="conference-hero-inner">
+      <p class="conference-eyebrow"><a href="/conference2026/">scverse conference 2026</a> · October 12 – 14 · Copenhagen</p>
+      <h1>{{ .Title }}</h1>
+    </div>
+  </section>
+{{ end }}
+
+{{ define "main" }}
+  <article class="conference-article">
+    {{ .Content }}
+  </article>
+{{ end }}

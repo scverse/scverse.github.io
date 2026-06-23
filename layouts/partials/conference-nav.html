@@ -1,0 +1,10 @@
+{{- $current := .RelPermalink -}}
+{{- $section := .Site.GetPage "/conference2026" -}}
+<nav class="conference-nav">
+  <div class="conference-nav-inner">
+    <a href="{{ $section.RelPermalink }}"{{ if eq $current $section.RelPermalink }} class="active"{{ end }}>Overview</a>
+    {{- range $section.Pages.ByWeight }}
+      <a href="{{ .RelPermalink }}"{{ if eq $current .RelPermalink }} class="active"{{ end }}>{{ .Title }}</a>
+    {{- end }}
+  </div>
+</nav>
