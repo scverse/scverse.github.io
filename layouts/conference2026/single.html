@@ -1,0 +1,20 @@
+{{ define "hero" }}
+  {{ $section := .Site.GetPage "/conference2026" }}
+  <section
+    class="conference-pageheader"
+    style="background-image: linear-gradient(rgba(10,20,40,0.55), rgba(10,20,40,0.7)), url('{{ $section.Params.backgroundImage | default "/img/events/2026_10_conference_bg.jpg" }}');"
+  >
+    <div class="conference-hero-inner">
+      <p class="conference-eyebrow">
+        <a href="/conference2026/">scverse conference 2026</a> · October 12 – 14 · Copenhagen
+      </p>
+      <h1>{{ .Title }}</h1>
+    </div>
+  </section>
+{{ end }}
+
+{{ define "main" }}
+  <article class="conference-article">
+    {{ .Content }}
+  </article>
+{{ end }}

@@ -54,6 +54,9 @@ $contentwidthwide: 92%;
 
 $additionalInfoColor: #666666;
 
+// scverse conference 2026 (scoped under .conference-page)
+@import "conference2026";
+
 @font-face {
     font-family: "Inter";
     src: url("fonts/Inter/Inter-VariableFont_slnt,wght.ttf");
