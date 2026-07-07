@@ -70,19 +70,19 @@ description = "Foundational tools for single-cell omics data analysis"
 [mission]
 
 text = """\
-**scverse** is a consortium of foundational tools (mostly in Python) for omics data in life sciences. It has been founded to ensure the long-term maintenance of these core tools."""
+Scverse is a consortium of foundational tools (mostly in Python) for omics data in life sciences. It has been founded to ensure the long-term maintenance of these core tools."""
 
 # Ecosystem
 [ecosystem]
 
 text = """\
-A broader ecosystem of packages builds on the **scverse** core packages. [These tools](/packages/#ecosystem) implement models and analytical approaches to tackle challenges in spatial omics, regulatory genomics, trajectory inference, visualization, and more."""
+A broader ecosystem of packages builds on the scverse core packages. [These tools](/packages/#ecosystem) implement models and analytical approaches to tackle challenges in spatial omics, regulatory genomics, trajectory inference, visualization, and more."""
 
 # Team
 [team]
 
 text = """\
-**scverse** is a community project currently governed by the developers of the core packages. Please [reach out](/join) if you'd like to be involved!
+Scverse is a community project currently governed by the developers of the core packages. Please [reach out](/join) if you'd like to be involved!
 """
 
 # People information is recorded in the people/_index.md file
@@ -92,7 +92,7 @@ text = """\
 [references]
 
 text = """\
-**scverse** tools are used in numerous research and industry projects across the globe and are referenced in [thousands](https://scholar.google.ru/scholar?cites=14568046068402025757) of academic publications. Consider consulting the following references for more information about core **scverse** libraries and citing the relevant articles when using them in your work:
+Scverse tools are used in numerous research and industry projects across the globe and are referenced in [thousands](https://scholar.google.ru/scholar?cites=14568046068402025757) of academic publications. Consider consulting the following references for more information about core scverse libraries and citing the relevant articles when using them in your work:
 """
 
 [[references.citations]]
