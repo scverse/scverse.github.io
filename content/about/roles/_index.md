@@ -6,6 +6,8 @@ title = "Roles and Decisions"
 
 The purpose of this document is to formalize the governance process used by the `scverse®` project, to clarify how decisions are made and how the various groups within our community interact.
 
+For the community members who currently hold these roles, see the [people page](/people/).
+
 As a whole, we are a consensus-based community project.
 However, any subproject within the scverse can have its own governance system as long as they do not conflict with the rules set out here.
 Anyone with an interest in the project can join the community, contribute to the project design, and participate in the decision making process.
