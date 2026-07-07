@@ -8,3 +8,11 @@ description = "Foundational tools for omics data in the life sciences"
 
 [markup.goldmark.renderer]
 unsafe= true
+
+[outputs]
+home = ["HTML", "RSS", "LLMS"]
+
+[outputFormats.LLMS]
+mediaType = "text/plain"
+baseName = "llms"
+isPlainText = true
