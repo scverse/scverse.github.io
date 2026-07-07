@@ -168,6 +168,14 @@ preface = "For people participating in and interacting with the consortium, ther
     email = "jose.nimo@scverse.org"
     affiliation = "Max Delbrück Center Berlin"
 
+[[teams.members]]
+	name = "Kai Zhang"
+	url = "https://lab.kaizhang.org/"
+    showDetails = true
+    role = "SnapATAC2"
+    email = "zhangkai33@westlake.edu.cn"
+    affiliation = "Westlake University"
+
 # ---------- steering committee, in alphabetical order
 
 [[teams]]
@@ -293,14 +301,6 @@ preface = "For people participating in and interacting with the consortium, ther
     showDetails = true
     role = "social media"
     affiliation = "Washington University, St Louis"
-
-[[teams.members]]
-	name = "Kai Zhang"
-	url = "https://lab.kaizhang.org/"
-    showDetails = true
-    role = "SnapATAC2"
-    email = "zhangkai33@westlake.edu.cn"
-    affiliation = "Westlake University"
 
 # ----------
 
