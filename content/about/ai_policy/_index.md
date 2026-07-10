@@ -4,7 +4,7 @@ title = "AI Policy"
 
 ## Overview
 
-scverse encourages its users to get involved with the development process, and if a user wishes to write code AI-assisted, that is also great!
+Scverse encourages its users to get involved with the development process, and if a user wishes to write code AI-assisted, that is also great!
 We encourage our users to do what is comfortable for them.
 However, since AI-assisted coding has led many open source projects to experience a massive increase in low-quality code submissions, we want to clarify our position in this document.
 

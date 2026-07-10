@@ -30,7 +30,6 @@ $bluesky-blue: #0a7aff;
 $overline: #e0e0e0;
 $linkunderline: #aaaaaa;
 $backtickbg: #f9f9f9;
-$backticktext: #333333;
 
 $navtext: #555555;
 $navtexthover: #000000;
@@ -665,12 +664,6 @@ body {
             }
         }
 
-        span.backticked {
-            font-family: Inter, sans-serif;
-            color: $backticktext;
-            font-weight: 500;
-        }
-
         p > a {
             text-decoration: none;
             color: inherit;
@@ -943,10 +936,6 @@ body {
             > img,
             > p > img {
                 margin-bottom: 1.5rem;
-            }
-            span.backticked {
-                font-size: 1.2rem;
-                line-height: 1.1rem;
             }
             p,
             div,

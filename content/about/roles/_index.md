@@ -52,8 +52,8 @@ There are sub-roles within the core team depending on the kinds covering differe
 
 #### Core Developers
 
-Core developers are members of the core team who have made significant code contributions to `scverse`.
-They are granted additional rights so they can more easily carry on with their `scverse` related activities.
+Core developers are members of the core team who have made significant code contributions to scverse.
+They are granted additional rights so they can more easily carry on with their scverse related activities.
 These rights include: merging approved pull requests, voting for and against contested pull-requests, and being involved in deciding major changes to the API.
 Core developers are on our [@scverse/core-devs](https://github.com/orgs/scverse/teams/core-devs) GitHub team. 
 
@@ -73,7 +73,7 @@ Primary maintainers of new core packages, who are not already core developers, w
 ### Steering Council
 
 The Steering Council (SC) members are core team members who have additional responsibilities to ensure the smooth running of the project.
-SC members are expected to participate in strategic planning, approve changes to the governance model, and make decisions about funding granted to `scverse` itself (funding to community members is theirs to pursue and manage). Changes that impact the full project require analysis informed by extensive experience with both the project and the larger ecosystem.
+SC members are expected to participate in strategic planning, approve changes to the governance model, and make decisions about funding granted to scverse itself (funding to community members is theirs to pursue and manage). Changes that impact the full project require analysis informed by extensive experience with both the project and the larger ecosystem.
 When the core team (including the SC members) fails to reach a consensus in a reasonable timeframe, the SC is the entity that resolves the issue.
 
 Members of the steering council also have the "owner" role within the [scverse GitHub organization](https://github.com/scverse/)
@@ -90,7 +90,7 @@ Nominees should have demonstrated long-term, continued commitment to the project
 A nomination will result in discussion that cannot take more than a month and then admission to the SC by consensus.
 During that time deadlocked votes of the SC will be postponed until the new member has joined and another vote can be held.
 
-The `scverse` steering council may be contacted at [steering-council@scverse.org](mailto:steering-council@scverse.org).
+The scverse steering council may be contacted at [steering-council@scverse.org](mailto:steering-council@scverse.org).
 
 ### Management Committee
 
@@ -112,7 +112,7 @@ Occasionally, sensitive discussion may occur via a private message.
 
 Decisions should be made in accordance with the mission and values of the scverse project.
 
-scverse uses a “consensus seeking” process for making decisions.
+Scverse uses a “consensus seeking” process for making decisions.
 The group tries to find a resolution that has no open objections among relevant core team members.
 Core members are expected to distinguish between fundamental objections to a proposal and minor perceived flaws that they can live with, and not hold up the decision-making process for the latter.
 If no option can be found without objections, the decision is escalated to the SC, which will itself use consensus seeking to come to a resolution.
