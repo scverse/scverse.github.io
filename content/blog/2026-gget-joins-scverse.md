@@ -42,7 +42,7 @@ gget enrichr BRCA1 TP53 PTEN ATM --database KEGG_2021_Human
 
 ## What does this mean for scverse and gget users?
 
-Single-cell analyses built on scverse tools can be the starting point for biological interpretation. For example, after clustering with [Scanpy](https://scanpy.readthedocs.io/) and identifying marker genes, you might want to understand what those genes do, how they are expressed across tissues, whether they are associated with disease, and how their protein products are structured. Without tooling answering these questions means leaving Python and visiting several web portals.
+Analyses built on scverse tools can be the starting point for biological interpretation. For example, after clustering with [Scanpy](https://scanpy.readthedocs.io/) and identifying marker genes, you might want to understand what those genes do, how they are expressed across tissues, whether they are associated with disease, and how their protein products are structured. Without tooling answering these questions means leaving Python and visiting several web portals.
 
 gget closes that loop and is designed for exactly the questions arising at the end of a scverse analysis. It returns results in formats that fit back into the analysis environment.
 
