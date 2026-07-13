@@ -282,6 +282,13 @@ preface = "For people participating in and interacting with the consortium, ther
     text = "Trusted community members responsible for essential parts of scverse."
 
 [[teams.members]]
+	name = "Ilia Kats"
+	url = "https://github.com/ilia-kats"
+    showDetails = true
+    role = "mudata & muon"
+    affiliation = "German Cancer Research Center (DKFZ)"
+
+[[teams.members]]
 	name = "Malte Kuehl"
 	url = "https://github.com/maltekuehl/"
     showDetails = true
