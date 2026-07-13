@@ -95,7 +95,9 @@ sc.pl.umap(adata, color="cell_type")
 
 ## Alignment with the scverse mission
 
-scverse exists to build a modular, open, and interoperable foundation for single-cell biology. Individual packages focus on what they do best, use shared data structures, and compose naturally with one another. The addition of gget to our ecosystem complements this aspect of our model. This kind of interoperability helps makes tool ecosystems more than the sum of their parts, an important objective for us here at scverse.
+scverse is a modular, open, and interoperable foundation for biology.
+Individual packages focus on what they do best, use shared data structures, and compose naturally with one another. 
+The addition of gget to our ecosystem complements our existing tooling by interoperating with the most widely used metadata & dataset databases.
 
 Someone studying spatial transcriptomics with Squidpy may want to fetch ligand-receptor protein structures from PDB, or pull disease associations from Open Targets, or BLAST a sequence of interest. The integration of gget makes each of those a one-liner by being the layer helping you handle external reference databases alongside those analyses.
 
