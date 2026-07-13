@@ -53,9 +53,14 @@ $contentwidthwide: 92%;
 
 $additionalInfoColor: #666666;
 
+// Font stack: these two have well matching cap- and x-heights
 @font-face {
     font-family: "Inter";
     src: url("fonts/Inter/Inter-VariableFont_slnt,wght.ttf");
+}
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("fonts/JetBrainsMono/JetBrainsMono[wght].ttf");
 }
 
 // Global
@@ -945,6 +950,29 @@ body {
                     "Inter",
                     Open Sans,
                     sans-serif;
+            }
+            code {
+                font-family:  "JetBrains Mono", Menlo, monospace;
+                // Undo bootstrap’s shrinking so font heights match
+                font-size: 1em;
+            }
+            // Inline code: add a subtle background via box-shadow
+            :not(pre) > code {
+                background-color: $backtickbg;
+                border-radius: 0.2rem;
+                box-shadow:
+                    0.15em 0 0 $backtickbg,
+                    -0.15em 0 0 $backtickbg;
+            }
+            // Chroma code highlighting: add some padding
+            .highlight {
+                margin: 1rem 0; // matches bootstrap’s <p> margin
+                pre {
+                    margin: 0;
+                    padding: 1rem 1.25rem;
+                    border-radius: 0.5rem;
+                    overflow-x: auto;
+                }
             }
             > table {
                 width: 100%;
