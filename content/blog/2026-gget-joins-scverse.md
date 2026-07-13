@@ -101,7 +101,6 @@ The addition of gget to our ecosystem complements our existing tooling by intero
 
 Someone studying spatial transcriptomics with Squidpy may want to fetch ligand-receptor protein structures from PDB, or pull disease associations from Open Targets, or BLAST a sequence of interest. The integration of gget makes each of those a one-liner by being the layer helping you handle external reference databases alongside those analyses.
 
-The modular principle also applies to gget itself. Each database integration is a separate module, so the package is lightweight and dependencies are opt-in.
 
 ## What joining the scverse ecosystem means
 
