@@ -1,7 +1,7 @@
 +++
 title = "gget joins the scverse ecosystem"
 date = 2026-06-30T00:00:05+01:00
-description = "Introducing gget."
+description = "gget adds programmatic access to genomic reference databases to the scverse ecosystem."
 author = "Muskan Hashim, Laura Luebbert"
 draft = false
 +++
