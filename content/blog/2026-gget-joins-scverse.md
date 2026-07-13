@@ -32,7 +32,7 @@ seq = gget.seq("ENSG00000139618", translate=True)
 gget.enrichr(["BRCA1", "TP53", "PTEN", "ATM"], database="KEGG_2021_Human")
 ```
 
-The same commands work from the terminal:
+The same commands also work from the terminal:
 
 ```shell
 gget search BRCA2 -s homo_sapiens
