@@ -110,7 +110,7 @@ For users, it means gget is where you would expect to find it: listed as one of 
 
 ## Get started
 
-gget is available via PyPI or uv:
+gget is available on PyPI:
 
 ```shell
 pip install gget
