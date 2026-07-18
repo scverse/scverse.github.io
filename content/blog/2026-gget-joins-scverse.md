@@ -72,10 +72,11 @@ adata
 
 Output (stable → 2025-11-08 release):
 
-`AnnData object with n_obs × n_vars = 29010 × 3`
-
-     obs: 'dataset_id', 'assay', 'suspension_type', 'sex', 'tissue_general', 'tissue', 'cell_type', 'disease', 'is_primary_data'
-     var: 'soma_joinid', 'feature_id', 'feature_name', 'feature_type', 'feature_length', 'nnz', 'n_measured_obs'
+```text
+AnnData object with n_obs × n_vars = 29010 × 3
+    obs: 'dataset_id', 'assay', 'suspension_type', 'sex', 'tissue_general', 'tissue', 'cell_type', 'disease', 'is_primary_data'
+    var: 'soma_joinid', 'feature_id', 'feature_name', 'feature_type', 'feature_length', 'nnz', 'n_measured_obs'
+```
 
 ## Alignment with the scverse mission
 
