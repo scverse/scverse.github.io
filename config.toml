@@ -11,3 +11,11 @@ images = ["img/scverse-social-card.png"]
 
 [markup.goldmark.renderer]
 unsafe= true
+
+[outputs]
+home = ["HTML", "RSS", "LLMS"]
+
+[outputFormats.LLMS]
+mediaType = "text/plain"
+baseName = "llms"
+isPlainText = true
