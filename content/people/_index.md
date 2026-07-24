@@ -6,7 +6,7 @@ preface = "For people participating in and interacting with the consortium, ther
 
 [[teams]]
 	name = "Core Team"
-	text = "The Core Team is governing scverse and is deeply involved in developing and maintaining <span class=\"backticked\">scverse</span> packages."
+	text = "The Core Team is governing scverse and is deeply involved in developing and maintaining scverse packages."
 
 [[teams.members]]
 	name = "Philipp Angerer"
@@ -168,6 +168,14 @@ preface = "For people participating in and interacting with the consortium, ther
     email = "jose.nimo@scverse.org"
     affiliation = "Max Delbrück Center Berlin"
 
+[[teams.members]]
+	name = "Kai Zhang"
+	url = "https://lab.kaizhang.org/"
+    showDetails = true
+    role = "SnapATAC2"
+    email = "zhangkai33@westlake.edu.cn"
+    affiliation = "Westlake University"
+
 # ---------- steering committee, in alphabetical order
 
 [[teams]]
@@ -210,7 +218,7 @@ preface = "For people participating in and interacting with the consortium, ther
 
 [[teams]]
 	name = "Management Committee"
-	text = "The Management Committee is committed to supporting <span class=\"backticked\">scverse</span> and is directly involved in investing in its progress."
+	text = "The Management Committee is committed to supporting scverse and is directly involved in investing in its progress."
 	
 [[teams.members]]
 	name = "Francesca Finotello"
@@ -245,7 +253,7 @@ preface = "For people participating in and interacting with the consortium, ther
 
 [[teams]]
 	name = "Advisory Committee"
-	text = "The Advisory Committee helps to shape the overall vision for <span class=\"backticked\">scverse</span> and to define its priorities."
+	text = "The Advisory Committee helps to shape the overall vision for scverse and to define its priorities."
 
 [[teams.members]]
 	name = "Alex Wolf"
@@ -274,6 +282,13 @@ preface = "For people participating in and interacting with the consortium, ther
     text = "Trusted community members responsible for essential parts of scverse."
 
 [[teams.members]]
+	name = "Ilia Kats"
+	url = "https://github.com/ilia-kats"
+    showDetails = true
+    role = "mudata & muon"
+    affiliation = "German Cancer Research Center (DKFZ)"
+
+[[teams.members]]
 	name = "Malte Kuehl"
 	url = "https://github.com/maltekuehl/"
     showDetails = true
@@ -294,19 +309,11 @@ preface = "For people participating in and interacting with the consortium, ther
     role = "social media"
     affiliation = "Washington University, St Louis"
 
-[[teams.members]]
-	name = "Kai Zhang"
-	url = "https://lab.kaizhang.org/"
-    showDetails = true
-    role = "SnapATAC2"
-    email = "zhangkai33@westlake.edu.cn"
-    affiliation = "Westlake University"
-
 # ----------
 
 [[teams]]
 	name = "Community"
-	text = "Everyone who uses <span class='backticked'>scverse</span> software is part of the community! There are multiple ways to engage with its other members. For a start, join us on our <a href='https://scverse.zulipchat.com' target='_blank'>Zulip chat</a>, our <a href='https://discourse.scverse.org/' target='_blank'>Discourse forum</a>, and keep an eye on our <a href='https://x.com/scverse_team' target='_blank'>X (Twitter)</a> and <a href='https://bsky.app/profile/scverse.bsky.social' target='_blank'>Bluesky</a> accounts for the events we organise."
+	text = "Everyone who uses scverse software is part of the community! There are multiple ways to engage with its other members. For a start, join us on our <a href='https://scverse.zulipchat.com' target='_blank'>Zulip chat</a>, our <a href='https://discourse.scverse.org/' target='_blank'>Discourse forum</a>, and keep an eye on our <a href='https://x.com/scverse_team' target='_blank'>X (Twitter)</a> and <a href='https://bsky.app/profile/scverse.bsky.social' target='_blank'>Bluesky</a> accounts for the events we organise."
 
 [[teams]]
         name = "Single cell & Spatial Proteomics Working Group"
@@ -374,7 +381,7 @@ preface = "For people participating in and interacting with the consortium, ther
 
 [contributors]
 	name = "Contributors"
-	text = "All this work makes sense only in the context of the larger community of contributors and users of <span class=\"backticked\">scverse</span> projects. Open-source <span class=\"backticked\">scverse</span> projects are open to contributions, and all these people have contributed to our community (ranked by number of GitHub contributions)."
+	text = "All this work makes sense only in the context of the larger community of contributors and users of scverse projects. Open-source scverse projects are open to contributions, and all these people have contributed to our community (ranked by number of GitHub contributions)."
 
 
 +++
