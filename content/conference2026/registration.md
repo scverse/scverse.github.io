@@ -5,13 +5,13 @@ type = "conference2026"
 weight = 4
 +++
 
-<div class="status-banner">Registration opens soon — dates to be announced.</div>
+<div class="status-banner">Registration is now open — <a href="https://dtu.events/scverse2026/signup.html?step=participants">sign up here</a>.</div>
 
 ## Registration
 
-Registration for scverse conference 2026 will open in the coming months. Ticket tiers, pricing, and deadlines will be posted here. Capacity is limited, so we recommend registering early once registration opens.
+Registration for scverse conference 2026 is now open. [**Register here**](https://dtu.events/scverse2026/signup.html?step=participants). Capacity is limited, so we recommend registering early.
 
-Sign up for announcements via [Zulip](https://scverse.zulipchat.com/) or follow us on social media so you don't miss the opening date.
+Sign up for announcements via [Zulip](https://scverse.zulipchat.com/) or follow us on social media for the latest updates.
 
 ## Travel grants
 
