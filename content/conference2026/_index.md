@@ -13,15 +13,15 @@ subtitle = "The third scverse conference brings together the single-cell and spa
 
 # Call-to-action buttons (first is primary)
 [[buttons]]
-name = "Register (opens soon)"
-url = "/conference2026/registration/"
+name = "Register"
+url = "https://dtu.events/scverse2026/signup.html?step=participants"
 [[buttons]]
 name = "Call for proposals"
 url = "/conference2026/call-for-proposals/"
 
 # Key dates timeline (placeholder — to be confirmed)
 [[keyDates]]
-date = "Spring 2026"
+date = "Open now"
 event = "Registration & call for proposals open"
 [[keyDates]]
 date = "Summer 2026"
