@@ -53,6 +53,9 @@ $contentwidthwide: 92%;
 
 $additionalInfoColor: #666666;
 
+// scverse conference 2026 (scoped under .conference-page)
+@import "conference2026";
+
 // Font stack: these two have well matching cap- and x-heights
 @font-face {
     font-family: "Inter";
