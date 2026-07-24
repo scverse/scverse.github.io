@@ -303,6 +303,73 @@ $conf-muted: $greydesc; // #777
         border-top: 4px solid $conf-accent;
     }
 
+    // Speakers
+    .speaker-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.5rem;
+        margin: 1.5rem 0 2rem;
+    }
+
+    .speaker-card {
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        border: 1px solid $overline;
+        border-radius: 12px;
+        padding: 1.75rem 1.5rem;
+        text-align: center;
+
+        .speaker-photo {
+            width: 132px;
+            height: 132px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.1rem;
+            border: 3px solid $conf-accent;
+        }
+
+        h3 {
+            margin: 0 0 0.2rem;
+            color: $conf-ink;
+        }
+
+        .speaker-affiliation {
+            margin: 0 0 0.9rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: $conf-accent-dark;
+        }
+
+        .speaker-bio {
+            margin: 0 0 1.1rem;
+            font-size: 0.92rem;
+            line-height: 1.55;
+            text-align: left;
+            color: $conf-ink;
+        }
+
+        .speaker-socials {
+            margin: auto 0 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.4rem 0.9rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+
+            a {
+                color: $conf-muted;
+                text-decoration: none;
+
+                &:hover {
+                    color: $conf-accent-dark;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
     // Sponsor tiers
     .tier-grid {
         display: grid;
