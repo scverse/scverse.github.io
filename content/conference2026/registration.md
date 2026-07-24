@@ -17,7 +17,7 @@ Sign up for announcements via [Zulip](https://scverse.zulipchat.com/) or follow 
 
 We are committed to making the conference accessible to as many people as possible. As in previous years, we plan to offer **travel grants** to help cover registration, accommodation, and travel.
 
-Priority is given to applicants who have submitted an abstract and are in financial need — particularly those from underrepresented backgrounds, underresourced institutions, or low- and middle-income countries. Application details and deadlines will be announced together with registration.
+Priority is given to applicants who have submitted an abstract and are in financial need — particularly those from underrepresented backgrounds, underresourced institutions, or low- and middle-income countries. Application details and deadlines will be announced soon.
 
 ## Childcare & accessibility
 

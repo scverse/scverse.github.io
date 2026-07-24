@@ -26,8 +26,6 @@ The scverse conference program is built with the community. We welcome submissio
 
 ## How to submit
 
-The submission portal and guidelines will open with registration. Abstracts will be reviewed by the program committee, and submitting an abstract also makes you eligible to apply for a [travel grant](/conference2026/registration/#travel-grants).
-
-<div class="placeholder-note">Submission portal and deadlines to be announced.</div>
+Submit your abstract through the [scverse 2026 submission portal](https://dtu.events/scverse2026/signup.html?step=participants). Abstracts will be reviewed by the program committee, and submitting an abstract also makes you eligible to apply for a [travel grant](/conference2026/registration/#travel-grants).
 
 Questions about submissions? Email [conference@scverse.org](mailto:conference@scverse.org).

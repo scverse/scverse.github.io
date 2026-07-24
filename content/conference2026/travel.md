@@ -30,7 +30,7 @@ The conference is hosted at the **Technical University of Denmark (DTU)**, just 
 
 ## Accommodation
 
-A list of recommended hotels and student-friendly options near the venue and city centre will be published ahead of registration.
+A list of recommended hotels and student-friendly options near the venue and city centre will be published here soon.
 
 ## Visas
 

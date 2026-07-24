@@ -5,7 +5,7 @@ type = "conference2026"
 weight = 1
 
 # Hero
-label = "Save the date"
+label = "Registration open"
 conferenceDates = "October 12 – 14, 2026"
 conferenceLocation = "DTU, Copenhagen, Denmark"
 backgroundImage = "/img/events/2026_10_conference_bg.jpg"
@@ -30,7 +30,7 @@ event = "Abstract & travel-grant application deadline"
 date = "Summer 2026"
 event = "Notification of abstract & travel-grant decisions"
 [[keyDates]]
-date = "Early autumn 2026"
+date = "September 12, 2026"
 event = "Early-bird registration ends"
 [[keyDates]]
 date = "October 12 – 14, 2026"
@@ -45,6 +45,6 @@ After Munich (2024) and Stanford (2025), the **third scverse conference** comes 
 
 Expect keynote talks, contributed talks and posters, hands-on workshops and tutorials, and plenty of time to connect with the people building and using the scverse ecosystem.
 
-> **Details for 2026 are still being finalised.** Speakers, the full program, registration, and deadlines will be announced in the coming months. Follow us on [Zulip](https://scverse.zulipchat.com/), [Bluesky](https://bsky.app/profile/scverse.bsky.social), [LinkedIn](https://linkedin.com/company/scverse), or [X](https://x.com/scverse_team) to stay up to date.
+> **Registration and the call for proposals are now open, and our first speakers have been announced.** The full program and remaining details will be posted here as they are confirmed. Follow us on [Zulip](https://scverse.zulipchat.com/), [Bluesky](https://bsky.app/profile/scverse.bsky.social), [LinkedIn](https://linkedin.com/company/scverse), or [X](https://x.com/scverse_team) to stay up to date.
 
 Questions? Email us at [conference@scverse.org](mailto:conference@scverse.org).
