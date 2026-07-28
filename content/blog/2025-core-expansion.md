@@ -8,7 +8,7 @@ draft = false
 
 # Four new core packages in scverse
 
-We're happy to announce that four new packages have joined the scverse core ecosystem: [SnapATAC2](https://github.com/scverse/snapatac2), [rapids-singlecell](https://github.com/scverse/rapids_singlecell), [pertpy](https://github.com/scverse/pertpy), and [decoupler](https://github.com/scverse/decoupler).
+We're happy to announce that four new packages have joined the scverse core ecosystem: [SnapATAC2](https://github.com/scverse/snapatac2), [rapids-singlecell](https://github.com/scverse/rapids-singlecell), [pertpy](https://github.com/scverse/pertpy), and [decoupler](https://github.com/scverse/decoupler).
 This broadens the scope of scverse beyond our so far supported modalities and brings in new functionality for epigenomics, perturbation screens, GPU acceleration, and functional inference.
 
 Single-cell analysis is evolving rapidly, with new experimental modalities and larger datasets becoming the norm.
@@ -30,7 +30,7 @@ All outputs are stored in AnnData and integrate seamlessly with scanpy and other
 
 ## rapids-singlecell
 
-[rapids-singlecell](https://github.com/scverse/rapids_singlecell) accelerates the full single-cell analysis pipeline through GPU acceleration with CuPy and NVIDIA RAPIDS.
+[rapids-singlecell](https://github.com/scverse/rapids-singlecell) accelerates the full single-cell analysis pipeline through GPU acceleration with CuPy and NVIDIA RAPIDS.
 Core steps—including PCA, neighborhood graph construction, and clustering—are executed on GPU using cuML, cuGraph, and custom CUDA/CuPy kernels for peak performance.
 
 RSC integrates directly with AnnData and offers near drop-in replacements not only for scanpy, but also for selected functions from decoupler and squidpy.

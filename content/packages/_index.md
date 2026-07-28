@@ -196,7 +196,7 @@ aliases = ["/projects/"]
 	details = "rapids-singlecell is a GPU-accelerated single-cell analysis library that serves as a drop-in replacement for scanpy, squidpy, and decoupler."
 	[[packages.links]]
 	text = "GitHub"
-	url = "https://github.com/scverse/rapids_singlecell"
+	url = "https://github.com/scverse/rapids-singlecell"
 	[[packages.links]]
 	text = "Documentation and tutorials"
 	url = "https://rapids-singlecell.readthedocs.io/en/latest/"

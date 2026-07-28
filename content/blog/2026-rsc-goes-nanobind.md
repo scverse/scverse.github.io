@@ -203,7 +203,7 @@ Both energy distance and co-occurrence kernels gained multi-GPU support ([#545](
 
 A big thank you to everyone who tested the pre-releases and helped surface issues before this release went out.
 
-For questions and bug reports, visit the [GitHub issue tracker](https://github.com/scverse/rapids_singlecell/issues).
+For questions and bug reports, visit the [GitHub issue tracker](https://github.com/scverse/rapids-singlecell/issues).
 
 ---
 
