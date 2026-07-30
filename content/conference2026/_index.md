@@ -50,4 +50,4 @@ Expect keynote talks, contributed talks and posters, hands-on workshops and tuto
 
 > **Registration and the call for proposals are now open, and our first speakers have been announced.** The full program and remaining details will be posted here as they are confirmed. Follow us on [Zulip](https://scverse.zulipchat.com/), [Bluesky](https://bsky.app/profile/scverse.bsky.social), [LinkedIn](https://linkedin.com/company/scverse), or [X](https://x.com/scverse_team) to stay up to date.
 
-Questions? Email us at [conference@scverse.org](mailto:conference@scverse.org).
+Questions? Email us at [conference2026@scverse.org](mailto:conference2026@scverse.org).

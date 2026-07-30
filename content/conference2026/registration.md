@@ -21,4 +21,4 @@ Priority is given to applicants who have submitted an abstract and are in financ
 
 ## Childcare & accessibility
 
-We aim to support attendees with caregiving responsibilities and accessibility needs. If you have specific requirements, please reach out to [conference@scverse.org](mailto:conference@scverse.org) and we will do our best to accommodate.
+We aim to support attendees with caregiving responsibilities and accessibility needs. If you have specific requirements, please reach out to [conference2026@scverse.org](mailto:conference2026@scverse.org) and we will do our best to accommodate.

@@ -13,6 +13,6 @@ The scverse conference 2026 is organised by members of the scverse community tog
 
 ## Get involved
 
-The conference is a community effort. If you would like to help organise, volunteer during the event, or host a satellite session, reach out to us at [conference@scverse.org](mailto:conference@scverse.org).
+The conference is a community effort. If you would like to help organise, volunteer during the event, or host a satellite session, reach out to us at [conference2026@scverse.org](mailto:conference2026@scverse.org).
 
 You can also learn more about the people behind scverse on the [People](/people) page and about the project on our [About](/about) page.
