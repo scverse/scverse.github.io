@@ -41,5 +41,5 @@ title = "Join scverse"
 You can also reach us by e-mail for certain matters:
 
 - [core@scverse.org](core@scverse.org): [core team](/about/roles#core-team)
-- [conference@scverse.org](conference@scverse.org): for matters regarding the [next conference](/conference2025)
+- [conference2026@scverse.org](conference2026@scverse.org): for matters regarding the [next conference](/conference2026)
 - [steering-council@scverse.org](steering-council@scverse.org): [steering council](/about/roles#steering-council) (e.g. for questions about sponsorships)
