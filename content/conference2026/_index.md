@@ -24,8 +24,8 @@ url = "/conference2026/call-for-proposals/"
 date = "Open now"
 event = "Registration & call for proposals open"
 [[keyDates]]
-date = "Summer 2026"
-event = "Abstract & travel-grant application deadline"
+date = "August 24, 2026"
+event = "Abstract submission deadline"
 [[keyDates]]
 date = "Summer 2026"
 event = "Notification of abstract & travel-grant decisions"
