@@ -34,4 +34,4 @@ A list of recommended hotels and student-friendly options near the venue and cit
 
 ## Visas
 
-Denmark is part of the Schengen Area. If you require a visa to travel, please plan ahead — we can provide invitation letters for registered attendees on request to [conference@scverse.org](mailto:conference@scverse.org).
+Denmark is part of the Schengen Area. If you require a visa to travel, please plan ahead — we can provide invitation letters for registered attendees on request to [conference2026@scverse.org](mailto:conference2026@scverse.org).

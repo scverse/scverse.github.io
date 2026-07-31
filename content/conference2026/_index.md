@@ -24,11 +24,11 @@ url = "/conference2026/call-for-proposals/"
 date = "Open now"
 event = "Registration & call for proposals open"
 [[keyDates]]
-date = "Summer 2026"
+date = "August 20, 2026"
 event = "Abstract & travel-grant application deadline"
 [[keyDates]]
-date = "Summer 2026"
-event = "Notification of abstract & travel-grant decisions"
+date = "September 1, 2026"
+event = "Travel-grant award notifications"
 [[keyDates]]
 date = "September 12, 2026"
 event = "Early-bird registration ends"
@@ -47,4 +47,4 @@ Expect keynote talks, contributed talks and posters, hands-on workshops and tuto
 
 > **Registration and the call for proposals are now open, and our first speakers have been announced.** The full program and remaining details will be posted here as they are confirmed. Follow us on [Zulip](https://scverse.zulipchat.com/), [Bluesky](https://bsky.app/profile/scverse.bsky.social), [LinkedIn](https://linkedin.com/company/scverse), or [X](https://x.com/scverse_team) to stay up to date.
 
-Questions? Email us at [conference@scverse.org](mailto:conference@scverse.org).
+Questions? Email us at [conference2026@scverse.org](mailto:conference2026@scverse.org).
