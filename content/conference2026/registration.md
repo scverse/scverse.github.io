@@ -19,6 +19,8 @@ We are committed to making the conference accessible to as many people as possib
 
 Priority is given to applicants who have submitted an abstract and are in financial need — particularly those from underrepresented backgrounds, underresourced institutions, or low- and middle-income countries. Travel-grant applications are due **August 20, 2026**, with award notifications sent on **September 1, 2026**.
 
+[**Apply for a travel grant**](https://docs.google.com/forms/d/e/1FAIpQLSchCJuMqfBih-reFGbaGkHTR4NczlnM6tPEbUh8H345zmtf4g/viewform).
+
 ## Childcare & accessibility
 
 We aim to support attendees with caregiving responsibilities and accessibility needs. If you have specific requirements, please reach out to [conference2026@scverse.org](mailto:conference2026@scverse.org) and we will do our best to accommodate.
