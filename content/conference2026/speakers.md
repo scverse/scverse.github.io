@@ -43,6 +43,16 @@ We are delighted to announce the following speakers for scverse conference 2026,
       <a href="https://x.com/erwinschoof" target="_blank" rel="noopener">X</a>
     </p>
   </div>
+  <div class="speaker-card">
+    <img class="speaker-photo" src="/img/events/conference2026/speakers/muzlifah-haniffa.jpg" alt="Muzlifah Haniffa" />
+    <h3>Muzlifah Haniffa</h3>
+    <p class="speaker-affiliation">Wellcome Sanger Institute &amp; University of Cambridge</p>
+    <p class="speaker-bio">Head of the Cellular Genomics Programme and Deputy Director of the Wellcome Sanger Institute, and Professor of Clinical Dermatology at the University of Cambridge. A clinician-scientist, she has pioneered the application of single-cell genomics to decode the developing human immune system and to understand cell and tissue dynamics in human skin in health and disease. She is co-Vice Chair of the Human Cell Atlas consortium and coordinates its Development Bionetwork, and is an elected Fellow of the Academy of Medical Sciences and EMBO.</p>
+    <p class="speaker-socials">
+      <a href="https://haniffalab.com/" target="_blank" rel="noopener">Lab website</a>
+      <a href="https://www.sanger.ac.uk/group/haniffa-group/" target="_blank" rel="noopener">Sanger</a>
+    </p>
+  </div>
 </div>
 
 ## Contributed talks & posters
