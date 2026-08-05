@@ -26,9 +26,9 @@ contribution needed. Wrong time zone? Reach out in `#spatialdata-dev` on
 
 <iframe
     src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0sHFEayogaadgiQFniMZ5r1lXeS3OzKkw95bosieOYQjcFTDQ6b_P9A8PvJDCi4XwQYugBIQEN?gv=true"
-    style="border: 0; width: 100%; height: 600px;"
+    style="border: 0; width: 100%; height: 700px;"
     frameborder="0"
-    scrolling="no"
+    scrolling="auto"
     title="Book a meeting with the spatialdata maintainers"
 ></iframe>
 
