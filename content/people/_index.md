@@ -180,7 +180,7 @@ preface = "For people participating in and interacting with the consortium, ther
 	name = "Muskan Hashim"
 	url = "https://github.com/muskanhashim"
     showDetails = true
-    role = "community & events"
+    role = "community"
     email = "muskan.hashim@scverse.org"
     affiliation = "Helmholtz Munich"
 
