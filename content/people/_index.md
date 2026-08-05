@@ -176,6 +176,14 @@ preface = "For people participating in and interacting with the consortium, ther
     email = "zhangkai33@westlake.edu.cn"
     affiliation = "Westlake University"
 
+[[teams.members]]
+	name = "Muskan Hashim"
+	url = "https://github.com/muskanhashim"
+    showDetails = true
+    role = "community"
+    email = "muskan.hashim@scverse.org"
+    affiliation = "Helmholtz Munich"
+
 # ---------- steering committee, in alphabetical order
 
 [[teams]]
