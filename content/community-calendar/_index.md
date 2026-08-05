@@ -15,6 +15,23 @@ subscribe to it and follow along from your own calendar app.
     title="scverse community calendar"
 ></iframe>
 
+## Book a meeting
+
+The **spatialdata** developer sync is a bookable, biweekly meeting that runs
+_only if someone books it_ — grab an open slot at least 24 hours ahead and
+you'll get a calendar invite with the video-call link. It's a developer-focused
+space to discuss ongoing work and onboard new contributors; no prior
+contribution needed. Wrong time zone? Reach out in `#spatialdata-dev` on
+[Zulip](https://scverse.zulip.com).
+
+<iframe
+    src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0sHFEayogaadgiQFniMZ5r1lXeS3OzKkw95bosieOYQjcFTDQ6b_P9A8PvJDCi4XwQYugBIQEN?gv=true"
+    style="border: 0; width: 100%; height: 600px;"
+    frameborder="0"
+    scrolling="no"
+    title="Book a meeting with the spatialdata maintainers"
+></iframe>
+
 ## Subscribe to the calendar
 
 Add the scverse community calendar to your own calendar to get all our meetings and events automatically:
