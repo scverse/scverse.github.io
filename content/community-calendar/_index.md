@@ -6,7 +6,7 @@ Here's an overview of what's happening across the scverse community: our regular
 The calendar below stays in sync with our Google Calendar, so it's always up to date.
 You can also subscribe to it and follow along from your own calendar app.
 
-Some meetings are bookable and take place only when someone books a slot — but you don't need to book to attend.
+Some meetings are bookable and take place only when someone books a slot but you don't always need to book to attend.
 If a session already shows on the calendar, just join it at that time; booking is only needed to start a session that isn't scheduled yet.
 
 <iframe
@@ -19,13 +19,13 @@ If a session already shows on the calendar, just join it at that time; booking i
 
 ## Book a meeting
 
-The **spatialdata** developer sync is a biweekly, developer-focused meeting — a space to discuss ongoing work and onboard new contributors (no prior contribution needed).
+The **spatialdata** developer sync is a biweekly, developer-focused meeting: a space to discuss ongoing work and onboard new contributors (no prior contribution needed).
 It runs _only when someone books it_, so it works a little differently from a fixed meeting:
 
-- **If the session already shows on the calendar above, it's confirmed — just join at that time.** You don't need to book anything.
-- **If it's not on the calendar yet, someone needs to book an open slot below** (at least 72 hours ahead) to make that session happen. Once booked, it appears on the calendar and anyone is welcome to join.
+- If the session already shows on the calendar above, it's confirmed. Just join at that time!
+- If it's not on the calendar yet, someone needs to book an open slot below (at least 72 hours ahead) to make that session happen. Once booked, it appears on the calendar and anyone is welcome to join.
 
-So you only need to book if you want to _start_ a session that isn't scheduled yet — booking is what turns an open slot into a real meeting everyone can join.
+So you only need to book if you want to _start_ a session that isn't scheduled yet. Booking is what turns an open slot into a real meeting everyone can join.
 Wrong time zone? Reach out in `#spatialdata-dev` on [Zulip](https://scverse.zulip.com).
 
 <iframe
