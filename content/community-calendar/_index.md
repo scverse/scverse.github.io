@@ -26,9 +26,9 @@ contribution needed. Wrong time zone? Reach out in `#spatialdata-dev` on
 
 <iframe
     src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0sHFEayogaadgiQFniMZ5r1lXeS3OzKkw95bosieOYQjcFTDQ6b_P9A8PvJDCi4XwQYugBIQEN?gv=true"
-    style="border: 0; width: 100%; height: 600px;"
+    style="border: 0; width: 100%; height: 700px;"
     frameborder="0"
-    scrolling="no"
+    scrolling="auto"
     title="Book a meeting with the spatialdata maintainers"
 ></iframe>
 
@@ -38,13 +38,3 @@ Add the scverse community calendar to your own calendar to get all our meetings 
 
 - [Add to Google Calendar](https://calendar.google.com/calendar/render?cid=c_f704cd855e47d4b6279687e0346f1ac60e6c46dc9c3cd00c62635499aa1489b9%40group.calendar.google.com)
 - [Subscribe via iCal](https://calendar.google.com/calendar/ical/c_f704cd855e47d4b6279687e0346f1ac60e6c46dc9c3cd00c62635499aa1489b9%40group.calendar.google.com/public/basic.ics) (Apple Calendar, Outlook, Thunderbird, and other apps)
-
-## Open community meeting
-
-Scverse community meetings happen **every two weeks on Tuesday at 6pm CET** and are open
-to everyone! If you are new to scverse, these meetings are a great way to get to know the
-people behind the project.
-
-**Agenda**, **next dates**, **meeting notes** and the **Zoom link** are available from the
-[meeting document](https://hackmd.io/VfVLKb3ETGKN2j_7tn8ZJQ?view). See our
-[events page](/events) for past and upcoming hackathons and conferences.
