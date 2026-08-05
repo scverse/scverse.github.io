@@ -69,14 +69,26 @@
               >Blog</a
             >
           </li>
-          <li class="nav-item">
+          <li class="nav-item dropdown">
             <a
-              class="nav-link{{ if eq .Section `events` }}
+              class="nav-link dropdown-toggle{{ if or (eq .Section `events`) (eq .Section `community-calendar`) }}
                 active
               {{ end }}"
               href="/events"
-              >Events</a
+              id="events-dropdown"
+              role="button"
+              aria-expanded="false"
             >
+              Events
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="events-dropdown">
+              <li>
+                <a class="dropdown-item" href="/events">Events</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/community-calendar">Community Calendar</a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item dropdown">
             <a
