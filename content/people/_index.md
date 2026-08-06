@@ -21,7 +21,7 @@ preface = "For people participating in and interacting with the consortium, ther
 	url = "https://github.com/PauBadiaM"
     showDetails = true
     role = "decoupler"
-    email = "paubim@stanford.edu"
+    email = "paubim@scverse.org"
     affiliation = "Stanford University"
 	
 [[teams.members]]
@@ -86,7 +86,7 @@ preface = "For people participating in and interacting with the consortium, ther
     showDetails = true
     role = "grants & workshops"
     email = "sara.jimenez@scverse.org"
-    affiliation = "Helmholtz Munich"
+    affiliation = "NVIDIA"
 
 [[teams.members]]
 	name = "Mikaela Koutrouli"
