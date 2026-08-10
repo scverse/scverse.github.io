@@ -6,3 +6,8 @@ repos:
         additional_dependencies:
           - prettier
           - prettier-plugin-go-template
+  - repo: https://github.com/shssoichiro/oxipng
+    rev: v10.2.0
+    hooks:
+      - id: oxipng
+        args: [--strip, safe]
