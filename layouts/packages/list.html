@@ -1,121 +1,104 @@
-<!doctype html>
-<html>
-  <head>
-    {{ partial "head" . }}
-  </head>
-
-  <body>
-    <header>
-      {{ partial "header" . }}
-    </header>
-    <div id="wrapper">
-      <div id="content">
-        <div id="page-content">
-          <h1>{{ .Title }}</h1>
-          <article class="post">
-            {{ $sections := index .Params.sections 0 }}
-            <div class="post-content" id="packages-content">
-              {{ if .Params.packages }}
-                <h2 id="core-packages">Packages maintained by core team</h2>
-                {{ $sections.core_packages | markdownify }}
-                {{ if .Params.datastructures }}
-                  <h3 id="datastructures">Data structures</h3>
-                  {{ $sections.datastructures | markdownify }}
-                  <div class="packages-list">
-                    {{ $datastructures := .Params.datastructures }}
-                    {{ range $i, $e := $datastructures }}
-                      <div class="package-section">
-                        <div class="package-img">
-                          <img src="{{ .img }}" alt="Logo for {{ .name }}" />
-                        </div>
-                        <div class="package-info">
-                          <div class="package-tile" id="{{ .name }}-tile">
-                            <div class="package-text">
-                              <span class="package-name">{{ .name }}</span>
-                              <span class="package-details">{{ .details | markdownify }}</span>
-                            </div>
-                          </div>
-                          <div class="package-links">
-                            {{ range $k, $v := $e.links }}
-                              <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
-                            {{ end }}
-                          </div>
-                        </div>
-                      </div>
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  <article class="post">
+    {{ $sections := index .Params.sections 0 }}
+    <div class="post-content" id="packages-content">
+      {{ if .Params.packages }}
+        <h2 id="core-packages">Packages maintained by core team</h2>
+        {{ $sections.core_packages | markdownify }}
+        {{ if .Params.datastructures }}
+          <h3 id="datastructures">Data structures</h3>
+          {{ $sections.datastructures | markdownify }}
+          <div class="packages-list">
+            {{ $datastructures := .Params.datastructures }}
+            {{ range $i, $e := $datastructures }}
+              <div class="package-section">
+                <div class="package-img">
+                  <img src="{{ .img }}" alt="Logo for {{ .name }}" />
+                </div>
+                <div class="package-info">
+                  <div class="package-tile" id="{{ .name }}-tile">
+                    <div class="package-text">
+                      <span class="package-name">{{ .name }}</span>
+                      <span class="package-details">{{ .details | markdownify }}</span>
+                    </div>
+                  </div>
+                  <div class="package-links">
+                    {{ range $k, $v := $e.links }}
+                      <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
                     {{ end }}
                   </div>
-                {{ end }}
-                <h4>Analysis task-specific extensions</h4>
-                <p>{{ $sections.datastructures_post | markdownify }}</p>
-                <h3 id="frameworks">Frameworks</h3>
-                {{ $sections.frameworks | markdownify }}
-                <div class="packages-list">
-                  {{ $packages := .Params.packages }}
-                  {{ range $i, $e := $packages }}
-                    <div class="package-section">
-                      <div class="package-img">
-                        <img src="{{ .img }}" alt="Logo for {{ .name }}" />
-                      </div>
-                      <div class="package-info">
-                        <div class="package-tile" id="{{ .name }}-tile">
-                          <div class="package-text">
-                            <span class="package-name">{{ .name }}</span>
-                            <span class="package-details">{{ .details | markdownify }}</span>
-                          </div>
-                        </div>
-                        <div class="package-links">
-                          {{ range $k, $v := $e.links }}
-                            <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
-                          {{ end }}
-                        </div>
-                      </div>
-                    </div>
+                </div>
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
+        <h4>Analysis task-specific extensions</h4>
+        <p>{{ $sections.datastructures_post | markdownify }}</p>
+        <h3 id="frameworks">Frameworks</h3>
+        {{ $sections.frameworks | markdownify }}
+        <div class="packages-list">
+          {{ $packages := .Params.packages }}
+          {{ range $i, $e := $packages }}
+            <div class="package-section">
+              <div class="package-img">
+                <img src="{{ .img }}" alt="Logo for {{ .name }}" />
+              </div>
+              <div class="package-info">
+                <div class="package-tile" id="{{ .name }}-tile">
+                  <div class="package-text">
+                    <span class="package-name">{{ .name }}</span>
+                    <span class="package-details">{{ .details | markdownify }}</span>
+                  </div>
+                </div>
+                <div class="package-links">
+                  {{ range $k, $v := $e.links }}
+                    <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
                   {{ end }}
                 </div>
-              {{ end }}
-
-              {{ $jsonURL := "https://scverse.org/ecosystem-packages/packages.json" }}
-              {{ $remoteData := resources.GetRemote $jsonURL }}
-              {{ $pkgs := transform.Unmarshal $remoteData.Content }}
-              <h2 id="ecosystem">Ecosystem packages maintained by scverse community</h2>
-              <div>
-                <p>{{ $sections.ecosystem | markdownify }}</p>
               </div>
-              {{ if $pkgs }}
-                <div id="ecosystem-packages">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="eco-filter"
-                    onkeyup="filterPackages()"
-                    placeholder="Search through {{ len $pkgs }} packages"
-                    title="Type in your search query"
-                  />
-                  <table class="table" id="eco-table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Package</th>
-                        <th scope="col">Description</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {{ range $lib := $pkgs }}
-                        <tr class="package-links eco-table-row">
-                          <td>
-                            <a href="{{ $lib.project_home }}" target="_blank">{{ $lib.name }}</a>
-                          </td>
-                          <td>{{ $lib.description | markdownify }}</td>
-                        </tr>
-                      {{ end }}
-                    </tbody>
-                  </table>
-                </div>
-              {{ end }}
             </div>
-          </article>
+          {{ end }}
         </div>
+      {{ end }}
+
+      {{ $jsonURL := "https://scverse.org/ecosystem-packages/packages.json" }}
+      {{ $remoteData := resources.GetRemote $jsonURL }}
+      {{ $pkgs := transform.Unmarshal $remoteData.Content }}
+      <h2 id="ecosystem">Ecosystem packages maintained by scverse community</h2>
+      <div>
+        <p>{{ $sections.ecosystem | markdownify }}</p>
       </div>
+      {{ if $pkgs }}
+        <div id="ecosystem-packages">
+          <input
+            type="text"
+            class="form-control"
+            id="eco-filter"
+            onkeyup="filterPackages()"
+            placeholder="Search through {{ len $pkgs }} packages"
+            title="Type in your search query"
+          />
+          <table class="table" id="eco-table">
+            <thead>
+              <tr>
+                <th scope="col">Package</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{ range $lib := $pkgs }}
+                <tr class="package-links eco-table-row">
+                  <td>
+                    <a href="{{ $lib.project_home }}" target="_blank">{{ $lib.name }}</a>
+                  </td>
+                  <td>{{ $lib.description | markdownify }}</td>
+                </tr>
+              {{ end }}
+            </tbody>
+          </table>
+        </div>
+      {{ end }}
     </div>
-    {{ partial "footer" . }}
-  </body>
-</html>
+  </article>
+{{ end }}

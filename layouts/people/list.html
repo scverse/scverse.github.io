@@ -1,117 +1,102 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    {{ partial "head" . }}
-  </head>
-  <body>
-    <header>
-      {{ partial "header" . }}
-    </header>
-
-    <script>
-      window.onload = function () {
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-          return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
-      }
-    </script>
-
-    <div id="wrapper">
-      <div id="content">
-        <div id="page-content">
-          <h1>{{ .Title }}</h1>
-          <article class="post">
-            <div class="post-content" id="people-content">
-              <p>
-                {{ .Params.preface | safeHTML }}
-              </p>
-              {{ if .Params.teams }}
-                {{ range $team := .Params.teams }}
-                  {{ if not $team.hide }}
-                    <div class="team">
-                      <h3>{{ $team.name }}</h3>
-                      {{ if $team.text }}
-                        <p class="team-text">
-                          {{ $team.text | safeHTML }}
-                        </p>
-                      {{ end }}
-                      {{ if $team.members }}
-                        <p></p>
-                        <div class="team-list">
-                          {{ range $person := $team.members }}
-                            <div class="team-member">
-                              <a
-                                href="{{ .url }}"
-                                target="_blank"
-                                class="person-chip {{ if .showDetails }}member-detail{{ end }}"
-                              >
-                                <span class="member-name">{{ .name }}</span>
-                              </a>
-                              {{ if .showDetails }}
-                                <div class="additional-info">
-                                  <p>{{ .role }}</p>
-                                  <p>
-                                    <a href="mailto:{{ .email }}" target="_blank">{{ .email }}</a>
-                                  </p>
-                                  <p>{{ .affiliation }}</p>
-                                </div>
-                              {{ end }}
-                            </div>
-                          {{ end }}
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  <article class="post">
+    <div class="post-content" id="people-content">
+      <p>
+        {{ .Params.preface | safeHTML }}
+      </p>
+      {{ if .Params.teams }}
+        {{ range $team := .Params.teams }}
+          {{ if not $team.hide }}
+            <div class="team">
+              <h3>{{ $team.name }}</h3>
+              {{ if $team.text }}
+                <p class="team-text">
+                  {{ $team.text | safeHTML }}
+                </p>
+              {{ end }}
+              {{ if $team.members }}
+                <p></p>
+                <div class="team-list">
+                  {{ range $person := $team.members }}
+                    <div class="team-member">
+                      <a
+                        href="{{ .url }}"
+                        target="_blank"
+                        class="person-chip {{ if .showDetails }}member-detail{{ end }}"
+                      >
+                        <span class="member-name">{{ .name }}</span>
+                      </a>
+                      {{ if .showDetails }}
+                        <div class="additional-info">
+                          <p>{{ .role }}</p>
+                          <p>
+                            <a href="mailto:{{ .email }}" target="_blank">{{ .email }}</a>
+                          </p>
+                          <p>{{ .affiliation }}</p>
                         </div>
                       {{ end }}
                     </div>
                   {{ end }}
-                {{ end }}
-              {{ end }}
-              {{ with .Params.contributors }}
-                <div class="team">
-                  <h3>{{ .name }}</h3>
-                  {{ if .text }}
-                    <p class="team-text">
-                      {{ .text | safeHTML }}
-                    </p>
-                  {{ end }}
-                  <p></p>
-                  {{ $url := "https://scverse.org/stats/contributors.json" }}
-                  {{ $resource := resources.GetRemote $url }}
-                  {{ with $resource }}
-                    {{ $data := . | transform.Unmarshal }}
-                    {{ if $data.contributors }}
-                      <div class="contributor-list pt-3">
-                        {{ range $index, $person := first 49 $data.contributors }}
-                          <a href="{{ .html_url }}" target="_blank">
-                            <img
-                              src="{{ .avatar_url }}"
-                              class="border rounded-circle me-1 mb-1"
-                              height="100"
-                              width="100"
-                              title="{{ .name }}"
-                              data-bs-toggle="tooltip"
-                              alt="{{ .name }}"
-                            />
-                          </a>
-                        {{ end }}
-                      </div>
-                      <div class="mt-4">
-                        <p><strong>Other contributors:</strong></p>
-                        <p>
-                          {{ range $index, $person := after 49 $data.contributors }}
-                            <a href="{{ .html_url }}" target="_blank">{{ .name }}</a
-                            >{{ if lt $index (sub (len (after 49 $data.contributors)) 1) }},{{ end }}
-                          {{ end }}
-                        </p>
-                      </div>
-                    {{ end }}
-                  {{ end }}
                 </div>
               {{ end }}
             </div>
-          </article>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      {{ with .Params.contributors }}
+        <div class="team">
+          <h3>{{ .name }}</h3>
+          {{ if .text }}
+            <p class="team-text">
+              {{ .text | safeHTML }}
+            </p>
+          {{ end }}
+          <p></p>
+          {{ $url := "https://scverse.org/stats/contributors.json" }}
+          {{ $resource := resources.GetRemote $url }}
+          {{ with $resource }}
+            {{ $data := . | transform.Unmarshal }}
+            {{ if $data.contributors }}
+              <div class="contributor-list pt-3">
+                {{ range $index, $person := first 49 $data.contributors }}
+                  <a href="{{ .html_url }}" target="_blank">
+                    <img
+                      src="{{ .avatar_url }}"
+                      class="border rounded-circle me-1 mb-1"
+                      height="100"
+                      width="100"
+                      title="{{ .name }}"
+                      data-bs-toggle="tooltip"
+                      alt="{{ .name }}"
+                    />
+                  </a>
+                {{ end }}
+              </div>
+              <div class="mt-4">
+                <p><strong>Other contributors:</strong></p>
+                <p>
+                  {{ range $index, $person := after 49 $data.contributors }}
+                    <a href="{{ .html_url }}" target="_blank">{{ .name }}</a
+                    >{{ if lt $index (sub (len (after 49 $data.contributors)) 1) }},{{ end }}
+                  {{ end }}
+                </p>
+              </div>
+            {{ end }}
+          {{ end }}
         </div>
-      </div>
+      {{ end }}
     </div>
-    {{ partial "footer" . }}
-  </body>
-</html>
+  </article>
+{{ end }}
+
+{{ define "scripts" }}
+  <script>
+    window.onload = function () {
+      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+      })
+    }
+  </script>
+{{ end }}
