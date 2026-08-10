@@ -114,8 +114,10 @@ $additionalInfoColor: #666666;
     transition: background 200ms ease-out;
 }
 
-.card:hover { // Not discord, since it’s light-colored
-    .i-zulip::before, .i-bluesky::before {
+.card:hover {
+    // Not discord, since it’s light-colored
+    .i-zulip::before,
+    .i-bluesky::before {
         filter: invert(100%);
     }
 }
