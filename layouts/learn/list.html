@@ -1,82 +1,64 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    {{ partial "head" . }}
-  </head>
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  <article class="post">
+    <div class="post-content" id="tutorials-content">
+      {{ if .Params.tutorials }}
+        {{ .Params.tutorials_intro | markdownify }}
 
-  <body>
-    <header>
-      {{ partial "header" . }}
-    </header>
+        {{ $jsonURL := "https://scverse.org/scverse-tutorials/tutorials.json" }}
+        {{ $remoteData := resources.GetRemote $jsonURL }}
+        {{ $content := transform.Unmarshal $remoteData.Content }}
+        {{ if $content }}
 
-    <div id="wrapper">
-      <div id="content">
-        <div id="page-content">
-          <h1>{{ .Title }}</h1>
-          <article class="post">
-            <div class="post-content" id="tutorials-content">
-              {{ if .Params.tutorials }}
-                {{ .Params.tutorials_intro | markdownify }}
+          <h2 id="tutorials">Tutorials</h2>
 
-                {{ $jsonURL := "https://scverse.org/scverse-tutorials/tutorials.json" }}
-                {{ $remoteData := resources.GetRemote $jsonURL }}
-                {{ $content := transform.Unmarshal $remoteData.Content }}
-                {{ if $content }}
+          <div id="ecosystem-tutorials">
+            <input
+              type="text"
+              class="form-control"
+              id="tutorial-filter"
+              onkeyup="filterTutorials()"
+              placeholder="Search through {{ len $content.tutorials }} tutorials"
+              title="Type in your search query"
+            />
 
-                  <h2 id="tutorials">Tutorials</h2>
+            {{ range $cat := $content.categories }}
+              {{ range $catname, $catmore := $cat }}
+                {{ $ts := where $content.tutorials "primary_category" $catname }}
+                {{ if (gt ($ts | len) 0) }}
+                  <h3>{{ $catname }}</h3>
+                  <p>{{ $catmore.description }}</p>
 
-                  <div id="ecosystem-tutorials">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="tutorial-filter"
-                      onkeyup="filterTutorials()"
-                      placeholder="Search through {{ len $content.tutorials }} tutorials"
-                      title="Type in your search query"
-                    />
-
-                    {{ range $cat := $content.categories }}
-                      {{ range $catname, $catmore := $cat }}
-                        {{ $ts := where $content.tutorials "primary_category" $catname }}
-                        {{ if (gt ($ts | len) 0) }}
-                          <h3>{{ $catname }}</h3>
-                          <p>{{ $catmore.description }}</p>
-
-                          <div class="tutorials-list">
-                            {{ range $t := $ts }}
-                              <div class="card tutorial-item border-0">
-                                <a href="{{ $t.link }}" target="_blank">
-                                  {{ if $t.image }}
-                                    <img
-                                      class="card-img-top"
-                                      src="https://scverse.org/scverse-tutorials/{{ $t.image }}"
-                                      alt="Tutorial logo"
-                                    />
-                                  {{ end }}
-                                  <div class="card-body">
-                                    <h5 class="card-title">
-                                      {{ $t.name }}
-                                    </h5>
-                                    <p>{{ $t.description }}</p>
-                                  </div>
-                                </a>
-                              </div>
-                            {{ end }}
+                  <div class="tutorials-list">
+                    {{ range $t := $ts }}
+                      <div class="card tutorial-item border-0">
+                        <a href="{{ $t.link }}" target="_blank">
+                          {{ if $t.image }}
+                            <img
+                              class="card-img-top"
+                              src="https://scverse.org/scverse-tutorials/{{ $t.image }}"
+                              alt="Tutorial logo"
+                            />
+                          {{ end }}
+                          <div class="card-body">
+                            <h5 class="card-title">
+                              {{ $t.name }}
+                            </h5>
+                            <p>{{ $t.description }}</p>
                           </div>
-                        {{ end }}
-
-                      {{ end }}
+                        </a>
+                      </div>
                     {{ end }}
-
                   </div>
                 {{ end }}
 
               {{ end }}
-            </div>
-          </article>
-        </div>
-      </div>
+            {{ end }}
+
+          </div>
+        {{ end }}
+
+      {{ end }}
     </div>
-    {{ partial "footer" . }}
-  </body>
-</html>
+  </article>
+{{ end }}
