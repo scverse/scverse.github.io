@@ -105,15 +105,19 @@ $additionalInfoColor: #666666;
         margin: 0;
         background: url("/img/icons/#{$icon}.svg") no-repeat center / contain;
         transition: background 200ms ease-out;
-        .card:hover & {
-            filter: invert(100%);
-        }
     }
 }
+
 .i-xcom::before {
     content: "𝕏";
     font-weight: 900;
     transition: background 200ms ease-out;
+}
+
+.card:hover { // Not discord, since it’s light-colored
+    .i-zulip::before, .i-bluesky::before {
+        filter: invert(100%);
+    }
 }
 
 // Cover buttons
