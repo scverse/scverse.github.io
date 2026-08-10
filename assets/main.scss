@@ -230,34 +230,6 @@ a .more {
     text-decoration: none;
 }
 
-@mixin person-chip {
-    background-color: $tilebg;
-    text-decoration: none;
-    color: $tiletext;
-    padding: 0.4rem;
-    text-align: center;
-    border-radius: 0.5rem;
-    transition: all 200ms ease-in-out;
-    &:hover {
-        color: $tiletext3;
-        background-color: $tilebg2;
-    }
-}
-
-@mixin core-chip {
-    background-color: $tilebg;
-    text-decoration: none;
-    color: $tiletext;
-    padding: 0.4rem;
-    text-align: center;
-    border-radius: 0.5rem;
-    transition: all 200ms ease-in-out;
-    &:hover {
-        color: $tiletext3;
-        background-color: $tilebg2;
-    }
-}
-
 html,
 body {
     width: 100%;
@@ -335,8 +307,6 @@ body {
 }
 
 #scverse-logo {
-    width: 3rem;
-    height: 3rem;
     width: 3rem;
     height: 3rem;
     background: url("/img/icons/scverse_bw_logo.svg") no-repeat top left;
@@ -461,7 +431,7 @@ body {
                         width: auto;
                         display: inline-flex;
                         align-items: center;
-                        background-color: none;
+                        background-color: transparent;
                         border-radius: 2.2rem;
                         padding: 0.1rem 1rem 0.1rem 0;
                         font-size: 0.8rem;
@@ -797,7 +767,7 @@ body {
             font-weight: 700;
         }
         transition: all 200ms ease-in-out;
-        color: navtext;
+        color: $navtext;
         &:hover {
             background: #78cbd9 !important;
             transform: scale(1.02);
@@ -1021,7 +991,7 @@ body {
 // Specific to /packages
 
 #packages-content {
-    #packages-list {
+    .packages-list {
         display: flex;
         flex-direction: column;
         gap: 5rem;
@@ -1897,7 +1867,7 @@ body {
                 justify-content: center;
                 align-items: center;
                 padding: 1.5rem;
-                background-color: none;
+                background-color: transparent;
                 border-radius: 0.75rem;
                 margin-bottom: 1.25rem;
                 min-height: 110px;
