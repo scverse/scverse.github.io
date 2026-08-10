@@ -128,27 +128,46 @@ $additionalInfoColor: #666666;
     border: none;
 }
 
-#badges .btn-github:hover {
+#join-content .card {
+    h5 {
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+    }
+    transition: all 200ms ease-in-out;
+    color: $navtext;
+    &:hover {
+        background: #78cbd9 !important;
+        transform: scale(1.02);
+    }
+}
+
+#badges .btn-github:hover,
+#join-content .card#github:hover {
     background-color: $github-black !important;
     color: white !important;
 }
-#badges .btn-discourse:hover {
+#badges .btn-discourse:hover,
+#join-content .card#discourse:hover {
     background-color: $discourse-yellow !important;
     color: black !important;
 }
-#badges .btn-zulip:hover {
+#badges .btn-zulip:hover,
+#join-content .card#zulip:hover {
     background-color: $zulip-blue !important;
     color: white !important;
 }
-#badges .btn-twitter:hover {
+#badges .btn-twitter:hover,
+#join-content .card#twitter:hover {
     background-color: $twitter-blue !important;
     color: white !important;
 }
-#badges .btn-bluesky:hover {
+#badges .btn-bluesky:hover,
+#join-content .card#bluesky:hover {
     background-color: $bluesky-blue !important;
     color: white !important;
 }
-#badges .btn-youtube:hover {
+#badges .btn-youtube:hover,
+#join-content .card#youtube:hover {
     background-color: $youtube-red !important;
     color: white !important;
 }
@@ -741,44 +760,6 @@ body {
                     }
                 }
             }
-        }
-    }
-}
-
-#join-content {
-    .card {
-        h5 {
-            font-family: "Inter", sans-serif;
-            font-weight: 700;
-        }
-        transition: all 200ms ease-in-out;
-        color: $navtext;
-        &:hover {
-            background: #78cbd9 !important;
-            transform: scale(1.02);
-        }
-        &#github:hover {
-            color: white;
-            background-color: $github-black !important;
-        }
-        &#twitter:hover {
-            color: white;
-            background-color: $twitter-blue !important;
-        }
-        &#zulip:hover {
-            color: white;
-            background-color: $zulip-blue !important;
-        }
-        &#discourse:hover {
-            background-color: $discourse-yellow !important;
-        }
-        &#youtube:hover {
-            color: white;
-            background-color: $youtube-red !important;
-        }
-        &#bluesky:hover {
-            color: white;
-            background-color: $bluesky-blue !important;
         }
     }
 }
