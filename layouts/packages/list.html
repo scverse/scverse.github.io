@@ -21,7 +21,7 @@
                 {{ if .Params.datastructures }}
                   <h3 id="datastructures">Data structures</h3>
                   {{ $sections.datastructures | markdownify }}
-                  <div id="packages-list">
+                  <div class="packages-list">
                     {{ $datastructures := .Params.datastructures }}
                     {{ range $i, $e := $datastructures }}
                       <div class="package-section">
@@ -49,7 +49,7 @@
                 <p>{{ $sections.datastructures_post | markdownify }}</p>
                 <h3 id="frameworks">Frameworks</h3>
                 {{ $sections.frameworks | markdownify }}
-                <div id="packages-list">
+                <div class="packages-list">
                   {{ $packages := .Params.packages }}
                   {{ range $i, $e := $packages }}
                     <div class="package-section">
