@@ -5,9 +5,9 @@
       <div class="row" id="packages-list">
         {{ $packages := .Params.packages }}
         {{ range $i, $e := $packages }}
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 py-3">
-            <div class="card border-0 bh-light px-3" id="{{ .name }}-tile">
-              <div class="package-icon my-4">
+          <div class="col-12 col-sm-6 col-md-4 col-xl-3 py-3">
+            <div class="card border-0" id="{{ .name }}-tile">
+              <div class="package-icon">
                 {{ $exists := fileExists (printf "static/img/icons/%s.svg" .name) }}
                 {{ if .no_icon }}
                   <img />
@@ -17,7 +17,7 @@
                   {{ errorf "No icon or .no_icon for package %q" .name }}
                 {{ end }}
               </div>
-              <div class="card-body package-text p-2">
+              <div class="card-body package-text p-0">
                 <a
                   href="{{ .url }}"
                   class="stretched-link"

@@ -4,117 +4,120 @@
     {{ partial "head" . }}
   </head>
   <body>
-    <header>
-      {{ partial "header" . }}
-    </header>
-    <div id="wrapper">
-      <div id="content">
-        <div id="cover" class="mw-10">
-          <div id="cover-top-section">
-            {{ partial "main/chip" . }}
-            {{ partial "main/cover" . }}
-          </div>
+    <header>{{ partial "header" . }}</header>
 
-          <!-- Interactive UMAP Demo Section -->
-          <section id="interactive-demo-section">
-            <div class="interactive-container" id="interactive-container">
-              <div class="interactive-card" id="interactive-card">
-                <div class="demo-header">
-                  <div class="command-input" id="cmd1">
-                    <div class="command-icon" id="run-cmd1">
-                      <svg viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M361 215C375.3 223.8 384 239.3 384 256C384 272.7 375.3 288.2 361 296.1L73.03 472.1C58.21 482 39.66 482.4 24.52 473.9C9.377 465.4 0 449.4 0 432V80C0 62.64 9.377 46.63 24.52 38.13C39.66 29.64 58.21 29.99 73.03 39.04L361 215z"
-                        />
-                      </svg>
-                    </div>
-                    <div class="command-text">import scanpy as sc</div>
-                    <div class="command-status" id="status-cmd1"></div>
-                    <div class="executing-animation" id="exec-anim-1"></div>
+    <section id="hero">
+      <div class="hero-inner">
+        {{ partial "main/chip" . }}
+        <h1 class="hero-title">{{ .Title }}</h1>
+        <p class="hero-desc">{{ .Description }}</p>
+        <div class="hero-actions">
+          <a href="/packages" class="hero-btn-primary">Explore packages</a>
+          <a href="/learn" class="hero-btn-ghost">Get started →</a>
+        </div>
+        <div id="badges">
+          <a class="btn btn-light btn-github" href="https://github.com/scverse" target="_blank">GitHub</a>
+          <a class="btn btn-light btn-discourse" href="https://discourse.scverse.org" target="_blank">Discourse</a>
+          <a class="btn btn-light btn-zulip" href="http://scverse.zulipchat.com" target="_blank">Zulip</a>
+          <a class="btn btn-light btn-twitter" href="https://x.com/scverse_team" target="_blank">𝕏</a>
+          <a class="btn btn-light btn-bluesky" href="https://bsky.app/profile/scverse.bsky.social" target="_blank"
+            >Bluesky</a
+          >
+          <a
+            class="btn btn-light btn-youtube"
+            href="https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA"
+            target="_blank"
+            >YouTube</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <main id="home-main">
+      <div class="home-inner">
+        <section id="interactive-demo-section">
+          <div class="interactive-container" id="interactive-container">
+            <div class="interactive-card" id="interactive-card">
+              <div class="demo-header">
+                <div class="command-input" id="cmd1">
+                  <div class="command-icon" id="run-cmd1">
+                    <svg viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M361 215C375.3 223.8 384 239.3 384 256C384 272.7 375.3 288.2 361 296.1L73.03 472.1C58.21 482 39.66 482.4 24.52 473.9C9.377 465.4 0 449.4 0 432V80C0 62.64 9.377 46.63 24.52 38.13C39.66 29.64 58.21 29.99 73.03 39.04L361 215z"
+                      />
+                    </svg>
                   </div>
-                  <div class="command-input" id="cmd2">
-                    <div class="command-icon" id="run-cmd2">
-                      <svg viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M361 215C375.3 223.8 384 239.3 384 256C384 272.7 375.3 288.2 361 296.1L73.03 472.1C58.21 482 39.66 482.4 24.52 473.9C9.377 465.4 0 449.4 0 432V80C0 62.64 9.377 46.63 24.52 38.13C39.66 29.64 58.21 29.99 73.03 39.04L361 215z"
-                        />
-                      </svg>
-                    </div>
-                    <div class="command-text">sc.pl.umap(data, color='clusters')</div>
-                    <div class="command-status" id="status-cmd2"></div>
-                    <div class="executing-animation" id="exec-anim-2"></div>
-                  </div>
+                  <div class="command-text">import scanpy as sc</div>
+                  <div class="command-status" id="status-cmd1"></div>
+                  <div class="executing-animation" id="exec-anim-1"></div>
                 </div>
-
-                <div id="visualization" class="visualization"></div>
+                <div class="command-input" id="cmd2">
+                  <div class="command-icon" id="run-cmd2">
+                    <svg viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M361 215C375.3 223.8 384 239.3 384 256C384 272.7 375.3 288.2 361 296.1L73.03 472.1C58.21 482 39.66 482.4 24.52 473.9C9.377 465.4 0 449.4 0 432V80C0 62.64 9.377 46.63 24.52 38.13C39.66 29.64 58.21 29.99 73.03 39.04L361 215z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="command-text">sc.pl.umap(data, color='clusters')</div>
+                  <div class="command-status" id="status-cmd2"></div>
+                  <div class="executing-animation" id="exec-anim-2"></div>
+                </div>
               </div>
+              <div id="visualization" class="visualization"></div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {{ partial "main/packages" . }}
+        {{ partial "main/packages" . }}
 
 
+        <div id="home-info-grid">
           <section id="ecosystem">
             <div class="section-heading">Ecosystem</div>
             <div class="section-content">
-              <p class="section-paragraph">
-                {{ .Params.ecosystem.text | markdownify }}
-              </p>
-              <a href="/packages/#ecosystem">
-                <div class="more">Continue to scverse ecosystem</div>
-              </a>
+              <p class="section-paragraph">{{ .Params.ecosystem.text | markdownify }}</p>
+              <a href="/packages/#ecosystem"><div class="more">Continue to scverse ecosystem</div></a>
             </div>
           </section>
-
           <section id="mission">
             <div class="section-heading">Mission</div>
             <div class="section-content">
-              <p class="section-paragraph">
-                {{ .Params.mission.text | markdownify }}
-              </p>
-              <a href="/about">
-                <div class="more">Read more about scverse</div>
-              </a>
-            </div>
-          </section>
-
-          <section id="team">
-            <div class="section-heading">Team</div>
-            <div class="section-content">
-              <p class="section-paragraph">
-                {{ .Params.team.text | markdownify }}
-              </p>
-              <a href="/people">
-                <div class="more">Learn more about scverse community</div>
-              </a>
-            </div>
-          </section>
-
-          <section id="references">
-            <div class="section-heading">References</div>
-            <div class="section-content">
-              {{ if .Params.references }}
-                <p class="section-paragraph">
-                  {{ .Params.references.text | markdownify }}
-                </p>
-                <div class="tiles-list" id="refs-list">
-                  {{ $refs := .Params.references.citations }}
-                  {{ range $i, $e := $refs }}
-                    <a href="{{ .url }}" target="_blank">
-                      <div class="ref-tile" id="{{ .id }}-ref-tile">
-                        <div class="ref-text">
-                          {{ .text }}
-                        </div>
-                      </div>
-                    </a>
-                  {{ end }}
-                </div>
-              {{ end }}
+              <p class="section-paragraph">{{ .Params.mission.text | markdownify }}</p>
+              <a href="/about"><div class="more">Read more about scverse</div></a>
             </div>
           </section>
         </div>
+
+        <section id="team">
+          <div class="section-heading">Team</div>
+          <div class="section-content">
+            <p class="section-paragraph">{{ .Params.team.text | markdownify }}</p>
+            <a href="/people"><div class="more">Learn more about scverse community</div></a>
+          </div>
+        </section>
+
+        <section id="references">
+          <div class="section-heading">References</div>
+          <div class="section-content">
+            {{ if .Params.references }}
+              <p class="section-paragraph">{{ .Params.references.text | markdownify }}</p>
+              <div class="tiles-list" id="refs-list">
+                {{ $refs := .Params.references.citations }}
+                {{ range $i, $e := $refs }}
+                  <a href="{{ .url }}" target="_blank">
+                    <div class="ref-tile" id="{{ .id }}-ref-tile">
+                      <div class="ref-text">{{ .text }}</div>
+                    </div>
+                  </a>
+                {{ end }}
+              </div>
+            {{ end }}
+          </div>
+        </section>
       </div>
-    </div>
+    </main>
+
     {{ partial "footer" . }}
   </body>
 </html>

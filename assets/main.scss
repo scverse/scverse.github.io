@@ -139,8 +139,13 @@ $additionalInfoColor: #666666;
 
 // Cover buttons
 #badges .btn {
-    background-color: $tilebg;
-    border: none;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 2rem;
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    transition: all 150ms ease;
 }
 
 #badges .btn-github:hover {
@@ -174,7 +179,9 @@ h1 {
 
 // Main page
 .section-paragraph {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: $greydesc;
     margin-bottom: 1rem;
     strong {
         font-weight: 475;
@@ -183,34 +190,31 @@ h1 {
 }
 
 a .more {
-    display: inline-block;
-    margin: 0;
-    font-size: 0.8rem;
-    font-weight: 800;
-    color: $tiletext2;
-    transition: all 200ms ease-in-out;
-    padding: 0.5rem;
-    margin-left: -0.5rem;
-    border-radius: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #262fb5;
+    background-color: rgba(38, 47, 181, 0.07);
+    transition: all 180ms ease;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
 
     &:after {
-        content: "\232A";
-        font-size: 0.6rem;
-        transition: all 200ms ease-in-out;
-        padding-left: 0.2rem;
+        content: "→";
+        font-size: 1rem;
+        transition: transform 180ms ease;
     }
 
     &:hover {
-        color: $tiletext3;
-        background-color: $tilebg;
+        color: white;
+        background-color: #262fb5;
 
         &:after {
-            padding-left: 0.4rem;
+            transform: translateX(0.2rem);
         }
-    }
-
-    @media (max-width: 50rem) {
-        background-color: $tilebg4;
     }
 }
 
@@ -341,277 +345,6 @@ body {
             justify-content: center;
             align-items: center;
             align-self: center;
-            #cover {
-                max-width: $maxwidthcover;
-                width: 100%;
-                padding: 0 1rem;
-                #cover-top-section {
-                    margin-top: 3rem;
-                    padding: 2rem 0;
-                }
-                #cover-heading {
-                    margin: 0;
-                    padding: 0;
-                    max-width: $maxwidthcover;
-                    #title {
-                        #title-text {
-                            #title-name {
-                                font-size: 6rem;
-                                font-weight: 900;
-                                letter-spacing: 0.2rem;
-                                @media (max-width: 50rem) {
-                                    letter-spacing: 0.15rem;
-                                    font-size: 3.5rem;
-                                    font-weight: 900;
-                                }
-                            }
-                            #title-desc {
-                                display: block;
-                                font-size: 1.4rem;
-                                color: $greyheader;
-                                @media (max-width: 50rem) {
-                                    font-size: 0.8rem;
-                                }
-                            }
-                        }
-                    }
-                    #badges {
-                        display: flex;
-                        flex-wrap: wrap;
-                        gap: 1rem;
-                        margin: 2rem 0;
-                        @media (max-width: 50rem) {
-                            margin: 1rem 0;
-                            padding: 0;
-                            width: 100%;
-                        }
-                    }
-                }
-
-                #chip-announcement {
-                    margin: 0 auto 2rem;
-                    max-width: $maxwidthcover;
-                    width: 100%;
-                    @media (max-width: 50rem) {
-                        width: 100%;
-                        margin: 0 auto 1.25rem;
-                    }
-                    display: flex;
-                    justify-content: center;
-                    &:hover {
-                        cursor: pointer;
-                    }
-
-                    .event-chip {
-                        width: auto;
-                        display: inline-flex;
-                        align-items: center;
-                        background-color: transparent;
-                        border-radius: 2.2rem;
-                        padding: 0.1rem 1rem 0.1rem 0;
-                        font-size: 0.8rem;
-                        font-weight: 500;
-                        color: black;
-                        transition: all 0.3s ease;
-                        outline: 1px solid black;
-
-                        @media (max-width: 50rem) {
-                            border-radius: 1.5rem;
-                            padding: 0.05rem 0.6rem 0.05rem 0;
-                            font-size: 0.7rem;
-                        }
-
-                        .event-date {
-                            background-color: black;
-                            color: white;
-                            padding: 0.5rem 1rem;
-                            border-radius: 2rem;
-                            margin: 0.1rem 1rem 0.1rem 0.2rem;
-                            align-self: start;
-
-                            @media (max-width: 50rem) {
-                                padding: 0.35rem 0.7rem;
-                                border-radius: 1.5rem;
-                                margin: 0.05rem 0.7rem 0.05rem 0.1rem;
-                            }
-                        }
-
-                        .event-text {
-                            position: relative;
-
-                            .arrow {
-                                display: inline-block;
-                                transition: transform 0.3s ease;
-                            }
-                        }
-
-                        &:hover {
-                            color: #4557c4;
-                            transform: scale(1.05);
-
-                            .event-date {
-                                background: linear-gradient(135deg, #262fb5, #74c8fa);
-                            }
-
-                            .event-text .arrow {
-                                transform: translateX(0.2rem);
-                            }
-                        }
-
-                        position: relative;
-
-                        a {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            overflow: hidden;
-                        }
-                    }
-                }
-
-                section {
-                    max-width: $maxwidth;
-                    width: $contentwidth;
-                    margin: 0 auto;
-                    margin-top: 5%;
-                    @media (max-width: 50rem) {
-                        margin-top: 15%;
-                    }
-                    .section-heading {
-                        font-size: 1.3rem;
-                        text-transform: uppercase;
-                        color: $greyheader;
-                        font-weight: 700;
-                        transition: all 200ms ease-in-out;
-                        &.clickable-heading:hover {
-                            color: $greyheaderhover;
-                            cursor: pointer;
-                        }
-                    }
-                    .section-content {
-                        margin-top: 1rem;
-                        .tiles-list {
-                            display: grid;
-                            a {
-                                text-decoration: none;
-                            }
-                        }
-                    }
-                }
-                #packages {
-                    margin-top: 15%;
-                    #packages-list {
-                        .card {
-                            display: flex;
-                            flex-direction: row;
-                            align-items: center;
-                            background-color: $tilebg;
-                            border-radius: 0.5rem;
-                            transition: all 200ms ease-in-out;
-                            @media (max-width: 50rem) {
-                                min-height: 6rem;
-                            }
-                            .package-icon {
-                                transition: all 200ms ease-in-out;
-                                align-items: center;
-                                justify-content: center;
-                                padding: auto;
-                                display: flex;
-                                min-width: 6rem;
-                                max-width: 6rem;
-                                @media (max-width: 50rem) {
-                                    display: none;
-                                }
-
-                                img {
-                                    max-width: 4rem;
-                                    height: 4rem;
-                                }
-                            }
-                            .package-text {
-                                .package-name {
-                                    color: $tiletext;
-                                }
-                                .package-desc {
-                                    font-size: 0.9rem;
-                                    color: $tiletext2;
-                                }
-                            }
-                            &:hover {
-                                cursor: pointer;
-                                background-color: $tilebg2;
-                                .package-icon {
-                                    transform: scale(1.1);
-                                }
-                                transform: scale(1.05);
-                            }
-                            &#anndata-tile:hover {
-                                background-color: rgba($anndataorange, 0.2);
-                            }
-                            &#scanpy-tile:hover {
-                                background-color: rgba($scanpymandy, 0.2);
-                            }
-                            &#mudata-tile:hover {
-                                background-color: rgba($mudatagreen, 0.2);
-                            }
-                            &#muon-tile:hover {
-                                background-color: rgba($muonaquamarine, 0.2);
-                            }
-                        }
-                    }
-                }
-                #mission {
-                    .section-content {
-                        p {
-                            font-size: 1.1rem;
-                        }
-                    }
-                }
-                #team {
-                    .section-content {
-                        .section-paragraph {
-                            #team-list {
-                                display: inline;
-                            }
-                            a {
-                                border-bottom: 1px solid $linkunderline;
-                                transition:
-                                    border 200ms,
-                                    color 200ms;
-
-                                &:hover,
-                                &:active {
-                                    color: black;
-                                    border-bottom: 1px solid black;
-                                }
-                            }
-                        }
-                    }
-                }
-                #references {
-                    #refs-list {
-                        .ref-tile {
-                            display: flex;
-                            margin: 0 -0.8rem;
-                            padding: 0.8rem;
-                            width: 100%;
-                            min-height: 1rem;
-                            align-items: center;
-                            background-color: #ff000000;
-                            color: $tiletext;
-                            transition: all 200ms ease-in-out;
-                            border-radius: 0.5rem;
-                            &:hover {
-                                cursor: pointer;
-                                background-color: $tilebg3;
-                            }
-                            font-size: 0.9rem;
-                        }
-                    }
-                }
-            }
         }
 
         p > a {
@@ -2175,8 +1908,8 @@ body {
 
 // Interactive UMAP Visualization Styles
 #interactive-demo-section {
-    margin-top: 8%;
-    margin-bottom: 5%;
+    margin-top: 4rem;
+    margin-bottom: 0;
 }
 
 .interactive-container {
@@ -2330,4 +2063,515 @@ body {
     background: linear-gradient(90deg, #4285f4, #34a853);
     transition: width 1s ease-in-out;
     pointer-events: none;
+}
+
+// ---- Landing page redesign ----
+
+#hero {
+    background: linear-gradient(
+        155deg,
+        #080c1e 0%,
+        #0c1230 45%,
+        #0e1a38 75%,
+        #091426 100%
+    );
+    color: white;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px
+        );
+        background-size: 28px 28px;
+        pointer-events: none;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: -30%;
+        right: -10%;
+        width: 60%;
+        height: 80%;
+        background: radial-gradient(
+            ellipse,
+            rgba(38, 47, 181, 0.18) 0%,
+            transparent 65%
+        );
+        pointer-events: none;
+    }
+
+    .hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: $maxwidthcover;
+        margin: 0 auto;
+        padding: 5.5rem 2rem 5rem;
+
+        @media (max-width: 50rem) {
+            padding: 4rem 1.25rem 3.5rem;
+        }
+    }
+
+    #chip-announcement {
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 2.5rem;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        .event-chip {
+            width: auto;
+            display: inline-flex;
+            align-items: center;
+            background-color: transparent;
+            border-radius: 2.2rem;
+            padding: 0.1rem 1rem 0.1rem 0;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.75);
+            transition: all 0.3s ease;
+            outline: 1px solid rgba(255, 255, 255, 0.22);
+
+            @media (max-width: 50rem) {
+                border-radius: 1.5rem;
+                padding: 0.05rem 0.6rem 0.05rem 0;
+                font-size: 0.7rem;
+            }
+
+            .event-date {
+                background-color: rgba(255, 255, 255, 0.1);
+                color: rgba(255, 255, 255, 0.9);
+                padding: 0.5rem 1rem;
+                border-radius: 2rem;
+                margin: 0.1rem 1rem 0.1rem 0.2rem;
+                align-self: start;
+
+                @media (max-width: 50rem) {
+                    padding: 0.35rem 0.7rem;
+                    border-radius: 1.5rem;
+                    margin: 0.05rem 0.7rem 0.05rem 0.1rem;
+                }
+            }
+
+            .event-text {
+                position: relative;
+
+                .arrow {
+                    display: inline-block;
+                    transition: transform 0.3s ease;
+                }
+            }
+
+            &:hover {
+                color: white;
+                outline-color: rgba(255, 255, 255, 0.45);
+
+                .event-date {
+                    background: linear-gradient(
+                        135deg,
+                        rgba(38, 47, 181, 0.8),
+                        rgba(116, 200, 250, 0.7)
+                    );
+                }
+
+                .event-text .arrow {
+                    transform: translateX(0.2rem);
+                }
+            }
+
+            position: relative;
+
+            a {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+            }
+        }
+    }
+
+    .hero-title {
+        font-size: 8rem;
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        line-height: 1;
+        color: white;
+        margin: 0 0 1.25rem;
+
+        @media (max-width: 70rem) {
+            font-size: 6rem;
+        }
+
+        @media (max-width: 50rem) {
+            font-size: 4rem;
+            letter-spacing: -0.03em;
+        }
+    }
+
+    .hero-desc {
+        font-size: 1.35rem;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.58);
+        max-width: 34rem;
+        margin-bottom: 2.5rem;
+        font-weight: 400;
+
+        @media (max-width: 50rem) {
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+    .hero-actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-bottom: 3rem;
+
+        @media (max-width: 50rem) {
+            margin-bottom: 2rem;
+        }
+
+        .hero-btn-primary {
+            background: #262fb5;
+            color: white;
+            padding: 0.75rem 1.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 150ms ease;
+
+            &:hover {
+                background: #3340d0;
+                transform: translateY(-1px);
+                box-shadow: 0 4px 18px rgba(38, 47, 181, 0.45);
+            }
+        }
+
+        .hero-btn-ghost {
+            background: rgba(255, 255, 255, 0.07);
+            color: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.75rem 1.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 150ms ease;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.14);
+                color: white;
+                border-color: rgba(255, 255, 255, 0.3);
+            }
+        }
+    }
+
+    #badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+
+        @media (max-width: 50rem) {
+            gap: 0.4rem;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            border-radius: 2rem;
+            padding: 0.35rem 0.9rem;
+            font-size: 0.8rem;
+            box-shadow: none;
+            transition: all 150ms ease;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.14);
+                color: white;
+                border-color: rgba(255, 255, 255, 0.25);
+                box-shadow: none;
+            }
+        }
+
+        .btn-github:hover {
+            background-color: $github-black !important;
+            border-color: $github-black !important;
+            color: white !important;
+        }
+
+        .btn-discourse:hover {
+            background-color: $discourse-yellow !important;
+            border-color: $discourse-yellow !important;
+            color: black !important;
+        }
+
+        .btn-zulip:hover {
+            background-color: $zulip-blue !important;
+            border-color: $zulip-blue !important;
+            color: white !important;
+        }
+
+        .btn-twitter:hover {
+            background-color: $twitter-blue !important;
+            border-color: $twitter-blue !important;
+            color: white !important;
+        }
+
+        .btn-bluesky:hover {
+            background-color: $bluesky-blue !important;
+            border-color: $bluesky-blue !important;
+            color: white !important;
+        }
+
+        .btn-youtube:hover {
+            background-color: $youtube-red !important;
+            border-color: $youtube-red !important;
+            color: white !important;
+        }
+    }
+}
+
+#home-main {
+    flex: 1;
+
+    .home-inner {
+        max-width: $maxwidthcover;
+        width: 90%;
+        margin: 0 auto;
+        padding-bottom: 6rem;
+
+        @media (max-width: 50rem) {
+            width: 94%;
+        }
+    }
+
+    #interactive-demo-section {
+        margin-top: 3.5rem;
+        margin-bottom: 0;
+    }
+
+    #packages {
+        margin-top: 5rem;
+        padding-top: 4rem;
+        border-top: 1px solid $overline;
+
+        .section-heading {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: $greyheader;
+            margin-bottom: 1.5rem;
+        }
+
+        #packages-list {
+            .card {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                background: white;
+                border: 1px solid rgba(0, 0, 0, 0.07);
+                border-radius: 1rem;
+                box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+                padding: 1.5rem !important;
+                height: 100%;
+                transition: all 220ms ease;
+
+                .package-icon {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 1rem;
+
+                    img {
+                        width: 2.75rem;
+                        height: 2.75rem;
+                        max-width: 2.75rem;
+                    }
+                }
+
+                .package-text {
+                    .package-name {
+                        font-size: 1rem;
+                        font-weight: 700;
+                        color: $tiletext;
+                    }
+
+                    .package-desc {
+                        font-size: 0.875rem;
+                        line-height: 1.55;
+                        color: $tiletext2;
+                        margin-bottom: 0;
+                    }
+                }
+
+                &:hover {
+                    cursor: pointer;
+                    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+                    transform: translateY(-3px);
+                    border-color: transparent;
+                }
+
+                &#anndata-tile:hover {
+                    box-shadow: 0 8px 28px rgba($anndataorange, 0.25);
+                }
+
+                &#scanpy-tile:hover {
+                    box-shadow: 0 8px 28px rgba($scanpymandy, 0.22);
+                }
+
+                &#mudata-tile:hover {
+                    box-shadow: 0 8px 28px rgba($mudatagreen, 0.22);
+                }
+
+                &#muon-tile:hover {
+                    box-shadow: 0 8px 28px rgba($muonaquamarine, 0.22);
+                }
+
+                &#spatialdata-tile:hover {
+                    box-shadow: 0 8px 28px rgba($spatialdatablue, 0.22);
+                }
+
+                &#squidpy-tile:hover {
+                    box-shadow: 0 8px 28px rgba($squidpyviolet, 0.22);
+                }
+
+                &#scvi-tools-tile:hover {
+                    box-shadow: 0 8px 28px rgba($scviyellow, 0.25);
+                }
+
+                &#scirpy-tile:hover {
+                    box-shadow: 0 8px 28px rgba($scirpypurple, 0.22);
+                }
+            }
+        }
+    }
+
+    #home-info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        margin-top: 5rem;
+        padding-top: 4rem;
+        border-top: 1px solid $overline;
+
+        @media (max-width: 50rem) {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+    }
+
+    section {
+        .section-heading {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: $greyheader;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-content {
+            .tiles-list {
+                display: grid;
+
+                a {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    #home-info-grid section {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: 0;
+    }
+
+    #team,
+    #references {
+        margin-top: 5rem;
+        padding-top: 4rem;
+        border-top: 1px solid $overline;
+
+        @media (max-width: 50rem) {
+            margin-top: 3rem;
+            padding-top: 2.5rem;
+        }
+    }
+
+    #team {
+        .section-content {
+            .section-paragraph {
+                a {
+                    border-bottom: 1px solid $linkunderline;
+                    transition:
+                        border 200ms,
+                        color 200ms;
+
+                    &:hover,
+                    &:active {
+                        color: black;
+                        border-bottom: 1px solid black;
+                    }
+                }
+            }
+        }
+    }
+
+    #references {
+        #refs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+
+            a {
+                text-decoration: none;
+            }
+
+            .ref-tile {
+                display: flex;
+                padding: 0.85rem 1rem 0.85rem 1.1rem;
+                width: 100%;
+                align-items: flex-start;
+                background-color: $tilebg4;
+                border-left: 3px solid $overline;
+                border-radius: 0 0.5rem 0.5rem 0;
+                color: $tiletext;
+                transition: all 200ms ease-in-out;
+                font-size: 0.9rem;
+                line-height: 1.55;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: $tilebg;
+                    border-left-color: $greyheader;
+                }
+            }
+        }
+    }
+
+    p > a {
+        text-decoration: none;
+        color: inherit;
+        border-bottom: 1px solid $linkunderline;
+        transition:
+            border 200ms,
+            color 200ms;
+
+        &:hover,
+        &:active {
+            border-bottom: 1px solid black;
+        }
+    }
 }
