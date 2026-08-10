@@ -105,6 +105,10 @@ $additionalInfoColor: #666666;
         margin: 0;
         background: url("/img/icons/#{$icon}.svg") no-repeat center / contain;
         transition: background 200ms ease-out;
+        opacity: .6666;  // text color is #555
+        .card:hover & {
+            opacity: 1;
+        }
     }
 }
 
