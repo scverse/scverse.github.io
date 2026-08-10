@@ -106,11 +106,13 @@ $additionalInfoColor: #666666;
 
 .i-zulip::before {
     background: url("/img/icons/zulip.svg") no-repeat top left;
+    &:hover { filter: invert(100%); }
     transition: background 200ms ease-out;
     @include button-icon;
 }
 .i-discourse::before {
     background: url("/img/icons/discourse.svg") no-repeat top left;
+    &:hover { filter: invert(100%); }
     transition: background 200ms ease-out;
     @include button-icon;
 }
@@ -121,20 +123,9 @@ $additionalInfoColor: #666666;
 }
 .i-bluesky::before {
     background: center / contain no-repeat url("/img/icons/bluesky.svg");
+    &:hover { filter: invert(100%); }
     transition: all 200ms ease-out;
     @include button-icon;
-}
-
-.card:hover {
-    .i-zulip::before {
-        background: url("/img/icons/zulip_inv.svg") no-repeat top left;
-    }
-    .i-discourse::before {
-        background: url("/img/icons/discourse_inv.svg") no-repeat top left;
-    }
-    .i-bluesky::before {
-        filter: invert(1);
-    }
 }
 
 // Cover buttons
