@@ -212,44 +212,43 @@
       </div>
     </div>
     {{ partial "footer" . }}
-  </body>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggleSwitch = document.getElementById("icon-display-mode")
+        const iconsList = document.getElementById("icons-list")
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const toggleSwitch = document.getElementById("icon-display-mode")
-      const iconsList = document.getElementById("icons-list")
+        toggleSwitch.addEventListener("change", function () {
+          if (this.checked) {
+            // Switch to logos with text mode
+            iconsList.classList.remove("icons-only-mode")
+            iconsList.classList.add("icons-with-text-mode")
 
-      toggleSwitch.addEventListener("change", function () {
-        if (this.checked) {
-          // Switch to logos with text mode
-          iconsList.classList.remove("icons-only-mode")
-          iconsList.classList.add("icons-with-text-mode")
+            // Update all displayed images to the text version
+            document.querySelectorAll("#icons-list .icon-img img").forEach((img) => {
+              img.src = img.dataset.iconWithText
+            })
 
-          // Update all displayed images to the text version
-          document.querySelectorAll("#icons-list .icon-img img").forEach((img) => {
-            img.src = img.dataset.iconWithText
-          })
+            // Update download links to point to the text versions
+            document.querySelectorAll("#icons-list .icon-link").forEach((link) => {
+              link.href = link.dataset.withTextUrl
+            })
+          } else {
+            // Switch to icons only mode
+            iconsList.classList.remove("icons-with-text-mode")
+            iconsList.classList.add("icons-only-mode")
 
-          // Update download links to point to the text versions
-          document.querySelectorAll("#icons-list .icon-link").forEach((link) => {
-            link.href = link.dataset.withTextUrl
-          })
-        } else {
-          // Switch to icons only mode
-          iconsList.classList.remove("icons-with-text-mode")
-          iconsList.classList.add("icons-only-mode")
+            // Update all displayed images to the icon-only version
+            document.querySelectorAll("#icons-list .icon-img img").forEach((img) => {
+              img.src = img.dataset.icon
+            })
 
-          // Update all displayed images to the icon-only version
-          document.querySelectorAll("#icons-list .icon-img img").forEach((img) => {
-            img.src = img.dataset.icon
-          })
-
-          // Update download links to point to the icon-only versions
-          document.querySelectorAll("#icons-list .icon-link").forEach((link) => {
-            link.href = link.dataset.iconUrl
-          })
-        }
+            // Update download links to point to the icon-only versions
+            document.querySelectorAll("#icons-list .icon-link").forEach((link) => {
+              link.href = link.dataset.iconUrl
+            })
+          }
+        })
       })
-    })
-  </script>
+    </script>
+  </body>
 </html>
