@@ -1,22 +1,6 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    {{ partial "head" . }}
-  </head>
-  <body>
-    <header>
-      {{ partial "header" . }}
-    </header>
-    <div id="wrapper">
-      <div id="content">
-        <div id="page-content">
-          <h1>{{ .Title }}</h1>
-          <article class="post">
-            {{ .Content }}
-          </article>
-        </div>
-      </div>
-    </div>
-    {{ partial "footer" . }}
-  </body>
-</html>
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  <article class="post">
+    {{ .Content }}
+  </article>
+{{ end }}
