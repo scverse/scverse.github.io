@@ -26,3 +26,6 @@ To build the website (with hot reload), [install Hugo](https://gohugo.io/getting
 ```sh
 hugo server --buildFuture -D
 ```
+
+Use the extended version, 0.141 or newer.
+Deploy previews are pinned to a specific version in [`netlify.toml`](/netlify.toml); keep it in step with the one [the deploy workflow](/.github/workflows/gh-pages.yml) uses.

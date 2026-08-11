@@ -67,8 +67,11 @@
       {{ $sections.ecosystem | markdownify }}
 
       {{ $registryBase := "https://scverse.org/ecosystem-packages/" }}
-      {{/* Netlify previews build with Hugo 0.97, so no `try` here — it needs 0.141+. */}}
-      {{ $data := resources.GetRemote (printf "%spackages.json" $registryBase) }}
+      {{/* An unreachable registry should not fail the build, so swallow the error and fall back. */}}
+      {{ $data := false }}
+      {{ with try (resources.GetRemote (printf "%spackages.json" $registryBase)) }}
+        {{ $data = .Value }}
+      {{ end }}
       {{ if $data }}
         {{ $pkgs := transform.Unmarshal $data.Content }}
 
