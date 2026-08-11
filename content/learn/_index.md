@@ -25,15 +25,15 @@ You can also find recordings of past talks and workshops on our [YouTube channel
 	[[tutorials.section]]
 	name = "Basic Analysis of PBMCs"
 	url = "https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html"
-	img = "https://scanpy-tutorials.readthedocs.io/en/latest/_images/pbmc3k_100_1.png"
+	img = "../../img/learn/pbmc3k.webp"
 	[[tutorials.section]]
 	name = "Analyzing scRNA-seq with scvi-tools"
 	url = "https://docs.scvi-tools.org/en/stable/tutorials/notebooks/api_overview.html"
-	img = "https://docs.scvi-tools.org/en/stable/_images/tutorials_notebooks_api_overview_45_1.png"
+	img = "../../img/learn/scvi-api-overview.webp"
 	[[tutorials.section]]
 	name = "Integration of the Lung Cell Atlas with scANVI"
 	url = "https://docs.scvi-tools.org/en/stable/tutorials/notebooks/harmonization.html"
-	img = "../../img/learn/lung.png"
+	img = "../../img/learn/lung.webp"
 
 
 [[tutorials]]
@@ -41,59 +41,59 @@ You can also find recordings of past talks and workshops on our [YouTube channel
 	[[tutorials.section]]
 	name = "TCR and BCR receptor sequencing with scirpy"
 	url = "https://scirpy.scverse.org/en/latest/tutorials/tutorial_3k_tcr.html"
-	img = "https://scirpy.scverse.org/en/latest/_static/scirpy_logo.png"
+	img = "../../img/learn/scirpy-logo.webp"
 	[[tutorials.section]]
 	name = "ATAC-seq"
 	url = "https://muon-tutorials.readthedocs.io/en/latest/single-cell-rna-atac/pbmc10k/2-Chromatin-Accessibility-Processing.html"
-	img = "https://muon-tutorials.readthedocs.io/en/latest/_images/single-cell-rna-atac_pbmc10k_2-Chromatin-Accessibility-Processing_85_0.png"
+	img = "../../img/learn/atac-seq.webp"
 	[[tutorials.section]]
 	name = "Analysis and processing of surface marker data (CITE-seq)"
 	url = "https://muon-tutorials.readthedocs.io/en/latest/cite-seq/1-CITE-seq-PBMC-5k.html"
-	img = "https://muon-tutorials.readthedocs.io/en/latest/_images/cite-seq_1-CITE-seq-PBMC-5k_38_1.png"
+	img = "../../img/learn/cite-seq-pbmc5k.webp"
 
 [[tutorials]]
 	name="Spatial"
 	[[tutorials.section]]
 	name = "Analyzing 10x Visium data with squidpy"
 	url = "https://squidpy.readthedocs.io/en/latest/auto_tutorials/tutorial_visium_hne.html"
-	img = "https://squidpy.readthedocs.io/en/latest/_images/sphx_glr_tutorial_visium_hne_001.png"
+	img = "../../img/learn/visium-hne.webp"
 	[[tutorials.section]]
 	name = "Analysis of seqFISH data with squidpy"
 	url = "https://squidpy.readthedocs.io/en/stable/auto_tutorials/tutorial_seqfish.html"
-	img = "https://squidpy.readthedocs.io/en/stable/_images/sphx_glr_tutorial_seqfish_003.png"
+	img = "../../img/learn/seqfish.webp"
 	[[tutorials.section]]
 	name = "Deconvolution of Visium data with DestVI"
 	url = "https://docs.scvi-tools.org/en/stable/tutorials/notebooks/DestVI_tutorial.html"
-	img = "../../img/learn/tissue.png"
+	img = "../../img/learn/tissue.webp"
 
 [[tutorials]]
 	name = "scATAC-seq & scRNA-seq"
 	[[tutorials.section]]
 	name = "Integrating gene expression and chromatin accessibility of 10k PBMCs in muon"
 	url = "https://muon-tutorials.readthedocs.io/en/latest/single-cell-rna-atac/pbmc10k/3-Multimodal-Omics-Data-Integration.html"
-	img = "https://muon-tutorials.readthedocs.io/en/latest/_images/single-cell-rna-atac_pbmc10k_3-Multimodal-Omics-Data-Integration_21_1.png"
+	img = "../../img/learn/multimodal-integration.webp"
 	[[tutorials.section]]
 	name = "Joint analysis of paired and unpaired multiomic data with MultiVI"
 	url = "https://docs.scvi-tools.org/en/stable/tutorials/notebooks/MultiVI_tutorial.html"
-	img = "../../img/learn/chromosome.png"
+	img = "../../img/learn/chromosome.webp"
 
 [[tutorials]]
 	name = "CITE-seq"
 	[[tutorials.section]]
 	name = "Multi-omics integration in muon"
 	url = "https://muon-tutorials.readthedocs.io/en/latest/cite-seq/2-CITE-seq-PBMC-5k-Weighted-Neighbours.html"
-	img = "https://muon-tutorials.readthedocs.io/en/latest/_images/cite-seq_2-CITE-seq-PBMC-5k-Weighted-Neighbours_30_1.png"
+	img = "../../img/learn/cite-seq-weighted-neighbours.webp"
 	[[tutorials.section]]
 	name = "CITE-seq analysis with totalVI"
 	url = "https://docs.scvi-tools.org/en/stable/tutorials/notebooks/totalVI.html"
-	img = "../../img/learn/protein.png"
+	img = "../../img/learn/protein.webp"
 
 [[tutorials]]
 	name = "Other topics"
 	[[tutorials.section]]
 	name = "Plotting in scanpy"
 	url = "https://scanpy-tutorials.readthedocs.io/en/latest/plotting/core.html"
-	img = "https://scanpy-tutorials.readthedocs.io/en/latest/_images/plotting_core_25_0.png"
+	img = "../../img/learn/scanpy-plotting.webp"
 
 	[[tutorials.section]]
 	name = "Combining AnnData objects"
