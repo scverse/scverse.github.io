@@ -67,13 +67,9 @@
       {{ $sections.ecosystem | markdownify }}
 
       {{ $registryBase := "https://scverse.org/ecosystem-packages/" }}
-      {{/* An unreachable registry should not fail the build, so swallow the error and fall back. */}}
-      {{ $data := false }}
-      {{ with try (resources.GetRemote (printf "%spackages.json" $registryBase)) }}
-        {{ $data = .Value }}
-      {{ end }}
-      {{ if $data }}
-        {{ $pkgs := transform.Unmarshal $data.Content }}
+      {{ $data := resources.GetRemote (printf "%spackages.json" $registryBase) }}
+      {{ $pkgs := transform.Unmarshal $data.Content }}
+      {{ if $pkgs }}
 
         {{/* Author-provided tags are free-form, so fold the obvious spelling variants together. */}}
         {{ $aliases := dict
@@ -344,11 +340,6 @@
             <button type="button" class="eco-empty-reset">Reset</button>
           </p>
         </div>
-      {{ else }}
-        <p>
-          The package registry could not be loaded. Browse it directly on
-          <a href="https://github.com/scverse/ecosystem-packages">GitHub</a>.
-        </p>
       {{ end }}
     </div>
   </article>
