@@ -12,7 +12,7 @@ aliases = ["/projects/"]
 [[datastructures]]
 	name = "anndata"
 	description = "Standard for annotated matrices"
-	url = "https://anndata.readthedocs.io/en/latest/"
+	url = "https://anndata.scverse.org/"
 	img = "../img/libs/anndata_schema.svg"
 	details = "AnnData is a Python package for handling annotated data matrices in memory and on disk, positioned between pandas and xarray. anndata offers a broad range of computationally efficient features including, among others, sparse data support, lazy operations, and a PyTorch interface."
 	[[datastructures.links]]
@@ -20,7 +20,7 @@ aliases = ["/projects/"]
 	url = "https://github.com/theislab/anndata"
 	[[datastructures.links]]
 	text = "Documentation"
-	url = "https://anndata.readthedocs.io/en/latest/"
+	url = "https://anndata.scverse.org/"
 	[[datastructures.links]]
 	text = "PyPI"
 	url = "https://pypi.org/project/anndata/"
@@ -73,8 +73,8 @@ aliases = ["/projects/"]
 [[packages]]
 	name = "scanpy"
 	description = "Single-cell analysis framework"
-	url = "https://scanpy.readthedocs.io/en/latest/"
-	#img = "https://scanpy.readthedocs.io/en/stable/_static/Scanpy_Logo_BrightFG.svg"
+	url = "https://scanpy.scverse.org/"
+	#img = "https://scanpy.scverse.org/_static/Scanpy_Logo_BrightFG.svg"
 	img = "../img/icons/scanpy.svg"
 	details = "Scanpy is a scalable toolkit for analyzing single-cell gene expression data built jointly with anndata. It includes preprocessing, visualization, clustering, trajectory inference and differential expression testing. The Python-based implementation efficiently deals with datasets of more than one million cells."
 	[[packages.links]]
@@ -82,7 +82,7 @@ aliases = ["/projects/"]
 	url = "https://github.com/theislab/scanpy"
 	[[packages.links]]
 	text = "Documentation and tutorials"
-	url = "https://scanpy.readthedocs.io/en/latest/"
+	url = "https://scanpy.scverse.org/"
 	[[packages.links]]
 	text = "PyPI"
 	url = "https://pypi.org/project/scanpy/"

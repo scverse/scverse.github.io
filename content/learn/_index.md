@@ -96,7 +96,7 @@ You can also find recordings of past talks and workshops on our [YouTube channel
 
 	[[tutorials.section]]
 	name = "Combining AnnData objects"
-	url = "https://anndata.readthedocs.io/en/latest/concatenation.html"
+	url = "https://anndata.scverse.org/page/concatenation.html"
 	img = "../../img/libs/anndata_schema.svg"
 
 +++
