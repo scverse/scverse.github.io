@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="svg1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" viewBox="0 0 781.5 781.5">
+  <!-- Generator: Adobe Illustrator 29.1.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 142)  -->
+  <defs>
+    <style>
+      .st0 {
+        font-family: ArialMT, Arial;
+        font-size: 130.7px;
+        isolation: isolate;
+      }
+
+      .st1 {
+        fill: #fff;
+      }
+
+      .st1, .st2, .st3 {
+        stroke: #000;
+        stroke-linejoin: round;
+        stroke-width: 1px;
+      }
+
+      .st2 {
+        fill: #343434;
+      }
+
+      .st3 {
+        fill: #b4b4b4;
+      }
+    </style>
+  </defs>
+  <sodipodi:namedview id="namedview1" bordercolor="#000000" borderopacity="0.25" inkscape:current-layer="svg1" inkscape:cx="43.490196" inkscape:cy="46" inkscape:deskcolor="#d1d1d1" inkscape:pagecheckerboard="0" inkscape:pageopacity="0.0" inkscape:showpageshadow="2" inkscape:window-height="1369" inkscape:window-maximized="1" inkscape:window-width="5120" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:zoom="12.75" pagecolor="#ffffff" showgrid="false"/>
+  <!-- paths are scverse-symbol.svg verbatim (91x91 user units); the group maps them into this 781.5 viewBox -->
+  <g id="g1" transform="translate(14.05,14.74) scale(8.35)">
+    <path id="path2431" class="st1" d="M 35,89.6 C 12.696563,86.222622 4.4,69.7 4.4,69.7 15.2,86.6 47.406831,78.910234 57.3,72.3 69.70684,64.010228 65.2,57 64,54.2 c 5.4,7.2 5.416629,23.51809 -1,29.4 -5.583426,5.11814 -15.303406,7.922627 -28,6 z"/>
+    <path id="path2433" class="st2" d="M 83.940256,43.502449 C 86.840256,36.402449 84.767335,30.971404 84.4,30.2 83.765211,28.866942 82.945693,27.845429 82,27.1 65.943944,14.44405 26.094603,28.094878 11.1,43.9 0.19460087,55.39488 0.88549809,63.968658 4.4,69.7 c 2.9870064,4.871118 7.9,7.6 13.4,9 -11.5,-12.4 9.792882,-31.119838 29,-38 20.992902,-7.519845 32.540256,-2.997551 37.140256,2.802449 z"/>
+    <path id="path2435" class="st1" d="m 79.6,50.4 c 9,-10.5 5,-19.5 4.8,-20.2 0,0 4.4,6.9 2.2,22.4 -1.2,8.5 -5.4,16 -10.1,11.8 -2.1,-1.8 -3,-6.9 3.1,-14 z"/>
+    <path id="path2437" class="st3" d="M 64,54.2 C 60.954552,49.234595 55.926017,46.767607 51.7,43.4 49.525649,41.667314 35.69826,31.880661 32.5,28.3 26.470611,21.549706 23,11.4 29.1,5.2 24.7,4.4 20.898803,5.3977926 18.5,6.7 17.3988,7.2977944 16.472247,7.9694965 15.7,8.7 9.0684136,14.973122 9.8955244,25.702577 14.1,33 c 4.495526,7.802579 13.2,15.4 24.3,22.8 5.1,3.4 15.2,8.9 18.9,16.5 C 69,64.2 65.566742,56.754471 64,54.2 Z"/>
+    <path id="path2439" class="st1" d="m 38.7,9.8 c 7.899701,6.300375 12.402386,9.813873 20,8.5 5.702416,-0.986132 4.905463,-7.908539 -4,-13.6 C 50.30545,1.8914533 45.3,0.5 39,0.5 31.5,0.5 22.8,4.2 18.5,6.7 22.5,4.4 30.299701,3.100375 38.7,9.8 Z"/>
+  </g>
+  <text id="text1" class="st0" transform="translate(649.5 769)"><tspan x="0" y="0">®</tspan></text>
+</svg>

@@ -7,14 +7,14 @@ draft = false
 +++
 
 <figure style="margin: 1rem 0;">
-  <img src="/img/blog/conference2025/conference2025.jpg" style="max-width: 100%; border-radius: 8px;" alt="Group photo from the scverse conference 2025" />
+  <img src="/img/blog/conference2025/conference2025.webp" style="max-width: 100%; border-radius: 8px;" alt="Group photo from the scverse conference 2025" />
   <figcaption style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Attendees gather for a group photo at Stanford University</figcaption>
 </figure>
 
 The 2nd scverse conference at Stanford University, Palo Alto, California, on November 17-19, 2025 brought together developers and scientists from academia and industry to discuss the latest advances in computational tools and experimental techniques for single cell and spatial multi omics.
 
 <figure style="margin: 1rem 0;">
-  <img src="/img/blog/conference2025/conference2025-numbers.png" style="max-width: 100%; border-radius: 8px;" alt="Conference in numbers infographic" />
+  <img src="/img/blog/conference2025/conference2025-numbers.webp" style="max-width: 100%; border-radius: 8px;" alt="Conference in numbers infographic" />
   <figcaption style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 0.5rem;">The conference in numbers</figcaption>
 </figure>
 
@@ -31,7 +31,7 @@ The conference in numbers:
 The conference was sold out one month in advance!
 
 <figure style="margin: 1rem 0;">
-  <img src="/img/blog/conference2025/conference2025-sponsors.png" style="max-width: 100%; border-radius: 8px;" alt="Sponsors and travel awards" />
+  <img src="/img/blog/conference2025/conference2025-sponsors.webp" style="max-width: 100%; border-radius: 8px;" alt="Sponsors and travel awards" />
   <figcaption style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Our generous sponsors and travel award recipients</figcaption>
 </figure>
 
@@ -43,7 +43,7 @@ Thanks to our generous sponsors, the scverse conference was also able to provide
 ### Keynote Speakers
 
 <figure style="margin: 1rem 0; text-align: center;">
-  <img src="/img/blog/conference2025/conference2025-keynote.jpg" style="max-width: 80%; border-radius: 8px;" alt="John Marioni keynote" />
+  <img src="/img/blog/conference2025/conference2025-keynote.webp" style="max-width: 80%; border-radius: 8px;" alt="John Marioni keynote" />
   <figcaption style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 0.5rem;">John Marioni, Genentech</figcaption>
 </figure>
 
@@ -79,11 +79,11 @@ The second day broadened the scope to RNA splicing, spatial technologies, and ec
 
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;">
   <figure style="margin: 0;">
-    <img src="/img/blog/conference2025/conference2025-shorttalk.jpg" style="width: 100%; height: 300px; object-fit: cover; object-position: 25% 80%; border-radius: 8px;" alt="Short talks presenter" />
+    <img src="/img/blog/conference2025/conference2025-shorttalk.webp" style="width: 100%; height: 300px; object-fit: cover; object-position: 25% 80%; border-radius: 8px;" alt="Short talks presenter" />
     <figcaption style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Short talk presentations</figcaption>
   </figure>
   <figure style="margin: 0;">
-    <img src="/img/blog/conference2025/conference2025-day2.jpg" style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px;" alt="Panel discussion" />
+    <img src="/img/blog/conference2025/conference2025-day2.webp" style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px;" alt="Panel discussion" />
     <figcaption style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Agentic workflows panel discussion</figcaption>
   </figure>
 </div>
@@ -103,11 +103,11 @@ The discussion revolved around diverse topics, from technical discussions on [Mo
 
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;">
   <figure style="margin: 0;">
-    <img src="/img/blog/conference2025/conference2025-workshop1.jpg" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;" alt="Workshop session" />
+    <img src="/img/blog/conference2025/conference2025-workshop1.webp" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;" alt="Workshop session" />
     <figcaption style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Participants of the Biohub Workshop</figcaption>
   </figure>
   <figure style="margin: 0;">
-    <img src="/img/blog/conference2025/conference2025-workshop2.jpg" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;" alt="Workshop session" />
+    <img src="/img/blog/conference2025/conference2025-workshop2.webp" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;" alt="Workshop session" />
     <figcaption style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Interactive session at Biohub</figcaption>
   </figure>
 </div>
@@ -127,10 +127,10 @@ The Tahoe workshop emphasized computational scalability and the emerging role of
 ### Poster Session
 
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;">
-  <img src="/img/blog/conference2025/conference2025-poster1.jpg" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px;" alt="Poster session" />
-  <img src="/img/blog/conference2025/conference2025-poster2.jpg" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px;" alt="Poster session" />
-  <img src="/img/blog/conference2025/conference2025-poster3.jpg" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px;" alt="Poster session" />
-  <img src="/img/blog/conference2025/conference2025-poster4.jpg" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px;" alt="Poster session" />
+  <img src="/img/blog/conference2025/conference2025-poster1.webp" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px;" alt="Poster session" />
+  <img src="/img/blog/conference2025/conference2025-poster2.webp" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px;" alt="Poster session" />
+  <img src="/img/blog/conference2025/conference2025-poster3.webp" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px;" alt="Poster session" />
+  <img src="/img/blog/conference2025/conference2025-poster4.webp" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px;" alt="Poster session" />
 </div>
 
 During the two days of the conference, a total of 88 posters were presented, where participants had the chance to engage in deeper discussions about their work across the scverse ecosystem.

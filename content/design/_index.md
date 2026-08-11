@@ -48,23 +48,23 @@ Our primary logo combines our icon with the full name. Use this version when int
 [[primarylogos]]
 	name = "Icon Only"
 	description = "Logo mark without text"
-	img = "../img/logo/scverse_symbol.svg"
+	img = "../img/logo/scverse-symbol.svg"
 	details = "Our icon can be used independently when space is limited or when our brand is already well-established in context."
 	[[primarylogos.links]]
 	text = "Download SVG"
-	url = "../img/logo/scverse_symbol.svg"
+	url = "../img/logo/scverse-symbol.svg"
 	[[primarylogos.links]]
 	text = "Download PNG"
-	url = "../img/logo/scverse_symbol.png"
+	url = "../img/logo/scverse-symbol.png"
 
 [[trademarkedlogos]]
 	name = "Icon (® version)"
 	description = "Icon trademarked"
-	img = "../img/icons/scverse_bw_logo.svg"
+	img = "../img/icons/scverse-bw-logo.svg"
 	details = "Use this version to indicate that scverse is a registered trademark in formal or legal contexts."
 	[[trademarkedlogos.links]]
 	text = "Download SVG"
-	url = "../img/icons/scverse_bw_logo.svg"
+	url = "../img/icons/scverse-bw-logo.svg"
 
 [[packageicons]]
 	name = "anndata"
