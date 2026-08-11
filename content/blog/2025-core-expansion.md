@@ -26,7 +26,7 @@ Built in Rust with a Python front end, it handles millions of cells efficiently.
 The package offers preprocessing, dimensionality reduction, clustering, and visualization methods.  
 All outputs are stored in AnnData and integrate seamlessly with scanpy and other scverse frameworks.
 
-<img src="/img/blog/snapatac2_overview.png" style="max-width: 100%;" alt="SnapATAC2 overview" />
+<img src="/img/blog/snapatac2_overview.webp" style="max-width: 100%;" alt="SnapATAC2 overview" />
 
 ## rapids-singlecell
 
@@ -36,7 +36,7 @@ Core steps—including PCA, neighborhood graph construction, and clustering—ar
 RSC integrates directly with AnnData and offers near drop-in replacements not only for scanpy, but also for selected functions from decoupler and squidpy.
 By preserving familiar APIs and data structures, it enables seamless GPU acceleration of existing workflows—scaling to millions of cells without the computational bottlenecks of CPU-based analysis.
 
-<img src="/img/blog/rsc_overview.png" style="max-width: 100%;" alt="RSC overview" />
+<img src="/img/blog/rsc_overview.webp" style="max-width: 100%;" alt="RSC overview" />
 
 For more details, we refer to a recent blog post by NVIDIA: [Driving Toward Billion-Cell Analysis and Biological Breakthroughs with RAPIDS-singlecell](https://developer.nvidia.com/blog/driving-toward-billion-cell-analysis-and-biological-breakthroughs-with-rapids-singlecell)
 
@@ -55,7 +55,7 @@ Built on AnnData and scverse libraries, pertpy fits smoothly into existing pipel
 It maps omics profiles to annotated biological sets, such as transcription factors, pathways, or kinases, using methods like GSEA, GSVA, and linear models.
 Designed for bulk, single-cell and spatial data, decoupler works directly with our scverse core data structures.
 
-<img src="/img/blog/decoupler_overview.png" style="max-width: 100%;" alt="decoupler overview" />
+<img src="/img/blog/decoupler_overview.webp" style="max-width: 100%;" alt="decoupler overview" />
 
 ## What this means
 
