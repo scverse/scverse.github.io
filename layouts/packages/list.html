@@ -67,12 +67,8 @@
       {{ $sections.ecosystem | markdownify }}
 
       {{ $registryBase := "https://scverse.org/ecosystem-packages/" }}
-      {{ $data := false }}
-      {{ with try (resources.GetRemote (printf "%spackages.json" $registryBase)) }}
-        {{ with .Value }}
-          {{ $data = . }}
-        {{ end }}
-      {{ end }}
+      {{/* Netlify previews build with Hugo 0.97, so no `try` here — it needs 0.141+. */}}
+      {{ $data := resources.GetRemote (printf "%spackages.json" $registryBase) }}
       {{ if $data }}
         {{ $pkgs := transform.Unmarshal $data.Content }}
 
