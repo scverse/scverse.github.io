@@ -74,7 +74,6 @@ aliases = ["/projects/"]
 	name = "scanpy"
 	description = "Single-cell analysis framework"
 	url = "https://scanpy.scverse.org/"
-	#img = "https://scanpy.scverse.org/_static/Scanpy_Logo_BrightFG.svg"
 	img = "../img/icons/scanpy.svg"
 	details = "Scanpy is a scalable toolkit for analyzing single-cell gene expression data built jointly with anndata. It includes preprocessing, visualization, clustering, trajectory inference and differential expression testing. The Python-based implementation efficiently deals with datasets of more than one million cells."
 	[[packages.links]]
