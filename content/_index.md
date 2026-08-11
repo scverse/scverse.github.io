@@ -7,7 +7,7 @@ description = "Foundational tools for single-cell omics data analysis"
 [[packages]]
 	name = "anndata"
 	description = "Standard for annotated matrices"
-	url = "https://anndata.readthedocs.io/en/latest/"
+	url = "https://anndata.scverse.org/"
 
 [[packages]]
 	name = "mudata"
@@ -22,7 +22,7 @@ description = "Foundational tools for single-cell omics data analysis"
 [[packages]]
 	name = "scanpy"
 	description = "Single-cell analysis framework"
-	url = "https://scanpy.readthedocs.io/en/latest/"
+	url = "https://scanpy.scverse.org/"
 
 [[packages]]
 	name = "muon"
