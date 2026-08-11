@@ -1053,9 +1053,357 @@ body {
     }
 }
 
-#eco-table tbody {
-    // TODO: I think this shouldn't be neccesary
-    border-top: 0px;
+// Specific to /packages#ecosystem — the community package registry
+
+$eco-radius: 0.75rem;
+$eco-hues:
+    $anndataorange, $scanpycerise, $mudatagreen, $spatialdatablue, $squidpyviolet,
+    $scirpypurple, $scviyellow, $muonaquamarine;
+
+#ecosystem-packages {
+    margin: 2rem 0 4rem;
+
+    .eco-sprite {
+        display: none;
+    }
+
+    svg {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    .eco-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem 1.5rem;
+    }
+
+    .eco-search {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex: 1 1 22rem;
+
+        .eco-search-icon {
+            position: absolute;
+            left: 1.1rem;
+            width: 1.1rem;
+            height: 1.1rem;
+            color: $greydesc;
+            pointer-events: none;
+        }
+
+        input {
+            width: 100%;
+            height: 3.25rem;
+            padding: 0 2.9rem;
+            font-size: 1rem;
+            color: $tiletext;
+            background-color: $backtickbg;
+            border: 1px solid $overline;
+            border-radius: 2rem;
+            outline: none;
+            transition: all 200ms ease-in-out;
+            text-overflow: ellipsis;
+
+            &::placeholder {
+                color: $greydesc;
+            }
+            &:focus {
+                background-color: white;
+                border-color: $greydesc;
+                box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.04);
+            }
+            // The native affordance duplicates our own clear button
+            &::-webkit-search-cancel-button {
+                display: none;
+            }
+        }
+    }
+
+    .eco-search-clear {
+        position: absolute;
+        right: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.6rem;
+        height: 1.6rem;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        color: $tiletext2;
+        background-color: $tilebg;
+        cursor: pointer;
+        transition: all 200ms ease-in-out;
+
+        svg {
+            width: 0.7rem;
+            height: 0.7rem;
+        }
+        &:hover {
+            color: white;
+            background-color: $tiletext;
+        }
+    }
+
+    .eco-count {
+        margin: 0;
+        font-size: 0.95rem;
+        color: $greydesc;
+        white-space: nowrap;
+    }
+
+    .eco-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin: 1.25rem 0 2rem;
+    }
+
+    .eco-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.35rem 0.85rem;
+        font-size: 0.85rem;
+        color: $tiletext2;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: 2rem;
+        cursor: pointer;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            color: $tiletext3;
+            border-color: $tilebg2;
+            background-color: $tilebg4;
+        }
+        &.is-active {
+            color: white;
+            background-color: $tiletext;
+            border-color: $tiletext;
+        }
+        .eco-chip-count {
+            font-size: 0.75rem;
+            opacity: 0.55;
+        }
+    }
+
+    .eco-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+        gap: 1.25rem;
+    }
+
+    .eco-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 1.35rem;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: $eco-radius;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            border-color: $tilebg2;
+            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+        &[hidden] {
+            display: none;
+        }
+    }
+
+    .eco-card-head {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+    }
+
+    .eco-logo {
+        display: grid;
+        place-items: center;
+        flex: 0 0 auto;
+        width: 2.75rem;
+        height: 2.75rem;
+        overflow: hidden;
+        border-radius: 0.6rem;
+        background-color: $tilebg4;
+
+        img {
+            width: 100%;
+            height: 100%;
+            padding: 0.3rem;
+            object-fit: contain;
+        }
+    }
+
+    .eco-logo--mono {
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: $tiletext;
+
+        @each $hue in $eco-hues {
+            &[data-hue="#{index($eco-hues, $hue) - 1}"] {
+                background-color: rgba($hue, 0.18);
+            }
+        }
+    }
+
+    .eco-card-heading {
+        min-width: 0;
+    }
+
+    // Element selector included to beat the generic `#page-content .post h3` margins
+    .eco-card h3.eco-card-name {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 800;
+        line-height: 1.3;
+        overflow-wrap: anywhere;
+
+        a {
+            color: black;
+            text-decoration: none;
+
+            // Make the whole card clickable without nesting interactive elements
+            &::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border-radius: $eco-radius;
+            }
+        }
+    }
+
+    .eco-card-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.4rem;
+        margin: 0.25rem 0 0;
+        font-size: 0.75rem;
+        color: $greydesc;
+
+        .eco-badge {
+            padding: 0.05rem 0.35rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: white;
+            background-color: $tiletext;
+            border-radius: 0.25rem;
+        }
+        .eco-version {
+            font-family: "JetBrains Mono", Menlo, monospace;
+        }
+        .eco-version + .eco-license::before {
+            content: "·";
+            margin-right: 0.4rem;
+        }
+    }
+
+    .eco-card-desc {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin: 0;
+        font-size: 0.9rem;
+        line-height: 1.55;
+        color: $tiletext2;
+    }
+
+    .eco-card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .eco-tag {
+        position: relative;
+        z-index: 1;
+        padding: 0.2rem 0.5rem;
+        font-size: 0.72rem;
+        color: $greydesc;
+        background-color: $tilebg4;
+        border: 0;
+        border-radius: 0.35rem;
+        cursor: pointer;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            color: $tiletext3;
+            background-color: $tilebg;
+        }
+    }
+
+    .eco-card-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: auto;
+        padding-top: 0.3rem;
+
+        a {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.3rem 0.6rem;
+            font-size: 0.78rem;
+            color: $tiletext2;
+            text-decoration: none;
+            background-color: $tilebg4;
+            border-radius: 0.4rem;
+            transition: all 200ms ease-in-out;
+
+            svg {
+                width: 0.85rem;
+                height: 0.85rem;
+            }
+            &:hover {
+                color: white;
+                background-color: $tiletext;
+            }
+        }
+    }
+
+    .eco-empty {
+        padding: 4rem 0;
+        text-align: center;
+        color: $greydesc;
+
+        .eco-empty-reset {
+            padding: 0;
+            color: $tiletext;
+            background: none;
+            border: 0;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+
+    @media (max-width: 50rem) {
+        .eco-grid {
+            grid-template-columns: 1fr;
+        }
+        .eco-count {
+            order: -1;
+        }
+    }
 }
 
 // Specific to /tutorials

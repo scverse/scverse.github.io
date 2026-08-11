@@ -62,42 +62,294 @@
         </div>
       {{ end }}
 
-      {{ $jsonURL := "https://scverse.org/ecosystem-packages/packages.json" }}
-      {{ $remoteData := resources.GetRemote $jsonURL }}
-      {{ $pkgs := transform.Unmarshal $remoteData.Content }}
+
       <h2 id="ecosystem">Ecosystem packages maintained by scverse community</h2>
-      <div>
-        <p>{{ $sections.ecosystem | markdownify }}</p>
-      </div>
-      {{ if $pkgs }}
-        <div id="ecosystem-packages">
-          <input
-            type="text"
-            class="form-control"
-            id="eco-filter"
-            onkeyup="filterPackages()"
-            placeholder="Search through {{ len $pkgs }} packages"
-            title="Type in your search query"
-          />
-          <table class="table" id="eco-table">
-            <thead>
-              <tr>
-                <th scope="col">Package</th>
-                <th scope="col">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              {{ range $lib := $pkgs }}
-                <tr class="package-links eco-table-row">
-                  <td>
-                    <a href="{{ $lib.project_home }}" target="_blank">{{ $lib.name }}</a>
-                  </td>
-                  <td>{{ $lib.description | markdownify }}</td>
-                </tr>
+      {{ $sections.ecosystem | markdownify }}
+
+      {{ $registryBase := "https://scverse.org/ecosystem-packages/" }}
+      {{ $data := false }}
+      {{ with try (resources.GetRemote (printf "%spackages.json" $registryBase)) }}
+        {{ with .Value }}
+          {{ $data = . }}
+        {{ end }}
+      {{ end }}
+      {{ if $data }}
+        {{ $pkgs := transform.Unmarshal $data.Content }}
+
+        {{/* Author-provided tags are free-form, so fold the obvious spelling variants together. */}}
+        {{ $aliases := dict
+          "single-cell" "single cell"
+          "singlecell" "single cell"
+          "single cell analysis" "single cell"
+          "scrnaseq" "scrna-seq"
+          "scrna seq" "scrna-seq"
+          "single cell rna-seq" "scrna-seq"
+          "single-cell rna-seq" "scrna-seq"
+          "rnaseq" "rna-seq"
+          "rna seq" "rna-seq"
+          "rna-sequencing" "rna-seq"
+          "spatial" "spatial omics"
+          "spatial-omics" "spatial omics"
+          "spatial transcriptomics" "spatial omics"
+          "spatial-transcriptomics" "spatial omics"
+          "spatialomics" "spatial omics"
+          "multi omics" "multi-omics"
+          "multi_omics" "multi-omics"
+          "multiomics" "multi-omics"
+          "multi-modal" "multimodal"
+          "deep-learning" "deep learning"
+          "deeplearning" "deep learning"
+          "machine-learning" "machine learning"
+          "differential-expression" "differential expression"
+          "differential gene expression" "differential expression"
+          "data structure" "data structures"
+          "optimal-transport" "optimal transport"
+          "cell-cell-communication" "cell-cell communication"
+          "cell cell communication" "cell-cell communication"
+          "gene regulatory networks" "gene networks"
+          "gene network inference" "gene networks"
+          "grn" "gene networks"
+          "rna velocity" "rna-velocity"
+          "trajectory-inference" "trajectory inference"
+          "trajectory-generation" "trajectory inference"
+          "pseudotime" "trajectory inference"
+        }}
+
+        {{/* Normalise tags once, then reuse for the chip row, the cards and the search index. */}}
+        {{ $items := slice }}
+        {{ $tagCounts := dict }}
+        {{ range $pkgs }}
+          {{ $tags := slice }}
+          {{ range (.tags | default slice) }}
+            {{ $t := trim (. | lower | replaceRE `\s+` " ") " " }}
+            {{ $t = index $aliases $t | default $t }}
+            {{ if and $t (not (in $tags $t)) }}
+              {{ $tags = $tags | append $t }}
+              {{ $tagCounts = merge $tagCounts (dict $t (add (index $tagCounts $t | default 0) 1)) }}
+            {{ end }}
+          {{ end }}
+          {{/* Registry descriptions are plain text with the odd bit of markdown and hard line breaks. */}}
+          {{ $desc := trim (.description | markdownify | plainify | htmlUnescape | replaceRE `\s+` " ") " " }}
+          {{ $search := lower (printf "%s %s %s" .name $desc (delimit $tags " ")) }}
+          {{ $items = $items | append (merge . (dict
+            "sortkey" (lower .name)
+            "normtags" $tags
+            "desc" $desc
+            "search" $search
+            ))
+          }}
+        {{ end }}
+        {{ $items = sort $items "sortkey" }}
+
+        {{/* Chip row: the tags that are common enough to be worth a shortcut. */}}
+        {{ $tagList := slice }}
+        {{ range $tag, $count := $tagCounts }}
+          {{ if ge $count 3 }}
+            {{ $tagList = $tagList | append (dict "tag" $tag "count" $count) }}
+          {{ end }}
+        {{ end }}
+        {{ $topTags := sort (first 12 (sort $tagList "count" "desc")) "tag" }}
+
+
+        <div id="ecosystem-packages" data-total="{{ len $items }}">
+          <svg class="eco-sprite" aria-hidden="true" focusable="false">
+            <symbol id="eco-i-search" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="7" />
+              <line x1="16.5" y1="16.5" x2="21" y2="21" />
+            </symbol>
+            <symbol id="eco-i-close" viewBox="0 0 24 24">
+              <line x1="5" y1="5" x2="19" y2="19" />
+              <line x1="19" y1="5" x2="5" y2="19" />
+            </symbol>
+            <symbol id="eco-i-code" viewBox="0 0 24 24">
+              <polyline points="15 17 21 12 15 7" />
+              <polyline points="9 7 3 12 9 17" />
+            </symbol>
+            <symbol id="eco-i-link" viewBox="0 0 24 24">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </symbol>
+            <symbol id="eco-i-book" viewBox="0 0 24 24">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+            </symbol>
+            <symbol id="eco-i-cap" viewBox="0 0 24 24">
+              <path d="M22 9.5 12 4.5 2 9.5l10 5 10-5z" />
+              <path d="M6 11.7V17c3.2 2.8 8.8 2.8 12 0v-5.3" />
+            </symbol>
+            <symbol id="eco-i-package" viewBox="0 0 24 24">
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+              />
+              <polyline points="3.3 7 12 12 20.7 7" />
+              <line x1="12" y1="22" x2="12" y2="12" />
+            </symbol>
+            <symbol id="eco-i-paper" viewBox="0 0 24 24">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="15" y1="13" x2="9" y2="13" />
+              <line x1="15" y1="17" x2="9" y2="17" />
+            </symbol>
+          </svg>
+
+          <div class="eco-toolbar">
+            <div class="eco-search">
+              <svg class="eco-search-icon" aria-hidden="true" focusable="false">
+                <use href="#eco-i-search" />
+              </svg>
+              <label class="visually-hidden" for="eco-filter">Search ecosystem packages</label>
+              <input
+                type="search"
+                id="eco-filter"
+                autocomplete="off"
+                placeholder="Search {{ len $items }} packages by name, description or tag…"
+              />
+              <button type="button" id="eco-clear" class="eco-search-clear" hidden aria-label="Clear filters">
+                <svg aria-hidden="true" focusable="false"><use href="#eco-i-close" /></svg>
+              </button>
+            </div>
+            <p class="eco-count" role="status">
+              <span id="eco-count">{{ len $items }}</span> of {{ len $items }} packages
+            </p>
+          </div>
+
+          <div class="eco-chips" id="eco-chips">
+            <button type="button" class="eco-chip is-active" data-tag="" aria-pressed="true">All</button>
+            {{ range $topTags }}
+              <button type="button" class="eco-chip" data-tag="{{ .tag }}" aria-pressed="false">
+                {{ .tag }}
+                <span class="eco-chip-count">{{ .count }}</span>
+              </button>
+            {{ end }}
+          </div>
+
+          <div class="eco-grid" id="eco-grid">
+            {{ range $i, $e := $items }}
+              {{ $isCore := hasPrefix ($e.category | default "") "core" }}
+              {{ $home := $e.project_home }}
+              {{ $isGitHub := in ($home | default "") "github.com" }}
+
+              {{/* Collect the outbound links once so the footer stays consistent across cards. */}}
+              {{ $candidates := slice }}
+              {{ with $home }}
+                {{ $candidates = $candidates | append (dict
+                  "icon" (cond $isGitHub "eco-i-code" "eco-i-link")
+                  "label" (cond $isGitHub "GitHub" "Website")
+                  "url" .
+                  )
+                }}
               {{ end }}
-            </tbody>
-          </table>
+              {{ with $e.documentation_home }}
+                {{ $candidates = $candidates | append (dict "icon" "eco-i-book" "label" "Docs" "url" .) }}
+              {{ end }}
+              {{ with $e.tutorials_home }}
+                {{ $candidates = $candidates | append (dict "icon" "eco-i-cap" "label" "Tutorials" "url" .) }}
+              {{ end }}
+              {{ $install := $e.install | default dict }}
+              {{ with $install.pypi }}
+                {{ $candidates = $candidates | append (dict
+                  "icon" "eco-i-package" "label" "PyPI" "url" (printf "https://pypi.org/project/%s/" .)
+                  )
+                }}
+              {{ end }}
+              {{ with $install.conda }}
+                {{ $parts := split . "::" }}
+                {{ $url := printf "https://anaconda.org/search?q=%s" (urlquery .) }}
+                {{ if eq (len $parts) 2 }}
+                  {{ $url = printf "https://anaconda.org/%s/%s" (index $parts 0) (index $parts 1) }}
+                {{ end }}
+                {{ $candidates = $candidates | append (dict "icon" "eco-i-package" "label" "conda" "url" $url) }}
+              {{ end }}
+              {{ with $install.cran }}
+                {{ $candidates = $candidates | append (dict
+                  "icon" "eco-i-package" "label" "CRAN" "url" (printf "https://cran.r-project.org/package=%s" .)
+                  )
+                }}
+              {{ end }}
+              {{ with $install.bioconductor }}
+                {{ $candidates = $candidates | append (dict
+                  "icon" "eco-i-package" "label" "Bioconductor" "url" (printf "https://bioconductor.org/packages/%s" .)
+                  )
+                }}
+              {{ end }}
+              {{ with $e.publications }}
+                {{ $doi := index . 0 }}
+                {{ $url := cond (hasPrefix $doi "http") $doi (printf "https://doi.org/%s" $doi) }}
+                {{ $candidates = $candidates | append (dict "icon" "eco-i-paper" "label" "Paper" "url" $url) }}
+              {{ end }}
+
+              {{/* Registries often point several fields at the same URL — show it once. */}}
+              {{ $links := slice }}
+              {{ $seen := slice }}
+              {{ range $candidates }}
+                {{ $url := trim .url "/" }}
+                {{ if not (in $seen $url) }}
+                  {{ $seen = $seen | append $url }}
+                  {{ $links = $links | append . }}
+                {{ end }}
+              {{ end }}
+
+
+              <article class="eco-card" data-search="{{ $e.search }}" data-tags="|{{ delimit $e.normtags "|" }}|">
+                <div class="eco-card-head">
+                  {{ with $e.logo }}
+                    <span class="eco-logo">
+                      <img src="{{ printf "%s%s" $registryBase . }}" alt="" loading="lazy" />
+                    </span>
+                  {{ else }}
+                    <span class="eco-logo eco-logo--mono" data-hue="{{ mod $i 8 }}" aria-hidden="true">
+                      {{ substr $e.name 0 1 | upper }}
+                    </span>
+                  {{ end }}
+                  <div class="eco-card-heading">
+                    <h3 class="eco-card-name">
+                      <a href="{{ $home }}" target="_blank" rel="noopener" class="eco-card-target">{{ $e.name }}</a>
+                    </h3>
+                    <p class="eco-card-meta">
+                      {{ if $isCore }}<span class="eco-badge">core</span>{{ end }}
+                      {{ with $e.version }}<span class="eco-version">{{ . }}</span>{{ end }}
+                      {{ with $e.license }}<span class="eco-license">{{ . }}</span>{{ end }}
+                    </p>
+                  </div>
+                </div>
+
+                <p class="eco-card-desc">{{ $e.desc }}</p>
+
+                {{ with $e.normtags }}
+                  <ul class="eco-card-tags">
+                    {{ range first 4 . }}
+                      <li>
+                        <button type="button" class="eco-tag" data-tag="{{ . }}">{{ . }}</button>
+                      </li>
+                    {{ end }}
+                  </ul>
+                {{ end }}
+
+                {{ with $links }}
+                  <div class="eco-card-links">
+                    {{ range . }}
+                      <a href="{{ .url }}" target="_blank" rel="noopener">
+                        <svg aria-hidden="true" focusable="false"><use href="#{{ .icon }}" /></svg>
+                        {{ .label }}
+                      </a>
+                    {{ end }}
+                  </div>
+                {{ end }}
+              </article>
+            {{ end }}
+          </div>
+
+          <p class="eco-empty" id="eco-empty" hidden>
+            No packages match your filters.
+            <button type="button" class="eco-empty-reset">Reset</button>
+          </p>
         </div>
+      {{ else }}
+        <p>
+          The package registry could not be loaded. Browse it directly on
+          <a href="https://github.com/scverse/ecosystem-packages">GitHub</a>.
+        </p>
       {{ end }}
     </div>
   </article>

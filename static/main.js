@@ -1,16 +1,87 @@
-const filterPackages = () => {
-  const trs = document.querySelectorAll('.eco-table-row');
-  const filter = document.querySelector('#eco-filter').value;
-  const regex = new RegExp(filter, 'i');
-  const tdFound = td => regex.test(td.innerHTML);
-  const pkgFound = childrenArr => childrenArr.some(tdFound);
-  const toggleTrs = ({ style, children }) => {
-    style.display = pkgFound([
-      ...children
-    ]) ? '' : 'none' ;
+// Ecosystem package registry: free-text search combined with a single active tag filter.
+const initEcosystemRegistry = () => {
+  const root = document.querySelector('#ecosystem-packages');
+  if (!root) return;
+
+  const input = root.querySelector('#eco-filter');
+  const chipRow = root.querySelector('#eco-chips');
+  const grid = root.querySelector('#eco-grid');
+  const counter = root.querySelector('#eco-count');
+  const empty = root.querySelector('#eco-empty');
+  const clearButton = root.querySelector('#eco-clear');
+  const cards = Array.from(grid.querySelectorAll('.eco-card'));
+  let activeTag = '';
+
+  const apply = () => {
+    const terms = input.value.toLowerCase().split(/\s+/).filter(Boolean);
+    let shown = 0;
+    cards.forEach(card => {
+      const matchesQuery = terms.every(term => card.dataset.search.includes(term));
+      const matchesTag = !activeTag || card.dataset.tags.includes(`|${activeTag}|`);
+      const visible = matchesQuery && matchesTag;
+      card.hidden = !visible;
+      if (visible) shown += 1;
+    });
+    counter.textContent = shown;
+    empty.hidden = shown !== 0;
+    clearButton.hidden = !terms.length && !activeTag;
   };
-  trs.forEach(toggleTrs);
-}
+
+  // A tag picked from a card may not be in the pre-rendered chip row, so add it on demand.
+  const syncChips = () => {
+    if (activeTag && !chipRow.querySelector(`.eco-chip[data-tag="${CSS.escape(activeTag)}"]`)) {
+      const chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'eco-chip eco-chip--custom';
+      chip.dataset.tag = activeTag;
+      chip.textContent = activeTag;
+      chipRow.insertBefore(chip, chipRow.firstElementChild.nextSibling);
+    }
+    chipRow.querySelectorAll('.eco-chip').forEach(chip => {
+      const isActive = chip.dataset.tag === activeTag;
+      chip.classList.toggle('is-active', isActive);
+      chip.setAttribute('aria-pressed', String(isActive));
+      if (!isActive && chip.classList.contains('eco-chip--custom')) chip.remove();
+    });
+  };
+
+  const setTag = tag => {
+    activeTag = activeTag === tag ? '' : tag;
+    syncChips();
+    apply();
+  };
+
+  const reset = () => {
+    input.value = '';
+    activeTag = '';
+    syncChips();
+    apply();
+  };
+
+  input.addEventListener('input', apply);
+  input.addEventListener('keydown', event => {
+    if (event.key === 'Escape') reset();
+  });
+  clearButton.addEventListener('click', () => {
+    reset();
+    input.focus();
+  });
+  empty.querySelector('.eco-empty-reset').addEventListener('click', reset);
+
+  chipRow.addEventListener('click', event => {
+    const chip = event.target.closest('.eco-chip');
+    if (chip) setTag(chip.dataset.tag);
+  });
+
+  grid.addEventListener('click', event => {
+    const tag = event.target.closest('.eco-tag');
+    if (!tag) return;
+    event.preventDefault();
+    setTag(tag.dataset.tag);
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    root.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+  });
+};
 
 const filterTutorials = () => {
   const trs = document.querySelectorAll('.tutorial-item');
@@ -247,11 +318,7 @@ const initInteractiveViz = () => {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-  // Set up event listeners for filters if they exist
-  const ecoFilter = document.querySelector('#eco-filter')
-  if (ecoFilter) {
-    ecoFilter.addEventListener('input', filterPackages)
-  }
+  initEcosystemRegistry()
 
   const tutorialFilter = document.querySelector('#tutorial-filter')
   if (tutorialFilter) {
