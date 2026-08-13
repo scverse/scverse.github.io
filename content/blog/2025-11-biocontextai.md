@@ -13,7 +13,7 @@ BioContextAI provides a community registry for Model Context Protocol (MCP) serv
 These are standardized tools that allow AI systems to access specialized databases and software.
 This project was recently published as a [Nature Biotechnology correspondence][Nature Biotechnology correspondence] and we are actively starting to explore and contribute scverse MCP servers.
 
-<img src="/img/blog/biocontextai_overview.png" style="max-width: 100%;" alt="BioContextAI overview" />
+<img src="/img/blog/biocontextai_overview.webp" style="max-width: 100%;" alt="BioContextAI overview" />
 
 ## What we're building
 

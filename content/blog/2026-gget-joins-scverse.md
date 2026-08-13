@@ -9,7 +9,7 @@ draft = false
 Querying genomic reference databases is something every bioinformatician does constantly, and doing it well has historically required juggling a patchwork of APIs, file formats, and web interfaces. 
 [gget](https://github.com/scverse/gget) was built to fix that, and is now officially part of the scverse ecosystem.
 
-<img src="/img/blog/gget_x_scverse_overview.png" style="max-width: 100%;" alt="gget x scverse Overview." />
+<img src="/img/blog/gget_x_scverse_overview.webp" style="max-width: 100%;" alt="gget x scverse Overview." />
 
 ## What is gget?
 
@@ -19,7 +19,7 @@ It was published in [*Bioinformatics* in 2023](https://academic.oup.com/bioinfor
 ### gget enables biological interpretation within scverse workflows
 
 Analyses built on scverse tools can be the starting point for biological interpretation. 
-For example, after clustering with [Scanpy](https://scanpy.readthedocs.io/) and identifying marker genes, you might want to understand what those genes do, how they are expressed across tissues, whether they are associated with disease, and how their protein products are structured.
+For example, after clustering with [Scanpy](https://scanpy.scverse.org/) and identifying marker genes, you might want to understand what those genes do, how they are expressed across tissues, whether they are associated with disease, and how their protein products are structured.
 Without tooling answering these questions means leaving Python and visiting several web portals.
 
 gget closes that loop and is designed for exactly the questions arising at the end of a scverse analysis. 
@@ -52,7 +52,7 @@ gget.enrichr(markers, database="GO_Biological_Process_2023")
 gget.archs4(markers[0], which="tissue")
 ```
 
-The `gget.cellxgene` module returns data as [AnnData](https://anndata.readthedocs.io/) objects helping slot results directly into scverse pipelines:
+The `gget.cellxgene` module returns data as [AnnData](https://anndata.scverse.org/) objects helping slot results directly into scverse pipelines:
 
 ```py
 # gget.cellxgene needs a one-time setup to install the cellxgene-census backend
