@@ -1,4 +1,5 @@
-// Ecosystem package registry: free-text search combined with a single active tag filter.
+// Ecosystem package registry: free-text search, one active category, one active tag.
+// Categories and tags both come from the controlled vocabulary in the registry schema.
 const initEcosystemRegistry = () => {
   const root = document.querySelector('#ecosystem-packages');
   if (!root) return;
@@ -10,49 +11,39 @@ const initEcosystemRegistry = () => {
   const empty = root.querySelector('#eco-empty');
   const clearButton = root.querySelector('#eco-clear');
   const cards = Array.from(grid.querySelectorAll('.eco-card'));
+  let activeCategory = '';
   let activeTag = '';
 
   const apply = () => {
     const terms = input.value.toLowerCase().split(/\s+/).filter(Boolean);
     let shown = 0;
     cards.forEach(card => {
-      const matchesQuery = terms.every(term => card.dataset.search.includes(term));
-      const matchesTag = !activeTag || card.dataset.tags.includes(`|${activeTag}|`);
-      const visible = matchesQuery && matchesTag;
+      const visible =
+        terms.every(term => card.dataset.search.includes(term)) &&
+        (!activeCategory || card.dataset.category === activeCategory) &&
+        (!activeTag || card.dataset.tags.includes(`|${activeTag}|`));
       card.hidden = !visible;
       if (visible) shown += 1;
     });
     counter.textContent = shown;
     empty.hidden = shown !== 0;
-    clearButton.hidden = !terms.length && !activeTag;
-  };
-
-  // A tag picked from a card may not be in the pre-rendered chip row, so add it on demand.
-  const syncChips = () => {
-    if (activeTag && !chipRow.querySelector(`.eco-chip[data-tag="${CSS.escape(activeTag)}"]`)) {
-      const chip = document.createElement('button');
-      chip.type = 'button';
-      chip.className = 'eco-chip eco-chip--custom';
-      chip.dataset.tag = activeTag;
-      chip.textContent = activeTag;
-      chipRow.insertBefore(chip, chipRow.firstElementChild.nextSibling);
-    }
-    chipRow.querySelectorAll('.eco-chip').forEach(chip => {
-      const isActive = chip.dataset.tag === activeTag;
-      chip.classList.toggle('is-active', isActive);
-      chip.setAttribute('aria-pressed', String(isActive));
-      if (!isActive && chip.classList.contains('eco-chip--custom')) chip.remove();
+    clearButton.hidden = !terms.length && !activeCategory && !activeTag;
+    root.querySelectorAll('.eco-tag').forEach(tag => {
+      tag.classList.toggle('is-active', tag.dataset.tag === activeTag);
     });
   };
 
-  const setTag = tag => {
-    activeTag = activeTag === tag ? '' : tag;
-    syncChips();
-    apply();
+  const syncChips = () => {
+    chipRow.querySelectorAll('.eco-chip').forEach(chip => {
+      const isActive = chip.dataset.category === activeCategory;
+      chip.classList.toggle('is-active', isActive);
+      chip.setAttribute('aria-pressed', String(isActive));
+    });
   };
 
   const reset = () => {
     input.value = '';
+    activeCategory = '';
     activeTag = '';
     syncChips();
     apply();
@@ -70,14 +61,19 @@ const initEcosystemRegistry = () => {
 
   chipRow.addEventListener('click', event => {
     const chip = event.target.closest('.eco-chip');
-    if (chip) setTag(chip.dataset.tag);
+    if (!chip) return;
+    activeCategory = activeCategory === chip.dataset.category ? '' : chip.dataset.category;
+    syncChips();
+    apply();
   });
 
+  // Tags are not in the chip row — there are too many — so they filter from the cards themselves.
   grid.addEventListener('click', event => {
     const tag = event.target.closest('.eco-tag');
     if (!tag) return;
     event.preventDefault();
-    setTag(tag.dataset.tag);
+    activeTag = activeTag === tag.dataset.tag ? '' : tag.dataset.tag;
+    apply();
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     root.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
   });

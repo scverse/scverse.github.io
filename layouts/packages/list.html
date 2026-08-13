@@ -71,64 +71,25 @@
       {{ $pkgs := transform.Unmarshal $data.Content }}
       {{ if $pkgs }}
 
-        {{/* Author-provided tags are free-form, so fold the obvious spelling variants together. */}}
-        {{ $aliases := dict
-          "single-cell" "single cell"
-          "singlecell" "single cell"
-          "single cell analysis" "single cell"
-          "scrnaseq" "scrna-seq"
-          "scrna seq" "scrna-seq"
-          "single cell rna-seq" "scrna-seq"
-          "single-cell rna-seq" "scrna-seq"
-          "rnaseq" "rna-seq"
-          "rna seq" "rna-seq"
-          "rna-sequencing" "rna-seq"
-          "spatial" "spatial omics"
-          "spatial-omics" "spatial omics"
-          "spatial transcriptomics" "spatial omics"
-          "spatial-transcriptomics" "spatial omics"
-          "spatialomics" "spatial omics"
-          "multi omics" "multi-omics"
-          "multi_omics" "multi-omics"
-          "multiomics" "multi-omics"
-          "multi-modal" "multimodal"
-          "deep-learning" "deep learning"
-          "deeplearning" "deep learning"
-          "machine-learning" "machine learning"
-          "differential-expression" "differential expression"
-          "differential gene expression" "differential expression"
-          "data structure" "data structures"
-          "optimal-transport" "optimal transport"
-          "cell-cell-communication" "cell-cell communication"
-          "cell cell communication" "cell-cell communication"
-          "gene regulatory networks" "gene networks"
-          "gene network inference" "gene networks"
-          "grn" "gene networks"
-          "rna velocity" "rna-velocity"
-          "trajectory-inference" "trajectory inference"
-          "trajectory-generation" "trajectory inference"
-          "pseudotime" "trajectory inference"
-        }}
-
-        {{/* Normalise tags once, then reuse for the chip row, the cards and the search index. */}}
+        {{/* Categories and tags are a controlled vocabulary in the registry schema, so no
+          normalisation here: https://github.com/scverse/ecosystem-packages/blob/main/scripts/src/ecosystem_scripts/schema.json
+        */}}
         {{ $items := slice }}
-        {{ $tagCounts := dict }}
+        {{ $categories := slice }}
         {{ range $pkgs }}
-          {{ $tags := slice }}
-          {{ range (.tags | default slice) }}
-            {{ $t := trim (. | lower | replaceRE `\s+` " ") " " }}
-            {{ $t = index $aliases $t | default $t }}
-            {{ if and $t (not (in $tags $t)) }}
-              {{ $tags = $tags | append $t }}
-              {{ $tagCounts = merge $tagCounts (dict $t (add (index $tagCounts $t | default 0) 1)) }}
-            {{ end }}
+          {{ $tags := .tags | default slice }}
+          {{ $category := .primary_category | default "" }}
+          {{ if and $category (not (in $categories $category)) }}
+            {{ $categories = $categories | append $category }}
           {{ end }}
           {{/* Registry descriptions are plain text with the odd bit of markdown and hard line breaks. */}}
           {{ $desc := trim (.description | markdownify | plainify | htmlUnescape | replaceRE `\s+` " ") " " }}
-          {{ $search := lower (printf "%s %s %s" .name $desc (delimit $tags " ")) }}
+          {{ $search := lower (printf "%s %s %s %s %s" .name $desc (delimit $tags " ") $category .language) }}
           {{ $items = $items | append (merge . (dict
             "sortkey" (lower .name)
             "normtags" $tags
+            "category" $category
+            "language" .language
             "desc" $desc
             "search" $search
             ))
@@ -136,14 +97,12 @@
         {{ end }}
         {{ $items = sort $items "sortkey" }}
 
-        {{/* Chip row: the tags that are common enough to be worth a shortcut. */}}
-        {{ $tagList := slice }}
-        {{ range $tag, $count := $tagCounts }}
-          {{ if ge $count 3 }}
-            {{ $tagList = $tagList | append (dict "tag" $tag "count" $count) }}
-          {{ end }}
+        {{/* Chip row: every category in the schema that is actually in use, biggest first. */}}
+        {{ $categoryCounts := slice }}
+        {{ range $categories }}
+          {{ $categoryCounts = $categoryCounts | append (dict "name" . "count" (len (where $items "category" .))) }}
         {{ end }}
-        {{ $topTags := sort (first 12 (sort $tagList "count" "desc")) "tag" }}
+        {{ $categoryCounts = sort $categoryCounts "count" "desc" }}
 
 
         <div id="ecosystem-packages" data-total="{{ len $items }}">
@@ -210,10 +169,10 @@
           </div>
 
           <div class="eco-chips" id="eco-chips">
-            <button type="button" class="eco-chip is-active" data-tag="" aria-pressed="true">All</button>
-            {{ range $topTags }}
-              <button type="button" class="eco-chip" data-tag="{{ .tag }}" aria-pressed="false">
-                {{ .tag }}
+            <button type="button" class="eco-chip is-active" data-category="" aria-pressed="true">All</button>
+            {{ range $categoryCounts }}
+              <button type="button" class="eco-chip" data-category="{{ .name }}" aria-pressed="false">
+                {{ .name }}
                 <span class="eco-chip-count">{{ .count }}</span>
               </button>
             {{ end }}
@@ -286,7 +245,12 @@
               {{ end }}
 
 
-              <article class="eco-card" data-search="{{ $e.search }}" data-tags="|{{ delimit $e.normtags "|" }}|">
+              <article
+                class="eco-card"
+                data-search="{{ $e.search }}"
+                data-tags="|{{ delimit $e.normtags "|" }}|"
+                data-category="{{ $e.category }}"
+              >
                 <div class="eco-card-head">
                   {{ with $e.logo }}
                     <span class="eco-logo">
@@ -303,6 +267,9 @@
                     </h3>
                     <p class="eco-card-meta">
                       {{ if $isCore }}<span class="eco-badge">core</span>{{ end }}
+                      {{ if and $e.language (ne $e.language "Python") }}
+                        <span class="eco-badge eco-badge--lang">{{ $e.language }}</span>
+                      {{ end }}
                       {{ with $e.version }}<span class="eco-version">{{ . }}</span>{{ end }}
                       {{ with $e.license }}<span class="eco-license">{{ . }}</span>{{ end }}
                     </p>
@@ -313,7 +280,7 @@
 
                 {{ with $e.normtags }}
                   <ul class="eco-card-tags">
-                    {{ range first 4 . }}
+                    {{ range . }}
                       <li>
                         <button type="button" class="eco-tag" data-tag="{{ . }}">{{ . }}</button>
                       </li>

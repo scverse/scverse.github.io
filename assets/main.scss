@@ -1276,6 +1276,10 @@ $eco-hues:
             background-color: $tiletext;
             border-radius: 0.25rem;
         }
+        .eco-badge--lang {
+            color: $tiletext;
+            background-color: $tilebg2;
+        }
         .eco-version {
             font-family: "JetBrains Mono", Menlo, monospace;
         }
@@ -1320,6 +1324,10 @@ $eco-hues:
         &:hover {
             color: $tiletext3;
             background-color: $tilebg;
+        }
+        &.is-active {
+            color: white;
+            background-color: $tiletext;
         }
     }
 
