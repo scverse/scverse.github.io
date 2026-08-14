@@ -1032,6 +1032,146 @@ body {
     border-top: 0px;
 }
 
+// Specific to /stats
+
+#stats-content {
+    .stats-updated {
+        font-size: 0.9rem;
+        color: $greydesc;
+    }
+
+    // The one number the page leads with
+    .stats-hero {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        margin: 2.5rem 0 1rem;
+
+        .stats-hero-value {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1;
+            color: black;
+        }
+        .stats-hero-label {
+            font-size: 1.15rem;
+            color: $tiletext;
+        }
+        .stats-hero-hint {
+            font-size: 0.9rem;
+            color: $greydesc;
+        }
+        @media (max-width: 50rem) {
+            .stats-hero-value {
+                font-size: 3rem;
+            }
+        }
+    }
+
+    .stats-tiles {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+        gap: 0.75rem;
+    }
+
+    .stats-tile {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        padding: 1.1rem 1.25rem;
+        background-color: $tilebg4;
+        border: 1px solid $overline;
+        border-radius: 0.75rem;
+
+        .stats-tile-value {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: black;
+        }
+        .stats-tile-label {
+            font-size: 0.85rem;
+            line-height: 1.35;
+            color: $tiletext2;
+        }
+    }
+
+    .stats-contributors {
+        display: grid;
+        gap: 0.15rem;
+        margin: 1.5rem 0;
+        padding: 0;
+        list-style: none;
+
+        a {
+            display: grid;
+            grid-template-columns: 2.5rem minmax(7rem, 11rem) 1fr auto;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 0.35rem 0.5rem;
+            border-radius: 0.5rem;
+            color: $tiletext;
+            text-decoration: none;
+            transition: all 200ms ease-in-out;
+
+            &:hover {
+                color: black;
+                background-color: $tilebg4;
+            }
+        }
+        img {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+        }
+        .stats-contributor-name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        // Thin recessive track, value anchored to the baseline with 4px ends
+        .stats-contributor-bar {
+            height: 0.5rem;
+            background-color: $tilebg;
+            border-radius: 0.25rem;
+
+            > span {
+                display: block;
+                height: 100%;
+                background-color: $tiletext;
+                border-radius: 0.25rem;
+            }
+        }
+        .stats-contributor-count {
+            font-size: 0.85rem;
+            color: $greydesc;
+            font-variant-numeric: tabular-nums;
+        }
+
+        @media (max-width: 50rem) {
+            a {
+                grid-template-columns: 2.5rem 1fr auto;
+            }
+            .stats-contributor-bar {
+                display: none;
+            }
+        }
+    }
+
+    .stats-more {
+        margin: 0 0 0 0.5rem;
+        font-size: 0.85rem;
+        color: $greydesc;
+    }
+
+    .stats-source {
+        margin-top: 2.5rem;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        color: $greydesc;
+    }
+}
+
 // Specific to /tutorials
 
 #tutorials-content {

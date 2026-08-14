@@ -1,0 +1,105 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  <article class="post">
+    <div class="post-content" id="stats-content">
+      {{ $base := "https://scverse.org/stats/" }}
+      {{ $stats := transform.Unmarshal (resources.GetRemote (printf "%sstats.json" $base)).Content }}
+      {{ $contributors := transform.Unmarshal (resources.GetRemote (printf "%scontributors.json" $base)).Content }}
+      {{ $gh := $stats.github }}
+
+
+      <p>{{ .Params.preface | safeHTML }}</p>
+
+      <p class="stats-updated">
+        Updated
+        <time datetime="{{ $stats.timestamp }}">{{ (time $stats.timestamp).Format "2 January 2006" }}</time>
+      </p>
+
+      {{/* The one number the page leads with. Everything else is a tile. */}}
+      <section class="stats-hero">
+        <span class="stats-hero-value">{{ printf "%.1fM" (div (float $stats.pepy_downloads) 1000000.0) }}</span>
+        <span class="stats-hero-label">downloads of the core packages, all time</span>
+        <span class="stats-hero-hint">
+          {{ lang.FormatNumberCustom 0 $stats.pepy_avg_daily_30 }} a day on average over the last 30 days
+        </span>
+      </section>
+
+      {{ $groups := slice
+        (dict
+        "name" "Community"
+        "tiles" (slice
+        (dict "value" $stats.zulip_users "label" "Zulip members")
+        (dict "value" $stats.bluesky_followers "label" "Bluesky followers")
+        (dict "value" $gh.unique_contributors "label" "code contributors")
+        (dict "value" $gh.organization_members "label" "GitHub organisation members")
+        (dict "value" $stats.core_team_size "label" "core team members")
+        )
+        )
+        (dict
+        "name" "Packages and code"
+        "tiles" (slice
+        (dict "value" $stats.ecosystem_packages "label" "ecosystem packages")
+        (dict "value" $gh.total_repositories "label" "core repositories")
+        (dict "value" $gh.total_stars "label" "GitHub stars")
+        (dict "value" $gh.total_pull_requests_last_year "label" "pull requests in the last year")
+        (dict "value" $gh.total_pull_requests_closed "label" "pull requests closed, all time")
+        )
+        )
+        (dict
+        "name" "Issues and citations"
+        "tiles" (slice
+        (dict "value" $gh.total_issues_closed "label" "issues closed")
+        (dict "value" $gh.total_issues_open "label" "issues open")
+        (dict "value" $stats.citation_count "label" "citations of scverse papers")
+        )
+        )
+        }}
+
+      {{ range $groups }}
+        <h2>{{ .name }}</h2>
+        <div class="stats-tiles">
+          {{ range .tiles }}
+            <div class="stats-tile">
+              <span class="stats-tile-value">{{ lang.FormatNumberCustom 0 .value }}</span>
+              <span class="stats-tile-label">{{ .label }}</span>
+            </div>
+          {{ end }}
+        </div>
+      {{ end }}
+
+
+      <h2>Top contributors</h2>
+      <p>
+        {{ lang.FormatNumberCustom 0 $contributors.total_contributors }} people have contributed code to the core
+        packages. These are the busiest, by number of commits.
+      </p>
+
+      {{ $top := first 24 $contributors.contributors }}
+      {{ $most := (index $top 0).contributions }}
+      <ol class="stats-contributors">
+        {{ range $top }}
+          <li>
+            <a href="{{ .html_url }}" target="_blank" rel="noopener">
+              <img src="{{ .avatar_url }}&s=96" alt="" loading="lazy" width="40" height="40" />
+              <span class="stats-contributor-name">{{ .name | default .login }}</span>
+              <span class="stats-contributor-bar" aria-hidden="true">
+                <span style="width: {{ math.Round (div (mul (float .contributions) 100.0) (float $most)) }}%"></span>
+              </span>
+              <span class="stats-contributor-count">{{ lang.FormatNumberCustom 0 .contributions }}</span>
+            </a>
+          </li>
+        {{ end }}
+      </ol>
+
+      <p class="stats-more">
+        …and {{ lang.FormatNumberCustom 0 (sub $contributors.total_contributors (len $top)) }} more.
+      </p>
+
+      <p class="stats-source">
+        Collected from the GitHub, Zulip, Bluesky, PePy and OpenAlex APIs by
+        <a href="https://github.com/scverse/stats">scverse/stats</a>. Contribution counts come from the core
+        repositories only, so they undercount anyone whose work lives in an ecosystem package.
+      </p>
+    </div>
+  </article>
+{{ end }}
