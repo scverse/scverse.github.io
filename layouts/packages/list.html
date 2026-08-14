@@ -77,6 +77,8 @@
         {{ range $pkgs }}
           {{ $tags := .tags | default slice }}
           {{ $category := .primary_category | default "" }}
+          {{/* core-infrastructure is the scverse repos themselves, not packages, so it does not count here. */}}
+          {{ $core := in (slice "core-framework" "core-datastructure") (.category | default "") }}
           {{ if and $category (not (in $categories $category)) }}
             {{ $categories = $categories | append $category }}
           {{ end }}
@@ -84,7 +86,8 @@
           {{ $desc := trim (.description | markdownify | plainify | htmlUnescape | replaceRE `\s+` " ") " " }}
           {{ $search := lower (printf "%s %s %s %s %s" .name $desc (delimit $tags " ") $category .language) }}
           {{ $items = $items | append (merge . (dict
-            "sortkey" (lower .name)
+            "sortkey" (printf "%s %s" (cond $core "0" "1") (lower .name))
+            "core" $core
             "normtags" $tags
             "category" $category
             "language" .language
@@ -178,7 +181,6 @@
 
           <div class="eco-grid" id="eco-grid">
             {{ range $i, $e := $items }}
-              {{ $isCore := hasPrefix ($e.category | default "") "core" }}
               {{ $home := $e.project_home }}
               {{ $isGitHub := in ($home | default "") "github.com" }}
 
@@ -244,7 +246,7 @@
 
 
               <article
-                class="eco-card"
+                class="eco-card{{ if $e.core }}eco-card--core{{ end }}"
                 data-search="{{ $e.search }}"
                 data-tags="|{{ delimit $e.normtags "|" }}|"
                 data-category="{{ $e.category }}"
@@ -264,7 +266,7 @@
                       <a href="{{ $home }}" target="_blank" rel="noopener" class="eco-card-target">{{ $e.name }}</a>
                     </h3>
                     <p class="eco-card-meta">
-                      {{ if $isCore }}<span class="eco-badge">core</span>{{ end }}
+                      {{ if $e.core }}<span class="eco-badge eco-badge--core">core</span>{{ end }}
                       {{ if and $e.language (ne $e.language "Python") }}
                         <span class="eco-badge eco-badge--lang">{{ $e.language }}</span>
                       {{ end }}
