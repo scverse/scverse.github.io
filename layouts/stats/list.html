@@ -25,12 +25,19 @@
       </section>
 
       {{/* A tile only gets a link where the destination genuinely shows the same number. */}}
+      {{/* LinkedIn is scraped upstream, so any given run may not have it. */}}
+      {{ $social := slice
+        (dict "value" $stats.zulip_users "label" "Zulip members" "url" "https://scverse.zulipchat.com/")
+        (dict "value" $stats.bluesky_followers "label" "Bluesky followers" "url" "https://bsky.app/profile/scverse.bsky.social")
+      }}
+      {{ with $stats.linkedin_followers }}
+        {{ $social = $social | append (dict "value" . "label" "LinkedIn followers" "url" "https://www.linkedin.com/company/scverse/") }}
+      {{ end }}
+
       {{ $groups := slice
         (dict
         "name" "Community"
-        "tiles" (slice
-        (dict "value" $stats.zulip_users "label" "Zulip members" "url" "https://scverse.zulipchat.com/")
-        (dict "value" $stats.bluesky_followers "label" "Bluesky followers" "url" "https://bsky.app/profile/scverse.bsky.social")
+        "tiles" ($social | append
         (dict "value" $gh.unique_contributors "label" "code contributors" "url" "#contributors")
         (dict "value" $gh.organization_members "label" "GitHub organisation members" "url" "https://github.com/orgs/scverse/people")
         (dict "value" $stats.core_team_size "label" "core team members" "url" "/people")
@@ -103,7 +110,7 @@
       </p>
 
       <p class="stats-source">
-        Collected from the GitHub, Zulip, Bluesky, PePy and OpenAlex APIs by
+        Collected from the GitHub, Zulip, Bluesky, LinkedIn, PePy and OpenAlex sources by
         <a href="https://github.com/scverse/stats">scverse/stats</a>. Contribution counts come from the core
         repositories only, so they undercount anyone whose work lives in an ecosystem package.
       </p>
