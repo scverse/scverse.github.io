@@ -1057,10 +1057,6 @@ body {
         .stats-hero-figure--second {
             padding-left: 3.5rem;
             border-left: 1px solid $overline;
-
-            .stats-hero-value {
-                font-size: 2.75rem;
-            }
         }
         @media (max-width: 50rem) {
             .stats-hero-figure--second {
