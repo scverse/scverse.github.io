@@ -1,0 +1,54 @@
+# scverse
+
+> scverse is a consortium of foundational, interoperable open-source tools (mostly Python) for single-cell and spatial omics data analysis in the life sciences.
+
+scverse packages share common data structures (AnnData, MuData, SpatialData) to guarantee interoperability across the ecosystem.
+Most package documentation lives on dedicated external sites, linked below.
+This site (scverse.org) hosts the package index, tutorials, project governance, events, and the blog.
+
+## Core packages
+
+Foundational packages maintained by the scverse core team.
+{{ range .Params.packages }}
+- [{{ .name }}]({{ .url }}): {{ .description }}
+{{- end }}
+
+## More packages
+
+Other major packages developed within the scverse GitHub organization.
+
+- [gget](https://scverse.org/gget/): Efficient querying of genomic reference databases.
+- [PyDESeq2](https://pydeseq2.readthedocs.io/en/stable/): Python implementation of the DESeq2 pipeline for bulk RNA-seq differential expression analysis.
+- [CellRank](https://cellrank.readthedocs.io/en/latest/): Cell fate and dynamics from multi-view single-cell data.
+- [anndataR](https://anndataR.scverse.org): AnnData interoperability in R.
+- [spatialdata-io](https://spatialdata.scverse.org/projects/io/en/latest/): Readers and converters for spatial omics formats into SpatialData.
+- [napari-spatialdata](https://spatialdata.scverse.org/projects/napari/en/latest/): Interactive napari viewer for SpatialData.
+- [spatialdata-plot](https://spatialdata.scverse.org/projects/plot/en/latest/): Static plotting for the SpatialData framework.
+- [annbatch](https://annbatch.readthedocs.io): Minibatch loading for on-disk AnnData files, co-developed with Lamin Labs.
+- [pytometry](https://pytometry.readthedocs.io/en/latest/): Flow and mass cytometry analytics.
+- [rustar-aligner](https://scverse.org/rustar-aligner/): Rust implementation of the STAR RNA-seq aligner.
+- [anndata-rs](https://scverse.org/anndata-rs/): Rust implementation of AnnData.
+
+## Learn
+- [Tutorials]({{ absURL "learn/" }}): Getting-started tutorials for the core packages.
+- [Package index]({{ absURL "packages/" }}): All core and ecosystem packages with links to docs, source, and distribution.
+- [Single-cell best practices](https://www.sc-best-practices.org/): Community book on best practices for single-cell analysis.
+
+## About
+- [Mission]({{ absURL "about/mission/" }}): What scverse is and why it exists.
+- [Roles and governance]({{ absURL "about/roles/" }}): Core team, steering council, and how the project is run.
+- [Code of conduct]({{ absURL "about/code_of_conduct/" }}): Community standards for participation.
+- [AI policy]({{ absURL "about/ai_policy/" }}): Expectations for contributing AI-assisted code to scverse projects.
+
+## Community
+- [GitHub](https://github.com/scverse): Source code for all scverse packages.
+- [Discourse](https://discourse.scverse.org/): User forum for questions and discussion.
+- [Zulip](https://scverse.zulipchat.com/): Developer chat.
+- [Ecosystem packages](https://github.com/scverse/ecosystem-packages): Community packages built on scverse standards, and inclusion criteria.
+- [cookiecutter-scverse](https://cookiecutter-scverse-instance.readthedocs.io/en/latest/): Project template for creating new scverse-compatible packages.
+
+## Optional
+- [Blog]({{ absURL "blog/" }}): Announcements and release notes.
+- [Events]({{ absURL "events/" }}): Conferences and hackathons.
+- [People]({{ absURL "people/" }}): Contributors and core team.
+- [YouTube](https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA): Recorded talks and workshops.

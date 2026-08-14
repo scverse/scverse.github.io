@@ -12,7 +12,7 @@ description = "Foundational tools for single-cell omics data analysis"
 [[packages]]
 	name = "mudata"
 	description = "Multimodal data format"
-	url = "https://mudata.readthedocs.io/en/latest/"
+	url = "https://mudata.readthedocs.io/"
 
 [[packages]]
 	name = "spatialdata"
