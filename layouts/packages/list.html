@@ -71,9 +71,7 @@
       {{ $pkgs := transform.Unmarshal $data.Content }}
       {{ if $pkgs }}
 
-        {{/* Categories and tags are a controlled vocabulary in the registry schema, so no
-          normalisation here: https://github.com/scverse/ecosystem-packages/blob/main/scripts/src/ecosystem_scripts/schema.json
-        */}}
+        {{/* Categories and tags are a controlled vocabulary in the registry schema, so there is nothing to normalise here: https://github.com/scverse/ecosystem-packages/blob/main/scripts/src/ecosystem_scripts/schema.json */}}
         {{ $items := slice }}
         {{ $categories := slice }}
         {{ range $pkgs }}
