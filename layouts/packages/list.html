@@ -246,7 +246,7 @@
 
 
               <article
-                class="eco-card{{ if $e.core }}eco-card--core{{ end }}"
+                class="eco-card {{ if $e.core }}eco-card--core{{ end }}"
                 data-search="{{ $e.search }}"
                 data-tags="|{{ delimit $e.normtags "|" }}|"
                 data-category="{{ $e.category }}"
@@ -266,7 +266,7 @@
                       <a href="{{ $home }}" target="_blank" rel="noopener" class="eco-card-target">{{ $e.name }}</a>
                     </h3>
                     <p class="eco-card-meta">
-                      {{ if $e.core }}<span class="eco-badge eco-badge--core">core</span>{{ end }}
+                      {{ if $e.core }}<span class="eco-badge">core</span>{{ end }}
                       {{ if and $e.language (ne $e.language "Python") }}
                         <span class="eco-badge eco-badge--lang">{{ $e.language }}</span>
                       {{ end }}

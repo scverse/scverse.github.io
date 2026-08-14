@@ -1195,22 +1195,9 @@ $eco-hues:
         }
     }
 
-    // Packages maintained by the core team sort to the front and are tinted to match
+    // Packages maintained by the core team sort to the front and carry a wash of colour
     .eco-card--core {
-        background-color: rgba($scviyellow, 0.06);
-        border-color: rgba($scviyellow, 0.5);
-
-        &:hover {
-            border-color: rgba($scviyellow, 0.9);
-            box-shadow: 0 0.6rem 1.5rem rgba($scviyellow, 0.18);
-        }
-        .eco-logo--mono {
-            background-color: rgba($scviyellow, 0.22);
-        }
-        .eco-tag,
-        .eco-card-links a {
-            background-color: rgba($scviyellow, 0.14);
-        }
+        background-color: rgba($scviyellow, 0.08);
     }
 
     .eco-card-head {
@@ -1293,10 +1280,6 @@ $eco-hues:
             color: white;
             background-color: $tiletext;
             border-radius: 0.25rem;
-        }
-        .eco-badge--core {
-            color: $tiletext;
-            background-color: $scviyellow;
         }
         .eco-badge--lang {
             color: $tiletext;
