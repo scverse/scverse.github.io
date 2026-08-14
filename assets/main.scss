@@ -19,6 +19,7 @@ $spatialdatablue: #40a9ff;
 $squidpyviolet: #969dea;
 $scirpypurple: #da347f;
 $scviyellow: #fbb822;
+$scversedeepblue: #262fb5; // the darker end of the Join button gradient
 
 $github-black: #171b21;
 $twitter-blue: #469be5;
@@ -1138,7 +1139,8 @@ body {
             > span {
                 display: block;
                 height: 100%;
-                background-color: $tiletext;
+                // A hue rather than a dark neutral, so extensions that invert the page keep the bar visible
+                background-color: $scversedeepblue;
                 border-radius: 0.25rem;
             }
         }
