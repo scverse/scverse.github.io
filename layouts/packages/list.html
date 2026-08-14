@@ -1,313 +1,318 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  <article class="post">
-    {{ $sections := index .Params.sections 0 }}
-    <div class="post-content" id="packages-content">
-      {{ if .Params.packages }}
-        <h2 id="core-packages">Packages maintained by core team</h2>
-        {{ $sections.core_packages | markdownify }}
-        {{ if .Params.datastructures }}
-          <h3 id="datastructures">Data structures</h3>
-          {{ $sections.datastructures | markdownify }}
-          <div class="packages-list">
-            {{ $datastructures := .Params.datastructures }}
-            {{ range $i, $e := $datastructures }}
-              <div class="package-section">
-                <div class="package-img">
-                  <img src="{{ .img }}" alt="Logo for {{ .name }}" />
-                </div>
-                <div class="package-info">
-                  <div class="package-tile" id="{{ .name }}-tile">
-                    <div class="package-text">
-                      <span class="package-name">{{ .name }}</span>
-                      <span class="package-details">{{ .details | markdownify }}</span>
+  <div class="with-toc">
+    {{ partial "toc.html" . }}
+    <div class="with-toc-body">
+      <h1>{{ .Title }}</h1>
+      <article class="post">
+        {{ $sections := index .Params.sections 0 }}
+        <div class="post-content" id="packages-content">
+          {{ if .Params.packages }}
+            <h2 id="core-packages">Packages maintained by core team</h2>
+            {{ $sections.core_packages | markdownify }}
+            {{ if .Params.datastructures }}
+              <h3 id="datastructures">Data structures</h3>
+              {{ $sections.datastructures | markdownify }}
+              <div class="packages-list">
+                {{ $datastructures := .Params.datastructures }}
+                {{ range $i, $e := $datastructures }}
+                  <div class="package-section">
+                    <div class="package-img">
+                      <img src="{{ .img }}" alt="Logo for {{ .name }}" />
+                    </div>
+                    <div class="package-info">
+                      <div class="package-tile" id="{{ .name }}-tile">
+                        <div class="package-text">
+                          <span class="package-name">{{ .name }}</span>
+                          <span class="package-details">{{ .details | markdownify }}</span>
+                        </div>
+                      </div>
+                      <div class="package-links">
+                        {{ range $k, $v := $e.links }}
+                          <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
+                        {{ end }}
+                      </div>
                     </div>
                   </div>
-                  <div class="package-links">
-                    {{ range $k, $v := $e.links }}
-                      <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
-                    {{ end }}
-                  </div>
-                </div>
+                {{ end }}
               </div>
             {{ end }}
-          </div>
-        {{ end }}
-        <h4>Analysis task-specific extensions</h4>
-        <p>{{ $sections.datastructures_post | markdownify }}</p>
-        <h3 id="frameworks">Frameworks</h3>
-        {{ $sections.frameworks | markdownify }}
-        <div class="packages-list">
-          {{ $packages := .Params.packages }}
-          {{ range $i, $e := $packages }}
-            <div class="package-section">
-              <div class="package-img">
-                <img src="{{ .img }}" alt="Logo for {{ .name }}" />
-              </div>
-              <div class="package-info">
-                <div class="package-tile" id="{{ .name }}-tile">
-                  <div class="package-text">
-                    <span class="package-name">{{ .name }}</span>
-                    <span class="package-details">{{ .details | markdownify }}</span>
+            <h4>Analysis task-specific extensions</h4>
+            <p>{{ $sections.datastructures_post | markdownify }}</p>
+            <h3 id="frameworks">Frameworks</h3>
+            {{ $sections.frameworks | markdownify }}
+            <div class="packages-list">
+              {{ $packages := .Params.packages }}
+              {{ range $i, $e := $packages }}
+                <div class="package-section">
+                  <div class="package-img">
+                    <img src="{{ .img }}" alt="Logo for {{ .name }}" />
                   </div>
-                </div>
-                <div class="package-links">
-                  {{ range $k, $v := $e.links }}
-                    <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
-                  {{ end }}
-                </div>
-              </div>
-            </div>
-          {{ end }}
-        </div>
-      {{ end }}
-
-
-      <h2 id="ecosystem">Ecosystem packages maintained by scverse community</h2>
-      {{ $sections.ecosystem | markdownify }}
-
-      {{ $registryBase := "https://scverse.org/ecosystem-packages/" }}
-      {{ $data := resources.GetRemote (printf "%spackages.json" $registryBase) }}
-      {{ $pkgs := transform.Unmarshal $data.Content }}
-      {{ if $pkgs }}
-
-        {{/* Categories and tags are a controlled vocabulary in the registry schema, so there is nothing to normalise here: https://github.com/scverse/ecosystem-packages/blob/main/scripts/src/ecosystem_scripts/schema.json */}}
-        {{ $items := slice }}
-        {{ $categories := slice }}
-        {{ range $pkgs }}
-          {{ $tags := .tags | default slice }}
-          {{ $category := .primary_category | default "" }}
-          {{/* core-infrastructure is the scverse repos themselves, not packages, so it does not count here. */}}
-          {{ $core := in (slice "core-framework" "core-datastructure") (.category | default "") }}
-          {{ if and $category (not (in $categories $category)) }}
-            {{ $categories = $categories | append $category }}
-          {{ end }}
-          {{/* Registry descriptions are plain text with the odd bit of markdown and hard line breaks. */}}
-          {{ $desc := trim (.description | markdownify | plainify | htmlUnescape | replaceRE `\s+` " ") " " }}
-          {{ $search := lower (printf "%s %s %s %s %s" .name $desc (delimit $tags " ") $category .language) }}
-          {{ $items = $items | append (merge . (dict
-            "sortkey" (printf "%s %s" (cond $core "0" "1") (lower .name))
-            "core" $core
-            "normtags" $tags
-            "category" $category
-            "language" .language
-            "desc" $desc
-            "search" $search
-            ))
-          }}
-        {{ end }}
-        {{ $items = sort $items "sortkey" }}
-
-        {{/* Chip row: every category in the schema that is actually in use, biggest first. */}}
-        {{ $categoryCounts := slice }}
-        {{ range $categories }}
-          {{ $categoryCounts = $categoryCounts | append (dict "name" . "count" (len (where $items "category" .))) }}
-        {{ end }}
-        {{ $categoryCounts = sort $categoryCounts "count" "desc" }}
-
-
-        <div id="ecosystem-packages" data-total="{{ len $items }}">
-          <svg class="eco-sprite" aria-hidden="true" focusable="false">
-            <symbol id="eco-i-search" viewBox="0 0 24 24">
-              <circle cx="11" cy="11" r="7" />
-              <line x1="16.5" y1="16.5" x2="21" y2="21" />
-            </symbol>
-            <symbol id="eco-i-close" viewBox="0 0 24 24">
-              <line x1="5" y1="5" x2="19" y2="19" />
-              <line x1="19" y1="5" x2="5" y2="19" />
-            </symbol>
-            <symbol id="eco-i-code" viewBox="0 0 24 24">
-              <polyline points="15 17 21 12 15 7" />
-              <polyline points="9 7 3 12 9 17" />
-            </symbol>
-            <symbol id="eco-i-link" viewBox="0 0 24 24">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </symbol>
-            <symbol id="eco-i-book" viewBox="0 0 24 24">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-            </symbol>
-            <symbol id="eco-i-cap" viewBox="0 0 24 24">
-              <path d="M22 9.5 12 4.5 2 9.5l10 5 10-5z" />
-              <path d="M6 11.7V17c3.2 2.8 8.8 2.8 12 0v-5.3" />
-            </symbol>
-            <symbol id="eco-i-package" viewBox="0 0 24 24">
-              <path
-                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
-              />
-              <polyline points="3.3 7 12 12 20.7 7" />
-              <line x1="12" y1="22" x2="12" y2="12" />
-            </symbol>
-            <symbol id="eco-i-paper" viewBox="0 0 24 24">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-              <polyline points="14 2 14 8 20 8" />
-              <line x1="15" y1="13" x2="9" y2="13" />
-              <line x1="15" y1="17" x2="9" y2="17" />
-            </symbol>
-          </svg>
-
-          <div class="eco-toolbar">
-            <div class="eco-search">
-              <svg class="eco-search-icon" aria-hidden="true" focusable="false">
-                <use href="#eco-i-search" />
-              </svg>
-              <label class="visually-hidden" for="eco-filter">Search ecosystem packages</label>
-              <input
-                type="search"
-                id="eco-filter"
-                autocomplete="off"
-                placeholder="Search {{ len $items }} packages by name, description or tag…"
-              />
-              <button type="button" id="eco-clear" class="eco-search-clear" hidden aria-label="Clear filters">
-                <svg aria-hidden="true" focusable="false"><use href="#eco-i-close" /></svg>
-              </button>
-            </div>
-            <p class="eco-count" role="status">
-              <span id="eco-count">{{ len $items }}</span> of {{ len $items }} packages
-            </p>
-          </div>
-
-          <div class="eco-chips" id="eco-chips">
-            <button type="button" class="eco-chip is-active" data-category="" aria-pressed="true">All</button>
-            {{ range $categoryCounts }}
-              <button type="button" class="eco-chip" data-category="{{ .name }}" aria-pressed="false">
-                {{ .name }}
-                <span class="eco-chip-count">{{ .count }}</span>
-              </button>
-            {{ end }}
-          </div>
-
-          <div class="eco-grid" id="eco-grid">
-            {{ range $i, $e := $items }}
-              {{ $home := $e.project_home }}
-              {{ $isGitHub := in ($home | default "") "github.com" }}
-
-              {{/* Collect the outbound links once so the footer stays consistent across cards. */}}
-              {{ $candidates := slice }}
-              {{ with $home }}
-                {{ $candidates = $candidates | append (dict
-                  "icon" (cond $isGitHub "eco-i-code" "eco-i-link")
-                  "label" (cond $isGitHub "GitHub" "Website")
-                  "url" .
-                  )
-                }}
-              {{ end }}
-              {{ with $e.documentation_home }}
-                {{ $candidates = $candidates | append (dict "icon" "eco-i-book" "label" "Docs" "url" .) }}
-              {{ end }}
-              {{ with $e.tutorials_home }}
-                {{ $candidates = $candidates | append (dict "icon" "eco-i-cap" "label" "Tutorials" "url" .) }}
-              {{ end }}
-              {{ $install := $e.install | default dict }}
-              {{ with $install.pypi }}
-                {{ $candidates = $candidates | append (dict
-                  "icon" "eco-i-package" "label" "PyPI" "url" (printf "https://pypi.org/project/%s/" .)
-                  )
-                }}
-              {{ end }}
-              {{ with $install.conda }}
-                {{ $parts := split . "::" }}
-                {{ $url := printf "https://anaconda.org/search?q=%s" (urlquery .) }}
-                {{ if eq (len $parts) 2 }}
-                  {{ $url = printf "https://anaconda.org/%s/%s" (index $parts 0) (index $parts 1) }}
-                {{ end }}
-                {{ $candidates = $candidates | append (dict "icon" "eco-i-package" "label" "conda" "url" $url) }}
-              {{ end }}
-              {{ with $install.cran }}
-                {{ $candidates = $candidates | append (dict
-                  "icon" "eco-i-package" "label" "CRAN" "url" (printf "https://cran.r-project.org/package=%s" .)
-                  )
-                }}
-              {{ end }}
-              {{ with $install.bioconductor }}
-                {{ $candidates = $candidates | append (dict
-                  "icon" "eco-i-package" "label" "Bioconductor" "url" (printf "https://bioconductor.org/packages/%s" .)
-                  )
-                }}
-              {{ end }}
-              {{ with $e.publications }}
-                {{ $doi := index . 0 }}
-                {{ $url := cond (hasPrefix $doi "http") $doi (printf "https://doi.org/%s" $doi) }}
-                {{ $candidates = $candidates | append (dict "icon" "eco-i-paper" "label" "Paper" "url" $url) }}
-              {{ end }}
-
-              {{/* Registries often point several fields at the same URL — show it once. */}}
-              {{ $links := slice }}
-              {{ $seen := slice }}
-              {{ range $candidates }}
-                {{ $url := trim .url "/" }}
-                {{ if not (in $seen $url) }}
-                  {{ $seen = $seen | append $url }}
-                  {{ $links = $links | append . }}
-                {{ end }}
-              {{ end }}
-
-
-              <article
-                class="eco-card {{ if $e.core }}eco-card--core{{ end }}"
-                data-search="{{ $e.search }}"
-                data-tags="|{{ delimit $e.normtags "|" }}|"
-                data-category="{{ $e.category }}"
-              >
-                <div class="eco-card-head">
-                  {{ with $e.logo }}
-                    <span class="eco-logo">
-                      <img src="{{ printf "%s%s" $registryBase . }}" alt="" loading="lazy" />
-                    </span>
-                  {{ else }}
-                    <span class="eco-logo eco-logo--mono" data-hue="{{ mod $i 8 }}" aria-hidden="true">
-                      {{ substr $e.name 0 1 | upper }}
-                    </span>
-                  {{ end }}
-                  <div class="eco-card-heading">
-                    <h3 class="eco-card-name">
-                      <a href="{{ $home }}" target="_blank" rel="noopener" class="eco-card-target">{{ $e.name }}</a>
-                    </h3>
-                    <p class="eco-card-meta">
-                      {{ if $e.core }}<span class="eco-badge">core</span>{{ end }}
-                      {{ if and $e.language (ne $e.language "Python") }}
-                        <span class="eco-badge eco-badge--lang">{{ $e.language }}</span>
+                  <div class="package-info">
+                    <div class="package-tile" id="{{ .name }}-tile">
+                      <div class="package-text">
+                        <span class="package-name">{{ .name }}</span>
+                        <span class="package-details">{{ .details | markdownify }}</span>
+                      </div>
+                    </div>
+                    <div class="package-links">
+                      {{ range $k, $v := $e.links }}
+                        <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
                       {{ end }}
-                      {{ with $e.version }}<span class="eco-version">{{ . }}</span>{{ end }}
-                      {{ with $e.license }}<span class="eco-license">{{ . }}</span>{{ end }}
-                    </p>
+                    </div>
                   </div>
                 </div>
+              {{ end }}
+            </div>
+          {{ end }}
 
-                <p class="eco-card-desc">{{ $e.desc }}</p>
 
-                {{ with $e.normtags }}
-                  <ul class="eco-card-tags">
-                    {{ range . }}
-                      <li>
-                        <button type="button" class="eco-tag" data-tag="{{ . }}">{{ . }}</button>
-                      </li>
-                    {{ end }}
-                  </ul>
-                {{ end }}
+          <h2 id="ecosystem">Ecosystem packages maintained by scverse community</h2>
+          {{ $sections.ecosystem | markdownify }}
 
-                {{ with $links }}
-                  <div class="eco-card-links">
-                    {{ range . }}
-                      <a href="{{ .url }}" target="_blank" rel="noopener">
-                        <svg aria-hidden="true" focusable="false"><use href="#{{ .icon }}" /></svg>
-                        {{ .label }}
-                      </a>
-                    {{ end }}
-                  </div>
-                {{ end }}
-              </article>
+          {{ $registryBase := "https://scverse.org/ecosystem-packages/" }}
+          {{ $data := resources.GetRemote (printf "%spackages.json" $registryBase) }}
+          {{ $pkgs := transform.Unmarshal $data.Content }}
+          {{ if $pkgs }}
+
+            {{/* Categories and tags are a controlled vocabulary in the registry schema, so there is nothing to normalise here: https://github.com/scverse/ecosystem-packages/blob/main/scripts/src/ecosystem_scripts/schema.json */}}
+            {{ $items := slice }}
+            {{ $categories := slice }}
+            {{ range $pkgs }}
+              {{ $tags := .tags | default slice }}
+              {{ $category := .primary_category | default "" }}
+              {{/* core-infrastructure is the scverse repos themselves, not packages, so it does not count here. */}}
+              {{ $core := in (slice "core-framework" "core-datastructure") (.category | default "") }}
+              {{ if and $category (not (in $categories $category)) }}
+                {{ $categories = $categories | append $category }}
+              {{ end }}
+              {{/* Registry descriptions are plain text with the odd bit of markdown and hard line breaks. */}}
+              {{ $desc := trim (.description | markdownify | plainify | htmlUnescape | replaceRE `\s+` " ") " " }}
+              {{ $search := lower (printf "%s %s %s %s %s" .name $desc (delimit $tags " ") $category .language) }}
+              {{ $items = $items | append (merge . (dict
+                "sortkey" (printf "%s %s" (cond $core "0" "1") (lower .name))
+                "core" $core
+                "normtags" $tags
+                "category" $category
+                "language" .language
+                "desc" $desc
+                "search" $search
+                ))
+              }}
             {{ end }}
-          </div>
+            {{ $items = sort $items "sortkey" }}
 
-          <p class="eco-empty" id="eco-empty" hidden>
-            No packages match your filters.
-            <button type="button" class="eco-empty-reset">Reset</button>
-          </p>
+            {{/* Chip row: every category in the schema that is actually in use, biggest first. */}}
+            {{ $categoryCounts := slice }}
+            {{ range $categories }}
+              {{ $categoryCounts = $categoryCounts | append (dict "name" . "count" (len (where $items "category" .))) }}
+            {{ end }}
+            {{ $categoryCounts = sort $categoryCounts "count" "desc" }}
+
+
+            <div id="ecosystem-packages" data-total="{{ len $items }}">
+              <svg class="eco-sprite" aria-hidden="true" focusable="false">
+                <symbol id="eco-i-search" viewBox="0 0 24 24">
+                  <circle cx="11" cy="11" r="7" />
+                  <line x1="16.5" y1="16.5" x2="21" y2="21" />
+                </symbol>
+                <symbol id="eco-i-close" viewBox="0 0 24 24">
+                  <line x1="5" y1="5" x2="19" y2="19" />
+                  <line x1="19" y1="5" x2="5" y2="19" />
+                </symbol>
+                <symbol id="eco-i-code" viewBox="0 0 24 24">
+                  <polyline points="15 17 21 12 15 7" />
+                  <polyline points="9 7 3 12 9 17" />
+                </symbol>
+                <symbol id="eco-i-link" viewBox="0 0 24 24">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </symbol>
+                <symbol id="eco-i-book" viewBox="0 0 24 24">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                </symbol>
+                <symbol id="eco-i-cap" viewBox="0 0 24 24">
+                  <path d="M22 9.5 12 4.5 2 9.5l10 5 10-5z" />
+                  <path d="M6 11.7V17c3.2 2.8 8.8 2.8 12 0v-5.3" />
+                </symbol>
+                <symbol id="eco-i-package" viewBox="0 0 24 24">
+                  <path
+                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                  />
+                  <polyline points="3.3 7 12 12 20.7 7" />
+                  <line x1="12" y1="22" x2="12" y2="12" />
+                </symbol>
+                <symbol id="eco-i-paper" viewBox="0 0 24 24">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="15" y1="13" x2="9" y2="13" />
+                  <line x1="15" y1="17" x2="9" y2="17" />
+                </symbol>
+              </svg>
+
+              <div class="eco-toolbar">
+                <div class="eco-search">
+                  <svg class="eco-search-icon" aria-hidden="true" focusable="false">
+                    <use href="#eco-i-search" />
+                  </svg>
+                  <label class="visually-hidden" for="eco-filter">Search ecosystem packages</label>
+                  <input
+                    type="search"
+                    id="eco-filter"
+                    autocomplete="off"
+                    placeholder="Search {{ len $items }} packages by name, description or tag…"
+                  />
+                  <button type="button" id="eco-clear" class="eco-search-clear" hidden aria-label="Clear filters">
+                    <svg aria-hidden="true" focusable="false"><use href="#eco-i-close" /></svg>
+                  </button>
+                </div>
+                <p class="eco-count" role="status">
+                  <span id="eco-count">{{ len $items }}</span> of {{ len $items }} packages
+                </p>
+              </div>
+
+              <div class="eco-chips" id="eco-chips">
+                <button type="button" class="eco-chip is-active" data-category="" aria-pressed="true">All</button>
+                {{ range $categoryCounts }}
+                  <button type="button" class="eco-chip" data-category="{{ .name }}" aria-pressed="false">
+                    {{ .name }}
+                    <span class="eco-chip-count">{{ .count }}</span>
+                  </button>
+                {{ end }}
+              </div>
+
+              <div class="eco-grid" id="eco-grid">
+                {{ range $i, $e := $items }}
+                  {{ $home := $e.project_home }}
+                  {{ $isGitHub := in ($home | default "") "github.com" }}
+
+                  {{/* Collect the outbound links once so the footer stays consistent across cards. */}}
+                  {{ $candidates := slice }}
+                  {{ with $home }}
+                    {{ $candidates = $candidates | append (dict
+                      "icon" (cond $isGitHub "eco-i-code" "eco-i-link")
+                      "label" (cond $isGitHub "GitHub" "Website")
+                      "url" .
+                      )
+                    }}
+                  {{ end }}
+                  {{ with $e.documentation_home }}
+                    {{ $candidates = $candidates | append (dict "icon" "eco-i-book" "label" "Docs" "url" .) }}
+                  {{ end }}
+                  {{ with $e.tutorials_home }}
+                    {{ $candidates = $candidates | append (dict "icon" "eco-i-cap" "label" "Tutorials" "url" .) }}
+                  {{ end }}
+                  {{ $install := $e.install | default dict }}
+                  {{ with $install.pypi }}
+                    {{ $candidates = $candidates | append (dict
+                      "icon" "eco-i-package" "label" "PyPI" "url" (printf "https://pypi.org/project/%s/" .)
+                      )
+                    }}
+                  {{ end }}
+                  {{ with $install.conda }}
+                    {{ $parts := split . "::" }}
+                    {{ $url := printf "https://anaconda.org/search?q=%s" (urlquery .) }}
+                    {{ if eq (len $parts) 2 }}
+                      {{ $url = printf "https://anaconda.org/%s/%s" (index $parts 0) (index $parts 1) }}
+                    {{ end }}
+                    {{ $candidates = $candidates | append (dict "icon" "eco-i-package" "label" "conda" "url" $url) }}
+                  {{ end }}
+                  {{ with $install.cran }}
+                    {{ $candidates = $candidates | append (dict
+                      "icon" "eco-i-package" "label" "CRAN" "url" (printf "https://cran.r-project.org/package=%s" .)
+                      )
+                    }}
+                  {{ end }}
+                  {{ with $install.bioconductor }}
+                    {{ $candidates = $candidates | append (dict
+                      "icon" "eco-i-package" "label" "Bioconductor" "url" (printf "https://bioconductor.org/packages/%s" .)
+                      )
+                    }}
+                  {{ end }}
+                  {{ with $e.publications }}
+                    {{ $doi := index . 0 }}
+                    {{ $url := cond (hasPrefix $doi "http") $doi (printf "https://doi.org/%s" $doi) }}
+                    {{ $candidates = $candidates | append (dict "icon" "eco-i-paper" "label" "Paper" "url" $url) }}
+                  {{ end }}
+
+                  {{/* Registries often point several fields at the same URL — show it once. */}}
+                  {{ $links := slice }}
+                  {{ $seen := slice }}
+                  {{ range $candidates }}
+                    {{ $url := trim .url "/" }}
+                    {{ if not (in $seen $url) }}
+                      {{ $seen = $seen | append $url }}
+                      {{ $links = $links | append . }}
+                    {{ end }}
+                  {{ end }}
+
+
+                  <article
+                    class="eco-card {{ if $e.core }}eco-card--core{{ end }}"
+                    data-search="{{ $e.search }}"
+                    data-tags="|{{ delimit $e.normtags "|" }}|"
+                    data-category="{{ $e.category }}"
+                  >
+                    <div class="eco-card-head">
+                      {{ with $e.logo }}
+                        <span class="eco-logo">
+                          <img src="{{ printf "%s%s" $registryBase . }}" alt="" loading="lazy" />
+                        </span>
+                      {{ else }}
+                        <span class="eco-logo eco-logo--mono" data-hue="{{ mod $i 8 }}" aria-hidden="true">
+                          {{ substr $e.name 0 1 | upper }}
+                        </span>
+                      {{ end }}
+                      <div class="eco-card-heading">
+                        <h3 class="eco-card-name">
+                          <a href="{{ $home }}" target="_blank" rel="noopener" class="eco-card-target">{{ $e.name }}</a>
+                        </h3>
+                        <p class="eco-card-meta">
+                          {{ if $e.core }}<span class="eco-badge">core</span>{{ end }}
+                          {{ if and $e.language (ne $e.language "Python") }}
+                            <span class="eco-badge eco-badge--lang">{{ $e.language }}</span>
+                          {{ end }}
+                          {{ with $e.version }}<span class="eco-version">{{ . }}</span>{{ end }}
+                          {{ with $e.license }}<span class="eco-license">{{ . }}</span>{{ end }}
+                        </p>
+                      </div>
+                    </div>
+
+                    <p class="eco-card-desc">{{ $e.desc }}</p>
+
+                    {{ with $e.normtags }}
+                      <ul class="eco-card-tags">
+                        {{ range . }}
+                          <li>
+                            <button type="button" class="eco-tag" data-tag="{{ . }}">{{ . }}</button>
+                          </li>
+                        {{ end }}
+                      </ul>
+                    {{ end }}
+
+                    {{ with $links }}
+                      <div class="eco-card-links">
+                        {{ range . }}
+                          <a href="{{ .url }}" target="_blank" rel="noopener">
+                            <svg aria-hidden="true" focusable="false"><use href="#{{ .icon }}" /></svg>
+                            {{ .label }}
+                          </a>
+                        {{ end }}
+                      </div>
+                    {{ end }}
+                  </article>
+                {{ end }}
+              </div>
+
+              <p class="eco-empty" id="eco-empty" hidden>
+                No packages match your filters.
+                <button type="button" class="eco-empty-reset">Reset</button>
+              </p>
+            </div>
+          {{ end }}
         </div>
-      {{ end }}
+      </article>
     </div>
-  </article>
+  </div>
 {{ end }}

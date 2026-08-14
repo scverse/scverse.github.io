@@ -1499,6 +1499,89 @@ $eco-hues:
     }
 }
 
+// Table of contents sidebar, used by the long pages (see partials/toc.html)
+
+.with-toc,
+.with-toc-body {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.toc {
+    display: none;
+}
+
+// Only worth a column when there is room for one beside the content
+@media (min-width: 75rem) {
+    #page-content:has(.with-toc) {
+        max-width: $maxwidthwide;
+        width: $contentwidthwide;
+    }
+
+    .with-toc {
+        display: grid;
+        grid-template-columns: 13rem minmax(0, 1fr);
+        gap: 3.5rem;
+        align-items: start;
+    }
+
+    .toc {
+        display: block;
+        position: sticky;
+        top: 2rem;
+        max-height: calc(100vh - 4rem);
+        overflow-y: auto;
+        // The body column starts with the h1, so drop the list to roughly its baseline
+        margin-top: 4.5rem;
+
+        &[hidden] {
+            display: none;
+        }
+
+        .toc-title {
+            margin: 0 0 0.6rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: $greydesc;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border-left: 1px solid $overline;
+        }
+
+        li a {
+            display: block;
+            padding: 0.35rem 0.75rem;
+            margin-left: -1px;
+            border-left: 2px solid transparent;
+            font-size: 0.9rem;
+            line-height: 1.35;
+            color: $greydesc;
+            text-decoration: none;
+            transition: all 200ms ease-in-out;
+
+            &:hover {
+                color: black;
+            }
+            &.is-current {
+                color: black;
+                border-left-color: $tiletext;
+            }
+        }
+
+        .toc-h3 a {
+            padding-left: 1.5rem;
+            font-size: 0.85rem;
+        }
+    }
+}
+
 // Specific to /people
 
 #people-content .team .team-list {
