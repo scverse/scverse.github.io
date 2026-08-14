@@ -12,6 +12,56 @@ const filterPackages = () => {
   trs.forEach(toggleTrs);
 }
 
+// Table of contents for long pages. These headings come from templates rather than markdown, so
+// Hugo's .TableOfContents cannot see them and the list is built from the rendered page instead.
+const initTableOfContents = () => {
+  const toc = document.querySelector('.toc');
+  const body = document.querySelector('.with-toc-body');
+  if (!toc || !body) return;
+
+  const headings = [...body.querySelectorAll('h2, h3')].filter(heading => heading.textContent.trim());
+  if (headings.length < 3) return; // too short to be worth a sidebar
+
+  const list = toc.querySelector('ul');
+  const used = new Set();
+  const links = new Map();
+
+  headings.forEach(heading => {
+    if (!heading.id) {
+      const slug = heading.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      let id = slug;
+      for (let n = 2; used.has(id) || document.getElementById(id); n += 1) id = `${slug}-${n}`;
+      heading.id = id;
+    }
+    used.add(heading.id);
+
+    const link = document.createElement('a');
+    link.href = `#${heading.id}`;
+    link.textContent = heading.textContent.trim();
+
+    const item = document.createElement('li');
+    item.className = `toc-${heading.tagName.toLowerCase()}`;
+    item.append(link);
+    list.append(item);
+    links.set(heading, link);
+  });
+
+  toc.hidden = false;
+
+  // Highlight the last heading scrolled past. A handful of rect reads per scroll is cheap enough
+  // to do directly, and avoids a throttle that can wedge if its callback never runs.
+  const markCurrent = () => {
+    let current = headings[0];
+    for (const heading of headings) {
+      if (heading.getBoundingClientRect().top > 120) break;
+      current = heading;
+    }
+    links.forEach((link, heading) => link.classList.toggle('is-current', heading === current));
+  };
+  window.addEventListener('scroll', markCurrent, { passive: true });
+  markCurrent();
+};
+
 const filterTutorials = () => {
   const trs = document.querySelectorAll('.tutorial-item');
   const filter = document.querySelector('#tutorial-filter').value;
@@ -257,6 +307,8 @@ document.addEventListener('DOMContentLoaded', function() {
   if (tutorialFilter) {
     tutorialFilter.addEventListener('input', filterTutorials)
   }
+
+  initTableOfContents()
 
   // Initialize interactive visualization if on home page
   initInteractiveViz()
