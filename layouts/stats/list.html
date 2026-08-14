@@ -24,33 +24,29 @@
         </span>
       </section>
 
+      {{/* A tile only gets a link where the destination genuinely shows the same number. */}}
       {{ $groups := slice
         (dict
         "name" "Community"
         "tiles" (slice
-        (dict "value" $stats.zulip_users "label" "Zulip members")
-        (dict "value" $stats.bluesky_followers "label" "Bluesky followers")
-        (dict "value" $gh.unique_contributors "label" "code contributors")
-        (dict "value" $gh.organization_members "label" "GitHub organisation members")
-        (dict "value" $stats.core_team_size "label" "core team members")
+        (dict "value" $stats.zulip_users "label" "Zulip members" "url" "https://scverse.zulipchat.com/")
+        (dict "value" $stats.bluesky_followers "label" "Bluesky followers" "url" "https://bsky.app/profile/scverse.bsky.social")
+        (dict "value" $gh.unique_contributors "label" "code contributors" "url" "#contributors")
+        (dict "value" $gh.organization_members "label" "GitHub organisation members" "url" "https://github.com/orgs/scverse/people")
+        (dict "value" $stats.core_team_size "label" "core team members" "url" "/people")
+        (dict "value" $stats.citation_count "label" "citations of scverse papers")
         )
         )
         (dict
         "name" "Packages and code"
         "tiles" (slice
-        (dict "value" $stats.ecosystem_packages "label" "ecosystem packages")
-        (dict "value" $gh.total_repositories "label" "core repositories")
-        (dict "value" $gh.total_stars "label" "GitHub stars")
+        (dict "value" $stats.ecosystem_packages "label" "ecosystem packages" "url" "/packages#ecosystem")
+        (dict "value" $gh.total_repositories "label" "core repositories" "url" "/packages#core-packages")
+        (dict "value" $gh.total_stars "label" "GitHub stars" "url" "https://github.com/scverse")
         (dict "value" $gh.total_pull_requests_last_year "label" "pull requests in the last year")
         (dict "value" $gh.total_pull_requests_closed "label" "pull requests closed, all time")
-        )
-        )
-        (dict
-        "name" "Issues and citations"
-        "tiles" (slice
-        (dict "value" $gh.total_issues_closed "label" "issues closed")
         (dict "value" $gh.total_issues_open "label" "issues open")
-        (dict "value" $stats.citation_count "label" "citations of scverse papers")
+        (dict "value" $gh.total_issues_closed "label" "issues closed")
         )
         )
         }}
@@ -59,16 +55,27 @@
         <h2>{{ .name }}</h2>
         <div class="stats-tiles">
           {{ range .tiles }}
-            <div class="stats-tile">
-              <span class="stats-tile-value">{{ lang.FormatNumberCustom 0 .value }}</span>
-              <span class="stats-tile-label">{{ .label }}</span>
-            </div>
+            {{ if .url }}
+              <a
+                class="stats-tile"
+                href="{{ .url }}"
+                {{ if hasPrefix .url "http" }}target="_blank" rel="noopener"{{ end }}
+              >
+                <span class="stats-tile-value">{{ lang.FormatNumberCustom 0 .value }}</span>
+                <span class="stats-tile-label">{{ .label }}</span>
+              </a>
+            {{ else }}
+              <div class="stats-tile">
+                <span class="stats-tile-value">{{ lang.FormatNumberCustom 0 .value }}</span>
+                <span class="stats-tile-label">{{ .label }}</span>
+              </div>
+            {{ end }}
           {{ end }}
         </div>
       {{ end }}
 
 
-      <h2>Top contributors</h2>
+      <h2 id="contributors">Top contributors</h2>
       <p>
         {{ lang.FormatNumberCustom 0 $contributors.total_contributors }} people have contributed code to the core
         packages. These are the busiest, by number of commits.

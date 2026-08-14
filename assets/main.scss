@@ -1097,6 +1097,26 @@ body {
         }
     }
 
+    // Only tiles that lead somewhere get the affordance
+    a.stats-tile {
+        text-decoration: none;
+        transition: all 200ms ease-in-out;
+
+        &:hover,
+        &:focus-visible {
+            background-color: $tilebg;
+            border-color: $tilebg2;
+            transform: scale(1.02);
+
+            .stats-tile-value {
+                color: black;
+            }
+            .stats-tile-label {
+                color: $tiletext;
+            }
+        }
+    }
+
     .stats-contributors {
         display: grid;
         gap: 0.15rem;
