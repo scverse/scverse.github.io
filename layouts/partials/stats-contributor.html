@@ -1,0 +1,12 @@
+{{ $person := .person }}
+{{ $most := .most }}
+<li>
+  <a href="{{ $person.html_url }}" target="_blank" rel="noopener">
+    <img src="{{ $person.avatar_url }}&s=96" alt="" loading="lazy" width="40" height="40" />
+    <span class="stats-contributor-name">{{ $person.name | default $person.login }}</span>
+    <span class="stats-contributor-bar" aria-hidden="true">
+      <span style="width: {{ math.Round (div (mul (float $person.contributions) 100.0) (float $most)) }}%"></span>
+    </span>
+    <span class="stats-contributor-count">{{ lang.FormatNumberCustom 0 $person.contributions }}</span>
+  </a>
+</li>

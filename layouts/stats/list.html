@@ -17,11 +17,19 @@
 
       {{/* The one number the page leads with. Everything else is a tile. */}}
       <section class="stats-hero">
-        <span class="stats-hero-value">{{ printf "%.1fM" (div (float $stats.pepy_downloads) 1000000.0) }}</span>
-        <span class="stats-hero-label">downloads of the core packages, all time</span>
-        <span class="stats-hero-hint">
-          {{ lang.FormatNumberCustom 0 $stats.pepy_avg_daily_30 }} a day on average over the last 30 days
-        </span>
+        <div class="stats-hero-figure">
+          <span class="stats-hero-value">{{ printf "%.1fM" (div (float $stats.pepy_downloads) 1000000.0) }}</span>
+          <span class="stats-hero-label">downloads of the core packages, all time</span>
+          <span class="stats-hero-hint">
+            {{ lang.FormatNumberCustom 0 $stats.pepy_avg_daily_30 }} a day on average over the last 30 days
+          </span>
+        </div>
+        {{ with $stats.citation_count }}
+          <div class="stats-hero-figure stats-hero-figure--second">
+            <span class="stats-hero-value">{{ lang.FormatNumberCustom 0 . }}</span>
+            <span class="stats-hero-label">citations of scverse papers</span>
+          </div>
+        {{ end }}
       </section>
 
       {{/* A tile only gets a link where the destination genuinely shows the same number. */}}
@@ -41,7 +49,6 @@
         (dict "value" $gh.unique_contributors "label" "code contributors" "url" "#contributors")
         (dict "value" $gh.organization_members "label" "GitHub organisation members" "url" "https://github.com/orgs/scverse/people")
         (dict "value" $stats.core_team_size "label" "core team members" "url" "/people")
-        (dict "value" $stats.citation_count "label" "citations of scverse papers")
         )
         )
         (dict
@@ -88,32 +95,27 @@
         packages. These are the busiest, by number of commits.
       </p>
 
-      {{ $top := first 24 $contributors.contributors }}
+      {{ $shown := 24 }}
+      {{ $top := first $shown $contributors.contributors }}
+      {{ $rest := after $shown $contributors.contributors }}
       {{ $most := (index $top 0).contributions }}
       <ol class="stats-contributors">
         {{ range $top }}
-          <li>
-            <a href="{{ .html_url }}" target="_blank" rel="noopener">
-              <img src="{{ .avatar_url }}&s=96" alt="" loading="lazy" width="40" height="40" />
-              <span class="stats-contributor-name">{{ .name | default .login }}</span>
-              <span class="stats-contributor-bar" aria-hidden="true">
-                <span style="width: {{ math.Round (div (mul (float .contributions) 100.0) (float $most)) }}%"></span>
-              </span>
-              <span class="stats-contributor-count">{{ lang.FormatNumberCustom 0 .contributions }}</span>
-            </a>
-          </li>
+          {{ partial "stats-contributor.html" (dict "person" . "most" $most) }}
         {{ end }}
       </ol>
 
-      <p class="stats-more">
-        …and {{ lang.FormatNumberCustom 0 (sub $contributors.total_contributors (len $top)) }} more.
-      </p>
+      {{ with $rest }}
+        <details class="stats-rest">
+          <summary>Show the other {{ lang.FormatNumberCustom 0 (len .) }} contributors</summary>
+          <ol class="stats-contributors" start="{{ add $shown 1 }}">
+            {{ range . }}
+              {{ partial "stats-contributor.html" (dict "person" . "most" $most) }}
+            {{ end }}
+          </ol>
+        </details>
+      {{ end }}
 
-      <p class="stats-source">
-        Collected from the GitHub, Zulip, Bluesky, LinkedIn, PePy and OpenAlex sources by
-        <a href="https://github.com/scverse/stats">scverse/stats</a>. Contribution counts come from the core
-        repositories only, so they undercount anyone whose work lives in an ecosystem package.
-      </p>
     </div>
   </article>
 {{ end }}

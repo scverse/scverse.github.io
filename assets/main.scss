@@ -1044,9 +1044,30 @@ body {
     // The one number the page leads with
     .stats-hero {
         display: flex;
-        flex-direction: column;
-        gap: 0.35rem;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 1rem 3.5rem;
         margin: 2.5rem 0 1rem;
+
+        .stats-hero-figure {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+        .stats-hero-figure--second {
+            padding-left: 3.5rem;
+            border-left: 1px solid $overline;
+
+            .stats-hero-value {
+                font-size: 2.75rem;
+            }
+        }
+        @media (max-width: 50rem) {
+            .stats-hero-figure--second {
+                padding-left: 0;
+                border-left: 0;
+            }
+        }
 
         .stats-hero-value {
             font-size: 4.5rem;
@@ -1158,6 +1179,7 @@ body {
 
             > span {
                 display: block;
+                min-width: 0.15rem;
                 height: 100%;
                 // A hue rather than a dark neutral, so extensions that invert the page keep the bar visible
                 background-color: $scversedeepblue;
@@ -1180,17 +1202,24 @@ body {
         }
     }
 
-    .stats-more {
-        margin: 0 0 0 0.5rem;
-        font-size: 0.85rem;
-        color: $greydesc;
-    }
+    .stats-rest {
+        summary {
+            width: fit-content;
+            padding: 0.35rem 0.5rem;
+            font-size: 0.9rem;
+            color: $tiletext2;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 200ms ease-in-out;
 
-    .stats-source {
-        margin-top: 2.5rem;
-        font-size: 0.85rem;
-        line-height: 1.6;
-        color: $greydesc;
+            &:hover {
+                color: black;
+                background-color: $tilebg4;
+            }
+        }
+        &[open] summary {
+            margin-bottom: 0.5rem;
+        }
     }
 }
 
