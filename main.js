@@ -1,16 +1,83 @@
-const filterPackages = () => {
-  const trs = document.querySelectorAll('.eco-table-row');
-  const filter = document.querySelector('#eco-filter').value;
-  const regex = new RegExp(filter, 'i');
-  const tdFound = td => regex.test(td.innerHTML);
-  const pkgFound = childrenArr => childrenArr.some(tdFound);
-  const toggleTrs = ({ style, children }) => {
-    style.display = pkgFound([
-      ...children
-    ]) ? '' : 'none' ;
+// Ecosystem package registry: free-text search, one active category, one active tag.
+// Categories and tags both come from the controlled vocabulary in the registry schema.
+const initEcosystemRegistry = () => {
+  const root = document.querySelector('#ecosystem-packages');
+  if (!root) return;
+
+  const input = root.querySelector('#eco-filter');
+  const chipRow = root.querySelector('#eco-chips');
+  const grid = root.querySelector('#eco-grid');
+  const counter = root.querySelector('#eco-count');
+  const empty = root.querySelector('#eco-empty');
+  const clearButton = root.querySelector('#eco-clear');
+  const cards = Array.from(grid.querySelectorAll('.eco-card'));
+  let activeCategory = '';
+  let activeTag = '';
+
+  const apply = () => {
+    const terms = input.value.toLowerCase().split(/\s+/).filter(Boolean);
+    let shown = 0;
+    cards.forEach(card => {
+      const visible =
+        terms.every(term => card.dataset.search.includes(term)) &&
+        (!activeCategory || card.dataset.category === activeCategory) &&
+        (!activeTag || card.dataset.tags.includes(`|${activeTag}|`));
+      card.hidden = !visible;
+      if (visible) shown += 1;
+    });
+    counter.textContent = shown;
+    empty.hidden = shown !== 0;
+    clearButton.hidden = !terms.length && !activeCategory && !activeTag;
+    root.querySelectorAll('.eco-tag').forEach(tag => {
+      tag.classList.toggle('is-active', tag.dataset.tag === activeTag);
+    });
   };
-  trs.forEach(toggleTrs);
-}
+
+  const syncChips = () => {
+    chipRow.querySelectorAll('.eco-chip').forEach(chip => {
+      const isActive = chip.dataset.category === activeCategory;
+      chip.classList.toggle('is-active', isActive);
+      chip.setAttribute('aria-pressed', String(isActive));
+    });
+  };
+
+  const reset = () => {
+    input.value = '';
+    activeCategory = '';
+    activeTag = '';
+    syncChips();
+    apply();
+  };
+
+  input.addEventListener('input', apply);
+  input.addEventListener('keydown', event => {
+    if (event.key === 'Escape') reset();
+  });
+  clearButton.addEventListener('click', () => {
+    reset();
+    input.focus();
+  });
+  empty.querySelector('.eco-empty-reset').addEventListener('click', reset);
+
+  chipRow.addEventListener('click', event => {
+    const chip = event.target.closest('.eco-chip');
+    if (!chip) return;
+    activeCategory = activeCategory === chip.dataset.category ? '' : chip.dataset.category;
+    syncChips();
+    apply();
+  });
+
+  // Tags are not in the chip row — there are too many — so they filter from the cards themselves.
+  grid.addEventListener('click', event => {
+    const tag = event.target.closest('.eco-tag');
+    if (!tag) return;
+    event.preventDefault();
+    activeTag = activeTag === tag.dataset.tag ? '' : tag.dataset.tag;
+    apply();
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    root.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+  });
+};
 
 // Table of contents for long pages. These headings come from templates rather than markdown, so
 // Hugo's .TableOfContents cannot see them and the list is built from the rendered page instead.
@@ -19,7 +86,16 @@ const initTableOfContents = () => {
   const body = document.querySelector('.with-toc-body');
   if (!toc || !body) return;
 
-  const headings = [...body.querySelectorAll('h2, h3')].filter(heading => heading.textContent.trim());
+  // Headings inside a nested <article> belong to a component, not to the page: the package cards
+  // are articles with their own <h3> title and must not become sections of the contents.
+  const scope = body.querySelector('article.post') || body;
+  const nested = heading => {
+    const article = heading.closest('article');
+    return article !== null && article !== scope;
+  };
+  const headings = [...scope.querySelectorAll('h2, h3')].filter(
+    heading => heading.textContent.trim() && !nested(heading),
+  );
   if (headings.length < 3) return; // too short to be worth a sidebar
 
   const list = toc.querySelector('ul');
@@ -297,11 +373,7 @@ const initInteractiveViz = () => {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-  // Set up event listeners for filters if they exist
-  const ecoFilter = document.querySelector('#eco-filter')
-  if (ecoFilter) {
-    ecoFilter.addEventListener('input', filterPackages)
-  }
+  initEcosystemRegistry()
 
   const tutorialFilter = document.querySelector('#tutorial-filter')
   if (tutorialFilter) {
