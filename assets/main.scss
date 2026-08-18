@@ -19,6 +19,7 @@ $spatialdatablue: #40a9ff;
 $squidpyviolet: #969dea;
 $scirpypurple: #da347f;
 $scviyellow: #fbb822;
+$scversedeepblue: #262fb5; // the darker end of the Join button gradient
 
 $github-black: #171b21;
 $twitter-blue: #469be5;
@@ -1389,6 +1390,192 @@ $eco-hues:
         }
         .eco-count {
             order: -1;
+        }
+    }
+}
+
+// Specific to /stats
+
+#stats-content {
+    .stats-updated {
+        font-size: 0.9rem;
+        color: $greydesc;
+    }
+
+    // The one number the page leads with
+    .stats-hero {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 1rem 3.5rem;
+        margin: 2.5rem 0 1rem;
+
+        .stats-hero-figure {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+        .stats-hero-figure--second {
+            padding-left: 3.5rem;
+            border-left: 1px solid $overline;
+        }
+        @media (max-width: 50rem) {
+            .stats-hero-figure--second {
+                padding-left: 0;
+                border-left: 0;
+            }
+        }
+
+        .stats-hero-value {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1;
+            color: black;
+        }
+        .stats-hero-label {
+            font-size: 1.15rem;
+            color: $tiletext;
+        }
+        .stats-hero-hint {
+            font-size: 0.9rem;
+            color: $greydesc;
+        }
+        @media (max-width: 50rem) {
+            .stats-hero-value {
+                font-size: 3rem;
+            }
+        }
+    }
+
+    .stats-tiles {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+        gap: 0.75rem;
+    }
+
+    .stats-tile {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        padding: 1.1rem 1.25rem;
+        background-color: $tilebg4;
+        border: 1px solid $overline;
+        border-radius: 0.75rem;
+
+        .stats-tile-value {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: black;
+        }
+        .stats-tile-label {
+            font-size: 0.85rem;
+            line-height: 1.35;
+            color: $tiletext2;
+        }
+    }
+
+    // Only tiles that lead somewhere get the affordance
+    a.stats-tile {
+        text-decoration: none;
+        transition: all 200ms ease-in-out;
+
+        &:hover,
+        &:focus-visible {
+            background-color: $tilebg;
+            border-color: $tilebg2;
+            transform: scale(1.02);
+
+            .stats-tile-value {
+                color: black;
+            }
+            .stats-tile-label {
+                color: $tiletext;
+            }
+        }
+    }
+
+    .stats-contributors {
+        display: grid;
+        gap: 0.15rem;
+        margin: 1.5rem 0;
+        padding: 0;
+        list-style: none;
+
+        a {
+            display: grid;
+            grid-template-columns: 2.5rem minmax(7rem, 11rem) 1fr auto;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 0.35rem 0.5rem;
+            border-radius: 0.5rem;
+            color: $tiletext;
+            text-decoration: none;
+            transition: all 200ms ease-in-out;
+
+            &:hover {
+                color: black;
+                background-color: $tilebg4;
+            }
+        }
+        img {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+        }
+        .stats-contributor-name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        // Thin recessive track, value anchored to the baseline with 4px ends
+        .stats-contributor-bar {
+            height: 0.5rem;
+            background-color: $tilebg;
+            border-radius: 0.25rem;
+
+            > span {
+                display: block;
+                min-width: 0.15rem;
+                height: 100%;
+                // A hue rather than a dark neutral, so extensions that invert the page keep the bar visible
+                background-color: $scversedeepblue;
+                border-radius: 0.25rem;
+            }
+        }
+        .stats-contributor-count {
+            font-size: 0.85rem;
+            color: $greydesc;
+            font-variant-numeric: tabular-nums;
+        }
+
+        @media (max-width: 50rem) {
+            a {
+                grid-template-columns: 2.5rem 1fr auto;
+            }
+            .stats-contributor-bar {
+                display: none;
+            }
+        }
+    }
+
+    .stats-rest {
+        summary {
+            width: fit-content;
+            padding: 0.35rem 0.5rem;
+            font-size: 0.9rem;
+            color: $tiletext2;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 200ms ease-in-out;
+
+            &:hover {
+                color: black;
+                background-color: $tilebg4;
+            }
+        }
+        &[open] summary {
+            margin-bottom: 0.5rem;
         }
     }
 }

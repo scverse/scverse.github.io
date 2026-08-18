@@ -1,0 +1,121 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  <article class="post">
+    <div class="post-content" id="stats-content">
+      {{ $base := "https://scverse.org/stats/" }}
+      {{ $stats := transform.Unmarshal (resources.GetRemote (printf "%sstats.json" $base)).Content }}
+      {{ $contributors := transform.Unmarshal (resources.GetRemote (printf "%scontributors.json" $base)).Content }}
+      {{ $gh := $stats.github }}
+
+
+      <p>{{ .Params.preface | safeHTML }}</p>
+
+      <p class="stats-updated">
+        Updated
+        <time datetime="{{ $stats.timestamp }}">{{ (time $stats.timestamp).Format "2 January 2006" }}</time>
+      </p>
+
+      {{/* The one number the page leads with. Everything else is a tile. */}}
+      <section class="stats-hero">
+        <div class="stats-hero-figure">
+          <span class="stats-hero-value">{{ printf "%.1fM" (div (float $stats.pepy_downloads) 1000000.0) }}</span>
+          <span class="stats-hero-label">downloads of the core packages, all time</span>
+          <span class="stats-hero-hint">
+            {{ lang.FormatNumberCustom 0 $stats.pepy_avg_daily_30 }} a day on average over the last 30 days
+          </span>
+        </div>
+        {{ with $stats.citation_count }}
+          <div class="stats-hero-figure stats-hero-figure--second">
+            <span class="stats-hero-value">{{ lang.FormatNumberCustom 0 . }}</span>
+            <span class="stats-hero-label">citations of scverse papers</span>
+          </div>
+        {{ end }}
+      </section>
+
+      {{/* A tile only gets a link where the destination genuinely shows the same number. */}}
+      {{/* LinkedIn is scraped upstream, so any given run may not have it. */}}
+      {{ $social := slice
+        (dict "value" $stats.zulip_users "label" "Zulip members" "url" "https://scverse.zulipchat.com/")
+        (dict "value" $stats.bluesky_followers "label" "Bluesky followers" "url" "https://bsky.app/profile/scverse.bsky.social")
+      }}
+      {{ with $stats.linkedin_followers }}
+        {{ $social = $social | append (dict "value" . "label" "LinkedIn followers" "url" "https://www.linkedin.com/company/scverse/") }}
+      {{ end }}
+
+      {{ $groups := slice
+        (dict
+        "name" "Community"
+        "tiles" ($social | append
+        (dict "value" $gh.unique_contributors "label" "code contributors" "url" "#contributors")
+        (dict "value" $gh.organization_members "label" "GitHub organisation members" "url" "https://github.com/orgs/scverse/people")
+        (dict "value" $stats.core_team_size "label" "core team members" "url" "/people")
+        )
+        )
+        (dict
+        "name" "Packages and code"
+        "tiles" (slice
+        (dict "value" $stats.ecosystem_packages "label" "ecosystem packages" "url" "/packages#ecosystem")
+        (dict "value" $gh.total_repositories "label" "core repositories" "url" "/packages#core-packages")
+        (dict "value" $gh.total_stars "label" "GitHub stars" "url" "https://github.com/scverse")
+        (dict "value" $gh.total_pull_requests_last_year "label" "pull requests in the last year")
+        (dict "value" $gh.total_pull_requests_closed "label" "pull requests closed, all time")
+        (dict "value" $gh.total_issues_open "label" "issues open")
+        (dict "value" $gh.total_issues_closed "label" "issues closed")
+        )
+        )
+        }}
+
+      {{ range $groups }}
+        <h2>{{ .name }}</h2>
+        <div class="stats-tiles">
+          {{ range .tiles }}
+            {{ if .url }}
+              <a
+                class="stats-tile"
+                href="{{ .url }}"
+                {{ if hasPrefix .url "http" }}target="_blank" rel="noopener"{{ end }}
+              >
+                <span class="stats-tile-value">{{ lang.FormatNumberCustom 0 .value }}</span>
+                <span class="stats-tile-label">{{ .label }}</span>
+              </a>
+            {{ else }}
+              <div class="stats-tile">
+                <span class="stats-tile-value">{{ lang.FormatNumberCustom 0 .value }}</span>
+                <span class="stats-tile-label">{{ .label }}</span>
+              </div>
+            {{ end }}
+          {{ end }}
+        </div>
+      {{ end }}
+
+
+      <h2 id="contributors">Top contributors</h2>
+      <p>
+        {{ lang.FormatNumberCustom 0 $contributors.total_contributors }} people have contributed code to the core
+        packages, ranked here by number of commits.
+      </p>
+
+      {{ $shown := 24 }}
+      {{ $top := first $shown $contributors.contributors }}
+      {{ $rest := after $shown $contributors.contributors }}
+      {{ $most := (index $top 0).contributions }}
+      <ol class="stats-contributors">
+        {{ range $top }}
+          {{ partial "stats-contributor.html" (dict "person" . "most" $most) }}
+        {{ end }}
+      </ol>
+
+      {{ with $rest }}
+        <details class="stats-rest">
+          <summary>Show the other {{ lang.FormatNumberCustom 0 (len .) }} contributors</summary>
+          <ol class="stats-contributors" start="{{ add $shown 1 }}">
+            {{ range . }}
+              {{ partial "stats-contributor.html" (dict "person" . "most" $most) }}
+            {{ end }}
+          </ol>
+        </details>
+      {{ end }}
+
+    </div>
+  </article>
+{{ end }}
