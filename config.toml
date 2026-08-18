@@ -11,3 +11,8 @@ images = ["img/scverse-social-card.png"]
 
 [markup.goldmark.renderer]
 unsafe= true
+
+# The ecosystem registry rebuilds this site when packages.json changes, so a cached copy defeats the trigger.
+# Hugo caches remote resources forever by default, and on Netlify that cache survives between builds.
+[caches.getresource]
+maxAge = 0
