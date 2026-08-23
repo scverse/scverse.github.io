@@ -1,5 +1,6 @@
 ---
 title: Events 
+description: Upcoming and past scverse conferences, hackathons and community meetings.
 ---
 
 ## Open community meeting

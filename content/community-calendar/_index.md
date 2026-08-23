@@ -1,5 +1,6 @@
 +++
 title = "Community Calendar"
+description = "Open community meetings, hackathons and conferences across the scverse community."
 +++
 
 Here's an overview of what's happening across the scverse community: our regular open community meetings and upcoming events such as hackathons and conferences.

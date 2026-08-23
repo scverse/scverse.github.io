@@ -1,5 +1,6 @@
 +++
 title = "People"
+description = "The core team, steering council, management committee and contributors behind scverse."
 preface = "For people participating in and interacting with the consortium, there are <a href='/about/roles'>different roles</a> — from core team to developers, contributors and community members."
 
 # ---------- core team, in alphabetical order

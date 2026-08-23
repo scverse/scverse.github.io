@@ -1,5 +1,6 @@
 +++
 title = "Packages"
+description = "The scverse core packages — data structures and analysis frameworks — and the wider ecosystem of community-maintained tools built on them."
 aliases = ["/projects/"]
 
 [[sections]]

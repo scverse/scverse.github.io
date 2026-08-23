@@ -1,5 +1,6 @@
 +++
 title = "Getting Started"
+description = "Tutorials for getting started with the scverse core packages, covering data structures, scRNA-seq, spatial, immune receptor and multimodal analysis."
 
 tutorials_intro = """\
 If you are new to the scverse, get started with this set of tutorials covering basic analysis and functionality of the core packages.

@@ -3,11 +3,14 @@ languageCode = "en-us"
 title = "scverse"
 description = "Foundational tools for omics data in the life sciences"
 
+# CI publishes with --buildFuture so that events dated in the future are listed.
+# Setting it here too keeps `hugo server` in step with production.
+buildFuture = true
+enableRobotsTXT = true
+
 [params]
 images = ["img/scverse-social-card.png"]
-
-[taxonomies]
-    series = 'series'
+description = "Foundational tools for omics data in the life sciences"
 
 [markup.goldmark.renderer]
 unsafe= true
