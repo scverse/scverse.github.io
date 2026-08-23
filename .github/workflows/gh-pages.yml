@@ -25,6 +25,9 @@ jobs:
       - name: Build
         run: hugo --buildFuture --minify
 
+      - name: Build search index
+        run: npx --yes pagefind@1.5.2 --site public
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         if: github.ref == 'refs/heads/main'
