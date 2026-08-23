@@ -2916,6 +2916,21 @@ $eco-hues:
         font-size: 0.8rem;
     }
 
+    .search-result-kind {
+        padding: 0.05rem 0.4rem;
+        border-radius: 0.25rem;
+        background-color: rgba($scviyellow, 0.25);
+        color: $tiletext2;
+        font-size: 0.75rem;
+        white-space: nowrap;
+    }
+
+    .search-result-entity .search-result-title::after {
+        content: " ↗";
+        color: $greydesc;
+        font-weight: 400;
+    }
+
     .search-result-excerpt {
         display: block;
         margin-top: 0.15rem;

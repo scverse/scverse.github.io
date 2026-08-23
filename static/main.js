@@ -397,8 +397,37 @@ function initSearch() {
   let selected = -1
   let debounce
 
-  // Memoises the promise, not the module: opening the dialog and typing both ask
-  // for the index, and calling Pagefind's init() twice over does not resolve.
+  let entitiesPromise = null
+
+  function loadEntities() {
+    if (!entitiesPromise) {
+      entitiesPromise = fetch('/search-entities.json')
+        .then(response => response.json())
+        .catch(() => [])
+    }
+    return entitiesPromise
+  }
+
+  function matchEntities(entities, query) {
+    const terms = normalise(query)
+    if (!terms.length) return []
+    return entities
+      .map(entity => {
+        const name = entity.name.toLowerCase()
+        const words = normalise(entity.name)
+        let rank = -1
+        if (name === query.toLowerCase()) rank = 0
+        else if (name.startsWith(query.toLowerCase())) rank = 1
+        else if (terms.every(term => words.some(word => word.startsWith(term)))) rank = 2
+        return { entity, rank }
+      })
+      .filter(scored => scored.rank >= 0)
+      .sort((a, b) => a.rank - b.rank || a.entity.name.length - b.entity.name.length)
+      .slice(0, 3)
+      .map(scored => scored.entity)
+  }
+
+  // Memoises the promise, not the module: two concurrent init() calls never resolve.
   function loadPagefind() {
     if (!pagefindPromise) {
       pagefindPromise = (async () => {
@@ -407,8 +436,7 @@ function initSearch() {
         await engine.init()
         return engine
       })().catch(() => {
-        // The index is written after `hugo` by `npx pagefind`, so a plain
-        // `hugo server` has nothing to load.
+        // The index is written after `hugo` by `npx pagefind`.
         status.textContent = 'Search index unavailable. Run `npx pagefind --site public` after building.'
         return null
       })
@@ -439,16 +467,21 @@ function initSearch() {
     items[selected].scrollIntoView({ block: 'nearest' })
   }
 
-  // Pagefind also matches when an indexed word is a prefix of the search term, so
-  // "xylophone" comes back matching "x" on seventeen pages. Keep a hit only if a
-  // word it actually matched starts with one of the terms that were typed.
+  // Pagefind matches when an indexed word is a prefix of the search term, so
+  // "xylophone" comes back matching "x" on seventeen pages.
   function relevant(hit) {
-    const terms = lastQuery.toLowerCase().split(/\s+/).filter(term => term.length > 1)
+    const terms = normalise(lastQuery)
     if (!terms.length) return true
-    const matched = [...hit.excerpt.matchAll(/<mark>(.*?)<\/mark>/g)].map(m =>
-      m[1].toLowerCase().replace(/[^a-z0-9]/g, '')
-    )
+    const matched = [...hit.excerpt.matchAll(/<mark>(.*?)<\/mark>/g)].flatMap(m => normalise(m[1]))
     return terms.some(term => matched.some(word => word.startsWith(term)))
+  }
+
+  // Both sides must be split the same way, or "rapids-singlecell" fails to match itself.
+  function normalise(text) {
+    return text
+      .toLowerCase()
+      .split(/[^a-z0-9]+/)
+      .filter(word => word.length > 1)
   }
 
   async function render(query) {
@@ -461,6 +494,9 @@ function initSearch() {
       status.textContent = ''
       return
     }
+
+    const pinned = matchEntities(await loadEntities(), query)
+    if (query !== lastQuery) return
 
     const engine = await loadPagefind()
     if (!engine) return
@@ -475,11 +511,29 @@ function initSearch() {
     const top = candidates.filter(relevant).slice(0, 12)
 
     results.innerHTML = ''
-    if (!top.length) {
+    if (!top.length && !pinned.length) {
       status.textContent = `No results for “${query}”`
       return
     }
-    status.textContent = `${top.length} result${top.length === 1 ? '' : 's'}`
+    const total = top.length + pinned.length
+    status.textContent = `${total} result${total === 1 ? '' : 's'}`
+
+    pinned.forEach(entity => {
+      const item = document.createElement('li')
+      const link = document.createElement('a')
+      link.href = entity.url
+      link.target = '_blank'
+      link.rel = 'noopener'
+      link.className = 'search-result-entity'
+      link.innerHTML =
+        '<span class="search-result-title"></span> <span class="search-result-kind"></span>' +
+        '<span class="search-result-excerpt"></span>'
+      link.querySelector('.search-result-title').textContent = entity.name
+      link.querySelector('.search-result-kind').textContent = entity.kind
+      link.querySelector('.search-result-excerpt').textContent = entity.detail
+      item.appendChild(link)
+      results.appendChild(item)
+    })
 
     top.forEach(hit => {
       const item = document.createElement('li')
@@ -490,7 +544,6 @@ function initSearch() {
         '<span class="search-result-excerpt"></span>'
       link.querySelector('.search-result-title').textContent = hit.meta.title || hit.url
       link.querySelector('.search-result-url').textContent = hit.url
-      // Pagefind returns the excerpt with <mark> around the matched terms.
       link.querySelector('.search-result-excerpt').innerHTML = hit.excerpt
       item.appendChild(link)
       results.appendChild(item)

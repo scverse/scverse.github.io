@@ -7,7 +7,7 @@ module.exports = {
     plugins: [require.resolve("prettier-plugin-go-template")],
     overrides: [
         {
-            files: ["*.html"],
+            files: ["*.html", "layouts/**/*.json"],
             options: {
                 parser: "go-template",
             },
