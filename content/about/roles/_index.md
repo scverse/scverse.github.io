@@ -46,7 +46,8 @@ This includes who gets commit rights to their projects.
 
 The core team are community members who have demonstrated continued commitment to the project through ongoing contributions.
 They have shown they can be trusted to maintain scverse with care.
-Team members appear as organization members on the scverse [GitHub organization](https://github.com/orgs/scverse/people) and are on our [@scverse/core](https://github.com/orgs/scverse/teams/core) GitHub team, but can also be reached by e-mail at [core@scverse.org](core@scverse.org).
+Team members appear as organization members on the scverse [GitHub organization](https://github.com/orgs/scverse/people) and are on our `scverse/core` GitHub team.
+The current members are listed on our [people page](/people/#core-team), and the team can be reached by e-mail at [core@scverse.org](mailto:core@scverse.org).
 
 There are sub-roles within the core team depending on the kinds covering different kinds of contributions and responsibilities.
 
@@ -55,7 +56,7 @@ There are sub-roles within the core team depending on the kinds covering differe
 Core developers are members of the core team who have made significant code contributions to scverse.
 They are granted additional rights so they can more easily carry on with their scverse related activities.
 These rights include: merging approved pull requests, voting for and against contested pull-requests, and being involved in deciding major changes to the API.
-Core developers are on our [@scverse/core-devs](https://github.com/orgs/scverse/teams/core-devs) GitHub team. 
+Core developers are on our `scverse/core-devs` GitHub team.
 
 All core packages must have at least one core developer as a maintainer.
 New core developers can be nominated by any existing core developer. 
