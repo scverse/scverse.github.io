@@ -17,7 +17,7 @@
                   id="{{ .name | lower }}-tile"
                 >
                   <div class="logo-img">
-                    <img src="{{ .img }}" />
+                    <img src="{{ .img }}" alt="{{ .name }}" loading="lazy" />
                   </div>
                   <div class="logo-info">
                     <div class="logo-tile">
@@ -46,7 +46,7 @@
                   id="{{ .name | lower }}-tile"
                 >
                   <div class="logo-img">
-                    <img src="{{ .img }}" />
+                    <img src="{{ .img }}" alt="{{ .name }}" loading="lazy" />
                   </div>
                   <div class="logo-info">
                     <div class="logo-tile">
@@ -94,7 +94,11 @@
           <div class="logo-examples-gallery">
             <div class="example-item">
               <div class="example-image">
-                <img src="../img/logo/scverse-bridge-sketch.png" alt="scverse logo - Golden Gate Bridge example" />
+                <img
+                  src="../img/logo/scverse-bridge-sketch.png"
+                  alt="scverse logo - Golden Gate Bridge example"
+                  loading="lazy"
+                />
               </div>
               <div class="example-caption">
                 <strong>Conference Branding</strong> - scverse conference in the Bay Area in 2025
@@ -102,7 +106,7 @@
             </div>
             <div class="example-item">
               <div class="example-image">
-                <img src="../img/logo/scverse-lettering.png" alt="scverse lettering (no logo)" />
+                <img src="../img/logo/scverse-lettering.png" alt="scverse lettering (no logo)" loading="lazy" />
               </div>
               <div class="example-caption">
                 <strong>Conference Branding</strong> - scverse lettering for the 2025 conference (no icon)
@@ -110,7 +114,7 @@
             </div>
             <div class="example-item">
               <div class="example-image">
-                <img src="../img/logo/scverse-munich.png" alt="scverse logo - Munich example" />
+                <img src="../img/logo/scverse-munich.png" alt="scverse logo - Munich example" loading="lazy" />
               </div>
               <div class="example-caption">
                 <strong>Conference Branding</strong> - scverse conference in Munich in 2024
@@ -118,13 +122,13 @@
             </div>
             <div class="example-item">
               <div class="example-image">
-                <img src="../img/logo/scverse-slide.png" alt="scverse logo - Example slide" />
+                <img src="../img/logo/scverse-slide.png" alt="scverse logo - Example slide" loading="lazy" />
               </div>
               <div class="example-caption"><strong>Slide Branding</strong> - example scverse-branded slide</div>
             </div>
             <div class="example-item">
               <div class="example-image">
-                <img src="../img/logo/scverse-palms.png" alt="scverse logo - Palm tree example" />
+                <img src="../img/logo/scverse-palms.png" alt="scverse logo - Palm tree example" loading="lazy" />
               </div>
               <div class="example-caption">
                 <strong>Light Backgrounds</strong> - scverse icon with the concentric circles reminding of the
@@ -146,6 +150,8 @@
                   <!-- Store both image versions in data attributes -->
                   <img
                     src="{{ .img }}"
+                    alt="{{ .name }} logo"
+                    loading="lazy"
                     data-icon="{{ .img }}"
                     data-icon-with-text="{{ if .imgWithText }}
                       {{ .imgWithText }}

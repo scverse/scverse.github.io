@@ -317,6 +317,16 @@ const initInteractiveViz = () => {
     });
   }
 
+  // These are divs, not buttons, so the keyboard behaviour has to be added by hand.
+  [runCmd1, runCmd2].forEach(function(control) {
+    control.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        control.click();
+      }
+    });
+  });
+
   runCmd1.addEventListener('click', function() {
     statusCmd1.style.width = '0';
     execAnim1.style.width = '0';

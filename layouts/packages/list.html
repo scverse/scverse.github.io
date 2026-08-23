@@ -17,7 +17,7 @@
                 {{ range $i, $e := $datastructures }}
                   <div class="package-section">
                     <div class="package-img">
-                      <img src="{{ .img }}" alt="Logo for {{ .name }}" />
+                      <img src="{{ .img }}" alt="Logo for {{ .name }}" loading="lazy" />
                     </div>
                     <div class="package-info">
                       <div class="package-tile" id="{{ .name }}-tile">
@@ -45,7 +45,7 @@
               {{ range $i, $e := $packages }}
                 <div class="package-section">
                   <div class="package-img">
-                    <img src="{{ .img }}" alt="Logo for {{ .name }}" />
+                    <img src="{{ .img }}" alt="Logo for {{ .name }}" loading="lazy" />
                   </div>
                   <div class="package-info">
                     <div class="package-tile" id="{{ .name }}-tile">

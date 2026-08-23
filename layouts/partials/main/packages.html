@@ -10,7 +10,7 @@
               <div class="package-icon my-4">
                 {{ $exists := fileExists (printf "static/img/icons/%s.svg" .name) }}
                 {{ if .no_icon }}
-                  <img />
+                  {{/* Nothing to render; the container still reserves the space. */}}
                 {{ else if $exists }}
                   <img src="img/icons/{{ .name }}.svg" alt="Logo for {{ .name }}" />
                 {{ else }}
