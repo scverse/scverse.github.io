@@ -7,7 +7,7 @@ aliases = ["/projects/"]
 	datastructures = """\
 Data structures are the foundational building block for all scverse packages.
 Building upon common data structures ensures interoperability.
-The on-disk formats are also language-agnostic: AnnData files can be read from [R, Julia, JavaScript, and Rust](https://anndata.readthedocs.io/en/latest/interoperability.html)."""
+The on-disk formats are language-agnostic as well: each can be read from R, Julia, and other languages, as listed on the interoperability pages linked below."""
 	datastructures_post = "In addition to these packages, we define standards on how to represent certain data types in these data structures. For now, such a specification is available for [Adaptive Immune Receptor Repertoire (AIRR) data](https://scirpy.scverse.org/en/latest/data-structure.html#storing-airr-rearrangement-data-in-anndata)."
 	frameworks = "Frameworks provide essential algorithms and plotting functions for specific analysis steps, building on our data structures."
 	ecosystem = "Many popular packages rely on scverse functionality. For instance, they take advantage of established data format standards such as AnnData and MuData, or are designed to be integrated into the workflow of analysis frameworks. Here, we list ecosystem packages following development best practices (continuous testing, documented, available through standard distribution tools).\n\n *See [scverse/ecosystem-packages](https://github.com/scverse/ecosystem-packages) for inclusion criteria, and to submit more packages.*"
@@ -30,6 +30,9 @@ The on-disk formats are also language-agnostic: AnnData files can be read from [
 	[[datastructures.links]]
 	text = "Conda"
 	url = "https://anaconda.org/conda-forge/anndata"
+	[[datastructures.links]]
+	text = "Interoperability"
+	url = "https://anndata.scverse.org/en/stable/interoperability.html"
 
 [[datastructures]]
 	name = "mudata"
@@ -50,8 +53,8 @@ The on-disk formats are also language-agnostic: AnnData files can be read from [
 	text = "Conda"
 	url = "https://anaconda.org/conda-forge/mudata"
 	[[datastructures.links]]
-	text = "Muon.jl"
-	url = "https://github.com/scverse/Muon.jl"
+	text = "Interoperability"
+	url = "https://mudata.readthedocs.io/stable/interoperability.html"
 
 [[datastructures]]
 	name = "spatialdata"
@@ -71,7 +74,9 @@ The on-disk formats are also language-agnostic: AnnData files can be read from [
 	[[datastructures.links]]
 	text = "spatialdata-io"
 	url = "https://github.com/scverse/spatialdata-io"
-
+	[[datastructures.links]]
+	text = "Interoperability"
+	url = "https://spatialdata.scverse.org/en/latest/interoperability.html"
 
 [[packages]]
 	name = "scanpy"
