@@ -769,62 +769,6 @@ body {
             // }
         }
     }
-    .page-item {
-        display: flex;
-        flex-direction: row;
-
-        @media (max-width: 50rem) {
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            h2 {
-                margin: 0.5rem 0 !important;
-            }
-            margin: 0 -0.5rem;
-            padding: 0.5rem;
-            padding-bottom: 1.3rem;
-        }
-
-        margin: 0 -1rem;
-        padding: 1rem;
-
-        background-color: #ff000000;
-        transition: all 200ms ease-in-out;
-        border-radius: 0.5rem;
-
-        &:hover {
-            cursor: pointer;
-            background-color: $tilebg3;
-        }
-
-        @media (max-width: 50rem) {
-            background-color: $tilebg4;
-        }
-
-        h2 {
-            color: $tiletext;
-            margin: 0 0 0.5rem 0;
-            line-height: 1.5rem;
-        }
-        span {
-            font-size: 1rem;
-            color: $greydesc;
-            line-height: 1.3rem;
-        }
-        .page-item-date {
-            flex: 1;
-            line-height: 1.3rem;
-        }
-        .page-item-content {
-            flex: 2;
-            display: flex;
-            flex-direction: column;
-            font-size: 1rem;
-            h2 {
-                font-size: 1.4rem;
-            }
-        }
-    }
     // TODO: Much of this does nothing AFAICT
     .post {
         .post-subtitle {
@@ -2759,8 +2703,6 @@ $eco-hues:
     pointer-events: none;
 }
 
-// Respect the operating system's reduced-motion setting: the landing page runs
-// a looping pulse and animates the demo's progress bars and scatter dots.
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -2772,9 +2714,70 @@ $eco-hues:
     }
 }
 
-// The demo's run controls are divs with role="button"; without this they get no
-// visible focus ring when tabbed to.
 .command-icon:focus-visible {
     outline: 3px solid #1a73e8;
     outline-offset: 2px;
+}
+
+// Hoisted out of #page-content: the landing page shows one of these and uses #cover.
+
+.page-item {
+    display: flex;
+    flex-direction: row;
+
+    @media (max-width: 50rem) {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        h2 {
+            margin: 0.5rem 0 !important;
+        }
+        margin: 0 -0.5rem;
+        padding: 0.5rem;
+        padding-bottom: 1.3rem;
+    }
+
+    margin: 0 -1rem;
+    padding: 1rem;
+
+    background-color: #ff000000;
+    transition: all 200ms ease-in-out;
+    border-radius: 0.5rem;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $tilebg3;
+    }
+
+    @media (max-width: 50rem) {
+        background-color: $tilebg4;
+    }
+
+    h2 {
+        color: $tiletext;
+        margin: 0 0 0.5rem 0;
+        line-height: 1.5rem;
+    }
+    span {
+        font-size: 1rem;
+        color: $greydesc;
+        line-height: 1.3rem;
+    }
+    .page-item-date {
+        flex: 1;
+        line-height: 1.3rem;
+    }
+    .page-item-content {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        font-size: 1rem;
+        h2 {
+            font-size: 1.4rem;
+        }
+    }
+}
+
+.page-item-author {
+    font-weight: 600;
 }

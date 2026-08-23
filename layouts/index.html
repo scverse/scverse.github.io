@@ -63,6 +63,30 @@
             </div>
           </section>
 
+          {{ with first 1 (where (where .Site.RegularPages "Section" "events") "Date.Unix" ">" now.Unix).ByDate }}
+            <section id="next-event">
+              <div class="section-heading">Next event</div>
+              <div class="section-content">
+                {{ range . }}
+                  <a href="{{ with .Params.link }}{{ . }}{{ else }}{{ .RelPermalink }}{{ end }}">
+                    <article class="page-item">
+                      <div class="page-item-date">
+                        <span>{{ .Date.Format "January 02, 2006" }}</span>
+                      </div>
+                      <div class="page-item-content">
+                        <h2>{{ .Title }}</h2>
+                        <span>{{ .Description }}</span>
+                      </div>
+                    </article>
+                  </a>
+                {{ end }}
+                <a href="/events">
+                  <div class="more">See all scverse events</div>
+                </a>
+              </div>
+            </section>
+          {{ end }}
+
           {{ partial "main/packages" . }}
 
 

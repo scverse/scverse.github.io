@@ -3,14 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ .Title }}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
+    <title>{{ .Title }} · {{ .Site.Title }}</title>
+    {{ with or .Description .Site.Params.description }}
+      <meta name="description" content="{{ . | plainify | truncate 160 }}" />
+    {{ end }}
+    <link rel="canonical" href="{{ .Permalink }}" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico" />
+
+    {{ template "_internal/twitter_cards.html" . }}
+    {{ template "_internal/opengraph.html" . }}
+
     <style>
+        /* This page does not load main.scss, so it needs its own @font-face. */
+        @font-face {
+            font-family: "Inter";
+            src: url("/fonts/Inter/Inter-VariableFont_slnt,wght.woff2") format("woff2");
+            font-display: swap;
+        }
+
         :root {
             --accent: {{ .Params.highlightColor | default "#4F46E5" }};
             --text-primary: #ffffff;
@@ -278,5 +292,6 @@
         {{ end }}
       </div>
     </main>
+    <script data-goatcounter="https://scverse.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   </body>
 </html>
