@@ -30,9 +30,11 @@
                       {{ if .showDetails }}
                         <div class="additional-info">
                           <p>{{ .role }}</p>
-                          <p>
-                            <a href="mailto:{{ .email }}" target="_blank">{{ .email }}</a>
-                          </p>
+                          {{ with .email }}
+                            <p>
+                              <a href="mailto:{{ . }}">{{ . }}</a>
+                            </p>
+                          {{ end }}
                           <p>{{ .affiliation }}</p>
                         </div>
                       {{ end }}

@@ -49,7 +49,7 @@ They have shown they can be trusted to maintain scverse with care.
 Team members appear as organization members on the scverse [GitHub organization](https://github.com/orgs/scverse/people) and are on our `scverse/core` GitHub team.
 The current members are listed on our [people page](/people/#core-team), and the team can be reached by e-mail at [core@scverse.org](mailto:core@scverse.org).
 
-There are sub-roles within the core team depending on the kinds covering different kinds of contributions and responsibilities.
+There are sub-roles within the core team covering different kinds of contributions and responsibilities.
 
 #### Core Developers
 
@@ -77,9 +77,7 @@ The Steering Council (SC) members are core team members who have additional resp
 SC members are expected to participate in strategic planning, approve changes to the governance model, and make decisions about funding granted to scverse itself (funding to community members is theirs to pursue and manage). Changes that impact the full project require analysis informed by extensive experience with both the project and the larger ecosystem.
 When the core team (including the SC members) fails to reach a consensus in a reasonable timeframe, the SC is the entity that resolves the issue.
 
-Members of the steering council also have the "owner" role within the [scverse GitHub organization](https://github.com/scverse/)
-and are ultimately responsible for managing the [scverse](https://github.com/scverse) GitHub account, the [@scverse](https://twitter.com/scverse_team)
-twitter account, the [scverse website](https://scverse.org), and other similar scverse-owned resources.
+Members of the steering council also have the "owner" role within the [scverse GitHub organization](https://github.com/scverse/) and are ultimately responsible for managing the [scverse](https://github.com/scverse) GitHub account, the [@scverse_team](https://x.com/scverse_team) account on X, the [scverse website](https://scverse.org), and other similar scverse-owned resources.
 
 The steering council is currently fixed in size to three members.
 This number will be increased as our community grows and diversifies, but will always be an odd number to ensure a simple majority vote outcome is always possible. 
