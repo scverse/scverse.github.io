@@ -5,6 +5,7 @@ tutorials_intro = """\
 If you are new to the scverse, get started with this set of tutorials covering basic analysis and functionality of the core packages.
 For more tutorials as well as API documentation and user guides, see the sites of [individual packages](/packages/).
 Beyond the core packages, the scverse [ecosystem](/packages/#ecosystem) contains many community-maintained packages that build on scverse data structures and integrate into standard workflows.
+If you work primarily in another language, AnnData files can be read from [R, Julia, JavaScript, and Rust](https://anndata.readthedocs.io/en/latest/interoperability.html).
 
 You can also find recordings of past talks and workshops on our [YouTube channel](https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA).
 """
