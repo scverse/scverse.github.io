@@ -76,7 +76,7 @@ The on-disk formats are language-agnostic as well: each can be read from R, Juli
 	url = "https://github.com/scverse/spatialdata-io"
 	[[datastructures.links]]
 	text = "Interoperability"
-	url = "https://spatialdata.scverse.org/en/latest/interoperability.html"
+	url = "https://spatialdata.scverse.org/en/stable/interoperability.html"
 
 [[packages]]
 	name = "scanpy"
