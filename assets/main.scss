@@ -59,11 +59,13 @@ $additionalInfoColor: #666666;
 // Font stack: these two have well matching cap- and x-heights
 @font-face {
     font-family: "Inter";
-    src: url("fonts/Inter/Inter-VariableFont_slnt,wght.ttf");
+    src: url("fonts/Inter/Inter-VariableFont_slnt,wght.woff2") format("woff2");
+    font-display: swap;
 }
 @font-face {
     font-family: "JetBrains Mono";
-    src: url("fonts/JetBrainsMono/JetBrainsMono[wght].ttf");
+    src: url("fonts/JetBrainsMono/JetBrainsMono[wght].woff2") format("woff2");
+    font-display: swap;
 }
 
 // Global
@@ -1179,6 +1181,9 @@ $eco-hues:
     }
 
     .eco-card {
+        // All 120 registry entries are in the DOM so the filter can work offline.
+        content-visibility: auto;
+        contain-intrinsic-size: auto 14rem;
         position: relative;
         display: flex;
         flex-direction: column;

@@ -9,9 +9,9 @@ repos:
   - repo: https://github.com/ericmjl/webp-pre-commit
     rev: v0.0.12
     hooks:
-      # Convert blog and learn images
+      # img/logo is excluded on purpose: the media kit advertises PNG downloads.
       - id: convert-to-webp
-        files: ^static/img/(blog|learn)/.*\.(png|jpe?g|gif|bmp|tiff)$
+        files: ^static/img/(blog|learn|events)/.*\.(png|jpe?g|gif|bmp|tiff)$
   - repo: https://github.com/oxipng/oxipng
     rev: v10.2.0
     hooks:

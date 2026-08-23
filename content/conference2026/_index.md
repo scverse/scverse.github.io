@@ -8,7 +8,7 @@ weight = 1
 label = "Registration open"
 conferenceDates = "October 12 – 14, 2026"
 conferenceLocation = "DTU, Copenhagen, Denmark"
-backgroundImage = "/img/events/2026_10_conference_bg.jpg"
+backgroundImage = "/img/events/2026_10_conference_bg.webp"
 subtitle = "The third scverse conference brings together the single-cell and spatial omics community — developers, researchers, and users of the scverse ecosystem — for three days of talks, posters, workshops, and collaboration."
 
 # Call-to-action buttons (first is primary)
