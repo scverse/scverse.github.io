@@ -30,7 +30,7 @@ Any community member can become a contributor, and all are encouraged to do so.
 By contributing to the project, community members can directly help to shape its future.
 
 All community members are required to adhere to our [code of conduct](/about/code_of_conduct/).
-Potential contributors are encouraged to read the [Contributing Guide](https://scanpy.scverse.org/page/dev/index.html).
+Potential contributors are encouraged to read the [Contributing Guide](https://scanpy.scverse.org/en/stable/dev/index.html).
 
 A community member becomes a contributor when the following criteria are met:
 
@@ -46,16 +46,17 @@ This includes who gets commit rights to their projects.
 
 The core team are community members who have demonstrated continued commitment to the project through ongoing contributions.
 They have shown they can be trusted to maintain scverse with care.
-Team members appear as organization members on the scverse [GitHub organization](https://github.com/orgs/scverse/people) and are on our [@scverse/core](https://github.com/orgs/scverse/teams/core) GitHub team, but can also be reached by e-mail at [core@scverse.org](core@scverse.org).
+Team members appear as organization members on the scverse [GitHub organization](https://github.com/orgs/scverse/people) and are on our `scverse/core` GitHub team.
+The current members are listed on our [people page](/people/#core-team), and the team can be reached by e-mail at [core@scverse.org](mailto:core@scverse.org).
 
-There are sub-roles within the core team depending on the kinds covering different kinds of contributions and responsibilities.
+There are sub-roles within the core team covering different kinds of contributions and responsibilities.
 
 #### Core Developers
 
 Core developers are members of the core team who have made significant code contributions to scverse.
 They are granted additional rights so they can more easily carry on with their scverse related activities.
 These rights include: merging approved pull requests, voting for and against contested pull-requests, and being involved in deciding major changes to the API.
-Core developers are on our [@scverse/core-devs](https://github.com/orgs/scverse/teams/core-devs) GitHub team. 
+Core developers are on our `scverse/core-devs` GitHub team.
 
 All core packages must have at least one core developer as a maintainer.
 New core developers can be nominated by any existing core developer. 
@@ -76,9 +77,7 @@ The Steering Council (SC) members are core team members who have additional resp
 SC members are expected to participate in strategic planning, approve changes to the governance model, and make decisions about funding granted to scverse itself (funding to community members is theirs to pursue and manage). Changes that impact the full project require analysis informed by extensive experience with both the project and the larger ecosystem.
 When the core team (including the SC members) fails to reach a consensus in a reasonable timeframe, the SC is the entity that resolves the issue.
 
-Members of the steering council also have the "owner" role within the [scverse GitHub organization](https://github.com/scverse/)
-and are ultimately responsible for managing the [scverse](https://github.com/scverse) GitHub account, the [@scverse](https://twitter.com/scverse_team)
-twitter account, the [scverse website](https://scverse.org), and other similar scverse-owned resources.
+Members of the steering council also have the "owner" role within the [scverse GitHub organization](https://github.com/scverse/) and are ultimately responsible for managing the [scverse](https://github.com/scverse) GitHub account, the [@scverse_team](https://x.com/scverse_team) account on X, the [scverse website](https://scverse.org), and other similar scverse-owned resources.
 
 The steering council is currently fixed in size to three members.
 This number will be increased as our community grows and diversifies, but will always be an odd number to ensure a simple majority vote outcome is always possible. 

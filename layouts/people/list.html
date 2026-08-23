@@ -9,7 +9,7 @@
         {{ range $team := .Params.teams }}
           {{ if not $team.hide }}
             <div class="team">
-              <h3>{{ $team.name }}</h3>
+              <h3 id="{{ $team.name | anchorize }}">{{ $team.name }}</h3>
               {{ if $team.text }}
                 <p class="team-text">
                   {{ $team.text | safeHTML }}
@@ -30,9 +30,11 @@
                       {{ if .showDetails }}
                         <div class="additional-info">
                           <p>{{ .role }}</p>
-                          <p>
-                            <a href="mailto:{{ .email }}" target="_blank">{{ .email }}</a>
-                          </p>
+                          {{ with .email }}
+                            <p>
+                              <a href="mailto:{{ . }}">{{ . }}</a>
+                            </p>
+                          {{ end }}
                           <p>{{ .affiliation }}</p>
                         </div>
                       {{ end }}
@@ -46,7 +48,7 @@
       {{ end }}
       {{ with .Params.contributors }}
         <div class="team">
-          <h3>{{ .name }}</h3>
+          <h3 id="{{ .name | anchorize }}">{{ .name }}</h3>
           {{ if .text }}
             <p class="team-text">
               {{ .text | safeHTML }}
