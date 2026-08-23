@@ -1,5 +1,6 @@
 +++
 title = "Join scverse"
+description = "How to reach the scverse community on GitHub, Zulip, Discourse and social media, and who to e-mail about what."
 
 [[resources]]
 	id = "github"

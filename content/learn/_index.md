@@ -1,5 +1,6 @@
 +++
 title = "Getting Started"
+description = "Tutorials for getting started with the scverse core packages, covering data structures, scRNA-seq, spatial, immune receptor and multimodal analysis."
 
 tutorials_intro = """\
 If you are new to the scverse, get started with this set of tutorials covering basic analysis and functionality of the core packages.
@@ -17,7 +18,7 @@ You can also find recordings of past talks and workshops on our [YouTube channel
 	img = "../../img/libs/anndata_schema.svg"
 	[[tutorials.section]]
 	name = "MuData Quickstart"
-	url = "https://mudata.readthedocs.io/en/latest/notebooks/quickstart_mudata.html"
+	url = "https://mudata.readthedocs.io/stable/notebooks/quickstart_mudata.html"
 	img = "../../img/libs/mudata_flat.svg"
 
 [[tutorials]]

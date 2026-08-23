@@ -1,7 +1,7 @@
 {{ define "hero" }}
   <section
     class="conference-hero"
-    style="background-image: linear-gradient(rgba(10,20,40,0.55), rgba(10,20,40,0.7)), url('{{ .Params.backgroundImage | default "/img/events/2026_10_conference_bg.jpg" }}');"
+    style="background-image: linear-gradient(rgba(10,20,40,0.55), rgba(10,20,40,0.7)), url('{{ .Params.backgroundImage | default "/img/events/2026_10_conference_bg.webp" }}');"
   >
     <div class="conference-hero-inner">
       {{ with .Params.label }}<span class="conference-badge">{{ . }}</span>{{ end }}

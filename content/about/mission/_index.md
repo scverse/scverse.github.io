@@ -1,5 +1,6 @@
 +++
 title = "Mission statement"
+description = "The goals, organization and vision of the scverse consortium."
 +++
 
 

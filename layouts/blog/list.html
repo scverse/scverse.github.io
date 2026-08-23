@@ -8,6 +8,9 @@
         </div>
         <div class="page-item-content">
           <h2>{{ .Title }}</h2>
+          {{ with .Params.author }}
+            <span class="page-item-author">{{ . }}</span>
+          {{ end }}
           <span>{{ .Description }}</span>
         </div>
       </article>

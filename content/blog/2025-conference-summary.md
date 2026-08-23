@@ -177,6 +177,6 @@ Each sponsor provided an outlook of the latest technologies in perturbation scre
 
 ### Conclusion
 
-This was the second time we organized the scverse conference — you can read about [the first edition in Munich](/blog/2024-conference-summary/). We're looking forward to seeing you at future scverse events! In the meantime, you can engage with the community on [Zulip](https://scverse.zulipchat.com/) and at our community meetings. Look out for announcements on our social media channels ([X](https://x.com/scaboranova), [Bluesky](https://bsky.app/profile/scverse.bsky.social), [LinkedIn](https://www.linkedin.com/company/scverse/)).
+This was the second time we organized the scverse conference — you can read about [the first edition in Munich](/blog/2024-conference-summary/). We're looking forward to seeing you at future scverse events! In the meantime, you can engage with the community on [Zulip](https://scverse.zulipchat.com/) and at our community meetings. Look out for announcements on our social media channels ([X](https://x.com/scverse_team), [Bluesky](https://bsky.app/profile/scverse.bsky.social), [LinkedIn](https://www.linkedin.com/company/scverse/)).
 
 *Photo credits: Vivekanandan Ramalingam (Vivek), Research Scientist at Stanford Genetics.*

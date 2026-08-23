@@ -1,5 +1,6 @@
 +++
 title = "Roles and Decisions"
+description = "How scverse is governed: the roles within the project and the process by which decisions are made."
 +++
 
 ## Roles and Responsibilities

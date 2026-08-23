@@ -1,5 +1,6 @@
 +++
 title = "About scverse"
+description = "Scverse is a consortium of foundational tools for the analysis of omics data in the life sciences."
 +++
 
 Scverse® is a consortium of foundational tools for analysis of omics data in life sciences. It has been founded to ensure the long-term maintenance of these core tools.
