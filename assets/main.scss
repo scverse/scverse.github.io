@@ -514,8 +514,12 @@ body {
                         }
                     }
                 }
+                // The wide gap under the hero used to live on #packages, which put it
+                // between whatever section came after the demo and the packages.
+                #interactive-demo-section {
+                    margin-bottom: 15%;
+                }
                 #packages {
-                    margin-top: 15%;
                     #packages-list {
                         .card {
                             display: flex;
@@ -2547,7 +2551,6 @@ $eco-hues:
 // Interactive UMAP Visualization Styles
 #interactive-demo-section {
     margin-top: 8%;
-    margin-bottom: 5%;
 }
 
 .interactive-container {
