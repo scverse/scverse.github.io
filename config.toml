@@ -12,6 +12,15 @@ enableRobotsTXT = true
 images = ["img/scverse-social-card.png"]
 description = "Foundational tools for omics data in the life sciences"
 
+[outputs]
+home = ["html", "rss", "entities"]
+
+[outputFormats.entities]
+mediaType = "application/json"
+baseName = "search-entities"
+isPlainText = true
+notAlternative = true
+
 [markup.goldmark.renderer]
 unsafe= true
 
