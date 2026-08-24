@@ -1552,7 +1552,7 @@ body {
     }
 
     .people-lead {
-        max-width: 42rem;
+        max-width: 52rem;
         margin: 0;
         font-size: 1.15rem;
         line-height: 1.6;
@@ -1623,13 +1623,6 @@ body {
         font-size: 1.7rem;
         font-weight: 800;
         letter-spacing: -0.01em;
-    }
-
-    .people-section-text {
-        max-width: 42rem;
-        margin: 0;
-        font-size: 1rem;
-        color: $tiletext2;
     }
 
     // Search and filters
@@ -1807,11 +1800,6 @@ body {
         }
     }
 
-    // The steering council is shown twice on purpose: once as its own body, once in the directory
-    .person-card--feature {
-        background-color: rgba($scviyellow, 0.08);
-    }
-
     .person-avatar {
         display: grid;
         place-items: center;
@@ -1926,7 +1914,10 @@ body {
     .person-links {
         display: flex;
         gap: 0.35rem;
+        // Badge and affiliation counts differ per card, so pin this row to the bottom of each
         margin: 0.55rem 0 0;
+        padding-top: 0.15rem;
+        margin-top: auto;
 
         a {
             position: relative;

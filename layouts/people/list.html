@@ -99,21 +99,8 @@
         {{ end }}
       </header>
 
-      {{ range where $roles "id" "council" }}
-        <section class="people-section">
-          <h2 id="steering-council">{{ .label }}</h2>
-          <p class="people-section-text">{{ .text }}</p>
-          <div class="people-grid people-grid--feature">
-            {{ range where $items "roles" "intersect" (slice "council") }}
-              {{ partial "people/card.html" (dict "person" . "labels" $labels "feature" true) }}
-            {{ end }}
-          </div>
-        </section>
-      {{ end }}
-
-
       <section class="people-section" id="people-directory">
-        <h2 id="everyone">Everyone</h2>
+        <h2 id="the-team">The team</h2>
 
         <div class="people-toolbar">
           <div class="people-search">
