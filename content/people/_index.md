@@ -374,5 +374,5 @@ lead = "The people who build and govern scverse, in <a href='/about/roles'>a han
 # ----------
 
 [contributors]
-	text = "Every scverse project is open to contributions, and everyone who uses scverse software is part of the community — <a href='/join'>come and join us</a>."
+	text = "Every project is open to contributions and everyone who uses it is part of the community — <a href='/join'>come and join us</a>."
 +++
