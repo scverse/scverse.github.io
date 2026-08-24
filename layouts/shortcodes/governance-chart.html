@@ -5,8 +5,10 @@
 */}}
 {{ $people := (site.GetPage "/people").Params.people | default slice }}
 {{ $count := dict }}
+{{ $label := dict }}
 {{ range (site.GetPage "/people").Params.roles }}
   {{ $count = merge $count (dict .id (len (where $people "roles" "intersect" (slice .id)))) }}
+  {{ $label = merge $label (dict .id .label) }}
 {{ end }}
 
 
@@ -24,7 +26,7 @@
             </li>
             <li class="gov-node">
               {{ partial "governance/node.html" (dict
-                "name" "Core Team" "anchor" "core-team"
+                "name" (index $label "core") "anchor" "core-team"
                 "role" (dict "id" "core" "count" (index $count "core"))
                 )
               }}
@@ -34,7 +36,7 @@
                 </li>
                 <li class="gov-node gov-node--leaf gov-node--council">
                   {{ partial "governance/node.html" (dict
-                    "name" "Steering Council" "anchor" "steering-council"
+                    "name" (index $label "council") "anchor" "steering-council"
                     "role" (dict "id" "council" "count" (index $count "council"))
                     )
                   }}
@@ -51,14 +53,14 @@
   <ul class="gov-level gov-level--aside">
     <li class="gov-node gov-node--leaf">
       {{ partial "governance/node.html" (dict
-        "name" "Management Committee" "anchor" "management-committee"
+        "name" (index $label "management") "anchor" "management-committee"
         "role" (dict "id" "management" "count" (index $count "management"))
         )
       }}
     </li>
     <li class="gov-node gov-node--leaf">
       {{ partial "governance/node.html" (dict
-        "name" "Scientific Advisory Board" "anchor" "scientific-advisory-board"
+        "name" (index $label "advisory") "anchor" "scientific-advisory-board"
         "role" (dict "id" "advisory" "count" (index $count "advisory"))
         )
       }}

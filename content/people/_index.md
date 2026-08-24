@@ -37,9 +37,9 @@ lead = "The people who build and govern scverse, in <a href='/about/roles'>a han
 
 [[roles]]
 	id = "advisory"
-	short = "advisory"
-	label = "Advisory Committee"
-	text = "The Advisory Committee helps to shape the overall vision for scverse and to define its priorities."
+	short = "advisory board"
+	label = "Scientific Advisory Board"
+	text = "The Scientific Advisory Board helps to shape the overall vision for scverse and to define its priorities."
 
 [[roles]]
 	id = "alumni"
