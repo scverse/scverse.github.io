@@ -3175,13 +3175,9 @@ body {
         border-radius: $card-radius;
     }
 
-    .gov-node--community {
+    // Community, the management committee and the advisory board sit at the same level
+    .gov-node--top {
         background-color: $backtickbg;
-    }
-
-    .gov-node--council {
-        border-color: $tilebg2;
-        background-color: rgba($scviyellow, 0.08);
     }
 
     .gov-name {
@@ -3218,14 +3214,7 @@ body {
         }
     }
 
-    .gov-aside-label {
-        margin: 1.5rem 0 0.75rem;
-        font-size: 0.85rem;
-        color: $greydesc;
-    }
-
-    .gov-level--row,
-    .gov-level--aside {
+    .gov-level--row {
         flex-direction: row;
         flex-wrap: wrap;
 

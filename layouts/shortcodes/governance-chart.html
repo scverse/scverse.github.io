@@ -15,7 +15,7 @@
 
 <figure class="gov-chart">
   <ul class="gov-level">
-    <li class="gov-node gov-node--community">
+    <li class="gov-node gov-node--top">
       {{ partial "governance/node.html" (dict "name" "Community" "anchor" "the-community") }}
       <ul class="gov-level">
         <li class="gov-node">
@@ -42,7 +42,7 @@
                 <li class="gov-node">
                   {{ partial "governance/node.html" (dict "name" "Core Governance" "anchor" "core-team") }}
                   <ul class="gov-level">
-                    <li class="gov-node gov-node--leaf gov-node--council">
+                    <li class="gov-node gov-node--leaf">
                       {{ partial "governance/node.html" (dict
                         "name" (index $label "council") "anchor" "steering-council"
                         "role" (dict "id" "council" "count" (index $count "council"))
@@ -57,18 +57,14 @@
         </li>
       </ul>
     </li>
-  </ul>
-
-  <p class="gov-aside-label">Alongside, with their own remit:</p>
-  <ul class="gov-level gov-level--aside">
-    <li class="gov-node gov-node--leaf">
+    <li class="gov-node gov-node--top gov-node--leaf">
       {{ partial "governance/node.html" (dict
         "name" (index $label "management") "anchor" "management-committee"
         "role" (dict "id" "management" "count" (index $count "management"))
         )
       }}
     </li>
-    <li class="gov-node gov-node--leaf">
+    <li class="gov-node gov-node--top gov-node--leaf">
       {{ partial "governance/node.html" (dict
         "name" (index $label "advisory") "anchor" "scientific-advisory-board"
         "role" (dict "id" "advisory" "count" (index $count "advisory"))
