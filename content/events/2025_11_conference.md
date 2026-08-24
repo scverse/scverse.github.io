@@ -1,5 +1,5 @@
 +++
-title = "Scverse Conference 2025-11 Stanford"
+title = "scverse Conference 2025-11 Stanford"
 date = 2025-11-17T00:00:00+01:00
 description = "scverse conference"
 draft = false
@@ -9,4 +9,4 @@ Join us for the scverse conference taking place from **Monday, November 17** to 
 
 [Visit the dedicated conference page for more details](/conference2025/)
 
-<a href="/conference2025/"> <img src="/img/events/2025_11_conference_banner.png" style="max-width: 100%;" alt="scverse conference 2025 banner" /> </a>
+<a href="/conference2025/"> <img src="/img/events/2025_11_conference_banner.webp" style="max-width: 100%;" alt="scverse conference 2025 banner" /> </a>

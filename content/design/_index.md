@@ -7,7 +7,7 @@ aliases = ["/brand/", "/logo/"]
 	
 Our logo is available in several formats for different use cases. Please use these official versions and follow our guidelines when representing our brand.
 """
-	trademark = """Our logo is protected as a registered trademark. For details and specifics, consult the [NumFOCUS trademark guidelines](https://numfocus.org/trademark-guidelines).
+	trademark = """Our logo is protected as a registered trademark.
 """
 	logo_guidelines = "To maintain brand consistency, please follow these guidelines when using our logo."
 	do_guidelines = """
@@ -24,6 +24,10 @@ Our logo is available in several formats for different use cases. Please use the
 - Don't rotate or change the orientation of the logo
 - Don't use the logo at sizes where details become illegible
 """
+	logo_usage_faq = """
+Yes, you are encouraged to use the scverse and package logos in your publications and presentations; as long as you fall under the NumFOCUS guidelines.
+"""
+	logo_usage_flair = "To learn when and how to legally use our trademark, logo, and other assets, please refer directly to the [NumFOCUS Trademark Guidelines](https://numfocus.org/trademark-guidelines)."
 	package_icons = "These logos represent our core packages. They are available for download in SVG or PNG formats, sometimes with variations such as with or without the package name."
 	contact = "For questions about logo usage or requests for additional formats, please contact us at [core@scverse.org](mailto:core@scverse.org). For more information about scverse, please visit our [About page](/about/)."
 
@@ -44,23 +48,23 @@ Our primary logo combines our icon with the full name. Use this version when int
 [[primarylogos]]
 	name = "Icon Only"
 	description = "Logo mark without text"
-	img = "../img/logo/scverse_symbol.svg"
+	img = "../img/logo/scverse-symbol.svg"
 	details = "Our icon can be used independently when space is limited or when our brand is already well-established in context."
 	[[primarylogos.links]]
 	text = "Download SVG"
-	url = "../img/logo/scverse_symbol.svg"
+	url = "../img/logo/scverse-symbol.svg"
 	[[primarylogos.links]]
 	text = "Download PNG"
-	url = "../img/logo/scverse_symbol.png"
+	url = "../img/logo/scverse-symbol.png"
 
 [[trademarkedlogos]]
 	name = "Icon (® version)"
 	description = "Icon trademarked"
-	img = "../img/icons/scverse_bw_logo.svg"
+	img = "../img/icons/scverse-bw-logo.svg"
 	details = "Use this version to indicate that scverse is a registered trademark in formal or legal contexts."
 	[[trademarkedlogos.links]]
 	text = "Download SVG"
-	url = "../img/icons/scverse_bw_logo.svg"
+	url = "../img/icons/scverse-bw-logo.svg"
 
 [[packageicons]]
 	name = "anndata"
@@ -173,4 +177,5 @@ Our primary logo combines our icon with the full name. Use this version when int
 	[[packageicons.links]]
 	text = "Download SVG"
 	url = "../img/icons/decoupler.svg"
+
 +++

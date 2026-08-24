@@ -1,31 +1,27 @@
 <section id="packages">
   <div class="section-heading">Core packages</div>
   <div class="section-content">
-    {{ $jsonURL := "https://scverse.org/ecosystem-packages/packages.json" }}
-    {{ $remoteData := resources.GetRemote $jsonURL }}
-    {{ if $remoteData }}
-      {{ $allPkgs := transform.Unmarshal $remoteData.Content }}
-      {{ $corePkgs := slice }}
-      {{ range $allPkgs }}
-        {{ if or (eq .category "core-datastructure") (eq .category "core-framework") }}
-          {{ $corePkgs = $corePkgs | append . }}
-        {{ end }}
+    {{ $registryBase := "https://scverse.org/ecosystem-packages/" }}
+    {{ $data := resources.GetRemote (printf "%spackages.json" $registryBase) }}
+    {{ with $data }}
+      {{/* ponytail: registry has no order key, so core packages are alphabetical; re-curate once one exists. */}}
+      {{ $core := slice }}
+      {{ range where (transform.Unmarshal .Content) "category" "in" (slice "core-datastructure" "core-framework") }}
+        {{ $core = $core | append (merge . (dict "sortkey" (lower .name))) }}
       {{ end }}
-      {{ if $corePkgs }}
+      {{ with sort $core "sortkey" }}
         <div class="row" id="packages-list">
-          {{ range $corePkgs }}
+          {{ range $p := . }}
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 py-3">
               <div class="card border-0 bh-light px-3" id="{{ .name | urlize }}-tile">
                 <div class="package-icon my-4">
-                  {{ if .logo }}
-                    <img src="https://scverse.org/ecosystem-packages/{{ .logo }}" alt="Logo for {{ .name }}" />
-                  {{ else }}
-                    <img />
+                  {{ with .logo }}
+                    <img src="{{ printf "%s%s" $registryBase . }}" alt="Logo for {{ $p.name }}" />
                   {{ end }}
                 </div>
                 <div class="card-body package-text p-2">
                   <a
-                    href="{{ .documentation_home }}"
+                    href="{{ .documentation_home | default .project_home }}"
                     class="stretched-link"
                     target="_blank"
                     aria-label="Link to the {{ .name }} website"

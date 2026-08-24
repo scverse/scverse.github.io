@@ -6,7 +6,7 @@ author = "Roshan Sharma"
 draft = false
 +++
 
-<img src="/img/blog/conference2024.png" style="max-width: 100%;" alt="Group photo from the scverse conference" />
+<img src="/img/blog/conference2024.webp" style="max-width: 100%;" alt="Group photo from the scverse conference" />
 
 
 
@@ -25,7 +25,7 @@ The conference had 6 keynotes from leaders of the field and founders of Scanpy/s
 
 You can learn more about what each of our speakers discussed by checking out the amazing [keynote sketches](https://lazappi.id.au/posts/2024-09-15-scverse-conference/) made by conference attendee Luke Zappia.
 
-<img src="/img/blog/conference2024-keynote.png" style="max-width: 100%;" alt="Keynote speakers and slides" />
+<img src="/img/blog/conference2024-keynote.webp" style="max-width: 100%;" alt="Keynote speakers and slides" />
 
 ### Short talks
 
@@ -33,7 +33,7 @@ The conference also featured several 15-minute short talks, each followed by a Q
 
 The presenters were primarily graduate students and postdoctoral researchers from various academic labs. We believe that providing opportunities for junior scientists to showcase their work and receive constructive feedback is crucial to fostering their growth. This format also allowed the audience to delve into the finer details of each method, complementing the broader discussions. Each short talk sparked extensive conversations, a testament to the effectiveness of this approach. Many attendees expressed their appreciation (some vignettes below) for the inclusion of these talks, particularly for highlighting the contributions of early-career researchers and promoting their visibility within the community.
 
-<img src="/img/blog/conference2024-shorttalk.png" style="max-width: 100%;" alt="Short talks and presenters" />
+<img src="/img/blog/conference2024-shorttalk.webp" style="max-width: 100%;" alt="Short talks and presenters" />
 
 ### Workshops
 
@@ -43,19 +43,19 @@ The workshops covered a wide range of topics, from live-coding demonstrations an
 
 The workshops were widely regarded as one of the conference’s major highlights, as reflected in the enthusiastic feedback from participants (see examples below).
 
-<img src="/img/blog/conference2024-workshop.png" style="max-width: 100%;" alt="People participating in workshops" />
+<img src="/img/blog/conference2024-workshop.webp" style="max-width: 100%;" alt="People participating in workshops" />
 
 ### Poster session
 
 The conference also featured a poster session, where participants showcased their research and engaged in discussions with attendees. A total of 51 posters were presented during the two-hour session, providing ample opportunity for in-depth conversations and knowledge exchange.
 
-<img src="/img/blog/conference2024-poster.png" style="max-width: 100%;" alt="Posters and discussions" />
+<img src="/img/blog/conference2024-poster.webp" style="max-width: 100%;" alt="Posters and discussions" />
 
 ### Sponsor talks
 
 The conference would not have been possible without the generous support of our sponsors. We were honored to receive sponsorships from [CZI](https://chanzuckerberg.com/) (Diamond), [Immunai](https://www.immunai.com/) (Platinum), [Altos](https://www.altoslabs.com/) (Gold), [10x Genomics](https://www.10xgenomics.com/) (Gold), [tilDB](https://tiledb.com/) (Gold), [Lamin](https://lamin.ai/) (Silver), [Latch Bio](https://latch.bio/) (Silver), [Data Intuitive](https://www.data-intuitive.com/) (Silver) and [Boehringer-Ingelheim](https://www.boehringer-ingelheim.com/de) (Silver). As part of the sponsor engagement, 10x Genomics delivered a brief presentation on their latest initiatives, CZI hosted a workshop and gave a short talk, and Immunai presented their latest research. The conference also provided an excellent opportunity for participants to network with industry leaders, fostering collaboration and knowledge exchange.
 
-<img src="/img/blog/conference2024-sponsors.png" style="max-width: 100%;" alt="Logos of the conference sponsors" />
+<img src="/img/blog/conference2024-sponsors.webp" style="max-width: 100%;" alt="Logos of the conference sponsors" />
 
 ### Vignettes from participants
 

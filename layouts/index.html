@@ -11,7 +11,7 @@
       <div id="content">
         <div id="cover" class="mw-10">
           <div id="cover-top-section">
-            <!-- {{ partial "main/chip" . }} -->
+            {{ partial "main/chip" . }}
             {{ partial "main/cover" . }}
           </div>
 
@@ -21,7 +21,13 @@
               <div class="interactive-card" id="interactive-card">
                 <div class="demo-header">
                   <div class="command-input" id="cmd1">
-                    <div class="command-icon" id="run-cmd1">
+                    <div
+                      class="command-icon"
+                      id="run-cmd1"
+                      role="button"
+                      tabindex="0"
+                      aria-label="Run import scanpy as sc"
+                    >
                       <svg viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg">
                         <path
                           d="M361 215C375.3 223.8 384 239.3 384 256C384 272.7 375.3 288.2 361 296.1L73.03 472.1C58.21 482 39.66 482.4 24.52 473.9C9.377 465.4 0 449.4 0 432V80C0 62.64 9.377 46.63 24.52 38.13C39.66 29.64 58.21 29.99 73.03 39.04L361 215z"
@@ -33,7 +39,13 @@
                     <div class="executing-animation" id="exec-anim-1"></div>
                   </div>
                   <div class="command-input" id="cmd2">
-                    <div class="command-icon" id="run-cmd2">
+                    <div
+                      class="command-icon"
+                      id="run-cmd2"
+                      role="button"
+                      tabindex="0"
+                      aria-label="Run sc.pl.umap(data, color='clusters')"
+                    >
                       <svg viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg">
                         <path
                           d="M361 215C375.3 223.8 384 239.3 384 256C384 272.7 375.3 288.2 361 296.1L73.03 472.1C58.21 482 39.66 482.4 24.52 473.9C9.377 465.4 0 449.4 0 432V80C0 62.64 9.377 46.63 24.52 38.13C39.66 29.64 58.21 29.99 73.03 39.04L361 215z"
@@ -46,10 +58,34 @@
                   </div>
                 </div>
 
-                <div id="visualization" class="visualization"></div>
+                <div id="visualization" class="visualization" aria-hidden="true"></div>
               </div>
             </div>
           </section>
+
+          {{ with first 1 (where (where .Site.RegularPages "Section" "events") "Date.Unix" ">" now.Unix).ByDate }}
+            <section id="next-event">
+              <div class="section-heading">Next event</div>
+              <div class="section-content">
+                {{ range . }}
+                  <a href="{{ with .Params.link }}{{ . }}{{ else }}{{ .RelPermalink }}{{ end }}">
+                    <article class="page-item">
+                      <div class="page-item-date">
+                        <span>{{ .Date.Format "January 02, 2006" }}</span>
+                      </div>
+                      <div class="page-item-content">
+                        <h2>{{ .Title }}</h2>
+                        <span>{{ .Description }}</span>
+                      </div>
+                    </article>
+                  </a>
+                {{ end }}
+                <a href="/events">
+                  <div class="more">See all scverse events</div>
+                </a>
+              </div>
+            </section>
+          {{ end }}
 
           {{ partial "main/packages" . }}
 

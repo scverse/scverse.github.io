@@ -1,5 +1,5 @@
 +++
-title = "Scverse Hackathon 2023-11 Cambridge"
+title = "scverse Hackathon 2023-11 Cambridge"
 date = 2023-11-26T00:00:05+01:00
 description = "Hackathon on multi-condition analysis and ML data loaders"
 draft = false

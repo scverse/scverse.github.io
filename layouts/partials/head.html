@@ -1,4 +1,12 @@
-<title>{{ .Title }}</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
+{{ with or .Description .Summary .Site.Params.description .Site.Params.Description }}
+  <meta name="description" content="{{ . | plainify | truncate 160 }}" />
+{{ end }}
+<link rel="canonical" href="{{ .Permalink }}" />
+
 {{ $styles := resources.Get "main.scss" | toCSS | minify }}
 <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/bootstrap/icons/bootstrap-icons.css" />
@@ -14,15 +22,24 @@
 <meta name="msapplication-config" content="/img/favicon/browserconfig.xml" />
 <meta name="theme-color" content="#ffffff" />
 
-<meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
-<meta content="utf-8" http-equiv="encoding" />
+{{ range .AlternativeOutputFormats }}
+  <link
+    rel="{{ .Rel }}"
+    type="{{ .MediaType.Type }}"
+    href="{{ .Permalink }}"
+    title="{{ $.Site.Title }} — {{ $.Title }}"
+  />
+{{ end }}
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  href="{{ "blog/index.xml" | absURL }}"
+  title="{{ .Site.Title }} — Blog"
+/>
 
 {{ template "_internal/twitter_cards.html" . }}
 {{ template "_internal/opengraph.html" . }}
 
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-<script src="/main.js"></script>
+<script src="/main.js" defer></script>
 <script src="/bootstrap/js/bootstrap.bundle.min.js" async></script>
 <script data-goatcounter="https://scverse.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

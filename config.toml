@@ -2,9 +2,20 @@ baseURL = "https://scverse.org/"
 languageCode = "en-us"
 title = "scverse"
 description = "Foundational tools for omics data in the life sciences"
-# images = ["https://scverse.org/img/icons/scverse_bw_logo.svg"]
-[taxonomies]
-    series = 'series'
+
+# CI publishes with --buildFuture so that events dated in the future are listed.
+# Setting it here too keeps `hugo server` in step with production.
+buildFuture = true
+enableRobotsTXT = true
+
+[params]
+images = ["img/scverse-social-card.png"]
+description = "Foundational tools for omics data in the life sciences"
 
 [markup.goldmark.renderer]
 unsafe= true
+
+# The ecosystem registry rebuilds this site when packages.json changes, so a cached copy defeats the trigger.
+# Hugo caches remote resources forever by default, and on Netlify that cache survives between builds.
+[caches.getresource]
+maxAge = 0

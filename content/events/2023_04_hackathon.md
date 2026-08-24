@@ -1,5 +1,5 @@
 +++
-title = "Scverse Hackathon 2023-04 Heidelberg"
+title = "scverse Hackathon 2023-04 Heidelberg"
 date = 2023-04-26T00:00:05+01:00
 description = "Hackathon on interoperability and knowledge representation"
 draft = false
