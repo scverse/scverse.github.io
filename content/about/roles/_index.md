@@ -9,6 +9,8 @@ The purpose of this document is to formalize the governance process used by the 
 
 For the community members who currently hold these roles, see the [people page](/people/).
 
+{{< governance-chart >}}
+
 As a whole, we are a consensus-based community project.
 However, any subproject within the scverse can have its own governance system as long as they do not conflict with the rules set out here.
 Anyone with an interest in the project can join the community, contribute to the project design, and participate in the decision making process.
@@ -48,7 +50,7 @@ This includes who gets commit rights to their projects.
 The core team are community members who have demonstrated continued commitment to the project through ongoing contributions.
 They have shown they can be trusted to maintain scverse with care.
 Team members appear as organization members on the scverse [GitHub organization](https://github.com/orgs/scverse/people) and are on our `scverse/core` GitHub team.
-The current members are listed on our [people page](/people/#core-team), and the team can be reached by e-mail at [core@scverse.org](mailto:core@scverse.org).
+The current members are listed on our [people page](/people/?role=core), and the team can be reached by e-mail at [core@scverse.org](mailto:core@scverse.org).
 
 There are sub-roles within the core team covering different kinds of contributions and responsibilities.
 

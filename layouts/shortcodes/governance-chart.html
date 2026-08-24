@@ -1,0 +1,65 @@
+{{/* An index of the sections below, not a summary of them: every node is just a name, a live
+  headcount from the people page, and links to its own section and to who currently holds it.
+  The nesting is what the prose already asserts — the SC are core team members, core developers
+  are core team members, the core team are contributors — which the flat headings cannot show. */}}
+{{ $people := (site.GetPage "/people").Params.people | default slice }}
+{{ $count := dict }}
+{{ range (site.GetPage "/people").Params.roles }}
+  {{ $count = merge $count (dict .id (len (where $people "roles" "intersect" (slice .id)))) }}
+{{ end }}
+
+<figure class="gov-chart">
+  <figcaption>Who sits inside whom. Every box links to its own section below.</figcaption>
+  <ul class="gov-level">
+    <li class="gov-node gov-node--community">
+      {{ partial "governance/node.html" (dict "name" "Community" "anchor" "the-community") }}
+      <ul class="gov-level">
+        <li class="gov-node">
+          {{ partial "governance/node.html" (dict "name" "Contributors" "anchor" "contributors") }}
+          <ul class="gov-level">
+            <li class="gov-node gov-node--leaf">
+              {{ partial "governance/node.html" (dict "name" "Project Developers" "anchor" "project-developers") }}
+            </li>
+            <li class="gov-node">
+              {{ partial "governance/node.html" (dict
+                "name" "Core Team" "anchor" "core-team"
+                "role" (dict "id" "core" "count" (index $count "core"))
+                )
+              }}
+              <ul class="gov-level">
+                <li class="gov-node gov-node--leaf">
+                  {{ partial "governance/node.html" (dict "name" "Core Developers" "anchor" "core-developers") }}
+                </li>
+                <li class="gov-node gov-node--leaf gov-node--council">
+                  {{ partial "governance/node.html" (dict
+                    "name" "Steering Council" "anchor" "steering-council"
+                    "role" (dict "id" "council" "count" (index $count "council"))
+                    )
+                  }}
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <p class="gov-aside-label">Alongside, with their own remit:</p>
+  <ul class="gov-level gov-level--aside">
+    <li class="gov-node gov-node--leaf">
+      {{ partial "governance/node.html" (dict
+        "name" "Management Committee" "anchor" "management-committee"
+        "role" (dict "id" "management" "count" (index $count "management"))
+        )
+      }}
+    </li>
+    <li class="gov-node gov-node--leaf">
+      {{ partial "governance/node.html" (dict
+        "name" "Scientific Advisory Board" "anchor" "scientific-advisory-board"
+        "role" (dict "id" "advisory" "count" (index $count "advisory"))
+        )
+      }}
+    </li>
+  </ul>
+</figure>
