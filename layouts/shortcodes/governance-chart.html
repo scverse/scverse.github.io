@@ -1,7 +1,8 @@
 {{/* An index of the sections below, not a summary of them: every node is just a name, a live
   headcount from the people page, and links to its own section and to who currently holds it.
-  The nesting is what the prose already asserts — the SC are core team members, core developers
-  are core team members, the core team are contributors — which the flat headings cannot show.
+  The core team splits three ways — developers, community, governance — and the steering council
+  is drawn from the governance side of it. The document states none of that: its headings are
+  flat and it only names one of the three sub-teams.
 */}}
 {{ $people := (site.GetPage "/people").Params.people | default slice }}
 {{ $count := dict }}
@@ -13,7 +14,7 @@
 
 
 <figure class="gov-chart">
-  <figcaption>Who sits inside whom. Every box links to its own section below.</figcaption>
+  <figcaption>Who sits inside whom. Every box links to the section that describes it.</figcaption>
   <ul class="gov-level">
     <li class="gov-node gov-node--community">
       {{ partial "governance/node.html" (dict "name" "Community" "anchor" "the-community") }}
@@ -30,16 +31,26 @@
                 "role" (dict "id" "core" "count" (index $count "core"))
                 )
               }}
-              <ul class="gov-level">
+              {{/* Siblings, so they read as three parallel sub-teams rather than a stack */}}
+              <ul class="gov-level gov-level--row">
                 <li class="gov-node gov-node--leaf">
                   {{ partial "governance/node.html" (dict "name" "Core Developers" "anchor" "core-developers") }}
                 </li>
-                <li class="gov-node gov-node--leaf gov-node--council">
-                  {{ partial "governance/node.html" (dict
-                    "name" (index $label "council") "anchor" "steering-council"
-                    "role" (dict "id" "council" "count" (index $count "council"))
-                    )
-                  }}
+                {{/* The document has no section for these two yet, so they point at their parent */}}
+                <li class="gov-node gov-node--leaf">
+                  {{ partial "governance/node.html" (dict "name" "Core Community" "anchor" "core-team") }}
+                </li>
+                <li class="gov-node">
+                  {{ partial "governance/node.html" (dict "name" "Core Governance" "anchor" "core-team") }}
+                  <ul class="gov-level">
+                    <li class="gov-node gov-node--leaf gov-node--council">
+                      {{ partial "governance/node.html" (dict
+                        "name" (index $label "council") "anchor" "steering-council"
+                        "role" (dict "id" "council" "count" (index $count "council"))
+                        )
+                      }}
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </li>

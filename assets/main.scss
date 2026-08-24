@@ -3230,12 +3230,23 @@ body {
         color: $greydesc;
     }
 
+    .gov-level--row,
     .gov-level--aside {
         flex-direction: row;
         flex-wrap: wrap;
 
+        > .gov-node {
+            flex: 1 1 13rem;
+        }
+    }
+
+    // Five levels of nesting is enough padding already
+    @media (max-width: 50rem) {
+        .gov-level--row {
+            flex-direction: column;
+        }
         .gov-node {
-            flex: 1 1 16rem;
+            padding: 0.6rem 0.65rem;
         }
     }
 }
