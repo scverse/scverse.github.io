@@ -3233,3 +3233,32 @@ body {
         }
     }
 }
+
+.role-members {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: $tiletext2;
+
+    .role-members-label {
+        margin-right: 0.4rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: $greydesc;
+    }
+
+    .role-members-sep {
+        margin: 0 0.15rem;
+        color: $overline;
+    }
+}
+
+#page-content p.role-members > a {
+    white-space: nowrap;
+    border-bottom-color: transparent;
+
+    &:hover {
+        border-bottom-color: $linkunderline;
+    }
+}
