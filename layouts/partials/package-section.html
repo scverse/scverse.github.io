@@ -1,0 +1,42 @@
+{{/* One core package row on /packages, from an ecosystem-registry entry. Params: pkg, base */}}
+{{ $base := .base }}
+{{ $p := .pkg }}
+<div class="package-section">
+  <div class="package-img">
+    {{ with $p.logo }}
+      <img src="{{ printf "%s%s" $base . }}" alt="Logo for {{ $p.name }}" loading="lazy" />
+    {{ end }}
+  </div>
+  <div class="package-info">
+    <div class="package-tile" id="{{ $p.name | urlize }}-tile">
+      <div class="package-text">
+        <span class="package-name">{{ $p.name }}</span>
+        <span class="package-details">{{ $p.description | markdownify }}</span>
+      </div>
+    </div>
+    <div class="package-links">
+      {{ with $p.project_home }}
+        <a href="{{ . }}" target="_blank">{{ if in . "github.com" }}GitHub{{ else }}Website{{ end }}</a>
+      {{ end }}
+      {{ with $p.documentation_home }}
+        <a href="{{ . }}" target="_blank">Documentation</a>
+      {{ end }}
+      {{ with $p.tutorials_home }}
+        <a href="{{ . }}" target="_blank">Tutorials</a>
+      {{ end }}
+      {{ with $p.install }}
+        {{ with .pypi }}
+          <a href="https://pypi.org/project/{{ . }}/" target="_blank">PyPI</a>
+        {{ end }}
+        {{ with .conda }}
+          {{ $parts := split . "::" }}
+          {{ $url := printf "https://anaconda.org/search?q=%s" (urlquery .) }}
+          {{ if eq (len $parts) 2 }}
+            {{ $url = printf "https://anaconda.org/%s/%s" (index $parts 0) (index $parts 1) }}
+          {{ end }}
+          <a href="{{ $url }}" target="_blank">Conda</a>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</div>
