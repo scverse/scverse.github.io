@@ -1,7 +1,7 @@
 +++
 title = "People"
 description = "The core team, steering council, committees and contributors behind scverse."
-lead = "The people below build and govern scverse in <a href='/about/roles'>a handful of different roles</a>. Everyone who uses scverse software is part of the community — <a href='/join'>come and join us</a>."
+lead = "The people who build and govern scverse, in <a href='/about/roles'>a handful of different roles</a>."
 
 # ---------- roles, in the order they sort into the directory
 
@@ -374,5 +374,5 @@ lead = "The people below build and govern scverse in <a href='/about/roles'>a ha
 # ----------
 
 [contributors]
-	text = "All this work makes sense only in the context of the larger community of contributors and users of scverse projects. Open-source scverse projects are open to contributions, and all these people have contributed to our community."
+	text = "Every scverse project is open to contributions, and everyone who uses scverse software is part of the community — <a href='/join'>come and join us</a>."
 +++

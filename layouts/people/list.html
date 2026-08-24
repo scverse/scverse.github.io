@@ -93,9 +93,9 @@
           </div>
           <p class="people-mosaic-caption">
             <strong>{{ len . }} people</strong> have contributed to scverse.
-            {{ $.Params.contributors.text }}
-            <button type="button" id="contributor-expand" aria-expanded="false">Show everyone</button>
+            {{ $.Params.contributors.text | safeHTML }}
           </p>
+          <button type="button" id="contributor-expand" aria-expanded="false">Show everyone</button>
         {{ end }}
       </header>
 

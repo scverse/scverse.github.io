@@ -1552,7 +1552,6 @@ body {
     }
 
     .people-lead {
-        max-width: 52rem;
         margin: 0;
         font-size: 1.15rem;
         line-height: 1.6;
@@ -1594,7 +1593,7 @@ body {
     }
 
     .people-mosaic-caption {
-        max-width: 42rem;
+        max-width: 58rem;
         margin: 0;
         font-size: 0.9rem;
         line-height: 1.6;
@@ -1603,14 +1602,18 @@ body {
         strong {
             color: $tiletext;
         }
-        button {
-            padding: 0;
-            color: $tiletext;
-            background: none;
-            border: 0;
-            text-decoration: underline;
-            cursor: pointer;
-        }
+    }
+
+    // Its own line, so it does not read as part of the sentence's links
+    #contributor-expand {
+        margin-top: 0.6rem;
+        padding: 0;
+        font-size: 0.9rem;
+        color: $tiletext;
+        background: none;
+        border: 0;
+        text-decoration: underline;
+        cursor: pointer;
     }
 
     .people-section {
