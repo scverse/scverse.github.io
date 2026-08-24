@@ -1,5 +1,4 @@
-<a class="gov-name" href="#{{ .anchor }}">{{ .name }}</a>
-{{ with .role }}
+<a class="gov-name" href="#{{ .anchor }}">{{ .name }}</a> {{ with .role }}
   <span class="gov-meta">
     <span class="gov-count">{{ .count }}</span>
     <a href="/people/?role={{ .id }}">who &rarr;</a>
