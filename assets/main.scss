@@ -510,8 +510,12 @@ body {
                         }
                     }
                 }
+                // The wide gap under the hero used to live on #packages, which put it
+                // between whatever section came after the demo and the packages.
+                #interactive-demo-section {
+                    margin-bottom: 15%;
+                }
                 #packages {
-                    margin-top: 15%;
                     #packages-list {
                         .card {
                             display: flex;
@@ -2914,7 +2918,6 @@ body {
 // Interactive UMAP Visualization Styles
 #interactive-demo-section {
     margin-top: 8%;
-    margin-bottom: 5%;
 }
 
 .interactive-container {
@@ -3260,5 +3263,166 @@ body {
 
     &:hover {
         border-bottom-color: $linkunderline;
+    }
+}
+
+// ---- Global search ------------------------------------------------------
+
+.nav-search-button {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: none;
+    border: 0;
+    color: $greyheader;
+    font-size: inherit;
+
+    &:hover {
+        color: $greyheaderhover;
+    }
+
+    .nav-search-kbd {
+        padding: 0.05rem 0.4rem;
+        border: 1px solid $tilebg2;
+        border-radius: 0.25rem;
+        background-color: $tilebg4;
+        color: $greydesc;
+        font-size: 0.75rem;
+        line-height: 1.2;
+
+        @media (max-width: 62rem) {
+            display: none;
+        }
+    }
+}
+
+.search-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1080;
+    display: flex;
+    justify-content: center;
+    padding: 4rem 1rem 1rem;
+    background-color: rgba(0, 0, 0, 0.45);
+
+    &[hidden] {
+        display: none;
+    }
+
+    @media (max-width: 50rem) {
+        padding: 1rem 0.5rem;
+    }
+}
+
+.search-dialog {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 42rem;
+    max-height: 100%;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    background-color: white;
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.3);
+}
+
+.search-field {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid $tilebg;
+    color: $greydesc;
+}
+
+.search-input {
+    flex: 1;
+    border: 0;
+    outline: none;
+    font-size: 1.15rem;
+    color: $tiletext;
+
+    &::-webkit-search-cancel-button {
+        display: none;
+    }
+}
+
+.search-close {
+    padding: 0.1rem 0.45rem;
+    border: 1px solid $tilebg2;
+    border-radius: 0.25rem;
+    background-color: $tilebg4;
+    color: $greydesc;
+    font-size: 0.8rem;
+}
+
+.search-status {
+    margin: 0;
+    padding: 0.6rem 1.25rem;
+    color: $greydesc;
+    font-size: 0.9rem;
+
+    &:empty {
+        display: none;
+    }
+}
+
+.search-results {
+    margin: 0;
+    padding: 0 0 0.5rem;
+    overflow-y: auto;
+    list-style: none;
+
+    a {
+        display: block;
+        padding: 0.75rem 1.25rem;
+        color: inherit;
+        text-decoration: none;
+
+        &:hover,
+        &:focus-visible,
+        &[aria-selected="true"] {
+            background-color: $tilebg4;
+            outline: none;
+        }
+    }
+
+    .search-result-title {
+        color: $tiletext;
+        font-weight: 600;
+    }
+
+    .search-result-url {
+        color: $mudatagreen;
+        font-size: 0.8rem;
+    }
+
+    .search-result-kind {
+        padding: 0.05rem 0.4rem;
+        border-radius: 0.25rem;
+        background-color: rgba($scviyellow, 0.25);
+        color: $tiletext2;
+        font-size: 0.75rem;
+        white-space: nowrap;
+    }
+
+    .search-result-entity .search-result-title::after {
+        content: " ↗";
+        color: $greydesc;
+        font-weight: 400;
+    }
+
+    .search-result-excerpt {
+        display: block;
+        margin-top: 0.15rem;
+        color: $greydesc;
+        font-size: 0.9rem;
+        line-height: 1.35rem;
+
+        mark {
+            padding: 0;
+            background-color: rgba($scviyellow, 0.35);
+            color: inherit;
+        }
     }
 }
