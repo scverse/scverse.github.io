@@ -1,5 +1,6 @@
 {{/* Counts read from the package registry and the contributor list, so the section's claim to be
-  a worldwide consortium is backed by numbers that cannot go stale. */}}
+  a worldwide consortium is backed by numbers that cannot go stale.
+*/}}
 {{ $pkgs := slice }}
 {{ with resources.GetRemote "https://scverse.org/ecosystem-packages/packages.json" }}
   {{ $pkgs = transform.Unmarshal .Content }}
@@ -11,6 +12,7 @@
 
 {{ $core := len (where $pkgs "category" "in" (slice "core-datastructure" "core-framework")) }}
 {{ $eco := len (where $pkgs "category" "ecosystem") }}
+
 
 <div class="stat-row">
   <a class="stat" href="/packages/" data-hue="0">
