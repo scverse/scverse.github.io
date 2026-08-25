@@ -3432,32 +3432,34 @@ body {
         max-width: 46rem;
     }
 
-    .goal-grid {
-        display: grid;
-        // Three across, so five principles wrap 3 + 2 rather than stranding one on its own row
-        grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
-        // Cards size to their text; stretching leaves the short ones mostly empty
-        align-items: start;
-        gap: 1rem;
-        margin: 1.5rem 0 2rem;
+    // Five principles with uneven text: any multi-column grid strands one card and leaves the
+    // short ones half empty, so these are rows, which align by construction.
+    .goal-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        max-width: 52rem;
+        margin: 1.75rem 0 2.5rem;
+        padding: 0;
+        list-style: none;
     }
 
-    .goal-card {
-        padding: 1.25rem 1.35rem;
-        background-color: white;
-        border: 1px solid $overline;
+    .goal {
+        display: grid;
+        grid-template-columns: 3rem 1fr;
+        column-gap: 1.2rem;
+        align-items: start;
+        padding: 1.1rem 1.2rem;
         border-radius: $card-radius;
-        transition: all 200ms ease-in-out;
+        transition: background-color 200ms ease-in-out;
 
         &:hover {
-            border-color: $tilebg2;
-            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
-            transform: translateY(-2px);
+            background-color: $tilebg4;
         }
 
         // Element selector included to beat the generic `#page-content .post h3` margins
         h3 {
-            margin: 0 0 0.5rem;
+            margin: 0 0 0.3rem;
             font-size: 1.05rem;
             font-weight: 800;
             letter-spacing: -0.01em;
@@ -3465,9 +3467,27 @@ body {
 
         p {
             margin: 0;
-            font-size: 0.9rem;
+            max-width: none;
+            font-size: 0.95rem;
             line-height: 1.6;
             color: $tiletext2;
+        }
+    }
+
+    .goal-icon {
+        grid-row: span 2;
+        display: grid;
+        place-items: center;
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.25rem;
+        color: $tiletext;
+        border-radius: 50%;
+
+        @each $hue in $eco-hues {
+            &[data-hue="#{index($eco-hues, $hue) - 1}"] {
+                background-color: rgba($hue, 0.22);
+            }
         }
     }
 }

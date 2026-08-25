@@ -1,9 +1,14 @@
-{{/* Article rather than div so the card titles stay out of the page's table of contents. */}}
-<div class="goal-grid">
-  {{ range .Page.Params.goals }}
-    <article class="goal-card">
-      <h3>{{ .name }}</h3>
-      <p>{{ .text }}</p>
-    </article>
+{{/* Article rather than div so the goal titles stay out of the page's table of contents. */}}
+<ul class="goal-list">
+  {{ range $i, $goal := .Page.Params.goals }}
+    <li>
+      <article class="goal">
+        <span class="goal-icon" data-hue="{{ mod $i 8 }}" aria-hidden="true">
+          <i class="bi {{ $goal.icon }}"></i>
+        </span>
+        <h3>{{ $goal.name }}</h3>
+        <p>{{ $goal.text }}</p>
+      </article>
+    </li>
   {{ end }}
-</div>
+</ul>
