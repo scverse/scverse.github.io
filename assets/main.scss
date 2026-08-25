@@ -3483,6 +3483,54 @@ body {
 
     // Five principles with uneven text: any multi-column grid strands one card and leaves the
     // short ones half empty, so these are rows, which align by construction.
+    .stat-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+        gap: 1rem;
+        max-width: 54rem;
+        margin: 1.75rem 0 2rem;
+    }
+
+    a.stat {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+        padding: 1.1rem 1.25rem;
+        text-decoration: none;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: $card-radius;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            border-color: $tilebg2;
+            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+    }
+
+    .stat-value {
+        font-size: 2rem;
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        font-variant-numeric: tabular-nums;
+        color: $tiletext;
+    }
+
+    // Written as a descendant rather than nested under .stat-value: `&` there would carry the
+    // whole ancestor chain and put .stat in front of #about-content
+    @each $hue in $eco-hues {
+        .stat[data-hue="#{index($eco-hues, $hue) - 1}"] .stat-value {
+            color: darken($hue, 15%);
+        }
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+        color: $greydesc;
+    }
+
     .principle-list {
         display: flex;
         flex-direction: column;
