@@ -79,6 +79,106 @@ const initEcosystemRegistry = () => {
   });
 };
 
+// People directory: free-text search, one active role and one active package. Roles and packages
+// both come from the page's own chip rows, so a URL like /people/?role=council survives a rename
+// only as long as the id still exists — anything unknown falls back to the unfiltered list.
+const initPeopleDirectory = () => {
+  const root = document.querySelector('#people-directory');
+  if (!root) return;
+
+  const input = root.querySelector('#people-filter');
+  const roleRow = root.querySelector('#people-roles');
+  const packageRow = root.querySelector('#people-packages');
+  const grid = root.querySelector('#people-grid');
+  const counter = root.querySelector('#people-count');
+  const empty = root.querySelector('#people-empty');
+  const clearButton = root.querySelector('#people-clear');
+  const notes = Array.from(root.querySelectorAll('.people-note'));
+  const cards = Array.from(grid.querySelectorAll('.person-card'));
+
+  const values = (row, key) => new Set(Array.from(row.children).map(chip => chip.dataset[key]));
+  const roles = values(roleRow, 'role');
+  const packages = values(packageRow, 'package');
+
+  const params = new URLSearchParams(window.location.search);
+  let activeRole = roles.has(params.get('role')) ? params.get('role') : '';
+  let activePackage = packages.has(params.get('works-on')) ? params.get('works-on') : '';
+
+  const syncChips = (row, key, active) => {
+    Array.from(row.children).forEach(chip => {
+      const isActive = chip.dataset[key] === active;
+      chip.classList.toggle('is-active', isActive);
+      chip.setAttribute('aria-pressed', String(isActive));
+    });
+  };
+
+  const apply = () => {
+    const terms = input.value.toLowerCase().split(/\s+/).filter(Boolean);
+    let shown = 0;
+    cards.forEach(card => {
+      const visible =
+        terms.every(term => card.dataset.search.includes(term)) &&
+        (!activeRole || card.dataset.roles.includes(`|${activeRole}|`)) &&
+        (!activePackage || card.dataset.works.includes(`|${activePackage}|`));
+      card.hidden = !visible;
+      if (visible) shown += 1;
+    });
+    counter.textContent = shown;
+    empty.hidden = shown !== 0;
+    clearButton.hidden = !terms.length && !activeRole && !activePackage;
+    notes.forEach(note => {
+      note.hidden = note.dataset.role !== activeRole;
+    });
+    syncChips(roleRow, 'role', activeRole);
+    syncChips(packageRow, 'package', activePackage);
+  };
+
+  const reset = () => {
+    input.value = '';
+    activeRole = '';
+    activePackage = '';
+    apply();
+  };
+
+  input.addEventListener('input', apply);
+  input.addEventListener('keydown', event => {
+    if (event.key === 'Escape') reset();
+  });
+  clearButton.addEventListener('click', () => {
+    reset();
+    input.focus();
+  });
+  empty.querySelector('.people-empty-reset').addEventListener('click', reset);
+
+  roleRow.addEventListener('click', event => {
+    const chip = event.target.closest('.people-chip');
+    if (!chip) return;
+    activeRole = activeRole === chip.dataset.role ? '' : chip.dataset.role;
+    apply();
+  });
+  packageRow.addEventListener('click', event => {
+    const chip = event.target.closest('.people-chip');
+    if (!chip) return;
+    activePackage = activePackage === chip.dataset.package ? '' : chip.dataset.package;
+    apply();
+  });
+
+  apply();
+};
+
+// The contributor wall opens folded so it does not bury the page on a phone
+const initContributorWall = () => {
+  const mosaic = document.querySelector('#contributors');
+  const button = document.querySelector('#contributor-expand');
+  if (!mosaic || !button) return;
+
+  button.addEventListener('click', () => {
+    const folded = mosaic.classList.toggle('is-clipped');
+    button.textContent = folded ? 'Show everyone' : 'Show fewer';
+    button.setAttribute('aria-expanded', String(!folded));
+  });
+};
+
 // Table of contents for long pages. These headings come from templates rather than markdown, so
 // Hugo's .TableOfContents cannot see them and the list is built from the rendered page instead.
 const initTableOfContents = () => {
@@ -605,6 +705,8 @@ function initSearch() {
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
   initEcosystemRegistry()
+  initPeopleDirectory()
+  initContributorWall()
 
   const tutorialFilter = document.querySelector('#tutorial-filter')
   if (tutorialFilter) {
