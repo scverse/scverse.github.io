@@ -12,8 +12,15 @@ Foundational packages maintained by the scverse core team.
 {{- $registryBase := "https://scverse.org/ecosystem-packages/" }}
 {{- $pkgs := transform.Unmarshal (resources.GetRemote (printf "%spackages.json" $registryBase)).Content }}
 {{- $core := slice }}
-{{- range where $pkgs "category" "in" (slice "core-datastructure" "core-framework") }}
-  {{- $core = $core | append (merge . (dict "sortkey" (lower .name))) }}
+{{- $org := slice }}
+{{- range $pkgs }}
+  {{- $entry := merge . (dict "sortkey" (lower .name)) }}
+  {{- if in (slice "core-datastructure" "core-framework") .category }}
+    {{- $core = $core | append $entry }}
+  {{- else if and (in (.project_home | default "") "github.com/scverse/") (ne .category "core-infrastructure") }}
+    {{- /* core-infrastructure is the scverse repos themselves, not packages. */}}
+    {{- $org = $org | append $entry }}
+  {{- end }}
 {{- end }}
 {{ range sort $core "sortkey" }}
 {{- /* Registry descriptions carry markdown and hard line breaks; llms.txt wants one line each. */}}
@@ -23,19 +30,12 @@ Foundational packages maintained by the scverse core team.
 
 ## More packages
 
-Other major packages developed within the scverse GitHub organization.
-
-- [gget](https://scverse.org/gget/): Efficient querying of genomic reference databases.
-- [PyDESeq2](https://pydeseq2.readthedocs.io/en/stable/): Python implementation of the DESeq2 pipeline for bulk RNA-seq differential expression analysis.
-- [CellRank](https://cellrank.readthedocs.io/en/latest/): Cell fate and dynamics from multi-view single-cell data.
-- [anndataR](https://anndataR.scverse.org): AnnData interoperability in R.
-- [spatialdata-io](https://spatialdata.scverse.org/projects/io/en/latest/): Readers and converters for spatial omics formats into SpatialData.
-- [napari-spatialdata](https://spatialdata.scverse.org/projects/napari/en/latest/): Interactive napari viewer for SpatialData.
-- [spatialdata-plot](https://spatialdata.scverse.org/projects/plot/en/latest/): Static plotting for the SpatialData framework.
-- [annbatch](https://annbatch.readthedocs.io): Minibatch loading for on-disk AnnData files, co-developed with Lamin Labs.
-- [pytometry](https://pytometry.readthedocs.io/en/latest/): Flow and mass cytometry analytics.
-- [rustar-aligner](https://scverse.org/rustar-aligner/): Rust implementation of the STAR RNA-seq aligner.
-- [anndata-rs](https://scverse.org/anndata-rs/): Rust implementation of AnnData.
+Other packages maintained in the scverse GitHub organization. The full index, including
+community packages built on scverse standards, is at {{ absURL "packages/" }}.
+{{ range sort $org "sortkey" }}
+{{- $desc := trim (.description | markdownify | plainify | htmlUnescape | replaceRE `\s+` " ") " " }}
+- [{{ .name }}]({{ .documentation_home | default .project_home }}): {{ $desc }}
+{{- end }}
 
 ## Learn
 - [Tutorials]({{ absURL "learn/" }}): Getting-started tutorials for the core packages.
