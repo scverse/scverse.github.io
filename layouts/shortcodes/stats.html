@@ -1,0 +1,32 @@
+{{/* Counts read from the package registry and the contributor list, so the section's claim to be
+  a worldwide consortium is backed by numbers that cannot go stale.
+*/}}
+{{ $pkgs := slice }}
+{{ with resources.GetRemote "https://scverse.org/ecosystem-packages/packages.json" }}
+  {{ $pkgs = transform.Unmarshal .Content }}
+{{ end }}
+{{ $contributors := slice }}
+{{ with resources.GetRemote "https://scverse.org/stats/contributors.json" }}
+  {{ $contributors = (. | transform.Unmarshal).contributors | default slice }}
+{{ end }}
+
+{{ $core := len (where $pkgs "category" "in" (slice "core-datastructure" "core-framework")) }}
+{{ $eco := len (where $pkgs "category" "ecosystem") }}
+
+
+<div class="stat-row">
+  <a class="stat" href="/packages/" data-hue="0">
+    <span class="stat-value">{{ $core }}</span>
+    <span class="stat-label">core packages</span>
+  </a>
+  <a class="stat" href="/packages/#ecosystem" data-hue="3">
+    <span class="stat-value">{{ $eco }}</span>
+    <span class="stat-label">ecosystem packages</span>
+  </a>
+  {{ with $contributors }}
+    <a class="stat" href="/people/" data-hue="2">
+      <span class="stat-value">{{ len . }}</span>
+      <span class="stat-label">contributors</span>
+    </a>
+  {{ end }}
+</div>

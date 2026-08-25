@@ -4,36 +4,49 @@ description = "How to reach the scverse community on GitHub, Zulip, Discourse an
 
 [[resources]]
 	id = "github"
+	icon = "bi-github"
 	title = "GitHub"
 	text = "Follow our organisation on GitHub"
 	link = "https://github.com/scverse"
 
 [[resources]]
 	id = "zulip"
+	icon = "i-zulip"
 	title = "Zulip"
 	text = "Chat with us on Zulip"
 	link = "https://scverse.zulipchat.com/"
 
 [[resources]]
 	id = "twitter"
+	icon = "i-xcom"
 	title = ""
 	text = "Follow us on X (fka Twitter)"
 	link = "https://x.com/scverse_team"
 
 [[resources]]
 	id = "bluesky"
+	icon = "i-bluesky"
 	title = "Bluesky"
 	text = "Follow us on Bluesky"
 	link = "https://bsky.app/profile/scverse.bsky.social"
 
 [[resources]]
+	id = "linkedin"
+	icon = "bi-linkedin"
+	title = "LinkedIn"
+	text = "Follow us on LinkedIn"
+	link = "https://www.linkedin.com/company/scverse"
+
+[[resources]]
 	id = "discourse"
+	icon = "i-discourse"
 	title = "Discourse"
 	text = "Ask questions on Discourse"
 	link = "https://discourse.scverse.org/"
 
 [[resources]]
 	id = "youtube"
+	icon = "bi-youtube"
 	title = "YouTube"
 	text = "Subscribe to our YouTube channel"
 	link = "https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA"

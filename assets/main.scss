@@ -1447,6 +1447,13 @@ body {
         width: $contentwidthwide;
     }
 
+    // The extra width is for card grids. Prose keeps the normal column, or the measure sits in
+    // the middle of it with all the slack pushed to one side.
+    #page-content:has(.with-toc--prose) {
+        max-width: $maxwidth;
+        width: $contentwidth;
+    }
+
     .with-toc {
         display: grid;
         grid-template-columns: 13rem minmax(0, 1fr);
@@ -3417,6 +3424,184 @@ body {
             padding: 0;
             background-color: rgba($scviyellow, 0.35);
             color: inherit;
+        }
+    }
+}
+
+// Specific to /about — long-form prose pages
+
+#about-content {
+    // Without this the body falls back to the browser default and the section reads as four
+    // descending sizes: lead, body, callout, rows
+    font-size: 1.05rem;
+    line-height: 1.75;
+    text-wrap: pretty;
+
+    // The column is sized for card grids; prose needs a readable measure inside it
+    > p,
+    > ul,
+    > ol,
+    > blockquote {
+        max-width: 54rem;
+    }
+
+    > p {
+        margin-bottom: 1.15rem;
+    }
+
+    // One size for all prose. Hierarchy is the headings' job; varying paragraph sizes within a
+    // section reads as inconsistency rather than emphasis.
+
+    // Optional elaboration, folded away so it does not interrupt the argument
+    .aside {
+        max-width: 54rem;
+        margin: 1.5rem 0;
+        background-color: $tilebg4;
+        border-radius: $card-radius;
+
+        summary {
+            padding: 0.8rem 1.1rem;
+            font-weight: 700;
+            color: $tiletext;
+            cursor: pointer;
+            list-style: none;
+
+            &::-webkit-details-marker {
+                display: none;
+            }
+            &::before {
+                content: "›";
+                display: inline-block;
+                width: 1rem;
+                font-weight: 400;
+                color: $greydesc;
+                transition: transform 200ms ease-in-out;
+            }
+            &:hover {
+                color: black;
+            }
+        }
+        &[open] summary::before {
+            transform: rotate(90deg);
+        }
+    }
+
+    .aside-body {
+        padding: 0 1.1rem 1rem 2.1rem;
+
+        p {
+            margin: 0;
+            color: $tiletext2;
+        }
+    }
+
+    @media (max-width: 50rem) {
+        font-size: 1rem;
+    }
+
+    // Five principles with uneven text: any multi-column grid strands one card and leaves the
+    // short ones half empty, so these are rows, which align by construction.
+    .stat-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+        gap: 1rem;
+        max-width: 54rem;
+        margin: 1.75rem 0 2rem;
+    }
+
+    a.stat {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+        padding: 1.1rem 1.25rem;
+        text-decoration: none;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: $card-radius;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            border-color: $tilebg2;
+            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+    }
+
+    .stat-value {
+        font-size: 2rem;
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        font-variant-numeric: tabular-nums;
+        color: $tiletext;
+    }
+
+    // Written as a descendant rather than nested under .stat-value: `&` there would carry the
+    // whole ancestor chain and put .stat in front of #about-content
+    @each $hue in $eco-hues {
+        .stat[data-hue="#{index($eco-hues, $hue) - 1}"] .stat-value {
+            color: darken($hue, 15%);
+        }
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+        color: $greydesc;
+    }
+
+    .principle-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        max-width: 54rem;
+        margin: 1.75rem 0 2.5rem;
+        padding: 0;
+        list-style: none;
+    }
+
+    .principle {
+        display: grid;
+        grid-template-columns: 3rem 1fr;
+        column-gap: 1.2rem;
+        align-items: start;
+        padding: 1.1rem 1.2rem;
+        border-radius: $card-radius;
+        transition: background-color 200ms ease-in-out;
+
+        &:hover {
+            background-color: $tilebg4;
+        }
+
+        // Element selector included to beat the generic `#page-content .post h3` margins
+        h3 {
+            margin: 0 0 0.3rem;
+            font-size: 1.05rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+
+        p {
+            margin: 0;
+            max-width: none;
+            line-height: 1.6;
+            color: $tiletext2;
+        }
+    }
+
+    .principle-icon {
+        grid-row: span 2;
+        display: grid;
+        place-items: center;
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.25rem;
+        color: $tiletext;
+        border-radius: 50%;
+
+        @each $hue in $eco-hues {
+            &[data-hue="#{index($eco-hues, $hue) - 1}"] {
+                background-color: rgba($hue, 0.22);
+            }
         }
     }
 }
