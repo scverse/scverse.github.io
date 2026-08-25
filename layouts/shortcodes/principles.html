@@ -1,0 +1,16 @@
+{{/* Renders any front-matter list of {name, icon, text} as icon rows.
+  Article rather than div so the titles stay out of the page's table of contents.
+*/}}
+<ul class="principle-list">
+  {{ range $i, $item := index .Page.Params (.Get 0) }}
+    <li>
+      <article class="principle">
+        <span class="principle-icon" data-hue="{{ mod $i 8 }}" aria-hidden="true">
+          <i class="bi {{ $item.icon }}"></i>
+        </span>
+        <h3>{{ $item.name }}</h3>
+        <p>{{ $item.text | markdownify }}</p>
+      </article>
+    </li>
+  {{ end }}
+</ul>

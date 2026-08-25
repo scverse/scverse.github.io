@@ -3432,9 +3432,32 @@ body {
         max-width: 46rem;
     }
 
+    // Every section opens with a lead sentence; give it the weight to act as one
+    h2 + p {
+        font-size: 1.15rem;
+        line-height: 1.65;
+        color: $tiletext;
+    }
+
+    // Definitions and other asides pulled out of the surrounding prose
+    blockquote {
+        margin: 1.5rem 0;
+        padding: 1rem 1.25rem;
+        background-color: $tilebg4;
+        border-left: 3px solid $tilebg2;
+        border-radius: 0 $card-radius $card-radius 0;
+
+        p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: $tiletext2;
+        }
+    }
+
     // Five principles with uneven text: any multi-column grid strands one card and leaves the
     // short ones half empty, so these are rows, which align by construction.
-    .goal-list {
+    .principle-list {
         display: flex;
         flex-direction: column;
         gap: 0.35rem;
@@ -3444,7 +3467,7 @@ body {
         list-style: none;
     }
 
-    .goal {
+    .principle {
         display: grid;
         grid-template-columns: 3rem 1fr;
         column-gap: 1.2rem;
@@ -3474,7 +3497,7 @@ body {
         }
     }
 
-    .goal-icon {
+    .principle-icon {
         grid-row: span 2;
         display: grid;
         place-items: center;
