@@ -33,26 +33,35 @@
 {{- end -}}
 
 {{- with site.GetPage "/people" -}}
-    {{- range .Params.teams -}}
-        {{- $team := .name -}}
-        {{- range .members -}}
-            {{- $detail := $team -}}
-            {{- with .role -}}{{- $detail = printf "%s · %s" $team . -}}{{- end -}}
-            {{- with .affiliation -}}
-                {{- $detail = printf "%s · %s" $detail . -}}
-            {{- end -}}
-            {{- $entities = $entities | append (dict
-                "kind" $team
-                "name" .name
-                "detail" $detail
-                "url" .url
-                "site" "/people/")
-            -}}
+    {{- $labels := dict -}}
+    {{- range .Params.roles -}}
+        {{- $labels = merge $labels (dict .id .label) -}}
+    {{- end -}}
+    {{- range .Params.people -}}
+        {{- /* A person holds several roles; the first is the most senior, so lead with it. */ -}}
+        {{- $names := slice -}}
+        {{- range .roles -}}
+            {{- $names = $names | append (index $labels .) -}}
         {{- end -}}
+        {{- $kind := index $names 0 -}}
+        {{- $detail := delimit $names " · " -}}
+        {{- with .works_on -}}
+            {{- $detail = printf "%s · %s" $detail (delimit . ", ") -}}
+        {{- end -}}
+        {{- with .affiliation -}}
+            {{- $detail = printf "%s · %s" $detail . -}}
+        {{- end -}}
+        {{- $entities = $entities | append (dict
+            "kind" $kind
+            "name" .name
+            "detail" $detail
+            "url" .url
+            "site" "/people/")
+        -}}
     {{- end -}}
 {{- end -}}
 
-{{- /* The registry repeats the core packages and people sit on several teams. */ -}}
+{{- /* The registry repeats the core packages already listed above. */ -}}
 {{- $seen := slice -}}
 {{- $unique := slice -}}
 {{- range $entities -}}
