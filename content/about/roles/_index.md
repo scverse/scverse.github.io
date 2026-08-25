@@ -1,10 +1,15 @@
 +++
 title = "Roles and Decisions"
+description = "How scverse is governed: the roles within the project and the process by which decisions are made."
 +++
 
 ## Roles and Responsibilities
 
 The purpose of this document is to formalize the governance process used by the `scverse®` project, to clarify how decisions are made and how the various groups within our community interact.
+
+For the community members who currently hold these roles, see the [people page](/people/).
+
+{{< governance-chart >}}
 
 As a whole, we are a consensus-based community project.
 However, any subproject within the scverse can have its own governance system as long as they do not conflict with the rules set out here.
@@ -28,7 +33,7 @@ Any community member can become a contributor, and all are encouraged to do so.
 By contributing to the project, community members can directly help to shape its future.
 
 All community members are required to adhere to our [code of conduct](/about/code_of_conduct/).
-Potential contributors are encouraged to read the [Contributing Guide](https://scanpy.readthedocs.io/en/stable/dev/index.html).
+Potential contributors are encouraged to read the [Contributing Guide](https://scanpy.scverse.org/en/stable/dev/index.html).
 
 A community member becomes a contributor when the following criteria are met:
 
@@ -44,16 +49,19 @@ This includes who gets commit rights to their projects.
 
 The core team are community members who have demonstrated continued commitment to the project through ongoing contributions.
 They have shown they can be trusted to maintain scverse with care.
-Team members appear as organization members on the scverse [GitHub organization](https://github.com/orgs/scverse/people) and are on our [@scverse/core](https://github.com/orgs/scverse/teams/core) GitHub team, but can also be reached by e-mail at [core@scverse.org](core@scverse.org).
+Team members appear as organization members on the scverse [GitHub organization](https://github.com/orgs/scverse/people) and are on our `scverse/core` GitHub team.
+The team can be reached by e-mail at [core@scverse.org](mailto:core@scverse.org).
 
-There are sub-roles within the core team depending on the kinds covering different kinds of contributions and responsibilities.
+{{< role-members "core" >}}
+
+There are sub-roles within the core team covering different kinds of contributions and responsibilities.
 
 #### Core Developers
 
-Core developers are members of the core team who have made significant code contributions to `scverse`.
-They are granted additional rights so they can more easily carry on with their `scverse` related activities.
+Core developers are members of the core team who have made significant code contributions to scverse.
+They are granted additional rights so they can more easily carry on with their scverse related activities.
 These rights include: merging approved pull requests, voting for and against contested pull-requests, and being involved in deciding major changes to the API.
-Core developers are on our [@scverse/core-devs](https://github.com/orgs/scverse/teams/core-devs) GitHub team. 
+Core developers are on our `scverse/core-devs` GitHub team.
 
 All core packages must have at least one core developer as a maintainer.
 New core developers can be nominated by any existing core developer. 
@@ -71,12 +79,10 @@ Primary maintainers of new core packages, who are not already core developers, w
 ### Steering Council
 
 The Steering Council (SC) members are core team members who have additional responsibilities to ensure the smooth running of the project.
-SC members are expected to participate in strategic planning, approve changes to the governance model, and make decisions about funding granted to `scverse` itself (funding to community members is theirs to pursue and manage). Changes that impact the full project require analysis informed by extensive experience with both the project and the larger ecosystem.
+SC members are expected to participate in strategic planning, approve changes to the governance model, and make decisions about funding granted to scverse itself (funding to community members is theirs to pursue and manage). Changes that impact the full project require analysis informed by extensive experience with both the project and the larger ecosystem.
 When the core team (including the SC members) fails to reach a consensus in a reasonable timeframe, the SC is the entity that resolves the issue.
 
-Members of the steering council also have the "owner" role within the [scverse GitHub organization](https://github.com/scverse/)
-and are ultimately responsible for managing the [scverse](https://github.com/scverse) GitHub account, the [@scverse](https://twitter.com/scverse_team)
-twitter account, the [scverse website](https://scverse.org), and other similar scverse-owned resources.
+Members of the steering council also have the "owner" role within the [scverse GitHub organization](https://github.com/scverse/) and are ultimately responsible for managing the [scverse](https://github.com/scverse) GitHub account, the [@scverse_team](https://x.com/scverse_team) account on X, the [scverse website](https://scverse.org), and other similar scverse-owned resources.
 
 The steering council is currently fixed in size to three members.
 This number will be increased as our community grows and diversifies, but will always be an odd number to ensure a simple majority vote outcome is always possible. 
@@ -88,7 +94,9 @@ Nominees should have demonstrated long-term, continued commitment to the project
 A nomination will result in discussion that cannot take more than a month and then admission to the SC by consensus.
 During that time deadlocked votes of the SC will be postponed until the new member has joined and another vote can be held.
 
-The `scverse` steering council may be contacted at [steering-council@scverse.org](mailto:steering-council@scverse.org).
+The scverse steering council may be contacted at [steering-council@scverse.org](mailto:steering-council@scverse.org).
+
+{{< role-members "council" >}}
 
 ### Management Committee
 
@@ -96,11 +104,15 @@ The management committee consists of PIs that support the development of scverse
 
 PIs supervising the development of new core packages, who are not already part of the management committee, will be invited to join.
 
+{{< role-members "management" >}}
+
 ### Scientific Advisory Board
 
 The scientific advisory board consists of highly experienced scientists devoted to research in single cell omics analysis. In an annual meeting, the scientific advisory board assesses the progress of scverse and suggests priorities for the next year based on the latest developments in the field. 
 
-Members of the scientific advisory board are nominated by the core team. 
+Members of the scientific advisory board are nominated by the core team.
+
+{{< role-members "advisory" >}}
 
 ## Decision Making Process
 
@@ -110,7 +122,7 @@ Occasionally, sensitive discussion may occur via a private message.
 
 Decisions should be made in accordance with the mission and values of the scverse project.
 
-scverse uses a “consensus seeking” process for making decisions.
+Scverse uses a “consensus seeking” process for making decisions.
 The group tries to find a resolution that has no open objections among relevant core team members.
 Core members are expected to distinguish between fundamental objections to a proposal and minor perceived flaws that they can live with, and not hold up the decision-making process for the latter.
 If no option can be found without objections, the decision is escalated to the SC, which will itself use consensus seeking to come to a resolution.

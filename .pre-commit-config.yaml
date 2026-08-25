@@ -1,8 +1,19 @@
 repos:
   - repo: https://github.com/rbubley/mirrors-prettier
-    rev: v3.9.4
+    rev: v3.9.6
     hooks:
       - id: prettier
         additional_dependencies:
           - prettier
           - prettier-plugin-go-template
+  - repo: https://github.com/ericmjl/webp-pre-commit
+    rev: v0.0.12
+    hooks:
+      # img/logo is excluded on purpose: the media kit advertises PNG downloads.
+      - id: convert-to-webp
+        files: ^static/img/(blog|learn|events)/.*\.(png|jpe?g|gif|bmp|tiff)$
+  - repo: https://github.com/oxipng/oxipng
+    rev: v10.2.0
+    hooks:
+      - id: oxipng
+        args: [--strip, safe]

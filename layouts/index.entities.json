@@ -1,0 +1,74 @@
+{{- $entities := slice -}}
+
+{{- with site.GetPage "/packages" -}}
+    {{- range (append (.Params.packages | default slice) (.Params.datastructures | default slice)) -}}
+        {{- $docs := .url -}}
+        {{- range .links -}}
+            {{- if hasPrefix (lower .text) "documentation" -}}
+                {{- $docs = .url -}}
+            {{- end -}}
+        {{- end -}}
+        {{- $entities = $entities | append (dict
+            "kind" "Core package"
+            "name" .name
+            "detail" .description
+            "url" $docs
+            "site" "/packages/#core-packages")
+        -}}
+    {{- end -}}
+{{- end -}}
+
+{{- $registry := resources.GetRemote "https://scverse.org/ecosystem-packages/packages.json" -}}
+{{- with $registry -}}
+    {{- range (transform.Unmarshal .Content) -}}
+        {{- $desc := trim (.description | markdownify | plainify | htmlUnescape | replaceRE `\s+` " ") " " -}}
+        {{- $entities = $entities | append (dict
+            "kind" "Ecosystem package"
+            "name" .name
+            "detail" $desc
+            "url" (or .documentation_home .project_home)
+            "site" "/packages/#ecosystem")
+        -}}
+    {{- end -}}
+{{- end -}}
+
+{{- with site.GetPage "/people" -}}
+    {{- $labels := dict -}}
+    {{- range .Params.roles -}}
+        {{- $labels = merge $labels (dict .id .label) -}}
+    {{- end -}}
+    {{- range .Params.people -}}
+        {{- /* A person holds several roles; the first is the most senior, so lead with it. */ -}}
+        {{- $names := slice -}}
+        {{- range .roles -}}
+            {{- $names = $names | append (index $labels .) -}}
+        {{- end -}}
+        {{- $kind := index $names 0 -}}
+        {{- $detail := delimit $names " · " -}}
+        {{- with .works_on -}}
+            {{- $detail = printf "%s · %s" $detail (delimit . ", ") -}}
+        {{- end -}}
+        {{- with .affiliation -}}
+            {{- $detail = printf "%s · %s" $detail . -}}
+        {{- end -}}
+        {{- $entities = $entities | append (dict
+            "kind" $kind
+            "name" .name
+            "detail" $detail
+            "url" .url
+            "site" "/people/")
+        -}}
+    {{- end -}}
+{{- end -}}
+
+{{- /* The registry repeats the core packages already listed above. */ -}}
+{{- $seen := slice -}}
+{{- $unique := slice -}}
+{{- range $entities -}}
+    {{- $key := lower .name -}}
+    {{- if not (in $seen $key) -}}
+        {{- $seen = $seen | append $key -}}
+        {{- $unique = $unique | append . -}}
+    {{- end -}}
+{{- end -}}
+{{- $unique | jsonify -}}

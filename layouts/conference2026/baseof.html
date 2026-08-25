@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{ partial "head" . }}
+  </head>
+  <body>
+    <header>
+      {{ partial "header" . }}
+    </header>
+    <div id="wrapper">
+      <div id="content">
+        <div class="conference-page">
+          {{ block "hero" . }}{{ end }}
+          {{ partial "conference-nav" . }}
+          <div class="conference-content">
+            {{ block "main" . }}{{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ partial "footer" . }}
+  </body>
+</html>

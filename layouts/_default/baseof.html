@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{ partial "head" . }}
+    {{ block "head" . }}{{ end }}
+  </head>
+  <body>
+    <header>
+      {{ partial "header" . }}
+    </header>
+    <div id="wrapper">
+      <div id="content">
+        <div id="page-content">
+          {{ block "main" . }}{{ end }}
+        </div>
+      </div>
+    </div>
+    {{ partial "footer" . }}
+    {{ block "scripts" . }}{{ end }}
+  </body>
+</html>

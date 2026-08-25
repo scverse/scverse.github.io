@@ -9,8 +9,16 @@ This site (scverse.org) hosts the package index, tutorials, project governance, 
 ## Core packages
 
 Foundational packages maintained by the scverse core team.
-{{ range .Params.packages }}
-- [{{ .name }}]({{ .url }}): {{ .description }}
+{{- $registryBase := "https://scverse.org/ecosystem-packages/" }}
+{{- $pkgs := transform.Unmarshal (resources.GetRemote (printf "%spackages.json" $registryBase)).Content }}
+{{- $core := slice }}
+{{- range where $pkgs "category" "in" (slice "core-datastructure" "core-framework") }}
+  {{- $core = $core | append (merge . (dict "sortkey" (lower .name))) }}
+{{- end }}
+{{ range sort $core "sortkey" }}
+{{- /* Registry descriptions carry markdown and hard line breaks; llms.txt wants one line each. */}}
+{{- $desc := trim (.description | markdownify | plainify | htmlUnescape | replaceRE `\s+` " ") " " }}
+- [{{ .name }}]({{ .documentation_home | default .project_home }}): {{ $desc }}
 {{- end }}
 
 ## More packages

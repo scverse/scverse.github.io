@@ -30,7 +30,6 @@ $bluesky-blue: #0a7aff;
 $overline: #e0e0e0;
 $linkunderline: #aaaaaa;
 $backtickbg: #f9f9f9;
-$backticktext: #333333;
 
 $navtext: #555555;
 $navtexthover: #000000;
@@ -52,11 +51,24 @@ $maxwidthwide: 1400px;
 $contentwidth: 80%;
 $contentwidthwide: 92%;
 
-$additionalInfoColor: #666666;
+$card-radius: 0.75rem;
+$eco-hues:
+    $anndataorange, $scanpycerise, $mudatagreen, $spatialdatablue, $squidpyviolet,
+    $scirpypurple, $scviyellow, $muonaquamarine;
 
+// scverse conference 2026 (scoped under .conference-page)
+@import "conference2026";
+
+// Font stack: these two have well matching cap- and x-heights
 @font-face {
     font-family: "Inter";
-    src: url("fonts/Inter/Inter-VariableFont_slnt,wght.ttf");
+    src: url("fonts/Inter/Inter-VariableFont_slnt,wght.woff2") format("woff2");
+    font-display: swap;
+}
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("fonts/JetBrainsMono/JetBrainsMono[wght].woff2") format("woff2");
+    font-display: swap;
 }
 
 // Global
@@ -88,45 +100,38 @@ $additionalInfoColor: #666666;
     }
 }
 
-@mixin button-icon {
-    display: inline-block;
-    height: 1rem;
-    width: 1rem;
-    content: "";
-    padding: 0;
-    margin: 0;
+@each $icon in zulip, discourse, bluesky {
+    .i-#{$icon}::before {
+        display: inline-block;
+        height: 1rem;
+        width: 1rem;
+        content: "";
+        padding: 0;
+        margin: 0;
+        background: url("/img/icons/#{$icon}.svg") no-repeat center / contain;
+        transition:
+            background 200ms ease-out,
+            filter 200ms ease-out;
+        opacity: 0.6666; // text color is #555
+        .card:hover & {
+            opacity: 1;
+        }
+    }
 }
 
-.i-zulip::before {
-    background: url("/img/icons/zulip.svg") no-repeat top left;
-    transition: background 200ms ease-out;
-    @include button-icon;
-}
-.i-discourse::before {
-    background: url("/img/icons/discourse.svg") no-repeat top left;
-    transition: background 200ms ease-out;
-    @include button-icon;
-}
 .i-xcom::before {
     content: "𝕏";
     font-weight: 900;
-    transition: background 200ms ease-out;
-}
-.i-bluesky::before {
-    background: center / contain no-repeat url("/img/icons/bluesky.svg");
-    transition: all 200ms ease-out;
-    @include button-icon;
+    transition:
+        background 200ms ease-out,
+        filter 200ms ease-out;
 }
 
 .card:hover {
-    .i-zulip::before {
-        background: url("/img/icons/zulip_inv.svg") no-repeat top left;
-    }
-    .i-discourse::before {
-        background: url("/img/icons/discourse_inv.svg") no-repeat top left;
-    }
+    // Not discord, since it’s light-colored
+    .i-zulip::before,
     .i-bluesky::before {
-        filter: invert(1);
+        filter: invert(100%);
     }
 }
 
@@ -136,37 +141,47 @@ $additionalInfoColor: #666666;
     border: none;
 }
 
-#badges .btn-github:hover {
+#join-content .card {
+    h5 {
+        font-weight: 700;
+    }
+    transition: all 200ms ease-in-out;
+    color: $navtext;
+    &:hover {
+        background: #78cbd9 !important;
+        transform: scale(1.02);
+    }
+}
+
+#badges .btn-github:hover,
+#join-content .card#github:hover {
     background-color: $github-black !important;
     color: white !important;
 }
-#badges .btn-discourse:hover {
+#badges .btn-discourse:hover,
+#join-content .card#discourse:hover {
     background-color: $discourse-yellow !important;
     color: black !important;
 }
-#badges .btn-zulip:hover {
+#badges .btn-zulip:hover,
+#join-content .card#zulip:hover {
     background-color: $zulip-blue !important;
     color: white !important;
 }
-#badges .btn-twitter:hover {
+#badges .btn-twitter:hover,
+#join-content .card#twitter:hover {
     background-color: $twitter-blue !important;
     color: white !important;
 }
-#badges .btn-bluesky:hover {
+#badges .btn-bluesky:hover,
+#join-content .card#bluesky:hover {
     background-color: $bluesky-blue !important;
     color: white !important;
 }
-#badges .btn-youtube:hover {
+#badges .btn-youtube:hover,
+#join-content .card#youtube:hover {
     background-color: $youtube-red !important;
     color: white !important;
-}
-
-// TODO: Should this be necessary?
-p {
-    font-family:
-        "Inter",
-        Open Sans,
-        sans-serif;
 }
 
 h1 {
@@ -188,7 +203,6 @@ a .more {
     margin: 0;
     font-size: 0.8rem;
     font-weight: 800;
-    font-family: "Inter", sans-serif;
     color: $tiletext2;
     transition: all 200ms ease-in-out;
     padding: 0.5rem;
@@ -211,43 +225,8 @@ a .more {
         }
     }
 
-    @media (max-width: 50rem), (max-device-width: 40rem) {
+    @media (max-width: 50rem) {
         background-color: $tilebg4;
-    }
-}
-
-// People
-
-// Had underlines poking out around images
-.contributor-list > a {
-    text-decoration: none;
-}
-
-@mixin person-chip {
-    background-color: $tilebg;
-    text-decoration: none;
-    color: $tiletext;
-    padding: 0.4rem;
-    text-align: center;
-    border-radius: 0.5rem;
-    transition: all 200ms ease-in-out;
-    &:hover {
-        color: $tiletext3;
-        background-color: $tilebg2;
-    }
-}
-
-@mixin core-chip {
-    background-color: $tilebg;
-    text-decoration: none;
-    color: $tiletext;
-    padding: 0.4rem;
-    text-align: center;
-    border-radius: 0.5rem;
-    transition: all 200ms ease-in-out;
-    &:hover {
-        color: $tiletext3;
-        background-color: $tilebg2;
     }
 }
 
@@ -255,6 +234,7 @@ html,
 body {
     width: 100%;
     height: 100%;
+    font-family: "Inter", sans-serif;
 
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
@@ -269,7 +249,6 @@ body {
 }
 
 .nav-buttons > li > a {
-    font-family: "Inter", sans-serif;
     color: $navtext;
 
     padding: 0.5rem 0.8rem !important;
@@ -330,9 +309,7 @@ body {
 #scverse-logo {
     width: 3rem;
     height: 3rem;
-    width: 3rem;
-    height: 3rem;
-    background: url("/img/icons/scverse_bw_logo.svg") no-repeat top left;
+    background: url("/img/icons/scverse-bw-logo.svg") no-repeat top left;
     &:hover {
         transform: scale(1.1);
     }
@@ -343,7 +320,6 @@ body {
     color: black;
     font-size: 1.5rem;
     line-height: 1.5rem;
-    font-family: "Inter", sans-serif;
     font-weight: 900;
     letter-spacing: 0.15rem;
     margin-left: 1rem;
@@ -378,35 +354,22 @@ body {
                 max-width: $maxwidthcover;
                 width: 100%;
                 padding: 0 1rem;
-                @media (max-width: 50rem), (max-device-width: 40rem) {
-                    max-width: $maxwidthcover;
-                    width: 100%;
-                    padding: 0 1rem;
-                }
                 #cover-top-section {
                     margin-top: 3rem;
                     padding: 2rem 0;
-                    @media (max-width: 50rem), (max-device-width: 40rem) {
-                        margin-top: 3rem;
-                        padding: 2rem 0;
-                    }
                 }
                 #cover-heading {
                     margin: 0;
                     padding: 0;
-                    @media (max-width: 50rem), (max-device-width: 40rem) {
-                        margin: 0;
-                        padding: 0;
-                    }
                     max-width: $maxwidthcover;
                     #title {
                         #title-text {
                             #title-name {
+                                margin: 0;
                                 font-size: 6rem;
-                                font-family: "Inter", sans-serif;
                                 font-weight: 900;
                                 letter-spacing: 0.2rem;
-                                @media (max-width: 50rem), (max-device-width: 40rem) {
+                                @media (max-width: 50rem) {
                                     letter-spacing: 0.15rem;
                                     font-size: 3.5rem;
                                     font-weight: 900;
@@ -414,10 +377,9 @@ body {
                             }
                             #title-desc {
                                 display: block;
-                                font-family: "Inter", sans-serif;
                                 font-size: 1.4rem;
                                 color: $greyheader;
-                                @media (max-width: 50rem), (max-device-width: 40rem) {
+                                @media (max-width: 50rem) {
                                     font-size: 0.8rem;
                                 }
                             }
@@ -428,7 +390,7 @@ body {
                         flex-wrap: wrap;
                         gap: 1rem;
                         margin: 2rem 0;
-                        @media (max-width: 50rem), (max-device-width: 40rem) {
+                        @media (max-width: 50rem) {
                             margin: 1rem 0;
                             padding: 0;
                             width: 100%;
@@ -440,7 +402,7 @@ body {
                     margin: 0 auto 2rem;
                     max-width: $maxwidthcover;
                     width: 100%;
-                    @media (max-width: 50rem), (max-device-width: 40rem) {
+                    @media (max-width: 50rem) {
                         width: 100%;
                         margin: 0 auto 1.25rem;
                     }
@@ -454,7 +416,7 @@ body {
                         width: auto;
                         display: inline-flex;
                         align-items: center;
-                        background-color: none;
+                        background-color: transparent;
                         border-radius: 2.2rem;
                         padding: 0.1rem 1rem 0.1rem 0;
                         font-size: 0.8rem;
@@ -463,7 +425,7 @@ body {
                         transition: all 0.3s ease;
                         outline: 1px solid black;
 
-                        @media (max-width: 50rem), (max-device-width: 40rem) {
+                        @media (max-width: 50rem) {
                             border-radius: 1.5rem;
                             padding: 0.05rem 0.6rem 0.05rem 0;
                             font-size: 0.7rem;
@@ -477,7 +439,7 @@ body {
                             margin: 0.1rem 1rem 0.1rem 0.2rem;
                             align-self: start;
 
-                            @media (max-width: 50rem), (max-device-width: 40rem) {
+                            @media (max-width: 50rem) {
                                 padding: 0.35rem 0.7rem;
                                 border-radius: 1.5rem;
                                 margin: 0.05rem 0.7rem 0.05rem 0.1rem;
@@ -524,7 +486,7 @@ body {
                     width: $contentwidth;
                     margin: 0 auto;
                     margin-top: 5%;
-                    @media (max-width: 50rem), (max-device-width: 40rem) {
+                    @media (max-width: 50rem) {
                         margin-top: 15%;
                     }
                     .section-heading {
@@ -532,7 +494,6 @@ body {
                         text-transform: uppercase;
                         color: $greyheader;
                         font-weight: 700;
-                        font-family: "Inter", sans-serif;
                         transition: all 200ms ease-in-out;
                         &.clickable-heading:hover {
                             color: $greyheaderhover;
@@ -549,8 +510,12 @@ body {
                         }
                     }
                 }
+                // The wide gap under the hero used to live on #packages, which put it
+                // between whatever section came after the demo and the packages.
+                #interactive-demo-section {
+                    margin-bottom: 15%;
+                }
                 #packages {
-                    margin-top: 15%;
                     #packages-list {
                         .card {
                             display: flex;
@@ -559,7 +524,7 @@ body {
                             background-color: $tilebg;
                             border-radius: 0.5rem;
                             transition: all 200ms ease-in-out;
-                            @media (max-width: 50rem), (max-device-width: 40rem) {
+                            @media (max-width: 50rem) {
                                 min-height: 6rem;
                             }
                             .package-icon {
@@ -570,7 +535,10 @@ body {
                                 display: flex;
                                 min-width: 6rem;
                                 max-width: 6rem;
-                                @media (max-width: 50rem), (max-device-width: 40rem) {
+                                // Matches the img height below, so that a package
+                                // without an icon still lines up with the others.
+                                min-height: 4rem;
+                                @media (max-width: 50rem) {
                                     display: none;
                                 }
 
@@ -581,11 +549,9 @@ body {
                             }
                             .package-text {
                                 .package-name {
-                                    font-family: "Inter", sans-serif;
                                     color: $tiletext;
                                 }
                                 .package-desc {
-                                    font-family: "Inter", sans-serif;
                                     font-size: 0.9rem;
                                     color: $tiletext2;
                                 }
@@ -665,12 +631,6 @@ body {
             }
         }
 
-        span.backticked {
-            font-family: Inter, sans-serif;
-            color: $backticktext;
-            font-weight: 500;
-        }
-
         p > a {
             text-decoration: none;
             color: inherit;
@@ -685,7 +645,8 @@ body {
         }
     }
 
-    header {
+    // Direct child only: this is the site chrome, not any <header> a page happens to use
+    > header {
         height: auto;
         width: 100%;
 
@@ -706,7 +667,6 @@ body {
             color: $almostwhite;
             font-weight: 600;
             // text-transform: uppercase;
-            font-family: "Inter", sans-serif;
             padding: 1rem 0;
             box-shadow: inset 0 -0.5rem 1rem 0.05rem rgba(0, 0, 0, 0.1);
             margin-bottom: 1rem;
@@ -738,7 +698,7 @@ body {
 
         #footer-content {
             width: $contentwidth;
-            @media (max-width: 50rem), (max-device-width: 40rem) {
+            @media (max-width: 50rem) {
                 width: $contentwidthwide;
             }
             padding: 2%;
@@ -752,7 +712,6 @@ body {
                 a,
                 p {
                     margin: 0.2rem 0;
-                    font-family: "Inter", sans-serif;
                     font-weight: 500;
                     font-size: 0.9rem;
                 }
@@ -789,44 +748,6 @@ body {
     }
 }
 
-#join-content {
-    .card {
-        h5 {
-            font-family: "Inter", sans-serif;
-            font-weight: 700;
-        }
-        transition: all 200ms ease-in-out;
-        color: navtext;
-        &:hover {
-            background: #78cbd9 !important;
-            transform: scale(1.02);
-        }
-        &#github:hover {
-            color: white;
-            background-color: $github-black !important;
-        }
-        &#twitter:hover {
-            color: white;
-            background-color: $twitter-blue !important;
-        }
-        &#zulip:hover {
-            color: white;
-            background-color: $zulip-blue !important;
-        }
-        &#discourse:hover {
-            background-color: $discourse-yellow !important;
-        }
-        &#youtube:hover {
-            color: white;
-            background-color: $youtube-red !important;
-        }
-        &#bluesky:hover {
-            color: white;
-            background-color: $bluesky-blue !important;
-        }
-    }
-}
-
 #page-content {
     display: flex;
     flex-direction: column;
@@ -836,75 +757,17 @@ body {
     h2 {
         margin: 2rem 0 1rem 0;
     }
-    @media (max-width: 50rem), (max-device-width: 40rem) {
+    @media (max-width: 50rem) {
         max-width: $maxwidthwide;
         width: $contentwidthwide;
         gap: 1rem;
     }
-    font-family: "Inter", sans-serif;
     &.items-list {
         a {
             text-decoration: none;
             // &:first-of-type {
             //     margin-top: 1rem;
             // }
-        }
-    }
-    .page-item {
-        display: flex;
-        flex-direction: row;
-        font-family: "Inter", sans-serif;
-
-        @media (max-width: 50rem), (max-device-width: 40rem) {
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            h2 {
-                margin: 0.5rem 0 !important;
-            }
-            margin: 0 -0.5rem;
-            padding: 0.5rem;
-            padding-bottom: 1.3rem;
-        }
-
-        margin: 0 -1rem;
-        padding: 1rem;
-
-        background-color: #ff000000;
-        transition: all 200ms ease-in-out;
-        border-radius: 0.5rem;
-
-        &:hover {
-            cursor: pointer;
-            background-color: $tilebg3;
-        }
-
-        @media (max-width: 50rem), (max-device-width: 40rem) {
-            background-color: $tilebg4;
-        }
-
-        h2 {
-            color: $tiletext;
-            margin: 0 0 0.5rem 0;
-            line-height: 1.5rem;
-        }
-        span {
-            font-size: 1rem;
-            color: $greydesc;
-            line-height: 1.3rem;
-        }
-        .page-item-date {
-            flex: 1;
-            line-height: 1.3rem;
-        }
-        .page-item-content {
-            flex: 2;
-            display: flex;
-            flex-direction: column;
-            font-size: 1rem;
-            h2 {
-                font-size: 1.4rem;
-            }
         }
     }
     // TODO: Much of this does nothing AFAICT
@@ -944,10 +807,6 @@ body {
             > p > img {
                 margin-bottom: 1.5rem;
             }
-            span.backticked {
-                font-size: 1.2rem;
-                line-height: 1.1rem;
-            }
             p,
             div,
             ul,
@@ -957,11 +816,33 @@ body {
                     Open Sans,
                     sans-serif;
             }
+            code {
+                font-family: "JetBrains Mono", Menlo, monospace;
+                // Undo bootstrap’s shrinking so font heights match
+                font-size: 1em;
+            }
+            // Inline code: add a subtle background via box-shadow
+            :not(pre) > code {
+                background-color: $backtickbg;
+                border-radius: 0.2rem;
+                box-shadow:
+                    0.15em 0 0 $backtickbg,
+                    -0.15em 0 0 $backtickbg;
+            }
+            // Chroma code highlighting: add some padding
+            .highlight {
+                margin: 1rem 0; // matches bootstrap’s <p> margin
+                pre {
+                    margin: 0;
+                    padding: 1rem 1.25rem;
+                    border-radius: 0.5rem;
+                    overflow-x: auto;
+                }
+            }
             > table {
                 width: 100%;
                 border-collapse: collapse;
                 margin: 1.5rem 0;
-                font-family: "Inter", sans-serif;
                 font-size: 1rem;
                 th,
                 td {
@@ -977,7 +858,7 @@ body {
                     background-color: $tilebg4;
                 }
             }
-            @media (max-width: 50rem), (max-device-width: 40rem) {
+            @media (max-width: 50rem) {
                 font-size: 1rem;
                 line-height: 1.8rem;
             }
@@ -985,11 +866,9 @@ body {
         h2,
         h3,
         h4 {
-            font-family: "Inter", sans-serif;
             margin: 4rem 0 1rem 0;
         }
         a {
-            font-family: "Inter", sans-serif;
             color: $postlinktext;
             &:hover {
                 color: black;
@@ -1001,7 +880,7 @@ body {
 // Specific to /packages
 
 #packages-content {
-    #packages-list {
+    .packages-list {
         display: flex;
         flex-direction: column;
         gap: 5rem;
@@ -1023,10 +902,10 @@ body {
                     object-fit: contain;
                     margin: auto;
                     max-width: 100%;
-                    max-height: 225px;
+                    max-height: 140px;
                 }
                 transition: all 200ms ease-in-out;
-                @media (max-width: 50rem), (max-device-width: 40rem) {
+                @media (max-width: 50rem) {
                     display: none;
                 }
             }
@@ -1042,7 +921,6 @@ body {
                     // box-shadow: 0 .2rem .2rem .05rem rgba(0, 0, 0, .3);
                     .package-text {
                         .package-name {
-                            font-family: "Inter", sans-serif;
                             font-size: 2rem;
                             font-weight: 800;
                             color: black;
@@ -1053,7 +931,7 @@ body {
                             font-size: 1.1rem;
                             margin: 1rem 0;
                             color: $tiletext;
-                            @media (max-width: 50rem), (max-device-width: 40rem) {
+                            @media (max-width: 50rem) {
                                 font-size: 1rem;
                                 line-height: 1.8rem;
                             }
@@ -1100,9 +978,368 @@ body {
     }
 }
 
-#eco-table tbody {
-    // TODO: I think this shouldn't be neccesary
-    border-top: 0px;
+// Specific to /packages#ecosystem — the community package registry
+
+#ecosystem-packages {
+    margin: 2rem 0 4rem;
+
+    .eco-sprite {
+        display: none;
+    }
+
+    svg {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    .eco-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem 1.5rem;
+    }
+
+    .eco-search {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex: 1 1 22rem;
+
+        .eco-search-icon {
+            position: absolute;
+            left: 1.1rem;
+            width: 1.1rem;
+            height: 1.1rem;
+            color: $greydesc;
+            pointer-events: none;
+        }
+
+        input {
+            width: 100%;
+            height: 3.25rem;
+            padding: 0 2.9rem;
+            font-size: 1rem;
+            color: $tiletext;
+            background-color: $backtickbg;
+            border: 1px solid $overline;
+            border-radius: 2rem;
+            outline: none;
+            transition: all 200ms ease-in-out;
+            text-overflow: ellipsis;
+
+            &::placeholder {
+                color: $greydesc;
+            }
+            &:focus {
+                background-color: white;
+                border-color: $greydesc;
+                box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.04);
+            }
+            // The native affordance duplicates our own clear button
+            &::-webkit-search-cancel-button {
+                display: none;
+            }
+        }
+    }
+
+    .eco-search-clear {
+        position: absolute;
+        right: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.6rem;
+        height: 1.6rem;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        color: $tiletext2;
+        background-color: $tilebg;
+        cursor: pointer;
+        transition: all 200ms ease-in-out;
+
+        svg {
+            width: 0.7rem;
+            height: 0.7rem;
+        }
+        &:hover {
+            color: white;
+            background-color: $tiletext;
+        }
+    }
+
+    .eco-count {
+        margin: 0;
+        font-size: 0.95rem;
+        color: $greydesc;
+        white-space: nowrap;
+    }
+
+    .eco-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin: 1.25rem 0 2rem;
+    }
+
+    .eco-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.35rem 0.85rem;
+        font-size: 0.85rem;
+        color: $tiletext2;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: 2rem;
+        cursor: pointer;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            color: $tiletext3;
+            border-color: $tilebg2;
+            background-color: $tilebg4;
+        }
+        &.is-active {
+            color: white;
+            background-color: $tiletext;
+            border-color: $tiletext;
+        }
+        .eco-chip-count {
+            font-size: 0.75rem;
+            opacity: 0.55;
+        }
+    }
+
+    .eco-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+        gap: 1.25rem;
+    }
+
+    .eco-card {
+        // All 120 registry entries are in the DOM so the filter can work offline.
+        content-visibility: auto;
+        contain-intrinsic-size: auto 14rem;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 1.35rem;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: $card-radius;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            border-color: $tilebg2;
+            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+        &[hidden] {
+            display: none;
+        }
+    }
+
+    // Packages maintained by the core team sort to the front and carry a wash of colour
+    .eco-card--core {
+        background-color: rgba($scviyellow, 0.08);
+    }
+
+    .eco-card-head {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+    }
+
+    .eco-logo {
+        display: grid;
+        place-items: center;
+        flex: 0 0 auto;
+        width: 2.75rem;
+        height: 2.75rem;
+        overflow: hidden;
+        border-radius: 0.6rem;
+        background-color: $tilebg4;
+
+        img {
+            width: 100%;
+            height: 100%;
+            padding: 0.3rem;
+            object-fit: contain;
+        }
+    }
+
+    .eco-logo--mono {
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: $tiletext;
+
+        @each $hue in $eco-hues {
+            &[data-hue="#{index($eco-hues, $hue) - 1}"] {
+                background-color: rgba($hue, 0.18);
+            }
+        }
+    }
+
+    .eco-card-heading {
+        min-width: 0;
+    }
+
+    // Element selector included to beat the generic `#page-content .post h3` margins
+    .eco-card h3.eco-card-name {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 800;
+        line-height: 1.3;
+        overflow-wrap: anywhere;
+
+        a {
+            color: black;
+            text-decoration: none;
+
+            // Make the whole card clickable without nesting interactive elements
+            &::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border-radius: $card-radius;
+            }
+        }
+    }
+
+    .eco-card-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.4rem;
+        margin: 0.25rem 0 0;
+        font-size: 0.75rem;
+        color: $greydesc;
+
+        .eco-badge {
+            padding: 0.05rem 0.35rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: white;
+            background-color: $tiletext;
+            border-radius: 0.25rem;
+        }
+        .eco-badge--lang {
+            color: $tiletext;
+            background-color: $tilebg2;
+        }
+        .eco-version {
+            font-family: "JetBrains Mono", Menlo, monospace;
+        }
+        .eco-version + .eco-license::before {
+            content: "·";
+            margin-right: 0.4rem;
+        }
+    }
+
+    .eco-card-desc {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin: 0;
+        font-size: 0.9rem;
+        line-height: 1.55;
+        color: $tiletext2;
+    }
+
+    .eco-card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .eco-tag {
+        position: relative;
+        z-index: 1;
+        padding: 0.2rem 0.5rem;
+        font-size: 0.72rem;
+        color: $greydesc;
+        background-color: $tilebg4;
+        border: 0;
+        border-radius: 0.35rem;
+        cursor: pointer;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            color: $tiletext3;
+            background-color: $tilebg;
+        }
+        &.is-active {
+            color: white;
+            background-color: $tiletext;
+        }
+    }
+
+    .eco-card-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: auto;
+        padding-top: 0.3rem;
+
+        a {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.3rem 0.6rem;
+            font-size: 0.78rem;
+            color: $tiletext2;
+            text-decoration: none;
+            background-color: $tilebg4;
+            border-radius: 0.4rem;
+            transition: all 200ms ease-in-out;
+
+            svg {
+                width: 0.85rem;
+                height: 0.85rem;
+            }
+            &:hover {
+                color: white;
+                background-color: $tiletext;
+            }
+        }
+    }
+
+    .eco-empty {
+        padding: 4rem 0;
+        text-align: center;
+        color: $greydesc;
+
+        .eco-empty-reset {
+            padding: 0;
+            color: $tiletext;
+            background: none;
+            border: 0;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+
+    @media (max-width: 50rem) {
+        .eco-grid {
+            grid-template-columns: 1fr;
+        }
+        .eco-count {
+            order: -1;
+        }
+    }
 }
 
 // Specific to /tutorials
@@ -1135,7 +1372,7 @@ body {
         grid-auto-flow: row;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 1rem;
-        @media (max-width: 50rem), (max-device-width: 40rem) {
+        @media (max-width: 50rem) {
             grid-template-columns: 1fr;
         }
 
@@ -1211,89 +1448,553 @@ body {
     }
 }
 
+// Table of contents sidebar, used by the long pages (see partials/toc.html)
+
+.with-toc,
+.with-toc-body {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.toc {
+    display: none;
+}
+
+// Only worth a column when there is room for one beside the content
+@media (min-width: 75rem) {
+    #page-content:has(.with-toc) {
+        max-width: $maxwidthwide;
+        width: $contentwidthwide;
+    }
+
+    .with-toc {
+        display: grid;
+        grid-template-columns: 13rem minmax(0, 1fr);
+        gap: 3.5rem;
+        align-items: start;
+    }
+
+    .toc {
+        display: block;
+        position: sticky;
+        top: 2rem;
+        max-height: calc(100vh - 4rem);
+        overflow-y: auto;
+        // The body column starts with the h1, so drop the list to roughly its baseline
+        margin-top: 4.5rem;
+
+        &[hidden] {
+            display: none;
+        }
+
+        .toc-title {
+            margin: 0 0 0.6rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: $greydesc;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border-left: 1px solid $overline;
+        }
+
+        li a {
+            display: block;
+            padding: 0.35rem 0.75rem;
+            margin-left: -1px;
+            border-left: 2px solid transparent;
+            font-size: 0.9rem;
+            line-height: 1.35;
+            color: $greydesc;
+            text-decoration: none;
+            transition: all 200ms ease-in-out;
+
+            &:hover {
+                color: black;
+            }
+            &.is-current {
+                color: black;
+                border-left-color: $tiletext;
+            }
+        }
+
+        .toc-h3 a {
+            padding-left: 1.5rem;
+            font-size: 0.85rem;
+        }
+    }
+}
+
 // Specific to /people
 
-#people-content .team .team-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 0.5rem;
-    justify-content: flex-start;
-    font-size: 1.1rem;
+.people-sprite {
+    display: none;
 }
 
-#people-content .team .team-list a {
-    text-decoration: none;
-}
+#people-content {
+    // The hero mosaic and the directory both want the full column, not the prose measure
+    margin: 2rem 0 4rem;
 
-.team-member {
-    background-color: var(--tilebg, #f5f5f5);
-    color: var(--tiletext, #333);
-    text-align: center;
-    border-radius: 0.5rem;
-    transition: all 200ms ease-in-out;
-    font-size: 1rem;
-    font-family: "Inter", sans-serif;
-    position: relative;
-}
+    svg {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
 
-.person-chip {
-    background-color: var(--tilebg, #f5f5f5);
-    color: var(--tiletext, #333);
-    padding: 0.4rem;
-    text-align: center;
-    display: block;
-    border-radius: 0.5rem;
-    width: 100%;
-}
+        // The GitHub mark is a filled glyph rather than a line drawing
+        &.is-solid {
+            fill: currentColor;
+            stroke: none;
+        }
+    }
 
-.team-member:hover .person-chip,
-.team-member:focus-within .person-chip {
-    background-color: var(--tilebg2, #e5e5e5);
-    color: var(--tiletext3, #000);
-}
+    .people-lead {
+        margin: 0;
+        font-size: 1.15rem;
+        line-height: 1.6;
+        color: $tiletext2;
+    }
 
-.team-member:has(.additional-info):hover .person-chip,
-.team-member:has(.additional-info):focus-within .person-chip {
-    border-radius: 0.5rem 0.5rem 0 0;
-}
+    // Every contributor, at a size where 390 of them read as one picture
 
-.member-detail {
-    cursor: pointer;
-}
+    .people-mosaic {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+        margin: 2.5rem 0 0.9rem;
 
-.additional-info {
-    background-color: var(--tilebg2, #e5e5e5);
-    color: var(--tiletext3, #000);
-    position: absolute;
-    visibility: hidden;
-    z-index: 50;
-    border-radius: 0 0rem 0.5rem 0.5rem;
-    width: 100%;
-}
+        // 390 avatars are ten rows on a laptop and thirty on a phone, so the wall opens folded
+        &.is-clipped {
+            max-height: 19rem;
+            overflow: hidden;
+            mask-image: linear-gradient(to bottom, black 55%, transparent);
+        }
 
-.team-member:hover .additional-info,
-.team-member:focus-within .additional-info {
-    visibility: visible;
-}
+        a {
+            display: block;
+            line-height: 0;
+            border-radius: 50%;
+            transition: all 200ms ease-in-out;
+        }
+        img {
+            width: 2rem;
+            height: 2rem;
+            object-fit: cover;
+            background-color: $tilebg4;
+            border-radius: 50%;
+        }
+        a:hover {
+            transform: scale(1.6);
+            box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.25);
+        }
+    }
 
-.additional-info .email-link {
-    color: inherit;
-    text-decoration: underline;
-    cursor: pointer;
-}
+    .people-mosaic-caption {
+        margin: 0;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: $greydesc;
 
-.additional-info .email-link:hover {
-    color: #0056b3;
-}
+        strong {
+            color: $tiletext;
+        }
+    }
 
-.member-detail:hover .additional-info {
-    display: block;
-}
+    // Its own line, so it does not read as part of the sentence's links
+    #contributor-expand {
+        margin-top: 0.6rem;
+        padding: 0;
+        font-size: 0.9rem;
+        color: $tiletext;
+        background: none;
+        border: 0;
+        text-decoration: underline;
+        cursor: pointer;
+    }
 
-.additional-info p {
-    margin: 0.5rem 0;
-    line-height: 1.5;
-    margin-top: 0.5rem;
+    .people-section {
+        margin-top: 4.5rem;
+    }
+
+    // Element selector included to beat the generic `#page-content .post h2` margins
+    .people-section h2 {
+        margin: 0 0 0.7rem;
+        font-size: 1.7rem;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+    }
+
+    // Search and filters
+
+    .people-section-text {
+        max-width: 52rem;
+        margin: 0;
+        font-size: 1rem;
+        color: $tiletext2;
+    }
+
+    .people-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .people-search {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex: 1 1 22rem;
+
+        .people-search-icon {
+            position: absolute;
+            left: 1.1rem;
+            width: 1.1rem;
+            height: 1.1rem;
+            color: $greydesc;
+            pointer-events: none;
+        }
+
+        input {
+            width: 100%;
+            height: 3.25rem;
+            padding: 0 2.9rem;
+            font-size: 1rem;
+            color: $tiletext;
+            background-color: $backtickbg;
+            border: 1px solid $overline;
+            border-radius: 2rem;
+            outline: none;
+            transition: all 200ms ease-in-out;
+            text-overflow: ellipsis;
+
+            &::placeholder {
+                color: $greydesc;
+            }
+            &:focus {
+                background-color: white;
+                border-color: $greydesc;
+                box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.04);
+            }
+            // The native affordance duplicates our own clear button
+            &::-webkit-search-cancel-button {
+                display: none;
+            }
+        }
+    }
+
+    .people-search-clear {
+        position: absolute;
+        right: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.6rem;
+        height: 1.6rem;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        color: $tiletext2;
+        background-color: $tilebg;
+        cursor: pointer;
+        transition: all 200ms ease-in-out;
+
+        svg {
+            width: 0.7rem;
+            height: 0.7rem;
+        }
+        &:hover {
+            color: white;
+            background-color: $tiletext;
+        }
+    }
+
+    .people-count {
+        margin: 0;
+        font-size: 0.95rem;
+        color: $greydesc;
+        white-space: nowrap;
+    }
+
+    .people-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 1.25rem;
+    }
+
+    .people-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.35rem 0.85rem;
+        font-size: 0.85rem;
+        color: $tiletext2;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: 2rem;
+        cursor: pointer;
+        transition: all 200ms ease-in-out;
+
+        img {
+            width: 0.9rem;
+            height: 0.9rem;
+            object-fit: contain;
+        }
+        &:hover {
+            color: $tiletext3;
+            border-color: $tilebg2;
+            background-color: $tilebg4;
+        }
+        &.is-active {
+            color: white;
+            background-color: $tiletext;
+            border-color: $tiletext;
+        }
+        .people-chip-count {
+            font-size: 0.75rem;
+            opacity: 0.55;
+        }
+    }
+
+    .people-chips--packages .people-chip {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.7rem;
+    }
+
+    .people-note {
+        max-width: 42rem;
+        margin: 1.25rem 0 0;
+        font-size: 0.9rem;
+        color: $greydesc;
+
+        &[hidden] {
+            display: none;
+        }
+    }
+
+    // Person cards
+
+    .people-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .person-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 1.6rem 1rem 1.2rem;
+        text-align: center;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: $card-radius;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            border-color: $tilebg2;
+            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+        &[hidden] {
+            display: none;
+        }
+    }
+
+    .person-avatar {
+        display: grid;
+        place-items: center;
+        flex: 0 0 auto;
+        width: 5.5rem;
+        height: 5.5rem;
+        overflow: hidden;
+        font-size: 1.5rem;
+        border-radius: 50%;
+        background-color: $tilebg4;
+    }
+
+    .person-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .person-monogram {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        height: 100%;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        color: $tiletext;
+
+        @each $hue in $eco-hues {
+            &[data-hue="#{index($eco-hues, $hue) - 1}"] {
+                background-color: rgba($hue, 0.22);
+            }
+        }
+    }
+
+    .person-card h3.person-name {
+        margin: 0.35rem 0 0;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.3;
+        overflow-wrap: anywhere;
+
+        a {
+            color: black;
+            text-decoration: none;
+
+            // Make the whole card clickable without nesting interactive elements
+            &::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border-radius: $card-radius;
+            }
+        }
+    }
+
+    .person-roles,
+    .person-works {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.3rem;
+        margin: 0;
+    }
+
+    // Repeated on every card in a section, so the default badge stays quiet
+    .person-role {
+        padding: 0.05rem 0.35rem;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: $greydesc;
+        border: 1px solid $overline;
+        border-radius: 0.25rem;
+    }
+
+    // The bodies that actually decide things are the ones worth spotting in a grid
+    .person-role--council,
+    .person-role--management,
+    .person-role--advisory {
+        color: white;
+        background-color: $tiletext;
+        border-color: $tiletext;
+    }
+
+    .person-affiliation {
+        margin: 0.1rem 0 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+        color: $greydesc;
+        text-wrap: balance;
+    }
+
+    .person-work {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        padding: 0.15rem 0.5rem;
+        font-size: 0.72rem;
+        line-height: 1.4;
+        color: $tiletext2;
+        background-color: $tilebg4;
+        border-radius: 0.35rem;
+
+        img {
+            width: 0.85rem;
+            height: 0.85rem;
+            object-fit: contain;
+        }
+    }
+
+    .person-links {
+        display: flex;
+        gap: 0.35rem;
+        // Badge and affiliation counts differ per card, so pin this row to the bottom of each
+        margin: 0.55rem 0 0;
+        padding-top: 0.15rem;
+        margin-top: auto;
+
+        a {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            place-items: center;
+            width: 1.9rem;
+            height: 1.9rem;
+            color: $greydesc;
+            background-color: $tilebg4;
+            border-radius: 0.45rem;
+            transition: all 200ms ease-in-out;
+
+            svg {
+                width: 0.95rem;
+                height: 0.95rem;
+            }
+            &:hover {
+                color: white;
+                background-color: $tiletext;
+            }
+        }
+    }
+
+    .people-empty {
+        padding: 4rem 0;
+        text-align: center;
+        color: $greydesc;
+
+        .people-empty-reset {
+            padding: 0;
+            color: $tiletext;
+            background: none;
+            border: 0;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+
+    @media (max-width: 50rem) {
+        .people-mosaic {
+            img {
+                width: 1.6rem;
+                height: 1.6rem;
+            }
+            &.is-clipped {
+                max-height: 10rem;
+            }
+        }
+        .people-grid {
+            grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+            gap: 0.75rem;
+        }
+        .person-card {
+            padding: 1.2rem 0.75rem 1rem;
+        }
+        .person-avatar {
+            width: 4.5rem;
+            height: 4.5rem;
+        }
+        .people-count {
+            order: -1;
+        }
+    }
 }
 
 #media-kit-content {
@@ -1304,7 +2005,6 @@ body {
         margin-top: 6rem;
         font-size: 2.25rem;
         font-weight: 800;
-        font-family: "Inter", sans-serif;
         letter-spacing: -0.02em;
         position: relative;
         background: linear-gradient(15deg, #000000 0%, #777777 100%);
@@ -1324,7 +2024,7 @@ body {
             margin-top: 0.75rem;
         }
 
-        @media (max-width: 50rem), (max-device-width: 40rem) {
+        @media (max-width: 50rem) {
             margin-top: 4rem;
             font-size: 1.75rem;
         }
@@ -1338,7 +2038,7 @@ body {
         gap: 3rem;
         margin-top: 3rem;
 
-        @media (max-width: 50rem), (max-device-width: 40rem) {
+        @media (max-width: 50rem) {
             gap: 2.5rem;
         }
 
@@ -1360,7 +2060,7 @@ body {
             position: relative;
             overflow: hidden;
 
-            @media (max-width: 50rem), (max-device-width: 40rem) {
+            @media (max-width: 50rem) {
                 flex-direction: column;
                 padding: 2rem;
             }
@@ -1406,7 +2106,7 @@ body {
                 overflow: hidden;
                 margin-right: 2.5rem;
 
-                @media (max-width: 50rem), (max-device-width: 40rem) {
+                @media (max-width: 50rem) {
                     margin-right: 0;
                     margin-bottom: 2rem;
                     min-width: 100%;
@@ -1453,7 +2153,6 @@ body {
                         flex-direction: column;
 
                         .logo-name {
-                            font-family: "Inter", sans-serif;
                             font-weight: 700;
                             font-size: 1.5rem;
                             color: $tiletext;
@@ -1463,7 +2162,6 @@ body {
                         }
 
                         .logo-details {
-                            font-family: "Inter", sans-serif;
                             font-size: 1rem;
                             color: $tiletext2;
                             line-height: 1.7;
@@ -1485,7 +2183,6 @@ body {
                         padding: 0.75rem 1.5rem;
                         background-color: rgba(255, 255, 255, 0.5);
                         border-radius: 3rem;
-                        font-family: "Inter", sans-serif;
                         font-size: 0.9rem;
                         font-weight: 600;
                         color: $tiletext;
@@ -1514,7 +2211,7 @@ body {
         gap: 2.5rem;
         margin-top: 3rem;
 
-        @media (max-width: 50rem), (max-device-width: 40rem) {
+        @media (max-width: 50rem) {
             grid-template-columns: 1fr;
         }
 
@@ -1542,7 +2239,6 @@ body {
             }
 
             h3 {
-                font-family: "Inter", sans-serif;
                 font-weight: 700;
                 font-size: 1.4rem;
                 margin-bottom: 1.5rem;
@@ -1571,7 +2267,6 @@ body {
 
                 li {
                     margin-bottom: 1rem;
-                    font-family: "Inter", sans-serif;
                     font-size: 1rem;
                     color: $tiletext2;
                     line-height: 1.6;
@@ -1657,7 +2352,7 @@ body {
         gap: 2rem;
         margin-top: 3rem;
 
-        @media (max-width: 50rem), (max-device-width: 40rem) {
+        @media (max-width: 50rem) {
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
@@ -1877,7 +2572,7 @@ body {
                 justify-content: center;
                 align-items: center;
                 padding: 1.5rem;
-                background-color: none;
+                background-color: transparent;
                 border-radius: 0.75rem;
                 margin-bottom: 1.25rem;
                 min-height: 110px;
@@ -1914,7 +2609,6 @@ body {
                         flex-direction: column;
 
                         .icon-name {
-                            font-family: "Inter", sans-serif;
                             font-weight: 700;
                             font-size: 1.15rem;
                             color: $tiletext;
@@ -1924,7 +2618,6 @@ body {
                         }
 
                         .icon-details {
-                            font-family: "Inter", sans-serif;
                             font-size: 0.9rem;
                             color: $tiletext2;
                             line-height: 1.5;
@@ -1945,7 +2638,6 @@ body {
                         padding: 0.55rem 1rem;
                         background-color: rgba(255, 255, 255, 0.5);
                         border-radius: 2.5rem;
-                        font-family: "Inter", sans-serif;
                         font-size: 0.8rem;
                         font-weight: 600;
                         color: $tiletext;
@@ -1985,7 +2677,6 @@ body {
         }
 
         p {
-            font-family: "Inter", sans-serif;
             font-size: 1.05rem;
             color: $tiletext2;
             line-height: 1.8;
@@ -2052,7 +2743,6 @@ body {
         justify-content: flex-start;
 
         .toggle-label {
-            font-family: "Inter", sans-serif;
             font-size: 0.9rem;
             color: $tiletext2;
             margin-right: 1rem;
@@ -2116,7 +2806,6 @@ body {
                         color: #333;
                         font-size: 0.8rem;
                         font-weight: 600;
-                        font-family: "Inter", sans-serif;
                         transition: all 0.2s;
                     }
                 }
@@ -2203,7 +2892,6 @@ body {
 
             .example-caption {
                 padding: 0.75rem 0.5rem;
-                font-family: "Inter", sans-serif;
                 font-size: 0.85rem;
                 color: $tiletext2;
                 line-height: 1.4;
@@ -2237,7 +2925,6 @@ body {
 // Interactive UMAP Visualization Styles
 #interactive-demo-section {
     margin-top: 8%;
-    margin-bottom: 5%;
 }
 
 .interactive-container {
@@ -2391,4 +3078,366 @@ body {
     background: linear-gradient(90deg, #4285f4, #34a853);
     transition: width 1s ease-in-out;
     pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+.command-icon:focus-visible {
+    outline: 3px solid #1a73e8;
+    outline-offset: 2px;
+}
+
+// Hoisted out of #page-content: the landing page shows one of these and uses #cover.
+
+.page-item {
+    display: flex;
+    flex-direction: row;
+
+    @media (max-width: 50rem) {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        h2 {
+            margin: 0.5rem 0 !important;
+        }
+        margin: 0 -0.5rem;
+        padding: 0.5rem;
+        padding-bottom: 1.3rem;
+    }
+
+    margin: 0 -1rem;
+    padding: 1rem;
+
+    background-color: #ff000000;
+    transition: all 200ms ease-in-out;
+    border-radius: 0.5rem;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $tilebg3;
+    }
+
+    @media (max-width: 50rem) {
+        background-color: $tilebg4;
+    }
+
+    h2 {
+        color: $tiletext;
+        margin: 0 0 0.5rem 0;
+        line-height: 1.5rem;
+    }
+    span {
+        font-size: 1rem;
+        color: $greydesc;
+        line-height: 1.3rem;
+    }
+    .page-item-date {
+        flex: 1;
+        line-height: 1.3rem;
+    }
+    .page-item-content {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        font-size: 1rem;
+        h2 {
+            font-size: 1.4rem;
+        }
+    }
+}
+
+.page-item-author {
+    font-weight: 600;
+}
+
+// Specific to /about/roles — an index of the governance sections, not a summary of them
+
+.gov-chart {
+    margin: 2.5rem 0 3rem;
+
+    .gov-level {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    // Nesting is the whole point: each level sits visibly inside its parent
+    .gov-node .gov-level {
+        margin-top: 0.6rem;
+    }
+
+    .gov-node {
+        padding: 0.7rem 0.9rem;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: $card-radius;
+    }
+
+    // Community, the management committee and the advisory board sit at the same level
+    .gov-node--top {
+        background-color: $backtickbg;
+    }
+
+    .gov-name {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: black;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+
+        &:hover {
+            border-bottom-color: $linkunderline;
+        }
+    }
+
+    .gov-meta {
+        margin-left: 0.6rem;
+        font-size: 0.8rem;
+        color: $greydesc;
+        white-space: nowrap;
+
+        .gov-count {
+            font-variant-numeric: tabular-nums;
+        }
+        a {
+            margin-left: 0.5rem;
+            color: $tiletext2;
+            text-decoration: none;
+            border-bottom: 1px solid $overline;
+
+            &:hover {
+                color: black;
+                border-bottom-color: $linkunderline;
+            }
+        }
+    }
+
+    .gov-level--row {
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        > .gov-node {
+            flex: 1 1 13rem;
+        }
+    }
+
+    // Five levels of nesting is enough padding already
+    @media (max-width: 50rem) {
+        .gov-level--row {
+            flex-direction: column;
+        }
+        .gov-node {
+            padding: 0.6rem 0.65rem;
+        }
+    }
+}
+
+// A roster, not a sentence: set apart from the prose it follows so the names do not read as
+// part of it
+.role-members {
+    margin: 1.25rem 0;
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+    line-height: 1.95;
+    color: $greydesc;
+    background-color: $tilebg4;
+    border-radius: 0.5rem;
+
+    .role-members-label {
+        margin-right: 0.5rem;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: $greydesc;
+    }
+
+    .role-members-sep {
+        margin: 0 0.2rem;
+        color: $tilebg2;
+    }
+}
+
+#page-content p.role-members > a {
+    white-space: nowrap;
+    color: $tiletext2;
+    border-bottom-color: transparent;
+
+    &:hover {
+        color: black;
+        border-bottom-color: $linkunderline;
+    }
+}
+
+// ---- Global search ------------------------------------------------------
+
+.nav-search-button {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: none;
+    border: 0;
+    color: $greyheader;
+    font-size: inherit;
+
+    &:hover {
+        color: $greyheaderhover;
+    }
+
+    .nav-search-kbd {
+        padding: 0.05rem 0.4rem;
+        border: 1px solid $tilebg2;
+        border-radius: 0.25rem;
+        background-color: $tilebg4;
+        color: $greydesc;
+        font-size: 0.75rem;
+        line-height: 1.2;
+
+        @media (max-width: 62rem) {
+            display: none;
+        }
+    }
+}
+
+.search-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1080;
+    display: flex;
+    justify-content: center;
+    padding: 4rem 1rem 1rem;
+    background-color: rgba(0, 0, 0, 0.45);
+
+    &[hidden] {
+        display: none;
+    }
+
+    @media (max-width: 50rem) {
+        padding: 1rem 0.5rem;
+    }
+}
+
+.search-dialog {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 42rem;
+    max-height: 100%;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    background-color: white;
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.3);
+}
+
+.search-field {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid $tilebg;
+    color: $greydesc;
+}
+
+.search-input {
+    flex: 1;
+    border: 0;
+    outline: none;
+    font-size: 1.15rem;
+    color: $tiletext;
+
+    &::-webkit-search-cancel-button {
+        display: none;
+    }
+}
+
+.search-close {
+    padding: 0.1rem 0.45rem;
+    border: 1px solid $tilebg2;
+    border-radius: 0.25rem;
+    background-color: $tilebg4;
+    color: $greydesc;
+    font-size: 0.8rem;
+}
+
+.search-status {
+    margin: 0;
+    padding: 0.6rem 1.25rem;
+    color: $greydesc;
+    font-size: 0.9rem;
+
+    &:empty {
+        display: none;
+    }
+}
+
+.search-results {
+    margin: 0;
+    padding: 0 0 0.5rem;
+    overflow-y: auto;
+    list-style: none;
+
+    a {
+        display: block;
+        padding: 0.75rem 1.25rem;
+        color: inherit;
+        text-decoration: none;
+
+        &:hover,
+        &:focus-visible,
+        &[aria-selected="true"] {
+            background-color: $tilebg4;
+            outline: none;
+        }
+    }
+
+    .search-result-title {
+        color: $tiletext;
+        font-weight: 600;
+    }
+
+    .search-result-url {
+        color: $mudatagreen;
+        font-size: 0.8rem;
+    }
+
+    .search-result-kind {
+        padding: 0.05rem 0.4rem;
+        border-radius: 0.25rem;
+        background-color: rgba($scviyellow, 0.25);
+        color: $tiletext2;
+        font-size: 0.75rem;
+        white-space: nowrap;
+    }
+
+    .search-result-entity .search-result-title::after {
+        content: " ↗";
+        color: $greydesc;
+        font-weight: 400;
+    }
+
+    .search-result-excerpt {
+        display: block;
+        margin-top: 0.15rem;
+        color: $greydesc;
+        font-size: 0.9rem;
+        line-height: 1.35rem;
+
+        mark {
+            padding: 0;
+            background-color: rgba($scviyellow, 0.35);
+            color: inherit;
+        }
+    }
 }
