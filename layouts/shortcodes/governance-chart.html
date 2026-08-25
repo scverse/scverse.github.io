@@ -1,0 +1,75 @@
+{{/* An index of the sections below, not a summary of them: every node is just a name, a live
+  headcount from the people page, and links to its own section and to who currently holds it.
+  The core team splits three ways — developers, community, governance — and the steering council
+  is drawn from the governance side of it. The document states none of that: its headings are
+  flat and it only names one of the three sub-teams.
+*/}}
+{{ $people := (site.GetPage "/people").Params.people | default slice }}
+{{ $count := dict }}
+{{ $label := dict }}
+{{ range (site.GetPage "/people").Params.roles }}
+  {{ $count = merge $count (dict .id (len (where $people "roles" "intersect" (slice .id)))) }}
+  {{ $label = merge $label (dict .id .label) }}
+{{ end }}
+
+
+<figure class="gov-chart">
+  <ul class="gov-level">
+    <li class="gov-node gov-node--top">
+      {{ partial "governance/node.html" (dict "name" "Community" "anchor" "the-community") }}
+      <ul class="gov-level">
+        <li class="gov-node">
+          {{ partial "governance/node.html" (dict "name" "Contributors" "anchor" "contributors") }}
+          <ul class="gov-level">
+            <li class="gov-node gov-node--leaf">
+              {{ partial "governance/node.html" (dict "name" "Project Developers" "anchor" "project-developers") }}
+            </li>
+            <li class="gov-node">
+              {{ partial "governance/node.html" (dict
+                "name" (index $label "core") "anchor" "core-team"
+                "role" (dict "id" "core" "count" (index $count "core"))
+                )
+              }}
+              {{/* Siblings, so they read as three parallel sub-teams rather than a stack */}}
+              <ul class="gov-level gov-level--row">
+                <li class="gov-node gov-node--leaf">
+                  {{ partial "governance/node.html" (dict "name" "Core Developers" "anchor" "core-developers") }}
+                </li>
+                {{/* The document has no section for these two yet, so they point at their parent */}}
+                <li class="gov-node gov-node--leaf">
+                  {{ partial "governance/node.html" (dict "name" "Core Community" "anchor" "core-team") }}
+                </li>
+                <li class="gov-node">
+                  {{ partial "governance/node.html" (dict "name" "Core Governance" "anchor" "core-team") }}
+                  <ul class="gov-level">
+                    <li class="gov-node gov-node--leaf">
+                      {{ partial "governance/node.html" (dict
+                        "name" (index $label "council") "anchor" "steering-council"
+                        "role" (dict "id" "council" "count" (index $count "council"))
+                        )
+                      }}
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li class="gov-node gov-node--top gov-node--leaf">
+      {{ partial "governance/node.html" (dict
+        "name" (index $label "management") "anchor" "management-committee"
+        "role" (dict "id" "management" "count" (index $count "management"))
+        )
+      }}
+    </li>
+    <li class="gov-node gov-node--top gov-node--leaf">
+      {{ partial "governance/node.html" (dict
+        "name" (index $label "advisory") "anchor" "scientific-advisory-board"
+        "role" (dict "id" "advisory" "count" (index $count "advisory"))
+        )
+      }}
+    </li>
+  </ul>
+</figure>

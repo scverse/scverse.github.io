@@ -28,6 +28,15 @@
                 {{ range $cat := $content.categories }}
                   {{ range $catname, $catmore := $cat }}
                     {{ $ts := where $content.tutorials "primary_category" $catname }}
+                    {{/* Honour the registry's `order` key: lower comes first, no key comes last.
+                      The index tiebreaker keeps equal-order tutorials in registry order.
+                    */}}
+                    {{ $ranked := slice }}
+                    {{ range $i, $t := $ts }}
+                      {{ $rank := add (mul (default 9999 $t.order) 1000) $i }}
+                      {{ $ranked = $ranked | append (dict "rank" $rank "tutorial" $t) }}
+                    {{ end }}
+                    {{ $ts = apply (sort $ranked "rank") "index" "." "tutorial" }}
                     {{ if (gt ($ts | len) 0) }}
                       <h3>{{ $catname }}</h3>
                       <p>{{ $catmore.description }}</p>
@@ -39,6 +48,7 @@
                               {{ if $t.image }}
                                 <img
                                   class="card-img-top"
+                                  loading="lazy"
                                   src="https://scverse.org/scverse-tutorials/{{ $t.image }}"
                                   alt="Tutorial logo"
                                 />

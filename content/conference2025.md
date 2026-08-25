@@ -12,7 +12,7 @@ conferenceLocation: "Stanford, CA"
 subtitle: "Follow us on our channels to learn more details in the coming weeks"
 
 # Design Options
-backgroundImage: "/img/events/2025_11_conference_bg.jpeg"
+backgroundImage: "/img/events/2025_11_conference_bg.webp"
 # highlightColor: "#ff4f00"
 highlightColor: "#ff8b57"
 

@@ -1,0 +1,23 @@
+{{/* Portraits come from GitHub when the person links there, and fall back to a tinted monogram
+  so that rows of committee members with lab websites still line up.
+*/}}
+{{ $login := "" }}
+{{ with findRE `github\.com/[A-Za-z0-9\-]+` (.url | default "") 1 }}
+  {{ $login = strings.TrimPrefix "github.com/" (index . 0) }}
+{{ end }}
+{{ if $login }}
+  <img
+    class="person-photo"
+    src="https://github.com/{{ $login }}.png?size={{ mul .size 2 }}"
+    alt=""
+    loading="lazy"
+    width="{{ .size }}"
+    height="{{ .size }}"
+  />
+{{ else }}
+  {{ $words := split (trim (.name | default "") " ") " " }}
+  <span class="person-monogram" data-hue="{{ mod .index 8 }}" aria-hidden="true">
+    {{- substr (index $words 0) 0 1 -}}
+    {{- if gt (len $words) 1 }}{{ substr (index $words (sub (len $words) 1)) 0 1 }}{{ end -}}
+  </span>
+{{ end }}

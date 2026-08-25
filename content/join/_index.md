@@ -1,5 +1,6 @@
 +++
 title = "Join scverse"
+description = "How to reach the scverse community on GitHub, Zulip, Discourse and social media, and who to e-mail about what."
 
 [[resources]]
 	id = "github"
@@ -40,6 +41,6 @@ title = "Join scverse"
 
 You can also reach us by e-mail for certain matters:
 
-- [core@scverse.org](core@scverse.org): [core team](/about/roles#core-team)
-- [conference2026@scverse.org](conference2026@scverse.org): for matters regarding the [next conference](/conference2026)
-- [steering-council@scverse.org](steering-council@scverse.org): [steering council](/about/roles#steering-council) (e.g. for questions about sponsorships)
+- [core@scverse.org](mailto:core@scverse.org): [core team](/about/roles#core-team)
+- [conference2026@scverse.org](mailto:conference2026@scverse.org): for matters regarding the [next conference](/conference2026)
+- [steering-council@scverse.org](mailto:steering-council@scverse.org): [steering council](/about/roles#steering-council) (e.g. for questions about sponsorships)

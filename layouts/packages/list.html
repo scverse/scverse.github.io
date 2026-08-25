@@ -5,73 +5,48 @@
       <h1>{{ .Title }}</h1>
       <article class="post">
         {{ $sections := index .Params.sections 0 }}
+        {{ $interop := .Params.interoperability | default dict }}
         <div class="post-content" id="packages-content">
-          {{ if .Params.packages }}
+          {{ $registryBase := "https://scverse.org/ecosystem-packages/" }}
+          {{ $data := resources.GetRemote (printf "%spackages.json" $registryBase) }}
+          {{ $pkgs := transform.Unmarshal $data.Content }}
+
+          {{/* ponytail: registry has no order key, so core packages are alphabetical; re-curate once one exists. */}}
+          {{ $core := slice }}
+          {{ range where $pkgs "category" "in" (slice "core-datastructure" "core-framework") }}
+            {{ $core = $core | append (merge . (dict "sortkey" (lower .name))) }}
+          {{ end }}
+          {{ $core = sort $core "sortkey" }}
+
+          {{ with $core }}
             <h2 id="core-packages">Packages maintained by core team</h2>
             {{ $sections.core_packages | markdownify }}
-            {{ if .Params.datastructures }}
+            {{ with where . "category" "core-datastructure" }}
               <h3 id="datastructures">Data structures</h3>
               {{ $sections.datastructures | markdownify }}
               <div class="packages-list">
-                {{ $datastructures := .Params.datastructures }}
-                {{ range $i, $e := $datastructures }}
-                  <div class="package-section">
-                    <div class="package-img">
-                      <img src="{{ .img }}" alt="Logo for {{ .name }}" />
-                    </div>
-                    <div class="package-info">
-                      <div class="package-tile" id="{{ .name }}-tile">
-                        <div class="package-text">
-                          <span class="package-name">{{ .name }}</span>
-                          <span class="package-details">{{ .details | markdownify }}</span>
-                        </div>
-                      </div>
-                      <div class="package-links">
-                        {{ range $k, $v := $e.links }}
-                          <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
-                        {{ end }}
-                      </div>
-                    </div>
-                  </div>
+                {{ range . }}
+                  {{ partial "package-section.html" (dict "pkg" . "base" $registryBase "interop" (index $interop (lower .name))) }}
                 {{ end }}
               </div>
             {{ end }}
             <h4>Analysis task-specific extensions</h4>
             <p>{{ $sections.datastructures_post | markdownify }}</p>
-            <h3 id="frameworks">Frameworks</h3>
-            {{ $sections.frameworks | markdownify }}
-            <div class="packages-list">
-              {{ $packages := .Params.packages }}
-              {{ range $i, $e := $packages }}
-                <div class="package-section">
-                  <div class="package-img">
-                    <img src="{{ .img }}" alt="Logo for {{ .name }}" />
-                  </div>
-                  <div class="package-info">
-                    <div class="package-tile" id="{{ .name }}-tile">
-                      <div class="package-text">
-                        <span class="package-name">{{ .name }}</span>
-                        <span class="package-details">{{ .details | markdownify }}</span>
-                      </div>
-                    </div>
-                    <div class="package-links">
-                      {{ range $k, $v := $e.links }}
-                        <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
-                      {{ end }}
-                    </div>
-                  </div>
-                </div>
-              {{ end }}
-            </div>
+            {{ with where . "category" "core-framework" }}
+              <h3 id="frameworks">Frameworks</h3>
+              {{ $sections.frameworks | markdownify }}
+              <div class="packages-list">
+                {{ range . }}
+                  {{ partial "package-section.html" (dict "pkg" . "base" $registryBase "interop" (index $interop (lower .name))) }}
+                {{ end }}
+              </div>
+            {{ end }}
           {{ end }}
 
 
           <h2 id="ecosystem">Ecosystem packages maintained by scverse community</h2>
           {{ $sections.ecosystem | markdownify }}
 
-          {{ $registryBase := "https://scverse.org/ecosystem-packages/" }}
-          {{ $data := resources.GetRemote (printf "%spackages.json" $registryBase) }}
-          {{ $pkgs := transform.Unmarshal $data.Content }}
           {{ if $pkgs }}
 
             {{/* Categories and tags are a controlled vocabulary in the registry schema, so there is nothing to normalise here: https://github.com/scverse/ecosystem-packages/blob/main/scripts/src/ecosystem_scripts/schema.json */}}

@@ -6,7 +6,7 @@ author = "Lukas Heumos"
 draft = false
 +++
 
-# Four new core packages in scverse
+## Four new core packages in scverse
 
 We're happy to announce that four new packages have joined the scverse core ecosystem: [SnapATAC2](https://github.com/scverse/snapatac2), [rapids-singlecell](https://github.com/scverse/rapids-singlecell), [pertpy](https://github.com/scverse/pertpy), and [decoupler](https://github.com/scverse/decoupler).
 This broadens the scope of scverse beyond our so far supported modalities and brings in new functionality for epigenomics, perturbation screens, GPU acceleration, and functional inference.
@@ -19,7 +19,7 @@ We're also welcoming the following lead maintainers to the scverse core develope
 - **Kai Zhang** for **snapatac2**
 - **Pau Badia i Mompel** for **decoupler**
 
-## SnapATAC2
+### SnapATAC2
 
 [SnapATAC2](https://github.com/scverse/snapatac2) enables fast, scalable analysis of single-cell ATAC-seq and related epigenomic data.  
 Built in Rust with a Python front end, it handles millions of cells efficiently.  
@@ -28,7 +28,7 @@ All outputs are stored in AnnData and integrate seamlessly with scanpy and other
 
 <img src="/img/blog/snapatac2_overview.webp" style="max-width: 100%;" alt="SnapATAC2 overview" />
 
-## rapids-singlecell
+### rapids-singlecell
 
 [rapids-singlecell](https://github.com/scverse/rapids-singlecell) accelerates the full single-cell analysis pipeline through GPU acceleration with CuPy and NVIDIA RAPIDS.
 Core steps—including PCA, neighborhood graph construction, and clustering—are executed on GPU using cuML, cuGraph, and custom CUDA/CuPy kernels for peak performance.
@@ -40,7 +40,7 @@ By preserving familiar APIs and data structures, it enables seamless GPU acceler
 
 For more details, we refer to a recent blog post by NVIDIA: [Driving Toward Billion-Cell Analysis and Biological Breakthroughs with RAPIDS-singlecell](https://developer.nvidia.com/blog/driving-toward-billion-cell-analysis-and-biological-breakthroughs-with-rapids-singlecell)
 
-## pertpy
+### pertpy
 
 [pertpy](https://github.com/scverse/pertpy) focuses on single-cell perturbation screens, including CRISPR and compound treatments.  
 It supports differential analysis, signature scoring, and dose-response modeling.  
@@ -49,7 +49,7 @@ Built on AnnData and scverse libraries, pertpy fits smoothly into existing pipel
 
 <img src="https://github.com/user-attachments/assets/d2e32d69-b767-4be3-a938-77a9dce45d3f" alt="pertpy overview" style="max-width: 100%;" />
 
-## decoupler
+### decoupler
 
 [decoupler](https://github.com/scverse/decoupler) enables the inference of enrichment scores from omics data using prior knowledge.  
 It maps omics profiles to annotated biological sets, such as transcription factors, pathways, or kinases, using methods like GSEA, GSVA, and linear models.
@@ -57,14 +57,14 @@ Designed for bulk, single-cell and spatial data, decoupler works directly with o
 
 <img src="/img/blog/decoupler_overview.webp" style="max-width: 100%;" alt="decoupler overview" />
 
-## What this means
+### What this means
 
 We're continuing to support a modular but coherent ecosystem where high-quality tools can interoperate.
 These additions bring coverage of new data types and analysis goals while staying within the same technical foundations.
 All packages use our scverse core data structures, follow shared conventions, and benefit from a growing set of shared infrastructure and community practices.
 We aim to keep development decentralized and open while improving alignment across projects.
 
-## Get involved
+### Get involved
 
 If you're building something new, we'd love to have your work be a part of the [scverse ecosystem](https://github.com/scverse/ecosystem-packages).
 If you're our tools, please share feedback or ideas via the respective issue trackers.
@@ -72,7 +72,7 @@ The best places to start are [scverse.org](https://scverse.org), [github.com/scv
 We're always looking for more contributors to our packages but especially also for community related work.
 Please reach out!
 
-## Thank you
+### Thank you
 
 We’re grateful to the maintainers of these packages for their work and commitment to open, reusable tools.  
 Their contributions help make the scverse ecosystem more useful, inclusive, and sustainable.

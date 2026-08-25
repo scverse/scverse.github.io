@@ -51,7 +51,10 @@ $maxwidthwide: 1400px;
 $contentwidth: 80%;
 $contentwidthwide: 92%;
 
-$additionalInfoColor: #666666;
+$card-radius: 0.75rem;
+$eco-hues:
+    $anndataorange, $scanpycerise, $mudatagreen, $spatialdatablue, $squidpyviolet,
+    $scirpypurple, $scviyellow, $muonaquamarine;
 
 // scverse conference 2026 (scoped under .conference-page)
 @import "conference2026";
@@ -59,11 +62,13 @@ $additionalInfoColor: #666666;
 // Font stack: these two have well matching cap- and x-heights
 @font-face {
     font-family: "Inter";
-    src: url("fonts/Inter/Inter-VariableFont_slnt,wght.ttf");
+    src: url("fonts/Inter/Inter-VariableFont_slnt,wght.woff2") format("woff2");
+    font-display: swap;
 }
 @font-face {
     font-family: "JetBrains Mono";
-    src: url("fonts/JetBrainsMono/JetBrainsMono[wght].ttf");
+    src: url("fonts/JetBrainsMono/JetBrainsMono[wght].woff2") format("woff2");
+    font-display: swap;
 }
 
 // Global
@@ -225,13 +230,6 @@ a .more {
     }
 }
 
-// People
-
-// Had underlines poking out around images
-.contributor-list > a {
-    text-decoration: none;
-}
-
 html,
 body {
     width: 100%;
@@ -367,6 +365,7 @@ body {
                     #title {
                         #title-text {
                             #title-name {
+                                margin: 0;
                                 font-size: 6rem;
                                 font-weight: 900;
                                 letter-spacing: 0.2rem;
@@ -511,8 +510,12 @@ body {
                         }
                     }
                 }
+                // The wide gap under the hero used to live on #packages, which put it
+                // between whatever section came after the demo and the packages.
+                #interactive-demo-section {
+                    margin-bottom: 15%;
+                }
                 #packages {
-                    margin-top: 15%;
                     #packages-list {
                         .card {
                             display: flex;
@@ -532,6 +535,9 @@ body {
                                 display: flex;
                                 min-width: 6rem;
                                 max-width: 6rem;
+                                // Matches the img height below, so that a package
+                                // without an icon still lines up with the others.
+                                min-height: 4rem;
                                 @media (max-width: 50rem) {
                                     display: none;
                                 }
@@ -639,7 +645,8 @@ body {
         }
     }
 
-    header {
+    // Direct child only: this is the site chrome, not any <header> a page happens to use
+    > header {
         height: auto;
         width: 100%;
 
@@ -761,62 +768,6 @@ body {
             // &:first-of-type {
             //     margin-top: 1rem;
             // }
-        }
-    }
-    .page-item {
-        display: flex;
-        flex-direction: row;
-
-        @media (max-width: 50rem) {
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            h2 {
-                margin: 0.5rem 0 !important;
-            }
-            margin: 0 -0.5rem;
-            padding: 0.5rem;
-            padding-bottom: 1.3rem;
-        }
-
-        margin: 0 -1rem;
-        padding: 1rem;
-
-        background-color: #ff000000;
-        transition: all 200ms ease-in-out;
-        border-radius: 0.5rem;
-
-        &:hover {
-            cursor: pointer;
-            background-color: $tilebg3;
-        }
-
-        @media (max-width: 50rem) {
-            background-color: $tilebg4;
-        }
-
-        h2 {
-            color: $tiletext;
-            margin: 0 0 0.5rem 0;
-            line-height: 1.5rem;
-        }
-        span {
-            font-size: 1rem;
-            color: $greydesc;
-            line-height: 1.3rem;
-        }
-        .page-item-date {
-            flex: 1;
-            line-height: 1.3rem;
-        }
-        .page-item-content {
-            flex: 2;
-            display: flex;
-            flex-direction: column;
-            font-size: 1rem;
-            h2 {
-                font-size: 1.4rem;
-            }
         }
     }
     // TODO: Much of this does nothing AFAICT
@@ -1029,11 +980,6 @@ body {
 
 // Specific to /packages#ecosystem — the community package registry
 
-$eco-radius: 0.75rem;
-$eco-hues:
-    $anndataorange, $scanpycerise, $mudatagreen, $spatialdatablue, $squidpyviolet,
-    $scirpypurple, $scviyellow, $muonaquamarine;
-
 #ecosystem-packages {
     margin: 2rem 0 4rem;
 
@@ -1175,6 +1121,9 @@ $eco-hues:
     }
 
     .eco-card {
+        // All 120 registry entries are in the DOM so the filter can work offline.
+        content-visibility: auto;
+        contain-intrinsic-size: auto 14rem;
         position: relative;
         display: flex;
         flex-direction: column;
@@ -1182,7 +1131,7 @@ $eco-hues:
         padding: 1.35rem;
         background-color: white;
         border: 1px solid $overline;
-        border-radius: $eco-radius;
+        border-radius: $card-radius;
         transition: all 200ms ease-in-out;
 
         &:hover {
@@ -1257,7 +1206,7 @@ $eco-hues:
                 content: "";
                 position: absolute;
                 inset: 0;
-                border-radius: $eco-radius;
+                border-radius: $card-radius;
             }
         }
     }
@@ -1584,86 +1533,468 @@ $eco-hues:
 
 // Specific to /people
 
-#people-content .team .team-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 0.5rem;
-    justify-content: flex-start;
-    font-size: 1.1rem;
+.people-sprite {
+    display: none;
 }
 
-#people-content .team .team-list a {
-    text-decoration: none;
-}
+#people-content {
+    // The hero mosaic and the directory both want the full column, not the prose measure
+    margin: 2rem 0 4rem;
 
-.team-member {
-    background-color: var(--tilebg, #f5f5f5);
-    color: var(--tiletext, #333);
-    text-align: center;
-    border-radius: 0.5rem;
-    transition: all 200ms ease-in-out;
-    font-size: 1rem;
-    position: relative;
-}
+    svg {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
 
-.person-chip {
-    background-color: var(--tilebg, #f5f5f5);
-    color: var(--tiletext, #333);
-    padding: 0.4rem;
-    text-align: center;
-    display: block;
-    border-radius: 0.5rem;
-    width: 100%;
-}
+        // The GitHub mark is a filled glyph rather than a line drawing
+        &.is-solid {
+            fill: currentColor;
+            stroke: none;
+        }
+    }
 
-.team-member:hover .person-chip,
-.team-member:focus-within .person-chip {
-    background-color: var(--tilebg2, #e5e5e5);
-    color: var(--tiletext3, #000);
-}
+    .people-lead {
+        margin: 0;
+        font-size: 1.15rem;
+        line-height: 1.6;
+        color: $tiletext2;
+    }
 
-.team-member:has(.additional-info):hover .person-chip,
-.team-member:has(.additional-info):focus-within .person-chip {
-    border-radius: 0.5rem 0.5rem 0 0;
-}
+    // Every contributor, at a size where 390 of them read as one picture
 
-.member-detail {
-    cursor: pointer;
-}
+    .people-mosaic {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+        margin: 2.5rem 0 0.9rem;
 
-.additional-info {
-    background-color: var(--tilebg2, #e5e5e5);
-    color: var(--tiletext3, #000);
-    position: absolute;
-    visibility: hidden;
-    z-index: 50;
-    border-radius: 0 0rem 0.5rem 0.5rem;
-    width: 100%;
-}
+        // 390 avatars are ten rows on a laptop and thirty on a phone, so the wall opens folded
+        &.is-clipped {
+            max-height: 19rem;
+            overflow: hidden;
+            mask-image: linear-gradient(to bottom, black 55%, transparent);
+        }
 
-.team-member:hover .additional-info,
-.team-member:focus-within .additional-info {
-    visibility: visible;
-}
+        a {
+            display: block;
+            line-height: 0;
+            border-radius: 50%;
+            transition: all 200ms ease-in-out;
+        }
+        img {
+            width: 2rem;
+            height: 2rem;
+            object-fit: cover;
+            background-color: $tilebg4;
+            border-radius: 50%;
+        }
+        a:hover {
+            transform: scale(1.6);
+            box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.25);
+        }
+    }
 
-.additional-info .email-link {
-    color: inherit;
-    text-decoration: underline;
-    cursor: pointer;
-}
+    .people-mosaic-caption {
+        margin: 0;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: $greydesc;
 
-.additional-info .email-link:hover {
-    color: #0056b3;
-}
+        strong {
+            color: $tiletext;
+        }
+    }
 
-.member-detail:hover .additional-info {
-    display: block;
-}
+    // Its own line, so it does not read as part of the sentence's links
+    #contributor-expand {
+        margin-top: 0.6rem;
+        padding: 0;
+        font-size: 0.9rem;
+        color: $tiletext;
+        background: none;
+        border: 0;
+        text-decoration: underline;
+        cursor: pointer;
+    }
 
-.additional-info p {
-    margin: 0.5rem 0;
-    line-height: 1.5;
-    margin-top: 0.5rem;
+    .people-section {
+        margin-top: 4.5rem;
+    }
+
+    // Element selector included to beat the generic `#page-content .post h2` margins
+    .people-section h2 {
+        margin: 0 0 0.7rem;
+        font-size: 1.7rem;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+    }
+
+    // Search and filters
+
+    .people-section-text {
+        max-width: 52rem;
+        margin: 0;
+        font-size: 1rem;
+        color: $tiletext2;
+    }
+
+    .people-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .people-search {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex: 1 1 22rem;
+
+        .people-search-icon {
+            position: absolute;
+            left: 1.1rem;
+            width: 1.1rem;
+            height: 1.1rem;
+            color: $greydesc;
+            pointer-events: none;
+        }
+
+        input {
+            width: 100%;
+            height: 3.25rem;
+            padding: 0 2.9rem;
+            font-size: 1rem;
+            color: $tiletext;
+            background-color: $backtickbg;
+            border: 1px solid $overline;
+            border-radius: 2rem;
+            outline: none;
+            transition: all 200ms ease-in-out;
+            text-overflow: ellipsis;
+
+            &::placeholder {
+                color: $greydesc;
+            }
+            &:focus {
+                background-color: white;
+                border-color: $greydesc;
+                box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.04);
+            }
+            // The native affordance duplicates our own clear button
+            &::-webkit-search-cancel-button {
+                display: none;
+            }
+        }
+    }
+
+    .people-search-clear {
+        position: absolute;
+        right: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.6rem;
+        height: 1.6rem;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        color: $tiletext2;
+        background-color: $tilebg;
+        cursor: pointer;
+        transition: all 200ms ease-in-out;
+
+        svg {
+            width: 0.7rem;
+            height: 0.7rem;
+        }
+        &:hover {
+            color: white;
+            background-color: $tiletext;
+        }
+    }
+
+    .people-count {
+        margin: 0;
+        font-size: 0.95rem;
+        color: $greydesc;
+        white-space: nowrap;
+    }
+
+    .people-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 1.25rem;
+    }
+
+    .people-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.35rem 0.85rem;
+        font-size: 0.85rem;
+        color: $tiletext2;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: 2rem;
+        cursor: pointer;
+        transition: all 200ms ease-in-out;
+
+        img {
+            width: 0.9rem;
+            height: 0.9rem;
+            object-fit: contain;
+        }
+        &:hover {
+            color: $tiletext3;
+            border-color: $tilebg2;
+            background-color: $tilebg4;
+        }
+        &.is-active {
+            color: white;
+            background-color: $tiletext;
+            border-color: $tiletext;
+        }
+        .people-chip-count {
+            font-size: 0.75rem;
+            opacity: 0.55;
+        }
+    }
+
+    .people-chips--packages .people-chip {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.7rem;
+    }
+
+    .people-note {
+        max-width: 42rem;
+        margin: 1.25rem 0 0;
+        font-size: 0.9rem;
+        color: $greydesc;
+
+        &[hidden] {
+            display: none;
+        }
+    }
+
+    // Person cards
+
+    .people-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .person-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 1.6rem 1rem 1.2rem;
+        text-align: center;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: $card-radius;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            border-color: $tilebg2;
+            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+        &[hidden] {
+            display: none;
+        }
+    }
+
+    .person-avatar {
+        display: grid;
+        place-items: center;
+        flex: 0 0 auto;
+        width: 5.5rem;
+        height: 5.5rem;
+        overflow: hidden;
+        font-size: 1.5rem;
+        border-radius: 50%;
+        background-color: $tilebg4;
+    }
+
+    .person-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .person-monogram {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        height: 100%;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        color: $tiletext;
+
+        @each $hue in $eco-hues {
+            &[data-hue="#{index($eco-hues, $hue) - 1}"] {
+                background-color: rgba($hue, 0.22);
+            }
+        }
+    }
+
+    .person-card h3.person-name {
+        margin: 0.35rem 0 0;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.3;
+        overflow-wrap: anywhere;
+
+        a {
+            color: black;
+            text-decoration: none;
+
+            // Make the whole card clickable without nesting interactive elements
+            &::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border-radius: $card-radius;
+            }
+        }
+    }
+
+    .person-roles,
+    .person-works {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.3rem;
+        margin: 0;
+    }
+
+    // Repeated on every card in a section, so the default badge stays quiet
+    .person-role {
+        padding: 0.05rem 0.35rem;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: $greydesc;
+        border: 1px solid $overline;
+        border-radius: 0.25rem;
+    }
+
+    // The bodies that actually decide things are the ones worth spotting in a grid
+    .person-role--council,
+    .person-role--management,
+    .person-role--advisory {
+        color: white;
+        background-color: $tiletext;
+        border-color: $tiletext;
+    }
+
+    .person-affiliation {
+        margin: 0.1rem 0 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+        color: $greydesc;
+        text-wrap: balance;
+    }
+
+    .person-work {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        padding: 0.15rem 0.5rem;
+        font-size: 0.72rem;
+        line-height: 1.4;
+        color: $tiletext2;
+        background-color: $tilebg4;
+        border-radius: 0.35rem;
+
+        img {
+            width: 0.85rem;
+            height: 0.85rem;
+            object-fit: contain;
+        }
+    }
+
+    .person-links {
+        display: flex;
+        gap: 0.35rem;
+        // Badge and affiliation counts differ per card, so pin this row to the bottom of each
+        margin: 0.55rem 0 0;
+        padding-top: 0.15rem;
+        margin-top: auto;
+
+        a {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            place-items: center;
+            width: 1.9rem;
+            height: 1.9rem;
+            color: $greydesc;
+            background-color: $tilebg4;
+            border-radius: 0.45rem;
+            transition: all 200ms ease-in-out;
+
+            svg {
+                width: 0.95rem;
+                height: 0.95rem;
+            }
+            &:hover {
+                color: white;
+                background-color: $tiletext;
+            }
+        }
+    }
+
+    .people-empty {
+        padding: 4rem 0;
+        text-align: center;
+        color: $greydesc;
+
+        .people-empty-reset {
+            padding: 0;
+            color: $tiletext;
+            background: none;
+            border: 0;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+
+    @media (max-width: 50rem) {
+        .people-mosaic {
+            img {
+                width: 1.6rem;
+                height: 1.6rem;
+            }
+            &.is-clipped {
+                max-height: 10rem;
+            }
+        }
+        .people-grid {
+            grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+            gap: 0.75rem;
+        }
+        .person-card {
+            padding: 1.2rem 0.75rem 1rem;
+        }
+        .person-avatar {
+            width: 4.5rem;
+            height: 4.5rem;
+        }
+        .people-count {
+            order: -1;
+        }
+    }
 }
 
 #media-kit-content {
@@ -2594,7 +2925,6 @@ $eco-hues:
 // Interactive UMAP Visualization Styles
 #interactive-demo-section {
     margin-top: 8%;
-    margin-bottom: 5%;
 }
 
 .interactive-container {
@@ -2748,4 +3078,366 @@ $eco-hues:
     background: linear-gradient(90deg, #4285f4, #34a853);
     transition: width 1s ease-in-out;
     pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+.command-icon:focus-visible {
+    outline: 3px solid #1a73e8;
+    outline-offset: 2px;
+}
+
+// Hoisted out of #page-content: the landing page shows one of these and uses #cover.
+
+.page-item {
+    display: flex;
+    flex-direction: row;
+
+    @media (max-width: 50rem) {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        h2 {
+            margin: 0.5rem 0 !important;
+        }
+        margin: 0 -0.5rem;
+        padding: 0.5rem;
+        padding-bottom: 1.3rem;
+    }
+
+    margin: 0 -1rem;
+    padding: 1rem;
+
+    background-color: #ff000000;
+    transition: all 200ms ease-in-out;
+    border-radius: 0.5rem;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $tilebg3;
+    }
+
+    @media (max-width: 50rem) {
+        background-color: $tilebg4;
+    }
+
+    h2 {
+        color: $tiletext;
+        margin: 0 0 0.5rem 0;
+        line-height: 1.5rem;
+    }
+    span {
+        font-size: 1rem;
+        color: $greydesc;
+        line-height: 1.3rem;
+    }
+    .page-item-date {
+        flex: 1;
+        line-height: 1.3rem;
+    }
+    .page-item-content {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        font-size: 1rem;
+        h2 {
+            font-size: 1.4rem;
+        }
+    }
+}
+
+.page-item-author {
+    font-weight: 600;
+}
+
+// Specific to /about/roles — an index of the governance sections, not a summary of them
+
+.gov-chart {
+    margin: 2.5rem 0 3rem;
+
+    .gov-level {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    // Nesting is the whole point: each level sits visibly inside its parent
+    .gov-node .gov-level {
+        margin-top: 0.6rem;
+    }
+
+    .gov-node {
+        padding: 0.7rem 0.9rem;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: $card-radius;
+    }
+
+    // Community, the management committee and the advisory board sit at the same level
+    .gov-node--top {
+        background-color: $backtickbg;
+    }
+
+    .gov-name {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: black;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+
+        &:hover {
+            border-bottom-color: $linkunderline;
+        }
+    }
+
+    .gov-meta {
+        margin-left: 0.6rem;
+        font-size: 0.8rem;
+        color: $greydesc;
+        white-space: nowrap;
+
+        .gov-count {
+            font-variant-numeric: tabular-nums;
+        }
+        a {
+            margin-left: 0.5rem;
+            color: $tiletext2;
+            text-decoration: none;
+            border-bottom: 1px solid $overline;
+
+            &:hover {
+                color: black;
+                border-bottom-color: $linkunderline;
+            }
+        }
+    }
+
+    .gov-level--row {
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        > .gov-node {
+            flex: 1 1 13rem;
+        }
+    }
+
+    // Five levels of nesting is enough padding already
+    @media (max-width: 50rem) {
+        .gov-level--row {
+            flex-direction: column;
+        }
+        .gov-node {
+            padding: 0.6rem 0.65rem;
+        }
+    }
+}
+
+// A roster, not a sentence: set apart from the prose it follows so the names do not read as
+// part of it
+.role-members {
+    margin: 1.25rem 0;
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+    line-height: 1.95;
+    color: $greydesc;
+    background-color: $tilebg4;
+    border-radius: 0.5rem;
+
+    .role-members-label {
+        margin-right: 0.5rem;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: $greydesc;
+    }
+
+    .role-members-sep {
+        margin: 0 0.2rem;
+        color: $tilebg2;
+    }
+}
+
+#page-content p.role-members > a {
+    white-space: nowrap;
+    color: $tiletext2;
+    border-bottom-color: transparent;
+
+    &:hover {
+        color: black;
+        border-bottom-color: $linkunderline;
+    }
+}
+
+// ---- Global search ------------------------------------------------------
+
+.nav-search-button {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: none;
+    border: 0;
+    color: $greyheader;
+    font-size: inherit;
+
+    &:hover {
+        color: $greyheaderhover;
+    }
+
+    .nav-search-kbd {
+        padding: 0.05rem 0.4rem;
+        border: 1px solid $tilebg2;
+        border-radius: 0.25rem;
+        background-color: $tilebg4;
+        color: $greydesc;
+        font-size: 0.75rem;
+        line-height: 1.2;
+
+        @media (max-width: 62rem) {
+            display: none;
+        }
+    }
+}
+
+.search-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1080;
+    display: flex;
+    justify-content: center;
+    padding: 4rem 1rem 1rem;
+    background-color: rgba(0, 0, 0, 0.45);
+
+    &[hidden] {
+        display: none;
+    }
+
+    @media (max-width: 50rem) {
+        padding: 1rem 0.5rem;
+    }
+}
+
+.search-dialog {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 42rem;
+    max-height: 100%;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    background-color: white;
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.3);
+}
+
+.search-field {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid $tilebg;
+    color: $greydesc;
+}
+
+.search-input {
+    flex: 1;
+    border: 0;
+    outline: none;
+    font-size: 1.15rem;
+    color: $tiletext;
+
+    &::-webkit-search-cancel-button {
+        display: none;
+    }
+}
+
+.search-close {
+    padding: 0.1rem 0.45rem;
+    border: 1px solid $tilebg2;
+    border-radius: 0.25rem;
+    background-color: $tilebg4;
+    color: $greydesc;
+    font-size: 0.8rem;
+}
+
+.search-status {
+    margin: 0;
+    padding: 0.6rem 1.25rem;
+    color: $greydesc;
+    font-size: 0.9rem;
+
+    &:empty {
+        display: none;
+    }
+}
+
+.search-results {
+    margin: 0;
+    padding: 0 0 0.5rem;
+    overflow-y: auto;
+    list-style: none;
+
+    a {
+        display: block;
+        padding: 0.75rem 1.25rem;
+        color: inherit;
+        text-decoration: none;
+
+        &:hover,
+        &:focus-visible,
+        &[aria-selected="true"] {
+            background-color: $tilebg4;
+            outline: none;
+        }
+    }
+
+    .search-result-title {
+        color: $tiletext;
+        font-weight: 600;
+    }
+
+    .search-result-url {
+        color: $mudatagreen;
+        font-size: 0.8rem;
+    }
+
+    .search-result-kind {
+        padding: 0.05rem 0.4rem;
+        border-radius: 0.25rem;
+        background-color: rgba($scviyellow, 0.25);
+        color: $tiletext2;
+        font-size: 0.75rem;
+        white-space: nowrap;
+    }
+
+    .search-result-entity .search-result-title::after {
+        content: " ↗";
+        color: $greydesc;
+        font-weight: 400;
+    }
+
+    .search-result-excerpt {
+        display: block;
+        margin-top: 0.15rem;
+        color: $greydesc;
+        font-size: 0.9rem;
+        line-height: 1.35rem;
+
+        mark {
+            padding: 0;
+            background-color: rgba($scviyellow, 0.35);
+            color: inherit;
+        }
+    }
 }
