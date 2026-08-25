@@ -1633,6 +1633,13 @@ body {
 
     // Search and filters
 
+    .people-section-text {
+        max-width: 52rem;
+        margin: 0;
+        font-size: 1rem;
+        color: $tiletext2;
+    }
+
     .people-toolbar {
         display: flex;
         flex-wrap: wrap;
@@ -3237,14 +3244,20 @@ body {
     }
 }
 
+// A roster, not a sentence: set apart from the prose it follows so the names do not read as
+// part of it
 .role-members {
-    font-size: 0.95rem;
-    line-height: 1.9;
-    color: $tiletext2;
+    margin: 1.25rem 0;
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+    line-height: 1.95;
+    color: $greydesc;
+    background-color: $tilebg4;
+    border-radius: 0.5rem;
 
     .role-members-label {
-        margin-right: 0.4rem;
-        font-size: 0.75rem;
+        margin-right: 0.5rem;
+        font-size: 0.72rem;
         font-weight: 700;
         letter-spacing: 0.06em;
         text-transform: uppercase;
@@ -3252,16 +3265,18 @@ body {
     }
 
     .role-members-sep {
-        margin: 0 0.15rem;
-        color: $overline;
+        margin: 0 0.2rem;
+        color: $tilebg2;
     }
 }
 
 #page-content p.role-members > a {
     white-space: nowrap;
+    color: $tiletext2;
     border-bottom-color: transparent;
 
     &:hover {
+        color: black;
         border-bottom-color: $linkunderline;
     }
 }

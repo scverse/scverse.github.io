@@ -2,6 +2,7 @@
 title = "People"
 description = "The core team, steering council, committees and contributors behind scverse."
 lead = "The people who build and govern scverse, in <a href='/about/roles'>a handful of different roles</a>."
+team_lead = "The following people hold an official role within scverse."
 
 # ---------- roles, in the order they sort into the directory
 
