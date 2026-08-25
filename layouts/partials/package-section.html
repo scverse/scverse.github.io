@@ -37,6 +37,11 @@
           <a href="{{ $url }}" target="_blank">Conda</a>
         {{ end }}
       {{ end }}
+      {{/* The registry lists every paper a package has; the first is the one to cite. */}}
+      {{ with $p.publications }}
+        {{ $doi := index . 0 }}
+        <a href="{{ cond (hasPrefix $doi "http") $doi (printf "https://doi.org/%s" $doi) }}" target="_blank">Paper</a>
+      {{ end }}
     </div>
   </div>
 </div>
