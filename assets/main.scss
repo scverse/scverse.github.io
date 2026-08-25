@@ -1447,6 +1447,13 @@ body {
         width: $contentwidthwide;
     }
 
+    // The extra width is for card grids. Prose keeps the normal column, or the measure sits in
+    // the middle of it with all the slack pushed to one side.
+    #page-content:has(.with-toc--prose) {
+        max-width: $maxwidth;
+        width: $contentwidth;
+    }
+
     .with-toc {
         display: grid;
         grid-template-columns: 13rem minmax(0, 1fr);
@@ -3429,7 +3436,7 @@ body {
     > ul,
     > ol,
     > blockquote {
-        max-width: 46rem;
+        max-width: 54rem;
     }
 
     // Every section opens with a lead sentence; give it the weight to act as one
@@ -3461,7 +3468,7 @@ body {
         display: flex;
         flex-direction: column;
         gap: 0.35rem;
-        max-width: 52rem;
+        max-width: 54rem;
         margin: 1.75rem 0 2.5rem;
         padding: 0;
         list-style: none;
