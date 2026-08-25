@@ -3449,36 +3449,54 @@ body {
         margin-bottom: 1.15rem;
     }
 
-    // Every section opens with a lead sentence; give it the weight to act as one
-    h2 + p {
-        font-size: 1.2rem;
-        line-height: 1.6;
-        color: $tiletext;
+    // One size for all prose. Hierarchy is the headings' job; varying paragraph sizes within a
+    // section reads as inconsistency rather than emphasis.
+
+    // Optional elaboration, folded away so it does not interrupt the argument
+    .aside {
+        max-width: 54rem;
+        margin: 1.5rem 0;
+        background-color: $tilebg4;
+        border-radius: $card-radius;
+
+        summary {
+            padding: 0.8rem 1.1rem;
+            font-weight: 700;
+            color: $tiletext;
+            cursor: pointer;
+            list-style: none;
+
+            &::-webkit-details-marker {
+                display: none;
+            }
+            &::before {
+                content: "›";
+                display: inline-block;
+                width: 1rem;
+                font-weight: 400;
+                color: $greydesc;
+                transition: transform 200ms ease-in-out;
+            }
+            &:hover {
+                color: black;
+            }
+        }
+        &[open] summary::before {
+            transform: rotate(90deg);
+        }
     }
 
-    // Definitions and other asides pulled out of the surrounding prose. A callout set smaller
-    // than the text around it recedes, which is the opposite of the job.
-    blockquote {
-        margin: 1.75rem 0;
-        padding: 1.1rem 1.35rem;
-        background-color: $tilebg4;
-        border-left: 3px solid $greydesc;
-        border-radius: 0 $card-radius $card-radius 0;
+    .aside-body {
+        padding: 0 1.1rem 1rem 2.1rem;
 
         p {
             margin: 0;
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: $tiletext;
+            color: $tiletext2;
         }
     }
 
     @media (max-width: 50rem) {
         font-size: 1rem;
-
-        h2 + p {
-            font-size: 1.1rem;
-        }
     }
 
     // Five principles with uneven text: any multi-column grid strands one card and leaves the
@@ -3565,7 +3583,6 @@ body {
         p {
             margin: 0;
             max-width: none;
-            font-size: 1rem;
             line-height: 1.6;
             color: $tiletext2;
         }

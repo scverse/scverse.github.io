@@ -90,8 +90,10 @@ Scverse is a consortium of tools with users and developers across the world. To 
 
 Scverse provides high quality infrastructure for analysis of single cell omics data. These [core tools](/packages/) are well documented, tested, and provide broad functionality. They work with standardized data structures which use common Python numeric types and have interchange-friendly on-disk formats.
 
-> We define *core* tools as those which facilitate sharing data through common formats, or provide foundational support for single cell datatypes (e.g. modality-specific IO, toolkits) and analyses.
-> These tools are placed under [shared maintenance](/about/roles/) and development in the [scverse GitHub organization](https://github.com/scverse).
+{{< aside "What counts as a core tool?" >}}
+Those which facilitate sharing data through common formats, or provide foundational support for single cell datatypes (e.g. modality-specific IO, toolkits) and analyses.
+They are placed under [shared maintenance](/about/roles/) and development in the [scverse GitHub organization](https://github.com/scverse).
+{{< /aside >}}
 
 Scverse strives for synergy and interoperability with the ecosystem of packages built around these core tools, to ultimately give users a cutting-edge and varied selection of analysis methods.
 
