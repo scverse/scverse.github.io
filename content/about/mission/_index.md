@@ -82,16 +82,16 @@ We as scverse® want to make analysis tools for omics data in the life sciences 
 ## Organization and vision
 
 The growing adoption of Python for single-cell omics data analysis has been catalyzed by [Scanpy](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1382-0) and [AnnData](https://anndata.scverse.org/). 
-Around this infrastructure an ecosystem of packages has been created by various developers and institutions — extending single-cell analysis to different modalities and addressing challenges at the cutting-edge of single-cell research. We believe that progress in this field can't be siloed to a few groups. To further nurture the growth of this ecosystem, we've formed a new organization -- scverse.
+Around this infrastructure an ecosystem of packages has been created by various developers and institutions — extending single-cell analysis to different modalities and addressing challenges at the cutting-edge of single-cell research. We believe that progress in this field can't be siloed to a few groups. To further nurture the growth of this ecosystem, we've formed a new organization — scverse.
 
 Scverse is a consortium of tools with users and developers across the world. To sustain the utility and growth of the ecosystem, it’s essential that the core analytic tools are robust and well-maintained. This entails consistent support and improvement of tools beyond what's possible in the conventional single-lab academic setting.
 
-Scverse provides high quality infrastructure for analysis of single cell omics data. These [*core* tools](/packages/) are well documented, tested, and provide broad functionality. They work with standardized data structures which use common Python numeric types and have interchange-friendly on-disk formats.
+Scverse provides high quality infrastructure for analysis of single cell omics data. These [core tools](/packages/) are well documented, tested, and provide broad functionality. They work with standardized data structures which use common Python numeric types and have interchange-friendly on-disk formats.
 
 > We define *core* tools as those which facilitate sharing data through common formats, or provide foundational support for single cell datatypes (e.g. modality-specific IO, toolkits) and analyses.
 > These tools are placed under [shared maintenance](/about/roles/) and development in the [scverse GitHub organization](https://github.com/scverse).
 
-Scverse *core* tools are expected to interface with and be supplemented by other tools in the ecosystem. Scverse strives for synergy and interoperability with the ecosystem of packages built around these *core* tools, to ultimately provide users with a cutting-edge and varied selection of analysis methods.
+Scverse strives for synergy and interoperability with the ecosystem of packages built around these core tools, to ultimately give users a cutting-edge and varied selection of analysis methods.
 
 ## User engagement
 
@@ -101,10 +101,10 @@ We are community-driven and committed to keeping the scverse community open. We 
 
 ## Developer engagement
 
-Tools within scverse are deliberately not unified under a single package, and instead form a consortium of *core* analytic tools with shared maintenance responsibilities. 
-Development of these packages is not restricted – contributions are welcomed and publicly acknowledged.
+Tools within scverse are deliberately not unified under a single package, and instead form a consortium of core analytic tools with shared maintenance responsibilities. 
+Development of these packages is not restricted — contributions are welcomed and publicly acknowledged.
 However, scverse aims to support the external development of new approaches to analyze and work with single cell data.
-We encourage the creation of new methods and tools on top of the *core* packages and data-structures.
+We encourage the creation of new methods and tools on top of the core packages and data-structures.
 
 We support the development of these ecosystem packages by:
 
