@@ -3431,6 +3431,12 @@ body {
 // Specific to /about — long-form prose pages
 
 #about-content {
+    // Without this the body falls back to the browser default and the section reads as four
+    // descending sizes: lead, body, callout, rows
+    font-size: 1.05rem;
+    line-height: 1.75;
+    text-wrap: pretty;
+
     // The column is sized for card grids; prose needs a readable measure inside it
     > p,
     > ul,
@@ -3439,26 +3445,39 @@ body {
         max-width: 54rem;
     }
 
+    > p {
+        margin-bottom: 1.15rem;
+    }
+
     // Every section opens with a lead sentence; give it the weight to act as one
     h2 + p {
-        font-size: 1.15rem;
-        line-height: 1.65;
+        font-size: 1.2rem;
+        line-height: 1.6;
         color: $tiletext;
     }
 
-    // Definitions and other asides pulled out of the surrounding prose
+    // Definitions and other asides pulled out of the surrounding prose. A callout set smaller
+    // than the text around it recedes, which is the opposite of the job.
     blockquote {
-        margin: 1.5rem 0;
-        padding: 1rem 1.25rem;
+        margin: 1.75rem 0;
+        padding: 1.1rem 1.35rem;
         background-color: $tilebg4;
-        border-left: 3px solid $tilebg2;
+        border-left: 3px solid $greydesc;
         border-radius: 0 $card-radius $card-radius 0;
 
         p {
             margin: 0;
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             line-height: 1.7;
-            color: $tiletext2;
+            color: $tiletext;
+        }
+    }
+
+    @media (max-width: 50rem) {
+        font-size: 1rem;
+
+        h2 + p {
+            font-size: 1.1rem;
         }
     }
 
@@ -3498,7 +3517,7 @@ body {
         p {
             margin: 0;
             max-width: none;
-            font-size: 0.95rem;
+            font-size: 1rem;
             line-height: 1.6;
             color: $tiletext2;
         }
