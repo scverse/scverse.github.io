@@ -1,0 +1,9 @@
+{{/* Article rather than div so the card titles stay out of the page's table of contents. */}}
+<div class="goal-grid">
+  {{ range .Page.Params.goals }}
+    <article class="goal-card">
+      <h3>{{ .name }}</h3>
+      <p>{{ .text }}</p>
+    </article>
+  {{ end }}
+</div>

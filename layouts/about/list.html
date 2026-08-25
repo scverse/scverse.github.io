@@ -1,6 +1,13 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  <article class="post">
-    {{ .Content }}
-  </article>
+  <div class="with-toc">
+    {{ partial "toc.html" . }}
+    <div class="with-toc-body">
+      <h1>{{ .Title }}</h1>
+      <article class="post">
+        <div id="about-content">
+          {{ .Content }}
+        </div>
+      </article>
+    </div>
+  </div>
 {{ end }}

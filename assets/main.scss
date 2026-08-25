@@ -3420,3 +3420,54 @@ body {
         }
     }
 }
+
+// Specific to /about — long-form prose pages
+
+#about-content {
+    // The column is sized for card grids; prose needs a readable measure inside it
+    > p,
+    > ul,
+    > ol,
+    > blockquote {
+        max-width: 46rem;
+    }
+
+    .goal-grid {
+        display: grid;
+        // Three across, so five principles wrap 3 + 2 rather than stranding one on its own row
+        grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+        // Cards size to their text; stretching leaves the short ones mostly empty
+        align-items: start;
+        gap: 1rem;
+        margin: 1.5rem 0 2rem;
+    }
+
+    .goal-card {
+        padding: 1.25rem 1.35rem;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: $card-radius;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            border-color: $tilebg2;
+            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+
+        // Element selector included to beat the generic `#page-content .post h3` margins
+        h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.05rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+
+        p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: $tiletext2;
+        }
+    }
+}
