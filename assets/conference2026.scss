@@ -304,6 +304,85 @@ $conf-muted: $greydesc; // #777
         border-top: 4px solid $conf-accent;
     }
 
+    // Provisional programme / agenda
+    .agenda {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin: 1.5rem 0 2rem;
+    }
+
+    .agenda-day {
+        background: #fff;
+        border: 1px solid $overline;
+        border-radius: 12px;
+        overflow: hidden;
+
+        .agenda-date {
+            margin: 0;
+            padding: 0.85rem 1.1rem;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            background: $conf-accent;
+        }
+
+        .agenda-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .agenda-row {
+            display: flex;
+            gap: 0.85rem;
+            padding: 0.6rem 1.1rem;
+            border-top: 1px solid $overline;
+            font-size: 0.92rem;
+            line-height: 1.4;
+
+            &.is-keynote {
+                background: rgba(64, 169, 255, 0.08);
+
+                .agenda-session {
+                    font-weight: 700;
+                }
+            }
+
+            &.is-break .agenda-session,
+            &.is-meal .agenda-session {
+                color: $conf-muted;
+            }
+
+            &.is-poster .agenda-session,
+            &.is-social .agenda-session,
+            &.is-workshop .agenda-session,
+            &.is-panel .agenda-session {
+                font-weight: 600;
+            }
+        }
+
+        .agenda-time {
+            flex: 0 0 3rem;
+            color: $conf-muted;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .agenda-session {
+            color: $conf-ink;
+
+            a {
+                color: $conf-accent-dark;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
     // Speakers
     .speaker-grid {
         display: grid;
