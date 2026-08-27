@@ -9,7 +9,7 @@
               <div class="card-body">
                 <a href="{{ $item.link }}" class="stretched-link" target="_blank"></a>
                 {{/* Icon class travels with the entry, so a new channel is a content change */}}
-                <h5 class="card-title{{ with $item.icon }} {{ . }}{{ end }}">
+                <h5 class="card-title{{ with $item.icon }}{{ . }}{{ end }}">
                   {{ with $item.icon }}&nbsp;{{ end }}{{ $item.title }}
                 </h5>
                 <p class="card-text">
