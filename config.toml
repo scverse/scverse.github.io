@@ -1,5 +1,5 @@
 baseURL = "https://scverse.org/"
-languageCode = "en-us"
+locale = "en-us"
 title = "scverse"
 description = "Foundational tools for omics data in the life sciences"
 
@@ -11,6 +11,10 @@ enableRobotsTXT = true
 [params]
 images = ["img/scverse-social-card.png"]
 description = "Foundational tools for omics data in the life sciences"
+
+# No content uses tags or categories, so turn off Hugo's built-in taxonomies:
+# they only generated empty /tags/ and /categories/ pages and a missing-template warning.
+[taxonomies]
 
 [outputs]
 home = ["html", "rss", "entities"]

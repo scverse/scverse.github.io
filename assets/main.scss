@@ -2967,7 +2967,9 @@ body {
 .command-icon {
     width: 32px;
     height: 32px;
+    appearance: none;
     background-color: #ccc;
+    border: none;
     border-radius: 50%;
     display: flex;
     justify-content: center;
