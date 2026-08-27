@@ -142,6 +142,14 @@ team_lead = "The following people hold an official role within scverse."
 	works_on = ["grants", "workshops"]
 
 [[people]]
+	name = "Ilia Kats"
+	url = "https://github.com/ilia-kats"
+	email = "ilia.kats@scverse.org"
+	affiliation = "German Cancer Research Center (DKFZ)"
+	roles = ["core"]
+	works_on = ["mudata", "muon"]
+
+[[people]]
 	name = "Mikaela Koutrouli"
 	url = "https://github.com/mikelkou"
 	email = "mikaela.koutrouli@scverse.org"
@@ -228,13 +236,6 @@ team_lead = "The following people hold an official role within scverse."
 	affiliation = "Westlake University"
 	roles = ["core"]
 	works_on = ["snapatac2"]
-
-[[people]]
-	name = "Ilia Kats"
-	url = "https://github.com/ilia-kats"
-	affiliation = "German Cancer Research Center (DKFZ)"
-	roles = ["helping-hands"]
-	works_on = ["mudata", "muon"]
 
 [[people]]
 	name = "Malte Kuehl"
