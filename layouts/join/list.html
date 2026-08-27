@@ -8,9 +8,12 @@
             <div class="card border-0 bg-light mb-4" id="{{ $item.id }}">
               <div class="card-body">
                 <a href="{{ $item.link }}" class="stretched-link" target="_blank"></a>
-                {{/* Icon class travels with the entry, so a new channel is a content change */}}
-                <h5 class="card-title{{ with $item.icon }}{{ . }}{{ end }}">
-                  {{ with $item.icon }}&nbsp;{{ end }}{{ $item.title }}
+                {{/* Icon class travels with the entry, so a new channel is a content change.
+                  It sits on its own span rather than on the heading: prettier collapses the space
+                  a combined `class="card-title …"` would need.
+                */}}
+                <h5 class="card-title">
+                  {{ with $item.icon }}<span class="{{ . }}"></span>&nbsp;{{ end }}{{ $item.title }}
                 </h5>
                 <p class="card-text">
                   {{ $item.text }}
