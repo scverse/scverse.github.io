@@ -6,18 +6,11 @@
       <article class="post">
         {{ $sections := index .Params.sections 0 }}
         <div class="post-content" id="packages-content">
-          {{ $registryBase := "https://scverse.org/ecosystem-packages/" }}
-          {{ $data := resources.GetRemote (printf "%spackages.json" $registryBase) }}
-          {{ $pkgs := transform.Unmarshal $data.Content }}
+          {{ $registry := partialCached "registry.html" "registry" }}
+          {{ $registryBase := $registry.base }}
+          {{ $pkgs := $registry.pkgs }}
 
-          {{/* ponytail: registry has no order key, so core packages are alphabetical; re-curate once one exists. */}}
-          {{ $core := slice }}
-          {{ range where $pkgs "category" "in" (slice "core-datastructure" "core-framework") }}
-            {{ $core = $core | append (merge . (dict "sortkey" (lower .name))) }}
-          {{ end }}
-          {{ $core = sort $core "sortkey" }}
-
-          {{ with $core }}
+          {{ with $registry.core }}
             <h2 id="core-packages">Packages maintained by core team</h2>
             {{ $sections.core_packages | markdownify }}
             {{ with where . "category" "core-datastructure" }}
@@ -54,8 +47,7 @@
             {{ range $pkgs }}
               {{ $tags := .tags | default slice }}
               {{ $category := .primary_category | default "" }}
-              {{/* core-infrastructure is the scverse repos themselves, not packages, so it does not count here. */}}
-              {{ $core := in (slice "core-framework" "core-datastructure") (.category | default "") }}
+              {{ $isCore := in $registry.coreCategories (.category | default "") }}
               {{ if and $category (not (in $categories $category)) }}
                 {{ $categories = $categories | append $category }}
               {{ end }}
@@ -63,8 +55,7 @@
               {{ $desc := trim (.description | markdownify | plainify | htmlUnescape | replaceRE `\s+` " ") " " }}
               {{ $search := lower (printf "%s %s %s %s %s" .name $desc (delimit $tags " ") $category .language) }}
               {{ $items = $items | append (merge . (dict
-                "sortkey" (printf "%s %s" (cond $core "0" "1") (lower .name))
-                "core" $core
+                "core" $isCore
                 "normtags" $tags
                 "category" $category
                 "language" .language
@@ -73,7 +64,6 @@
                 ))
               }}
             {{ end }}
-            {{ $items = sort $items "sortkey" }}
 
             {{/* Chip row: every category in the schema that is actually in use, biggest first. */}}
             {{ $categoryCounts := slice }}
