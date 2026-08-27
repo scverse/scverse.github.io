@@ -7,24 +7,54 @@ weight = 3
 
 ## Program at a glance
 
-The detailed program will be published closer to the event. The conference runs over three days at DTU, Copenhagen.
+The conference runs over three days at DTU, Copenhagen.
+This is a provisional programme: session times are indicative and may change, and contributed and sponsor talks will be listed here once the programme is finalised.
 
-<div class="schedule-grid">
-  <div class="schedule-day">
-    <h3>Day 1 — Mon 12 Oct</h3>
-    <p>Welcome, keynote, contributed talks, and an evening poster session and reception.</p>
+<div class="agenda">
+  <div class="agenda-day">
+    <h3 class="agenda-date">Day 1 · Mon 12 Oct</h3>
+    <ul class="agenda-list">
+      <li class="agenda-row is-break"><span class="agenda-time">08:00</span><span class="agenda-session">Breakfast</span></li>
+      <li class="agenda-row is-talk"><span class="agenda-time">09:00</span><span class="agenda-session">Welcome &amp; State of scverse</span></li>
+      <li class="agenda-row is-keynote"><span class="agenda-time">09:45</span><span class="agenda-session">Keynote — <a href="/conference2026/speakers/">Phil Ewels</a></span></li>
+      <li class="agenda-row is-break"><span class="agenda-time">10:30</span><span class="agenda-session">Coffee</span></li>
+      <li class="agenda-row is-talk"><span class="agenda-time">11:00</span><span class="agenda-session">Contributed &amp; sponsor talks</span></li>
+      <li class="agenda-row is-meal"><span class="agenda-time">12:00</span><span class="agenda-session">Lunch</span></li>
+      <li class="agenda-row is-keynote"><span class="agenda-time">13:30</span><span class="agenda-session">Keynote — <a href="/conference2026/speakers/">Tingying Peng</a></span></li>
+      <li class="agenda-row is-talk"><span class="agenda-time">14:15</span><span class="agenda-session">Contributed talks</span></li>
+      <li class="agenda-row is-break"><span class="agenda-time">15:00</span><span class="agenda-session">Coffee</span></li>
+      <li class="agenda-row is-panel"><span class="agenda-time">15:30</span><span class="agenda-session">Panel discussion</span></li>
+      <li class="agenda-row is-poster"><span class="agenda-time">16:30</span><span class="agenda-session">Poster session 1</span></li>
+      <li class="agenda-row is-social"><span class="agenda-time">18:00</span><span class="agenda-session">Reception</span></li>
+    </ul>
   </div>
-  <div class="schedule-day">
-    <h3>Day 2 — Tue 13 Oct</h3>
-    <p>Keynotes, contributed talks, lightning talks, and community discussions.</p>
+  <div class="agenda-day">
+    <h3 class="agenda-date">Day 2 · Tue 13 Oct</h3>
+    <ul class="agenda-list">
+      <li class="agenda-row is-break"><span class="agenda-time">08:00</span><span class="agenda-session">Breakfast</span></li>
+      <li class="agenda-row is-talk"><span class="agenda-time">09:00</span><span class="agenda-session">Opening &amp; housekeeping</span></li>
+      <li class="agenda-row is-keynote"><span class="agenda-time">09:15</span><span class="agenda-session">Keynote — <a href="/conference2026/speakers/">Muzlifah Haniffa</a></span></li>
+      <li class="agenda-row is-talk"><span class="agenda-time">10:00</span><span class="agenda-session">Contributed &amp; sponsor talks</span></li>
+      <li class="agenda-row is-poster"><span class="agenda-time">10:45</span><span class="agenda-session">Poster session 2</span></li>
+      <li class="agenda-row is-meal"><span class="agenda-time">12:00</span><span class="agenda-session">Lunch</span></li>
+      <li class="agenda-row is-keynote"><span class="agenda-time">13:30</span><span class="agenda-session">Keynote — <a href="/conference2026/speakers/">Erwin Schoof</a></span></li>
+      <li class="agenda-row is-talk"><span class="agenda-time">14:15</span><span class="agenda-session">Contributed &amp; sponsor talks</span></li>
+      <li class="agenda-row is-break"><span class="agenda-time">15:15</span><span class="agenda-session">Coffee</span></li>
+      <li class="agenda-row is-workshop"><span class="agenda-time">15:45</span><span class="agenda-session">Workshop</span></li>
+      <li class="agenda-row is-talk"><span class="agenda-time">16:30</span><span class="agenda-session">Closing remarks</span></li>
+    </ul>
   </div>
-  <div class="schedule-day">
-    <h3>Day 3 — Wed 14 Oct</h3>
-    <p>Hands-on workshops and tutorials, satellite sessions, and closing remarks.</p>
+  <div class="agenda-day">
+    <h3 class="agenda-date">Day 3 · Wed 14 Oct</h3>
+    <ul class="agenda-list">
+      <li class="agenda-row is-break"><span class="agenda-time">08:30</span><span class="agenda-session">Arrival &amp; registration</span></li>
+      <li class="agenda-row is-workshop"><span class="agenda-time">09:00</span><span class="agenda-session">Workshops &amp; tutorials</span></li>
+      <li class="agenda-row is-meal"><span class="agenda-time">12:00</span><span class="agenda-session">Lunch</span></li>
+      <li class="agenda-row is-workshop"><span class="agenda-time">13:00</span><span class="agenda-session">Workshops &amp; tutorials</span></li>
+      <li class="agenda-row is-social"><span class="agenda-time">14:00</span><span class="agenda-session">Networking &amp; close</span></li>
+    </ul>
   </div>
 </div>
-
-<div class="placeholder-note">Full schedule to be announced.</div>
 
 ## Keynote talks
 
