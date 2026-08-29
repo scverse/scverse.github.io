@@ -1459,6 +1459,12 @@ body {
         grid-template-columns: 13rem minmax(0, 1fr);
         gap: 3.5rem;
         align-items: start;
+        --prose-measure: 54rem;
+    }
+
+    .with-toc:has(.toc[hidden]) {
+        grid-template-columns: minmax(0, 1fr);
+        --prose-measure: none;
     }
 
     .toc {
@@ -3444,7 +3450,7 @@ body {
     > ul,
     > ol,
     > blockquote {
-        max-width: 54rem;
+        max-width: var(--prose-measure, none);
     }
 
     > p {
@@ -3456,7 +3462,7 @@ body {
 
     // Optional elaboration, folded away so it does not interrupt the argument
     .aside {
-        max-width: 54rem;
+        max-width: var(--prose-measure, none);
         margin: 1.5rem 0;
         background-color: $tilebg4;
         border-radius: $card-radius;
@@ -3507,7 +3513,7 @@ body {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
         gap: 1rem;
-        max-width: 54rem;
+        max-width: var(--prose-measure, none);
         margin: 1.75rem 0 2rem;
     }
 
@@ -3555,7 +3561,7 @@ body {
         display: flex;
         flex-direction: column;
         gap: 0.35rem;
-        max-width: 54rem;
+        max-width: var(--prose-measure, none);
         margin: 1.75rem 0 2.5rem;
         padding: 0;
         list-style: none;
