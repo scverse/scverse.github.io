@@ -6,6 +6,8 @@ author = "Muskan Hashim, Philipp Angerer"
 draft = false
 +++
 
+<img src="/img/blog/scanpy_holoviews_overview.webp" style="max-width: 100%;" alt="One sc.pl.umap call producing one HoloViews object, rendered through the Bokeh, Matplotlib and Plotly backends" />
+
 Scanpy's plotting API has served the single-cell community well for years.
 But datasets have outgrown static images.
 
