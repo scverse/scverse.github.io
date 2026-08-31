@@ -9,7 +9,7 @@ draft = false
 Querying genomic reference databases is something every bioinformatician does constantly, and doing it well has historically required juggling a patchwork of APIs, file formats, and web interfaces. 
 [gget](https://github.com/scverse/gget) was built to fix that, and is now officially part of the scverse ecosystem.
 
-<img src="/img/blog/gget_x_scverse_overview.webp" style="max-width: 100%;" alt="gget x scverse Overview." />
+<img src="/img/blog/gget_x_scverse_overview.svg" style="max-width: 100%;" alt="gget x scverse Overview." />
 
 ## What is gget?
 
