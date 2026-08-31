@@ -3,7 +3,7 @@ title = "A new plotting backend for Scanpy: HoloViews"
 date = 2026-08-27T00:00:05+01:00
 description = "An opt-in HoloViews plotting backend for Scanpy, in preview."
 author = "Muskan Hashim, Philipp Angerer"
-draft = false
+draft = true
 +++
 
 <img src="/img/blog/scanpy_holoviews_overview.svg" style="max-width: 100%;" alt="One sc.pl.umap call producing one HoloViews object, rendered through the Bokeh, Matplotlib and Plotly backends" />
