@@ -83,11 +83,17 @@ The whole plot type collapses to an aggregation feeding a data-first element, wi
 
 ## Features we're excited about
 
-- **Full control through `.opts()`.** You're no longer limited to the parameters we chose to expose; the full Bokeh, Matplotlib, and Plotly option sets are available, with styling kept out of scanpy's internals. You declare what to plot through `A` and set appearance in `.opts()`, so the two are easy to tell apart.
-- **Interactivity for free.** With Bokeh, mouse over a cell in a UMAP to read its cluster, gene expression, or any `obs` field with no re-running.
-- **Scales to millions of cells.** [Datashader](https://datashader.org/) rasterizes the points into a faithful image and re-renders as you zoom, and turning it on can be as simple as `datashade=True`.
-- **Composable.** Overlay with `*`, lay out side by side with `+`, and add a marginal histogram with `.hist()`, so `scatter * centroids + expression_violin` replaces a page of axes management.
-- **Existing plots are covered.** There's an equivalent for most of the matplotlib functions you rely on.
+- **Full control through `.opts()`.**
+  You're no longer limited to the parameters we chose to expose; the full Bokeh, Matplotlib, and Plotly option sets are available, with styling kept out of scanpy's internals.
+  You declare what to plot through `A` and set appearance in `.opts()`, so the two are easy to tell apart.
+- **Interactivity for free.**
+  With Bokeh, mouse over a cell in a UMAP to read its cluster, gene expression, or any `obs` field with no re-running.
+- **Scales to millions of cells.**
+  [Datashader](https://datashader.org/) rasterizes the points into a faithful image and re-renders as you zoom, and turning it on can be as simple as `datashade=True`.
+- **Composable.**
+  Overlay with `*`, lay out side by side with `+`, and add a marginal histogram with `.hist()`, so `scatter * centroids + expression_violin` replaces a page of axes management.
+- **Existing plots are covered.**
+  There's an equivalent for most of the matplotlib functions you rely on.
 
 ## Linked brushing
 
