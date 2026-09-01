@@ -3299,8 +3299,22 @@ body {
     min-height: 11rem;
 }
 
+// The lead carries a kicker the others do not, so it needs a little more room
 .blog-card--lead .blog-card-foot {
-    min-height: 8.5rem;
+    min-height: 10.25rem;
+}
+
+// One column means much narrower cards, so the same words take more lines and
+// need more ground under the picture than they do on a wide screen
+@media (max-width: 44rem) {
+    .blog-card-foot,
+    .blog-card--lead .blog-card-foot {
+        min-height: 12.5rem;
+    }
+
+    .blog-card--lead .blog-card-title {
+        font-size: 1.25rem;
+    }
 }
 
 .blog-card-text {
@@ -3345,10 +3359,12 @@ body {
     }
 
     // No picture to give the card height, so the text sits in the flow and the
-    // card grows to fit it rather than clipping a long title
+    // card grows to fit it rather than clipping a long title. The top padding
+    // keeps the longest titles from sliding under the mark.
     .blog-card-text {
         position: relative;
         margin-top: auto;
+        padding-top: 2.6rem;
     }
 }
 
