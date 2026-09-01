@@ -39,20 +39,19 @@
             and dense multi-panel figures become illegible strips, so those posts get
             a type card instead, which at least says something. */}}
           {{ $usable := and (ne $src "") (ge $ar 1.2) (le $ar 2.4) }}
-          {{ $id := anchorize $p.Title }}
 
           <a
+            id="{{ anchorize $p.Title }}"
             class="blog-card
-              {{ if $usable }}blog-card--img{{ if lt $ar 1.3 }} blog-card--contain{{ end }}
-              {{ else }}blog-card--type{{ end }}
-              {{ if eq $i 0 }} blog-card--lead{{ end }}"
+              {{- if $usable }} blog-card--img{{ else }} blog-card--type{{ end }}
+              {{- if and $usable (lt $ar 1.3) }} blog-card--contain{{ end }}
+              {{- if eq $i 0 }} blog-card--lead{{ end }}"
+            href="{{ $p.RelPermalink }}"
             {{ if $usable }}
               style="--img-ar: {{ printf "%.3f" $ar }}"
             {{ else }}
               data-hue="{{ mod $i 8 }}"
             {{ end }}
-            id="{{ $id }}"
-            href="{{ $p.RelPermalink }}"
           >
             {{ if $usable }}
               <div class="blog-card-media">
