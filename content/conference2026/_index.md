@@ -33,7 +33,7 @@ event = "Travel-grant award notifications"
 date = "September 7, 2026"
 event = "Abstract submission deadline"
 [[keyDates]]
-date = "September 12, 2026"
+date = "September 14, 2026"
 event = "Early-bird registration ends"
 [[keyDates]]
 date = "October 12 – 14, 2026"
