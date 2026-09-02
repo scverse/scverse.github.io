@@ -27,7 +27,7 @@ event = "Registration & call for proposals open"
 date = "August 20, 2026"
 event = "Travel-grant application deadline (closed)"
 [[keyDates]]
-date = "September 1, 2026"
+date = "September 3, 2026"
 event = "Travel-grant award notifications"
 [[keyDates]]
 date = "September 7, 2026"
