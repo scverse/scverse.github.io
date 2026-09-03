@@ -97,7 +97,7 @@ team_lead = "The following people hold an official role within scverse."
 	name = "Can Ergen-Behr"
 	url = "https://github.com/canergen"
 	email = "can.ergen@scverse.org"
-	affiliation = "University of California, Berkeley"
+	affiliation = "Helmholtz Munich & University of Würzburg"
 	roles = ["core"]
 	works_on = ["scvi-tools"]
 
@@ -113,7 +113,7 @@ team_lead = "The following people hold an official role within scverse."
 	name = "Ilan Gold"
 	url = "https://github.com/ilan-gold"
 	email = "ilan.gold@scverse.org"
-	affiliation = "Helmholtz Munich"
+	affiliation = "Memorial Sloan Kettering Cancer Center"
 	roles = ["core"]
 	works_on = ["anndata", "scanpy"]
 
@@ -185,7 +185,7 @@ team_lead = "The following people hold an official role within scverse."
 	name = "Giovanni Palla"
 	url = "https://github.com/giovp"
 	email = "giovanni.palla@scverse.org"
-	affiliation = "CZI"
+	affiliation = "Lila Sciences"
 	roles = ["core"]
 	works_on = ["spatialdata", "squidpy"]
 
