@@ -304,6 +304,361 @@ $conf-muted: $greydesc; // #777
         border-top: 4px solid $conf-accent;
     }
 
+    // Provisional programme / agenda (colour-coded board)
+    .agenda-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem 1.1rem;
+        margin: 1.25rem 0 0.5rem;
+        font-size: 0.8rem;
+        color: $conf-muted;
+    }
+
+    .agenda-legend-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+
+    .agenda-dot {
+        width: 0.7rem;
+        height: 0.7rem;
+        border-radius: 3px;
+        background: #cbd2da;
+
+        &.is-keynote {
+            background: #e0a020;
+        }
+        &.is-talk {
+            background: $spatialdatablue;
+        }
+        &.is-poster {
+            background: $mudatagreen;
+        }
+        &.is-panel {
+            background: $squidpyviolet;
+        }
+        &.is-workshop {
+            background: $scanpycerise;
+        }
+        &.is-social {
+            background: $anndataorange;
+        }
+    }
+
+    .agenda {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 1rem;
+        margin: 0.6rem 0 2rem;
+    }
+
+    .agenda-col {
+        min-width: 0;
+    }
+
+    .agenda-colhead {
+        padding: 0.55rem 0.2rem;
+        margin-bottom: 0.75rem;
+        border-bottom: 3px solid $conf-accent;
+        font-size: 0.85rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: $conf-ink;
+
+        .agenda-coldate {
+            display: block;
+            margin-top: 0.15rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            text-transform: none;
+            color: $conf-muted;
+        }
+    }
+
+    .agenda-col.is-day1 .agenda-colhead {
+        border-bottom-color: $anndataorange;
+    }
+    .agenda-col.is-day2 .agenda-colhead {
+        border-bottom-color: $spatialdatablue;
+    }
+    .agenda-col.is-day3 .agenda-colhead {
+        border-bottom-color: $mudatagreen;
+    }
+
+    .agenda-brk {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0.15rem 0;
+        padding: 0.1rem 0.2rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.03em;
+        color: #9aa1ab;
+
+        &::before,
+        &::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #e6e9ee;
+        }
+
+        span {
+            white-space: nowrap;
+        }
+    }
+
+    .agenda-block {
+        margin-bottom: 0.4rem;
+        padding: 0.4rem 0.65rem;
+        border-radius: 7px;
+        border-left: 3px solid #cbd2da;
+        background: #f4f6f8;
+
+        .agenda-time {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            color: #6a7280;
+        }
+
+        .agenda-session {
+            margin-top: 0.05rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+            line-height: 1.3;
+            color: $conf-ink;
+
+            a {
+                color: inherit;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        &.is-talk {
+            background: rgba($spatialdatablue, 0.12);
+            border-left-color: $spatialdatablue;
+        }
+        &.is-keynote {
+            background: #fff3da;
+            border-left-color: #e0a020;
+        }
+        &.is-poster {
+            background: rgba($mudatagreen, 0.14);
+            border-left-color: $mudatagreen;
+        }
+        &.is-panel {
+            background: rgba($squidpyviolet, 0.16);
+            border-left-color: $squidpyviolet;
+        }
+        &.is-workshop {
+            background: rgba($scanpycerise, 0.12);
+            border-left-color: $scanpycerise;
+        }
+        &.is-social {
+            background: rgba($anndataorange, 0.14);
+            border-left-color: $anndataorange;
+        }
+    }
+
+    // ── Venue & travel ──────────────────────────────────────────────
+    .venue-addr {
+        font-size: 1rem;
+        color: $conf-ink;
+        line-height: 1.55;
+    }
+
+    .travel-map {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        margin: 1rem 0 1.75rem;
+        border: 1px solid $overline;
+        border-radius: 12px;
+        overflow: hidden;
+
+        iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    }
+
+    .hotel-list {
+        margin: 0.75rem 0 1.5rem;
+    }
+
+    .hotel {
+        padding: 1rem 0;
+        border-top: 1px solid $overline;
+
+        &:first-child {
+            border-top: 0;
+        }
+    }
+
+    .hotel-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .hotel-name {
+        font-size: 1.02rem;
+        font-weight: 700;
+        color: $conf-ink;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid rgba($conf-accent, 0.4);
+        }
+
+        a:hover {
+            border-bottom-color: $conf-accent-dark;
+        }
+    }
+
+    .hotel-dist {
+        flex: 0 0 auto;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: $conf-accent-dark;
+    }
+
+    .hotel-addr {
+        margin: 0.15rem 0 0;
+        font-size: 0.82rem;
+        color: $conf-muted;
+    }
+
+    .hotel-note {
+        margin: 0.4rem 0 0;
+        font-size: 0.93rem;
+        line-height: 1.55;
+        color: #555;
+    }
+
+    .stay-tier {
+        margin: 1.5rem 0;
+    }
+
+    .stay-tier-head {
+        display: flex;
+        align-items: baseline;
+        gap: 0.55rem;
+        margin-bottom: 0.4rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 1px solid $overline;
+    }
+
+    .stay-price {
+        font-size: 1.05rem;
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+
+    .stay-tier.t1 .stay-price {
+        color: #2f8f5b;
+    }
+    .stay-tier.t2 .stay-price {
+        color: $conf-accent-dark;
+    }
+    .stay-tier.t3 .stay-price {
+        color: #b8801c;
+    }
+
+    .stay-tier-name {
+        font-size: 1rem;
+        font-weight: 700;
+        color: $conf-ink;
+    }
+
+    .stay-tier-sub {
+        margin: 0 0 0.6rem;
+        font-size: 0.85rem;
+        color: $conf-muted;
+    }
+
+    .stay-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .stay-chip {
+        display: inline-flex;
+        flex-direction: column;
+        padding: 0.45rem 0.8rem;
+        border: 1px solid $overline;
+        border-radius: 12px;
+        background: #fff;
+        text-decoration: none;
+        transition: all 0.15s ease;
+
+        .n {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: $conf-ink;
+        }
+
+        .a {
+            margin-top: 0.05rem;
+            font-size: 0.72rem;
+            color: $conf-muted;
+        }
+
+        &:hover {
+            border-color: $conf-accent;
+            box-shadow: 0 2px 8px rgba($conf-accent, 0.15);
+            transform: translateY(-1px);
+        }
+    }
+
+    .notes-list {
+        margin: 0.5rem 0 1.5rem;
+        padding: 0;
+        list-style: none;
+
+        li {
+            position: relative;
+            padding: 0.6rem 0 0.6rem 1.5rem;
+            border-top: 1px solid $overline;
+            font-size: 0.95rem;
+            line-height: 1.55;
+            color: #555;
+
+            &:first-child {
+                border-top: 0;
+            }
+
+            &::before {
+                content: "→";
+                position: absolute;
+                left: 0;
+                top: 0.6rem;
+                color: $conf-accent;
+                font-weight: 700;
+            }
+
+            strong {
+                color: $conf-ink;
+            }
+        }
+    }
+
     // Speakers
     .speaker-grid {
         display: grid;

@@ -1,0 +1,53 @@
+{{ $person := .person }}
+{{ $isGitHub := in ($person.url | default "") "github.com" }}
+<article
+  class="person-card"
+  data-search="{{ $person.search }}"
+  data-roles="|{{ delimit $person.roles "|" }}|"
+  data-works="|{{ delimit $person.works "|" }}|"
+>
+  <span class="person-avatar">
+    {{ partial "people/avatar.html" (dict "url" $person.url "name" $person.name "index" $person.index "size" 96) }}
+  </span>
+  <h3 class="person-name">
+    <a href="{{ $person.url }}" target="_blank" rel="noopener">{{ $person.name }}</a>
+  </h3>
+  <p class="person-roles">
+    {{ range $person.roles }}
+      <span class="person-role person-role--{{ . }}">{{ index $.labels . }}</span>
+    {{ end }}
+  </p>
+  {{ with $person.affiliation }}
+    <p class="person-affiliation">{{ . }}</p>
+  {{ end }}
+  {{ with $person.works }}
+    <p class="person-works">
+      {{ range . }}
+        {{ $icon := printf "img/icons/%s.svg" (lower .) }}
+        <span class="person-work">
+          {{ if fileExists (printf "static/%s" $icon) }}
+            <img src="/{{ $icon }}" alt="" loading="lazy" width="14" height="14" />
+          {{ end }}
+          {{ . }}
+        </span>
+      {{ end }}
+    </p>
+  {{ end }}
+  <p class="person-links">
+    <a
+      href="{{ $person.url }}"
+      target="_blank"
+      rel="noopener"
+      aria-label="{{ $person.name }} on {{ cond $isGitHub "GitHub" "the web" }}"
+    >
+      <svg aria-hidden="true" focusable="false" class="{{ if $isGitHub }}is-solid{{ end }}">
+        <use href="#{{ cond $isGitHub "p-i-github" "p-i-link" }}" />
+      </svg>
+    </a>
+    {{ with $person.email }}
+      <a href="mailto:{{ . }}" aria-label="Email {{ $person.name }}">
+        <svg aria-hidden="true" focusable="false"><use href="#p-i-mail" /></svg>
+      </a>
+    {{ end }}
+  </p>
+</article>

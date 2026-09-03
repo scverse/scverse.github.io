@@ -1,25 +1,20 @@
 <section id="packages">
   <div class="section-heading">Core packages</div>
   <div class="section-content">
-    {{ if .Params.packages }}
+    {{ $registry := partialCached "registry.html" "registry" }}
+    {{ with $registry.core }}
       <div class="row" id="packages-list">
-        {{ $packages := .Params.packages }}
-        {{ range $i, $e := $packages }}
+        {{ range $p := . }}
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 py-3">
-            <div class="card border-0 bh-light px-3" id="{{ .name }}-tile">
+            <div class="card border-0 bh-light px-3" id="{{ .name | urlize }}-tile">
               <div class="package-icon my-4">
-                {{ $exists := fileExists (printf "static/img/icons/%s.svg" .name) }}
-                {{ if .no_icon }}
-                  <img />
-                {{ else if $exists }}
-                  <img src="img/icons/{{ .name }}.svg" alt="Logo for {{ .name }}" />
-                {{ else }}
-                  {{ errorf "No icon or .no_icon for package %q" .name }}
+                {{ with .logo }}
+                  <img src="{{ printf "%s%s" $registry.base . }}" alt="Logo for {{ $p.name }}" />
                 {{ end }}
               </div>
               <div class="card-body package-text p-2">
                 <a
-                  href="{{ .url }}"
+                  href="{{ .documentation_home | default .project_home }}"
                   class="stretched-link"
                   target="_blank"
                   aria-label="Link to the {{ .name }} website"
@@ -28,7 +23,7 @@
                   {{ .name }}
                 </h5>
                 <p class="card-text package-desc">
-                  {{ .description }}
+                  {{ .blurb }}
                 </p>
               </div>
             </div>

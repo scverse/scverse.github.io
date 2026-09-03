@@ -1,0 +1,13 @@
+{{/* Names read from the people page's front matter, so the two pages cannot drift. */}}
+{{ $id := .Get 0 }}
+{{ $page := site.GetPage "/people" }}
+{{ $members := where ($page.Params.people | default slice) "roles" "intersect" (slice $id) }}
+{{ with $members }}
+  <p class="role-members">
+    <span class="role-members-label">Currently</span>
+    {{ range $i, $person := . }}
+      {{ if $i }}<span class="role-members-sep">·</span>{{ end }}
+      <a href="{{ $person.url }}" target="_blank" rel="noopener">{{ $person.name }}</a>
+    {{ end }}
+  </p>
+{{ end }}

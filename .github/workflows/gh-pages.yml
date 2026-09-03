@@ -19,11 +19,14 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: "latest"
+          hugo-version: "0.164.0" # keep in step with netlify.toml, so previews match production
           extended: true
 
       - name: Build
         run: hugo --buildFuture --minify
+
+      - name: Build search index
+        run: npx --yes pagefind@1.5.2 --site public
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4

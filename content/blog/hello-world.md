@@ -22,8 +22,8 @@ Furthermore, to bring the community together we are planning workshops and hacka
 As we grow, we are hoping to recruit more members into governance roles as well as find even more ways to support and connect our community of developers and users.
 
 There are already a few visible outcomes of our joint work including improved 
-[mudata performance](https://mudata.readthedocs.io/en/latest/changelog.html#v0-1-2) and
-[mudata documentation](https://mudata.readthedocs.io/en/latest/). Additionally, 
+[mudata performance](https://mudata.readthedocs.io/stable/changelog.html#v0-1-2) and
+[mudata documentation](https://mudata.readthedocs.io/stable/). Additionally, 
 [scvi-tools is now using MuData](https://github.com/scverse/scvi-tools/pull/1444) for the representation of multimodal data. 
 [Scanpy has gained new workshop notebooks](https://github.com/scverse/scanpy-tutorials/pull/52), and, moreover, we have started 
 [a collection of learning resources for scverse libraries](/learn/).
@@ -39,9 +39,9 @@ In our initial form, we have divided responsibilities into several [roles](/peop
 
 [Isaac Virshup](https://github.com/ivirshup), [Danila Bredikhin](https://github.com/gtca) and [Lukas Heumos](https://github.com/Zethson) form the steering committee and also belong to the core developers together with [Adam Gayoso](https://github.com/adamgayoso), [Giovanni Palla](https://github.com/giovp), [Gregor Sturm](https://github.com/grst), and [Ilia Kats](https://github.com/ilia-kats). The core developers have made significant contributions to the ecosystem and are jointly developing and maintaining the major libraries.
 
-Our management committee, consisting of [Fabian Theis](https://www.helmholtz-munich.de/icb/institute/staff/staff/ma/2494/index.html), [Oliver Stegle](https://www.embl.org/groups/stegle/), [Nir Yosef](https://yoseflab.github.io/), [Alex Wolf](https://falexwolf.me/) and [Francesca Finotello](https://computationalbiomedicinegroup.github.io/), are providing resources and academic freedom to scverse to develop our tools.
+Our management committee, consisting of [Fabian Theis](https://www.helmholtz-munich.de/en/icb/fabian-theis), [Oliver Stegle](https://www.embl.org/groups/stegle/), [Nir Yosef](https://yoseflab.github.io/), [Alex Wolf](https://falexwolf.me/) and [Francesca Finotello](https://computationalbiomedicinegroup.github.io/), are providing resources and academic freedom to scverse to develop our tools.
 
-[Aviv Regev](https://biology.mit.edu/profile/aviv-regev/), [Sarah Teichmann](https://www.sanger.ac.uk/group/teichmann-group/), [Dana Pe'er](https://www.mskcc.org/research/ski/labs/dana-pe-er) and [Bonnie Berger](https://people.csail.mit.edu/bab/) are our scientific advisory board which helps shaping the overall vision and defining the right priorities.
+[Aviv Regev](https://www.gene.com/scientists/our-scientists/aviv-regev), [Sarah Teichmann](https://www.sanger.ac.uk/group/teichmann-group/), [Dana Pe'er](https://www.mskcc.org/research/ski/labs/dana-pe-er) and [Bonnie Berger](https://people.csail.mit.edu/bab/) are our scientific advisory board which helps shaping the overall vision and defining the right priorities.
 
 ## How can I join and contribute?
 

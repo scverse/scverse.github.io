@@ -1,102 +1,169 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
+  {{ $roles := .Params.roles }}
+  {{ $labels := dict }}
+  {{ range $roles }}
+    {{ $labels = merge $labels (dict .id .short) }}
+  {{ end }}
+
+  {{/* One record per person, so nobody is duplicated: the role sections below are views over the
+    same list rather than separate rosters that can drift apart.
+  */}}
+  {{ $items := slice }}
+  {{ range $i, $person := .Params.people }}
+    {{ $works := $person.works_on | default slice }}
+    {{ $roleNames := slice }}
+    {{ range $person.roles }}
+      {{ $roleNames = $roleNames | append (index $labels .) }}
+    {{ end }}
+    {{ $search := lower (printf "%s %s %s %s"
+      $person.name ($person.affiliation | default "") (delimit $works " ") (delimit $roleNames " "))
+    }}
+    {{/* Group by the person's most senior role, keeping the file's alphabetical order within it */}}
+    {{ $rank := len $roles }}
+    {{ range $r, $role := $roles }}
+      {{ if and (in $person.roles $role.id) (lt $r $rank) }}{{ $rank = $r }}{{ end }}
+    {{ end }}
+    {{ $items = $items | append (merge $person (dict
+      "index" $i "works" $works "search" $search "sortkey" (printf "%d %04d" $rank $i)
+      ))
+    }}
+  {{ end }}
+  {{ $items = sort $items "sortkey" }}
+
+  {{/* Only the work areas we ship a logo for get a chip — the rest would crowd the row out */}}
+  {{ $packages := slice }}
+  {{ range $items }}
+    {{ range .works }}
+      {{ if and (fileExists (printf "static/img/icons/%s.svg" (lower .))) (not (in $packages .)) }}
+        {{ $packages = $packages | append . }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ $packages = sort $packages }}
+
+  {{ $contributors := slice }}
+  {{ with (try (resources.GetRemote "https://scverse-stats.s3.eu-west-1.amazonaws.com/contributors.json")).Value }}
+    {{ $contributors = (. | transform.Unmarshal).contributors | default slice }}
+  {{ end }}
+
+
   <article class="post">
     <div class="post-content" id="people-content">
-      <p>
-        {{ .Params.preface | safeHTML }}
-      </p>
-      {{ if .Params.teams }}
-        {{ range $team := .Params.teams }}
-          {{ if not $team.hide }}
-            <div class="team">
-              <h3>{{ $team.name }}</h3>
-              {{ if $team.text }}
-                <p class="team-text">
-                  {{ $team.text | safeHTML }}
-                </p>
-              {{ end }}
-              {{ if $team.members }}
-                <p></p>
-                <div class="team-list">
-                  {{ range $person := $team.members }}
-                    <div class="team-member">
-                      <a
-                        href="{{ .url }}"
-                        target="_blank"
-                        class="person-chip {{ if .showDetails }}member-detail{{ end }}"
-                      >
-                        <span class="member-name">{{ .name }}</span>
-                      </a>
-                      {{ if .showDetails }}
-                        <div class="additional-info">
-                          <p>{{ .role }}</p>
-                          <p>
-                            <a href="mailto:{{ .email }}" target="_blank">{{ .email }}</a>
-                          </p>
-                          <p>{{ .affiliation }}</p>
-                        </div>
-                      {{ end }}
-                    </div>
-                  {{ end }}
-                </div>
-              {{ end }}
-            </div>
-          {{ end }}
-        {{ end }}
-      {{ end }}
-      {{ with .Params.contributors }}
-        <div class="team">
-          <h3>{{ .name }}</h3>
-          {{ if .text }}
-            <p class="team-text">
-              {{ .text | safeHTML }}
-            </p>
-          {{ end }}
-          <p></p>
-          {{ $url := "https://scverse-stats.s3.eu-west-1.amazonaws.com/contributors.json" }}
-          {{ $resource := resources.GetRemote $url }}
-          {{ with $resource }}
-            {{ $data := . | transform.Unmarshal }}
-            {{ if $data.contributors }}
-              <div class="contributor-list pt-3">
-                {{ range $index, $person := first 49 $data.contributors }}
-                  <a href="{{ .html_url }}" target="_blank">
-                    <img
-                      src="{{ .avatar_url }}"
-                      class="border rounded-circle me-1 mb-1"
-                      height="100"
-                      width="100"
-                      title="{{ .name }}"
-                      data-bs-toggle="tooltip"
-                      alt="{{ .name }}"
-                    />
-                  </a>
-                {{ end }}
-              </div>
-              <div class="mt-4">
-                <p><strong>Other contributors:</strong></p>
-                <p>
-                  {{ range $index, $person := after 49 $data.contributors }}
-                    <a href="{{ .html_url }}" target="_blank">{{ .name }}</a
-                    >{{ if lt $index (sub (len (after 49 $data.contributors)) 1) }},{{ end }}
-                  {{ end }}
-                </p>
-              </div>
+      <svg class="people-sprite" aria-hidden="true" focusable="false">
+        <symbol id="p-i-github" viewBox="0 0 24 24">
+          <path
+            d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.71.08-.7.08-.7 1.16.09 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"
+          />
+        </symbol>
+        <symbol id="p-i-mail" viewBox="0 0 24 24">
+          <rect x="2.5" y="4.5" width="19" height="15" rx="2.5" />
+          <polyline points="3 6.5 12 13 21 6.5" />
+        </symbol>
+        <symbol id="p-i-link" viewBox="0 0 24 24">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+          <polyline points="15 3 21 3 21 9" />
+          <line x1="10" y1="14" x2="21" y2="3" />
+        </symbol>
+        <symbol id="p-i-search" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="7" />
+          <line x1="16.5" y1="16.5" x2="21" y2="21" />
+        </symbol>
+        <symbol id="p-i-close" viewBox="0 0 24 24">
+          <line x1="5" y1="5" x2="19" y2="19" />
+          <line x1="19" y1="5" x2="5" y2="19" />
+        </symbol>
+      </svg>
+
+      {{/* The contributor wall is the truest picture of who builds scverse, so it opens the page
+        rather than closing it.
+      */}}
+      <header class="people-hero">
+        <h1>{{ .Title }}</h1>
+        <p class="people-lead">{{ .Params.lead | safeHTML }}</p>
+        {{ with $contributors }}
+          <div class="people-mosaic is-clipped" id="contributors">
+            {{ range . }}
+              {{/* The name rides on the link: 390 alt texts render as a wall of overlapping
+                words while the avatars are still loading.
+              */}}
+              <a href="{{ .html_url }}" target="_blank" rel="noopener" title="{{ .name }}" aria-label="{{ .name }}">
+                <img src="{{ .avatar_url }}&amp;s=64" alt="" loading="lazy" width="32" height="32" />
+              </a>
             {{ end }}
+          </div>
+          <p class="people-mosaic-caption">
+            <strong>{{ len . }} people</strong> have contributed code to scverse. More have made contributions by
+            reporting bugs, answering questions and providing feedback that are not explicitly listed here.
+            {{ $.Params.contributors.text | safeHTML }}
+          </p>
+          <button type="button" id="contributor-expand" aria-expanded="false">Show everyone</button>
+        {{ end }}
+      </header>
+
+      <section class="people-section" id="people-directory">
+        <h2 id="the-team">The team</h2>
+        <p class="people-section-text">{{ .Params.team_lead }}</p>
+
+        <div class="people-toolbar">
+          <div class="people-search">
+            <svg class="people-search-icon" aria-hidden="true" focusable="false">
+              <use href="#p-i-search" />
+            </svg>
+            <label class="visually-hidden" for="people-filter">Search people</label>
+            <input
+              type="search"
+              id="people-filter"
+              autocomplete="off"
+              placeholder="Search {{ len $items }} people by name, institute or package…"
+            />
+            <button type="button" id="people-clear" class="people-search-clear" hidden aria-label="Clear filters">
+              <svg aria-hidden="true" focusable="false"><use href="#p-i-close" /></svg>
+            </button>
+          </div>
+          <p class="people-count" role="status">
+            <span id="people-count">{{ len $items }}</span> of {{ len $items }} people
+          </p>
+        </div>
+
+        <div class="people-chips" id="people-roles">
+          <button type="button" class="people-chip is-active" data-role="" aria-pressed="true">All</button>
+          {{ range $roles }}
+            {{ $count := len (where $items "roles" "intersect" (slice .id)) }}
+            <button type="button" class="people-chip" data-role="{{ .id }}" aria-pressed="false">
+              {{ .label }}
+              <span class="people-chip-count">{{ $count }}</span>
+            </button>
           {{ end }}
         </div>
-      {{ end }}
+
+        <div class="people-chips people-chips--packages" id="people-packages">
+          <button type="button" class="people-chip" data-package="" aria-pressed="false">All packages</button>
+          {{ range $packages }}
+            <button type="button" class="people-chip" data-package="{{ . }}" aria-pressed="false">
+              <img src="/img/icons/{{ lower . }}.svg" alt="" loading="lazy" width="14" height="14" />
+              {{ . }}
+            </button>
+          {{ end }}
+        </div>
+
+        {{/* Each governance body keeps its own description; the active chip surfaces it */}}
+        <p class="people-note" data-role="">Roles are explained on <a href="/about/roles">the roles page</a>.</p>
+        {{ range $roles }}
+          <p class="people-note" data-role="{{ .id }}" hidden>{{ .text }}</p>
+        {{ end }}
+
+
+        <div class="people-grid" id="people-grid">
+          {{ range $items }}
+            {{ partial "people/card.html" (dict "person" . "labels" $labels) }}
+          {{ end }}
+        </div>
+
+        <p class="people-empty" id="people-empty" hidden>
+          Nobody matches your filters.
+          <button type="button" class="people-empty-reset">Reset</button>
+        </p>
+      </section>
     </div>
   </article>
-{{ end }}
-
-{{ define "scripts" }}
-  <script>
-    window.onload = function () {
-      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl)
-      })
-    }
-  </script>
 {{ end }}

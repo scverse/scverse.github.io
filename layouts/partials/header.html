@@ -1,4 +1,4 @@
-<div class="container" style="max-width: 1200px;">
+<div class="container" style="max-width: 1200px;" data-pagefind-ignore>
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid" style="padding: 0;">
       <a class="navbar-brand row align-items-center m-0" href="/">
@@ -90,6 +90,15 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a
+              class="nav-link{{ if eq .Section `conference2026` }}
+                active
+              {{ end }}"
+              href="/conference2026"
+              >Conference</a
+            >
+          </li>
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle{{ if eq .Section `about` }}
@@ -131,10 +140,39 @@
             </ul>
           </li>
           <li class="nav-item">
+            <button type="button" class="nav-link nav-search-button" id="search-open" aria-label="Search this site">
+              <i class="bi bi-search" aria-hidden="true"></i>
+              <span class="nav-search-label">Search</span>
+              <kbd class="nav-search-kbd" aria-hidden="true">/</kbd>
+            </button>
+          </li>
+          <li class="nav-item">
             <a id="join-button" class="nav-link nav-button-hl" href="/join">Join</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+</div>
+
+<div class="search-overlay" id="search-overlay" hidden>
+  <div class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="search-label" id="search-dialog">
+    <label class="visually-hidden" for="search-input" id="search-label">Search scverse.org</label>
+    <div class="search-field">
+      <i class="bi bi-search" aria-hidden="true"></i>
+      <input
+        type="search"
+        id="search-input"
+        class="search-input"
+        placeholder="Search packages, tutorials, events, blog posts…"
+        autocomplete="off"
+        spellcheck="false"
+        aria-describedby="search-status"
+        aria-controls="search-results"
+      />
+      <button type="button" class="search-close" id="search-close" aria-label="Close search">Esc</button>
+    </div>
+    <p class="search-status" id="search-status" role="status" aria-live="polite"></p>
+    <ul class="search-results" id="search-results"></ul>
+  </div>
 </div>

@@ -24,5 +24,12 @@ Look inside [`/layout`](/layout) for that. [Hugo Templating](https://gohugo.io/t
 To build the website (with hot reload), [install Hugo](https://gohugo.io/getting-started/installing/) and run
 
 ```sh
-hugo server --buildFuture -D
+hugo server -D
+```
+
+Site search is powered by [Pagefind](https://pagefind.app/), which indexes the built HTML rather than the content files, so `hugo server` alone has no index and the search dialog will say so.
+To try it locally, build and index the site, then serve `public/`:
+
+```sh
+hugo && npx pagefind --site public && python3 -m http.server -d public
 ```
