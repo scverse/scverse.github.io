@@ -267,16 +267,16 @@ const initInteractiveViz = () => {
   // Exit early if visualization elements don't exist on this page
   if (!visualization || !card) return;
 
-  // Color clusters for UMAP visualization
+  // Color clusters for UMAP visualization, using the same brand hues the package tiles below use instead of a generic chart-library palette.
   const colorClusters = [
-    { color: '#4285F4', count: 14, name: 'Cluster A' },
-    { color: '#34A853', count: 12, name: 'Cluster B' },
-    { color: '#FBBC05', count: 10, name: 'Cluster C' },
-    { color: '#EA4335', count: 8, name: 'Cluster D' },
-    { color: '#FF00FF', count: 11, name: 'Cluster E' },
-    { color: '#00BCD4', count: 9, name: 'Cluster F' },
-    { color: '#9C27B0', count: 7, name: 'Cluster G' },
-    { color: '#FF9800', count: 13, name: 'Cluster H' }
+    { color: '#40a9ff', count: 34, name: 'Cluster A' },
+    { color: '#4ab274', count: 29, name: 'Cluster B' },
+    { color: '#fbb822', count: 26, name: 'Cluster C' },
+    { color: '#e5864b', count: 22, name: 'Cluster D' },
+    { color: '#da347f', count: 27, name: 'Cluster E' },
+    { color: '#969dea', count: 24, name: 'Cluster F' },
+    { color: '#de367b', count: 19, name: 'Cluster G' },
+    { color: '#6cf1a1', count: 31, name: 'Cluster H' }
   ];
 
   // 3D tilt effect
@@ -329,7 +329,7 @@ const initInteractiveViz = () => {
         dot.dataset.cluster = cluster.name;
         dot.dataset.color = cluster.color;
 
-        const size = Math.floor(Math.random() * 12) + 8;
+        const size = Math.floor(Math.random() * 8) + 5;
         dot.style.width = `${size}px`;
         dot.style.height = `${size}px`;
 
@@ -341,7 +341,7 @@ const initInteractiveViz = () => {
         u = u / 6 - 0.5;
         v = v / 6 - 0.5;
 
-        const distance = Math.random() * 70 + 10;
+        const distance = Math.random() * 130 + 20;
         const dx = u * distance * 2;
         const dy = v * distance * 2;
         const x = centerX + dx;
@@ -362,7 +362,7 @@ const initInteractiveViz = () => {
         setTimeout(() => {
           dot.style.transform = 'scale(1)';
           dot.style.opacity = '1';
-        }, i * 50 + Math.random() * 200);
+        }, i * 18 + Math.random() * 150);
       }
     });
 

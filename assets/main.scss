@@ -414,6 +414,9 @@ body {
 
                     .event-chip {
                         width: auto;
+                        max-width: 100%;
+                        // Flex items default to min-width: auto, which pins them to their content's intrinsic width instead of letting them shrink.
+                        min-width: 0;
                         display: inline-flex;
                         align-items: center;
                         background-color: transparent;
@@ -429,6 +432,10 @@ body {
                             border-radius: 1.5rem;
                             padding: 0.05rem 0.6rem 0.05rem 0;
                             font-size: 0.7rem;
+                            // Lets the date and message stack instead of forcing one nowrap line into horizontal scroll on narrow viewports.
+                            flex-wrap: wrap;
+                            justify-content: center;
+                            row-gap: 0.35rem;
                         }
 
                         .event-date {
@@ -448,6 +455,9 @@ body {
 
                         .event-text {
                             position: relative;
+                            // Same min-width: auto fix as .event-chip, this time so the text itself can wrap.
+                            min-width: 0;
+                            white-space: normal;
 
                             .arrow {
                                 display: inline-block;
@@ -579,32 +589,65 @@ body {
                         }
                     }
                 }
-                #mission {
-                    .section-content {
-                        p {
-                            font-size: 1.1rem;
+                #about-highlights {
+                    .about-card-grid {
+                        display: grid;
+                        grid-template-columns: repeat(2, minmax(0, 1fr));
+                        gap: 1.5rem;
+
+                        @media (max-width: 50rem) {
+                            grid-template-columns: 1fr;
+                            gap: 1rem;
                         }
                     }
-                }
-                #team {
-                    .section-content {
-                        .section-paragraph {
-                            #team-list {
-                                display: inline;
-                            }
-                            a {
-                                border-bottom: 1px solid $linkunderline;
-                                transition:
-                                    border 200ms,
-                                    color 200ms;
 
-                                &:hover,
-                                &:active {
-                                    color: black;
-                                    border-bottom: 1px solid black;
-                                }
-                            }
+                    .about-card {
+                        background-color: $tilebg4;
+                        border: 1px solid $overline;
+                        border-radius: $card-radius;
+                        padding: 1.75rem;
+                        transition: all 200ms ease-in-out;
+
+                        &:hover {
+                            border-color: $tilebg2;
+                            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+                            transform: translateY(-2px);
                         }
+                    }
+
+                    .about-card-icon {
+                        width: 2.75rem;
+                        height: 2.75rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 50%;
+                        margin-bottom: 1rem;
+                        font-size: 1.3rem;
+                        background-color: $tilebg;
+                        color: $tiletext;
+                    }
+
+                    // Written as a descendant rather than nested under .about-card-icon: `&` there would carry the whole ancestor chain and put .about-card in front of #about-highlights.
+                    @each $hue in $eco-hues {
+                        .about-card[data-hue="#{index($eco-hues, $hue) - 1}"]
+                            .about-card-icon {
+                            background-color: rgba($hue, 0.16);
+                            color: darken($hue, 12%);
+                        }
+                    }
+
+                    .about-card-title {
+                        font-size: 1.2rem;
+                        font-weight: 700;
+                        margin: 0 0 0.5rem;
+                        color: $tiletext;
+                    }
+
+                    .about-card-text {
+                        font-size: 1rem;
+                        color: $tiletext2;
+                        margin-bottom: 0.75rem;
                     }
                 }
             }

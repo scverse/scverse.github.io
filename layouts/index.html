@@ -90,51 +90,51 @@
           {{ partial "main/packages" . }}
 
 
-          <section id="ecosystem">
-            <div class="section-heading">Ecosystem</div>
-            <div class="section-content">
-              <p class="section-paragraph">
-                {{ .Params.ecosystem.text | markdownify }}
-              </p>
-              <a href="/packages/#ecosystem">
-                <div class="more">Continue to scverse ecosystem</div>
-              </a>
-            </div>
-          </section>
+          <section id="about-highlights">
+            <div class="about-card-grid">
+              <div class="about-card" data-hue="3">
+                <div class="about-card-icon"><i class="bi bi-diagram-3" aria-hidden="true"></i></div>
+                <h2 class="about-card-title">Ecosystem</h2>
+                <p class="about-card-text">
+                  {{ .Params.ecosystem.text | markdownify }}
+                </p>
+                <a href="/packages/#ecosystem">
+                  <div class="more">Continue to scverse ecosystem</div>
+                </a>
+              </div>
 
-          <section id="mission">
-            <div class="section-heading">Mission</div>
-            <div class="section-content">
-              <p class="section-paragraph">
-                {{ .Params.mission.text | markdownify }}
-              </p>
-              <a href="/about">
-                <div class="more">Read more about scverse</div>
-              </a>
-            </div>
-          </section>
+              <div class="about-card" data-hue="0">
+                <div class="about-card-icon"><i class="bi bi-compass" aria-hidden="true"></i></div>
+                <h2 class="about-card-title">Mission</h2>
+                <p class="about-card-text">
+                  {{ .Params.mission.text | markdownify }}
+                </p>
+                <a href="/about">
+                  <div class="more">Read more about scverse</div>
+                </a>
+              </div>
 
-          <section id="team">
-            <div class="section-heading">Team</div>
-            <div class="section-content">
-              <p class="section-paragraph">
-                {{ .Params.team.text | markdownify }}
-              </p>
-              <a href="/people">
-                <div class="more">Learn more about scverse community</div>
-              </a>
-            </div>
-          </section>
+              <div class="about-card" data-hue="2">
+                <div class="about-card-icon"><i class="bi bi-people" aria-hidden="true"></i></div>
+                <h2 class="about-card-title">Team</h2>
+                <p class="about-card-text">
+                  {{ .Params.team.text | markdownify }}
+                </p>
+                <a href="/people">
+                  <div class="more">Learn more about scverse community</div>
+                </a>
+              </div>
 
-          <section id="references">
-            <div class="section-heading">References</div>
-            <div class="section-content">
-              <p class="section-paragraph">
-                {{ .Params.references.text | markdownify }}
-              </p>
-              <a href="/packages/">
-                <div class="more">Find each package's publication</div>
-              </a>
+              <div class="about-card" data-hue="6">
+                <div class="about-card-icon"><i class="bi bi-journal-bookmark" aria-hidden="true"></i></div>
+                <h2 class="about-card-title">References</h2>
+                <p class="about-card-text">
+                  {{ .Params.references.text | markdownify }}
+                </p>
+                <a href="/packages/">
+                  <div class="more">Find each package's publication</div>
+                </a>
+              </div>
             </div>
           </section>
         </div>
