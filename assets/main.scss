@@ -263,6 +263,41 @@ body {
     }
 }
 
+.nav-social {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 0.5rem 0.25rem !important;
+
+    // Bootstrap's own collapse breakpoint (992px) isn't wide enough to also fit this row, so it overflows the nav between 992px and roughly 1180px; hide it there and rely on the footer.
+    @media (max-width: 1199px) {
+        display: none;
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        color: $navtext;
+        font-size: 1rem;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            background-color: $navbghover;
+            color: $navtexthover;
+
+            .i-discourse::before,
+            .i-zulip::before,
+            .i-bluesky::before {
+                opacity: 1;
+            }
+        }
+    }
+}
+
 #join-button {
     color: white;
     background-color: #4557c4;
