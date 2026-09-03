@@ -270,7 +270,7 @@ const initInteractiveViz = () => {
   // Exit early if visualization elements don't exist on this page
   if (!visualization || !card) return;
 
-  // Cluster centers from the most recent sc.pl.umap() run, so scv.pl.velocity_embedding_stream() can draw its streamlines over the same layout without recomputing it.
+  // Cluster centers from the most recent sc.pl.umap() run, so pl.trajectory() can draw its streamlines over the same layout without recomputing it.
   let lastCenters = null;
 
   // Color clusters for UMAP visualization, using the same brand hues the package tiles below use instead of a generic chart-library palette.
