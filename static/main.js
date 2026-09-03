@@ -326,6 +326,10 @@ const initInteractiveViz = () => {
 
     const width = visualization.clientWidth;
     const height = visualization.clientHeight;
+    // All the pixel constants below were tuned against the desktop-sized box; scale them down for the much narrower mobile box instead of letting them clip against its edges.
+    const scale = Math.max(0.45, Math.min(1, width / 700));
+    // Squared, so mobile sheds DOM nodes much faster than the layout shrinks: a smaller box needs proportionally far fewer points to still look dense, not just fewer to avoid clipping.
+    const countScale = scale * scale;
 
     // Lays cluster centers out along a winding chain instead of scattering them independently, so neighbouring clusters sit close enough to touch, like a real connected UMAP embedding, and the last two branch off from the chain's end.
     const centers = [];
@@ -337,14 +341,14 @@ const initInteractiveViz = () => {
     for (let i = 0; i < chainCount; i++) {
       if (i > 0) {
         angle = angle * 0.6 + (Math.random() - 0.5) * 1.1;
-        const step = 85 + Math.random() * 30;
+        const step = (85 + Math.random() * 30) * scale;
         cx = Math.min(Math.max(cx + Math.cos(angle) * step, width * 0.04), width * 0.96);
         cy = Math.min(Math.max(cy + Math.sin(angle) * step, height * 0.12), height * 0.88);
       }
       centers.push({ x: cx, y: cy });
     }
     [angle + 0.7 + Math.random() * 0.3, angle - 0.7 - Math.random() * 0.3].forEach(branchAngle => {
-      const step = 70 + Math.random() * 25;
+      const step = (70 + Math.random() * 25) * scale;
       centers.push({
         x: Math.min(Math.max(cx + Math.cos(branchAngle) * step, width * 0.03), width * 0.97),
         y: Math.min(Math.max(cy + Math.sin(branchAngle) * step, height * 0.05), height * 0.95)
@@ -370,10 +374,11 @@ const initInteractiveViz = () => {
       const axisY = Math.sin(axisAngle);
       const perpX = -axisY;
       const perpY = axisX;
-      const axisLength = Math.random() * 90 + 150;
+      const axisLength = (Math.random() * 90 + 150) * scale;
       const perpWidth = axisLength * (Math.random() * 0.25 + 0.4);
+      const count = Math.round(cluster.count * countScale);
 
-      for (let i = 0; i < cluster.count; i++) {
+      for (let i = 0; i < count; i++) {
         const dot = document.createElement('div');
         dot.className = 'dot';
         dot.dataset.cluster = cluster.name;
