@@ -2,14 +2,14 @@
   <h1>{{ .Title }}</h1>
   <article class="post">
     <div class="post-content" id="stats-content">
-      {{ $base := "https://scverse-stats.s3.eu-west-1.amazonaws.com/" }}
+      {{ $base := "https://scverse-stats-dev.s3.eu-west-1.amazonaws.com/" }}
       {{ $stats := dict }}
       {{ $contributors := dict }}
       {{ range $name := slice "stats" "contributors" }}
         {{ $url := printf "%s%s.json" $base $name }}
         {{ $res := try (resources.GetRemote $url) }}
         {{ if or $res.Err (not $res.Value) }}
-          {{ errorf "%s is unreachable. scverse/stats#11 populates this bucket and is not merged yet." $url }}
+          {{ errorf "%s is unreachable. scverse/stats publishes it; see scverse/stats#13." $url }}
         {{ else if eq $name "stats" }}
           {{ $stats = transform.Unmarshal $res.Value.Content }}
         {{ else }}
