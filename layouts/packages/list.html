@@ -5,6 +5,7 @@
       <h1>{{ .Title }}</h1>
       <article class="post">
         {{ $sections := index .Params.sections 0 }}
+        {{ $interop := .Params.interoperability | default dict }}
         <div class="post-content" id="packages-content">
           {{ $registry := partialCached "registry.html" "registry" }}
           {{ $registryBase := $registry.base }}
@@ -18,7 +19,7 @@
               {{ $sections.datastructures | markdownify }}
               <div class="packages-list">
                 {{ range . }}
-                  {{ partial "package-section.html" (dict "pkg" . "base" $registryBase) }}
+                  {{ partial "package-section.html" (dict "pkg" . "base" $registryBase "interop" (index $interop (lower .name))) }}
                 {{ end }}
               </div>
             {{ end }}
@@ -29,7 +30,7 @@
               {{ $sections.frameworks | markdownify }}
               <div class="packages-list">
                 {{ range . }}
-                  {{ partial "package-section.html" (dict "pkg" . "base" $registryBase) }}
+                  {{ partial "package-section.html" (dict "pkg" . "base" $registryBase "interop" (index $interop (lower .name))) }}
                 {{ end }}
               </div>
             {{ end }}
