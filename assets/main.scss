@@ -46,7 +46,6 @@ $footertextmuted: #aaaaaa;
 $postlinktext: #333333;
 
 $maxwidth: 1200px;
-$maxwidthcover: 1200px;
 $maxwidthwide: 1400px;
 $contentwidth: 80%;
 $contentwidthwide: 92%;
@@ -339,7 +338,7 @@ body {
             align-items: center;
             align-self: center;
             #cover {
-                max-width: $maxwidthcover;
+                max-width: $maxwidthwide;
                 width: 100%;
                 padding: 0 1rem;
                 #cover-top-section {
@@ -349,7 +348,7 @@ body {
                 #cover-heading {
                     margin: 0;
                     padding: 0;
-                    max-width: $maxwidthcover;
+                    max-width: $maxwidthwide;
                     #title {
                         #title-text {
                             #title-name {
@@ -413,7 +412,7 @@ body {
 
                 #chip-announcement {
                     margin: 0 auto 1.5rem;
-                    max-width: $maxwidthcover;
+                    max-width: $maxwidthwide;
                     width: 100%;
                     @media (max-width: 50rem) {
                         width: 100%;
@@ -505,8 +504,8 @@ body {
                 }
 
                 section {
-                    max-width: $maxwidth;
-                    width: $contentwidth;
+                    max-width: $maxwidthwide;
+                    width: $contentwidthwide;
                     margin: 0 auto;
                     margin-top: 5%;
                     @media (max-width: 50rem) {
@@ -538,78 +537,19 @@ body {
                 #interactive-demo-section {
                     margin-bottom: 3rem;
                 }
-                #packages {
-                    #packages-list {
-                        .card {
-                            display: flex;
-                            flex-direction: row;
-                            align-items: center;
-                            background-color: $tilebg;
-                            border-radius: 0.5rem;
-                            transition: all 200ms ease-in-out;
-                            @media (max-width: 50rem) {
-                                min-height: 6rem;
-                            }
-                            .package-icon {
-                                transition: all 200ms ease-in-out;
-                                align-items: center;
-                                justify-content: center;
-                                padding: auto;
-                                display: flex;
-                                min-width: 6rem;
-                                max-width: 6rem;
-                                // Matches the img height below, so that a package
-                                // without an icon still lines up with the others.
-                                min-height: 4rem;
-                                @media (max-width: 50rem) {
-                                    display: none;
-                                }
-
-                                img {
-                                    max-width: 4rem;
-                                    height: 4rem;
-                                }
-                            }
-                            .package-text {
-                                .package-name {
-                                    color: $tiletext;
-                                }
-                                .package-desc {
-                                    font-size: 0.9rem;
-                                    color: $tiletext2;
-                                }
-                            }
-                            &:hover {
-                                cursor: pointer;
-                                background-color: $tilebg2;
-                                .package-icon {
-                                    transform: scale(1.1);
-                                }
-                                transform: scale(1.05);
-                            }
-                            &#anndata-tile:hover {
-                                background-color: rgba($anndataorange, 0.2);
-                            }
-                            &#scanpy-tile:hover {
-                                background-color: rgba($scanpymandy, 0.2);
-                            }
-                            &#mudata-tile:hover {
-                                background-color: rgba($mudatagreen, 0.2);
-                            }
-                            &#muon-tile:hover {
-                                background-color: rgba($muonaquamarine, 0.2);
-                            }
-                        }
-                    }
-                }
                 #about-highlights {
                     .about-card-grid {
                         display: grid;
-                        // auto-fit rather than a fixed column count: the container is capped around 960px, so this settles at 3 columns on desktop and folds down on its own as the viewport narrows, without a hand-tuned breakpoint.
-                        grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+                        // A fixed 3-column count rather than auto-fit: on a wide viewport auto-fit would squeeze in a 4th column and break the 3+3 layout of 6 cards.
+                        grid-template-columns: repeat(3, minmax(0, 1fr));
                         gap: 1.5rem;
 
+                        @media (max-width: 64rem) {
+                            grid-template-columns: repeat(2, minmax(0, 1fr));
+                        }
+
                         @media (max-width: 50rem) {
+                            grid-template-columns: 1fr;
                             gap: 1rem;
                         }
                     }
@@ -2984,7 +2924,7 @@ body {
 
 .interactive-container {
     width: 100%;
-    max-width: 1200px;
+    max-width: $maxwidthwide;
     margin: 0 auto;
     transform-style: preserve-3d;
     perspective: 1500px;
