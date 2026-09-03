@@ -3315,6 +3315,18 @@ body {
     .blog-card--lead .blog-card-title {
         font-size: 1.25rem;
     }
+
+    // The text zone is taller here, so the flat part of the scrim has to reach
+    // further up with it or the title loses its contrast
+    .blog-card--img .blog-card-text {
+        background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.9) 0,
+            rgba(0, 0, 0, 0.86) 12rem,
+            rgba(0, 0, 0, 0.5) 13.5rem,
+            rgba(0, 0, 0, 0) 14.5rem
+        );
+    }
 }
 
 .blog-card-text {
@@ -3328,13 +3340,17 @@ body {
     color: white;
 }
 
+// Anchored to the bottom in rem, not in percentages of the card: as a percentage
+// the dark washed all the way up a tall white figure. It holds flat across the
+// reserved text zone, so white text keeps its contrast even over a white figure,
+// then feathers out over 2.5rem just above it.
 .blog-card--img .blog-card-text {
     background: linear-gradient(
         to top,
-        rgba(0, 0, 0, 0.9) 0%,
-        rgba(0, 0, 0, 0.72) 22%,
-        rgba(0, 0, 0, 0.22) 42%,
-        rgba(0, 0, 0, 0) 60%
+        rgba(0, 0, 0, 0.9) 0,
+        rgba(0, 0, 0, 0.86) 10.5rem,
+        rgba(0, 0, 0, 0.5) 12rem,
+        rgba(0, 0, 0, 0) 13rem
     );
 }
 
