@@ -259,13 +259,19 @@ const initInteractiveViz = () => {
   const visualization = document.getElementById('visualization');
   const runCmd1 = document.getElementById('run-cmd1');
   const runCmd2 = document.getElementById('run-cmd2');
+  const runCmd3 = document.getElementById('run-cmd3');
   const statusCmd1 = document.getElementById('status-cmd1');
   const statusCmd2 = document.getElementById('status-cmd2');
+  const statusCmd3 = document.getElementById('status-cmd3');
   const execAnim1 = document.getElementById('exec-anim-1');
   const execAnim2 = document.getElementById('exec-anim-2');
+  const execAnim3 = document.getElementById('exec-anim-3');
 
   // Exit early if visualization elements don't exist on this page
   if (!visualization || !card) return;
+
+  // Cluster centers from the most recent sc.pl.umap() run, so scv.pl.velocity_embedding_stream() can draw its streamlines over the same layout without recomputing it.
+  let lastCenters = null;
 
   // Color clusters for UMAP visualization, using the same brand hues the package tiles below use instead of a generic chart-library palette.
   const colorClusters = [
@@ -410,7 +416,7 @@ const initInteractiveViz = () => {
     });
 
     setupDotInteractions();
-    setTimeout(() => drawTrajectory(centers), 950);
+    lastCenters = centers;
   }
 
   // Draws a scVelo/CellRank-style velocity field: bundles of parallel arrowed streamlines that fan out from a cluster and converge into the next one, rather than one graph edge between cluster centroids.
@@ -536,7 +542,7 @@ const initInteractiveViz = () => {
   }
 
   // These are divs, not buttons, so the keyboard behaviour has to be added by hand.
-  [runCmd1, runCmd2].forEach(function(control) {
+  [runCmd1, runCmd2, runCmd3].forEach(function(control) {
     control.addEventListener('keydown', function(event) {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
@@ -588,14 +594,38 @@ const initInteractiveViz = () => {
     }, 1200);
   });
 
-  // Initial generation
+  runCmd3.addEventListener('click', function() {
+    statusCmd3.style.width = '0';
+    execAnim3.style.width = '0';
+
+    setTimeout(() => {
+      execAnim3.style.width = '100%';
+    }, 50);
+
+    setTimeout(() => {
+      if (lastCenters) drawTrajectory(lastCenters);
+
+      statusCmd3.style.width = '100%';
+      runCmd3.style.backgroundColor = '#34A853';
+
+      setTimeout(() => {
+        runCmd3.style.backgroundColor = '';
+      }, 2000);
+    }, 900);
+  });
+
+  // Initial generation, followed by the velocity streamlines once the scatter has settled, so a visitor who never clicks anything still sees the full three-command story play out once.
   generateUMAP();
+  setTimeout(() => runCmd3.click(), 1200);
 
   // Responsive regeneration
   let resizeTimer;
   window.addEventListener('resize', function() {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(generateUMAP, 250);
+    resizeTimer = setTimeout(function() {
+      generateUMAP();
+      setTimeout(() => runCmd3.click(), 1200);
+    }, 250);
   });
 }
 
