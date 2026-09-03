@@ -110,6 +110,17 @@
 
           <section id="about-highlights">
             <div class="about-card-grid">
+              <div class="about-card" data-hue="5">
+                <div class="about-card-icon"><i class="bi bi-box-seam" aria-hidden="true"></i></div>
+                <h2 class="about-card-title">Core packages</h2>
+                <p class="about-card-text">
+                  {{ .Params.packages.text | markdownify }}
+                </p>
+                <a href="/packages/#core-packages">
+                  <div class="more">Browse the core packages</div>
+                </a>
+              </div>
+
               <div class="about-card" data-hue="3">
                 <div class="about-card-icon"><i class="bi bi-diagram-3" aria-hidden="true"></i></div>
                 <h2 class="about-card-title">Ecosystem</h2>
@@ -118,6 +129,17 @@
                 </p>
                 <a href="/packages/#ecosystem">
                   <div class="more">Continue to scverse ecosystem</div>
+                </a>
+              </div>
+
+              <div class="about-card" data-hue="7">
+                <div class="about-card-icon"><i class="bi bi-calendar-event" aria-hidden="true"></i></div>
+                <h2 class="about-card-title">Events</h2>
+                <p class="about-card-text">
+                  {{ .Params.events.text | markdownify }}
+                </p>
+                <a href="/events">
+                  <div class="more">See all scverse events</div>
                 </a>
               </div>
 

@@ -135,12 +135,6 @@ $eco-hues:
     }
 }
 
-// Cover buttons
-#badges .btn {
-    background-color: $tilebg;
-    border: none;
-}
-
 #join-content .card {
     h5 {
         font-weight: 700;
@@ -153,32 +147,26 @@ $eco-hues:
     }
 }
 
-#badges .btn-github:hover,
 #join-content .card#github:hover {
     background-color: $github-black !important;
     color: white !important;
 }
-#badges .btn-discourse:hover,
 #join-content .card#discourse:hover {
     background-color: $discourse-yellow !important;
     color: black !important;
 }
-#badges .btn-zulip:hover,
 #join-content .card#zulip:hover {
     background-color: $zulip-blue !important;
     color: white !important;
 }
-#badges .btn-twitter:hover,
 #join-content .card#twitter:hover {
     background-color: $twitter-blue !important;
     color: white !important;
 }
-#badges .btn-bluesky:hover,
 #join-content .card#bluesky:hover {
     background-color: $bluesky-blue !important;
     color: white !important;
 }
-#badges .btn-youtube:hover,
 #join-content .card#youtube:hover {
     background-color: $youtube-red !important;
     color: white !important;
@@ -385,21 +373,46 @@ body {
                             }
                         }
                     }
-                    #badges {
+
+                    #hero-lede {
+                        max-width: 42rem;
+                        margin: 1.5rem 0 0;
+                        font-size: 1.1rem;
+                        line-height: 1.6;
+                        color: $tiletext2;
+                        @media (max-width: 50rem) {
+                            font-size: 0.95rem;
+                        }
+                    }
+
+                    #hero-points {
                         display: flex;
                         flex-wrap: wrap;
-                        gap: 1rem;
-                        margin: 2rem 0;
+                        gap: 2rem;
+                        margin: 2rem 0 0;
                         @media (max-width: 50rem) {
-                            margin: 1rem 0;
-                            padding: 0;
-                            width: 100%;
+                            gap: 1.25rem;
+                            margin-top: 1.5rem;
+                        }
+                        .hero-point {
+                            flex: 1 1 14rem;
+                            max-width: 18rem;
+                        }
+                        .hero-point-title {
+                            font-weight: 700;
+                            color: $tiletext;
+                            margin-bottom: 0.3rem;
+                        }
+                        .hero-point-text {
+                            margin: 0;
+                            font-size: 0.9rem;
+                            color: $tiletext2;
                         }
                     }
                 }
 
                 #chip-announcement {
-                    margin: 0 auto 2rem;
+                    margin: 0 auto 1.5rem;
                     max-width: $maxwidthcover;
                     width: 100%;
                     @media (max-width: 50rem) {
@@ -592,11 +605,11 @@ body {
                 #about-highlights {
                     .about-card-grid {
                         display: grid;
-                        grid-template-columns: repeat(2, minmax(0, 1fr));
+                        // auto-fit rather than a fixed column count: the container is capped around 960px, so this settles at 3 columns on desktop and folds down on its own as the viewport narrows, without a hand-tuned breakpoint.
+                        grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
                         gap: 1.5rem;
 
                         @media (max-width: 50rem) {
-                            grid-template-columns: 1fr;
                             gap: 1rem;
                         }
                     }
