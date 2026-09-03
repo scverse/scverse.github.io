@@ -185,7 +185,7 @@ team_lead = "The following people hold an official role within scverse."
 	name = "Giovanni Palla"
 	url = "https://github.com/giovp"
 	email = "giovanni.palla@scverse.org"
-	affiliation = "Lila"
+	affiliation = "Lila Sciences"
 	roles = ["core"]
 	works_on = ["spatialdata", "squidpy"]
 
