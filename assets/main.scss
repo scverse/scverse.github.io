@@ -375,7 +375,6 @@ body {
                     }
 
                     #hero-lede {
-                        max-width: 58rem;
                         margin: 1.5rem auto 0;
                         font-size: 1.1rem;
                         line-height: 1.6;
@@ -426,7 +425,6 @@ body {
                         flex-wrap: wrap;
                         justify-content: center;
                         gap: 2rem;
-                        max-width: 58rem;
                         margin: 2rem auto 0;
                         @media (max-width: 50rem) {
                             gap: 1.25rem;
