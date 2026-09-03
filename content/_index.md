@@ -9,14 +9,17 @@ text = """\
 scverse is an open-source, community-governed ecosystem of interoperable Python packages for single-cell and spatial omics data analysis — from foundational data structures like AnnData to analysis frameworks like Scanpy, scvi-tools, and Squidpy. The tools share common data formats, so you can move between them in a single analysis instead of gluing together incompatible pipelines."""
 
 [[hero.points]]
+icon = "bi-mortarboard"
 title = "For researchers"
 text = "Well-documented, actively maintained tools that interoperate out of the box."
 
 [[hero.points]]
+icon = "bi-code-slash"
 title = "For developers"
 text = "Shared data structures and conventions, so your package fits the ecosystem from day one."
 
 [[hero.points]]
+icon = "bi-bank"
 title = "For institutions"
 text = "A community-governed foundation ensuring the long-term maintenance of critical infrastructure."
 

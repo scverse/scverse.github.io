@@ -10,6 +10,7 @@
     <div id="hero-points">
       {{ range .points }}
         <div class="hero-point">
+          <div class="hero-point-icon"><i class="bi {{ .icon }}" aria-hidden="true"></i></div>
           <div class="hero-point-title">{{ .title }}</div>
           <p class="hero-point-text">{{ .text }}</p>
         </div>

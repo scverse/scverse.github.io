@@ -374,7 +374,7 @@ body {
                     }
 
                     #hero-lede {
-                        max-width: 42rem;
+                        max-width: 58rem;
                         margin: 1.5rem 0 0;
                         font-size: 1.1rem;
                         line-height: 1.6;
@@ -388,6 +388,7 @@ body {
                         display: flex;
                         flex-wrap: wrap;
                         gap: 2rem;
+                        max-width: 58rem;
                         margin: 2rem 0 0;
                         @media (max-width: 50rem) {
                             gap: 1.25rem;
@@ -395,7 +396,18 @@ body {
                         }
                         .hero-point {
                             flex: 1 1 14rem;
-                            max-width: 18rem;
+                        }
+                        .hero-point-icon {
+                            width: 2.25rem;
+                            height: 2.25rem;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: 50%;
+                            margin-bottom: 0.6rem;
+                            font-size: 1.1rem;
+                            background-color: $tilebg;
+                            color: $tiletext;
                         }
                         .hero-point-title {
                             font-weight: 700;
