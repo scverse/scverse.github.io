@@ -269,14 +269,14 @@ const initInteractiveViz = () => {
 
   // Color clusters for UMAP visualization, using the same brand hues the package tiles below use instead of a generic chart-library palette.
   const colorClusters = [
-    { color: '#40a9ff', count: 480, name: 'Cluster A' },
-    { color: '#4ab274', count: 410, name: 'Cluster B' },
-    { color: '#fbb822', count: 370, name: 'Cluster C' },
-    { color: '#e5864b', count: 310, name: 'Cluster D' },
-    { color: '#da347f', count: 380, name: 'Cluster E' },
-    { color: '#969dea', count: 340, name: 'Cluster F' },
-    { color: '#de367b', count: 270, name: 'Cluster G' },
-    { color: '#6cf1a1', count: 430, name: 'Cluster H' }
+    { color: '#40a9ff', count: 960, name: 'Cluster A' },
+    { color: '#4ab274', count: 820, name: 'Cluster B' },
+    { color: '#fbb822', count: 740, name: 'Cluster C' },
+    { color: '#e5864b', count: 620, name: 'Cluster D' },
+    { color: '#da347f', count: 760, name: 'Cluster E' },
+    { color: '#969dea', count: 680, name: 'Cluster F' },
+    { color: '#de367b', count: 540, name: 'Cluster G' },
+    { color: '#6cf1a1', count: 860, name: 'Cluster H' }
   ];
 
   // 3D tilt effect
@@ -364,8 +364,8 @@ const initInteractiveViz = () => {
       const axisY = Math.sin(axisAngle);
       const perpX = -axisY;
       const perpY = axisX;
-      const axisLength = Math.random() * 65 + 110;
-      const perpWidth = axisLength * (Math.random() * 0.2 + 0.28);
+      const axisLength = Math.random() * 90 + 150;
+      const perpWidth = axisLength * (Math.random() * 0.25 + 0.4);
 
       for (let i = 0; i < cluster.count; i++) {
         const dot = document.createElement('div');
@@ -373,7 +373,7 @@ const initInteractiveViz = () => {
         dot.dataset.cluster = cluster.name;
         dot.dataset.color = cluster.color;
 
-        const size = Math.floor(Math.random() * 5) + 4;
+        const size = Math.floor(Math.random() * 6) + 5;
         dot.style.width = `${size}px`;
         dot.style.height = `${size}px`;
 
