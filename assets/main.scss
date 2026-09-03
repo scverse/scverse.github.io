@@ -523,7 +523,7 @@ body {
                 // The wide gap under the hero used to live on #packages, which put it
                 // between whatever section came after the demo and the packages.
                 #interactive-demo-section {
-                    margin-bottom: 15%;
+                    margin-bottom: 3rem;
                 }
                 #packages {
                     #packages-list {
@@ -3107,24 +3107,20 @@ body {
     animation: trajectory-appear 0.6s ease forwards;
 }
 
-.trajectory-edge {
+.trajectory-line {
     fill: none;
-    stroke-width: 2.5px;
+    stroke-width: 1px;
     stroke-linecap: round;
-    stroke-dasharray: 7 6;
-    opacity: 0.6;
-    animation: trajectory-flow 1.2s linear infinite;
+    opacity: 0.55;
+}
+
+.trajectory-arrow {
+    opacity: 0.75;
 }
 
 @keyframes trajectory-appear {
     to {
         opacity: 1;
-    }
-}
-
-@keyframes trajectory-flow {
-    to {
-        stroke-dashoffset: -26;
     }
 }
 

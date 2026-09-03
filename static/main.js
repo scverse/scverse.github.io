@@ -325,7 +325,7 @@ const initInteractiveViz = () => {
     colorClusters.forEach(cluster => {
       const centerX = Math.random() * 0.6 * width + 0.2 * width;
       const centerY = Math.random() * 0.6 * height + 0.2 * height;
-      centers.push({ x: centerX, y: centerY, color: cluster.color });
+      centers.push({ x: centerX, y: centerY, color: cluster.color, name: cluster.name });
 
       for (let i = 0; i < cluster.count; i++) {
         const dot = document.createElement('div');
@@ -374,7 +374,7 @@ const initInteractiveViz = () => {
     setTimeout(() => drawTrajectory(centers), 850);
   }
 
-  // Draws a CellRank/PAGA-style trajectory graph over the clusters: a chain of curved, arrowed edges that forks into two fates at the end, standing in for a real pseudotime computation.
+  // Draws a scVelo/CellRank-style velocity field: bundles of parallel arrowed streamlines that fan out from a cluster and converge into the next one, rather than one graph edge between cluster centroids.
   function drawTrajectory(centers) {
     const svgNS = 'http://www.w3.org/2000/svg';
     const old = visualization.querySelector('.trajectory-svg');
@@ -394,46 +394,59 @@ const initInteractiveViz = () => {
     svg.setAttribute('class', 'trajectory-svg');
     svg.setAttribute('width', visualization.clientWidth);
     svg.setAttribute('height', visualization.clientHeight);
+    visualization.appendChild(svg);
 
-    const defs = document.createElementNS(svgNS, 'defs');
-    edges.forEach((edge, i) => {
-      const marker = document.createElementNS(svgNS, 'marker');
-      marker.setAttribute('id', `traj-arrow-${i}`);
-      marker.setAttribute('viewBox', '0 0 10 10');
-      marker.setAttribute('refX', '8');
-      marker.setAttribute('refY', '5');
-      marker.setAttribute('markerWidth', '7');
-      marker.setAttribute('markerHeight', '7');
-      marker.setAttribute('orient', 'auto-start-reverse');
-      const arrowhead = document.createElementNS(svgNS, 'path');
-      arrowhead.setAttribute('d', 'M 0 0 L 10 5 L 0 10 z');
-      arrowhead.setAttribute('fill', edge[1].color);
-      marker.appendChild(arrowhead);
-      defs.appendChild(marker);
-    });
-    svg.appendChild(defs);
+    const LANES = 9;
+    const ARROWS_PER_LANE = 2;
 
-    edges.forEach(([from, to], i) => {
-      const mx = (from.x + to.x) / 2;
-      const my = (from.y + to.y) / 2;
+    edges.forEach(([from, to]) => {
       const dx = to.x - from.x;
       const dy = to.y - from.y;
       const dist = Math.hypot(dx, dy) || 1;
-      // Bows the edge outward, like a PAGA/CellRank transition graph, instead of a straight line.
-      const bow = Math.min(dist * 0.22, 60) * (i % 2 === 0 ? 1 : -1);
-      const cx = mx - (dy / dist) * bow;
-      const cy = my + (dx / dist) * bow;
+      const ux = dx / dist;
+      const uy = dy / dist;
+      // Perpendicular unit vector: lanes are offset along this so the bundle fans sideways instead of along the direction of travel.
+      const px = -uy;
+      const py = ux;
+      const bow = Math.min(dist * 0.16, 45);
+      const spread = Math.min(dist * 0.24, 48);
 
-      const path = document.createElementNS(svgNS, 'path');
-      path.setAttribute('d', `M ${from.x} ${from.y} Q ${cx} ${cy} ${to.x} ${to.y}`);
-      path.setAttribute('class', 'trajectory-edge');
-      path.setAttribute('stroke', to.color);
-      path.setAttribute('marker-end', `url(#traj-arrow-${i})`);
-      path.style.animationDelay = `${i * 0.15}s`;
-      svg.appendChild(path);
+      for (let lane = 0; lane < LANES; lane++) {
+        // -1 at one edge of the bundle, +1 at the other, 0 down the middle.
+        const t = LANES === 1 ? 0 : (lane / (LANES - 1)) * 2 - 1;
+        const jitter = (Math.random() - 0.5) * 6;
+        const startOffset = t * spread + jitter;
+        // Streamlines start spread across the source cluster and narrow as they approach the target, like real velocity fields converging on a cell state.
+        const endOffset = t * spread * 0.2 + jitter;
+        const midOffset = t * spread * 0.55 + jitter;
+
+        const start = { x: from.x + px * startOffset, y: from.y + py * startOffset };
+        const end = { x: to.x + px * endOffset, y: to.y + py * endOffset };
+        const cx = (start.x + end.x) / 2 + px * (midOffset + bow);
+        const cy = (start.y + end.y) / 2 + py * (midOffset + bow);
+
+        const path = document.createElementNS(svgNS, 'path');
+        path.setAttribute('d', `M ${start.x} ${start.y} Q ${cx} ${cy} ${end.x} ${end.y}`);
+        path.setAttribute('class', 'trajectory-line');
+        path.setAttribute('stroke', to.color);
+        svg.appendChild(path);
+
+        const length = path.getTotalLength();
+        for (let a = 1; a <= ARROWS_PER_LANE; a++) {
+          const at = (a / (ARROWS_PER_LANE + 1)) * length;
+          const p = path.getPointAtLength(at);
+          const ahead = path.getPointAtLength(Math.min(at + 3, length));
+          const angle = (Math.atan2(ahead.y - p.y, ahead.x - p.x) * 180) / Math.PI;
+
+          const arrow = document.createElementNS(svgNS, 'polygon');
+          arrow.setAttribute('points', '0,-2.5 5,0 0,2.5');
+          arrow.setAttribute('transform', `translate(${p.x}, ${p.y}) rotate(${angle})`);
+          arrow.setAttribute('class', 'trajectory-arrow');
+          arrow.setAttribute('fill', to.color);
+          svg.appendChild(arrow);
+        }
+      }
     });
-
-    visualization.appendChild(svg);
   }
 
   function setupDotInteractions() {
