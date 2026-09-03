@@ -3336,8 +3336,303 @@ body {
     }
 }
 
-.page-item-author {
-    font-weight: 600;
+// The blog index. /events and the landing page still use .page-item above, so the
+// two are kept apart.
+
+.blog-layout {
+    display: grid;
+    grid-template-columns: 1fr 15rem;
+    gap: 2.5rem;
+    align-items: start;
+
+    // The rail is the first thing to go when width runs short
+    @media (max-width: 62rem) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.blog-rail {
+    position: sticky;
+    top: 5.5rem;
+
+    @media (max-width: 62rem) {
+        display: none;
+    }
+
+    h2 {
+        margin: 0 0 0.7rem;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: $greydesc;
+    }
+
+    .blog-rail-year {
+        margin-bottom: 1.1rem;
+
+        > span {
+            display: block;
+            padding-bottom: 0.35rem;
+            font-weight: 700;
+            color: $greyheader;
+            border-bottom: 1px solid $overline;
+        }
+
+        a {
+            display: block;
+            padding: 0.4rem 0;
+            font-size: 0.8rem;
+            line-height: 1.35;
+            color: $tiletext2;
+            border-bottom: 1px solid $overline;
+
+            &:last-child {
+                border-bottom: 0;
+            }
+
+            &:hover {
+                color: $greyheader;
+            }
+        }
+    }
+
+    .blog-rail-when {
+        display: block;
+        margin-top: 0.15rem;
+        font-size: 0.7rem;
+        color: $greydesc;
+    }
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+    // Stretch, so every row's cards end level with each other
+    align-items: stretch;
+
+    @media (max-width: 78rem) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @media (max-width: 44rem) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.blog-card {
+    position: relative;
+    // width is load-bearing: with aspect-ratio on the media and an auto width,
+    // min-height would grow the card sideways out of its column
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-height: 13rem;
+    scroll-margin-top: 6rem;
+    overflow: hidden;
+    border-radius: $card-radius;
+    background-color: white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 250ms ease-in-out;
+
+    &:hover {
+        box-shadow: 0 8px 26px rgba(0, 0, 0, 0.16);
+    }
+
+    &:focus-visible {
+        outline: 3px solid $spatialdatablue;
+        outline-offset: 2px;
+    }
+
+    // The newest post runs across two columns; its row-mate stretches beside it
+    &.blog-card--lead {
+        grid-column: span 2;
+
+        @media (max-width: 44rem) {
+            grid-column: span 1;
+        }
+    }
+}
+
+// The box takes the picture's own shape, so the picture fills it exactly
+.blog-card-media {
+    position: relative;
+    flex: 0 0 auto;
+    width: 100%;
+    aspect-ratio: var(--img-ar);
+    overflow: hidden;
+
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.blog-card--contain .blog-card-media {
+    padding: 0.6rem;
+
+    img {
+        object-fit: contain;
+    }
+}
+
+// Reserved ground beneath the picture: the words never land on the artwork
+.blog-card-foot {
+    flex: 1 1 auto;
+    min-height: 11rem;
+}
+
+// The lead carries a kicker the others do not, so it needs a little more room
+.blog-card--lead .blog-card-foot {
+    min-height: 10.25rem;
+}
+
+// One column means much narrower cards, so the same words take more lines and
+// need more ground under the picture than they do on a wide screen
+@media (max-width: 44rem) {
+    .blog-card-foot,
+    .blog-card--lead .blog-card-foot {
+        min-height: 12.5rem;
+    }
+
+    .blog-card--lead .blog-card-title {
+        font-size: 1.25rem;
+    }
+
+    // The text zone is taller here, so the flat part of the scrim has to reach
+    // further up with it or the title loses its contrast
+    .blog-card--img .blog-card-text {
+        background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.9) 0,
+            rgba(0, 0, 0, 0.86) 12rem,
+            rgba(0, 0, 0, 0.5) 13.5rem,
+            rgba(0, 0, 0, 0) 14.5rem
+        );
+    }
+}
+
+.blog-card-text {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1rem 1.1rem 1.1rem;
+    color: white;
+}
+
+// Anchored to the bottom in rem, not in percentages of the card: as a percentage
+// the dark washed all the way up a tall white figure. It holds flat across the
+// reserved text zone, so white text keeps its contrast even over a white figure,
+// then feathers out over 2.5rem just above it.
+.blog-card--img .blog-card-text {
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.9) 0,
+        rgba(0, 0, 0, 0.86) 10.5rem,
+        rgba(0, 0, 0, 0.5) 12rem,
+        rgba(0, 0, 0, 0) 13rem
+    );
+}
+
+// Posts whose picture would not read at card size get a type card instead of
+// a placeholder, so the grid never looks like it is missing something
+.blog-card--type {
+    min-height: 14rem;
+
+    @each $hue in $eco-hues {
+        &[data-hue="#{index($eco-hues, $hue) - 1}"] {
+            background: linear-gradient(
+                160deg,
+                mix($hue, black, 52%) 0%,
+                mix($hue, black, 34%) 100%
+            );
+        }
+    }
+
+    .blog-card-title {
+        font-size: 1.3rem;
+        -webkit-line-clamp: 3;
+    }
+
+    // No picture to give the card height, so the text sits in the flow and the
+    // card grows to fit it rather than clipping a long title. The top padding
+    // keeps the longest titles from sliding under the mark.
+    .blog-card-text {
+        position: relative;
+        margin-top: auto;
+        padding-top: 2.6rem;
+    }
+}
+
+.blog-card-mark {
+    position: absolute;
+    top: 0.95rem;
+    left: 1.1rem;
+    z-index: 2;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.blog-card-kicker {
+    margin-bottom: 0.3rem;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: white;
+    opacity: 0.85;
+}
+
+// Descriptions run from six words to twenty-five. Clamping keeps every card the
+// same shape and stops the longest ones climbing over the artwork.
+.blog-card-title,
+.blog-card-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.blog-card-title {
+    margin: 0;
+    font-size: 1.02rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.blog-card--lead .blog-card-title {
+    font-size: 1.4rem;
+}
+
+.blog-card-date {
+    margin-top: 0.3rem;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.blog-card-desc {
+    margin: 0.45rem 0 0;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.93);
+}
+
+.blog-card-meta {
+    margin-top: 0.35rem;
+    font-size: 0.74rem;
+    color: rgba(255, 255, 255, 0.72);
 }
 
 // Specific to /about/roles — an index of the governance sections, not a summary of them
