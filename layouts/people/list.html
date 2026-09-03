@@ -53,7 +53,7 @@
             </p>
           {{ end }}
           <p></p>
-          {{ $url := "https://scverse.org/stats/contributors.json" }}
+          {{ $url := "https://scverse-stats.s3.eu-west-1.amazonaws.com/contributors.json" }}
           {{ $resource := resources.GetRemote $url }}
           {{ with $resource }}
             {{ $data := . | transform.Unmarshal }}

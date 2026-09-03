@@ -2,7 +2,7 @@
   <h1>{{ .Title }}</h1>
   <article class="post">
     <div class="post-content" id="stats-content">
-      {{ $base := "https://scverse.org/stats/" }}
+      {{ $base := "https://scverse-stats.s3.eu-west-1.amazonaws.com/" }}
       {{ $stats := transform.Unmarshal (resources.GetRemote (printf "%sstats.json" $base)).Content }}
       {{ $contributors := transform.Unmarshal (resources.GetRemote (printf "%scontributors.json" $base)).Content }}
       {{ $gh := $stats.github }}
