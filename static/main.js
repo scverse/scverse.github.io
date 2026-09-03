@@ -269,14 +269,14 @@ const initInteractiveViz = () => {
 
   // Color clusters for UMAP visualization, using the same brand hues the package tiles below use instead of a generic chart-library palette.
   const colorClusters = [
-    { color: '#40a9ff', count: 240, name: 'Cluster A' },
-    { color: '#4ab274', count: 205, name: 'Cluster B' },
-    { color: '#fbb822', count: 185, name: 'Cluster C' },
-    { color: '#e5864b', count: 155, name: 'Cluster D' },
-    { color: '#da347f', count: 190, name: 'Cluster E' },
-    { color: '#969dea', count: 170, name: 'Cluster F' },
-    { color: '#de367b', count: 135, name: 'Cluster G' },
-    { color: '#6cf1a1', count: 215, name: 'Cluster H' }
+    { color: '#40a9ff', count: 480, name: 'Cluster A' },
+    { color: '#4ab274', count: 410, name: 'Cluster B' },
+    { color: '#fbb822', count: 370, name: 'Cluster C' },
+    { color: '#e5864b', count: 310, name: 'Cluster D' },
+    { color: '#da347f', count: 380, name: 'Cluster E' },
+    { color: '#969dea', count: 340, name: 'Cluster F' },
+    { color: '#de367b', count: 270, name: 'Cluster G' },
+    { color: '#6cf1a1', count: 430, name: 'Cluster H' }
   ];
 
   // 3D tilt effect
@@ -343,6 +343,16 @@ const initInteractiveViz = () => {
         x: Math.min(Math.max(cx + Math.cos(branchAngle) * step, width * 0.03), width * 0.97),
         y: Math.min(Math.max(cy + Math.sin(branchAngle) * step, height * 0.05), height * 0.95)
       });
+    });
+
+    // The walk above tends to drift toward one side, so re-center its bounding box on the container instead of leaving the whole shape off to one edge.
+    const xs = centers.map(c => c.x);
+    const ys = centers.map(c => c.y);
+    const shiftX = width / 2 - (Math.min(...xs) + Math.max(...xs)) / 2;
+    const shiftY = height / 2 - (Math.min(...ys) + Math.max(...ys)) / 2;
+    centers.forEach(c => {
+      c.x += shiftX;
+      c.y += shiftY;
     });
 
     colorClusters.forEach((cluster, clusterIndex) => {
