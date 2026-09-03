@@ -17,7 +17,7 @@ description = "Foundational tools for omics data in the life sciences"
 [taxonomies]
 
 [outputs]
-home = ["html", "rss", "entities"]
+home = ["html", "rss", "entities", "llms"]
 
 [outputFormats.entities]
 mediaType = "application/json"
@@ -27,6 +27,11 @@ notAlternative = true
 
 [markup.goldmark.renderer]
 unsafe= true
+
+[outputFormats.llms]
+mediaType = "text/plain"
+baseName = "llms"
+isPlainText = true
 
 # The ecosystem registry rebuilds this site when packages.json changes, so a cached copy defeats the trigger.
 # Hugo caches remote resources forever by default, and on Netlify that cache survives between builds.
