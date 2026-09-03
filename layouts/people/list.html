@@ -42,7 +42,7 @@
   {{ $packages = sort $packages }}
 
   {{ $contributors := slice }}
-  {{ with resources.GetRemote "https://scverse.org/stats/contributors.json" }}
+  {{ with (try (resources.GetRemote "https://scverse-stats-dev.s3.eu-west-1.amazonaws.com/contributors.json")).Value }}
     {{ $contributors = (. | transform.Unmarshal).contributors | default slice }}
   {{ end }}
 
