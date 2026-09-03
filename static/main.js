@@ -269,14 +269,14 @@ const initInteractiveViz = () => {
 
   // Color clusters for UMAP visualization, using the same brand hues the package tiles below use instead of a generic chart-library palette.
   const colorClusters = [
-    { color: '#40a9ff', count: 130, name: 'Cluster A' },
-    { color: '#4ab274', count: 112, name: 'Cluster B' },
-    { color: '#fbb822', count: 100, name: 'Cluster C' },
-    { color: '#e5864b', count: 84, name: 'Cluster D' },
-    { color: '#da347f', count: 104, name: 'Cluster E' },
-    { color: '#969dea', count: 92, name: 'Cluster F' },
-    { color: '#de367b', count: 72, name: 'Cluster G' },
-    { color: '#6cf1a1', count: 118, name: 'Cluster H' }
+    { color: '#40a9ff', count: 240, name: 'Cluster A' },
+    { color: '#4ab274', count: 205, name: 'Cluster B' },
+    { color: '#fbb822', count: 185, name: 'Cluster C' },
+    { color: '#e5864b', count: 155, name: 'Cluster D' },
+    { color: '#da347f', count: 190, name: 'Cluster E' },
+    { color: '#969dea', count: 170, name: 'Cluster F' },
+    { color: '#de367b', count: 135, name: 'Cluster G' },
+    { color: '#6cf1a1', count: 215, name: 'Cluster H' }
   ];
 
   // 3D tilt effect
@@ -331,14 +331,14 @@ const initInteractiveViz = () => {
     for (let i = 0; i < chainCount; i++) {
       if (i > 0) {
         angle = angle * 0.6 + (Math.random() - 0.5) * 1.1;
-        const step = 110 + Math.random() * 40;
+        const step = 85 + Math.random() * 30;
         cx = Math.min(Math.max(cx + Math.cos(angle) * step, width * 0.04), width * 0.96);
         cy = Math.min(Math.max(cy + Math.sin(angle) * step, height * 0.12), height * 0.88);
       }
       centers.push({ x: cx, y: cy });
     }
     [angle + 0.7 + Math.random() * 0.3, angle - 0.7 - Math.random() * 0.3].forEach(branchAngle => {
-      const step = 105 + Math.random() * 40;
+      const step = 70 + Math.random() * 25;
       centers.push({
         x: Math.min(Math.max(cx + Math.cos(branchAngle) * step, width * 0.03), width * 0.97),
         y: Math.min(Math.max(cy + Math.sin(branchAngle) * step, height * 0.05), height * 0.95)
@@ -354,7 +354,7 @@ const initInteractiveViz = () => {
       const axisY = Math.sin(axisAngle);
       const perpX = -axisY;
       const perpY = axisX;
-      const axisLength = Math.random() * 55 + 95;
+      const axisLength = Math.random() * 65 + 110;
       const perpWidth = axisLength * (Math.random() * 0.2 + 0.28);
 
       for (let i = 0; i < cluster.count; i++) {
@@ -395,7 +395,7 @@ const initInteractiveViz = () => {
         setTimeout(() => {
           dot.style.transform = 'scale(1)';
           dot.style.opacity = '1';
-        }, i * 8 + Math.random() * 150);
+        }, i * 3 + Math.random() * 150);
       }
     });
 
