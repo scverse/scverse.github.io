@@ -464,6 +464,16 @@ body {
                             font-weight: 700;
                             color: $tiletext;
                             margin-bottom: 0.3rem;
+
+                            // Same arrow glyph as the ".more" links elsewhere on the page, so these read as clickable at a glance instead of only revealing that on hover.
+                            &::after {
+                                content: "\232A";
+                                display: inline-block;
+                                margin-left: 0.3rem;
+                                font-size: 0.75rem;
+                                font-weight: 400;
+                                color: $tiletext2;
+                            }
                         }
                         .hero-point-text {
                             margin: 0;
