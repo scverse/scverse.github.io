@@ -7,19 +7,13 @@
   </div>
   {{ with .Params.hero }}
     <p id="hero-lede">{{ .text | markdownify }}</p>
-    <div id="hero-cta">
-      <a class="hero-button hero-button-primary" href="/learn">Get started</a>
-      <a class="hero-button hero-button-secondary" href="https://github.com/scverse" target="_blank">
-        View on GitHub
-      </a>
-    </div>
     <div id="hero-points">
       {{ range .points }}
-        <div class="hero-point">
+        <a class="hero-point" href="{{ .link }}">
           <div class="hero-point-icon"><i class="bi {{ .icon }}" aria-hidden="true"></i></div>
           <div class="hero-point-title">{{ .title }}</div>
           <p class="hero-point-text">{{ .text }}</p>
-        </div>
+        </a>
       {{ end }}
     </div>
   {{ end }}

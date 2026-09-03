@@ -384,42 +384,6 @@ body {
                         }
                     }
 
-                    #hero-cta {
-                        display: flex;
-                        justify-content: center;
-                        flex-wrap: wrap;
-                        gap: 1rem;
-                        margin: 2rem 0 0;
-                    }
-
-                    .hero-button {
-                        padding: 0.8rem 1.8rem;
-                        border-radius: 2rem;
-                        font-weight: 700;
-                        text-decoration: none;
-                        transition: all 200ms ease-in-out;
-                    }
-
-                    .hero-button-primary {
-                        background-color: black;
-                        color: white;
-
-                        &:hover {
-                            background-color: $greyheader;
-                            transform: translateY(-2px);
-                        }
-                    }
-
-                    .hero-button-secondary {
-                        background-color: $tilebg;
-                        color: $tiletext;
-
-                        &:hover {
-                            background-color: $tilebg2;
-                            transform: translateY(-2px);
-                        }
-                    }
-
                     #hero-points {
                         display: flex;
                         flex-wrap: wrap;
@@ -435,6 +399,18 @@ body {
                             display: flex;
                             flex-direction: column;
                             align-items: center;
+                            text-decoration: none;
+                            border-radius: 1rem;
+                            padding: 0.75rem;
+                            transition: background-color 200ms ease-in-out;
+
+                            &:hover {
+                                background-color: $tilebg4;
+
+                                .hero-point-icon {
+                                    transform: scale(1.08);
+                                }
+                            }
                         }
                         .hero-point-icon {
                             width: 2.25rem;
@@ -447,6 +423,7 @@ body {
                             font-size: 1.1rem;
                             background-color: $tilebg;
                             color: $tiletext;
+                            transition: transform 200ms ease-in-out;
                         }
                         .hero-point-title {
                             font-weight: 700;
@@ -474,9 +451,10 @@ body {
                     display: flex;
                     align-items: center;
                     gap: 1.75rem;
-                    width: 100%;
-                    padding: 1.5rem 2rem;
-                    border-radius: 1.25rem;
+                    width: 92%;
+                    margin: 0 auto;
+                    padding: 1rem 1.75rem;
+                    border-radius: 1rem;
                     background: linear-gradient(120deg, #0b0b12 0%, #22223a 100%);
                     color: white;
                     text-decoration: none;

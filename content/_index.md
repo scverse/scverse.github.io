@@ -6,22 +6,25 @@ description = "Foundational tools for single-cell omics data analysis"
 [hero]
 
 text = """\
-scverse is an open-source, community-governed ecosystem of interoperable Python packages for single-cell and spatial omics data analysis — from foundational data structures like AnnData to analysis frameworks like Scanpy, scvi-tools, and Squidpy. The tools share common data formats, so you can move between them in a single analysis instead of gluing together incompatible pipelines."""
+scverse is an open-source, community-governed ecosystem of interoperable Python packages for single-cell and spatial omics analysis — from data structures like AnnData to analysis frameworks like Scanpy, scvi-tools, and Squidpy, all sharing common data formats so you can move between them in one analysis."""
 
 [[hero.points]]
 icon = "bi-mortarboard"
 title = "For researchers"
 text = "Well-documented, actively maintained tools that interoperate out of the box."
+link = "/learn"
 
 [[hero.points]]
 icon = "bi-code-slash"
 title = "For developers"
 text = "Shared data structures and conventions, so your package fits the ecosystem from day one."
+link = "/join"
 
 [[hero.points]]
 icon = "bi-bank"
 title = "For institutions"
 text = "A community-governed foundation ensuring the long-term maintenance of critical infrastructure."
+link = "/about/mission"
 
 # Core packages
 [packages]
