@@ -269,14 +269,14 @@ const initInteractiveViz = () => {
 
   // Color clusters for UMAP visualization, using the same brand hues the package tiles below use instead of a generic chart-library palette.
   const colorClusters = [
-    { color: '#40a9ff', count: 90, name: 'Cluster A' },
-    { color: '#4ab274', count: 78, name: 'Cluster B' },
-    { color: '#fbb822', count: 70, name: 'Cluster C' },
-    { color: '#e5864b', count: 58, name: 'Cluster D' },
-    { color: '#da347f', count: 72, name: 'Cluster E' },
-    { color: '#969dea', count: 64, name: 'Cluster F' },
-    { color: '#de367b', count: 50, name: 'Cluster G' },
-    { color: '#6cf1a1', count: 82, name: 'Cluster H' }
+    { color: '#40a9ff', count: 130, name: 'Cluster A' },
+    { color: '#4ab274', count: 112, name: 'Cluster B' },
+    { color: '#fbb822', count: 100, name: 'Cluster C' },
+    { color: '#e5864b', count: 84, name: 'Cluster D' },
+    { color: '#da347f', count: 104, name: 'Cluster E' },
+    { color: '#969dea', count: 92, name: 'Cluster F' },
+    { color: '#de367b', count: 72, name: 'Cluster G' },
+    { color: '#6cf1a1', count: 118, name: 'Cluster H' }
   ];
 
   // 3D tilt effect
@@ -320,12 +320,33 @@ const initInteractiveViz = () => {
 
     const width = visualization.clientWidth;
     const height = visualization.clientHeight;
-    const centers = [];
 
-    colorClusters.forEach(cluster => {
-      const centerX = Math.random() * 0.6 * width + 0.2 * width;
-      const centerY = Math.random() * 0.6 * height + 0.2 * height;
-      centers.push({ x: centerX, y: centerY });
+    // Lays cluster centers out along a winding chain instead of scattering them independently, so neighbouring clusters sit close enough to touch, like a real connected UMAP embedding, and the last two branch off from the chain's end.
+    const centers = [];
+    // Biased toward rightward travel (angle 0) so the chain fans out across this wide, short box instead of a random walk drifting into a corner; it can still wiggle up and down along the way.
+    let angle = (Math.random() - 0.5) * 0.6;
+    let cx = width * (0.05 + Math.random() * 0.05);
+    let cy = height * (0.35 + Math.random() * 0.3);
+    const chainCount = colorClusters.length - 2;
+    for (let i = 0; i < chainCount; i++) {
+      if (i > 0) {
+        angle = angle * 0.6 + (Math.random() - 0.5) * 1.1;
+        const step = 110 + Math.random() * 40;
+        cx = Math.min(Math.max(cx + Math.cos(angle) * step, width * 0.04), width * 0.96);
+        cy = Math.min(Math.max(cy + Math.sin(angle) * step, height * 0.12), height * 0.88);
+      }
+      centers.push({ x: cx, y: cy });
+    }
+    [angle + 0.7 + Math.random() * 0.3, angle - 0.7 - Math.random() * 0.3].forEach(branchAngle => {
+      const step = 105 + Math.random() * 40;
+      centers.push({
+        x: Math.min(Math.max(cx + Math.cos(branchAngle) * step, width * 0.03), width * 0.97),
+        y: Math.min(Math.max(cy + Math.sin(branchAngle) * step, height * 0.05), height * 0.95)
+      });
+    });
+
+    colorClusters.forEach((cluster, clusterIndex) => {
+      const { x: centerX, y: centerY } = centers[clusterIndex];
 
       // Real UMAP clusters are elongated, tapered blobs rather than round scatters, so each cluster gets its own axis to stretch along and a perpendicular axis to stay narrow on.
       const axisAngle = Math.random() * Math.PI * 2;
@@ -333,7 +354,7 @@ const initInteractiveViz = () => {
       const axisY = Math.sin(axisAngle);
       const perpX = -axisY;
       const perpY = axisX;
-      const axisLength = Math.random() * 40 + 55;
+      const axisLength = Math.random() * 55 + 95;
       const perpWidth = axisLength * (Math.random() * 0.2 + 0.28);
 
       for (let i = 0; i < cluster.count; i++) {
@@ -389,14 +410,15 @@ const initInteractiveViz = () => {
     if (old) old.remove();
     if (centers.length < 4) return;
 
-    const ordered = [...centers].sort((a, b) => a.x - b.x);
+    // centers is already laid out as a chain with the last two entries branching off its end, matching how generateUMAP placed the cluster centers, so the edges just follow that same order.
+    const chainCount = centers.length - 2;
     const edges = [];
-    for (let i = 0; i < ordered.length - 3; i++) {
-      edges.push([ordered[i], ordered[i + 1]]);
+    for (let i = 0; i < chainCount - 1; i++) {
+      edges.push([centers[i], centers[i + 1]]);
     }
-    const branchFrom = ordered[ordered.length - 3];
-    edges.push([branchFrom, ordered[ordered.length - 2]]);
-    edges.push([branchFrom, ordered[ordered.length - 1]]);
+    const branchFrom = centers[chainCount - 1];
+    edges.push([branchFrom, centers[chainCount]]);
+    edges.push([branchFrom, centers[chainCount + 1]]);
 
     const svg = document.createElementNS(svgNS, 'svg');
     svg.setAttribute('class', 'trajectory-svg');
