@@ -325,7 +325,7 @@ const initInteractiveViz = () => {
     colorClusters.forEach(cluster => {
       const centerX = Math.random() * 0.6 * width + 0.2 * width;
       const centerY = Math.random() * 0.6 * height + 0.2 * height;
-      centers.push({ x: centerX, y: centerY, color: cluster.color, name: cluster.name });
+      centers.push({ x: centerX, y: centerY });
 
       for (let i = 0; i < cluster.count; i++) {
         const dot = document.createElement('div');
@@ -397,7 +397,7 @@ const initInteractiveViz = () => {
     visualization.appendChild(svg);
 
     const LANES = 9;
-    const ARROWS_PER_LANE = 2;
+    const ARROWS_PER_LANE = 4;
 
     edges.forEach(([from, to]) => {
       const dx = to.x - from.x;
@@ -428,7 +428,6 @@ const initInteractiveViz = () => {
         const path = document.createElementNS(svgNS, 'path');
         path.setAttribute('d', `M ${start.x} ${start.y} Q ${cx} ${cy} ${end.x} ${end.y}`);
         path.setAttribute('class', 'trajectory-line');
-        path.setAttribute('stroke', to.color);
         svg.appendChild(path);
 
         const length = path.getTotalLength();
@@ -442,7 +441,6 @@ const initInteractiveViz = () => {
           arrow.setAttribute('points', '0,-2.5 5,0 0,2.5');
           arrow.setAttribute('transform', `translate(${p.x}, ${p.y}) rotate(${angle})`);
           arrow.setAttribute('class', 'trajectory-arrow');
-          arrow.setAttribute('fill', to.color);
           svg.appendChild(arrow);
         }
       }

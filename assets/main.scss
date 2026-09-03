@@ -3109,13 +3109,15 @@ body {
 
 .trajectory-line {
     fill: none;
-    stroke-width: 1px;
+    stroke: black;
+    stroke-width: 0.75px;
     stroke-linecap: round;
-    opacity: 0.55;
+    opacity: 0.65;
 }
 
 .trajectory-arrow {
-    opacity: 0.75;
+    fill: black;
+    opacity: 0.8;
 }
 
 @keyframes trajectory-appear {
