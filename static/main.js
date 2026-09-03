@@ -269,14 +269,14 @@ const initInteractiveViz = () => {
 
   // Color clusters for UMAP visualization, using the same brand hues the package tiles below use instead of a generic chart-library palette.
   const colorClusters = [
-    { color: '#40a9ff', count: 34, name: 'Cluster A' },
-    { color: '#4ab274', count: 29, name: 'Cluster B' },
-    { color: '#fbb822', count: 26, name: 'Cluster C' },
-    { color: '#e5864b', count: 22, name: 'Cluster D' },
-    { color: '#da347f', count: 27, name: 'Cluster E' },
-    { color: '#969dea', count: 24, name: 'Cluster F' },
-    { color: '#de367b', count: 19, name: 'Cluster G' },
-    { color: '#6cf1a1', count: 31, name: 'Cluster H' }
+    { color: '#40a9ff', count: 90, name: 'Cluster A' },
+    { color: '#4ab274', count: 78, name: 'Cluster B' },
+    { color: '#fbb822', count: 70, name: 'Cluster C' },
+    { color: '#e5864b', count: 58, name: 'Cluster D' },
+    { color: '#da347f', count: 72, name: 'Cluster E' },
+    { color: '#969dea', count: 64, name: 'Cluster F' },
+    { color: '#de367b', count: 50, name: 'Cluster G' },
+    { color: '#6cf1a1', count: 82, name: 'Cluster H' }
   ];
 
   // 3D tilt effect
@@ -327,13 +327,22 @@ const initInteractiveViz = () => {
       const centerY = Math.random() * 0.6 * height + 0.2 * height;
       centers.push({ x: centerX, y: centerY });
 
+      // Real UMAP clusters are elongated, tapered blobs rather than round scatters, so each cluster gets its own axis to stretch along and a perpendicular axis to stay narrow on.
+      const axisAngle = Math.random() * Math.PI * 2;
+      const axisX = Math.cos(axisAngle);
+      const axisY = Math.sin(axisAngle);
+      const perpX = -axisY;
+      const perpY = axisX;
+      const axisLength = Math.random() * 40 + 55;
+      const perpWidth = axisLength * (Math.random() * 0.2 + 0.28);
+
       for (let i = 0; i < cluster.count; i++) {
         const dot = document.createElement('div');
         dot.className = 'dot';
         dot.dataset.cluster = cluster.name;
         dot.dataset.color = cluster.color;
 
-        const size = Math.floor(Math.random() * 8) + 5;
+        const size = Math.floor(Math.random() * 5) + 4;
         dot.style.width = `${size}px`;
         dot.style.height = `${size}px`;
 
@@ -345,11 +354,10 @@ const initInteractiveViz = () => {
         u = u / 6 - 0.5;
         v = v / 6 - 0.5;
 
-        const distance = Math.random() * 130 + 20;
-        const dx = u * distance * 2;
-        const dy = v * distance * 2;
-        const x = centerX + dx;
-        const y = centerY + dy;
+        const along = u * axisLength;
+        const across = v * perpWidth;
+        const x = centerX + axisX * along + perpX * across;
+        const y = centerY + axisY * along + perpY * across;
 
         const safeX = Math.min(Math.max(size, x), width - size);
         const safeY = Math.min(Math.max(size, y), height - size);
@@ -366,12 +374,12 @@ const initInteractiveViz = () => {
         setTimeout(() => {
           dot.style.transform = 'scale(1)';
           dot.style.opacity = '1';
-        }, i * 18 + Math.random() * 150);
+        }, i * 8 + Math.random() * 150);
       }
     });
 
     setupDotInteractions();
-    setTimeout(() => drawTrajectory(centers), 850);
+    setTimeout(() => drawTrajectory(centers), 950);
   }
 
   // Draws a scVelo/CellRank-style velocity field: bundles of parallel arrowed streamlines that fan out from a cluster and converge into the next one, rather than one graph edge between cluster centroids.
@@ -408,8 +416,8 @@ const initInteractiveViz = () => {
       // Perpendicular unit vector: lanes are offset along this so the bundle fans sideways instead of along the direction of travel.
       const px = -uy;
       const py = ux;
-      const bow = Math.min(dist * 0.16, 45);
-      const spread = Math.min(dist * 0.24, 48);
+      const bow = Math.min(dist * 0.16, 36);
+      const spread = Math.min(dist * 0.22, 36);
 
       for (let lane = 0; lane < LANES; lane++) {
         // -1 at one edge of the bundle, +1 at the other, 0 down the middle.
