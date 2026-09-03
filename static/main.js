@@ -315,13 +315,17 @@ const initInteractiveViz = () => {
 
   function generateUMAP() {
     visualization.querySelectorAll('.dot').forEach(dot => dot.remove());
+    const oldTrajectory = visualization.querySelector('.trajectory-svg');
+    if (oldTrajectory) oldTrajectory.remove();
 
     const width = visualization.clientWidth;
     const height = visualization.clientHeight;
+    const centers = [];
 
     colorClusters.forEach(cluster => {
       const centerX = Math.random() * 0.6 * width + 0.2 * width;
       const centerY = Math.random() * 0.6 * height + 0.2 * height;
+      centers.push({ x: centerX, y: centerY, color: cluster.color });
 
       for (let i = 0; i < cluster.count; i++) {
         const dot = document.createElement('div');
@@ -367,6 +371,69 @@ const initInteractiveViz = () => {
     });
 
     setupDotInteractions();
+    setTimeout(() => drawTrajectory(centers), 850);
+  }
+
+  // Draws a CellRank/PAGA-style trajectory graph over the clusters: a chain of curved, arrowed edges that forks into two fates at the end, standing in for a real pseudotime computation.
+  function drawTrajectory(centers) {
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const old = visualization.querySelector('.trajectory-svg');
+    if (old) old.remove();
+    if (centers.length < 4) return;
+
+    const ordered = [...centers].sort((a, b) => a.x - b.x);
+    const edges = [];
+    for (let i = 0; i < ordered.length - 3; i++) {
+      edges.push([ordered[i], ordered[i + 1]]);
+    }
+    const branchFrom = ordered[ordered.length - 3];
+    edges.push([branchFrom, ordered[ordered.length - 2]]);
+    edges.push([branchFrom, ordered[ordered.length - 1]]);
+
+    const svg = document.createElementNS(svgNS, 'svg');
+    svg.setAttribute('class', 'trajectory-svg');
+    svg.setAttribute('width', visualization.clientWidth);
+    svg.setAttribute('height', visualization.clientHeight);
+
+    const defs = document.createElementNS(svgNS, 'defs');
+    edges.forEach((edge, i) => {
+      const marker = document.createElementNS(svgNS, 'marker');
+      marker.setAttribute('id', `traj-arrow-${i}`);
+      marker.setAttribute('viewBox', '0 0 10 10');
+      marker.setAttribute('refX', '8');
+      marker.setAttribute('refY', '5');
+      marker.setAttribute('markerWidth', '7');
+      marker.setAttribute('markerHeight', '7');
+      marker.setAttribute('orient', 'auto-start-reverse');
+      const arrowhead = document.createElementNS(svgNS, 'path');
+      arrowhead.setAttribute('d', 'M 0 0 L 10 5 L 0 10 z');
+      arrowhead.setAttribute('fill', edge[1].color);
+      marker.appendChild(arrowhead);
+      defs.appendChild(marker);
+    });
+    svg.appendChild(defs);
+
+    edges.forEach(([from, to], i) => {
+      const mx = (from.x + to.x) / 2;
+      const my = (from.y + to.y) / 2;
+      const dx = to.x - from.x;
+      const dy = to.y - from.y;
+      const dist = Math.hypot(dx, dy) || 1;
+      // Bows the edge outward, like a PAGA/CellRank transition graph, instead of a straight line.
+      const bow = Math.min(dist * 0.22, 60) * (i % 2 === 0 ? 1 : -1);
+      const cx = mx - (dy / dist) * bow;
+      const cy = my + (dx / dist) * bow;
+
+      const path = document.createElementNS(svgNS, 'path');
+      path.setAttribute('d', `M ${from.x} ${from.y} Q ${cx} ${cy} ${to.x} ${to.y}`);
+      path.setAttribute('class', 'trajectory-edge');
+      path.setAttribute('stroke', to.color);
+      path.setAttribute('marker-end', `url(#traj-arrow-${i})`);
+      path.style.animationDelay = `${i * 0.15}s`;
+      svg.appendChild(path);
+    });
+
+    visualization.appendChild(svg);
   }
 
   function setupDotInteractions() {

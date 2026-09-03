@@ -602,6 +602,8 @@ body {
                     }
 
                     .about-card {
+                        display: flex;
+                        flex-direction: column;
                         background-color: $tilebg4;
                         border: 1px solid $overline;
                         border-radius: $card-radius;
@@ -612,6 +614,11 @@ body {
                             border-color: $tilebg2;
                             box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
                             transform: translateY(-2px);
+                        }
+
+                        // Pins the "more" link to the card's bottom edge regardless of how many lines the paragraph above it takes.
+                        > a {
+                            margin-top: auto;
                         }
                     }
 
@@ -3088,6 +3095,37 @@ body {
     will-change: transform, opacity;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
     cursor: pointer;
+}
+
+.trajectory-svg {
+    position: absolute;
+    inset: 0;
+    overflow: visible;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    animation: trajectory-appear 0.6s ease forwards;
+}
+
+.trajectory-edge {
+    fill: none;
+    stroke-width: 2.5px;
+    stroke-linecap: round;
+    stroke-dasharray: 7 6;
+    opacity: 0.6;
+    animation: trajectory-flow 1.2s linear infinite;
+}
+
+@keyframes trajectory-appear {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes trajectory-flow {
+    to {
+        stroke-dashoffset: -26;
+    }
 }
 
 .animation-pulse {
