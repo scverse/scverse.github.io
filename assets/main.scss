@@ -346,9 +346,10 @@ body {
                     padding: 2rem 0;
                 }
                 #cover-heading {
-                    margin: 0;
+                    margin: 0 auto;
                     padding: 0;
                     max-width: $maxwidthwide;
+                    text-align: center;
                     #title {
                         #title-text {
                             #title-name {
@@ -375,7 +376,7 @@ body {
 
                     #hero-lede {
                         max-width: 58rem;
-                        margin: 1.5rem 0 0;
+                        margin: 1.5rem auto 0;
                         font-size: 1.1rem;
                         line-height: 1.6;
                         color: $tiletext2;
@@ -384,18 +385,58 @@ body {
                         }
                     }
 
+                    #hero-cta {
+                        display: flex;
+                        justify-content: center;
+                        flex-wrap: wrap;
+                        gap: 1rem;
+                        margin: 2rem 0 0;
+                    }
+
+                    .hero-button {
+                        padding: 0.8rem 1.8rem;
+                        border-radius: 2rem;
+                        font-weight: 700;
+                        text-decoration: none;
+                        transition: all 200ms ease-in-out;
+                    }
+
+                    .hero-button-primary {
+                        background-color: black;
+                        color: white;
+
+                        &:hover {
+                            background-color: $greyheader;
+                            transform: translateY(-2px);
+                        }
+                    }
+
+                    .hero-button-secondary {
+                        background-color: $tilebg;
+                        color: $tiletext;
+
+                        &:hover {
+                            background-color: $tilebg2;
+                            transform: translateY(-2px);
+                        }
+                    }
+
                     #hero-points {
                         display: flex;
                         flex-wrap: wrap;
+                        justify-content: center;
                         gap: 2rem;
                         max-width: 58rem;
-                        margin: 2rem 0 0;
+                        margin: 2rem auto 0;
                         @media (max-width: 50rem) {
                             gap: 1.25rem;
                             margin-top: 1.5rem;
                         }
                         .hero-point {
                             flex: 1 1 14rem;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
                         }
                         .hero-point-icon {
                             width: 2.25rem;
@@ -423,95 +464,118 @@ body {
                 }
 
                 #chip-announcement {
-                    margin: 0 auto 1.5rem;
+                    margin: 0 auto 2rem;
                     max-width: $maxwidthwide;
                     width: 100%;
                     @media (max-width: 50rem) {
-                        width: 100%;
-                        margin: 0 auto 1.25rem;
+                        margin: 0 auto 1.5rem;
                     }
+                }
+
+                .conference-banner {
                     display: flex;
-                    justify-content: center;
+                    align-items: center;
+                    gap: 1.75rem;
+                    width: 100%;
+                    padding: 1.5rem 2rem;
+                    border-radius: 1.25rem;
+                    background: linear-gradient(120deg, #0b0b12 0%, #22223a 100%);
+                    color: white;
+                    text-decoration: none;
+                    transition: all 200ms ease-in-out;
+
                     &:hover {
-                        cursor: pointer;
-                    }
+                        transform: translateY(-2px);
+                        box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.25);
 
-                    .event-chip {
-                        width: auto;
-                        max-width: 100%;
-                        // Flex items default to min-width: auto, which pins them to their content's intrinsic width instead of letting them shrink.
-                        min-width: 0;
-                        display: inline-flex;
-                        align-items: center;
-                        background-color: transparent;
-                        border-radius: 2.2rem;
-                        padding: 0.1rem 1rem 0.1rem 0;
-                        font-size: 0.8rem;
-                        font-weight: 500;
-                        color: black;
-                        transition: all 0.3s ease;
-                        outline: 1px solid black;
-
-                        @media (max-width: 50rem) {
-                            border-radius: 1.5rem;
-                            padding: 0.05rem 0.6rem 0.05rem 0;
-                            font-size: 0.7rem;
-                            // Lets the date and message stack instead of forcing one nowrap line into horizontal scroll on narrow viewports.
-                            flex-wrap: wrap;
-                            justify-content: center;
-                            row-gap: 0.35rem;
-                        }
-
-                        .event-date {
-                            background-color: black;
-                            color: white;
-                            padding: 0.5rem 1rem;
-                            border-radius: 2rem;
-                            margin: 0.1rem 1rem 0.1rem 0.2rem;
-                            align-self: start;
-
-                            @media (max-width: 50rem) {
-                                padding: 0.35rem 0.7rem;
-                                border-radius: 1.5rem;
-                                margin: 0.05rem 0.7rem 0.05rem 0.1rem;
-                            }
-                        }
-
-                        .event-text {
-                            position: relative;
-                            // Same min-width: auto fix as .event-chip, this time so the text itself can wrap.
-                            min-width: 0;
-                            white-space: normal;
+                        .conference-banner-cta {
+                            background-color: white;
+                            color: black;
 
                             .arrow {
-                                display: inline-block;
-                                transition: transform 0.3s ease;
-                            }
-                        }
-
-                        &:hover {
-                            color: #4557c4;
-                            transform: scale(1.05);
-
-                            .event-date {
-                                background: linear-gradient(135deg, #262fb5, #74c8fa);
-                            }
-
-                            .event-text .arrow {
                                 transform: translateX(0.2rem);
                             }
                         }
+                    }
 
-                        position: relative;
+                    @media (max-width: 50rem) {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 1rem;
+                        padding: 1.25rem 1.5rem;
+                        text-align: left;
+                    }
+                }
 
-                        a {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            overflow: hidden;
-                        }
+                .conference-banner-date {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    flex-shrink: 0;
+                    line-height: 1.1;
+                    padding-right: 1.75rem;
+                    border-right: 1px solid rgba(255, 255, 255, 0.2);
+
+                    .conference-banner-month {
+                        font-size: 0.85rem;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        letter-spacing: 0.1em;
+                        color: rgba(255, 255, 255, 0.6);
+                    }
+
+                    .conference-banner-day {
+                        font-size: 1.6rem;
+                        font-weight: 800;
+                    }
+
+                    .conference-banner-year {
+                        font-size: 0.85rem;
+                        color: rgba(255, 255, 255, 0.6);
+                    }
+
+                    @media (max-width: 50rem) {
+                        flex-direction: row;
+                        align-items: baseline;
+                        gap: 0.4rem;
+                        padding-right: 0;
+                        border-right: none;
+                    }
+                }
+
+                .conference-banner-body {
+                    flex: 1;
+                    min-width: 0;
+
+                    .conference-banner-title {
+                        font-size: 1.15rem;
+                        font-weight: 800;
+                    }
+
+                    .conference-banner-desc {
+                        margin: 0.2rem 0 0;
+                        font-size: 0.9rem;
+                        color: rgba(255, 255, 255, 0.75);
+                        max-width: 34rem;
+                    }
+                }
+
+                .conference-banner-cta {
+                    flex-shrink: 0;
+                    padding: 0.7rem 1.4rem;
+                    border-radius: 2rem;
+                    background-color: rgba(255, 255, 255, 0.12);
+                    font-weight: 700;
+                    white-space: nowrap;
+                    transition: all 200ms ease-in-out;
+
+                    .arrow {
+                        display: inline-block;
+                        transition: transform 200ms ease;
+                    }
+
+                    @media (max-width: 50rem) {
+                        align-self: flex-start;
                     }
                 }
 
