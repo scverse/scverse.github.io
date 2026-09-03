@@ -47,7 +47,6 @@ $footertextmuted: #aaaaaa;
 $postlinktext: #333333;
 
 $maxwidth: 1200px;
-$maxwidthcover: 1200px;
 $maxwidthwide: 1400px;
 $contentwidth: 80%;
 $contentwidthwide: 92%;
@@ -136,12 +135,6 @@ $eco-hues:
     }
 }
 
-// Cover buttons
-#badges .btn {
-    background-color: $tilebg;
-    border: none;
-}
-
 #join-content .card {
     h5 {
         font-weight: 700;
@@ -154,32 +147,26 @@ $eco-hues:
     }
 }
 
-#badges .btn-github:hover,
 #join-content .card#github:hover {
     background-color: $github-black !important;
     color: white !important;
 }
-#badges .btn-discourse:hover,
 #join-content .card#discourse:hover {
     background-color: $discourse-yellow !important;
     color: black !important;
 }
-#badges .btn-zulip:hover,
 #join-content .card#zulip:hover {
     background-color: $zulip-blue !important;
     color: white !important;
 }
-#badges .btn-twitter:hover,
 #join-content .card#twitter:hover {
     background-color: $twitter-blue !important;
     color: white !important;
 }
-#badges .btn-bluesky:hover,
 #join-content .card#bluesky:hover {
     background-color: $bluesky-blue !important;
     color: white !important;
 }
-#badges .btn-youtube:hover,
 #join-content .card#youtube:hover {
     background-color: $youtube-red !important;
     color: white !important;
@@ -277,6 +264,41 @@ body {
     }
 }
 
+.nav-social {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 0.5rem 0.25rem !important;
+
+    // Bootstrap's own collapse breakpoint (992px) isn't wide enough to also fit this row, so it overflows the nav between 992px and roughly 1180px; hide it there and rely on the footer.
+    @media (max-width: 1199px) {
+        display: none;
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        color: $navtext;
+        font-size: 1rem;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            background-color: $navbghover;
+            color: $navtexthover;
+
+            .i-discourse::before,
+            .i-zulip::before,
+            .i-bluesky::before {
+                opacity: 1;
+            }
+        }
+    }
+}
+
 #join-button {
     color: white;
     background-color: #4557c4;
@@ -352,7 +374,7 @@ body {
             align-items: center;
             align-self: center;
             #cover {
-                max-width: $maxwidthcover;
+                max-width: $maxwidthwide;
                 width: 100%;
                 padding: 0 1rem;
                 #cover-top-section {
@@ -360,9 +382,10 @@ body {
                     padding: 2rem 0;
                 }
                 #cover-heading {
-                    margin: 0;
+                    margin: 0 auto;
                     padding: 0;
-                    max-width: $maxwidthcover;
+                    max-width: $maxwidthwide;
+                    text-align: center;
                     #title {
                         #title-text {
                             #title-name {
@@ -386,105 +409,197 @@ body {
                             }
                         }
                     }
-                    #badges {
+
+                    #hero-lede {
+                        margin: 1.5rem auto 0;
+                        font-size: 1.1rem;
+                        line-height: 1.6;
+                        color: $tiletext2;
+                        @media (max-width: 50rem) {
+                            font-size: 0.95rem;
+                        }
+                    }
+
+                    #hero-points {
                         display: flex;
                         flex-wrap: wrap;
-                        gap: 1rem;
-                        margin: 2rem 0;
+                        justify-content: center;
+                        gap: 2rem;
+                        margin: 2rem auto 0;
                         @media (max-width: 50rem) {
-                            margin: 1rem 0;
-                            padding: 0;
-                            width: 100%;
+                            gap: 1.25rem;
+                            margin-top: 1.5rem;
+                        }
+                        .hero-point {
+                            flex: 1 1 14rem;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            text-decoration: none;
+                            border-radius: 1rem;
+                            padding: 0.75rem;
+                            transition: background-color 200ms ease-in-out;
+
+                            &:hover {
+                                background-color: $tilebg4;
+
+                                .hero-point-icon {
+                                    transform: scale(1.08);
+                                }
+
+                                .hero-point-title {
+                                    border-bottom-color: black;
+                                }
+                            }
+                        }
+                        .hero-point-icon {
+                            width: 2.25rem;
+                            height: 2.25rem;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: 50%;
+                            margin-bottom: 0.6rem;
+                            font-size: 1.1rem;
+                            background-color: $tilebg;
+                            color: $tiletext;
+                            transition: transform 200ms ease-in-out;
+                        }
+                        .hero-point-title {
+                            font-weight: 700;
+                            color: $tiletext;
+                            margin-bottom: 0.3rem;
+                            // Same underline convention as every other inline text link on this page (see the global `p > a` rule), so this reads as a link without a hover.
+                            border-bottom: 1px solid $linkunderline;
+                        }
+                        .hero-point-text {
+                            margin: 0;
+                            font-size: 0.9rem;
+                            color: $tiletext2;
                         }
                     }
                 }
 
                 #chip-announcement {
                     margin: 0 auto 2rem;
-                    max-width: $maxwidthcover;
+                    max-width: $maxwidthwide;
                     width: 100%;
                     @media (max-width: 50rem) {
-                        width: 100%;
-                        margin: 0 auto 1.25rem;
+                        margin: 0 auto 1.5rem;
                     }
+                }
+
+                .conference-banner {
                     display: flex;
-                    justify-content: center;
+                    align-items: center;
+                    gap: 1.75rem;
+                    width: 92%;
+                    margin: 0 auto;
+                    padding: 1rem 1.75rem;
+                    border-radius: 1rem;
+                    background: linear-gradient(120deg, #0b0b12 0%, #22223a 100%);
+                    color: white;
+                    text-decoration: none;
+                    transition: all 200ms ease-in-out;
+
                     &:hover {
-                        cursor: pointer;
-                    }
+                        transform: translateY(-2px);
+                        box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.25);
 
-                    .event-chip {
-                        width: auto;
-                        display: inline-flex;
-                        align-items: center;
-                        background-color: transparent;
-                        border-radius: 2.2rem;
-                        padding: 0.1rem 1rem 0.1rem 0;
-                        font-size: 0.8rem;
-                        font-weight: 500;
-                        color: black;
-                        transition: all 0.3s ease;
-                        outline: 1px solid black;
-
-                        @media (max-width: 50rem) {
-                            border-radius: 1.5rem;
-                            padding: 0.05rem 0.6rem 0.05rem 0;
-                            font-size: 0.7rem;
-                        }
-
-                        .event-date {
-                            background-color: black;
-                            color: white;
-                            padding: 0.5rem 1rem;
-                            border-radius: 2rem;
-                            margin: 0.1rem 1rem 0.1rem 0.2rem;
-                            align-self: start;
-
-                            @media (max-width: 50rem) {
-                                padding: 0.35rem 0.7rem;
-                                border-radius: 1.5rem;
-                                margin: 0.05rem 0.7rem 0.05rem 0.1rem;
-                            }
-                        }
-
-                        .event-text {
-                            position: relative;
+                        .conference-banner-cta {
+                            background-color: white;
+                            color: black;
 
                             .arrow {
-                                display: inline-block;
-                                transition: transform 0.3s ease;
-                            }
-                        }
-
-                        &:hover {
-                            color: #4557c4;
-                            transform: scale(1.05);
-
-                            .event-date {
-                                background: linear-gradient(135deg, #262fb5, #74c8fa);
-                            }
-
-                            .event-text .arrow {
                                 transform: translateX(0.2rem);
                             }
                         }
+                    }
 
-                        position: relative;
+                    @media (max-width: 50rem) {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 1rem;
+                        padding: 1.25rem 1.5rem;
+                        text-align: left;
+                    }
+                }
 
-                        a {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            overflow: hidden;
-                        }
+                .conference-banner-date {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    flex-shrink: 0;
+                    line-height: 1.1;
+                    padding-right: 1.75rem;
+                    border-right: 1px solid rgba(255, 255, 255, 0.2);
+
+                    .conference-banner-month {
+                        font-size: 0.85rem;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        letter-spacing: 0.1em;
+                        color: rgba(255, 255, 255, 0.6);
+                    }
+
+                    .conference-banner-day {
+                        font-size: 1.6rem;
+                        font-weight: 800;
+                    }
+
+                    .conference-banner-year {
+                        font-size: 0.85rem;
+                        color: rgba(255, 255, 255, 0.6);
+                    }
+
+                    @media (max-width: 50rem) {
+                        flex-direction: row;
+                        align-items: baseline;
+                        gap: 0.4rem;
+                        padding-right: 0;
+                        border-right: none;
+                    }
+                }
+
+                .conference-banner-body {
+                    flex: 1;
+                    min-width: 0;
+
+                    .conference-banner-title {
+                        font-size: 1.15rem;
+                        font-weight: 800;
+                    }
+
+                    .conference-banner-desc {
+                        margin: 0.2rem 0 0;
+                        font-size: 0.9rem;
+                        color: rgba(255, 255, 255, 0.75);
+                        max-width: 34rem;
+                    }
+                }
+
+                .conference-banner-cta {
+                    flex-shrink: 0;
+                    padding: 0.7rem 1.4rem;
+                    border-radius: 2rem;
+                    background-color: rgba(255, 255, 255, 0.12);
+                    font-weight: 700;
+                    white-space: nowrap;
+                    transition: all 200ms ease-in-out;
+
+                    .arrow {
+                        display: inline-block;
+                        transition: transform 200ms ease;
+                    }
+
+                    @media (max-width: 50rem) {
+                        align-self: flex-start;
                     }
                 }
 
                 section {
-                    max-width: $maxwidth;
-                    width: $contentwidth;
+                    max-width: $maxwidthwide;
+                    width: $contentwidthwide;
                     margin: 0 auto;
                     margin-top: 5%;
                     @media (max-width: 50rem) {
@@ -514,98 +629,79 @@ body {
                 // The wide gap under the hero used to live on #packages, which put it
                 // between whatever section came after the demo and the packages.
                 #interactive-demo-section {
-                    margin-bottom: 15%;
+                    margin-bottom: 3rem;
                 }
-                #packages {
-                    #packages-list {
-                        .card {
-                            display: flex;
-                            flex-direction: row;
-                            align-items: center;
-                            background-color: $tilebg;
-                            border-radius: 0.5rem;
-                            transition: all 200ms ease-in-out;
-                            @media (max-width: 50rem) {
-                                min-height: 6rem;
-                            }
-                            .package-icon {
-                                transition: all 200ms ease-in-out;
-                                align-items: center;
-                                justify-content: center;
-                                padding: auto;
-                                display: flex;
-                                min-width: 6rem;
-                                max-width: 6rem;
-                                // Matches the img height below, so that a package
-                                // without an icon still lines up with the others.
-                                min-height: 4rem;
-                                @media (max-width: 50rem) {
-                                    display: none;
-                                }
+                #about-highlights {
+                    .about-card-grid {
+                        display: grid;
+                        // A fixed 3-column count rather than auto-fit: on a wide viewport auto-fit would squeeze in a 4th column and break the 3+3 layout of 6 cards.
+                        grid-template-columns: repeat(3, minmax(0, 1fr));
+                        gap: 1.5rem;
 
-                                img {
-                                    max-width: 4rem;
-                                    height: 4rem;
-                                }
-                            }
-                            .package-text {
-                                .package-name {
-                                    color: $tiletext;
-                                }
-                                .package-desc {
-                                    font-size: 0.9rem;
-                                    color: $tiletext2;
-                                }
-                            }
-                            &:hover {
-                                cursor: pointer;
-                                background-color: $tilebg2;
-                                .package-icon {
-                                    transform: scale(1.1);
-                                }
-                                transform: scale(1.05);
-                            }
-                            &#anndata-tile:hover {
-                                background-color: rgba($anndataorange, 0.2);
-                            }
-                            &#scanpy-tile:hover {
-                                background-color: rgba($scanpymandy, 0.2);
-                            }
-                            &#mudata-tile:hover {
-                                background-color: rgba($mudatagreen, 0.2);
-                            }
-                            &#muon-tile:hover {
-                                background-color: rgba($muonaquamarine, 0.2);
-                            }
+                        @media (max-width: 64rem) {
+                            grid-template-columns: repeat(2, minmax(0, 1fr));
+                        }
+
+                        @media (max-width: 50rem) {
+                            grid-template-columns: 1fr;
+                            gap: 1rem;
                         }
                     }
-                }
-                #mission {
-                    .section-content {
-                        p {
-                            font-size: 1.1rem;
+
+                    .about-card {
+                        display: flex;
+                        flex-direction: column;
+                        background-color: $tilebg4;
+                        border: 1px solid $overline;
+                        border-radius: $card-radius;
+                        padding: 1.75rem;
+                        transition: all 200ms ease-in-out;
+
+                        &:hover {
+                            border-color: $tilebg2;
+                            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+                            transform: translateY(-2px);
+                        }
+
+                        // Pins the "more" link to the card's bottom edge regardless of how many lines the paragraph above it takes.
+                        > a {
+                            margin-top: auto;
                         }
                     }
-                }
-                #team {
-                    .section-content {
-                        .section-paragraph {
-                            #team-list {
-                                display: inline;
-                            }
-                            a {
-                                border-bottom: 1px solid $linkunderline;
-                                transition:
-                                    border 200ms,
-                                    color 200ms;
 
-                                &:hover,
-                                &:active {
-                                    color: black;
-                                    border-bottom: 1px solid black;
-                                }
-                            }
+                    .about-card-icon {
+                        width: 2.75rem;
+                        height: 2.75rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 50%;
+                        margin-bottom: 1rem;
+                        font-size: 1.3rem;
+                        background-color: $tilebg;
+                        color: $tiletext;
+                    }
+
+                    // Written as a descendant rather than nested under .about-card-icon: `&` there would carry the whole ancestor chain and put .about-card in front of #about-highlights.
+                    @each $hue in $eco-hues {
+                        .about-card[data-hue="#{index($eco-hues, $hue) - 1}"]
+                            .about-card-icon {
+                            background-color: rgba($hue, 0.16);
+                            color: darken($hue, 12%);
                         }
+                    }
+
+                    .about-card-title {
+                        font-size: 1.2rem;
+                        font-weight: 700;
+                        margin: 0 0 0.5rem;
+                        color: $tiletext;
+                    }
+
+                    .about-card-text {
+                        font-size: 1rem;
+                        color: $tiletext2;
+                        margin-bottom: 0.75rem;
                     }
                 }
             }
@@ -3108,7 +3204,7 @@ body {
 
 .interactive-container {
     width: 100%;
-    max-width: 1200px;
+    max-width: $maxwidthwide;
     margin: 0 auto;
     transform-style: preserve-3d;
     perspective: 1500px;
@@ -3232,6 +3328,35 @@ body {
     will-change: transform, opacity;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
     cursor: pointer;
+}
+
+.trajectory-svg {
+    position: absolute;
+    inset: 0;
+    overflow: visible;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    animation: trajectory-appear 0.6s ease forwards;
+}
+
+.trajectory-line {
+    fill: none;
+    stroke: black;
+    stroke-width: 0.75px;
+    stroke-linecap: round;
+    opacity: 0.65;
+}
+
+.trajectory-arrow {
+    fill: black;
+    opacity: 0.8;
+}
+
+@keyframes trajectory-appear {
+    to {
+        opacity: 1;
+    }
 }
 
 .animation-pulse {

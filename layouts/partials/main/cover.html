@@ -5,20 +5,16 @@
       <span id="title-desc">{{ .Description }}</span>
     </div>
   </div>
-  <div id="badges">
-    <a class="btn btn-light btn-github" href="https://github.com/scverse" target="_blank"> GitHub </a>
-    <a class="btn btn-light btn-discourse" href="https://discourse.scverse.org" target="_blank">Discourse</a>
-    <a class="btn btn-light btn-zulip" href="http://scverse.zulipchat.com" target="_blank"> Zulip </a>
-    <a class="btn btn-light btn-twitter" href="https://x.com/scverse_team" target="_blank"> 𝕏 </a>
-    <a class="btn btn-light btn-bluesky" href="https://bsky.app/profile/scverse.bsky.social" target="_blank">
-      Bluesky
-    </a>
-    <a
-      class="btn btn-light btn-youtube"
-      href="https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA"
-      target="_blank"
-    >
-      YouTube
-    </a>
-  </div>
+  {{ with .Params.hero }}
+    <p id="hero-lede">{{ .text | markdownify }}</p>
+    <div id="hero-points">
+      {{ range .points }}
+        <a class="hero-point" href="{{ .link }}">
+          <div class="hero-point-icon"><i class="bi {{ .icon }}" aria-hidden="true"></i></div>
+          <div class="hero-point-title">{{ .title }}</div>
+          <p class="hero-point-text">{{ .text }}</p>
+        </a>
+      {{ end }}
+    </div>
+  {{ end }}
 </div>

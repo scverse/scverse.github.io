@@ -259,24 +259,30 @@ const initInteractiveViz = () => {
   const visualization = document.getElementById('visualization');
   const runCmd1 = document.getElementById('run-cmd1');
   const runCmd2 = document.getElementById('run-cmd2');
+  const runCmd3 = document.getElementById('run-cmd3');
   const statusCmd1 = document.getElementById('status-cmd1');
   const statusCmd2 = document.getElementById('status-cmd2');
+  const statusCmd3 = document.getElementById('status-cmd3');
   const execAnim1 = document.getElementById('exec-anim-1');
   const execAnim2 = document.getElementById('exec-anim-2');
+  const execAnim3 = document.getElementById('exec-anim-3');
 
   // Exit early if visualization elements don't exist on this page
   if (!visualization || !card) return;
 
-  // Color clusters for UMAP visualization
+  // Cluster centers from the most recent sc.pl.umap() run, so sc.pl.trajectory() can draw its streamlines over the same layout without recomputing it.
+  let lastCenters = null;
+
+  // Color clusters for UMAP visualization, using the same brand hues the package tiles below use instead of a generic chart-library palette.
   const colorClusters = [
-    { color: '#4285F4', count: 14, name: 'Cluster A' },
-    { color: '#34A853', count: 12, name: 'Cluster B' },
-    { color: '#FBBC05', count: 10, name: 'Cluster C' },
-    { color: '#EA4335', count: 8, name: 'Cluster D' },
-    { color: '#FF00FF', count: 11, name: 'Cluster E' },
-    { color: '#00BCD4', count: 9, name: 'Cluster F' },
-    { color: '#9C27B0', count: 7, name: 'Cluster G' },
-    { color: '#FF9800', count: 13, name: 'Cluster H' }
+    { color: '#40a9ff', count: 960, name: 'Cluster A' },
+    { color: '#4ab274', count: 820, name: 'Cluster B' },
+    { color: '#fbb822', count: 740, name: 'Cluster C' },
+    { color: '#e5864b', count: 620, name: 'Cluster D' },
+    { color: '#da347f', count: 760, name: 'Cluster E' },
+    { color: '#969dea', count: 680, name: 'Cluster F' },
+    { color: '#de367b', count: 540, name: 'Cluster G' },
+    { color: '#6cf1a1', count: 860, name: 'Cluster H' }
   ];
 
   // 3D tilt effect
@@ -315,21 +321,70 @@ const initInteractiveViz = () => {
 
   function generateUMAP() {
     visualization.querySelectorAll('.dot').forEach(dot => dot.remove());
+    const oldTrajectory = visualization.querySelector('.trajectory-svg');
+    if (oldTrajectory) oldTrajectory.remove();
 
     const width = visualization.clientWidth;
     const height = visualization.clientHeight;
+    // All the pixel constants below were tuned against the desktop-sized box; scale them down for the much narrower mobile box instead of letting them clip against its edges.
+    const scale = Math.max(0.45, Math.min(1, width / 700));
+    // Squared, so mobile sheds DOM nodes much faster than the layout shrinks: a smaller box needs proportionally far fewer points to still look dense, not just fewer to avoid clipping.
+    const countScale = scale * scale;
 
-    colorClusters.forEach(cluster => {
-      const centerX = Math.random() * 0.6 * width + 0.2 * width;
-      const centerY = Math.random() * 0.6 * height + 0.2 * height;
+    // Lays cluster centers out along a winding chain instead of scattering them independently, so neighbouring clusters sit close enough to touch, like a real connected UMAP embedding, and the last two branch off from the chain's end.
+    const centers = [];
+    // Biased toward rightward travel (angle 0) so the chain fans out across this wide, short box instead of a random walk drifting into a corner; it can still wiggle up and down along the way.
+    let angle = (Math.random() - 0.5) * 0.6;
+    let cx = width * (0.05 + Math.random() * 0.05);
+    let cy = height * (0.35 + Math.random() * 0.3);
+    const chainCount = colorClusters.length - 2;
+    for (let i = 0; i < chainCount; i++) {
+      if (i > 0) {
+        angle = angle * 0.6 + (Math.random() - 0.5) * 1.1;
+        const step = (85 + Math.random() * 30) * scale;
+        cx = Math.min(Math.max(cx + Math.cos(angle) * step, width * 0.04), width * 0.96);
+        cy = Math.min(Math.max(cy + Math.sin(angle) * step, height * 0.12), height * 0.88);
+      }
+      centers.push({ x: cx, y: cy });
+    }
+    [angle + 0.7 + Math.random() * 0.3, angle - 0.7 - Math.random() * 0.3].forEach(branchAngle => {
+      const step = (70 + Math.random() * 25) * scale;
+      centers.push({
+        x: Math.min(Math.max(cx + Math.cos(branchAngle) * step, width * 0.03), width * 0.97),
+        y: Math.min(Math.max(cy + Math.sin(branchAngle) * step, height * 0.05), height * 0.95)
+      });
+    });
 
-      for (let i = 0; i < cluster.count; i++) {
+    // The walk above tends to drift toward one side, so re-center its bounding box on the container instead of leaving the whole shape off to one edge.
+    const xs = centers.map(c => c.x);
+    const ys = centers.map(c => c.y);
+    const shiftX = width / 2 - (Math.min(...xs) + Math.max(...xs)) / 2;
+    const shiftY = height / 2 - (Math.min(...ys) + Math.max(...ys)) / 2;
+    centers.forEach(c => {
+      c.x += shiftX;
+      c.y += shiftY;
+    });
+
+    colorClusters.forEach((cluster, clusterIndex) => {
+      const { x: centerX, y: centerY } = centers[clusterIndex];
+
+      // Real UMAP clusters are elongated, tapered blobs rather than round scatters, so each cluster gets its own axis to stretch along and a perpendicular axis to stay narrow on.
+      const axisAngle = Math.random() * Math.PI * 2;
+      const axisX = Math.cos(axisAngle);
+      const axisY = Math.sin(axisAngle);
+      const perpX = -axisY;
+      const perpY = axisX;
+      const axisLength = (Math.random() * 90 + 150) * scale;
+      const perpWidth = axisLength * (Math.random() * 0.25 + 0.4);
+      const count = Math.round(cluster.count * countScale);
+
+      for (let i = 0; i < count; i++) {
         const dot = document.createElement('div');
         dot.className = 'dot';
         dot.dataset.cluster = cluster.name;
         dot.dataset.color = cluster.color;
 
-        const size = Math.floor(Math.random() * 12) + 8;
+        const size = Math.floor(Math.random() * 6) + 5;
         dot.style.width = `${size}px`;
         dot.style.height = `${size}px`;
 
@@ -341,11 +396,10 @@ const initInteractiveViz = () => {
         u = u / 6 - 0.5;
         v = v / 6 - 0.5;
 
-        const distance = Math.random() * 70 + 10;
-        const dx = u * distance * 2;
-        const dy = v * distance * 2;
-        const x = centerX + dx;
-        const y = centerY + dy;
+        const along = u * axisLength;
+        const across = v * perpWidth;
+        const x = centerX + axisX * along + perpX * across;
+        const y = centerY + axisY * along + perpY * across;
 
         const safeX = Math.min(Math.max(size, x), width - size);
         const safeY = Math.min(Math.max(size, y), height - size);
@@ -362,11 +416,86 @@ const initInteractiveViz = () => {
         setTimeout(() => {
           dot.style.transform = 'scale(1)';
           dot.style.opacity = '1';
-        }, i * 50 + Math.random() * 200);
+        }, i * 3 + Math.random() * 150);
       }
     });
 
     setupDotInteractions();
+    lastCenters = centers;
+  }
+
+  // Draws a scVelo/CellRank-style velocity field: bundles of parallel arrowed streamlines that fan out from a cluster and converge into the next one, rather than one graph edge between cluster centroids.
+  function drawTrajectory(centers) {
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const old = visualization.querySelector('.trajectory-svg');
+    if (old) old.remove();
+    if (centers.length < 4) return;
+
+    // centers is already laid out as a chain with the last two entries branching off its end, matching how generateUMAP placed the cluster centers, so the edges just follow that same order.
+    const chainCount = centers.length - 2;
+    const edges = [];
+    for (let i = 0; i < chainCount - 1; i++) {
+      edges.push([centers[i], centers[i + 1]]);
+    }
+    const branchFrom = centers[chainCount - 1];
+    edges.push([branchFrom, centers[chainCount]]);
+    edges.push([branchFrom, centers[chainCount + 1]]);
+
+    const svg = document.createElementNS(svgNS, 'svg');
+    svg.setAttribute('class', 'trajectory-svg');
+    svg.setAttribute('width', visualization.clientWidth);
+    svg.setAttribute('height', visualization.clientHeight);
+    visualization.appendChild(svg);
+
+    const LANES = 9;
+    const ARROWS_PER_LANE = 4;
+
+    edges.forEach(([from, to]) => {
+      const dx = to.x - from.x;
+      const dy = to.y - from.y;
+      const dist = Math.hypot(dx, dy) || 1;
+      const ux = dx / dist;
+      const uy = dy / dist;
+      // Perpendicular unit vector: lanes are offset along this so the bundle fans sideways instead of along the direction of travel.
+      const px = -uy;
+      const py = ux;
+      const bow = Math.min(dist * 0.16, 36);
+      const spread = Math.min(dist * 0.22, 36);
+
+      for (let lane = 0; lane < LANES; lane++) {
+        // -1 at one edge of the bundle, +1 at the other, 0 down the middle.
+        const t = LANES === 1 ? 0 : (lane / (LANES - 1)) * 2 - 1;
+        const jitter = (Math.random() - 0.5) * 6;
+        const startOffset = t * spread + jitter;
+        // Streamlines start spread across the source cluster and narrow as they approach the target, like real velocity fields converging on a cell state.
+        const endOffset = t * spread * 0.2 + jitter;
+        const midOffset = t * spread * 0.55 + jitter;
+
+        const start = { x: from.x + px * startOffset, y: from.y + py * startOffset };
+        const end = { x: to.x + px * endOffset, y: to.y + py * endOffset };
+        const cx = (start.x + end.x) / 2 + px * (midOffset + bow);
+        const cy = (start.y + end.y) / 2 + py * (midOffset + bow);
+
+        const path = document.createElementNS(svgNS, 'path');
+        path.setAttribute('d', `M ${start.x} ${start.y} Q ${cx} ${cy} ${end.x} ${end.y}`);
+        path.setAttribute('class', 'trajectory-line');
+        svg.appendChild(path);
+
+        const length = path.getTotalLength();
+        for (let a = 1; a <= ARROWS_PER_LANE; a++) {
+          const at = (a / (ARROWS_PER_LANE + 1)) * length;
+          const p = path.getPointAtLength(at);
+          const ahead = path.getPointAtLength(Math.min(at + 3, length));
+          const angle = (Math.atan2(ahead.y - p.y, ahead.x - p.x) * 180) / Math.PI;
+
+          const arrow = document.createElementNS(svgNS, 'polygon');
+          arrow.setAttribute('points', '0,-2.5 5,0 0,2.5');
+          arrow.setAttribute('transform', `translate(${p.x}, ${p.y}) rotate(${angle})`);
+          arrow.setAttribute('class', 'trajectory-arrow');
+          svg.appendChild(arrow);
+        }
+      }
+    });
   }
 
   function setupDotInteractions() {
@@ -418,7 +547,7 @@ const initInteractiveViz = () => {
   }
 
   // These are divs, not buttons, so the keyboard behaviour has to be added by hand.
-  [runCmd1, runCmd2].forEach(function(control) {
+  [runCmd1, runCmd2, runCmd3].forEach(function(control) {
     control.addEventListener('keydown', function(event) {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
@@ -470,14 +599,38 @@ const initInteractiveViz = () => {
     }, 1200);
   });
 
-  // Initial generation
+  runCmd3.addEventListener('click', function() {
+    statusCmd3.style.width = '0';
+    execAnim3.style.width = '0';
+
+    setTimeout(() => {
+      execAnim3.style.width = '100%';
+    }, 50);
+
+    setTimeout(() => {
+      if (lastCenters) drawTrajectory(lastCenters);
+
+      statusCmd3.style.width = '100%';
+      runCmd3.style.backgroundColor = '#34A853';
+
+      setTimeout(() => {
+        runCmd3.style.backgroundColor = '';
+      }, 2000);
+    }, 900);
+  });
+
+  // Initial generation, followed by the velocity streamlines once the scatter has settled, so a visitor who never clicks anything still sees the full three-command story play out once.
   generateUMAP();
+  setTimeout(() => runCmd3.click(), 1200);
 
   // Responsive regeneration
   let resizeTimer;
   window.addEventListener('resize', function() {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(generateUMAP, 250);
+    resizeTimer = setTimeout(function() {
+      generateUMAP();
+      setTimeout(() => runCmd3.click(), 1200);
+    }, 250);
   });
 }
 
