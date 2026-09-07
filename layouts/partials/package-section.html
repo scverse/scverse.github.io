@@ -1,4 +1,4 @@
-{{/* One core package row on /packages, from an ecosystem-registry entry. Params: pkg, base */}}
+{{/* One core package row on /packages, from an ecosystem-registry entry. Params: pkg, base, interop */}}
 {{ $base := .base }}
 {{ $p := .pkg }}
 <div class="package-section">
@@ -23,6 +23,9 @@
       {{ end }}
       {{ with $p.tutorials_home }}
         <a href="{{ . }}" target="_blank">Tutorials</a>
+      {{ end }}
+      {{ with .interop }}
+        <a href="{{ . }}" target="_blank">Interoperability</a>
       {{ end }}
       {{ with $p.install }}
         {{ with .pypi }}
