@@ -64,7 +64,7 @@ Scverse is a community project currently governed by a core team. Please [reach 
 [references]
 
 text = """\
-scverse tools are used in research and industry projects across the globe and are cited in [thousands](https://scholar.google.ru/scholar?cites=14568046068402025757) of academic publications.
+scverse tools are used in research and industry across the globe.
 If they are useful in your work, please cite [the scverse paper](https://www.nature.com/articles/s41587-023-01733-8) along with the individual packages you used.
 """
 
