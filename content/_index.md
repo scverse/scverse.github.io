@@ -6,7 +6,7 @@ description = "Foundational tools for single-cell omics data analysis"
 [hero]
 
 text = """\
-scverse is an open-source, community-governed ecosystem of interoperable Python packages for single-cell and spatial omics analysis — from data structures like AnnData to analysis frameworks like Scanpy, scvi-tools, and Squidpy, all sharing common data formats so you can move between them in one analysis."""
+Scverse is an open-source, community-governed ecosystem of packages for single-cell and spatial omics. Shared data structures like AnnData, MuData, and SpatialData let tools such as Scanpy, scvi-tools, and Squidpy compose into a single powerful analysis."""
 
 [[hero.points]]
 icon = "bi-mortarboard"
@@ -30,7 +30,7 @@ link = "/about/mission"
 [packages]
 
 text = """\
-scverse maintains a set of interoperable core packages spanning every step of single-cell and spatial omics analysis, from data structures to modeling."""
+scverse develops a set of interoperable packages spanning every step of single-cell and spatial omics analysis, from data structures to modeling."""
 
 # Events
 [events]
@@ -42,19 +42,19 @@ scverse hosts hackathons, workshops, and an annual conference to bring the commu
 [mission]
 
 text = """\
-Scverse is a consortium of foundational tools (mostly in Python) for omics data in life sciences. It has been founded to ensure the long-term maintenance of these core tools."""
+Scverse builds the community that sustains foundational tools for omics data in the life sciences."""
 
 # Ecosystem
 [ecosystem]
 
 text = """\
-A broader ecosystem of packages builds on the scverse core packages. [These tools](/packages/#ecosystem) implement models and analytical approaches to tackle challenges in spatial omics, regulatory genomics, trajectory inference, visualization, and more."""
+A broader [ecosystem](/packages/#ecosystem) of packages builds on the scverse core, extending it with domain-specific models and analysis methods."""
 
 # Team
 [team]
 
 text = """\
-Scverse is a community project currently governed by the developers of the core packages. Please [reach out](/join) if you'd like to be involved!
+Scverse is a community project currently governed by a core team. Please [reach out](/join) if you'd like to be involved!
 """
 
 # People information is recorded in the people/_index.md file
