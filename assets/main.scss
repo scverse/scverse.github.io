@@ -632,12 +632,16 @@ body {
                     margin-bottom: 3rem;
                 }
                 #feature-grid {
-                    #feature-grid-lede {
-                        max-width: 42rem;
-                        margin: 0 auto 2.5rem;
-                        text-align: center;
-                        font-size: 1.05rem;
-                        color: $tiletext2;
+                    background-color: $tilebg4;
+                    border-radius: 1.25rem;
+                    padding: 2.5rem;
+
+                    @media (max-width: 50rem) {
+                        padding: 1.5rem;
+                    }
+
+                    .section-heading {
+                        margin-bottom: 1.5rem;
                     }
 
                     #feature-grid-items {

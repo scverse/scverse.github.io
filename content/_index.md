@@ -29,9 +29,6 @@ link = "/about/mission"
 # Features
 [features]
 
-text = """\
-scverse packages share data structures and conventions, so what works for one works for the rest."""
-
 [[features.items]]
 icon = "bi-book"
 title = "Documentation"
