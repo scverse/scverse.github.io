@@ -13,7 +13,7 @@ repos:
       - id: convert-to-webp
         files: ^static/img/(blog|learn|events)/.*\.(png|jpe?g|gif|bmp|tiff)$
   - repo: https://github.com/oxipng/oxipng
-    rev: v10.2.0
+    rev: v10.2.1
     hooks:
       - id: oxipng
         args: [--strip, safe]
