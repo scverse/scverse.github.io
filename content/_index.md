@@ -26,6 +26,42 @@ title = "For institutions"
 text = "A community-governed foundation ensuring the long-term maintenance of critical infrastructure."
 link = "/about/mission"
 
+# Features
+[features]
+
+text = """\
+scverse packages share data structures and conventions, so what works for one works for the rest."""
+
+[[features.items]]
+icon = "bi-book"
+title = "Documentation"
+text = "Extensive documentation: installation, usage, and API references for every core package."
+
+[[features.items]]
+icon = "bi-tags"
+title = "Stable releases"
+text = "Semantic versioning and changelogs for every release."
+
+[[features.items]]
+icon = "bi-unlock"
+title = "Open source"
+text = "Freely licensed and hosted on GitHub — use it, modify it, fork it."
+
+[[features.items]]
+icon = "bi-check2-circle"
+title = "Continuously tested"
+text = "Every change runs through CI before release."
+
+[[features.items]]
+icon = "bi-plug"
+title = "Interoperable"
+text = "Shared data structures mean output from one tool works as input to the next."
+
+[[features.items]]
+icon = "bi-people"
+title = "Community governed"
+text = "Roadmap and priorities are set by the community and core developers, not a single company."
+
 # Core packages
 [packages]
 

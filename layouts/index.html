@@ -63,6 +63,24 @@
             </div>
           </section>
 
+          {{ with .Params.features }}
+            <section id="feature-grid">
+              <p id="feature-grid-lede">{{ .text | markdownify }}</p>
+              <div id="feature-grid-items">
+                {{ range .items }}
+                  <div class="feature-item">
+                    <div class="feature-item-icon"><i class="bi {{ .icon }}" aria-hidden="true"></i></div>
+                    <div class="feature-item-body">
+                      <div class="feature-item-title">{{ .title }}</div>
+                      <p class="feature-item-text">{{ .text }}</p>
+                    </div>
+                  </div>
+                {{ end }}
+              </div>
+            </section>
+          {{ end }}
+
+
           <section id="about-highlights">
             <div class="about-card-grid">
               <div class="about-card" data-hue="5">
