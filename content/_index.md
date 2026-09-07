@@ -35,7 +35,7 @@ scverse packages share data structures and conventions, so what works for one wo
 [[features.items]]
 icon = "bi-book"
 title = "Documentation"
-text = "Extensive documentation: installation, usage, and API references for every core package."
+text = "Extensive documentation covering installation, usage, and API references for every core package."
 
 [[features.items]]
 icon = "bi-tags"
