@@ -431,45 +431,55 @@ body {
                         }
                         .hero-point {
                             flex: 1 1 14rem;
+                            max-width: 18rem;
                             display: flex;
                             flex-direction: column;
                             align-items: center;
                             text-decoration: none;
                             border-radius: 1rem;
-                            padding: 0.75rem;
-                            transition: background-color 200ms ease-in-out;
+                            padding: 1.25rem 1rem;
+                            transition: all 200ms ease-in-out;
 
                             &:hover {
                                 background-color: $tilebg4;
+                                transform: translateY(-2px);
 
                                 .hero-point-icon {
                                     transform: scale(1.08);
                                 }
-
-                                .hero-point-title {
-                                    border-bottom-color: black;
-                                }
                             }
                         }
                         .hero-point-icon {
-                            width: 2.25rem;
-                            height: 2.25rem;
+                            width: 3rem;
+                            height: 3rem;
                             display: flex;
                             align-items: center;
                             justify-content: center;
                             border-radius: 50%;
-                            margin-bottom: 0.6rem;
-                            font-size: 1.1rem;
+                            margin-bottom: 0.85rem;
+                            font-size: 1.35rem;
                             background-color: $tilebg;
                             color: $tiletext;
                             transition: transform 200ms ease-in-out;
                         }
+                        // Written as a descendant rather than nested under .hero-point-icon/.hero-point-title: `&` there would carry the whole ancestor chain and put .hero-point in front of #hero-points.
+                        @each $hue in $eco-hues {
+                            .hero-point[data-hue="#{index($eco-hues, $hue) - 1}"] {
+                                .hero-point-icon {
+                                    background-color: rgba($hue, 0.16);
+                                    color: darken($hue, 12%);
+                                }
+                                .hero-point-title {
+                                    color: darken($hue, 12%);
+                                }
+                            }
+                        }
                         .hero-point-title {
-                            font-weight: 700;
-                            color: $tiletext;
-                            margin-bottom: 0.3rem;
-                            // Same underline convention as every other inline text link on this page (see the global `p > a` rule), so this reads as a link without a hover.
-                            border-bottom: 1px solid $linkunderline;
+                            font-size: 1.15rem;
+                            font-weight: 800;
+                            margin-bottom: 0.4rem;
+                            // Underlined at rest (not just on hover) so it still reads as a link without hovering; colored to match the icon above it via currentColor.
+                            border-bottom: 1px solid currentColor;
                         }
                         .hero-point-text {
                             margin: 0;

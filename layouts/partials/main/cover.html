@@ -8,11 +8,11 @@
   {{ with .Params.hero }}
     <p id="hero-lede">{{ .text | markdownify }}</p>
     <div id="hero-points">
-      {{ range .points }}
-        <a class="hero-point" href="{{ .link }}">
-          <div class="hero-point-icon"><i class="bi {{ .icon }}" aria-hidden="true"></i></div>
-          <div class="hero-point-title">{{ .title }}</div>
-          <p class="hero-point-text">{{ .text }}</p>
+      {{ range $i, $p := .points }}
+        <a class="hero-point" href="{{ $p.link }}" data-hue="{{ $i }}">
+          <div class="hero-point-icon"><i class="bi {{ $p.icon }}" aria-hidden="true"></i></div>
+          <div class="hero-point-title">{{ $p.title }}</div>
+          <p class="hero-point-text">{{ $p.text }}</p>
         </a>
       {{ end }}
     </div>
