@@ -628,6 +628,8 @@ body {
                 // The wide gap under the hero used to live on #packages, which put it
                 // between whatever section came after the demo and the packages.
                 #interactive-demo-section {
+                    // Overrides the generic `section` rule's margin-top: 5%, which stacked with #cover-top-section's padding into an oversized gap.
+                    margin-top: 2rem;
                     margin-bottom: 3rem;
                 }
                 #about-highlights {
