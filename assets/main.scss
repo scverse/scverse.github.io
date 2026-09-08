@@ -100,7 +100,7 @@ $eco-hues:
     }
 }
 
-@each $icon in zulip, discourse, bluesky {
+@each $icon in zulip, discourse, bluesky, xcom {
     .i-#{$icon}::before {
         display: inline-block;
         height: 1rem;
@@ -119,18 +119,11 @@ $eco-hues:
     }
 }
 
-.i-xcom::before {
-    content: "𝕏";
-    font-weight: 900;
-    transition:
-        background 200ms ease-out,
-        filter 200ms ease-out;
-}
-
 .card:hover {
     // Not discord, since it’s light-colored
     .i-zulip::before,
-    .i-bluesky::before {
+    .i-bluesky::before,
+    .i-xcom::before {
         filter: invert(100%);
     }
 }
@@ -284,17 +277,26 @@ body {
         border-radius: 50%;
         color: $navtext;
         font-size: 1rem;
+        text-decoration: none;
         transition: all 200ms ease-in-out;
 
         &:hover {
             background-color: $navbghover;
             color: $navtexthover;
 
-            .i-discourse::before,
-            .i-zulip::before,
-            .i-bluesky::before {
+            i::before {
                 opacity: 1;
             }
+        }
+
+        // Both icon kinds are 1rem boxes, but the Bootstrap glyphs are baseline-aligned
+        // (`vertical-align: -.125em`) while our `::before` images aren't. Making the `<i>`
+        // a 1rem flex box takes the baseline out of it so all six line up.
+        i {
+            display: flex;
+            width: 1rem;
+            height: 1rem;
+            line-height: 1;
         }
     }
 }
