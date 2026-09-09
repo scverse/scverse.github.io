@@ -1,0 +1,220 @@
+{{/* The /about landing page, selected by `layout = "landing"` in the front matter; the sibling pages under /about are prose and use list.html. */}}
+{{ define "main" }}
+  {{ $registry := partialCached "registry.html" "registry" }}
+  {{ $ds := where $registry.pkgs "category" "core-datastructure" }}
+  {{ $fw := where $registry.pkgs "category" "core-framework" }}
+  {{ $eco := where $registry.pkgs "category" "ecosystem" }}
+
+  {{ $stats := dict }}
+  {{ with (try (resources.GetRemote "https://scverse-stats-dev.s3.eu-west-1.amazonaws.com/stats.json")).Value }}
+    {{ $stats = . | transform.Unmarshal }}
+  {{ end }}
+  {{ $gh := $stats.github | default dict }}
+
+
+  <div id="about-landing">
+    <div class="about-top">
+      <section class="about-hero">
+        <h1>{{ .Title }}</h1>
+        <p class="about-hero-lead">{{ .Params.lead | markdownify }}</p>
+        <p class="about-hero-sub">{{ .Params.sub | markdownify }}</p>
+        <div class="about-hero-links">
+          {{ range .Params.actions }}
+            {{ $class := cond (.primary | default false) "about-hero-link about-hero-link--primary" "about-hero-link" }}
+            <a class="{{ $class }}" href="{{ .url }}">{{ .label }}</a>
+          {{ end }}
+        </div>
+      </section>
+
+      {{ $figures := slice }}
+      {{ with $stats.pepy_downloads }}
+        {{ $figures = $figures | append (dict
+          "value" (printf "%.0fM" (div (float .) 1000000.0))
+          "label" "downloads of the core packages"
+          "url" "/stats"
+          )
+        }}
+      {{ end }}
+      {{ $figures = $figures | append (dict
+        "value" (lang.FormatNumberCustom 0 (len $registry.pkgs))
+        "label" "packages in the registry"
+        "url" "/packages"
+        )
+      }}
+      {{ with $gh.unique_contributors }}
+        {{ $figures = $figures | append (dict
+          "value" (lang.FormatNumberCustom 0 .) "label" "people have contributed code" "url" "/stats#contributors"
+          )
+        }}
+      {{ end }}
+      {{ with $stats.citation_count }}
+        {{ $figures = $figures | append (dict
+          "value" (lang.FormatNumberCustom 0 .) "label" "citations of scverse papers" "url" "/stats"
+          )
+        }}
+      {{ end }}
+      <section class="about-figures" aria-label="scverse in numbers">
+        {{ range $i, $f := $figures }}
+          <a class="about-figure" href="{{ $f.url }}" data-hue="{{ mod (mul $i 3) 8 }}">
+            <span class="about-figure-value">{{ $f.value }}</span>
+            <span class="about-figure-label">{{ $f.label }}</span>
+          </a>
+        {{ end }}
+      </section>
+    </div>
+
+    {{/* Every layer is drawn from the package registry, so a newly registered package shows up here on the next build. */}}
+    <section class="about-stack">
+      <h2>{{ .Params.stack.title }}</h2>
+      <p class="about-section-intro">{{ .Params.stack.intro | markdownify }}</p>
+
+      <div class="stack-layer stack-layer--data">
+        <div class="stack-layer-head">
+          <span class="stack-layer-tag">Layer 1</span>
+          <h3>Data structures</h3>
+          <p>{{ .Params.stack.datastructures | markdownify }}</p>
+          <a class="stack-layer-more" href="/packages/#datastructures">Read the format docs</a>
+        </div>
+        <div class="stack-cards">
+          {{ range $ds }}
+            <a class="stack-card" href="/packages/#{{ .name | urlize }}-tile">
+              {{ with .logo }}
+                <img src="{{ printf "%s%s" $registry.base . }}" alt="" loading="lazy" width="40" height="40" />
+              {{ end }}
+              <span class="stack-card-name">{{ .name }}</span>
+              <span class="stack-card-text">
+                {{ index (split (.description | markdownify | plainify | htmlUnescape) ".") 0 }}.
+              </span>
+            </a>
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="stack-joint" aria-hidden="true">
+        <span class="stack-joint-line"></span>
+        <span class="stack-joint-word">used by</span>
+        <span class="stack-joint-line"></span>
+      </div>
+
+      <div class="stack-layer stack-layer--core">
+        <div class="stack-layer-head">
+          <span class="stack-layer-tag">Layer 2</span>
+          <h3>Core frameworks</h3>
+          <p>{{ .Params.stack.frameworks | markdownify }}</p>
+          <a class="stack-layer-more" href="/packages/#frameworks">See what each one does</a>
+        </div>
+        <div class="stack-tiles">
+          {{ range $fw }}
+            <a class="stack-tile" href="/packages/#{{ .name | urlize }}-tile" title="{{ .description }}">
+              {{ with .logo }}
+                <img src="{{ printf "%s%s" $registry.base . }}" alt="" loading="lazy" width="28" height="28" />
+              {{ end }}
+              <span>{{ .name }}</span>
+            </a>
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="stack-joint" aria-hidden="true">
+        <span class="stack-joint-line"></span>
+        <span class="stack-joint-word">extended by</span>
+        <span class="stack-joint-line"></span>
+      </div>
+
+      <div class="stack-layer stack-layer--eco">
+        <div class="stack-layer-head">
+          <span class="stack-layer-tag">Layer 3</span>
+          <h3>Ecosystem</h3>
+          <p>{{ .Params.stack.ecosystem | markdownify }}</p>
+          <a class="stack-layer-more" href="/packages/#ecosystem">Browse all {{ len $eco }} packages</a>
+        </div>
+        <div class="stack-cloud">
+          <div class="stack-cloud-inner">
+            {{ range $eco }}
+              <a class="stack-chip" href="{{ .project_home }}" target="_blank" rel="noopener">{{ .name }}</a>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-governance">
+      <h2>{{ .Params.governance.title }}</h2>
+      <p class="about-section-intro">{{ .Params.governance.intro | markdownify }}</p>
+
+      {{ $counts := slice }}
+      {{ with $stats.core_team_size }}
+        {{ $counts = $counts | append (dict "value" . "label" "core team members" "url" "/people") }}
+      {{ end }}
+      {{ with $gh.organization_members }}
+        {{ $counts = $counts | append (dict
+          "value" . "label" "GitHub organisation members" "url" "https://github.com/orgs/scverse/people"
+          )
+        }}
+      {{ end }}
+      {{ with $gh.total_pull_requests_last_year }}
+        {{ $counts = $counts | append (dict "value" . "label" "pull requests in the last year" "url" "/stats") }}
+      {{ end }}
+      {{ with $counts }}
+        <p class="about-inline-counts">
+          {{ range $i, $c := . }}
+            {{ if $i }}<span class="about-inline-sep" aria-hidden="true">·</span>{{ end }}
+            <a href="{{ $c.url }}" {{ if hasPrefix $c.url "http" }}target="_blank" rel="noopener"{{ end }}>
+              <strong>{{ lang.FormatNumberCustom 0 $c.value }}</strong> {{ $c.label }}
+            </a>
+          {{ end }}
+        </p>
+      {{ end }}
+
+
+      <div class="doc-grid">
+        {{ range $i, $doc := .Params.documents }}
+          <a class="doc-card" href="{{ $doc.url }}" data-hue="{{ mod $i 8 }}">
+            <span class="doc-card-icon"><i class="bi {{ $doc.icon }}" aria-hidden="true"></i></span>
+            <span class="doc-card-title">{{ $doc.title }}</span>
+            <span class="doc-card-text">{{ $doc.text }}</span>
+          </a>
+        {{ end }}
+      </div>
+    </section>
+
+    <section class="about-take-part">
+      <div class="take-part-body">
+        <h2>{{ .Params.take_part.title }}</h2>
+        <p>{{ .Params.take_part.text | markdownify }}</p>
+      </div>
+      <div class="take-part-links">
+        {{ range .Params.take_part.links }}
+          <a
+            class="take-part-link"
+            href="{{ .url }}"
+            {{ if hasPrefix .url "http" }}target="_blank" rel="noopener"{{ end }}
+          >
+            <i class="{{ .icon }}" aria-hidden="true"></i>
+            <span>{{ .label }}</span>
+          </a>
+        {{ end }}
+      </div>
+    </section>
+
+    <section class="about-sponsor">
+      <div class="sponsor-mark">
+        <a href="https://numfocus.org/project/scverse" target="_blank" rel="noopener">
+          <img
+            src="https://raw.githubusercontent.com/numfocus/templates/master/images/numfocus-logo.png"
+            alt="NumFOCUS logo"
+            loading="lazy"
+          />
+        </a>
+      </div>
+      <div class="sponsor-body">
+        <h2>{{ .Params.sponsorship.title }}</h2>
+        <p>{{ .Params.sponsorship.text | markdownify }}</p>
+        <a class="sponsor-button" href="https://numfocus.org/donate-to-scverse" target="_blank" rel="noopener">
+          Donate to scverse
+        </a>
+        <p class="sponsor-fineprint">{{ .Params.sponsorship.fineprint | markdownify }}</p>
+      </div>
+    </section>
+  </div>
+{{ end }}

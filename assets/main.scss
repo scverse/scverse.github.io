@@ -3951,3 +3951,582 @@ body {
         }
     }
 }
+
+// Specific to /about: the landing page (layouts/about/landing.html)
+
+// The stack diagram and the card grids want more room than the prose pages under /about.
+@media (min-width: 75rem) {
+    #page-content:has(#about-landing) {
+        max-width: $maxwidthwide;
+        width: $contentwidthwide;
+    }
+}
+
+#about-landing {
+    --about-gap: 5rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--about-gap);
+    text-wrap: pretty;
+
+    @media (max-width: 50rem) {
+        --about-gap: 3.5rem;
+    }
+
+    h2 {
+        font-size: clamp(1.5rem, 2.6vw, 2rem);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin: 0;
+    }
+
+    .about-section-intro {
+        margin: 0.75rem 0 2rem;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: $tiletext2;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid $linkunderline;
+            &:hover {
+                border-bottom-color: black;
+            }
+        }
+    }
+
+    // The statement on the left, the live figures beside it, so the page opens with both what scverse is and how big it has got.
+
+    .about-top {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(21rem, 0.75fr);
+        gap: 3.5rem;
+        align-items: center;
+
+        @media (max-width: 75rem) {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+    }
+
+    .about-hero {
+        max-width: 42rem;
+
+        h1 {
+            font-size: clamp(2.4rem, 6vw, 3.75rem);
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            line-height: 1.05;
+            margin: 0 0 1.5rem;
+        }
+    }
+
+    .about-hero-lead {
+        font-size: clamp(1.2rem, 2.3vw, 1.55rem);
+        line-height: 1.45;
+        font-weight: 600;
+        letter-spacing: -0.015em;
+        color: $tiletext3;
+        margin: 0 0 1rem;
+    }
+
+    .about-hero-sub {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: $tiletext2;
+        margin: 0;
+    }
+
+    .about-hero-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 2rem;
+    }
+
+    .about-hero-link {
+        padding: 0.65rem 1.25rem;
+        border: 1px solid $overline;
+        border-radius: 2rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: $tiletext;
+        text-decoration: none;
+        background-color: white;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            border-color: $tilebg2;
+            background-color: $tilebg4;
+            transform: translateY(-2px);
+        }
+    }
+
+    // Same gradient as the Join button in the nav, so the one call to action on the page is recognisable as a button.
+    .about-hero-link--primary {
+        color: white;
+        border-color: transparent;
+        background: linear-gradient(135deg, #262fb5, #74c8fa);
+
+        &:hover {
+            color: white;
+            background: linear-gradient(135deg, #74c8fa, #d4ac00);
+        }
+    }
+
+    // Figures
+
+    .about-figures {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1px;
+        background-color: $overline;
+        border: 1px solid $overline;
+        border-radius: $card-radius;
+        overflow: hidden;
+    }
+
+    .about-figure {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        padding: 1.5rem;
+        background-color: white;
+        text-decoration: none;
+        transition: background-color 200ms ease-in-out;
+
+        &:hover {
+            background-color: $tilebg4;
+        }
+    }
+
+    .about-figure-value {
+        font-size: clamp(1.9rem, 3vw, 2.4rem);
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        font-variant-numeric: tabular-nums;
+        color: $tiletext;
+    }
+
+    .about-figure-label {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        color: $greydesc;
+    }
+
+    // Written as a descendant so `&` does not drag the whole ancestor chain in front of the class
+    @each $hue in $eco-hues {
+        .about-figure[data-hue="#{index($eco-hues, $hue) - 1}"] .about-figure-value {
+            color: darken($hue, 15%);
+        }
+    }
+
+    // The stack
+
+    .stack-layer {
+        display: grid;
+        grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+        gap: 2rem;
+        align-items: start;
+        padding: 1.75rem;
+        border: 1px solid $overline;
+        border-radius: 1.25rem;
+
+        @media (max-width: 64rem) {
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+    }
+
+    // Each layer is tinted by one of the package hues so the three read as a stack, deepest at the foundation.
+    .stack-layer--eco {
+        background-color: rgba($muonaquamarine, 0.08);
+    }
+    .stack-layer--core {
+        background-color: rgba($spatialdatablue, 0.08);
+    }
+    .stack-layer--data {
+        background-color: rgba($scversedeepblue, 0.07);
+    }
+
+    .stack-layer-head {
+        h3 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin: 0.5rem 0 0.5rem;
+        }
+
+        p {
+            margin: 0 0 0.75rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: $tiletext2;
+        }
+    }
+
+    .stack-layer-tag {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: $greydesc;
+    }
+
+    .stack-layer-more {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: $tiletext;
+        text-decoration: none;
+        border-bottom: 1px solid $linkunderline;
+        transition: border-color 200ms ease-in-out;
+
+        &:hover {
+            border-bottom-color: black;
+        }
+    }
+
+    // The joint between two layers, so the diagram reads bottom-up as one thing
+    .stack-joint {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin: 0.4rem 0;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: $greydesc;
+    }
+
+    .stack-joint-line {
+        flex: 1;
+        height: 1px;
+        background-color: $overline;
+    }
+
+    // Layer 3: every registered ecosystem package, capped in height with a fade so the cloud reads as a texture.
+    .stack-cloud {
+        position: relative;
+        max-height: 11rem;
+        overflow: hidden;
+        mask-image: linear-gradient(to bottom, black 65%, transparent);
+    }
+
+    .stack-cloud-inner {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .stack-chip {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: $tiletext2;
+        text-decoration: none;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: 2rem;
+        transition: all 150ms ease-in-out;
+
+        &:hover {
+            color: black;
+            border-color: $tilebg2;
+            transform: translateY(-1px);
+        }
+    }
+
+    // Layer 2: the core frameworks, logo and name only
+    .stack-tiles {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+        gap: 0.6rem;
+    }
+
+    .stack-tile {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.7rem 0.85rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: $tiletext;
+        text-decoration: none;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: 0.6rem;
+        transition: all 200ms ease-in-out;
+
+        img {
+            width: 1.75rem;
+            height: 1.75rem;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        &:hover {
+            border-color: $tilebg2;
+            box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+    }
+
+    // Layer 1: the three data structures get room for a line of explanation
+    .stack-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+        gap: 0.75rem;
+    }
+
+    .stack-card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        padding: 1.1rem;
+        text-decoration: none;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: 0.75rem;
+        transition: all 200ms ease-in-out;
+
+        img {
+            width: 2.5rem;
+            height: 2.5rem;
+            object-fit: contain;
+            object-position: left;
+            margin-bottom: 0.2rem;
+        }
+
+        &:hover {
+            border-color: $tilebg2;
+            box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+    }
+
+    .stack-card-name {
+        font-weight: 700;
+        color: $tiletext;
+    }
+
+    .stack-card-text {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        color: $tiletext2;
+    }
+
+    // Governance
+
+    .about-inline-counts {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.6rem;
+        margin: -1rem 0 2rem;
+        font-size: 0.95rem;
+        color: $tiletext2;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            &:hover {
+                border-bottom-color: $linkunderline;
+            }
+        }
+
+        strong {
+            color: $tiletext;
+            font-variant-numeric: tabular-nums;
+        }
+    }
+
+    .about-inline-sep {
+        color: $tilebg2;
+    }
+
+    .doc-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+
+        @media (max-width: 64rem) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        @media (max-width: 50rem) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .doc-card {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        text-decoration: none;
+        background-color: $tilebg4;
+        border: 1px solid $overline;
+        border-radius: $card-radius;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            border-color: $tilebg2;
+            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+    }
+
+    .doc-card-icon {
+        display: grid;
+        place-items: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+        border-radius: 50%;
+        background-color: $tilebg;
+        color: $tiletext;
+    }
+
+    @each $hue in $eco-hues {
+        .doc-card[data-hue="#{index($eco-hues, $hue) - 1}"] .doc-card-icon {
+            background-color: rgba($hue, 0.18);
+            color: darken($hue, 12%);
+        }
+    }
+
+    .doc-card-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: $tiletext;
+        margin-bottom: 0.35rem;
+    }
+
+    .doc-card-text {
+        font-size: 0.95rem;
+        line-height: 1.55;
+        color: $tiletext2;
+    }
+
+    // Take part
+
+    .about-take-part {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 2.5rem;
+        align-items: center;
+        padding: 2.5rem;
+        border-radius: 1.25rem;
+        background-color: $tilebg4;
+
+        @media (max-width: 64rem) {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 1.75rem;
+        }
+
+        p {
+            margin: 0.75rem 0 0;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: $tiletext2;
+        }
+    }
+
+    .take-part-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+    }
+
+    .take-part-link {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.6rem 1rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: $tiletext;
+        text-decoration: none;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: 2rem;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            border-color: $tilebg2;
+            box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+
+        i {
+            display: inline-flex;
+            font-size: 1rem;
+            color: $tiletext2;
+        }
+    }
+
+    // Sponsorship
+
+    .about-sponsor {
+        display: grid;
+        grid-template-columns: 14rem minmax(0, 1fr);
+        gap: 2.5rem;
+        align-items: center;
+        padding: 2.5rem;
+        border: 1px solid $overline;
+        border-radius: 1.25rem;
+
+        @media (max-width: 64rem) {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 1.75rem;
+        }
+
+        p {
+            margin: 0.75rem 0 0;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: $tiletext2;
+        }
+
+        a {
+            color: inherit;
+        }
+    }
+
+    .sponsor-mark img {
+        width: 100%;
+        max-width: 13rem;
+        height: auto;
+    }
+
+    .sponsor-button {
+        display: inline-block;
+        margin-top: 1.25rem;
+        padding: 0.65rem 1.25rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: white;
+        text-decoration: none;
+        border-radius: 2rem;
+        background: linear-gradient(135deg, #262fb5, #74c8fa);
+        transition: background 200ms ease-in-out;
+
+        &:hover {
+            color: white;
+            background: linear-gradient(135deg, #74c8fa, #d4ac00);
+        }
+    }
+
+    .sponsor-fineprint {
+        font-size: 0.8rem !important;
+        line-height: 1.6 !important;
+        color: $greydesc !important;
+        margin-top: 1.25rem !important;
+        max-width: 44rem;
+    }
+}
