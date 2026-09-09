@@ -17,13 +17,6 @@ description = "How to reach the scverse community on GitHub, Zulip, Discourse an
 	link = "https://scverse.zulipchat.com/"
 
 [[resources]]
-	id = "twitter"
-	icon = "i-xcom"
-	title = ""
-	text = "Follow us on X (fka Twitter)"
-	link = "https://x.com/scverse_team"
-
-[[resources]]
 	id = "bluesky"
 	icon = "i-bluesky"
 	title = "Bluesky"

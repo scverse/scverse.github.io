@@ -22,7 +22,6 @@ $scviyellow: #fbb822;
 $scversedeepblue: #262fb5; // the darker end of the Join button gradient
 
 $github-black: #171b21;
-$twitter-blue: #469be5;
 $discourse-yellow: #f7f0b1;
 $youtube-red: #e03021;
 $zulip-blue: #62a3f0;
@@ -150,10 +149,6 @@ $eco-hues:
 }
 #join-content .card#zulip:hover {
     background-color: $zulip-blue !important;
-    color: white !important;
-}
-#join-content .card#twitter:hover {
-    background-color: $twitter-blue !important;
     color: white !important;
 }
 #join-content .card#bluesky:hover {
