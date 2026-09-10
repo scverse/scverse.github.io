@@ -33,21 +33,21 @@
         <li class="gov-node">
           {{ partial "governance/node.html" (dict
             "name" "Contributors" "anchor" "contributors" "icon" "bi-pencil-square" "hue" 2
-            "text" "Community members who propose, discuss or review a change, report an issue, or help others use the packages."
+            "text" "Anyone who proposes, discusses or reviews a change, or reports an issue."
             )
           }}
           <ul class="gov-level">
             <li class="gov-node gov-node--leaf">
               {{ partial "governance/node.html" (dict
                 "name" "Project Developers" "anchor" "project-developers" "icon" "bi-code-slash" "hue" 7
-                "text" "Contributors with commit rights on an individual project, granted by that project."
+                "text" "Contributors with commit rights on an individual project."
                 )
               }}
             </li>
             <li class="gov-node">
               {{ partial "governance/node.html" (dict
                 "name" (index $label "core") "anchor" "core-team" "icon" "bi-people-fill" "hue" 0
-                "text" "Community members trusted to maintain scverse, on the scverse/core GitHub team and reachable at core@scverse.org."
+                "text" "Community members trusted to maintain scverse, reachable at core@scverse.org."
                 "role" (index $role "core")
                 )
               }}
@@ -75,7 +75,7 @@
                     <li class="gov-node gov-node--leaf">
                       {{ partial "governance/node.html" (dict
                         "name" (index $label "council") "anchor" "steering-council" "icon" "bi-signpost-split" "hue" 1
-                        "text" "Sets strategy, decides how scverse itself is funded, and resolves a deadlock in the core team."
+                        "text" "Sets strategy, decides how scverse is funded, and resolves core team deadlocks."
                         "role" (index $role "council")
                         )
                       }}
@@ -91,7 +91,7 @@
     <li class="gov-node gov-node--top gov-node--leaf">
       {{ partial "governance/node.html" (dict
         "name" (index $label "management") "anchor" "management-committee" "icon" "bi-briefcase" "hue" 6
-        "text" "PIs who secure funding and allocate resources to the continued development of the core packages."
+        "text" "PIs who fund and resource the development of the core packages."
         "role" (index $role "management")
         )
       }}
@@ -99,7 +99,7 @@
     <li class="gov-node gov-node--top gov-node--leaf">
       {{ partial "governance/node.html" (dict
         "name" (index $label "advisory") "anchor" "scientific-advisory-board" "icon" "bi-mortarboard" "hue" 4
-        "text" "Scientists who assess progress once a year and suggest the priorities for the next one."
+        "text" "Scientists who review progress each year and suggest the next priorities."
         "role" (index $role "advisory")
         )
       }}
