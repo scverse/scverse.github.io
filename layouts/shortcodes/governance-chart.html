@@ -1,51 +1,82 @@
-{{/* An index of the sections below, not a summary of them: every node is just a name, a live
-  headcount from the people page, and links to its own section and to who currently holds it.
-  The core team splits three ways — developers, community, governance — and the steering council
-  is drawn from the governance side of it. The document states none of that: its headings are
-  flat and it only names one of the three sub-teams.
+{{/* An index of the sections below: every node is a name, what the group does, a live headcount
+  from the people page, and the faces of the people who currently hold the role.
+  The core team splits three ways (developers, community, governance) and the steering council is
+  drawn from the governance side of it; the document's own headings are flat and name only one of
+  the three sub-teams, so those two carry no description.
 */}}
 {{ $people := (site.GetPage "/people").Params.people | default slice }}
 {{ $count := dict }}
 {{ $label := dict }}
+{{ $members := dict }}
 {{ range (site.GetPage "/people").Params.roles }}
-  {{ $count = merge $count (dict .id (len (where $people "roles" "intersect" (slice .id)))) }}
+  {{ $held := where $people "roles" "intersect" (slice .id) }}
+  {{ $count = merge $count (dict .id (len $held)) }}
   {{ $label = merge $label (dict .id .label) }}
+  {{ $members = merge $members (dict .id $held) }}
+{{ end }}
+
+{{ $role := dict }}
+{{ range slice "core" "council" "management" "advisory" }}
+  {{ $role = merge $role (dict . (dict "id" . "count" (index $count .) "members" (index $members .))) }}
 {{ end }}
 
 
 <figure class="gov-chart">
   <ul class="gov-level">
     <li class="gov-node gov-node--top">
-      {{ partial "governance/node.html" (dict "name" "Community" "anchor" "the-community") }}
+      {{ partial "governance/node.html" (dict
+        "name" "Community" "anchor" "the-community" "icon" "bi-globe2" "hue" 3
+        "text" "Anyone using or working with the project in any way."
+        )
+      }}
       <ul class="gov-level">
         <li class="gov-node">
-          {{ partial "governance/node.html" (dict "name" "Contributors" "anchor" "contributors") }}
+          {{ partial "governance/node.html" (dict
+            "name" "Contributors" "anchor" "contributors" "icon" "bi-pencil-square" "hue" 2
+            "text" "Community members who propose, discuss or review a change, report an issue, or help others use the packages."
+            )
+          }}
           <ul class="gov-level">
             <li class="gov-node gov-node--leaf">
-              {{ partial "governance/node.html" (dict "name" "Project Developers" "anchor" "project-developers") }}
+              {{ partial "governance/node.html" (dict
+                "name" "Project Developers" "anchor" "project-developers" "icon" "bi-code-slash" "hue" 7
+                "text" "Contributors with commit rights on an individual project, granted by that project."
+                )
+              }}
             </li>
             <li class="gov-node">
               {{ partial "governance/node.html" (dict
-                "name" (index $label "core") "anchor" "core-team"
-                "role" (dict "id" "core" "count" (index $count "core"))
+                "name" (index $label "core") "anchor" "core-team" "icon" "bi-people-fill" "hue" 0
+                "text" "Community members trusted to maintain scverse, on the scverse/core GitHub team and reachable at core@scverse.org."
+                "role" (index $role "core")
                 )
               }}
               {{/* Siblings, so they read as three parallel sub-teams rather than a stack */}}
-              <ul class="gov-level gov-level--row">
+              <ul class="gov-level gov-level--row gov-level--subteams">
                 <li class="gov-node gov-node--leaf">
-                  {{ partial "governance/node.html" (dict "name" "Core Developers" "anchor" "core-developers") }}
+                  {{ partial "governance/node.html" (dict
+                    "name" "Core Developers" "anchor" "core-developers" "icon" "bi-braces" "hue" 5
+                    )
+                  }}
                 </li>
                 {{/* The document has no section for these two yet, so they point at their parent */}}
                 <li class="gov-node gov-node--leaf">
-                  {{ partial "governance/node.html" (dict "name" "Core Community" "anchor" "core-team") }}
+                  {{ partial "governance/node.html" (dict
+                    "name" "Core Community" "anchor" "core-team" "icon" "bi-chat-square-heart" "hue" 4
+                    )
+                  }}
                 </li>
                 <li class="gov-node">
-                  {{ partial "governance/node.html" (dict "name" "Core Governance" "anchor" "core-team") }}
+                  {{ partial "governance/node.html" (dict
+                    "name" "Core Governance" "anchor" "core-team" "icon" "bi-clipboard-check" "hue" 6
+                    )
+                  }}
                   <ul class="gov-level">
                     <li class="gov-node gov-node--leaf">
                       {{ partial "governance/node.html" (dict
-                        "name" (index $label "council") "anchor" "steering-council"
-                        "role" (dict "id" "council" "count" (index $count "council"))
+                        "name" (index $label "council") "anchor" "steering-council" "icon" "bi-signpost-split" "hue" 1
+                        "text" "Sets strategy, decides how scverse itself is funded, and resolves a deadlock in the core team."
+                        "role" (index $role "council")
                         )
                       }}
                     </li>
@@ -59,15 +90,17 @@
     </li>
     <li class="gov-node gov-node--top gov-node--leaf">
       {{ partial "governance/node.html" (dict
-        "name" (index $label "management") "anchor" "management-committee"
-        "role" (dict "id" "management" "count" (index $count "management"))
+        "name" (index $label "management") "anchor" "management-committee" "icon" "bi-briefcase" "hue" 6
+        "text" "PIs who secure funding and allocate resources to the continued development of the core packages."
+        "role" (index $role "management")
         )
       }}
     </li>
     <li class="gov-node gov-node--top gov-node--leaf">
       {{ partial "governance/node.html" (dict
-        "name" (index $label "advisory") "anchor" "scientific-advisory-board"
-        "role" (dict "id" "advisory" "count" (index $count "advisory"))
+        "name" (index $label "advisory") "anchor" "scientific-advisory-board" "icon" "bi-mortarboard" "hue" 4
+        "text" "Scientists who assess progress once a year and suggest the priorities for the next one."
+        "role" (index $role "advisory")
         )
       }}
     </li>

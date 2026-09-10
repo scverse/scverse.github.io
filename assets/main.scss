@@ -3493,7 +3493,7 @@ body {
     font-weight: 600;
 }
 
-// Specific to /about/roles — an index of the governance sections, not a summary of them
+// Specific to /about/roles: an index of the governance sections, not a summary of them
 
 .gov-chart {
     margin: 2.5rem 0 3rem;
@@ -3501,7 +3501,7 @@ body {
     .gov-level {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0.6rem;
         margin: 0;
         padding: 0;
         list-style: none;
@@ -3513,7 +3513,7 @@ body {
     }
 
     .gov-node {
-        padding: 0.7rem 0.9rem;
+        padding: 0.6rem;
         background-color: white;
         border: 1px solid $overline;
         border-radius: $card-radius;
@@ -3522,6 +3522,43 @@ body {
     // Community, the management committee and the advisory board sit at the same level
     .gov-node--top {
         background-color: $backtickbg;
+    }
+
+    .gov-card {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        padding: 0.55rem 0.7rem;
+        border-radius: 0.6rem;
+        transition: background-color 200ms ease-in-out;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+    }
+
+    .gov-icon {
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        width: 2.25rem;
+        height: 2.25rem;
+        font-size: 1.05rem;
+        border-radius: 50%;
+        background-color: $tilebg;
+        color: $tiletext;
+    }
+
+    @each $hue in $eco-hues {
+        .gov-card[data-hue="#{index($eco-hues, $hue) - 1}"] .gov-icon {
+            background-color: rgba($hue, 0.18);
+            color: darken($hue, 15%);
+        }
+    }
+
+    .gov-body {
+        flex: 1;
+        min-width: 0;
     }
 
     .gov-name {
@@ -3536,44 +3573,127 @@ body {
         }
     }
 
-    .gov-meta {
-        margin-left: 0.6rem;
-        font-size: 0.8rem;
-        color: $greydesc;
-        white-space: nowrap;
+    .gov-text {
+        margin: 0.15rem 0 0;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        color: $tiletext2;
+    }
 
-        .gov-count {
-            font-variant-numeric: tabular-nums;
+    // The faces are the point of this link: the headcount is there for anyone who cannot see them
+    .gov-people {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        flex-shrink: 0;
+        padding: 0.3rem 0.5rem 0.3rem 0.3rem;
+        text-decoration: none;
+        border-radius: 2rem;
+        border: 1px solid transparent;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            border-color: $overline;
+            background-color: white;
         }
-        a {
-            margin-left: 0.5rem;
-            color: $tiletext2;
-            text-decoration: none;
-            border-bottom: 1px solid $overline;
+    }
 
-            &:hover {
-                color: black;
-                border-bottom-color: $linkunderline;
+    .gov-faces {
+        display: flex;
+
+        .gov-face + .gov-face {
+            margin-left: -0.55rem;
+        }
+    }
+
+    .gov-face {
+        display: block;
+        border-radius: 50%;
+        box-shadow: 0 0 0 2px white;
+
+        img,
+        .person-monogram {
+            display: block;
+            width: 1.75rem;
+            height: 1.75rem;
+            border-radius: 50%;
+        }
+
+        // Committee members who link to a lab site rather than to GitHub fall back to initials
+        .person-monogram {
+            display: grid;
+            place-items: center;
+            font-size: 0.6rem;
+            font-weight: 800;
+            color: $tiletext;
+            background-color: $tilebg;
+
+            @each $hue in $eco-hues {
+                &[data-hue="#{index($eco-hues, $hue) - 1}"] {
+                    background-color: rgba($hue, 0.3);
+                }
             }
         }
+    }
+
+    .gov-count {
+        font-size: 0.85rem;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+        color: $tiletext2;
     }
 
     .gov-level--row {
         flex-direction: row;
         flex-wrap: wrap;
+        align-items: flex-start;
 
         > .gov-node {
-            flex: 1 1 13rem;
+            flex: 1 1 14rem;
         }
+    }
+
+    // The three sub-teams are names only; the document describes just one of them, and a chip row
+    // reads as a set rather than as three cards with a hole where the text would be.
+    .gov-level--subteams > .gov-node > .gov-card {
+        padding: 0.4rem 0.5rem;
+
+        .gov-icon {
+            width: 1.85rem;
+            height: 1.85rem;
+            font-size: 0.9rem;
+        }
+    }
+
+    // The council hangs off Core Governance, so that column needs room for a card
+    .gov-level--subteams {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
     }
 
     // Five levels of nesting is enough padding already
     @media (max-width: 50rem) {
-        .gov-level--row {
+        // A column, so the row's flex-basis would set the height of each box rather than its width
+        .gov-level--row,
+        .gov-level--subteams {
+            display: flex;
             flex-direction: column;
+            align-items: stretch;
+
+            > .gov-node {
+                flex: 0 0 auto;
+            }
         }
         .gov-node {
-            padding: 0.6rem 0.65rem;
+            padding: 0.4rem;
+        }
+        .gov-card {
+            gap: 0.6rem;
+            padding: 0.5rem;
+        }
+        // The headcount still fits; five faces beside it do not
+        .gov-faces {
+            display: none;
         }
     }
 }
