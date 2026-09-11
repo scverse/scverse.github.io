@@ -1,4 +1,7 @@
 import "bootstrap" // see env.d.ts
+import type { PagefindDocument } from "pagefind"
+
+type Pagefind = typeof import("pagefind")
 
 // Ecosystem package registry: free-text search, one active category, one active tag.
 // Categories and tags both come from the controlled vocabulary in the registry schema.
@@ -263,17 +266,17 @@ const filterTutorials = () => {
 // Initialize interactive UMAP visualization
 const initInteractiveViz = () => {
   //const container = document.getElementById('interactive-container')
-  const card = document.getElementById("interactive-card")
-  const visualization = document.getElementById("visualization")
+  const card = document.querySelector<HTMLElement>("#interactive-card")!
+  const visualization = document.querySelector<HTMLElement>("#visualization")!
   // Exit early if visualization elements don't exist on this page
   if (!visualization || !card) return
 
-  const runCmd1 = document.getElementById("run-cmd1")!
-  const runCmd2 = document.getElementById("run-cmd2")!
-  const statusCmd1 = document.getElementById("status-cmd1")!
-  const statusCmd2 = document.getElementById("status-cmd2")!
-  const execAnim1 = document.getElementById("exec-anim-1")!
-  const execAnim2 = document.getElementById("exec-anim-2")!
+  const runCmd1 = document.querySelector<HTMLButtonElement>("#run-cmd1")!
+  const runCmd2 = document.querySelector<HTMLButtonElement>("#run-cmd2")!
+  const statusCmd1 = document.querySelector<HTMLElement>("#status-cmd1")!
+  const statusCmd2 = document.querySelector<HTMLElement>("#status-cmd2")!
+  const execAnim1 = document.querySelector<HTMLElement>("#exec-anim-1")!
+  const execAnim2 = document.querySelector<HTMLElement>("#exec-anim-2")!
 
   // Color clusters for UMAP visualization, using the same brand hues the package tiles below use instead of a generic chart-library palette.
   const colorClusters = [
@@ -328,124 +331,61 @@ const initInteractiveViz = () => {
   })
 
   function generateUMAP() {
-    for (const dot of visualization!.querySelectorAll(".dot")) {
-      dot.remove()
-    }
+    const width = visualization.clientWidth
+    const height = visualization.clientHeight
 
-    const width = visualization!.clientWidth
-    const height = visualization!.clientHeight
+    // One wrapper per cluster: hover, dimming and the click pulse are all .cluster rules in
+    // main.scss, so the only thing left to do here is place the dots.
+    visualization.replaceChildren(
+      ...colorClusters.map((cluster) => {
+        const centerX = Math.random() * 0.6 * width + 0.2 * width
+        const centerY = Math.random() * 0.6 * height + 0.2 * height
 
-    for (const cluster of colorClusters) {
-      const centerX = Math.random() * 0.6 * width + 0.2 * width
-      const centerY = Math.random() * 0.6 * height + 0.2 * height
+        const dots = Array.from({ length: cluster.count }, (_unused, i) => {
+          const dot = document.createElement("div")
+          dot.className = "dot"
 
-      for (let i = 0; i < cluster.count; i++) {
-        const dot = document.createElement("div")
-        dot.className = "dot"
-        dot.dataset.cluster = cluster.name
-        dot.dataset.color = cluster.color
+          const size = Math.floor(Math.random() * 8) + 5
+          dot.style.width = `${size}px`
+          dot.style.height = `${size}px`
 
-        const size = Math.floor(Math.random() * 8) + 5
-        dot.style.width = `${size}px`
-        dot.style.height = `${size}px`
-
-        let u = 0,
-          v = 0
-        for (let j = 0; j < 6; j++) {
-          u += Math.random()
-          v += Math.random()
-        }
-        u = u / 6 - 0.5
-        v = v / 6 - 0.5
-
-        const distance = Math.random() * 130 + 20
-        const dx = u * distance * 2
-        const dy = v * distance * 2
-        const x = centerX + dx
-        const y = centerY + dy
-
-        const safeX = Math.min(Math.max(size, x), width - size)
-        const safeY = Math.min(Math.max(size, y), height - size)
-
-        dot.style.left = `${safeX}px`
-        dot.style.top = `${safeY}px`
-        dot.style.backgroundColor = cluster.color
-
-        visualization!.appendChild(dot)
-
-        const dataPoint = Math.floor(Math.random() * 1000)
-        dot.dataset.id = `point-${dataPoint}`
-
-        setTimeout(
-          () => {
-            dot.style.transform = "scale(1)"
-            dot.style.opacity = "1"
-          },
-          i * 18 + Math.random() * 150,
-        )
-      }
-    }
-
-    setupDotInteractions()
-  }
-
-  function setupDotInteractions() {
-    const dots = document.querySelectorAll<HTMLElement>(".dot")
-
-    for (const dot of dots) {
-      dot.addEventListener("mouseenter", () => {
-        const thisColor = dot.dataset.color
-
-        for (const otherDot of dots) {
-          if (otherDot.dataset.color === thisColor) {
-            otherDot.style.transform = "scale(1.4)"
-            otherDot.style.boxShadow = "0 6px 18px rgba(0,0,0,0.25)"
-            otherDot.style.zIndex = "5"
-          } else {
-            otherDot.style.opacity = "0.4"
+          let u = 0,
+            v = 0
+          for (let j = 0; j < 6; j++) {
+            u += Math.random()
+            v += Math.random()
           }
-        }
-      })
+          u = u / 6 - 0.5
+          v = v / 6 - 0.5
 
-      dot.addEventListener("mouseleave", () => {
-        for (const otherDot of dots) {
-          otherDot.style.transform = "scale(1)"
-          otherDot.style.opacity = "1"
-          otherDot.style.boxShadow = "0 4px 8px rgba(0,0,0,0.12)"
-          otherDot.style.zIndex = "1"
-        }
-      })
+          const distance = Math.random() * 130 + 20
+          const dx = u * distance * 2
+          const dy = v * distance * 2
+          const x = centerX + dx
+          const y = centerY + dy
 
-      dot.addEventListener("click", () => {
-        const thisColor = dot.dataset.color
-        const clusterDots = []
+          const safeX = Math.min(Math.max(size, x), width - size)
+          const safeY = Math.min(Math.max(size, y), height - size)
 
-        for (const otherDot of dots) {
-          if (otherDot.dataset.color === thisColor) {
-            clusterDots.push(otherDot)
-          }
-        }
+          dot.style.left = `${safeX}px`
+          dot.style.top = `${safeY}px`
+          dot.style.backgroundColor = cluster.color
 
-        for (const otherDot of clusterDots) {
-          otherDot.classList.add("animation-pulse")
+          setTimeout(() => dot.classList.add("is-visible"), i * 18 + Math.random() * 150)
+          return dot
+        })
 
-          setTimeout(() => {
-            otherDot.classList.remove("animation-pulse")
-          }, 1500)
-        }
-      })
-    }
+        // tabIndex -1 keeps the group out of the tab order — the whole card is aria-hidden.
+        return el("div", { className: "cluster", tabIndex: -1 }, ...dots)
+      }),
+    )
   }
 
-  // These are divs, not buttons, so the keyboard behaviour has to be added by hand.
-  for (const control of [runCmd1, runCmd2]) {
-    control.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault()
-        control.click()
-      }
-    })
-  }
+  // Clicking a dot focuses its cluster, which pulses it via :focus in main.scss. Dropping the focus
+  // again once the pulse has run is what makes a second click on the same cluster pulse it again.
+  const cluster = (event: Event) => (event.target as HTMLElement).closest<HTMLElement>(".cluster")
+  visualization.addEventListener("click", (event) => cluster(event)?.focus())
+  visualization.addEventListener("animationend", (event) => cluster(event)?.blur())
 
   runCmd1.addEventListener("click", () => {
     statusCmd1.style.width = "0"
@@ -473,9 +413,8 @@ const initInteractiveViz = () => {
       execAnim2.style.width = "100%"
     }, 50)
 
-    for (const dot of visualization.querySelectorAll<HTMLElement>(".dot")) {
-      dot.style.opacity = "0"
-      dot.style.transform = "scale(0)"
+    for (const dot of visualization.querySelectorAll(".dot")) {
+      dot.classList.remove("is-visible")
     }
 
     setTimeout(() => {
@@ -501,6 +440,16 @@ const initInteractiveViz = () => {
   })
 }
 
+const el = <K extends keyof HTMLElementTagNameMap>(
+  tag: K,
+  props: Partial<HTMLElementTagNameMap[K]>,
+  ...children: (Node | string)[]
+): HTMLElementTagNameMap[K] => {
+  const element = Object.assign(document.createElement(tag), props)
+  element.append(...children)
+  return element
+}
+
 interface Entity {
   name: string
   kind: string
@@ -509,17 +458,17 @@ interface Entity {
 }
 
 function initSearch() {
-  const openButton = document.getElementById("search-open")
-  const overlay = document.getElementById("search-overlay")
+  const openButton = document.querySelector<HTMLElement>("#search-open")!
+  const overlay = document.querySelector<HTMLElement>("#search-overlay")!
   if (!openButton || !overlay) return
 
-  const dialog = document.getElementById("search-dialog")!
-  const input = document.getElementById("search-input") as HTMLInputElement
-  const status = document.getElementById("search-status")!
-  const results = document.getElementById("search-results")!
-  const closeButton = document.getElementById("search-close")!
+  const dialog = document.querySelector<HTMLElement>("#search-dialog")!
+  const input = document.querySelector<HTMLInputElement>("#search-input")!
+  const status = document.querySelector<HTMLElement>("#search-status")!
+  const results = document.querySelector<HTMLElement>("#search-results")!
+  const closeButton = document.querySelector<HTMLElement>("#search-close")!
 
-  let pagefindPromise: Promise<any> | null = null
+  let pagefindPromise: Promise<Pagefind | null> | null = null
   let lastQuery = ""
   let selected = -1
   let debounce: ReturnType<typeof setTimeout>
@@ -558,8 +507,7 @@ function initSearch() {
   function loadPagefind() {
     if (!pagefindPromise) {
       pagefindPromise = (async () => {
-        // @ts-expect-error not on disk: written by `npx pagefind` after the Hugo build
-        const engine = await import("/pagefind/pagefind.js")
+        const engine = await import("pagefind")
         await engine.options({ excerptLength: 25 })
         await engine.init()
         return engine
@@ -573,7 +521,7 @@ function initSearch() {
   }
 
   function open() {
-    overlay!.hidden = false
+    overlay.hidden = false
     document.body.style.overflow = "hidden"
     input.focus()
     input.select()
@@ -581,9 +529,9 @@ function initSearch() {
   }
 
   function close() {
-    overlay!.hidden = true
+    overlay.hidden = true
     document.body.style.overflow = ""
-    openButton!.focus()
+    openButton.focus()
   }
 
   function setSelected(next: number) {
@@ -597,7 +545,7 @@ function initSearch() {
 
   // Pagefind matches when an indexed word is a prefix of the search term, so
   // "xylophone" comes back matching "x" on seventeen pages.
-  function relevant(hit: { excerpt: string }) {
+  function relevant(hit: PagefindDocument) {
     const terms = normalise(lastQuery)
     if (!terms.length) return true
     const matched = [...hit.excerpt.matchAll(/<mark>(.*?)<\/mark>/g)].flatMap((m) => normalise(m[1]))
@@ -612,13 +560,36 @@ function initSearch() {
       .filter((word) => word.length > 1)
   }
 
+  const span = (className: string, props: Partial<HTMLSpanElement>) =>
+    el("span", { className: `search-result-${className}`, ...props })
+
+  const resultRow = (row: {
+    link: Partial<HTMLAnchorElement>
+    title: string
+    labelClass: "kind" | "url"
+    label: string
+    excerpt: Partial<HTMLSpanElement>
+  }) =>
+    el(
+      "li",
+      {},
+      el(
+        "a",
+        row.link,
+        span("title", { textContent: row.title }),
+        " ",
+        span(row.labelClass, { textContent: row.label }),
+        span("excerpt", row.excerpt),
+      ),
+    )
+
   async function render(query: string) {
     if (query === lastQuery) return
     lastQuery = query
     selected = -1
 
     if (query.length < 2) {
-      results.innerHTML = ""
+      results.replaceChildren()
       status.textContent = ""
       return
     }
@@ -633,49 +604,34 @@ function initSearch() {
     const search = await engine.search(query)
     if (query !== lastQuery) return
 
-    const candidates = await Promise.all(search.results.slice(0, 30).map((result: any) => result.data()))
+    const candidates = await Promise.all(search.results.slice(0, 30).map((result) => result.data()))
     if (query !== lastQuery) return
 
     const top = candidates.filter(relevant).slice(0, 12)
 
-    results.innerHTML = ""
-    if (!top.length && !pinned.length) {
-      status.textContent = `No results for “${query}”`
-      return
-    }
-    const total = top.length + pinned.length
-    status.textContent = `${total} result${total === 1 ? "" : "s"}`
+    results.replaceChildren(
+      ...pinned.map((entity) =>
+        resultRow({
+          link: { href: entity.url, target: "_blank", rel: "noopener", className: "search-result-entity" },
+          title: entity.name,
+          labelClass: "kind",
+          label: entity.kind,
+          excerpt: { textContent: entity.detail },
+        }),
+      ),
+      ...top.map((hit) =>
+        resultRow({
+          link: { href: hit.url },
+          title: hit.meta.title || hit.url,
+          labelClass: "url",
+          label: hit.url,
+          excerpt: { innerHTML: hit.excerpt },
+        }),
+      ),
+    )
 
-    for (const entity of pinned) {
-      const item = document.createElement("li")
-      const link = document.createElement("a")
-      link.href = entity.url
-      link.target = "_blank"
-      link.rel = "noopener"
-      link.className = "search-result-entity"
-      link.innerHTML =
-        '<span class="search-result-title"></span> <span class="search-result-kind"></span>' +
-        '<span class="search-result-excerpt"></span>'
-      link.querySelector(".search-result-title")!.textContent = entity.name
-      link.querySelector(".search-result-kind")!.textContent = entity.kind
-      link.querySelector(".search-result-excerpt")!.textContent = entity.detail
-      item.appendChild(link)
-      results.appendChild(item)
-    }
-
-    for (const hit of top) {
-      const item = document.createElement("li")
-      const link = document.createElement("a")
-      link.href = hit.url
-      link.innerHTML =
-        '<span class="search-result-title"></span> <span class="search-result-url"></span>' +
-        '<span class="search-result-excerpt"></span>'
-      link.querySelector(".search-result-title")!.textContent = hit.meta.title || hit.url
-      link.querySelector(".search-result-url")!.textContent = hit.url
-      link.querySelector(".search-result-excerpt")!.innerHTML = hit.excerpt
-      item.appendChild(link)
-      results.appendChild(item)
-    }
+    const n = results.childNodes.length
+    status.textContent = n ? `${n} result${n === 1 ? "" : "s"}` : `No results for “${query}”`
   }
 
   openButton.addEventListener("click", open)
