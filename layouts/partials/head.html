@@ -41,6 +41,13 @@
 {{ template "_internal/twitter_cards.html" . }}
 {{ template "_internal/opengraph.html" . }}
 
-<script src="/bootstrap/js/bootstrap.bundle.min.js" defer></script>
-<script src="/main.js" defer></script>
+<script type="importmap">
+{
+  "imports": {
+    "@popperjs/core": "/bootstrap/js/popper.esm.min.js",
+    "bootstrap": "/bootstrap/js/bootstrap.esm.min.js"
+  }
+}
+</script>
+<script type="module" src="/main.js"></script>
 <script data-goatcounter="https://scverse.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

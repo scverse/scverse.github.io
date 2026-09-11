@@ -1,3 +1,5 @@
+import * as bootstrap from 'bootstrap'
+
 // Ecosystem package registry: free-text search, one active category, one active tag.
 // Categories and tags both come from the controlled vocabulary in the registry schema.
 const initEcosystemRegistry = () => {
@@ -17,28 +19,28 @@ const initEcosystemRegistry = () => {
   const apply = () => {
     const terms = input.value.toLowerCase().split(/\s+/).filter(Boolean);
     let shown = 0;
-    cards.forEach(card => {
+    for (const card of cards) {
       const visible =
         terms.every(term => card.dataset.search.includes(term)) &&
         (!activeCategory || card.dataset.category === activeCategory) &&
         (!activeTag || card.dataset.tags.includes(`|${activeTag}|`));
       card.hidden = !visible;
       if (visible) shown += 1;
-    });
+    }
     counter.textContent = shown;
     empty.hidden = shown !== 0;
     clearButton.hidden = !terms.length && !activeCategory && !activeTag;
-    root.querySelectorAll('.eco-tag').forEach(tag => {
+    for (const tag of root.querySelectorAll('.eco-tag')) {
       tag.classList.toggle('is-active', tag.dataset.tag === activeTag);
-    });
+    }
   };
 
   const syncChips = () => {
-    chipRow.querySelectorAll('.eco-chip').forEach(chip => {
+    for (const chip of chipRow.querySelectorAll('.eco-chip')) {
       const isActive = chip.dataset.category === activeCategory;
       chip.classList.toggle('is-active', isActive);
       chip.setAttribute('aria-pressed', String(isActive));
-    });
+    }
   };
 
   const reset = () => {
@@ -105,30 +107,30 @@ const initPeopleDirectory = () => {
   let activePackage = packages.has(params.get('works-on')) ? params.get('works-on') : '';
 
   const syncChips = (row, key, active) => {
-    Array.from(row.children).forEach(chip => {
+    for (const chip of row.children) {
       const isActive = chip.dataset[key] === active;
       chip.classList.toggle('is-active', isActive);
       chip.setAttribute('aria-pressed', String(isActive));
-    });
+    }
   };
 
   const apply = () => {
     const terms = input.value.toLowerCase().split(/\s+/).filter(Boolean);
     let shown = 0;
-    cards.forEach(card => {
+    for (const card of cards) {
       const visible =
         terms.every(term => card.dataset.search.includes(term)) &&
         (!activeRole || card.dataset.roles.includes(`|${activeRole}|`)) &&
         (!activePackage || card.dataset.works.includes(`|${activePackage}|`));
       card.hidden = !visible;
       if (visible) shown += 1;
-    });
+    }
     counter.textContent = shown;
     empty.hidden = shown !== 0;
     clearButton.hidden = !terms.length && !activeRole && !activePackage;
-    notes.forEach(note => {
+    for (const note of notes) {
       note.hidden = note.dataset.role !== activeRole;
-    });
+    }
     syncChips(roleRow, 'role', activeRole);
     syncChips(packageRow, 'package', activePackage);
   };
@@ -202,7 +204,7 @@ const initTableOfContents = () => {
   const used = new Set();
   const links = new Map();
 
-  headings.forEach(heading => {
+  for (const heading of headings) {
     if (!heading.id) {
       const slug = heading.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
       let id = slug;
@@ -220,7 +222,7 @@ const initTableOfContents = () => {
     item.append(link);
     list.append(item);
     links.set(heading, link);
-  });
+  }
 
   toc.hidden = false;
 
@@ -232,7 +234,9 @@ const initTableOfContents = () => {
       if (heading.getBoundingClientRect().top > 120) break;
       current = heading;
     }
-    links.forEach((link, heading) => link.classList.toggle('is-current', heading === current));
+    for (const [heading, link] of links.entries()) {
+        link.classList.toggle('is-current', heading === current);
+    }
   };
   window.addEventListener('scroll', markCurrent, { passive: true });
   markCurrent();
@@ -244,12 +248,11 @@ const filterTutorials = () => {
   const regex = new RegExp(filter, 'i');
   const tdFound = td => regex.test(td.innerHTML);
   const pkgFound = childrenArr => childrenArr.some(tdFound);
-  const toggleTrs = ({ style, children }) => {
+  for (const { style, children } of trs) {
     style.display = pkgFound([
       ...children
     ]) ? '' : 'none' ;
-  };
-  trs.forEach(toggleTrs);
+  }
 }
 
 // Initialize interactive UMAP visualization
@@ -282,7 +285,7 @@ const initInteractiveViz = () => {
   // 3D tilt effect
   const MAX_ROTATION = 2;
 
-  document.addEventListener('mousemove', function(e) {
+  document.addEventListener('mousemove', (e) => {
     const headerRect = document.querySelector('.demo-header').getBoundingClientRect();
     const vizRect = visualization.getBoundingClientRect();
     
@@ -309,17 +312,19 @@ const initInteractiveViz = () => {
     card.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
   });
 
-  document.addEventListener('mouseleave', function() {
+  document.addEventListener('mouseleave', () => {
     card.style.transform = 'rotateX(0deg) rotateY(0deg)';
   });
 
   function generateUMAP() {
-    visualization.querySelectorAll('.dot').forEach(dot => dot.remove());
+    for (const dot of visualization.querySelectorAll('.dot')) {
+      dot.remove();
+    }
 
     const width = visualization.clientWidth;
     const height = visualization.clientHeight;
 
-    colorClusters.forEach(cluster => {
+    for (const cluster of colorClusters) {
       const centerX = Math.random() * 0.6 * width + 0.2 * width;
       const centerY = Math.random() * 0.6 * height + 0.2 * height;
 
@@ -364,7 +369,7 @@ const initInteractiveViz = () => {
           dot.style.opacity = '1';
         }, i * 18 + Math.random() * 150);
       }
-    });
+    }
 
     setupDotInteractions();
   }
@@ -372,11 +377,11 @@ const initInteractiveViz = () => {
   function setupDotInteractions() {
     const dots = document.querySelectorAll('.dot');
 
-    dots.forEach(dot => {
-      dot.addEventListener('mouseenter', function(e) {
+    for (const dot of dots) {
+      dot.addEventListener('mouseenter', (e) => {
         const thisColor = this.dataset.color;
 
-        dots.forEach(otherDot => {
+        for (const otherDot of dots) {
           if (otherDot.dataset.color === thisColor) {
             otherDot.style.transform = 'scale(1.4)';
             otherDot.style.boxShadow = '0 6px 18px rgba(0,0,0,0.25)';
@@ -384,50 +389,50 @@ const initInteractiveViz = () => {
           } else {
             otherDot.style.opacity = '0.4';
           }
-        });
+        }
       });
 
-      dot.addEventListener('mouseleave', function() {
-        dots.forEach(otherDot => {
+      dot.addEventListener('mouseleave', () => {
+        for (const otherDot of dots) {
           otherDot.style.transform = 'scale(1)';
           otherDot.style.opacity = '1';
           otherDot.style.boxShadow = '0 4px 8px rgba(0,0,0,0.12)';
           otherDot.style.zIndex = '1';
-        });
+        }
       });
 
-      dot.addEventListener('click', function() {
+      dot.addEventListener('click', () => {
         const thisColor = this.dataset.color;
-        let clusterDots = [];
+        const clusterDots = [];
 
-        dots.forEach(otherDot => {
+        for (const otherDot of dots) {
           if (otherDot.dataset.color === thisColor) {
             clusterDots.push(otherDot);
           }
-        });
+        }
 
-        clusterDots.forEach((dot, i) => {
-          dot.classList.add('animation-pulse');
+        for (const otherDot of clusterDots) {
+          otherDot.classList.add('animation-pulse');
 
           setTimeout(() => {
-            dot.classList.remove('animation-pulse');
+            otherDot.classList.remove('animation-pulse');
           }, 1500);
-        });
+        }
       });
-    });
+    }
   }
 
   // These are divs, not buttons, so the keyboard behaviour has to be added by hand.
-  [runCmd1, runCmd2].forEach(function(control) {
-    control.addEventListener('keydown', function(event) {
+  for (const control of [runCmd1, runCmd2]) {
+    control.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
         control.click();
       }
     });
-  });
+  }
 
-  runCmd1.addEventListener('click', function() {
+  runCmd1.addEventListener('click', () => {
     statusCmd1.style.width = '0';
     execAnim1.style.width = '0';
 
@@ -445,7 +450,7 @@ const initInteractiveViz = () => {
     }, 800);
   });
 
-  runCmd2.addEventListener('click', function() {
+  runCmd2.addEventListener('click', () => {
     statusCmd2.style.width = '0';
     execAnim2.style.width = '0';
 
@@ -453,10 +458,10 @@ const initInteractiveViz = () => {
       execAnim2.style.width = '100%';
     }, 50);
 
-    visualization.querySelectorAll('.dot').forEach(dot => {
+    for (const dot of visualization.querySelectorAll('.dot')) {
       dot.style.opacity = '0';
       dot.style.transform = 'scale(0)';
-    });
+    }
 
     setTimeout(() => {
       generateUMAP();
@@ -475,7 +480,7 @@ const initInteractiveViz = () => {
 
   // Responsive regeneration
   let resizeTimer;
-  window.addEventListener('resize', function() {
+  window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(generateUMAP, 250);
   });
@@ -618,7 +623,7 @@ function initSearch() {
     const total = top.length + pinned.length
     status.textContent = `${total} result${total === 1 ? '' : 's'}`
 
-    pinned.forEach(entity => {
+    for (const entity of pinned) {
       const item = document.createElement('li')
       const link = document.createElement('a')
       link.href = entity.url
@@ -633,9 +638,9 @@ function initSearch() {
       link.querySelector('.search-result-excerpt').textContent = entity.detail
       item.appendChild(link)
       results.appendChild(item)
-    })
+    }
 
-    top.forEach(hit => {
+    for (const hit of top) {
       const item = document.createElement('li')
       const link = document.createElement('a')
       link.href = hit.url
@@ -647,7 +652,7 @@ function initSearch() {
       link.querySelector('.search-result-excerpt').innerHTML = hit.excerpt
       item.appendChild(link)
       results.appendChild(item)
-    })
+    }
   }
 
   openButton.addEventListener('click', open)
@@ -694,7 +699,7 @@ function initSearch() {
     if (event.key === 'Escape' && !overlay.hidden) {
       close()
     } else if (overlay.hidden && (event.key === '/' || ((event.metaKey || event.ctrlKey) && event.key === 'k'))) {
-      const tag = document.activeElement && document.activeElement.tagName
+      const tag = document.activeElement?.tagName
       if (tag === 'INPUT' || tag === 'TEXTAREA') return
       event.preventDefault()
       open()
@@ -702,21 +707,22 @@ function initSearch() {
   })
 }
 
-// Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-  initEcosystemRegistry()
-  initPeopleDirectory()
-  initContributorWall()
+// initialize everything
 
-  const tutorialFilter = document.querySelector('#tutorial-filter')
-  if (tutorialFilter) {
-    tutorialFilter.addEventListener('input', filterTutorials)
-  }
 
-  initTableOfContents()
 
-  initSearch()
+initEcosystemRegistry()
+initPeopleDirectory()
+initContributorWall()
 
-  // Initialize interactive visualization if on home page
-  initInteractiveViz()
-})
+const tutorialFilter = document.querySelector('#tutorial-filter')
+if (tutorialFilter) {
+  tutorialFilter.addEventListener('input', filterTutorials)
+}
+
+initTableOfContents()
+
+initSearch()
+
+// Initialize interactive visualization if on home page
+initInteractiveViz()
