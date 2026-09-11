@@ -1,18 +1,18 @@
-import "bootstrap"
+import "bootstrap" // see env.d.ts
 
 // Ecosystem package registry: free-text search, one active category, one active tag.
 // Categories and tags both come from the controlled vocabulary in the registry schema.
 const initEcosystemRegistry = () => {
-  const root = document.querySelector("#ecosystem-packages")
+  const root = document.querySelector<HTMLElement>("#ecosystem-packages")
   if (!root) return
 
-  const input = root.querySelector("#eco-filter")
-  const chipRow = root.querySelector("#eco-chips")
-  const grid = root.querySelector("#eco-grid")
-  const counter = root.querySelector("#eco-count")
-  const empty = root.querySelector("#eco-empty")
-  const clearButton = root.querySelector("#eco-clear")
-  const cards = Array.from(grid.querySelectorAll(".eco-card"))
+  const input = root.querySelector<HTMLInputElement>("#eco-filter")!
+  const chipRow = root.querySelector<HTMLElement>("#eco-chips")!
+  const grid = root.querySelector<HTMLElement>("#eco-grid")!
+  const counter = root.querySelector<HTMLElement>("#eco-count")!
+  const empty = root.querySelector<HTMLElement>("#eco-empty")!
+  const clearButton = root.querySelector<HTMLElement>("#eco-clear")!
+  const cards = Array.from(grid.querySelectorAll<HTMLElement>(".eco-card"))
   let activeCategory = ""
   let activeTag = ""
 
@@ -21,22 +21,22 @@ const initEcosystemRegistry = () => {
     let shown = 0
     for (const card of cards) {
       const visible =
-        terms.every((term) => card.dataset.search.includes(term)) &&
+        terms.every((term) => card.dataset.search!.includes(term)) &&
         (!activeCategory || card.dataset.category === activeCategory) &&
-        (!activeTag || card.dataset.tags.includes(`|${activeTag}|`))
+        (!activeTag || card.dataset.tags!.includes(`|${activeTag}|`))
       card.hidden = !visible
       if (visible) shown += 1
     }
-    counter.textContent = shown
+    counter.textContent = String(shown)
     empty.hidden = shown !== 0
     clearButton.hidden = !terms.length && !activeCategory && !activeTag
-    for (const tag of root.querySelectorAll(".eco-tag")) {
+    for (const tag of root.querySelectorAll<HTMLElement>(".eco-tag")) {
       tag.classList.toggle("is-active", tag.dataset.tag === activeTag)
     }
   }
 
   const syncChips = () => {
-    for (const chip of chipRow.querySelectorAll(".eco-chip")) {
+    for (const chip of chipRow.querySelectorAll<HTMLElement>(".eco-chip")) {
       const isActive = chip.dataset.category === activeCategory
       chip.classList.toggle("is-active", isActive)
       chip.setAttribute("aria-pressed", String(isActive))
@@ -59,22 +59,22 @@ const initEcosystemRegistry = () => {
     reset()
     input.focus()
   })
-  empty.querySelector(".eco-empty-reset").addEventListener("click", reset)
+  empty.querySelector(".eco-empty-reset")!.addEventListener("click", reset)
 
   chipRow.addEventListener("click", (event) => {
-    const chip = event.target.closest(".eco-chip")
+    const chip = (event.target as HTMLElement).closest<HTMLElement>(".eco-chip")
     if (!chip) return
-    activeCategory = activeCategory === chip.dataset.category ? "" : chip.dataset.category
+    activeCategory = activeCategory === chip.dataset.category ? "" : chip.dataset.category!
     syncChips()
     apply()
   })
 
   // Tags are not in the chip row — there are too many — so they filter from the cards themselves.
   grid.addEventListener("click", (event) => {
-    const tag = event.target.closest(".eco-tag")
+    const tag = (event.target as HTMLElement).closest<HTMLElement>(".eco-tag")
     if (!tag) return
     event.preventDefault()
-    activeTag = activeTag === tag.dataset.tag ? "" : tag.dataset.tag
+    activeTag = activeTag === tag.dataset.tag ? "" : tag.dataset.tag!
     apply()
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
     root.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" })
@@ -85,30 +85,33 @@ const initEcosystemRegistry = () => {
 // both come from the page's own chip rows, so a URL like /people/?role=council survives a rename
 // only as long as the id still exists — anything unknown falls back to the unfiltered list.
 const initPeopleDirectory = () => {
-  const root = document.querySelector("#people-directory")
+  const root = document.querySelector<HTMLElement>("#people-directory")
   if (!root) return
 
-  const input = root.querySelector("#people-filter")
-  const roleRow = root.querySelector("#people-roles")
-  const packageRow = root.querySelector("#people-packages")
-  const grid = root.querySelector("#people-grid")
-  const counter = root.querySelector("#people-count")
-  const empty = root.querySelector("#people-empty")
-  const clearButton = root.querySelector("#people-clear")
-  const notes = Array.from(root.querySelectorAll(".people-note"))
-  const cards = Array.from(grid.querySelectorAll(".person-card"))
+  const input = root.querySelector<HTMLInputElement>("#people-filter")!
+  const roleRow = root.querySelector<HTMLElement>("#people-roles")!
+  const packageRow = root.querySelector<HTMLElement>("#people-packages")!
+  const grid = root.querySelector<HTMLElement>("#people-grid")!
+  const counter = root.querySelector<HTMLElement>("#people-count")!
+  const empty = root.querySelector<HTMLElement>("#people-empty")!
+  const clearButton = root.querySelector<HTMLElement>("#people-clear")!
+  const notes = Array.from(root.querySelectorAll<HTMLElement>(".people-note"))
+  const cards = Array.from(grid.querySelectorAll<HTMLElement>(".person-card"))
 
-  const values = (row, key) => new Set(Array.from(row.children).map((chip) => chip.dataset[key]))
+  const values = (row: HTMLElement, key: string) =>
+    new Set(Array.from(row.children).map((chip) => (chip as HTMLElement).dataset[key]!))
   const roles = values(roleRow, "role")
   const packages = values(packageRow, "package")
 
   const params = new URLSearchParams(window.location.search)
-  let activeRole = roles.has(params.get("role")) ? params.get("role") : ""
-  let activePackage = packages.has(params.get("works-on")) ? params.get("works-on") : ""
+  const role = params.get("role") ?? ""
+  const worksOn = params.get("works-on") ?? ""
+  let activeRole = roles.has(role) ? role : ""
+  let activePackage = packages.has(worksOn) ? worksOn : ""
 
-  const syncChips = (row, key, active) => {
+  const syncChips = (row: HTMLElement, key: string, active: string) => {
     for (const chip of row.children) {
-      const isActive = chip.dataset[key] === active
+      const isActive = (chip as HTMLElement).dataset[key] === active
       chip.classList.toggle("is-active", isActive)
       chip.setAttribute("aria-pressed", String(isActive))
     }
@@ -119,13 +122,13 @@ const initPeopleDirectory = () => {
     let shown = 0
     for (const card of cards) {
       const visible =
-        terms.every((term) => card.dataset.search.includes(term)) &&
-        (!activeRole || card.dataset.roles.includes(`|${activeRole}|`)) &&
-        (!activePackage || card.dataset.works.includes(`|${activePackage}|`))
+        terms.every((term) => card.dataset.search!.includes(term)) &&
+        (!activeRole || card.dataset.roles!.includes(`|${activeRole}|`)) &&
+        (!activePackage || card.dataset.works!.includes(`|${activePackage}|`))
       card.hidden = !visible
       if (visible) shown += 1
     }
-    counter.textContent = shown
+    counter.textContent = String(shown)
     empty.hidden = shown !== 0
     clearButton.hidden = !terms.length && !activeRole && !activePackage
     for (const note of notes) {
@@ -150,18 +153,18 @@ const initPeopleDirectory = () => {
     reset()
     input.focus()
   })
-  empty.querySelector(".people-empty-reset").addEventListener("click", reset)
+  empty.querySelector(".people-empty-reset")!.addEventListener("click", reset)
 
   roleRow.addEventListener("click", (event) => {
-    const chip = event.target.closest(".people-chip")
+    const chip = (event.target as HTMLElement).closest<HTMLElement>(".people-chip")
     if (!chip) return
-    activeRole = activeRole === chip.dataset.role ? "" : chip.dataset.role
+    activeRole = activeRole === chip.dataset.role ? "" : chip.dataset.role!
     apply()
   })
   packageRow.addEventListener("click", (event) => {
-    const chip = event.target.closest(".people-chip")
+    const chip = (event.target as HTMLElement).closest<HTMLElement>(".people-chip")
     if (!chip) return
-    activePackage = activePackage === chip.dataset.package ? "" : chip.dataset.package
+    activePackage = activePackage === chip.dataset.package ? "" : chip.dataset.package!
     apply()
   })
 
@@ -184,30 +187,30 @@ const initContributorWall = () => {
 // Table of contents for long pages. These headings come from templates rather than markdown, so
 // Hugo's .TableOfContents cannot see them and the list is built from the rendered page instead.
 const initTableOfContents = () => {
-  const toc = document.querySelector(".toc")
-  const body = document.querySelector(".with-toc-body")
+  const toc = document.querySelector<HTMLElement>(".toc")
+  const body = document.querySelector<HTMLElement>(".with-toc-body")
   if (!toc || !body) return
 
   // Headings inside a nested <article> belong to a component, not to the page: the package cards
   // are articles with their own <h3> title and must not become sections of the contents.
-  const scope = body.querySelector("article.post") || body
-  const nested = (heading) => {
+  const scope = body.querySelector<HTMLElement>("article.post") || body
+  const nested = (heading: HTMLElement) => {
     const article = heading.closest("article")
     return article !== null && article !== scope
   }
-  const headings = [...scope.querySelectorAll("h2, h3")].filter(
-    (heading) => heading.textContent.trim() && !nested(heading),
+  const headings = [...scope.querySelectorAll<HTMLElement>("h2, h3")].filter(
+    (heading) => heading.textContent!.trim() && !nested(heading),
   )
   if (headings.length < 3) return // too short to be worth a sidebar
 
-  const list = toc.querySelector("ul")
-  const used = new Set()
-  const links = new Map()
+  const list = toc.querySelector("ul")!
+  const used = new Set<string>()
+  const links = new Map<HTMLElement, HTMLAnchorElement>()
 
   for (const heading of headings) {
     if (!heading.id) {
-      const slug = heading.textContent
-        .trim()
+      const slug = heading
+        .textContent!.trim()
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, "-")
         .replace(/^-|-$/g, "")
@@ -219,7 +222,7 @@ const initTableOfContents = () => {
 
     const link = document.createElement("a")
     link.href = `#${heading.id}`
-    link.textContent = heading.textContent.trim()
+    link.textContent = heading.textContent!.trim()
 
     const item = document.createElement("li")
     item.className = `toc-${heading.tagName.toLowerCase()}`
@@ -247,11 +250,11 @@ const initTableOfContents = () => {
 }
 
 const filterTutorials = () => {
-  const trs = document.querySelectorAll(".tutorial-item")
-  const filter = document.querySelector("#tutorial-filter").value
+  const trs = document.querySelectorAll<HTMLElement>(".tutorial-item")
+  const filter = document.querySelector<HTMLInputElement>("#tutorial-filter")!.value
   const regex = new RegExp(filter, "i")
-  const tdFound = (td) => regex.test(td.innerHTML)
-  const pkgFound = (childrenArr) => childrenArr.some(tdFound)
+  const tdFound = (td: Element) => regex.test(td.innerHTML)
+  const pkgFound = (childrenArr: Element[]) => childrenArr.some(tdFound)
   for (const { style, children } of trs) {
     style.display = pkgFound([...children]) ? "" : "none"
   }
@@ -262,15 +265,15 @@ const initInteractiveViz = () => {
   //const container = document.getElementById('interactive-container')
   const card = document.getElementById("interactive-card")
   const visualization = document.getElementById("visualization")
-  const runCmd1 = document.getElementById("run-cmd1")
-  const runCmd2 = document.getElementById("run-cmd2")
-  const statusCmd1 = document.getElementById("status-cmd1")
-  const statusCmd2 = document.getElementById("status-cmd2")
-  const execAnim1 = document.getElementById("exec-anim-1")
-  const execAnim2 = document.getElementById("exec-anim-2")
-
   // Exit early if visualization elements don't exist on this page
   if (!visualization || !card) return
+
+  const runCmd1 = document.getElementById("run-cmd1")!
+  const runCmd2 = document.getElementById("run-cmd2")!
+  const statusCmd1 = document.getElementById("status-cmd1")!
+  const statusCmd2 = document.getElementById("status-cmd2")!
+  const execAnim1 = document.getElementById("exec-anim-1")!
+  const execAnim2 = document.getElementById("exec-anim-2")!
 
   // Color clusters for UMAP visualization, using the same brand hues the package tiles below use instead of a generic chart-library palette.
   const colorClusters = [
@@ -288,7 +291,7 @@ const initInteractiveViz = () => {
   const MAX_ROTATION = 2
 
   document.addEventListener("mousemove", (e) => {
-    const headerRect = document.querySelector(".demo-header").getBoundingClientRect()
+    const headerRect = document.querySelector(".demo-header")!.getBoundingClientRect()
     const vizRect = visualization.getBoundingClientRect()
 
     // Don't apply 3D transform when hovering over header or visualization
@@ -325,12 +328,12 @@ const initInteractiveViz = () => {
   })
 
   function generateUMAP() {
-    for (const dot of visualization.querySelectorAll(".dot")) {
+    for (const dot of visualization!.querySelectorAll(".dot")) {
       dot.remove()
     }
 
-    const width = visualization.clientWidth
-    const height = visualization.clientHeight
+    const width = visualization!.clientWidth
+    const height = visualization!.clientHeight
 
     for (const cluster of colorClusters) {
       const centerX = Math.random() * 0.6 * width + 0.2 * width
@@ -368,7 +371,7 @@ const initInteractiveViz = () => {
         dot.style.top = `${safeY}px`
         dot.style.backgroundColor = cluster.color
 
-        visualization.appendChild(dot)
+        visualization!.appendChild(dot)
 
         const dataPoint = Math.floor(Math.random() * 1000)
         dot.dataset.id = `point-${dataPoint}`
@@ -387,7 +390,7 @@ const initInteractiveViz = () => {
   }
 
   function setupDotInteractions() {
-    const dots = document.querySelectorAll(".dot")
+    const dots = document.querySelectorAll<HTMLElement>(".dot")
 
     for (const dot of dots) {
       dot.addEventListener("mouseenter", () => {
@@ -470,7 +473,7 @@ const initInteractiveViz = () => {
       execAnim2.style.width = "100%"
     }, 50)
 
-    for (const dot of visualization.querySelectorAll(".dot")) {
+    for (const dot of visualization.querySelectorAll<HTMLElement>(".dot")) {
       dot.style.opacity = "0"
       dot.style.transform = "scale(0)"
     }
@@ -491,29 +494,37 @@ const initInteractiveViz = () => {
   generateUMAP()
 
   // Responsive regeneration
-  let resizeTimer
+  let resizeTimer: ReturnType<typeof setTimeout>
   window.addEventListener("resize", () => {
     clearTimeout(resizeTimer)
     resizeTimer = setTimeout(generateUMAP, 250)
   })
 }
 
+interface Entity {
+  name: string
+  kind: string
+  detail: string
+  url: string
+}
+
 function initSearch() {
   const openButton = document.getElementById("search-open")
   const overlay = document.getElementById("search-overlay")
-  const dialog = document.getElementById("search-dialog")
-  const input = document.getElementById("search-input")
-  const status = document.getElementById("search-status")
-  const results = document.getElementById("search-results")
-  const closeButton = document.getElementById("search-close")
   if (!openButton || !overlay) return
 
-  let pagefindPromise = null
+  const dialog = document.getElementById("search-dialog")!
+  const input = document.getElementById("search-input") as HTMLInputElement
+  const status = document.getElementById("search-status")!
+  const results = document.getElementById("search-results")!
+  const closeButton = document.getElementById("search-close")!
+
+  let pagefindPromise: Promise<any> | null = null
   let lastQuery = ""
   let selected = -1
-  let debounce
+  let debounce: ReturnType<typeof setTimeout>
 
-  let entitiesPromise = null
+  let entitiesPromise: Promise<Entity[]> | null = null
 
   function loadEntities() {
     if (!entitiesPromise) {
@@ -524,7 +535,7 @@ function initSearch() {
     return entitiesPromise
   }
 
-  function matchEntities(entities, query) {
+  function matchEntities(entities: Entity[], query: string) {
     const terms = normalise(query)
     if (!terms.length) return []
     return entities
@@ -547,6 +558,7 @@ function initSearch() {
   function loadPagefind() {
     if (!pagefindPromise) {
       pagefindPromise = (async () => {
+        // @ts-expect-error not on disk: written by `npx pagefind` after the Hugo build
         const engine = await import("/pagefind/pagefind.js")
         await engine.options({ excerptLength: 25 })
         await engine.init()
@@ -561,7 +573,7 @@ function initSearch() {
   }
 
   function open() {
-    overlay.hidden = false
+    overlay!.hidden = false
     document.body.style.overflow = "hidden"
     input.focus()
     input.select()
@@ -569,12 +581,12 @@ function initSearch() {
   }
 
   function close() {
-    overlay.hidden = true
+    overlay!.hidden = true
     document.body.style.overflow = ""
-    openButton.focus()
+    openButton!.focus()
   }
 
-  function setSelected(next) {
+  function setSelected(next: number) {
     const items = results.querySelectorAll("a")
     if (!items.length) return
     if (selected >= 0 && items[selected]) items[selected].removeAttribute("aria-selected")
@@ -585,7 +597,7 @@ function initSearch() {
 
   // Pagefind matches when an indexed word is a prefix of the search term, so
   // "xylophone" comes back matching "x" on seventeen pages.
-  function relevant(hit) {
+  function relevant(hit: { excerpt: string }) {
     const terms = normalise(lastQuery)
     if (!terms.length) return true
     const matched = [...hit.excerpt.matchAll(/<mark>(.*?)<\/mark>/g)].flatMap((m) => normalise(m[1]))
@@ -593,14 +605,14 @@ function initSearch() {
   }
 
   // Both sides must be split the same way, or "rapids-singlecell" fails to match itself.
-  function normalise(text) {
+  function normalise(text: string) {
     return text
       .toLowerCase()
       .split(/[^a-z0-9]+/)
       .filter((word) => word.length > 1)
   }
 
-  async function render(query) {
+  async function render(query: string) {
     if (query === lastQuery) return
     lastQuery = query
     selected = -1
@@ -621,7 +633,7 @@ function initSearch() {
     const search = await engine.search(query)
     if (query !== lastQuery) return
 
-    const candidates = await Promise.all(search.results.slice(0, 30).map((result) => result.data()))
+    const candidates = await Promise.all(search.results.slice(0, 30).map((result: any) => result.data()))
     if (query !== lastQuery) return
 
     const top = candidates.filter(relevant).slice(0, 12)
@@ -644,9 +656,9 @@ function initSearch() {
       link.innerHTML =
         '<span class="search-result-title"></span> <span class="search-result-kind"></span>' +
         '<span class="search-result-excerpt"></span>'
-      link.querySelector(".search-result-title").textContent = entity.name
-      link.querySelector(".search-result-kind").textContent = entity.kind
-      link.querySelector(".search-result-excerpt").textContent = entity.detail
+      link.querySelector(".search-result-title")!.textContent = entity.name
+      link.querySelector(".search-result-kind")!.textContent = entity.kind
+      link.querySelector(".search-result-excerpt")!.textContent = entity.detail
       item.appendChild(link)
       results.appendChild(item)
     }
@@ -658,9 +670,9 @@ function initSearch() {
       link.innerHTML =
         '<span class="search-result-title"></span> <span class="search-result-url"></span>' +
         '<span class="search-result-excerpt"></span>'
-      link.querySelector(".search-result-title").textContent = hit.meta.title || hit.url
-      link.querySelector(".search-result-url").textContent = hit.url
-      link.querySelector(".search-result-excerpt").innerHTML = hit.excerpt
+      link.querySelector(".search-result-title")!.textContent = hit.meta.title || hit.url
+      link.querySelector(".search-result-url")!.textContent = hit.url
+      link.querySelector(".search-result-excerpt")!.innerHTML = hit.excerpt
       item.appendChild(link)
       results.appendChild(item)
     }
@@ -670,7 +682,7 @@ function initSearch() {
   closeButton.addEventListener("click", close)
 
   overlay.addEventListener("mousedown", (event) => {
-    if (!dialog.contains(event.target)) close()
+    if (!dialog.contains(event.target as Node)) close()
   })
 
   input.addEventListener("input", () => {
@@ -693,7 +705,7 @@ function initSearch() {
       }
     } else if (event.key === "Tab") {
       // Keep focus inside the dialog while it is open.
-      const focusable = dialog.querySelectorAll("input, button, a")
+      const focusable = dialog.querySelectorAll<HTMLElement>("input, button, a")
       const first = focusable[0]
       const last = focusable[focusable.length - 1]
       if (event.shiftKey && document.activeElement === first) {
