@@ -106,7 +106,7 @@ pip install gget
 The [documentation](https://scverse.org/gget/) covers all modules with worked examples. 
 The [GitHub repository](https://github.com/scverse/gget) is the best place to report issues, propose new database integrations, or contribute.
 
-If you are new to the scverse ecosystem, [scverse.org/join](scverse.org/join) is the place to start. 
+If you are new to the scverse ecosystem, [scverse.org/join](/join/) is the place to start. 
 We’re excited to see what the community builds together.
 
 <br>
