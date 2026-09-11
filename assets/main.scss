@@ -215,13 +215,30 @@ $eco-hues:
         margin: 3rem 0 1rem;
     }
 
-    .join-email {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        line-height: 2;
-        color: $tiletext2;
-        font-size: 0.95rem;
+    .join-email-card {
+        &:hover {
+            background: $tilebg4 !important;
+            transform: none;
+        }
+
+        h3.card-title a {
+            font-family: "JetBrains Mono", Menlo, monospace;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: $tiletext;
+            text-decoration-color: $tilebg2;
+            text-underline-offset: 0.2em;
+
+            &:hover {
+                text-decoration-color: currentColor;
+            }
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            color: $tiletext2;
+            margin: 0;
+        }
     }
 
     .card {

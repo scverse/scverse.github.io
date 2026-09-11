@@ -44,14 +44,20 @@
 
       {{ with .Params.email }}
         <h2 class="join-section-title">{{ .title }}</h2>
-        <ul class="join-email">
+        <div class="row">
           {{ range .items }}
-            <li>
-              <a href="mailto:{{ .address }}">{{ .address }}</a>:
-              {{ .text | markdownify }}
-            </li>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+              <div class="card border-0 bg-light mb-4 h-100 join-email-card">
+                <div class="card-body">
+                  <h3 class="card-title">
+                    <a href="mailto:{{ .address }}">{{ .address }}</a>
+                  </h3>
+                  <p class="card-text">{{ .text | markdownify }}</p>
+                </div>
+              </div>
+            </div>
           {{ end }}
-        </ul>
+        </div>
       {{ end }}
     </div>
   </article>
