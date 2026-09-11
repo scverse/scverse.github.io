@@ -848,8 +848,12 @@ body {
                     text-decoration: none;
                     transition: color 200ms;
                 }
-                h5 {
+                h2 {
                     color: $footertextlight;
+                    font-size: 1.25rem;
+                    font-weight: 500;
+                    line-height: 1.2;
+                    margin: 0 0 0.5rem;
                 }
                 li {
                     color: $footertextmuted;
