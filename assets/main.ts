@@ -331,114 +331,60 @@ const initInteractiveViz = () => {
   })
 
   function generateUMAP() {
-    for (const dot of visualization.querySelectorAll(".dot")) {
-      dot.remove()
-    }
-
     const width = visualization.clientWidth
     const height = visualization.clientHeight
 
-    for (const cluster of colorClusters) {
-      const centerX = Math.random() * 0.6 * width + 0.2 * width
-      const centerY = Math.random() * 0.6 * height + 0.2 * height
+    // One wrapper per cluster: hover, dimming and the click pulse are all .cluster rules in
+    // main.scss, so the only thing left to do here is place the dots.
+    visualization.replaceChildren(
+      ...colorClusters.map((cluster) => {
+        const centerX = Math.random() * 0.6 * width + 0.2 * width
+        const centerY = Math.random() * 0.6 * height + 0.2 * height
 
-      for (let i = 0; i < cluster.count; i++) {
-        const dot = document.createElement("div")
-        dot.className = "dot"
-        dot.dataset.cluster = cluster.name
-        dot.dataset.color = cluster.color
+        const dots = Array.from({ length: cluster.count }, (_unused, i) => {
+          const dot = document.createElement("div")
+          dot.className = "dot"
 
-        const size = Math.floor(Math.random() * 8) + 5
-        dot.style.width = `${size}px`
-        dot.style.height = `${size}px`
+          const size = Math.floor(Math.random() * 8) + 5
+          dot.style.width = `${size}px`
+          dot.style.height = `${size}px`
 
-        let u = 0,
-          v = 0
-        for (let j = 0; j < 6; j++) {
-          u += Math.random()
-          v += Math.random()
-        }
-        u = u / 6 - 0.5
-        v = v / 6 - 0.5
+          let u = 0,
+            v = 0
+          for (let j = 0; j < 6; j++) {
+            u += Math.random()
+            v += Math.random()
+          }
+          u = u / 6 - 0.5
+          v = v / 6 - 0.5
 
-        const distance = Math.random() * 130 + 20
-        const dx = u * distance * 2
-        const dy = v * distance * 2
-        const x = centerX + dx
-        const y = centerY + dy
+          const distance = Math.random() * 130 + 20
+          const dx = u * distance * 2
+          const dy = v * distance * 2
+          const x = centerX + dx
+          const y = centerY + dy
 
-        const safeX = Math.min(Math.max(size, x), width - size)
-        const safeY = Math.min(Math.max(size, y), height - size)
+          const safeX = Math.min(Math.max(size, x), width - size)
+          const safeY = Math.min(Math.max(size, y), height - size)
 
-        dot.style.left = `${safeX}px`
-        dot.style.top = `${safeY}px`
-        dot.style.backgroundColor = cluster.color
+          dot.style.left = `${safeX}px`
+          dot.style.top = `${safeY}px`
+          dot.style.backgroundColor = cluster.color
 
-        visualization.appendChild(dot)
+          setTimeout(() => dot.classList.add("is-visible"), i * 18 + Math.random() * 150)
+          return dot
+        })
 
-        const dataPoint = Math.floor(Math.random() * 1000)
-        dot.dataset.id = `point-${dataPoint}`
-
-        setTimeout(
-          () => {
-            dot.style.transform = "scale(1)"
-            dot.style.opacity = "1"
-          },
-          i * 18 + Math.random() * 150,
-        )
-      }
-    }
-
-    setupDotInteractions()
+        // tabIndex -1 keeps the group out of the tab order — the whole card is aria-hidden.
+        return el("div", { className: "cluster", tabIndex: -1 }, ...dots)
+      }),
+    )
   }
 
-  function setupDotInteractions() {
-    const dots = document.querySelectorAll<HTMLElement>(".dot")
-
-    for (const dot of dots) {
-      dot.addEventListener("mouseenter", () => {
-        const thisColor = dot.dataset.color
-
-        for (const otherDot of dots) {
-          if (otherDot.dataset.color === thisColor) {
-            otherDot.style.transform = "scale(1.4)"
-            otherDot.style.boxShadow = "0 6px 18px rgba(0,0,0,0.25)"
-            otherDot.style.zIndex = "5"
-          } else {
-            otherDot.style.opacity = "0.4"
-          }
-        }
-      })
-
-      dot.addEventListener("mouseleave", () => {
-        for (const otherDot of dots) {
-          otherDot.style.transform = "scale(1)"
-          otherDot.style.opacity = "1"
-          otherDot.style.boxShadow = "0 4px 8px rgba(0,0,0,0.12)"
-          otherDot.style.zIndex = "1"
-        }
-      })
-
-      dot.addEventListener("click", () => {
-        const thisColor = dot.dataset.color
-        const clusterDots = []
-
-        for (const otherDot of dots) {
-          if (otherDot.dataset.color === thisColor) {
-            clusterDots.push(otherDot)
-          }
-        }
-
-        for (const otherDot of clusterDots) {
-          otherDot.classList.add("animation-pulse")
-
-          setTimeout(() => {
-            otherDot.classList.remove("animation-pulse")
-          }, 1500)
-        }
-      })
-    }
-  }
+  // Clicking a dot focuses its cluster, which pulses it via :focus in main.scss.
+  visualization.addEventListener("click", (event) => {
+    ;(event.target as HTMLElement).closest<HTMLElement>(".cluster")?.focus()
+  })
 
   runCmd1.addEventListener("click", () => {
     statusCmd1.style.width = "0"
@@ -466,9 +412,8 @@ const initInteractiveViz = () => {
       execAnim2.style.width = "100%"
     }, 50)
 
-    for (const dot of visualization.querySelectorAll<HTMLElement>(".dot")) {
-      dot.style.opacity = "0"
-      dot.style.transform = "scale(0)"
+    for (const dot of visualization.querySelectorAll(".dot")) {
+      dot.classList.remove("is-visible")
     }
 
     setTimeout(() => {
@@ -684,11 +629,8 @@ function initSearch() {
       ),
     )
 
-    if (!results.childNodes.length) {
-      status.textContent = `No results for “${query}”`
-      return
-    }
-    status.textContent = `${results.childNodes.length} result${results.childNodes.length === 1 ? "" : "s"}`
+    const n = results.childNodes.length
+    status.textContent = n ? `${n} result${n === 1 ? "" : "s"}` : `No results for “${query}”`
   }
 
   openButton.addEventListener("click", open)
