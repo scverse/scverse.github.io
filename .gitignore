@@ -1,5 +1,7 @@
 # Generated files by hugo
 /public/
+# Search index for `hugo server`, see README
+/static/pagefind/
 /resources/_gen/
 /assets/jsconfig.json
 hugo_stats.json
