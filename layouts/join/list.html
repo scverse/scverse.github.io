@@ -2,32 +2,54 @@
   <h1>{{ .Title }}</h1>
   <article class="post">
     <div class="post-content" id="join-content">
-      <div class="row">
-        {{ range $item := .Params.resources }}
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-            <div class="card border-0 bg-light mb-4" id="{{ $item.id }}">
-              <div class="card-body">
-                <a href="{{ $item.link }}" class="stretched-link" target="_blank"></a>
-                {{/* Icon class travels with the entry, so a new channel is a content change.
-                  It sits on its own span rather than on the heading: prettier collapses the space
-                  a combined `class="card-title …"` would need.
-                */}}
-                <h5 class="card-title">
-                  {{ with $item.icon }}<span class="{{ . }}"></span>&nbsp;{{ end }}{{ $item.title }}
-                </h5>
-                <p class="card-text">
-                  {{ $item.text }}
-                </p>
-              </div>
-            </div>
-          </div>
+      {{ with .Params.lead }}<p class="join-lead">{{ . }}</p>{{ end }}
+
+
+      <div class="join-grid">
+        {{ range $i, $path := .Params.paths }}
+          <section class="join-card" id="{{ $path.id }}" data-hue="{{ mod $i 8 }}">
+            <span class="join-card-icon"><i class="{{ $path.icon }}" aria-hidden="true"></i></span>
+            <h2 class="join-card-title">{{ $path.title }}</h2>
+            <p class="join-card-text">{{ $path.text }}</p>
+            <ul class="join-card-links">
+              {{ range $path.links }}
+                <li>
+                  <a
+                    href="{{ .url }}"
+                    {{ if hasPrefix .url "http" }}target="_blank" rel="noopener"{{ end }}
+                    >{{ .label }}</a
+                  >
+                </li>
+              {{ end }}
+            </ul>
+          </section>
         {{ end }}
       </div>
-      <div>
-        <p>
-          {{ .Content }}
-        </p>
-      </div>
+
+      {{ with .Params.follow }}
+        <h2 class="join-section-title">{{ .title }}</h2>
+        <ul class="join-follow">
+          {{ range .items }}
+            <li>
+              <a href="{{ .link }}" id="{{ .id }}" target="_blank" rel="noopener">
+                <i class="{{ .icon }}" aria-hidden="true"></i>{{ .title }}
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+
+      {{ with .Params.email }}
+        <h2 class="join-section-title">{{ .title }}</h2>
+        <ul class="join-email">
+          {{ range .items }}
+            <li>
+              <a href="mailto:{{ .address }}">{{ .address }}</a>:
+              {{ .text | markdownify }}
+            </li>
+          {{ end }}
+        </ul>
+      {{ end }}
     </div>
   </article>
 {{ end }}
