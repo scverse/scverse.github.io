@@ -2,13 +2,11 @@
 title = "Join scverse"
 description = "How to get help with scverse, contribute code, add a package to the ecosystem, and meet the people who maintain it."
 
-lead = "Everything here is open to anyone. Pick whichever matches what you want to do."
-
 [[paths]]
 	id = "ask"
 	icon = "bi-chat-dots"
 	title = "Ask a question"
-	text = "Usage questions about analysis and the packages go to the forum. Development discussion and day-to-day chat happen on Zulip."
+	text = "Usage questions go to the Discourse forum. Development discussion and day-to-day chat happen on Zulip."
 
 	[[paths.links]]
 		label = "Discourse forum"
@@ -22,7 +20,7 @@ lead = "Everything here is open to anyone. Pick whichever matches what you want 
 	id = "contribute"
 	icon = "bi-code-slash"
 	title = "Contribute code"
-	text = "Every core package takes pull requests. Issues tagged good first issue are scoped for a first contribution, and two core team members supporting your work is what makes you a contributor."
+	text = "Every core package takes pull requests. Start from an issue tagged good first issue. Two core team members backing your work makes you a contributor."
 
 	[[paths.links]]
 		label = "Good first issues"
@@ -44,7 +42,7 @@ lead = "Everything here is open to anyone. Pick whichever matches what you want 
 	id = "package"
 	icon = "bi-box-seam"
 	title = "Add your package"
-	text = "Packages built on AnnData, MuData or SpatialData can join the ecosystem listing. The registry repository holds the inclusion criteria and the submission form, and the project template sets a new package up the way the ecosystem expects."
+	text = "Packages built on AnnData, MuData or SpatialData can be listed in the ecosystem. The registry repository has the criteria and the submission form. The project template covers the testing, docs and packaging setup."
 
 	[[paths.links]]
 		label = "Inclusion criteria and submission"
@@ -62,7 +60,7 @@ lead = "Everything here is open to anyone. Pick whichever matches what you want 
 	id = "meet"
 	icon = "bi-people"
 	title = "Meet the community"
-	text = "The open community meeting runs every two weeks on Tuesday at 6pm CET and anyone can join. It has an open agenda, so you can add a topic before or during the call. Hackathons and the annual conference are the other way in."
+	text = "The open community meeting runs every two weeks on Tuesday at 6pm CET, with an open agenda anyone can add to. Hackathons and the annual conference run through the year."
 
 	[[paths.links]]
 		label = "Community meeting document"
@@ -83,24 +81,42 @@ lead = "Everything here is open to anyone. Pick whichever matches what you want 
 	id = "github"
 	icon = "bi-github"
 	title = "GitHub"
+	text = "Follow our organisation on GitHub"
 	link = "https://github.com/scverse"
+
+[[follow.items]]
+	id = "zulip"
+	icon = "i-zulip"
+	title = "Zulip"
+	text = "Chat with us on Zulip"
+	link = "https://scverse.zulipchat.com/"
+
+[[follow.items]]
+	id = "discourse"
+	icon = "i-discourse"
+	title = "Discourse"
+	text = "Ask questions on Discourse"
+	link = "https://discourse.scverse.org/"
 
 [[follow.items]]
 	id = "bluesky"
 	icon = "i-bluesky"
 	title = "Bluesky"
+	text = "Follow us on Bluesky"
 	link = "https://bsky.app/profile/scverse.bsky.social"
 
 [[follow.items]]
 	id = "linkedin"
 	icon = "bi-linkedin"
 	title = "LinkedIn"
+	text = "Follow us on LinkedIn"
 	link = "https://www.linkedin.com/company/scverse"
 
 [[follow.items]]
 	id = "youtube"
 	icon = "bi-youtube"
 	title = "YouTube"
+	text = "Subscribe to our YouTube channel"
 	link = "https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA"
 
 [email]

@@ -2,9 +2,6 @@
   <h1>{{ .Title }}</h1>
   <article class="post">
     <div class="post-content" id="join-content">
-      {{ with .Params.lead }}<p class="join-lead">{{ . }}</p>{{ end }}
-
-
       <div class="join-grid">
         {{ range $i, $path := .Params.paths }}
           <section class="join-card" id="{{ $path.id }}" data-hue="{{ mod $i 8 }}">
@@ -28,15 +25,21 @@
 
       {{ with .Params.follow }}
         <h2 class="join-section-title">{{ .title }}</h2>
-        <ul class="join-follow">
+        <div class="row">
           {{ range .items }}
-            <li>
-              <a href="{{ .link }}" id="{{ .id }}" target="_blank" rel="noopener">
-                <i class="{{ .icon }}" aria-hidden="true"></i>{{ .title }}
-              </a>
-            </li>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+              <div class="card border-0 bg-light mb-4" id="{{ .id }}">
+                <div class="card-body">
+                  <a href="{{ .link }}" class="stretched-link" target="_blank" rel="noopener"></a>
+                  <h3 class="card-title">
+                    <i class="{{ .icon }}" aria-hidden="true"></i>&nbsp;{{ .title }}
+                  </h3>
+                  <p class="card-text">{{ .text }}</p>
+                </div>
+              </div>
+            </div>
           {{ end }}
-        </ul>
+        </div>
       {{ end }}
 
       {{ with .Params.email }}

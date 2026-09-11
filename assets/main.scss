@@ -22,6 +22,12 @@ $scviyellow: #fbb822;
 $scversedeepblue: #262fb5; // the darker end of the Join button gradient
 
 $overline: #e0e0e0;
+$github-black: #171b21;
+$discourse-yellow: #f7f0b1;
+$youtube-red: #e03021;
+$zulip-blue: #62a3f0;
+$bluesky-blue: #0a7aff;
+$linkedin-blue: #0a66c2;
 $linkunderline: #aaaaaa;
 $backtickbg: #f9f9f9;
 
@@ -122,12 +128,6 @@ $eco-hues:
 }
 
 #join-content {
-    .join-lead {
-        font-size: 1.1rem;
-        color: $tiletext2;
-        margin: 0 0 2rem;
-    }
-
     .join-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -224,32 +224,44 @@ $eco-hues:
         font-size: 0.95rem;
     }
 
-    .join-follow {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        list-style: none;
-        margin: 0;
-        padding: 0;
+    .card {
+        transition: all 200ms ease-in-out;
+        color: $navtext;
 
-        a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 0.9rem;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: $tiletext;
-            text-decoration: none;
-            background-color: $tilebg4;
-            border: 1px solid $overline;
-            border-radius: 2rem;
-            transition: all 200ms ease-in-out;
+        h3.card-title {
+            margin: 0 0 0.35rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
 
-            &:hover {
-                border-color: $tilebg2;
-                background-color: $tilebg;
-            }
+        &:hover {
+            background: #78cbd9 !important;
+            transform: scale(1.02);
+        }
+
+        &#github:hover {
+            background-color: $github-black !important;
+            color: white !important;
+        }
+        &#discourse:hover {
+            background-color: $discourse-yellow !important;
+            color: black !important;
+        }
+        &#zulip:hover {
+            background-color: $zulip-blue !important;
+            color: white !important;
+        }
+        &#bluesky:hover {
+            background-color: $bluesky-blue !important;
+            color: white !important;
+        }
+        &#linkedin:hover {
+            background-color: $linkedin-blue !important;
+            color: white !important;
+        }
+        &#youtube:hover {
+            background-color: $youtube-red !important;
+            color: white !important;
         }
     }
 
