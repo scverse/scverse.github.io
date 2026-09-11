@@ -381,10 +381,11 @@ const initInteractiveViz = () => {
     )
   }
 
-  // Clicking a dot focuses its cluster, which pulses it via :focus in main.scss.
-  visualization.addEventListener("click", (event) => {
-    ;(event.target as HTMLElement).closest<HTMLElement>(".cluster")?.focus()
-  })
+  // Clicking a dot focuses its cluster, which pulses it via :focus in main.scss. Dropping the focus
+  // again once the pulse has run is what makes a second click on the same cluster pulse it again.
+  const cluster = (event: Event) => (event.target as HTMLElement).closest<HTMLElement>(".cluster")
+  visualization.addEventListener("click", (event) => cluster(event)?.focus())
+  visualization.addEventListener("animationend", (event) => cluster(event)?.blur())
 
   runCmd1.addEventListener("click", () => {
     statusCmd1.style.width = "0"

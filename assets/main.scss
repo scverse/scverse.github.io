@@ -3404,26 +3404,22 @@ body {
             z-index: 5;
         }
 
-        .visualization:has(&:hover) &:not(:hover) .dot {
-            opacity: 0.4;
-        }
-
         // A click focuses the group (main.ts), so the cluster pulses once.
         &:focus .dot {
             animation: pulse 1.5s;
         }
     }
+
+    &:has(.cluster:hover) .cluster:not(:hover) .dot {
+        opacity: 0.4;
+    }
 }
 
+// Animates `scale`, not `transform`: the clicked cluster is always hovered too, and an individual
+// transform property multiplies with the `transform: scale(1.4)` hover instead of replacing it.
 @keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
     50% {
-        transform: scale(1.3);
-    }
-    100% {
-        transform: scale(1);
+        scale: 1.3;
     }
 }
 
