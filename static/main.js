@@ -390,8 +390,8 @@ const initInteractiveViz = () => {
     const dots = document.querySelectorAll(".dot")
 
     for (const dot of dots) {
-      dot.addEventListener("mouseenter", (e) => {
-        const thisColor = this.dataset.color
+      dot.addEventListener("mouseenter", () => {
+        const thisColor = dot.dataset.color
 
         for (const otherDot of dots) {
           if (otherDot.dataset.color === thisColor) {
@@ -414,7 +414,7 @@ const initInteractiveViz = () => {
       })
 
       dot.addEventListener("click", () => {
-        const thisColor = this.dataset.color
+        const thisColor = dot.dataset.color
         const clusterDots = []
 
         for (const otherDot of dots) {
