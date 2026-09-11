@@ -87,7 +87,15 @@
                 words while the avatars are still loading.
               */}}
               <a href="{{ .html_url }}" target="_blank" rel="noopener" title="{{ .name }}" aria-label="{{ .name }}">
-                <img src="{{ .avatar_url }}&amp;s=64" alt="" loading="lazy" width="32" height="32" />
+                <img
+                  src="{{ .avatar_url }}&amp;s=64"
+                  alt=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                  decoding="async"
+                  width="32"
+                  height="32"
+                />
               </a>
             {{ end }}
           </div>
