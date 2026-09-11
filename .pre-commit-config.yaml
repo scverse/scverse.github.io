@@ -6,6 +6,16 @@ repos:
         additional_dependencies:
           - prettier
           - prettier-plugin-go-template
+  - repo: local
+    hooks:
+      # js.Build only strips the types, so nothing else would catch a type error.
+      - id: tsc
+        name: typecheck
+        entry: tsc --noEmit
+        language: node
+        additional_dependencies: [typescript@7]
+        files: \.ts$|^tsconfig\.json$
+        pass_filenames: false
   - repo: https://github.com/ericmjl/webp-pre-commit
     rev: v0.0.12
     hooks:

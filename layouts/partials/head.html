@@ -8,6 +8,7 @@
 <link rel="canonical" href="{{ .Permalink }}" />
 
 {{ $styles := resources.Get "main.scss" | toCSS | minify }}
+{{ $script := resources.Get "main.ts" | js.Build (dict "format" "esm" "minify" true "externals" (slice "bootstrap" "/pagefind/*")) }}
 <link rel="preload" as="font" type="font/woff2" href="/fonts/Inter/Inter-VariableFont_slnt,wght.woff2" crossorigin />
 <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/bootstrap/icons/bootstrap-icons.min.css" />
@@ -41,6 +42,7 @@
 {{ template "_internal/twitter_cards.html" . }}
 {{ template "_internal/opengraph.html" . }}
 
+
 <script type="importmap">
   {
     "imports": {
@@ -49,5 +51,5 @@
     }
   }
 </script>
-<script type="module" src="/main.js"></script>
+<script type="module" src="{{ $script.RelPermalink }}"></script>
 <script data-goatcounter="https://scverse.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
