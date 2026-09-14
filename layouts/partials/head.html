@@ -8,7 +8,7 @@
 <link rel="canonical" href="{{ .Permalink }}" />
 
 {{ $styles := resources.Get "main.scss" | toCSS | minify }}
-{{ $script := resources.Get "main.ts" | js.Build (dict "format" "esm" "minify" true "externals" (slice "bootstrap" "/pagefind/*")) }}
+{{ $script := resources.Get "main.ts" | js.Build (dict "format" "esm" "minify" true "externals" (slice "bootstrap" "pagefind")) }}
 <link rel="preload" as="font" type="font/woff2" href="/fonts/Inter/Inter-VariableFont_slnt,wght.woff2" crossorigin />
 <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/bootstrap/icons/bootstrap-icons.min.css" />
@@ -47,7 +47,8 @@
   {
     "imports": {
       "@popperjs/core": "/bootstrap/js/popper.esm.min.js",
-      "bootstrap": "/bootstrap/js/bootstrap.esm.min.js"
+      "bootstrap": "/bootstrap/js/bootstrap.esm.min.js",
+      "pagefind": "/pagefind/pagefind.js"
     }
   }
 </script>
