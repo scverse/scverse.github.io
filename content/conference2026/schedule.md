@@ -33,7 +33,7 @@ This is a provisional programme: session times are indicative and may change, an
     <div class="agenda-brk"><span>15:00 · Coffee</span></div>
     <div class="agenda-block is-panel"><div class="agenda-time">15:30</div><div class="agenda-session">Panel discussion</div></div>
     <div class="agenda-block is-poster"><div class="agenda-time">16:30</div><div class="agenda-session">Poster session 1</div></div>
-    <div class="agenda-block is-social"><div class="agenda-time">18:00</div><div class="agenda-session">Reception</div></div>
+    <div class="agenda-block is-social"><div class="agenda-time">18:00</div><div class="agenda-session">Conference dinner &amp; networking</div></div>
   </div>
   <div class="agenda-col is-day2">
     <div class="agenda-colhead">Day 2 · Tue<span class="agenda-coldate">13 October</span></div>
@@ -48,6 +48,7 @@ This is a provisional programme: session times are indicative and may change, an
     <div class="agenda-brk"><span>15:15 · Coffee</span></div>
     <div class="agenda-block is-workshop"><div class="agenda-time">15:45 · Workshop</div><div class="agenda-session">Workshop</div></div>
     <div class="agenda-block is-talk"><div class="agenda-time">16:30</div><div class="agenda-session">Closing remarks</div></div>
+    <div class="agenda-block is-social"><div class="agenda-time">18:30</div><div class="agenda-session">Evening social event (Optional)</div></div>
   </div>
   <div class="agenda-col is-day3">
     <div class="agenda-colhead">Day 3 · Wed<span class="agenda-coldate">14 October</span></div>
