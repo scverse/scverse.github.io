@@ -30,7 +30,7 @@ This is a provisional programme: session times are indicative and may change, an
  &lt;div class="agenda-brk"&gt;&lt;span&gt;15:00 · Coffee&lt;/span&gt;&lt;/div&gt;
  &lt;div class="agenda-block is-panel"&gt;&lt;div class="agenda-time"&gt;15:30&lt;/div&gt;&lt;div class="agenda-session"&gt;Panel discussion&lt;/div&gt;&lt;/div&gt;
  &lt;div class="agenda-block is-poster"&gt;&lt;div class="agenda-time"&gt;16:30&lt;/div&gt;&lt;div class="agenda-session"&gt;Poster session 1&lt;/div&gt;&lt;/div&gt;
- &lt;div class="agenda-block is-social"&gt;&lt;div class="agenda-time"&gt;18:00&lt;/div&gt;&lt;div class="agenda-session"&gt;Reception&lt;/div&gt;&lt;/div&gt;
+ &lt;div class="agenda-block is-social"&gt;&lt;div class="agenda-time"&gt;18:00&lt;/div&gt;&lt;div class="agenda-session"&gt;Conference dinner &amp;amp; networking&lt;/div&gt;&lt;/div&gt;
  &lt;/div&gt;
  &lt;div class="agenda-col is-day2"&gt;
  &lt;div class="agenda-colhead"&gt;Day 2 · Tue&lt;span class="agenda-coldate"&gt;13 October&lt;/span&gt;&lt;/div&gt;
@@ -45,6 +45,7 @@ This is a provisional programme: session times are indicative and may change, an
  &lt;div class="agenda-brk"&gt;&lt;span&gt;15:15 · Coffee&lt;/span&gt;&lt;/div&gt;
  &lt;div class="agenda-block is-workshop"&gt;&lt;div class="agenda-time"&gt;15:45 · Workshop&lt;/div&gt;&lt;div class="agenda-session"&gt;Workshop&lt;/div&gt;&lt;/div&gt;
  &lt;div class="agenda-block is-talk"&gt;&lt;div class="agenda-time"&gt;16:30&lt;/div&gt;&lt;div class="agenda-session"&gt;Closing remarks&lt;/div&gt;&lt;/div&gt;
+ &lt;div class="agenda-block is-social"&gt;&lt;div class="agenda-time"&gt;18:30&lt;/div&gt;&lt;div class="agenda-session"&gt;Evening social event (Optional)&lt;/div&gt;&lt;/div&gt;
  &lt;/div&gt;
  &lt;div class="agenda-col is-day3"&gt;
  &lt;div class="agenda-colhead"&gt;Day 3 · Wed&lt;span class="agenda-coldate"&gt;14 October&lt;/span&gt;&lt;/div&gt;
