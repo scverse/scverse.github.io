@@ -3835,17 +3835,21 @@ body {
 #search-dialog[open] {
     display: flex;
     flex-direction: column;
-    width: calc(100vw - 2rem);
-    @media (max-width: 50rem) {
-        width: calc(100vw - 1rem);
-    }
-    max-width: 42rem;
-    max-height: calc(100vh - 2rem);
     overflow: hidden;
     border: none;
     border-radius: 0.75rem;
     background-color: white;
     box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.3);
+    width: calc(100vw - 2rem);
+    max-width: 42rem;
+    height: calc(100vh - 8rem);
+    @media (max-width: 50rem) {
+        width: calc(100vw - 1rem);
+        height: calc(100vh - 2rem);
+    }
+    &:has(#search-results:empty) {
+        height: min-content;
+    }
 
     &::backdrop {
         background-color: rgba(0, 0, 0, 0.45);
