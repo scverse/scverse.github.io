@@ -1,3 +1,5 @@
+/** biome-ignore-all lint/style/noNonNullAssertion: easy to debug misspelling */
+
 import "bootstrap" // see env.d.ts
 import type { PagefindDocument } from "pagefind"
 
@@ -16,8 +18,8 @@ const initEcosystemRegistry = () => {
   const empty = root.querySelector<HTMLElement>("#eco-empty")!
   const clearButton = root.querySelector<HTMLElement>("#eco-clear")!
   const cards = Array.from(grid.querySelectorAll<HTMLElement>(".eco-card"))
-  let activeCategory = ""
-  let activeTag = ""
+  let activeCategory: string | null = null
+  let activeTag: string | null = null
 
   const apply = () => {
     const terms = input.value.toLowerCase().split(/\s+/).filter(Boolean)
@@ -48,8 +50,8 @@ const initEcosystemRegistry = () => {
 
   const reset = () => {
     input.value = ""
-    activeCategory = ""
-    activeTag = ""
+    activeCategory = null
+    activeTag = null
     syncChips()
     apply()
   }
@@ -67,7 +69,7 @@ const initEcosystemRegistry = () => {
   chipRow.addEventListener("click", (event) => {
     const chip = (event.target as HTMLElement).closest<HTMLElement>(".eco-chip")
     if (!chip) return
-    activeCategory = activeCategory === chip.dataset.category ? "" : chip.dataset.category!
+    activeCategory = activeCategory === chip.dataset.category ? null : chip.dataset.category!
     syncChips()
     apply()
   })
@@ -77,7 +79,7 @@ const initEcosystemRegistry = () => {
     const tag = (event.target as HTMLElement).closest<HTMLElement>(".eco-tag")
     if (!tag) return
     event.preventDefault()
-    activeTag = activeTag === tag.dataset.tag ? "" : tag.dataset.tag!
+    activeTag = activeTag === tag.dataset.tag ? null : tag.dataset.tag!
     apply()
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
     root.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" })
@@ -458,15 +460,12 @@ interface Entity {
 }
 
 function initSearch() {
-  const openButton = document.querySelector<HTMLElement>("#search-open")!
-  const overlay = document.querySelector<HTMLElement>("#search-overlay")!
-  if (!openButton || !overlay) return
+  const dialog = document.querySelector<HTMLDialogElement>("#search-dialog")!
+  if (!dialog) return
 
-  const dialog = document.querySelector<HTMLElement>("#search-dialog")!
-  const input = document.querySelector<HTMLInputElement>("#search-input")!
-  const status = document.querySelector<HTMLElement>("#search-status")!
-  const results = document.querySelector<HTMLElement>("#search-results")!
-  const closeButton = document.querySelector<HTMLElement>("#search-close")!
+  const input = dialog.querySelector<HTMLInputElement>("#search-input")!
+  const status = dialog.querySelector<HTMLElement>("#search-status")!
+  const results = dialog.querySelector<HTMLElement>("#search-results")!
 
   let pagefindPromise: Promise<Pagefind | null> | null = null
   let lastQuery = ""
@@ -518,20 +517,6 @@ function initSearch() {
       })
     }
     return pagefindPromise
-  }
-
-  function open() {
-    overlay.hidden = false
-    document.body.style.overflow = "hidden"
-    input.focus()
-    input.select()
-    loadPagefind()
-  }
-
-  function close() {
-    overlay.hidden = true
-    document.body.style.overflow = ""
-    openButton.focus()
   }
 
   function setSelected(next: number) {
@@ -634,11 +619,15 @@ function initSearch() {
     status.textContent = n ? `${n} result${n === 1 ? "" : "s"}` : `No results for “${query}”`
   }
 
-  openButton.addEventListener("click", open)
-  closeButton.addEventListener("click", close)
-
-  overlay.addEventListener("mousedown", (event) => {
-    if (!dialog.contains(event.target as Node)) close()
+  // close dialog when clicking backdrop
+  dialog.addEventListener("click", (event) => {
+    const rect = dialog.getBoundingClientRect()
+    const isInDialog =
+      rect.top <= event.clientY &&
+      event.clientY <= rect.top + rect.height &&
+      rect.left <= event.clientX &&
+      event.clientX <= rect.left + rect.width
+    if (!isInDialog) dialog.close()
   })
 
   input.addEventListener("input", () => {
@@ -675,13 +664,13 @@ function initSearch() {
   })
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !overlay.hidden) {
-      close()
-    } else if (overlay.hidden && (event.key === "/" || ((event.metaKey || event.ctrlKey) && event.key === "k"))) {
+    if (event.key === "Escape") {
+      dialog.close()
+    } else if (event.key === "/" || ((event.metaKey || event.ctrlKey) && event.key === "k")) {
       const tag = document.activeElement?.tagName
       if (tag === "INPUT" || tag === "TEXTAREA") return
       event.preventDefault()
-      open()
+      dialog.showModal()
     }
   })
 }
