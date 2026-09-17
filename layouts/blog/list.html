@@ -1,19 +1,104 @@
 {{ define "main" }}
   <h1>Blog</h1>
-  {{ range .Pages }}
-    <a href="{{ .RelPermalink }}">
-      <article class="page-item">
-        <div class="page-item-date">
-          <span>{{ .Date.Format "January 02, 2006" }}</span>
-        </div>
-        <div class="page-item-content">
-          <h2>{{ .Title }}</h2>
-          {{ with .Params.author }}
-            <span class="page-item-author">{{ . }}</span>
+
+  <div class="blog-layout">
+    <div class="blog-main">
+      <div class="blog-grid">
+        {{ range $i, $p := .Pages }}
+          {{/* The cover is the first locally hosted image in the post. Remote images
+            are skipped deliberately: hotlinking a third party from the index is not
+            something a post should be able to do by accident.
+          */}}
+          {{ $src := "" }}
+          {{ with findRE `src="/img/[^"]+"` $p.Content 1 }}
+            {{ $src = index . 0 | replaceRE `^src="` "" | replaceRE `"$` "" }}
           {{ end }}
-          <span>{{ .Description }}</span>
+
+          {{/* Shape follows the picture, so nothing is letterboxed. images.Config
+            covers the raster formats; SVGs carry their size in the root element.
+          */}}
+          {{ $ar := 0.0 }}
+          {{ with $src }}
+            {{ $path := printf "static%s" . }}
+            {{ if strings.HasSuffix . ".svg" }}
+              {{ $svg := readFile $path }}
+              {{ $w := 0.0 }}
+              {{ $h := 0.0 }}
+              {{ with findRESubmatch `<svg[^>]*?\swidth="([0-9.]+)"` $svg 1 }}
+                {{ $w = float (index (index . 0) 1) }}
+              {{ end }}
+              {{ with findRESubmatch `<svg[^>]*?\sheight="([0-9.]+)"` $svg 1 }}
+                {{ $h = float (index (index . 0) 1) }}
+              {{ end }}
+              {{ if and (gt $w 0.0) (gt $h 0.0) }}{{ $ar = div $w $h }}{{ end }}
+            {{ else }}
+              {{ $c := images.Config $path }}
+              {{ $ar = div (float $c.Width) (float $c.Height) }}
+            {{ end }}
+          {{ end }}
+
+          {{/* A picture only earns a cover slot if it reads at card size. Panoramas
+            and dense multi-panel figures become illegible strips, so those posts get
+            a type card instead, which at least says something.
+          */}}
+          {{ $usable := and (ne $src "") (ge $ar 1.2) (le $ar 2.4) }}
+
+
+          <a
+            id="{{ anchorize $p.Title }}"
+            class="blog-card
+              {{- if $usable }}
+              blog-card--img
+            {{ else }}
+              blog-card--type
+            {{ end }}
+              {{- if and $usable (lt $ar 1.3) }}blog-card--contain{{ end }}
+              {{- if eq $i 0 }}blog-card--lead{{ end }}"
+            href="{{ $p.RelPermalink }}"
+            {{ if $usable }}
+              style="--img-ar: {{ printf "%.3f" $ar }}"
+            {{ else }}
+              data-hue="{{ mod $i 8 }}"
+            {{ end }}
+          >
+            {{ if $usable }}
+              <div class="blog-card-media">
+                <img src="{{ $src }}" alt="" loading="lazy" />
+              </div>
+              <div class="blog-card-foot"></div>
+            {{ else }}
+              <span class="blog-card-mark">scverse blog</span>
+            {{ end }}
+
+
+            <div class="blog-card-text">
+              {{ if eq $i 0 }}<span class="blog-card-kicker">Latest</span>{{ end }}
+              <p class="blog-card-title">{{ $p.Title }}</p>
+              <span class="blog-card-date">{{ $p.Date.Format "January 02, 2006" }}</span>
+              <p class="blog-card-desc">{{ $p.Description }}</p>
+              <span class="blog-card-meta">
+                {{- with $p.Params.author }}{{ . }} &middot;{{ end -}}
+                {{ $p.ReadingTime }} min read
+              </span>
+            </div>
+          </a>
+        {{ end }}
+      </div>
+    </div>
+
+    <aside class="blog-rail">
+      <h2>Archive</h2>
+      {{ range .Pages.GroupByDate "2006" }}
+        <div class="blog-rail-year">
+          <span>{{ .Key }}</span>
+          {{ range .Pages }}
+            <a href="#{{ anchorize .Title }}">
+              {{ .Title }}
+              <span class="blog-rail-when">{{ .Date.Format "January 02" }}</span>
+            </a>
+          {{ end }}
         </div>
-      </article>
-    </a>
-  {{ end }}
+      {{ end }}
+    </aside>
+  </div>
 {{ end }}
