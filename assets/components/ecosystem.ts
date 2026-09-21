@@ -1,16 +1,18 @@
 /** biome-ignore-all lint/style/noNonNullAssertion: easy to debug misspelling */
 
-// Ecosystem package registry: free-text search, one active category, one active tag.
-// Categories and tags both come from the controlled vocabulary in the registry schema.
+// Ecosystem package registry: free-text search, one active category, one active language, one active tag.
+// Categories, languages and tags all come from the controlled vocabulary in the registry schema.
 export default function init(root: HTMLElement) {
   const input = root.querySelector<HTMLInputElement>("#eco-filter")!
   const chipRow = root.querySelector<HTMLElement>("#eco-chips")!
+  const languageRow = root.querySelector<HTMLElement>("#eco-languages")!
   const grid = root.querySelector<HTMLElement>("#eco-grid")!
   const counter = root.querySelector<HTMLElement>("#eco-count")!
   const empty = root.querySelector<HTMLElement>("#eco-empty")!
   const clearButton = root.querySelector<HTMLElement>("#eco-clear")!
   const cards = Array.from(grid.querySelectorAll<HTMLElement>(".eco-card"))
   let activeCategory: string | null = null
+  let activeLanguage: string | null = null
   let activeTag: string | null = null
 
   const apply = () => {
@@ -20,21 +22,22 @@ export default function init(root: HTMLElement) {
       const visible =
         terms.every((term) => card.dataset.search!.includes(term)) &&
         (!activeCategory || card.dataset.category === activeCategory) &&
+        (!activeLanguage || card.dataset.languages!.includes(`|${activeLanguage}|`)) &&
         (!activeTag || card.dataset.tags!.includes(`|${activeTag}|`))
       card.hidden = !visible
       if (visible) shown += 1
     }
     counter.textContent = String(shown)
     empty.hidden = shown !== 0
-    clearButton.hidden = !terms.length && !activeCategory && !activeTag
+    clearButton.hidden = !terms.length && !activeCategory && !activeLanguage && !activeTag
     for (const tag of root.querySelectorAll<HTMLElement>(".eco-tag")) {
       tag.classList.toggle("is-active", tag.dataset.tag === activeTag)
     }
   }
 
-  const syncChips = () => {
-    for (const chip of chipRow.querySelectorAll<HTMLElement>(".eco-chip")) {
-      const isActive = chip.dataset.category === activeCategory
+  const syncChips = (row: HTMLElement, key: "category" | "language", active: string | null) => {
+    for (const chip of row.querySelectorAll<HTMLElement>(".eco-chip")) {
+      const isActive = (chip.dataset[key] || null) === active
       chip.classList.toggle("is-active", isActive)
       chip.setAttribute("aria-pressed", String(isActive))
     }
@@ -43,8 +46,10 @@ export default function init(root: HTMLElement) {
   const reset = () => {
     input.value = ""
     activeCategory = null
+    activeLanguage = null
     activeTag = null
-    syncChips()
+    syncChips(chipRow, "category", activeCategory)
+    syncChips(languageRow, "language", activeLanguage)
     apply()
   }
 
@@ -61,8 +66,18 @@ export default function init(root: HTMLElement) {
   chipRow.addEventListener("click", (event) => {
     const chip = (event.target as HTMLElement).closest<HTMLElement>(".eco-chip")
     if (!chip) return
-    activeCategory = activeCategory === chip.dataset.category ? null : chip.dataset.category!
-    syncChips()
+    const category = chip.dataset.category || null
+    activeCategory = activeCategory === category ? null : category
+    syncChips(chipRow, "category", activeCategory)
+    apply()
+  })
+
+  languageRow.addEventListener("click", (event) => {
+    const chip = (event.target as HTMLElement).closest<HTMLElement>(".eco-chip")
+    if (!chip) return
+    const language = chip.dataset.language || null
+    activeLanguage = activeLanguage === language ? null : language
+    syncChips(languageRow, "language", activeLanguage)
     apply()
   })
 

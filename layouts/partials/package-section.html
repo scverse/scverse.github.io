@@ -40,6 +40,9 @@
           <a href="{{ $url }}" target="_blank">Conda</a>
         {{ end }}
       {{ end }}
+      {{ range $p.bindings }}
+        <a href="{{ .url }}" target="_blank" title="{{ .name }}">{{ .language }}</a>
+      {{ end }}
       {{/* The registry lists every paper a package has; the first is the one to cite. */}}
       {{ with $p.publications }}
         {{ $doi := index . 0 }}
