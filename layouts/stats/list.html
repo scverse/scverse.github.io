@@ -17,6 +17,9 @@
         {{ end }}
       {{ end }}
       {{ $gh := $stats.github | default dict }}
+      {{/* Counts the site owns come from its own data, so /stats agrees with /people and /packages. */}}
+      {{ $coreTeam := len (where (site.GetPage "/people").Params.people "roles" "intersect" (slice "core")) }}
+      {{ $ecosystem := len (where (partialCached "registry.html" "registry").pkgs "category" "ecosystem") }}
 
 
       <p>{{ .Params.preface | safeHTML }}</p>
@@ -59,13 +62,13 @@
         "tiles" ($social | append
         (dict "value" $gh.unique_contributors "label" "code contributors" "url" "#contributors")
         (dict "value" $gh.organization_members "label" "GitHub organisation members" "url" "https://github.com/orgs/scverse/people")
-        (dict "value" $stats.core_team_size "label" "core team members" "url" "/people")
+        (dict "value" $coreTeam "label" "core team members" "url" "/people")
         )
         )
         (dict
         "name" "Packages and code"
         "tiles" (slice
-        (dict "value" $stats.ecosystem_packages "label" "ecosystem packages" "url" "/packages#ecosystem")
+        (dict "value" $ecosystem "label" "ecosystem packages" "url" "/packages#ecosystem")
         (dict "value" $gh.total_repositories "label" "core repositories" "url" "/packages#core-packages")
         (dict "value" $gh.total_stars "label" "GitHub stars" "url" "https://github.com/scverse")
         (dict "value" $gh.total_pull_requests_last_year "label" "pull requests in the last year")

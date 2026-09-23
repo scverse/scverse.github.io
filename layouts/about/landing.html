@@ -143,8 +143,8 @@
       <p class="about-section-intro">{{ .Params.governance.intro | markdownify }}</p>
 
       {{ $counts := slice }}
-      {{ with $stats.core_team_size }}
-        {{ $counts = $counts | append (dict "value" . "label" "core team members" "url" "/people") }}
+      {{ with where (site.GetPage "/people").Params.people "roles" "intersect" (slice "core") }}
+        {{ $counts = $counts | append (dict "value" (len .) "label" "core team members" "url" "/people") }}
       {{ end }}
       {{ with $gh.organization_members }}
         {{ $counts = $counts | append (dict

@@ -3,7 +3,7 @@ title = "About scverse"
 description = "Scverse is a consortium of foundational tools for the analysis of omics data in the life sciences."
 layout = "landing"
 
-lead = "scverse® is a consortium of foundational Python packages for the analysis of omics data in the life sciences."
+lead = "scverse® is a consortium of foundational packages for the analysis of omics data in the life sciences."
 sub = "Scanpy, AnnData and the tools around them each started out in a single lab. The consortium was founded to keep them alive well past that, and to extend the same interoperable tooling to new modalities: shared maintenance in one organisation, around a common set of data structures."
 
 [[actions]]
