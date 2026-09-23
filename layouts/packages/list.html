@@ -54,12 +54,20 @@
               {{ end }}
               {{/* Registry descriptions are plain text with the odd bit of markdown and hard line breaks. */}}
               {{ $desc := trim (.description | markdownify | plainify | htmlUnescape | replaceRE `\s+` " ") " " }}
-              {{ $search := lower (printf "%s %s %s %s %s" .name $desc (delimit $tags " ") $category .language) }}
+              {{ $langs := slice .language }}
+              {{ $bindingNames := slice }}
+              {{ range .bindings }}
+                {{ $langs = $langs | append .language }}
+                {{ $bindingNames = $bindingNames | append .name }}
+              {{ end }}
+              {{ $langs = uniq $langs }}
+              {{ $search := lower (printf "%s %s %s %s %s %s" .name $desc (delimit $tags " ") $category (delimit $langs " ") (delimit $bindingNames " ")) }}
               {{ $items = $items | append (merge . (dict
                 "core" $isCore
                 "normtags" $tags
                 "category" $category
                 "language" .language
+                "languages" $langs
                 "desc" $desc
                 "search" $search
                 ))
@@ -72,6 +80,22 @@
               {{ $categoryCounts = $categoryCounts | append (dict "name" . "count" (len (where $items "category" .))) }}
             {{ end }}
             {{ $categoryCounts = sort $categoryCounts "count" "desc" }}
+
+            {{ $languages := slice }}
+            {{ range $items }}
+              {{ range .languages }}
+                {{ if not (in $languages .) }}
+                  {{ $languages = $languages | append . }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+            {{ $languageCounts := slice }}
+            {{ range $languages }}
+              {{ $language := . }}
+              {{ $count := len (where $items "languages" "intersect" (slice $language)) }}
+              {{ $languageCounts = $languageCounts | append (dict "name" $language "count" $count) }}
+            {{ end }}
+            {{ $languageCounts = sort $languageCounts "count" "desc" }}
 
 
             <div id="ecosystem-packages" data-total="{{ len $items }}">
@@ -137,10 +161,22 @@
                 </p>
               </div>
 
-              <div class="eco-chips" id="eco-chips">
+              <div class="eco-chips" id="eco-chips" role="group" aria-label="Filter by category">
                 <button type="button" class="eco-chip is-active" data-category="" aria-pressed="true">All</button>
                 {{ range $categoryCounts }}
                   <button type="button" class="eco-chip" data-category="{{ .name }}" aria-pressed="false">
+                    {{ .name }}
+                    <span class="eco-chip-count">{{ .count }}</span>
+                  </button>
+                {{ end }}
+              </div>
+
+              <div class="eco-chips" id="eco-languages" role="group" aria-label="Filter by language">
+                <button type="button" class="eco-chip is-active" data-language="" aria-pressed="true">
+                  Any language
+                </button>
+                {{ range $languageCounts }}
+                  <button type="button" class="eco-chip" data-language="{{ .name }}" aria-pressed="false">
                     {{ .name }}
                     <span class="eco-chip-count">{{ .count }}</span>
                   </button>
@@ -195,6 +231,12 @@
                       )
                     }}
                   {{ end }}
+                  {{ range $e.bindings }}
+                    {{ $candidates = $candidates | append (dict
+                      "icon" "eco-i-package" "label" .language "url" .url "title" .name
+                      )
+                    }}
+                  {{ end }}
                   {{ with $e.publications }}
                     {{ $doi := index . 0 }}
                     {{ $url := cond (hasPrefix $doi "http") $doi (printf "https://doi.org/%s" $doi) }}
@@ -218,6 +260,7 @@
                     data-search="{{ $e.search }}"
                     data-tags="|{{ delimit $e.normtags "|" }}|"
                     data-category="{{ $e.category }}"
+                    data-languages="|{{ delimit $e.languages "|" }}|"
                   >
                     <div class="eco-card-head">
                       {{ with $e.logo }}
@@ -259,7 +302,7 @@
                     {{ with $links }}
                       <div class="eco-card-links">
                         {{ range . }}
-                          <a href="{{ .url }}" target="_blank" rel="noopener">
+                          <a href="{{ .url }}" target="_blank" rel="noopener" {{ with .title }}title="{{ . }}"{{ end }}>
                             <svg aria-hidden="true" focusable="false"><use href="#{{ .icon }}" /></svg>
                             {{ .label }}
                           </a>
