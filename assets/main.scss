@@ -681,12 +681,6 @@ body {
     transition: background 200ms ease-in-out;
 }
 
-.dropdown:hover .dropdown-menu {
-    transition: background 200ms ease-out;
-    display: block;
-    margin-top: 0; // remove the gap so it doesn't close
-}
-
 // Custom
 
 body {
