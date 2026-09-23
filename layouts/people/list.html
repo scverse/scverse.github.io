@@ -1,7 +1,12 @@
 {{ define "main" }}
-  {{ $roles := .Params.roles }}
+  {{ $roles := where .Params.roles "working_group" "!=" true }}
+  {{ $groups := where .Params.roles "working_group" true }}
+  {{ $groupIDs := slice }}
+  {{ range $groups }}
+    {{ $groupIDs = $groupIDs | append .id }}
+  {{ end }}
   {{ $labels := dict }}
-  {{ range $roles }}
+  {{ range .Params.roles }}
     {{ $labels = merge $labels (dict .id .short) }}
   {{ end }}
 
@@ -25,6 +30,7 @@
     {{ end }}
     {{ $items = $items | append (merge $person (dict
       "index" $i "works" $works "search" $search "sortkey" (printf "%d %04d" $rank $i)
+      "team" (lt $rank (len $roles))
       ))
     }}
   {{ end }}
@@ -162,8 +168,8 @@
 
 
         <div class="people-grid" id="people-grid">
-          {{ range $items }}
-            {{ partial "people/card.html" (dict "person" . "labels" $labels) }}
+          {{ range where $items "team" true }}
+            {{ partial "people/card.html" (dict "person" . "labels" $labels "groups" $groupIDs) }}
           {{ end }}
         </div>
 
@@ -172,6 +178,42 @@
           <button type="button" class="people-empty-reset">Reset</button>
         </p>
       </section>
+
+      {{ with $groups }}
+        <section class="people-section" id="people-groups">
+          <h2 id="working-groups">Working groups</h2>
+          <p class="people-section-text">{{ $.Params.groups_lead }}</p>
+          {{ range . }}
+            {{ $members := where $items "roles" "intersect" (slice .id) }}
+            <div class="people-group" id="wg-{{ .id }}">
+              <div class="people-group-head">
+                <h3>{{ .label }}</h3>
+                <p>{{ .text }}</p>
+                <p class="people-group-count">{{ len $members }} members</p>
+              </div>
+              <ul class="people-group-members">
+                {{ range $members }}
+                  <li
+                    class="people-member"
+                    data-person="{{ .index }}"
+                    data-search="{{ .search }}"
+                    data-roles="|{{ delimit .roles "|" }}|"
+                    data-works="|{{ delimit .works "|" }}|"
+                  >
+                    <span class="person-avatar">
+                      {{ partial "people/avatar.html" (dict "url" .url "name" .name "index" .index "size" 40) }}
+                    </span>
+                    <span class="people-member-text">
+                      <a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>
+                      {{ with .affiliation }}<span class="person-affiliation">{{ . }}</span>{{ end }}
+                    </span>
+                  </li>
+                {{ end }}
+              </ul>
+            </div>
+          {{ end }}
+        </section>
+      {{ end }}
     </div>
   </article>
 {{ end }}

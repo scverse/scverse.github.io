@@ -2241,6 +2241,18 @@ body {
         border-color: $tiletext;
     }
 
+    a.person-role--group {
+        position: relative;
+        z-index: 1;
+        color: $greydesc;
+        text-decoration: none;
+
+        &:hover {
+            color: $tiletext;
+            border-color: $tiletext2;
+        }
+    }
+
     .person-affiliation {
         margin: 0.1rem 0 0;
         font-size: 0.78rem;
@@ -2313,7 +2325,107 @@ body {
         }
     }
 
+    // Working groups
+
+    .people-group {
+        display: grid;
+        grid-template-columns: minmax(14rem, 1fr) 2fr;
+        gap: 1.5rem 2.5rem;
+        margin-top: 2rem;
+        padding: 1.75rem;
+        background-color: $tilebg4;
+        border-radius: $card-radius;
+        scroll-margin-top: 6rem;
+
+        &[hidden] {
+            display: none;
+        }
+    }
+
+    .people-group-head {
+        h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+        p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: $tiletext2;
+        }
+        .people-group-count {
+            margin-top: 0.75rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: $greydesc;
+        }
+    }
+
+    .people-group-members {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+        align-content: start;
+        gap: 0.6rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .people-member {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.55rem 0.7rem;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: 0.75rem;
+        transition: border-color 200ms ease-in-out;
+
+        &:hover {
+            border-color: $tilebg2;
+        }
+        &[hidden] {
+            display: none;
+        }
+
+        .person-avatar {
+            width: 2.5rem;
+            height: 2.5rem;
+            font-size: 0.8rem;
+        }
+        .person-affiliation {
+            display: block;
+            margin: 0;
+            font-size: 0.72rem;
+        }
+        a {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: black;
+            text-decoration: none;
+
+            &::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+            }
+        }
+    }
+
+    .people-member-text {
+        min-width: 0;
+        line-height: 1.3;
+    }
+
     @media (max-width: 50rem) {
+        .people-group {
+            grid-template-columns: 1fr;
+            padding: 1.25rem;
+        }
         .people-mosaic {
             img {
                 width: 1.6rem;

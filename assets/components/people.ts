@@ -7,12 +7,14 @@ export default function init(root: HTMLElement) {
   const input = root.querySelector<HTMLInputElement>("#people-filter")!
   const roleRow = root.querySelector<HTMLElement>("#people-roles")!
   const packageRow = root.querySelector<HTMLElement>("#people-packages")!
-  const grid = root.querySelector<HTMLElement>("#people-grid")!
   const counter = root.querySelector<HTMLElement>("#people-count")!
   const empty = root.querySelector<HTMLElement>("#people-empty")!
   const clearButton = root.querySelector<HTMLElement>("#people-clear")!
   const notes = Array.from(root.querySelectorAll<HTMLElement>(".people-note"))
-  const cards = Array.from(grid.querySelectorAll<HTMLElement>(".person-card"))
+  // Working group members are listed again under their group, so count people rather than cards.
+  const cards = Array.from(root.querySelectorAll<HTMLElement>("[data-person]"))
+  const groups = Array.from(root.querySelectorAll<HTMLElement>(".people-group"))
+  const groupSection = root.querySelector<HTMLElement>("#people-groups")
 
   const values = (row: HTMLElement, key: string) =>
     new Set(Array.from(row.children).map((chip) => (chip as HTMLElement).dataset[key]!))
@@ -35,17 +37,21 @@ export default function init(root: HTMLElement) {
 
   const apply = () => {
     const terms = input.value.toLowerCase().split(/\s+/).filter(Boolean)
-    let shown = 0
+    const shown = new Set<string>()
     for (const card of cards) {
       const visible =
         terms.every((term) => card.dataset.search!.includes(term)) &&
         (!activeRole || card.dataset.roles!.includes(`|${activeRole}|`)) &&
         (!activePackage || card.dataset.works!.includes(`|${activePackage}|`))
       card.hidden = !visible
-      if (visible) shown += 1
+      if (visible) shown.add(card.dataset.person!)
     }
-    counter.textContent = String(shown)
-    empty.hidden = shown !== 0
+    for (const group of groups) {
+      group.hidden = !group.querySelector("[data-person]:not([hidden])")
+    }
+    if (groupSection) groupSection.hidden = groups.every((group) => group.hidden)
+    counter.textContent = String(shown.size)
+    empty.hidden = shown.size !== 0
     clearButton.hidden = !terms.length && !activeRole && !activePackage
     for (const note of notes) {
       note.hidden = note.dataset.role !== activeRole

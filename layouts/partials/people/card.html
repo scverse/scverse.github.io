@@ -2,6 +2,7 @@
 {{ $isGitHub := in ($person.url | default "") "github.com" }}
 <article
   class="person-card"
+  data-person="{{ $person.index }}"
   data-search="{{ $person.search }}"
   data-roles="|{{ delimit $person.roles "|" }}|"
   data-works="|{{ delimit $person.works "|" }}|"
@@ -14,7 +15,11 @@
   </h3>
   <p class="person-roles">
     {{ range $person.roles }}
-      <span class="person-role person-role--{{ . }}">{{ index $.labels . }}</span>
+      {{ if in $.groups . }}
+        <a class="person-role person-role--group" href="#wg-{{ . }}">{{ index $.labels . }}</a>
+      {{ else }}
+        <span class="person-role person-role--{{ . }}">{{ index $.labels . }}</span>
+      {{ end }}
     {{ end }}
   </p>
   {{ with $person.affiliation }}
