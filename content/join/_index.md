@@ -85,20 +85,6 @@ description = "How to get help with scverse, contribute code, add a package to t
 	link = "https://github.com/scverse"
 
 [[follow.items]]
-	id = "zulip"
-	icon = "i-zulip"
-	title = "Zulip"
-	text = "Chat with us on Zulip"
-	link = "https://scverse.zulipchat.com/"
-
-[[follow.items]]
-	id = "discourse"
-	icon = "i-discourse"
-	title = "Discourse"
-	text = "Ask questions on Discourse"
-	link = "https://discourse.scverse.org/"
-
-[[follow.items]]
 	id = "bluesky"
 	icon = "i-bluesky"
 	title = "Bluesky"
