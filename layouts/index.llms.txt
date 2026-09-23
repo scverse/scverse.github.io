@@ -9,30 +9,26 @@ This site (scverse.org) hosts the package index, tutorials, project governance, 
 ## Core packages
 
 Foundational packages maintained by the scverse core team.
-{{- $registryBase := "https://scverse.org/ecosystem-packages/" }}
-{{- $pkgs := transform.Unmarshal (resources.GetRemote (printf "%spackages.json" $registryBase)).Content }}
-{{- $core := slice }}
+{{- $registry := partialCached "registry.html" "registry" }}
 {{- $org := slice }}
-{{- range $pkgs }}
-  {{- $entry := merge . (dict "sortkey" (lower .name)) }}
-  {{- if in (slice "core-datastructure" "core-framework") .category }}
-    {{- $core = $core | append $entry }}
-  {{- else if and (in (.project_home | default "") "github.com/scverse/") (ne .category "core-infrastructure") }}
-    {{- /* core-infrastructure is the scverse repos themselves, not packages. */}}
-    {{- $org = $org | append $entry }}
+{{- range $registry.pkgs }}
+  {{- if and (eq .category "ecosystem") (in (.project_home | default "") "github.com/scverse/") }}
+    {{- $org = $org | append (merge . (dict "sortkey" (lower .name))) }}
   {{- end }}
 {{- end }}
-{{ range sort $core "sortkey" }}
-{{- /* Registry descriptions carry markdown and hard line breaks; llms.txt wants one line each. */}}
-{{- $desc := trim (.description | markdownify | plainify | htmlUnescape | replaceRE `\s+` " ") " " }}
-- [{{ .name }}]({{ .documentation_home | default .project_home }}): {{ $desc }}
+{{ range $registry.core }}
+- [{{ .name }}]({{ .documentation_home | default .project_home }}): {{ .blurb }}
+  {{- with .bindings }}. Other languages:
+    {{- range $i, $b := . }}{{ if $i }},{{ end }} [{{ $b.name }}]({{ $b.url }}) ({{ $b.language }}){{ end }}
+  {{- end }}
 {{- end }}
 
 ## More packages
 
-Other packages maintained in the scverse GitHub organization. The full index, including
-community packages built on scverse standards, is at {{ absURL "packages/" }}.
+Other packages maintained in the scverse GitHub organization.
+The full index, including community packages built on scverse standards, is at {{ absURL "packages/" }}.
 {{ range sort $org "sortkey" }}
+{{- /* Registry descriptions carry markdown and hard line breaks; llms.txt wants one line each. */}}
 {{- $desc := trim (.description | markdownify | plainify | htmlUnescape | replaceRE `\s+` " ") " " }}
 - [{{ .name }}]({{ .documentation_home | default .project_home }}): {{ $desc }}
 {{- end }}
@@ -40,6 +36,7 @@ community packages built on scverse standards, is at {{ absURL "packages/" }}.
 ## Learn
 - [Tutorials]({{ absURL "learn/" }}): Getting-started tutorials for the core packages.
 - [Package index]({{ absURL "packages/" }}): All core and ecosystem packages with links to docs, source, and distribution.
+- [Package registry (JSON)]({{ $registry.base }}packages.json): Machine-readable list of every core and ecosystem package, with docs, install names, tags and implementations in other languages.
 - [Single-cell best practices](https://www.sc-best-practices.org/): Community book on best practices for single-cell analysis.
 
 ## About
