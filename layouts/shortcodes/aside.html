@@ -1,0 +1,7 @@
+{{/* Optional elaboration: available to whoever wants it, out of the way of everyone else.
+  Native <details>, so it works without JavaScript and is searchable in-page when open.
+*/}}
+<details class="aside">
+  <summary>{{ .Get 0 }}</summary>
+  <div class="aside-body">{{ .Inner | markdownify }}</div>
+</details>

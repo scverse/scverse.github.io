@@ -28,8 +28,10 @@ hugo server -D
 ```
 
 Site search is powered by [Pagefind](https://pagefind.app/), which indexes the built HTML rather than the content files, so `hugo server` alone has no index and the search dialog will say so.
-To try it locally, build and index the site, then serve `public/`:
+To search on the dev server, build the index into `static/` (gitignored, and stale until you rebuild it):
 
 ```sh
-hugo && npx pagefind --site public && python3 -m http.server -d public
+hugo -d /tmp/pagefind-build && npx pagefind --site /tmp/pagefind-build --output-path static/pagefind
 ```
+
+Stop `hugo server` first — a `hugo` build takes the build lock out from under it.

@@ -5,19 +5,13 @@
       <h1>{{ .Title }}</h1>
       <article class="post">
         {{ $sections := index .Params.sections 0 }}
+        {{ $interop := .Params.interoperability | default dict }}
         <div class="post-content" id="packages-content">
-          {{ $registryBase := "https://scverse.org/ecosystem-packages/" }}
-          {{ $data := resources.GetRemote (printf "%spackages.json" $registryBase) }}
-          {{ $pkgs := transform.Unmarshal $data.Content }}
+          {{ $registry := partialCached "registry.html" "registry" }}
+          {{ $registryBase := $registry.base }}
+          {{ $pkgs := $registry.pkgs }}
 
-          {{/* ponytail: registry has no order key, so core packages are alphabetical; re-curate once one exists. */}}
-          {{ $core := slice }}
-          {{ range where $pkgs "category" "in" (slice "core-datastructure" "core-framework") }}
-            {{ $core = $core | append (merge . (dict "sortkey" (lower .name))) }}
-          {{ end }}
-          {{ $core = sort $core "sortkey" }}
-
-          {{ with $core }}
+          {{ with $registry.core }}
             <h2 id="core-packages">Packages maintained by core team</h2>
             {{ $sections.core_packages | markdownify }}
             {{ with where . "category" "core-datastructure" }}
@@ -25,7 +19,7 @@
               {{ $sections.datastructures | markdownify }}
               <div class="packages-list">
                 {{ range . }}
-                  {{ partial "package-section.html" (dict "pkg" . "base" $registryBase) }}
+                  {{ partial "package-section.html" (dict "pkg" . "base" $registryBase "interop" (index $interop (lower .name))) }}
                 {{ end }}
               </div>
             {{ end }}
@@ -36,7 +30,7 @@
               {{ $sections.frameworks | markdownify }}
               <div class="packages-list">
                 {{ range . }}
-                  {{ partial "package-section.html" (dict "pkg" . "base" $registryBase) }}
+                  {{ partial "package-section.html" (dict "pkg" . "base" $registryBase "interop" (index $interop (lower .name))) }}
                 {{ end }}
               </div>
             {{ end }}
@@ -54,26 +48,31 @@
             {{ range $pkgs }}
               {{ $tags := .tags | default slice }}
               {{ $category := .primary_category | default "" }}
-              {{/* core-infrastructure is the scverse repos themselves, not packages, so it does not count here. */}}
-              {{ $core := in (slice "core-framework" "core-datastructure") (.category | default "") }}
+              {{ $isCore := in $registry.coreCategories (.category | default "") }}
               {{ if and $category (not (in $categories $category)) }}
                 {{ $categories = $categories | append $category }}
               {{ end }}
               {{/* Registry descriptions are plain text with the odd bit of markdown and hard line breaks. */}}
               {{ $desc := trim (.description | markdownify | plainify | htmlUnescape | replaceRE `\s+` " ") " " }}
-              {{ $search := lower (printf "%s %s %s %s %s" .name $desc (delimit $tags " ") $category .language) }}
+              {{ $langs := slice .language }}
+              {{ $bindingNames := slice }}
+              {{ range .bindings }}
+                {{ $langs = $langs | append .language }}
+                {{ $bindingNames = $bindingNames | append .name }}
+              {{ end }}
+              {{ $langs = uniq $langs }}
+              {{ $search := lower (printf "%s %s %s %s %s %s" .name $desc (delimit $tags " ") $category (delimit $langs " ") (delimit $bindingNames " ")) }}
               {{ $items = $items | append (merge . (dict
-                "sortkey" (printf "%s %s" (cond $core "0" "1") (lower .name))
-                "core" $core
+                "core" $isCore
                 "normtags" $tags
                 "category" $category
                 "language" .language
+                "languages" $langs
                 "desc" $desc
                 "search" $search
                 ))
               }}
             {{ end }}
-            {{ $items = sort $items "sortkey" }}
 
             {{/* Chip row: every category in the schema that is actually in use, biggest first. */}}
             {{ $categoryCounts := slice }}
@@ -81,6 +80,22 @@
               {{ $categoryCounts = $categoryCounts | append (dict "name" . "count" (len (where $items "category" .))) }}
             {{ end }}
             {{ $categoryCounts = sort $categoryCounts "count" "desc" }}
+
+            {{ $languages := slice }}
+            {{ range $items }}
+              {{ range .languages }}
+                {{ if not (in $languages .) }}
+                  {{ $languages = $languages | append . }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+            {{ $languageCounts := slice }}
+            {{ range $languages }}
+              {{ $language := . }}
+              {{ $count := len (where $items "languages" "intersect" (slice $language)) }}
+              {{ $languageCounts = $languageCounts | append (dict "name" $language "count" $count) }}
+            {{ end }}
+            {{ $languageCounts = sort $languageCounts "count" "desc" }}
 
 
             <div id="ecosystem-packages" data-total="{{ len $items }}">
@@ -146,10 +161,22 @@
                 </p>
               </div>
 
-              <div class="eco-chips" id="eco-chips">
+              <div class="eco-chips" id="eco-chips" role="group" aria-label="Filter by category">
                 <button type="button" class="eco-chip is-active" data-category="" aria-pressed="true">All</button>
                 {{ range $categoryCounts }}
                   <button type="button" class="eco-chip" data-category="{{ .name }}" aria-pressed="false">
+                    {{ .name }}
+                    <span class="eco-chip-count">{{ .count }}</span>
+                  </button>
+                {{ end }}
+              </div>
+
+              <div class="eco-chips" id="eco-languages" role="group" aria-label="Filter by language">
+                <button type="button" class="eco-chip is-active" data-language="" aria-pressed="true">
+                  Any language
+                </button>
+                {{ range $languageCounts }}
+                  <button type="button" class="eco-chip" data-language="{{ .name }}" aria-pressed="false">
                     {{ .name }}
                     <span class="eco-chip-count">{{ .count }}</span>
                   </button>
@@ -204,6 +231,12 @@
                       )
                     }}
                   {{ end }}
+                  {{ range $e.bindings }}
+                    {{ $candidates = $candidates | append (dict
+                      "icon" "eco-i-package" "label" .language "url" .url "title" .name
+                      )
+                    }}
+                  {{ end }}
                   {{ with $e.publications }}
                     {{ $doi := index . 0 }}
                     {{ $url := cond (hasPrefix $doi "http") $doi (printf "https://doi.org/%s" $doi) }}
@@ -227,6 +260,7 @@
                     data-search="{{ $e.search }}"
                     data-tags="|{{ delimit $e.normtags "|" }}|"
                     data-category="{{ $e.category }}"
+                    data-languages="|{{ delimit $e.languages "|" }}|"
                   >
                     <div class="eco-card-head">
                       {{ with $e.logo }}
@@ -268,7 +302,7 @@
                     {{ with $links }}
                       <div class="eco-card-links">
                         {{ range . }}
-                          <a href="{{ .url }}" target="_blank" rel="noopener">
+                          <a href="{{ .url }}" target="_blank" rel="noopener" {{ with .title }}title="{{ . }}"{{ end }}>
                             <svg aria-hidden="true" focusable="false"><use href="#{{ .icon }}" /></svg>
                             {{ .label }}
                           </a>

@@ -1,4 +1,4 @@
-{{/* One core package row on /packages, from an ecosystem-registry entry. Params: pkg, base */}}
+{{/* One core package row on /packages, from an ecosystem-registry entry. Params: pkg, base, interop */}}
 {{ $base := .base }}
 {{ $p := .pkg }}
 <div class="package-section">
@@ -24,6 +24,9 @@
       {{ with $p.tutorials_home }}
         <a href="{{ . }}" target="_blank">Tutorials</a>
       {{ end }}
+      {{ with .interop }}
+        <a href="{{ . }}" target="_blank">Interoperability</a>
+      {{ end }}
       {{ with $p.install }}
         {{ with .pypi }}
           <a href="https://pypi.org/project/{{ . }}/" target="_blank">PyPI</a>
@@ -36,6 +39,9 @@
           {{ end }}
           <a href="{{ $url }}" target="_blank">Conda</a>
         {{ end }}
+      {{ end }}
+      {{ range $p.bindings }}
+        <a href="{{ .url }}" target="_blank" title="{{ .name }}">{{ .language }}</a>
       {{ end }}
       {{/* The registry lists every paper a package has; the first is the one to cite. */}}
       {{ with $p.publications }}

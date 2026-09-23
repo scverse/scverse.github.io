@@ -9,7 +9,7 @@ draft = false
 Querying genomic reference databases is something every bioinformatician does constantly, and doing it well has historically required juggling a patchwork of APIs, file formats, and web interfaces. 
 [gget](https://github.com/scverse/gget) was built to fix that, and is now officially part of the scverse ecosystem.
 
-<img src="/img/blog/gget_x_scverse_overview.webp" style="max-width: 100%;" alt="gget x scverse Overview." />
+<img src="/img/blog/gget_x_scverse_overview.svg" style="max-width: 100%;" alt="gget x scverse Overview." />
 
 ## What is gget?
 
@@ -106,7 +106,7 @@ pip install gget
 The [documentation](https://scverse.org/gget/) covers all modules with worked examples. 
 The [GitHub repository](https://github.com/scverse/gget) is the best place to report issues, propose new database integrations, or contribute.
 
-If you are new to the scverse ecosystem, [scverse.org/join](scverse.org/join) is the place to start. 
+If you are new to the scverse ecosystem, [scverse.org/join](/join/) is the place to start. 
 We’re excited to see what the community builds together.
 
 <br>

@@ -29,6 +29,7 @@
               href="/packages"
               id="packages-dropdown"
               role="button"
+              data-bs-toggle="dropdown"
               aria-expanded="false"
             >
               Packages
@@ -77,6 +78,7 @@
               href="/events"
               id="events-dropdown"
               role="button"
+              data-bs-toggle="dropdown"
               aria-expanded="false"
             >
               Events
@@ -107,6 +109,7 @@
               href="/about"
               id="about-dropdown"
               role="button"
+              data-bs-toggle="dropdown"
               aria-expanded="false"
             >
               About
@@ -128,6 +131,9 @@
                 <a class="dropdown-item" href="/about/ai_policy">AI Policy</a>
               </li>
               <li>
+                <a class="dropdown-item" href="/stats">Statistics</a>
+              </li>
+              <li>
                 <a class="dropdown-item" href="/design">Media kit</a>
               </li>
               <li>
@@ -136,8 +142,41 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item nav-social">
+            <a href="https://github.com/scverse" target="_blank" rel="noopener" aria-label="scverse on GitHub">
+              <i class="bi bi-github" aria-hidden="true"></i>
+            </a>
+            <a href="https://discourse.scverse.org" target="_blank" rel="noopener" aria-label="scverse on Discourse">
+              <i class="i-discourse" aria-hidden="true"></i>
+            </a>
+            <a href="https://scverse.zulipchat.com" target="_blank" rel="noopener" aria-label="scverse on Zulip">
+              <i class="i-zulip" aria-hidden="true"></i>
+            </a>
+            <a
+              href="https://bsky.app/profile/scverse.bsky.social"
+              target="_blank"
+              rel="noopener"
+              aria-label="scverse on Bluesky"
+            >
+              <i class="i-bluesky" aria-hidden="true"></i>
+            </a>
+            <a
+              href="https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA"
+              target="_blank"
+              rel="noopener"
+              aria-label="scverse on YouTube"
+            >
+              <i class="bi bi-youtube" aria-hidden="true"></i>
+            </a>
+          </li>
           <li class="nav-item">
-            <button type="button" class="nav-link nav-search-button" id="search-open" aria-label="Search this site">
+            <button
+              type="button"
+              command="show-modal"
+              commandfor="search-dialog"
+              class="nav-link nav-search-button"
+              aria-label="Search this site"
+            >
               <i class="bi bi-search" aria-hidden="true"></i>
               <span class="nav-search-label">Search</span>
               <kbd class="nav-search-kbd" aria-hidden="true">/</kbd>
@@ -152,24 +191,30 @@
   </nav>
 </div>
 
-<div class="search-overlay" id="search-overlay" hidden>
-  <div class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="search-label" id="search-dialog">
-    <label class="visually-hidden" for="search-input" id="search-label">Search scverse.org</label>
-    <div class="search-field">
-      <i class="bi bi-search" aria-hidden="true"></i>
-      <input
-        type="search"
-        id="search-input"
-        class="search-input"
-        placeholder="Search packages, tutorials, events, blog posts…"
-        autocomplete="off"
-        spellcheck="false"
-        aria-describedby="search-status"
-        aria-controls="search-results"
-      />
-      <button type="button" class="search-close" id="search-close" aria-label="Close search">Esc</button>
-    </div>
-    <p class="search-status" id="search-status" role="status" aria-live="polite"></p>
-    <ul class="search-results" id="search-results"></ul>
+<dialog aria-modal="true" aria-labelledby="search-label" id="search-dialog">
+  <label class="visually-hidden" for="search-input" id="search-label">Search scverse.org</label>
+  <div class="search-field">
+    <i class="bi bi-search" aria-hidden="true"></i>
+    <input
+      type="search"
+      id="search-input"
+      autofocus
+      placeholder="Search packages, tutorials, events, blog posts…"
+      autocomplete="off"
+      spellcheck="false"
+      aria-describedby="search-status"
+      aria-controls="search-results"
+    />
+    <button
+      type="button"
+      class="search-close"
+      commandfor="search-dialog"
+      command="close-modal"
+      aria-label="Close search"
+    >
+      Esc
+    </button>
   </div>
-</div>
+  <p id="search-status" role="status" aria-live="polite"></p>
+  <ul id="search-results"></ul>
+</dialog>

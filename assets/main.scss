@@ -19,15 +19,15 @@ $spatialdatablue: #40a9ff;
 $squidpyviolet: #969dea;
 $scirpypurple: #da347f;
 $scviyellow: #fbb822;
+$scversedeepblue: #262fb5; // the darker end of the Join button gradient
 
+$overline: #e0e0e0;
 $github-black: #171b21;
-$twitter-blue: #469be5;
 $discourse-yellow: #f7f0b1;
 $youtube-red: #e03021;
 $zulip-blue: #62a3f0;
 $bluesky-blue: #0a7aff;
-
-$overline: #e0e0e0;
+$linkedin-blue: #0a66c2;
 $linkunderline: #aaaaaa;
 $backtickbg: #f9f9f9;
 
@@ -46,7 +46,6 @@ $footertextmuted: #aaaaaa;
 $postlinktext: #333333;
 
 $maxwidth: 1200px;
-$maxwidthcover: 1200px;
 $maxwidthwide: 1400px;
 $contentwidth: 80%;
 $contentwidthwide: 92%;
@@ -100,7 +99,7 @@ $eco-hues:
     }
 }
 
-@each $icon in zulip, discourse, bluesky {
+@each $icon in zulip, discourse, bluesky, xcom {
     .i-#{$icon}::before {
         display: inline-block;
         height: 1rem;
@@ -119,73 +118,182 @@ $eco-hues:
     }
 }
 
-.i-xcom::before {
-    content: "𝕏";
-    font-weight: 900;
-    transition:
-        background 200ms ease-out,
-        filter 200ms ease-out;
-}
-
 .card:hover {
     // Not discord, since it’s light-colored
     .i-zulip::before,
-    .i-bluesky::before {
+    .i-bluesky::before,
+    .i-xcom::before {
         filter: invert(100%);
     }
 }
 
-// Cover buttons
-#badges .btn {
-    background-color: $tilebg;
-    border: none;
-}
+#join-content {
+    .join-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
 
-#join-content .card {
-    h5 {
+        @media (max-width: 50rem) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .join-card {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        background-color: $tilebg4;
+        border: 1px solid $overline;
+        border-radius: $card-radius;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            border-color: $tilebg2;
+            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+    }
+
+    .join-card-icon {
+        display: grid;
+        place-items: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+        border-radius: 50%;
+        background-color: $tilebg;
+        color: $tiletext;
+    }
+
+    @each $hue in $eco-hues {
+        .join-card[data-hue="#{index($eco-hues, $hue) - 1}"] .join-card-icon {
+            background-color: rgba($hue, 0.18);
+            color: darken($hue, 12%);
+        }
+    }
+
+    .join-card h2.join-card-title {
+        font-size: 1.1rem;
         font-weight: 700;
+        color: $tiletext;
+        margin: 0 0 0.35rem;
     }
-    transition: all 200ms ease-in-out;
-    color: $navtext;
-    &:hover {
-        background: #78cbd9 !important;
-        transform: scale(1.02);
-    }
-}
 
-#badges .btn-github:hover,
-#join-content .card#github:hover {
-    background-color: $github-black !important;
-    color: white !important;
-}
-#badges .btn-discourse:hover,
-#join-content .card#discourse:hover {
-    background-color: $discourse-yellow !important;
-    color: black !important;
-}
-#badges .btn-zulip:hover,
-#join-content .card#zulip:hover {
-    background-color: $zulip-blue !important;
-    color: white !important;
-}
-#badges .btn-twitter:hover,
-#join-content .card#twitter:hover {
-    background-color: $twitter-blue !important;
-    color: white !important;
-}
-#badges .btn-bluesky:hover,
-#join-content .card#bluesky:hover {
-    background-color: $bluesky-blue !important;
-    color: white !important;
-}
-#badges .btn-youtube:hover,
-#join-content .card#youtube:hover {
-    background-color: $youtube-red !important;
-    color: white !important;
+    .join-card-text {
+        font-size: 0.95rem;
+        line-height: 1.55;
+        color: $tiletext2;
+        margin: 0;
+    }
+
+    .join-card-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem 1.25rem;
+        list-style: none;
+        margin: auto 0 0;
+        padding: 1.25rem 0 0;
+
+        a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: $tiletext;
+            text-decoration-color: $tilebg2;
+            text-underline-offset: 0.2em;
+
+            &:hover {
+                text-decoration-color: currentColor;
+            }
+        }
+    }
+
+    &.post-content h2.join-section-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: $tiletext;
+        margin: 3rem 0 1rem;
+    }
+
+    .join-email-card {
+        &:hover {
+            background: $tilebg4 !important;
+            transform: none;
+        }
+
+        h3.card-title a {
+            font-family: "JetBrains Mono", Menlo, monospace;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: $tiletext;
+            text-decoration-color: $tilebg2;
+            text-underline-offset: 0.2em;
+
+            &:hover {
+                text-decoration-color: currentColor;
+            }
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            color: $tiletext2;
+            margin: 0;
+        }
+    }
+
+    .card {
+        transition: all 200ms ease-in-out;
+        color: $navtext;
+
+        h3.card-title {
+            margin: 0 0 0.35rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        &:hover {
+            background: #78cbd9 !important;
+            transform: scale(1.02);
+        }
+
+        &#github:hover {
+            background-color: $github-black !important;
+            color: white !important;
+        }
+        &#discourse:hover {
+            background-color: $discourse-yellow !important;
+            color: black !important;
+        }
+        &#zulip:hover {
+            background-color: $zulip-blue !important;
+            color: white !important;
+        }
+        &#bluesky:hover {
+            background-color: $bluesky-blue !important;
+            color: white !important;
+        }
+        &#linkedin:hover {
+            background-color: $linkedin-blue !important;
+            color: white !important;
+        }
+        &#youtube:hover {
+            background-color: $youtube-red !important;
+            color: white !important;
+        }
+    }
+
+    ul:not([class]) {
+        line-height: 1.9;
+    }
 }
 
 h1 {
     font-weight: 800;
+}
+
+// Allow seach bar to shrink on mobile
+input[type="search"] {
+    min-width: 0;
 }
 
 // Main page
@@ -276,6 +384,50 @@ body {
     }
 }
 
+.nav-social {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 0.5rem 0.25rem !important;
+
+    // Bootstrap's own collapse breakpoint (992px) isn't wide enough to also fit this row, so it overflows the nav between 992px and roughly 1180px; hide it there and rely on the footer.
+    @media (max-width: 1199px) {
+        display: none;
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        color: $navtext;
+        font-size: 1rem;
+        text-decoration: none;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            background-color: $navbghover;
+            color: $navtexthover;
+
+            i::before {
+                opacity: 1;
+            }
+        }
+
+        // Both icon kinds are 1rem boxes, but the Bootstrap glyphs are baseline-aligned
+        // (`vertical-align: -.125em`) while our `::before` images aren't. Making the `<i>`
+        // a 1rem flex box takes the baseline out of it so all six line up.
+        i {
+            display: flex;
+            width: 1rem;
+            height: 1rem;
+            line-height: 1;
+        }
+    }
+}
+
 #join-button {
     color: white;
     background-color: #4557c4;
@@ -351,17 +503,18 @@ body {
             align-items: center;
             align-self: center;
             #cover {
-                max-width: $maxwidthcover;
+                max-width: $maxwidthwide;
                 width: 100%;
                 padding: 0 1rem;
                 #cover-top-section {
-                    margin-top: 3rem;
+                    margin-top: 0.5rem;
                     padding: 2rem 0;
                 }
                 #cover-heading {
-                    margin: 0;
+                    margin: 0 auto;
                     padding: 0;
-                    max-width: $maxwidthcover;
+                    max-width: $maxwidthwide;
+                    text-align: center;
                     #title {
                         #title-text {
                             #title-name {
@@ -385,105 +538,194 @@ body {
                             }
                         }
                     }
-                    #badges {
+
+                    #hero-lede {
+                        margin: 1.5rem auto 0;
+                        font-size: 1.1rem;
+                        line-height: 1.6;
+                        color: $tiletext2;
+                        @media (max-width: 50rem) {
+                            font-size: 0.95rem;
+                        }
+                    }
+
+                    #hero-points {
                         display: flex;
                         flex-wrap: wrap;
-                        gap: 1rem;
-                        margin: 2rem 0;
+                        justify-content: center;
+                        gap: 2rem;
+                        margin: 2rem auto 0;
                         @media (max-width: 50rem) {
-                            margin: 1rem 0;
-                            padding: 0;
-                            width: 100%;
+                            gap: 1.25rem;
+                            margin-top: 1.5rem;
+                        }
+                        .hero-point {
+                            flex: 1 1 14rem;
+                            max-width: 18rem;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            text-decoration: none;
+                            border-radius: 1rem;
+                            padding: 1.25rem 1rem;
+                            transition: all 200ms ease-in-out;
+
+                            &:hover {
+                                background-color: $tilebg4;
+                                transform: translateY(-2px);
+
+                                .hero-point-icon {
+                                    transform: scale(1.08);
+                                }
+                            }
+                        }
+                        .hero-point-icon {
+                            width: 3rem;
+                            height: 3rem;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: 50%;
+                            margin-bottom: 0.85rem;
+                            font-size: 1.35rem;
+                            background-color: rgba($spatialdatablue, 0.16);
+                            color: darken($spatialdatablue, 12%);
+                            transition: transform 200ms ease-in-out;
+                        }
+                        .hero-point-title {
+                            font-size: 1.15rem;
+                            font-weight: 800;
+                            margin-bottom: 0.4rem;
+                            color: $tiletext;
+                        }
+                        .hero-point-text {
+                            margin: 0;
+                            font-size: 0.9rem;
+                            color: $tiletext2;
                         }
                     }
                 }
 
                 #chip-announcement {
                     margin: 0 auto 2rem;
-                    max-width: $maxwidthcover;
+                    max-width: $maxwidthwide;
                     width: 100%;
                     @media (max-width: 50rem) {
-                        width: 100%;
-                        margin: 0 auto 1.25rem;
+                        margin: 0 auto 1.5rem;
                     }
+                }
+
+                .conference-banner {
                     display: flex;
-                    justify-content: center;
+                    align-items: center;
+                    gap: 1.75rem;
+                    width: 92%;
+                    margin: 0 auto;
+                    padding: 1rem 1.75rem;
+                    border-radius: 1rem;
+                    background: linear-gradient(120deg, #0b0b12 0%, #22223a 100%);
+                    color: white;
+                    text-decoration: none;
+                    transition: all 200ms ease-in-out;
+
                     &:hover {
-                        cursor: pointer;
-                    }
+                        transform: translateY(-2px);
+                        box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.25);
 
-                    .event-chip {
-                        width: auto;
-                        display: inline-flex;
-                        align-items: center;
-                        background-color: transparent;
-                        border-radius: 2.2rem;
-                        padding: 0.1rem 1rem 0.1rem 0;
-                        font-size: 0.8rem;
-                        font-weight: 500;
-                        color: black;
-                        transition: all 0.3s ease;
-                        outline: 1px solid black;
-
-                        @media (max-width: 50rem) {
-                            border-radius: 1.5rem;
-                            padding: 0.05rem 0.6rem 0.05rem 0;
-                            font-size: 0.7rem;
-                        }
-
-                        .event-date {
-                            background-color: black;
-                            color: white;
-                            padding: 0.5rem 1rem;
-                            border-radius: 2rem;
-                            margin: 0.1rem 1rem 0.1rem 0.2rem;
-                            align-self: start;
-
-                            @media (max-width: 50rem) {
-                                padding: 0.35rem 0.7rem;
-                                border-radius: 1.5rem;
-                                margin: 0.05rem 0.7rem 0.05rem 0.1rem;
-                            }
-                        }
-
-                        .event-text {
-                            position: relative;
+                        .conference-banner-cta {
+                            background-color: white;
+                            color: black;
 
                             .arrow {
-                                display: inline-block;
-                                transition: transform 0.3s ease;
-                            }
-                        }
-
-                        &:hover {
-                            color: #4557c4;
-                            transform: scale(1.05);
-
-                            .event-date {
-                                background: linear-gradient(135deg, #262fb5, #74c8fa);
-                            }
-
-                            .event-text .arrow {
                                 transform: translateX(0.2rem);
                             }
                         }
+                    }
 
-                        position: relative;
+                    @media (max-width: 50rem) {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 1rem;
+                        padding: 1.25rem 1.5rem;
+                        text-align: left;
+                    }
+                }
 
-                        a {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            overflow: hidden;
-                        }
+                .conference-banner-date {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    flex-shrink: 0;
+                    line-height: 1.1;
+                    padding-right: 1.75rem;
+                    border-right: 1px solid rgba(255, 255, 255, 0.2);
+
+                    .conference-banner-month {
+                        font-size: 0.85rem;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        letter-spacing: 0.1em;
+                        color: rgba(255, 255, 255, 0.6);
+                    }
+
+                    .conference-banner-day {
+                        font-size: 1.6rem;
+                        font-weight: 800;
+                    }
+
+                    .conference-banner-year {
+                        font-size: 0.85rem;
+                        color: rgba(255, 255, 255, 0.6);
+                    }
+
+                    @media (max-width: 50rem) {
+                        flex-direction: row;
+                        align-items: baseline;
+                        gap: 0.4rem;
+                        padding-right: 0;
+                        border-right: none;
+                    }
+                }
+
+                .conference-banner-body {
+                    flex: 1;
+                    min-width: 0;
+
+                    .conference-banner-title {
+                        font-size: 1.15rem;
+                        font-weight: 800;
+                    }
+
+                    .conference-banner-desc {
+                        margin: 0.2rem 0 0;
+                        font-size: 0.9rem;
+                        color: rgba(255, 255, 255, 0.75);
+                        max-width: 34rem;
+                    }
+                }
+
+                .conference-banner-cta {
+                    flex-shrink: 0;
+                    padding: 0.7rem 1.4rem;
+                    border-radius: 2rem;
+                    background-color: rgba(255, 255, 255, 0.12);
+                    font-weight: 700;
+                    white-space: nowrap;
+                    transition: all 200ms ease-in-out;
+
+                    .arrow {
+                        display: inline-block;
+                        transition: transform 200ms ease;
+                    }
+
+                    @media (max-width: 50rem) {
+                        align-self: flex-start;
                     }
                 }
 
                 section {
-                    max-width: $maxwidth;
-                    width: $contentwidth;
+                    max-width: $maxwidthwide;
+                    width: $contentwidthwide;
                     margin: 0 auto;
                     margin-top: 5%;
                     @media (max-width: 50rem) {
@@ -513,98 +755,137 @@ body {
                 // The wide gap under the hero used to live on #packages, which put it
                 // between whatever section came after the demo and the packages.
                 #interactive-demo-section {
-                    margin-bottom: 15%;
+                    // Overrides the generic `section` rule's margin-top: 5%, which stacked with #cover-top-section's padding into an oversized gap.
+                    margin-top: 2rem;
+                    margin-bottom: 3rem;
                 }
-                #packages {
-                    #packages-list {
-                        .card {
-                            display: flex;
-                            flex-direction: row;
-                            align-items: center;
-                            background-color: $tilebg;
-                            border-radius: 0.5rem;
-                            transition: all 200ms ease-in-out;
-                            @media (max-width: 50rem) {
-                                min-height: 6rem;
-                            }
-                            .package-icon {
-                                transition: all 200ms ease-in-out;
-                                align-items: center;
-                                justify-content: center;
-                                padding: auto;
-                                display: flex;
-                                min-width: 6rem;
-                                max-width: 6rem;
-                                // Matches the img height below, so that a package
-                                // without an icon still lines up with the others.
-                                min-height: 4rem;
-                                @media (max-width: 50rem) {
-                                    display: none;
-                                }
+                #feature-grid {
+                    background-color: $tilebg4;
+                    border-radius: 1.25rem;
+                    padding: 2.5rem;
 
-                                img {
-                                    max-width: 4rem;
-                                    height: 4rem;
-                                }
-                            }
-                            .package-text {
-                                .package-name {
-                                    color: $tiletext;
-                                }
-                                .package-desc {
-                                    font-size: 0.9rem;
-                                    color: $tiletext2;
-                                }
-                            }
-                            &:hover {
-                                cursor: pointer;
-                                background-color: $tilebg2;
-                                .package-icon {
-                                    transform: scale(1.1);
-                                }
-                                transform: scale(1.05);
-                            }
-                            &#anndata-tile:hover {
-                                background-color: rgba($anndataorange, 0.2);
-                            }
-                            &#scanpy-tile:hover {
-                                background-color: rgba($scanpymandy, 0.2);
-                            }
-                            &#mudata-tile:hover {
-                                background-color: rgba($mudatagreen, 0.2);
-                            }
-                            &#muon-tile:hover {
-                                background-color: rgba($muonaquamarine, 0.2);
-                            }
+                    @media (max-width: 50rem) {
+                        padding: 1.5rem;
+                    }
+
+                    .section-heading {
+                        margin-bottom: 1.5rem;
+                    }
+
+                    #feature-grid-items {
+                        display: grid;
+                        grid-template-columns: repeat(2, minmax(0, 1fr));
+                        column-gap: 3rem;
+                        row-gap: 2rem;
+
+                        @media (max-width: 50rem) {
+                            grid-template-columns: 1fr;
+                            row-gap: 1.5rem;
                         }
                     }
-                }
-                #mission {
-                    .section-content {
-                        p {
-                            font-size: 1.1rem;
-                        }
+
+                    .feature-item {
+                        display: flex;
+                        gap: 1rem;
+                        align-items: flex-start;
+                    }
+
+                    .feature-item-icon {
+                        flex-shrink: 0;
+                        width: 2.25rem;
+                        height: 2.25rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 50%;
+                        font-size: 1.1rem;
+                        background-color: rgba($spatialdatablue, 0.16);
+                        color: darken($spatialdatablue, 12%);
+                    }
+
+                    .feature-item-title {
+                        font-weight: 700;
+                        color: $tiletext;
+                        margin-bottom: 0.2rem;
+                    }
+
+                    .feature-item-text {
+                        margin: 0;
+                        font-size: 0.9rem;
+                        color: $tiletext2;
                     }
                 }
-                #team {
-                    .section-content {
-                        .section-paragraph {
-                            #team-list {
-                                display: inline;
-                            }
-                            a {
-                                border-bottom: 1px solid $linkunderline;
-                                transition:
-                                    border 200ms,
-                                    color 200ms;
+                #about-highlights {
+                    .about-card-grid {
+                        display: grid;
+                        // A fixed 3-column count rather than auto-fit: on a wide viewport auto-fit would squeeze in a 4th column and break the 3+3 layout of 6 cards.
+                        grid-template-columns: repeat(3, minmax(0, 1fr));
+                        gap: 1.5rem;
 
-                                &:hover,
-                                &:active {
-                                    color: black;
-                                    border-bottom: 1px solid black;
-                                }
-                            }
+                        @media (max-width: 64rem) {
+                            grid-template-columns: repeat(2, minmax(0, 1fr));
                         }
+
+                        @media (max-width: 50rem) {
+                            grid-template-columns: 1fr;
+                            gap: 1rem;
+                        }
+                    }
+
+                    .about-card {
+                        display: flex;
+                        flex-direction: column;
+                        background-color: $tilebg4;
+                        border: 1px solid $overline;
+                        border-radius: $card-radius;
+                        padding: 1.75rem;
+                        transition: all 200ms ease-in-out;
+
+                        &:hover {
+                            border-color: $tilebg2;
+                            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+                            transform: translateY(-2px);
+                        }
+
+                        // Pins the "more" link to the card's bottom edge regardless of how many lines the paragraph above it takes.
+                        > a {
+                            margin-top: auto;
+                        }
+                    }
+
+                    .about-card-icon {
+                        width: 2.75rem;
+                        height: 2.75rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 50%;
+                        margin-bottom: 1rem;
+                        font-size: 1.3rem;
+                        background-color: $tilebg;
+                        color: $tiletext;
+                    }
+
+                    // Written as a descendant rather than nested under .about-card-icon: `&` there would carry the whole ancestor chain and put .about-card in front of #about-highlights.
+                    @each $hue in $eco-hues {
+                        .about-card[data-hue="#{index($eco-hues, $hue) - 1}"]
+                            .about-card-icon {
+                            background-color: rgba($hue, 0.16);
+                            color: darken($hue, 12%);
+                        }
+                    }
+
+                    .about-card-title {
+                        font-size: 1.2rem;
+                        font-weight: 700;
+                        margin: 0 0 0.5rem;
+                        color: $tiletext;
+                    }
+
+                    .about-card-text {
+                        font-size: 1rem;
+                        color: $tiletext2;
+                        margin-bottom: 0.75rem;
                     }
                 }
             }
@@ -699,8 +980,12 @@ body {
                     text-decoration: none;
                     transition: color 200ms;
                 }
-                h5 {
+                h2 {
                     color: $footertextlight;
+                    font-size: 1.25rem;
+                    font-weight: 500;
+                    line-height: 1.2;
+                    margin: 0 0 0.5rem;
                 }
                 li {
                     color: $footertextmuted;
@@ -1062,6 +1347,10 @@ body {
         flex-wrap: wrap;
         gap: 0.4rem;
         margin: 1.25rem 0 2rem;
+
+        &:has(+ .eco-chips) {
+            margin-bottom: 0.4rem;
+        }
     }
 
     .eco-chip {
@@ -1321,6 +1610,192 @@ body {
     }
 }
 
+// Specific to /stats
+
+#stats-content {
+    .stats-updated {
+        font-size: 0.9rem;
+        color: $greydesc;
+    }
+
+    // The one number the page leads with
+    .stats-hero {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 1rem 3.5rem;
+        margin: 2.5rem 0 1rem;
+
+        .stats-hero-figure {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+        .stats-hero-figure--second {
+            padding-left: 3.5rem;
+            border-left: 1px solid $overline;
+        }
+        @media (max-width: 50rem) {
+            .stats-hero-figure--second {
+                padding-left: 0;
+                border-left: 0;
+            }
+        }
+
+        .stats-hero-value {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1;
+            color: black;
+        }
+        .stats-hero-label {
+            font-size: 1.15rem;
+            color: $tiletext;
+        }
+        .stats-hero-hint {
+            font-size: 0.9rem;
+            color: $greydesc;
+        }
+        @media (max-width: 50rem) {
+            .stats-hero-value {
+                font-size: 3rem;
+            }
+        }
+    }
+
+    .stats-tiles {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+        gap: 0.75rem;
+    }
+
+    .stats-tile {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        padding: 1.1rem 1.25rem;
+        background-color: $tilebg4;
+        border: 1px solid $overline;
+        border-radius: 0.75rem;
+
+        .stats-tile-value {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: black;
+        }
+        .stats-tile-label {
+            font-size: 0.85rem;
+            line-height: 1.35;
+            color: $tiletext2;
+        }
+    }
+
+    // Only tiles that lead somewhere get the affordance
+    a.stats-tile {
+        text-decoration: none;
+        transition: all 200ms ease-in-out;
+
+        &:hover,
+        &:focus-visible {
+            background-color: $tilebg;
+            border-color: $tilebg2;
+            transform: scale(1.02);
+
+            .stats-tile-value {
+                color: black;
+            }
+            .stats-tile-label {
+                color: $tiletext;
+            }
+        }
+    }
+
+    .stats-contributors {
+        display: grid;
+        gap: 0.15rem;
+        margin: 1.5rem 0;
+        padding: 0;
+        list-style: none;
+
+        a {
+            display: grid;
+            grid-template-columns: 2.5rem minmax(7rem, 11rem) 1fr auto;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 0.35rem 0.5rem;
+            border-radius: 0.5rem;
+            color: $tiletext;
+            text-decoration: none;
+            transition: all 200ms ease-in-out;
+
+            &:hover {
+                color: black;
+                background-color: $tilebg4;
+            }
+        }
+        img {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+        }
+        .stats-contributor-name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        // Thin recessive track, value anchored to the baseline with 4px ends
+        .stats-contributor-bar {
+            height: 0.5rem;
+            background-color: $tilebg;
+            border-radius: 0.25rem;
+
+            > span {
+                display: block;
+                min-width: 0.15rem;
+                height: 100%;
+                // A hue rather than a dark neutral, so extensions that invert the page keep the bar visible
+                background-color: $scversedeepblue;
+                border-radius: 0.25rem;
+            }
+        }
+        .stats-contributor-count {
+            font-size: 0.85rem;
+            color: $greydesc;
+            font-variant-numeric: tabular-nums;
+        }
+
+        @media (max-width: 50rem) {
+            a {
+                grid-template-columns: 2.5rem 1fr auto;
+            }
+            .stats-contributor-bar {
+                display: none;
+            }
+        }
+    }
+
+    .stats-rest {
+        summary {
+            width: fit-content;
+            padding: 0.35rem 0.5rem;
+            font-size: 0.9rem;
+            color: $tiletext2;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 200ms ease-in-out;
+
+            &:hover {
+                color: black;
+                background-color: $tilebg4;
+            }
+        }
+        &[open] summary {
+            margin-bottom: 0.5rem;
+        }
+    }
+}
+
 // Specific to /tutorials
 
 #tutorials-content {
@@ -1349,7 +1824,7 @@ body {
         margin-bottom: 5rem;
 
         grid-auto-flow: row;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
         gap: 1rem;
         @media (max-width: 50rem) {
             grid-template-columns: 1fr;
@@ -1357,27 +1832,28 @@ body {
 
         .tutorial-item {
             $cardborder: 1rem;
-            $cardpad: 1.5rem;
+            $cardpad: 1rem;
             border-radius: 1rem;
             background-color: #fbfbfb;
 
             transition: all 200ms ease-in-out;
 
             justify-content: flex-start;
-            height: 25rem;
 
             a {
                 color: $navtext;
                 text-decoration: none;
+                display: flex;
+                flex-direction: column;
                 height: 100%;
             }
 
             img {
-                // border-radius: 1rem;
-                // border: 1px solid #EEEEEE;
-                width: 90%;
+                width: auto;
+                max-width: 60%;
+                align-self: center;
 
-                height: 40%;
+                height: 5rem;
                 object-fit: contain;
                 margin: $cardpad $cardborder 0.2rem $cardborder;
             }
@@ -1396,26 +1872,28 @@ body {
             }
 
             .card-body {
-                height: 60%;
                 flex: 1;
                 overflow: hidden;
+                padding: 0.5rem $cardpad $cardpad;
 
                 h5 {
-                    font-size: 1.1rem;
+                    font-size: 1rem;
                     font-weight: 900;
+                    margin-bottom: 0.35rem;
                     transition: all 200ms ease-in-out;
                 }
 
                 p {
-                    flex: 1;
                     width: 100%;
+                    margin-bottom: 0;
 
                     overflow: hidden;
                     display: -webkit-box;
-                    -webkit-line-clamp: 6;
+                    -webkit-line-clamp: 4;
                     -webkit-box-orient: vertical;
 
                     font-size: 0.8rem;
+                    line-height: 1.4;
                     transition: all 200ms ease-in-out;
                 }
             }
@@ -1447,11 +1925,24 @@ body {
         width: $contentwidthwide;
     }
 
+    // The extra width is for card grids. Prose keeps the normal column, or the measure sits in
+    // the middle of it with all the slack pushed to one side.
+    #page-content:has(.with-toc--prose) {
+        max-width: $maxwidth;
+        width: $contentwidth;
+    }
+
     .with-toc {
         display: grid;
         grid-template-columns: 13rem minmax(0, 1fr);
         gap: 3.5rem;
         align-items: start;
+        --prose-measure: 54rem;
+    }
+
+    .with-toc:has(.toc[hidden]) {
+        grid-template-columns: minmax(0, 1fr);
+        --prose-measure: none;
     }
 
     .toc {
@@ -1877,6 +2368,18 @@ body {
         border-color: $tiletext;
     }
 
+    a.person-role--group {
+        position: relative;
+        z-index: 1;
+        color: $greydesc;
+        text-decoration: none;
+
+        &:hover {
+            color: $tiletext;
+            border-color: $tiletext2;
+        }
+    }
+
     .person-affiliation {
         margin: 0.1rem 0 0;
         font-size: 0.78rem;
@@ -1949,7 +2452,107 @@ body {
         }
     }
 
+    // Working groups
+
+    .people-group {
+        display: grid;
+        grid-template-columns: minmax(14rem, 1fr) 2fr;
+        gap: 1.5rem 2.5rem;
+        margin-top: 2rem;
+        padding: 1.75rem;
+        background-color: $tilebg4;
+        border-radius: $card-radius;
+        scroll-margin-top: 6rem;
+
+        &[hidden] {
+            display: none;
+        }
+    }
+
+    .people-group-head {
+        h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+        p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: $tiletext2;
+        }
+        .people-group-count {
+            margin-top: 0.75rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: $greydesc;
+        }
+    }
+
+    .people-group-members {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+        align-content: start;
+        gap: 0.6rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .people-member {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.55rem 0.7rem;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: 0.75rem;
+        transition: border-color 200ms ease-in-out;
+
+        &:hover {
+            border-color: $tilebg2;
+        }
+        &[hidden] {
+            display: none;
+        }
+
+        .person-avatar {
+            width: 2.5rem;
+            height: 2.5rem;
+            font-size: 0.8rem;
+        }
+        .person-affiliation {
+            display: block;
+            margin: 0;
+            font-size: 0.72rem;
+        }
+        a {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: black;
+            text-decoration: none;
+
+            &::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+            }
+        }
+    }
+
+    .people-member-text {
+        min-width: 0;
+        line-height: 1.3;
+    }
+
     @media (max-width: 50rem) {
+        .people-group {
+            grid-template-columns: 1fr;
+            padding: 1.25rem;
+        }
         .people-mosaic {
             img {
                 width: 1.6rem;
@@ -2906,9 +3509,9 @@ body {
     margin-top: 8%;
 }
 
-.interactive-container {
+#interactive-container {
     width: 100%;
-    max-width: 1200px;
+    max-width: $maxwidthwide;
     margin: 0 auto;
     transform-style: preserve-3d;
     perspective: 1500px;
@@ -2960,7 +3563,9 @@ body {
 .command-icon {
     width: 32px;
     height: 32px;
+    appearance: none;
     background-color: #ccc;
+    border: none;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -3016,35 +3621,53 @@ body {
         height: 400px;
         padding: 20px;
     }
+
+    .dot {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0;
+        transform: scale(0);
+        transition:
+            transform 0.5s cubic-bezier(0.17, 0.67, 0.83, 0.67),
+            opacity 0.5s ease,
+            box-shadow 0.3s ease;
+        will-change: transform, opacity;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+        cursor: pointer;
+
+        &.is-visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    // main.ts wraps each cluster in a .cluster group, which is what hovering and clicking a dot act on:
+    // the group is a zero-height box, but :hover and :focus still reach it from the dot inside.
+    .cluster {
+        outline: none;
+
+        &:hover .dot.is-visible {
+            transform: scale(1.4);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+            z-index: 5;
+        }
+
+        // A click focuses the group (main.ts), so the cluster pulses once.
+        &:focus .dot {
+            animation: pulse 1.5s;
+        }
+    }
+
+    &:has(.cluster:hover) .cluster:not(:hover) .dot {
+        opacity: 0.4;
+    }
 }
 
-.dot {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0;
-    transform: scale(0);
-    transition:
-        transform 0.5s cubic-bezier(0.17, 0.67, 0.83, 0.67),
-        opacity 0.5s ease,
-        box-shadow 0.3s ease;
-    will-change: transform, opacity;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
-    cursor: pointer;
-}
-
-.animation-pulse {
-    animation: pulse 1.5s infinite;
-}
-
+// Animates `scale`, not `transform`: the clicked cluster is always hovered too, and an individual
+// transform property multiplies with the `transform: scale(1.4)` hover instead of replacing it.
 @keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
     50% {
-        transform: scale(1.3);
-    }
-    100% {
-        transform: scale(1);
+        scale: 1.3;
     }
 }
 
@@ -3138,7 +3761,7 @@ body {
     font-weight: 600;
 }
 
-// Specific to /about/roles — an index of the governance sections, not a summary of them
+// Specific to /about/roles: an index of the governance sections, not a summary of them
 
 .gov-chart {
     margin: 2.5rem 0 3rem;
@@ -3146,7 +3769,7 @@ body {
     .gov-level {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0.6rem;
         margin: 0;
         padding: 0;
         list-style: none;
@@ -3158,7 +3781,7 @@ body {
     }
 
     .gov-node {
-        padding: 0.7rem 0.9rem;
+        padding: 0.6rem;
         background-color: white;
         border: 1px solid $overline;
         border-radius: $card-radius;
@@ -3167,6 +3790,43 @@ body {
     // Community, the management committee and the advisory board sit at the same level
     .gov-node--top {
         background-color: $backtickbg;
+    }
+
+    .gov-card {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        padding: 0.55rem 0.7rem;
+        border-radius: 0.6rem;
+        transition: background-color 200ms ease-in-out;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+    }
+
+    .gov-icon {
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        width: 2.25rem;
+        height: 2.25rem;
+        font-size: 1.05rem;
+        border-radius: 50%;
+        background-color: $tilebg;
+        color: $tiletext;
+    }
+
+    @each $hue in $eco-hues {
+        .gov-card[data-hue="#{index($eco-hues, $hue) - 1}"] .gov-icon {
+            background-color: rgba($hue, 0.18);
+            color: darken($hue, 15%);
+        }
+    }
+
+    .gov-body {
+        flex: 1;
+        min-width: 0;
     }
 
     .gov-name {
@@ -3181,44 +3841,134 @@ body {
         }
     }
 
-    .gov-meta {
-        margin-left: 0.6rem;
-        font-size: 0.8rem;
-        color: $greydesc;
-        white-space: nowrap;
+    .gov-text {
+        margin: 0.15rem 0 0;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        color: $tiletext2;
+    }
 
-        .gov-count {
-            font-variant-numeric: tabular-nums;
+    // The faces are the point of this link: the headcount is there for anyone who cannot see them
+    .gov-people {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        flex-shrink: 0;
+        padding: 0.3rem 0.5rem 0.3rem 0.3rem;
+        text-decoration: none;
+        border-radius: 2rem;
+        border: 1px solid transparent;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            border-color: $overline;
+            background-color: white;
         }
-        a {
-            margin-left: 0.5rem;
-            color: $tiletext2;
-            text-decoration: none;
-            border-bottom: 1px solid $overline;
+    }
 
-            &:hover {
-                color: black;
-                border-bottom-color: $linkunderline;
+    .gov-faces {
+        display: flex;
+
+        .gov-face + .gov-face {
+            margin-left: -0.55rem;
+        }
+    }
+
+    .gov-face {
+        display: block;
+        border-radius: 50%;
+        box-shadow: 0 0 0 2px white;
+
+        img,
+        .person-monogram {
+            display: block;
+            width: 1.75rem;
+            height: 1.75rem;
+            border-radius: 50%;
+        }
+
+        // Committee members who link to a lab site rather than to GitHub fall back to initials
+        .person-monogram {
+            display: grid;
+            place-items: center;
+            font-size: 0.6rem;
+            font-weight: 800;
+            color: $tiletext;
+            background-color: $tilebg;
+
+            @each $hue in $eco-hues {
+                &[data-hue="#{index($eco-hues, $hue) - 1}"] {
+                    background-color: rgba($hue, 0.3);
+                }
             }
         }
+    }
+
+    .gov-count {
+        font-size: 0.85rem;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+        color: $tiletext2;
     }
 
     .gov-level--row {
         flex-direction: row;
         flex-wrap: wrap;
+        align-items: flex-start;
 
         > .gov-node {
-            flex: 1 1 13rem;
+            flex: 1 1 14rem;
+        }
+    }
+
+    // The three sub-teams are names only; the document describes just one of them, and a chip row
+    // reads as a set rather than as three cards with a hole where the text would be.
+    .gov-level--subteams > .gov-node > .gov-card {
+        padding: 0.4rem 0.5rem;
+
+        .gov-icon {
+            width: 1.85rem;
+            height: 1.85rem;
+            font-size: 0.9rem;
+        }
+    }
+
+    // Core Developers and Core Community stack in one column so the council card beside them,
+    // which is a good deal taller, does not leave a hole under the two chips.
+    .gov-level--subteams {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+        align-items: start;
+
+        > .gov-node:nth-child(3) {
+            grid-column: 2;
+            grid-row: 1 / span 2;
         }
     }
 
     // Five levels of nesting is enough padding already
     @media (max-width: 50rem) {
-        .gov-level--row {
+        // A column, so the row's flex-basis would set the height of each box rather than its width
+        .gov-level--row,
+        .gov-level--subteams {
+            display: flex;
             flex-direction: column;
+            align-items: stretch;
+
+            > .gov-node {
+                flex: 0 0 auto;
+            }
         }
         .gov-node {
-            padding: 0.6rem 0.65rem;
+            padding: 0.4rem;
+        }
+        .gov-card {
+            gap: 0.6rem;
+            padding: 0.5rem;
+        }
+        // The headcount still fits; five faces beside it do not
+        .gov-faces {
+            display: none;
         }
     }
 }
@@ -3226,37 +3976,72 @@ body {
 // A roster, not a sentence: set apart from the prose it follows so the names do not read as
 // part of it
 .role-members {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
     margin: 1.25rem 0;
-    padding: 0.7rem 1rem;
+    padding: 0.6rem 0.7rem;
     font-size: 0.9rem;
-    line-height: 1.95;
     color: $greydesc;
     background-color: $tilebg4;
     border-radius: 0.5rem;
 
     .role-members-label {
-        margin-right: 0.5rem;
+        margin: 0 0.3rem 0 0.3rem;
         font-size: 0.72rem;
         font-weight: 700;
         letter-spacing: 0.06em;
         text-transform: uppercase;
         color: $greydesc;
     }
-
-    .role-members-sep {
-        margin: 0 0.2rem;
-        color: $tilebg2;
-    }
 }
 
-#page-content p.role-members > a {
+// A face beside every name, the same portraits the chart above uses
+#page-content p.role-members > a.role-member {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.2rem 0.6rem 0.2rem 0.2rem;
     white-space: nowrap;
+    font-size: 0.85rem;
     color: $tiletext2;
-    border-bottom-color: transparent;
+    background-color: white;
+    border: 1px solid $overline;
+    border-radius: 2rem;
+    transition: all 200ms ease-in-out;
 
     &:hover {
         color: black;
-        border-bottom-color: $linkunderline;
+        border-color: $tilebg2;
+    }
+
+    .role-member-face {
+        display: block;
+        flex-shrink: 0;
+
+        img,
+        .person-monogram {
+            display: block;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+        }
+
+        .person-monogram {
+            display: grid;
+            place-items: center;
+            font-size: 0.55rem;
+            font-weight: 800;
+            color: $tiletext;
+            background-color: $tilebg;
+
+            @each $hue in $eco-hues {
+                &[data-hue="#{index($eco-hues, $hue) - 1}"] {
+                    background-color: rgba($hue, 0.3);
+                }
+            }
+        }
     }
 }
 
@@ -3290,34 +4075,28 @@ body {
     }
 }
 
-.search-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 1080;
-    display: flex;
-    justify-content: center;
-    padding: 4rem 1rem 1rem;
-    background-color: rgba(0, 0, 0, 0.45);
-
-    &[hidden] {
-        display: none;
-    }
-
-    @media (max-width: 50rem) {
-        padding: 1rem 0.5rem;
-    }
-}
-
-.search-dialog {
+#search-dialog[open] {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    max-width: 42rem;
-    max-height: 100%;
     overflow: hidden;
+    border: none;
     border-radius: 0.75rem;
     background-color: white;
     box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.3);
+    width: calc(100vw - 2rem);
+    max-width: 42rem;
+    height: calc(100vh - 8rem);
+    @media (max-width: 50rem) {
+        width: calc(100vw - 1rem);
+        height: calc(100vh - 2rem);
+    }
+    &:has(#search-results:empty) {
+        height: min-content;
+    }
+
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0.45);
+    }
 }
 
 .search-field {
@@ -3325,11 +4104,10 @@ body {
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 1.25rem;
-    border-bottom: 1px solid $tilebg;
     color: $greydesc;
 }
 
-.search-input {
+#search-input {
     flex: 1;
     border: 0;
     outline: none;
@@ -3350,7 +4128,7 @@ body {
     font-size: 0.8rem;
 }
 
-.search-status {
+#search-status {
     margin: 0;
     padding: 0.6rem 1.25rem;
     color: $greydesc;
@@ -3361,11 +4139,16 @@ body {
     }
 }
 
-.search-results {
+#search-results {
     margin: 0;
     padding: 0 0 0.5rem;
     overflow-y: auto;
     list-style: none;
+    border-top: 1px solid $tilebg;
+
+    &:empty {
+        display: none;
+    }
 
     a {
         display: block;
@@ -3418,5 +4201,762 @@ body {
             background-color: rgba($scviyellow, 0.35);
             color: inherit;
         }
+    }
+}
+
+// Specific to /about — long-form prose pages
+
+#about-content {
+    // Without this the body falls back to the browser default and the section reads as four
+    // descending sizes: lead, body, callout, rows
+    font-size: 1.05rem;
+    line-height: 1.75;
+    text-wrap: pretty;
+
+    // The column is sized for card grids; prose needs a readable measure inside it
+    > p,
+    > ul,
+    > ol,
+    > blockquote {
+        max-width: var(--prose-measure, none);
+    }
+
+    > p {
+        margin-bottom: 1.15rem;
+    }
+
+    // One size for all prose. Hierarchy is the headings' job; varying paragraph sizes within a
+    // section reads as inconsistency rather than emphasis.
+
+    // Optional elaboration, folded away so it does not interrupt the argument
+    .aside {
+        max-width: var(--prose-measure, none);
+        margin: 1.5rem 0;
+        background-color: $tilebg4;
+        border-radius: $card-radius;
+
+        summary {
+            padding: 0.8rem 1.1rem;
+            font-weight: 700;
+            color: $tiletext;
+            cursor: pointer;
+            list-style: none;
+
+            &::-webkit-details-marker {
+                display: none;
+            }
+            &::before {
+                content: "›";
+                display: inline-block;
+                width: 1rem;
+                font-weight: 400;
+                color: $greydesc;
+                transition: transform 200ms ease-in-out;
+            }
+            &:hover {
+                color: black;
+            }
+        }
+        &[open] summary::before {
+            transform: rotate(90deg);
+        }
+    }
+
+    .aside-body {
+        padding: 0 1.1rem 1rem 2.1rem;
+
+        p {
+            margin: 0;
+            color: $tiletext2;
+        }
+    }
+
+    @media (max-width: 50rem) {
+        font-size: 1rem;
+    }
+
+    // Five principles with uneven text: any multi-column grid strands one card and leaves the
+    // short ones half empty, so these are rows, which align by construction.
+    .stat-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+        gap: 1rem;
+        max-width: var(--prose-measure, none);
+        margin: 1.75rem 0 2rem;
+    }
+
+    a.stat {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+        padding: 1.1rem 1.25rem;
+        text-decoration: none;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: $card-radius;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            border-color: $tilebg2;
+            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+    }
+
+    .stat-value {
+        font-size: 2rem;
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        font-variant-numeric: tabular-nums;
+        color: $tiletext;
+    }
+
+    // Written as a descendant rather than nested under .stat-value: `&` there would carry the
+    // whole ancestor chain and put .stat in front of #about-content
+    @each $hue in $eco-hues {
+        .stat[data-hue="#{index($eco-hues, $hue) - 1}"] .stat-value {
+            color: darken($hue, 15%);
+        }
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+        color: $greydesc;
+    }
+
+    .principle-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        max-width: var(--prose-measure, none);
+        margin: 1.75rem 0 2.5rem;
+        padding: 0;
+        list-style: none;
+    }
+
+    .principle {
+        display: grid;
+        grid-template-columns: 3rem 1fr;
+        column-gap: 1.2rem;
+        align-items: start;
+        padding: 1.1rem 1.2rem;
+        border-radius: $card-radius;
+        transition: background-color 200ms ease-in-out;
+
+        &:hover {
+            background-color: $tilebg4;
+        }
+
+        // Element selector included to beat the generic `#page-content .post h3` margins
+        h3 {
+            margin: 0 0 0.3rem;
+            font-size: 1.05rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+
+        p {
+            margin: 0;
+            max-width: none;
+            line-height: 1.6;
+            color: $tiletext2;
+        }
+    }
+
+    .principle-icon {
+        grid-row: span 2;
+        display: grid;
+        place-items: center;
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.25rem;
+        color: $tiletext;
+        border-radius: 50%;
+
+        @each $hue in $eco-hues {
+            &[data-hue="#{index($eco-hues, $hue) - 1}"] {
+                background-color: rgba($hue, 0.22);
+            }
+        }
+    }
+}
+
+// Specific to /about: the landing page (layouts/about/landing.html)
+
+// The stack diagram and the card grids want more room than the prose pages under /about.
+@media (min-width: 75rem) {
+    #page-content:has(#about-landing) {
+        max-width: $maxwidthwide;
+        width: $contentwidthwide;
+    }
+}
+
+#about-landing {
+    --about-gap: 5rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--about-gap);
+    text-wrap: pretty;
+
+    @media (max-width: 50rem) {
+        --about-gap: 3.5rem;
+    }
+
+    h2 {
+        font-size: clamp(1.5rem, 2.6vw, 2rem);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin: 0;
+    }
+
+    .about-section-intro {
+        margin: 0.75rem 0 2rem;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: $tiletext2;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid $linkunderline;
+            &:hover {
+                border-bottom-color: black;
+            }
+        }
+    }
+
+    // The statement on the left, the live figures beside it, so the page opens with both what scverse is and how big it has got.
+
+    .about-top {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(21rem, 0.75fr);
+        gap: 3.5rem;
+        align-items: center;
+
+        @media (max-width: 75rem) {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+    }
+
+    .about-hero {
+        max-width: 42rem;
+
+        h1 {
+            font-size: clamp(2.4rem, 6vw, 3.75rem);
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            line-height: 1.05;
+            margin: 0 0 1.5rem;
+        }
+    }
+
+    .about-hero-lead {
+        font-size: clamp(1.2rem, 2.3vw, 1.55rem);
+        line-height: 1.45;
+        font-weight: 600;
+        letter-spacing: -0.015em;
+        color: $tiletext3;
+        margin: 0 0 1rem;
+    }
+
+    .about-hero-sub {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: $tiletext2;
+        margin: 0;
+    }
+
+    .about-hero-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 2rem;
+    }
+
+    .about-hero-link {
+        padding: 0.65rem 1.25rem;
+        border: 1px solid $overline;
+        border-radius: 2rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: $tiletext;
+        text-decoration: none;
+        background-color: white;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            border-color: $tilebg2;
+            background-color: $tilebg4;
+            transform: translateY(-2px);
+        }
+    }
+
+    // Same gradient as the Join button in the nav, so the one call to action on the page is recognisable as a button.
+    .about-hero-link--primary {
+        color: white;
+        border-color: transparent;
+        background: linear-gradient(135deg, #262fb5, #74c8fa);
+
+        &:hover {
+            color: white;
+            background: linear-gradient(135deg, #74c8fa, #d4ac00);
+        }
+    }
+
+    // Figures
+
+    .about-figures {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1px;
+        background-color: $overline;
+        border: 1px solid $overline;
+        border-radius: $card-radius;
+        overflow: hidden;
+    }
+
+    .about-figure {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        padding: 1.5rem;
+        background-color: white;
+        text-decoration: none;
+        transition: background-color 200ms ease-in-out;
+
+        &:hover {
+            background-color: $tilebg4;
+        }
+    }
+
+    .about-figure-value {
+        font-size: clamp(1.9rem, 3vw, 2.4rem);
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        font-variant-numeric: tabular-nums;
+        color: $tiletext;
+    }
+
+    .about-figure-label {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        color: $greydesc;
+    }
+
+    // Written as a descendant so `&` does not drag the whole ancestor chain in front of the class
+    @each $hue in $eco-hues {
+        .about-figure[data-hue="#{index($eco-hues, $hue) - 1}"] .about-figure-value {
+            color: darken($hue, 15%);
+        }
+    }
+
+    // The stack
+
+    .stack-layer {
+        display: grid;
+        grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+        gap: 2rem;
+        align-items: start;
+        padding: 1.75rem;
+        border: 1px solid $overline;
+        border-radius: 1.25rem;
+
+        @media (max-width: 64rem) {
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+    }
+
+    // Each layer is tinted by one of the package hues so the three read as a stack, deepest at the foundation.
+    .stack-layer--eco {
+        background-color: rgba($muonaquamarine, 0.08);
+    }
+    .stack-layer--core {
+        background-color: rgba($spatialdatablue, 0.08);
+    }
+    .stack-layer--data {
+        background-color: rgba($scversedeepblue, 0.07);
+    }
+
+    .stack-layer-head {
+        h3 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin: 0.5rem 0 0.5rem;
+        }
+
+        p {
+            margin: 0 0 0.75rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: $tiletext2;
+        }
+    }
+
+    .stack-layer-tag {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: $greydesc;
+    }
+
+    .stack-layer-more {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: $tiletext;
+        text-decoration: none;
+        border-bottom: 1px solid $linkunderline;
+        transition: border-color 200ms ease-in-out;
+
+        &:hover {
+            border-bottom-color: black;
+        }
+    }
+
+    // The joint between two layers, so the diagram reads bottom-up as one thing
+    .stack-joint {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin: 0.4rem 0;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: $greydesc;
+    }
+
+    .stack-joint-line {
+        flex: 1;
+        height: 1px;
+        background-color: $overline;
+    }
+
+    // Layer 3: every registered ecosystem package, capped in height with a fade so the cloud reads as a texture.
+    .stack-cloud {
+        position: relative;
+        max-height: 11rem;
+        overflow: hidden;
+        mask-image: linear-gradient(to bottom, black 65%, transparent);
+    }
+
+    .stack-cloud-inner {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .stack-chip {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: $tiletext2;
+        text-decoration: none;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: 2rem;
+        transition: all 150ms ease-in-out;
+
+        &:hover {
+            color: black;
+            border-color: $tilebg2;
+            transform: translateY(-1px);
+        }
+    }
+
+    // Layer 2: the core frameworks, logo and name only
+    .stack-tiles {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+        gap: 0.6rem;
+    }
+
+    .stack-tile {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.7rem 0.85rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: $tiletext;
+        text-decoration: none;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: 0.6rem;
+        transition: all 200ms ease-in-out;
+
+        img {
+            width: 1.75rem;
+            height: 1.75rem;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        &:hover {
+            border-color: $tilebg2;
+            box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+    }
+
+    // Layer 1: the three data structures get room for a line of explanation
+    .stack-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+        gap: 0.75rem;
+    }
+
+    .stack-card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        padding: 1.1rem;
+        text-decoration: none;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: 0.75rem;
+        transition: all 200ms ease-in-out;
+
+        img {
+            width: 2.5rem;
+            height: 2.5rem;
+            object-fit: contain;
+            object-position: left;
+            margin-bottom: 0.2rem;
+        }
+
+        &:hover {
+            border-color: $tilebg2;
+            box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+    }
+
+    .stack-card-name {
+        font-weight: 700;
+        color: $tiletext;
+    }
+
+    .stack-card-text {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        color: $tiletext2;
+    }
+
+    // Governance
+
+    .about-inline-counts {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.6rem;
+        margin: -1rem 0 2rem;
+        font-size: 0.95rem;
+        color: $tiletext2;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            &:hover {
+                border-bottom-color: $linkunderline;
+            }
+        }
+
+        strong {
+            color: $tiletext;
+            font-variant-numeric: tabular-nums;
+        }
+    }
+
+    .about-inline-sep {
+        color: $tilebg2;
+    }
+
+    .doc-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+
+        @media (max-width: 64rem) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        @media (max-width: 50rem) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .doc-card {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        text-decoration: none;
+        background-color: $tilebg4;
+        border: 1px solid $overline;
+        border-radius: $card-radius;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            border-color: $tilebg2;
+            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+    }
+
+    .doc-card-icon {
+        display: grid;
+        place-items: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+        border-radius: 50%;
+        background-color: $tilebg;
+        color: $tiletext;
+    }
+
+    @each $hue in $eco-hues {
+        .doc-card[data-hue="#{index($eco-hues, $hue) - 1}"] .doc-card-icon {
+            background-color: rgba($hue, 0.18);
+            color: darken($hue, 12%);
+        }
+    }
+
+    .doc-card-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: $tiletext;
+        margin-bottom: 0.35rem;
+    }
+
+    .doc-card-text {
+        font-size: 0.95rem;
+        line-height: 1.55;
+        color: $tiletext2;
+    }
+
+    // Take part
+
+    .about-take-part {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 2.5rem;
+        align-items: center;
+        padding: 2.5rem;
+        border-radius: 1.25rem;
+        background-color: $tilebg4;
+
+        @media (max-width: 64rem) {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 1.75rem;
+        }
+
+        p {
+            margin: 0.75rem 0 0;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: $tiletext2;
+        }
+    }
+
+    .take-part-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+    }
+
+    .take-part-link {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.6rem 1rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: $tiletext;
+        text-decoration: none;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: 2rem;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            border-color: $tilebg2;
+            box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+
+        i {
+            display: inline-flex;
+            font-size: 1rem;
+            color: $tiletext2;
+        }
+    }
+
+    // Sponsorship
+
+    .about-sponsor {
+        display: grid;
+        grid-template-columns: 14rem minmax(0, 1fr);
+        gap: 2.5rem;
+        align-items: center;
+        padding: 2.5rem;
+        border: 1px solid $overline;
+        border-radius: 1.25rem;
+
+        @media (max-width: 64rem) {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 1.75rem;
+        }
+
+        p {
+            margin: 0.75rem 0 0;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: $tiletext2;
+        }
+
+        a {
+            color: inherit;
+        }
+    }
+
+    .sponsor-mark img {
+        width: 100%;
+        max-width: 13rem;
+        height: auto;
+    }
+
+    .sponsor-button {
+        display: inline-block;
+        margin-top: 1.25rem;
+        padding: 0.65rem 1.25rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: white;
+        text-decoration: none;
+        border-radius: 2rem;
+        background: linear-gradient(135deg, #262fb5, #74c8fa);
+        transition: background 200ms ease-in-out;
+
+        &:hover {
+            color: white;
+            background: linear-gradient(135deg, #74c8fa, #d4ac00);
+        }
+    }
+
+    .sponsor-fineprint {
+        font-size: 0.8rem !important;
+        line-height: 1.6 !important;
+        color: $greydesc !important;
+        margin-top: 1.25rem !important;
+        max-width: 44rem;
     }
 }

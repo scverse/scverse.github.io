@@ -1,6 +1,23 @@
-<a class="gov-name" href="#{{ .anchor }}">{{ .name }}</a> {{ with .role }}
-  <span class="gov-meta">
-    <span class="gov-count">{{ .count }}</span>
-    <a href="/people/?role={{ .id }}">who &rarr;</a>
-  </span>
-{{ end }}
+{{/* One box in the governance chart: what the group is, and who is in it where the people page knows. */}}
+<div class="gov-card" data-hue="{{ .hue }}">
+  <span class="gov-icon" aria-hidden="true"><i class="bi {{ .icon }}"></i></span>
+  <div class="gov-body">
+    <a class="gov-name" href="#{{ .anchor }}">{{ .name }}</a>
+    {{ with .text }}<p class="gov-text">{{ . }}</p>{{ end }}
+  </div>
+  {{ with .role }}
+    <a class="gov-people" href="/people/?role={{ .id }}">
+      {{ with .members }}
+        <span class="gov-faces" aria-hidden="true">
+          {{ range $i, $p := first 5 . }}
+            <span class="gov-face">
+              {{ partial "people/avatar.html" (dict "url" $p.url "name" $p.name "index" $i "size" 28) }}
+            </span>
+          {{ end }}
+        </span>
+      {{ end }}
+      <span class="gov-count">{{ .count }}</span>
+      <span class="visually-hidden">people hold this role</span>
+    </a>
+  {{ end }}
+</div>

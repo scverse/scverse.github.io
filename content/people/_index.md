@@ -3,6 +3,7 @@ title = "People"
 description = "The core team, steering council, committees and contributors behind scverse."
 lead = "The people who build and govern scverse, in <a href='/about/roles'>a handful of different roles</a>."
 team_lead = "The following people hold an official role within scverse."
+groups_lead = "Working groups bring together people from inside and outside the team around one area of scverse."
 
 # ---------- roles, in the order they sort into the directory
 
@@ -25,12 +26,6 @@ team_lead = "The following people hold an official role within scverse."
 	text = "Trusted community members responsible for essential parts of scverse."
 
 [[roles]]
-	id = "proteomics"
-	short = "proteomics WG"
-	label = "Proteomics Working Group"
-	text = "A collaborative community advancing single-cell and spatial proteomics across methodology, software, and community engagement."
-
-[[roles]]
 	id = "management"
 	short = "management"
 	label = "Management Committee"
@@ -47,6 +42,15 @@ team_lead = "The following people hold an official role within scverse."
 	short = "alumni"
 	label = "Alumni"
 	text = "Former core team members who made essential contributions to scverse."
+
+# ---------- working groups, listed in their own section after the team
+
+[[roles]]
+	id = "proteomics"
+	working_group = true
+	short = "proteomics WG"
+	label = "Proteomics Working Group"
+	text = "A collaborative community advancing single-cell and spatial proteomics across methodology, software, and community engagement."
 
 # ---------- people, one entry per person, alphabetical by last name within each role
 #
@@ -97,7 +101,7 @@ team_lead = "The following people hold an official role within scverse."
 	name = "Can Ergen-Behr"
 	url = "https://github.com/canergen"
 	email = "can.ergen@scverse.org"
-	affiliation = "University of California, Berkeley"
+	affiliation = "Helmholtz Munich & University of Würzburg"
 	roles = ["core"]
 	works_on = ["scvi-tools"]
 
@@ -113,7 +117,7 @@ team_lead = "The following people hold an official role within scverse."
 	name = "Ilan Gold"
 	url = "https://github.com/ilan-gold"
 	email = "ilan.gold@scverse.org"
-	affiliation = "Helmholtz Munich"
+	affiliation = "Memorial Sloan Kettering Cancer Center"
 	roles = ["core"]
 	works_on = ["anndata", "scanpy"]
 
@@ -140,6 +144,14 @@ team_lead = "The following people hold an official role within scverse."
 	affiliation = "NVIDIA"
 	roles = ["core"]
 	works_on = ["grants", "workshops"]
+
+[[people]]
+	name = "Ilia Kats"
+	url = "https://github.com/ilia-kats"
+	email = "ilia.kats@scverse.org"
+	affiliation = "German Cancer Research Center (DKFZ)"
+	roles = ["core"]
+	works_on = ["mudata", "muon"]
 
 [[people]]
 	name = "Mikaela Koutrouli"
@@ -177,7 +189,7 @@ team_lead = "The following people hold an official role within scverse."
 	name = "Giovanni Palla"
 	url = "https://github.com/giovp"
 	email = "giovanni.palla@scverse.org"
-	affiliation = "CZI"
+	affiliation = "Lila Sciences"
 	roles = ["core"]
 	works_on = ["spatialdata", "squidpy"]
 
@@ -228,13 +240,6 @@ team_lead = "The following people hold an official role within scverse."
 	affiliation = "Westlake University"
 	roles = ["core"]
 	works_on = ["snapatac2"]
-
-[[people]]
-	name = "Ilia Kats"
-	url = "https://github.com/ilia-kats"
-	affiliation = "German Cancer Research Center (DKFZ)"
-	roles = ["helping-hands"]
-	works_on = ["mudata", "muon"]
 
 [[people]]
 	name = "Malte Kuehl"

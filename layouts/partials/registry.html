@@ -1,0 +1,12 @@
+{{/* The ecosystem package registry: base URL (logos are relative to it), all packages, and the core subset. */}}
+{{ $base := "https://scverse.org/ecosystem-packages/" }}
+{{ $data := resources.GetRemote (printf "%spackages.json" $base) }}
+{{ $pkgs := transform.Unmarshal $data.Content }}
+{{/* core-infrastructure is the scverse repos themselves, not packages, so it is not a core category here. */}}
+{{ $coreCategories := slice "core-datastructure" "core-framework" }}
+{{ return dict
+  "base" $base
+  "pkgs" $pkgs
+  "coreCategories" $coreCategories
+  "core" (where $pkgs "category" "in" $coreCategories)
+}}
