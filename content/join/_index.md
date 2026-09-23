@@ -6,7 +6,7 @@ description = "How to get help with scverse, contribute code, add a package to t
 	id = "ask"
 	icon = "bi-chat-dots"
 	title = "Ask a question"
-	text = "Usage questions go to the Discourse forum. Development discussion and day-to-day chat happen on Zulip."
+	text = "Usage questions go to Discourse, development chat to Zulip."
 
 	[[paths.links]]
 		label = "Discourse forum"
@@ -20,7 +20,7 @@ description = "How to get help with scverse, contribute code, add a package to t
 	id = "contribute"
 	icon = "bi-code-slash"
 	title = "Contribute code"
-	text = "Every core package takes pull requests. Start from an issue tagged good first issue. Two core team members backing your work makes you a contributor."
+	text = "Every core package takes pull requests. Good first issues are the easiest way in."
 
 	[[paths.links]]
 		label = "Good first issues"
@@ -42,7 +42,7 @@ description = "How to get help with scverse, contribute code, add a package to t
 	id = "package"
 	icon = "bi-box-seam"
 	title = "Add your package"
-	text = "Packages built on AnnData, MuData or SpatialData can be listed in the ecosystem. The registry repository has the criteria and the submission form. The project template covers the testing, docs and packaging setup."
+	text = "Packages built on AnnData, MuData or SpatialData can be listed in the ecosystem."
 
 	[[paths.links]]
 		label = "Inclusion criteria and submission"
@@ -60,7 +60,7 @@ description = "How to get help with scverse, contribute code, add a package to t
 	id = "meet"
 	icon = "bi-people"
 	title = "Meet the community"
-	text = "The open community meeting runs every two weeks on Tuesday at 6pm CET, with an open agenda anyone can add to. Hackathons and the annual conference run through the year."
+	text = "Anyone can join the community meeting, every other Tuesday at 6pm CET."
 
 	[[paths.links]]
 		label = "Community meeting document"
