@@ -1,6 +1,6 @@
 # scverse
 
-> scverse is a consortium of foundational, interoperable open-source tools (mostly Python) for single-cell and spatial omics data analysis in the life sciences.
+> scverse is a consortium of foundational, interoperable open-source tools for single-cell and spatial omics data analysis in the life sciences.
 
 scverse packages share common data structures (AnnData, MuData, SpatialData) to guarantee interoperability across the ecosystem.
 Most package documentation lives on dedicated external sites, linked below.
