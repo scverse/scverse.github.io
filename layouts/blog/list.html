@@ -1,19 +1,56 @@
 {{ define "main" }}
-  <h1>Blog</h1>
-  {{ range .Pages }}
-    <a href="{{ .RelPermalink }}">
-      <article class="page-item">
-        <div class="page-item-date">
-          <span>{{ .Date.Format "January 02, 2006" }}</span>
-        </div>
-        <div class="page-item-content">
-          <h2>{{ .Title }}</h2>
-          {{ with .Params.author }}
-            <span class="page-item-author">{{ . }}</span>
+  {{ $posts := .Pages.ByDate.Reverse }}
+  <div id="blog-content">
+    <h1>{{ .Title }}</h1>
+    <p class="blog-lead">
+      {{ .Params.lead }}
+      <a href="{{ with .OutputFormats.Get "rss" }}{{ .RelPermalink }}{{ end }}" class="blog-rss">RSS feed</a>
+    </p>
+
+    {{ with index $posts 0 }}
+      {{/* The newest post leads with the first image in its body, when it has one. */}}
+      {{ $image := "" }}
+      {{ with findRESubmatch `<img[^>]+src="([^"]+)"` .Content 1 }}
+        {{ $image = index (index . 0) 1 }}
+      {{ end }}
+      <a class="blog-featured" href="{{ .RelPermalink }}">
+        {{ with $image }}
+          <span class="blog-featured-image"><img src="{{ . }}" alt="" /></span>
+        {{ end }}
+        <span class="blog-featured-body">
+          <span class="blog-meta">
+            <span class="blog-badge">Latest</span>
+            {{ .Date.Format "January 2, 2006" }}
+          </span>
+          <span class="blog-featured-title">{{ .Title }}</span>
+          <span class="blog-text">{{ .Description }}</span>
+          {{ with .Params.author }}<span class="blog-author">{{ . }}</span>{{ end }}
+        </span>
+      </a>
+    {{ end }}
+
+    {{ $rest := after 1 $posts }}
+    {{ $years := slice }}
+    {{ range $rest }}
+      {{ $years = $years | append .Date.Year }}
+    {{ end }}
+    {{ range uniq $years }}
+      {{ $year := . }}
+      <section class="blog-year">
+        <h2 id="posts-{{ $year }}">{{ $year }}</h2>
+        <div class="blog-list">
+          {{ range where $rest "Date.Year" $year }}
+            <a class="blog-row" href="{{ .RelPermalink }}">
+              <span class="blog-row-title">{{ .Title }}</span>
+              <span class="blog-text">{{ .Description }}</span>
+              <span class="blog-meta">
+                {{ .Date.Format "January 2" }}
+                {{ with .Params.author }}· {{ . }}{{ end }}
+              </span>
+            </a>
           {{ end }}
-          <span>{{ .Description }}</span>
         </div>
-      </article>
-    </a>
-  {{ end }}
+      </section>
+    {{ end }}
+  </div>
 {{ end }}
