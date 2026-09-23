@@ -1,6 +1,9 @@
 +++
 title = "scverse Hackathon 2023-04 Heidelberg"
 date = 2023-04-26T00:00:05+01:00
+end_date = 2023-04-28
+event_type = "hackathon"
+location = "Heidelberg"
 description = "Hackathon on interoperability and knowledge representation"
 draft = false
 +++

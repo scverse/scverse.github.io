@@ -1,0 +1,17 @@
+{{ $page := .page }}
+<a
+  class="event-card {{ if .featured }}event-card--featured{{ end }}"
+  href="{{ $page.Params.link | default $page.RelPermalink }}"
+>
+  {{ with and .featured $page.Params.image }}
+    <span class="event-card-image"><img src="{{ . }}" alt="" loading="lazy" /></span>
+  {{ end }}
+  <span class="event-card-body">
+    <span class="event-card-meta">
+      {{ with $page.Params.event_type }}<span class="event-kind event-kind--{{ . }}">{{ . }}</span>{{ end }}
+      <span class="event-date">{{ partial "events/dates.html" $page }}</span>
+    </span>
+    <span class="event-card-title">{{ $page.Params.location | default $page.Title }}</span>
+    <span class="event-card-text">{{ $page.Description }}</span>
+  </span>
+</a>

@@ -1,6 +1,9 @@
 +++
 title = "scverse Hackathon 2023-11 Cambridge"
-date = 2023-11-26T00:00:05+01:00
+date = 2023-11-27T00:00:05+01:00
+end_date = 2023-11-29
+event_type = "hackathon"
+location = "Cambridge"
 description = "Hackathon on multi-condition analysis and ML data loaders"
 draft = false
 +++

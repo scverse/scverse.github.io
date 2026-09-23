@@ -127,6 +127,209 @@ $eco-hues:
     }
 }
 
+#events-content {
+    h1 {
+        margin-bottom: 0.5rem;
+    }
+
+    .events-lead {
+        margin: 0 0 2.5rem;
+        font-size: 1.1rem;
+        color: $tiletext2;
+    }
+
+    h2 {
+        margin: 3rem 0 1rem;
+        font-size: 1.5rem;
+        font-weight: 800;
+    }
+
+    .events-upcoming {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .events-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+        gap: 1rem;
+    }
+
+    .events-year {
+        display: grid;
+        grid-template-columns: 5rem 1fr;
+        gap: 1rem;
+        padding: 1.5rem 0;
+        border-top: 1px solid $overline;
+
+        h3 {
+            margin: 0.9rem 0 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: $greydesc;
+        }
+    }
+
+    .event-card {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        color: $tiletext;
+        text-decoration: none;
+        background-color: white;
+        border: 1px solid $overline;
+        border-radius: $card-radius;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            border-color: $tilebg2;
+            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+    }
+
+    .event-card-image {
+        display: block;
+        aspect-ratio: 16 / 7;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .event-card-body {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        padding: 1.1rem 1.25rem 1.25rem;
+    }
+
+    .event-card-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        color: $greydesc;
+    }
+
+    .event-kind {
+        padding: 0.05rem 0.4rem;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        border: 1px solid $overline;
+        border-radius: 0.25rem;
+    }
+
+    .event-kind--conference {
+        color: white;
+        background-color: $tiletext;
+        border-color: $tiletext;
+    }
+
+    .event-card-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: black;
+    }
+
+    .event-card-text {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: $tiletext2;
+    }
+
+    .event-card--featured {
+        .event-card-body {
+            padding: 1.35rem 1.5rem 1.5rem;
+        }
+        .event-card-title {
+            font-size: 1.5rem;
+        }
+        .event-date {
+            font-weight: 600;
+            color: $tiletext;
+        }
+    }
+
+    .events-meeting {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        background-color: $tilebg4;
+        border: 1px solid $overline;
+        border-radius: $card-radius;
+
+        h3 {
+            margin: 0;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+        p {
+            margin: 0.35rem 0 0;
+            font-size: 0.95rem;
+            line-height: 1.55;
+            color: $tiletext2;
+        }
+        .events-meeting-schedule {
+            font-weight: 600;
+            color: $tiletext;
+        }
+    }
+
+    .events-meeting-icon {
+        display: grid;
+        place-items: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+        color: darken($spatialdatablue, 12%);
+        background-color: rgba($spatialdatablue, 0.18);
+        border-radius: 50%;
+    }
+
+    .events-meeting-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem 1.25rem;
+        margin: auto 0 0;
+        padding: 1.25rem 0 0;
+        list-style: none;
+
+        a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: $tiletext;
+            text-decoration-color: $tilebg2;
+            text-underline-offset: 0.2em;
+
+            &:hover {
+                text-decoration-color: currentColor;
+            }
+        }
+    }
+
+    @media (max-width: 50rem) {
+        .events-upcoming {
+            grid-template-columns: 1fr;
+        }
+        .events-year {
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+
+            h3 {
+                margin: 0;
+            }
+        }
+    }
+}
+
 #join-content {
     .join-grid {
         display: grid;

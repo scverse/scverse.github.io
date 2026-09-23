@@ -1,6 +1,9 @@
 +++
 title = "scverse Hackathon 2022-12 Innsbruck"
 date = 2022-12-08T00:00:05+01:00
+end_date = 2022-12-09
+event_type = "hackathon"
+location = "Innsbruck"
 description = "Hackathon on documentation"
 draft = false
 +++
