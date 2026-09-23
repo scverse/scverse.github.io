@@ -81,7 +81,6 @@
             {{ end }}
             {{ $categoryCounts = sort $categoryCounts "count" "desc" }}
 
-            {{/* Language row: the package's own language plus every language it has a binding for. */}}
             {{ $languages := slice }}
             {{ range $items }}
               {{ range .languages }}
@@ -172,12 +171,7 @@
                 {{ end }}
               </div>
 
-              <div
-                class="eco-chips eco-chips--language"
-                id="eco-languages"
-                role="group"
-                aria-label="Filter by language"
-              >
+              <div class="eco-chips" id="eco-languages" role="group" aria-label="Filter by language">
                 <button type="button" class="eco-chip is-active" data-language="" aria-pressed="true">
                   Any language
                 </button>
