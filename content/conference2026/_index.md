@@ -16,13 +16,13 @@ subtitle = "The third scverse conference brings together the single-cell and spa
 name = "Register"
 url = "https://dtu.events/scverse2026/signup.html?step=participants"
 [[buttons]]
-name = "Call for proposals"
-url = "/conference2026/call-for-proposals/"
+name = "Schedule"
+url = "/conference2026/schedule/"
 
 # Key dates timeline (placeholder — to be confirmed)
 [[keyDates]]
 date = "Open now"
-event = "Registration & call for proposals open"
+event = "Registration open"
 [[keyDates]]
 date = "August 20, 2026"
 event = "Travel-grant application deadline (closed)"
@@ -31,10 +31,10 @@ date = "September 3, 2026"
 event = "Travel-grant award notifications"
 [[keyDates]]
 date = "September 7, 2026"
-event = "Abstract submission deadline"
+event = "Abstract submission deadline (closed)"
 [[keyDates]]
 date = "September 14, 2026"
-event = "Early-bird registration ends"
+event = "Early-bird registration (ended)"
 [[keyDates]]
 date = "October 12 – 14, 2026"
 event = "scverse conference 2026 — Copenhagen"
@@ -48,6 +48,6 @@ After Munich (2024) and Stanford (2025), the **third scverse conference** comes 
 
 Expect keynote talks, contributed talks and posters, hands-on workshops and tutorials, and plenty of time to connect with the people building and using the scverse ecosystem.
 
-> **Registration and the call for proposals are now open, and our first speakers have been announced.** The full program and remaining details will be posted here as they are confirmed. Follow us on [Zulip](https://scverse.zulipchat.com/), [Bluesky](https://bsky.app/profile/scverse.bsky.social), [LinkedIn](https://linkedin.com/company/scverse), or [X](https://x.com/scverse_team) to stay up to date.
+> **Registration is open, and our first speakers have been announced.** The full program and remaining details will be posted here as they are confirmed. Follow us on [Zulip](https://scverse.zulipchat.com/), [Bluesky](https://bsky.app/profile/scverse.bsky.social), [LinkedIn](https://linkedin.com/company/scverse), or [X](https://x.com/scverse_team) to stay up to date.
 
 Questions? Email us at [conference2026@scverse.org](mailto:conference2026@scverse.org).

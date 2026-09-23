@@ -5,7 +5,7 @@ type = "conference2026"
 weight = 5
 +++
 
-<div class="status-banner">Abstract submission is open until <strong>September 7, 2026</strong> — <a href="https://dtu.events/scverse2026/signup.html?step=participants">submit here</a>.</div>
+<div class="status-banner">Abstract submission closed on <strong>September 7, 2026</strong>. Thank you to everyone who submitted.</div>
 
 ## Share your work
 
@@ -26,8 +26,8 @@ The scverse conference program is built with the community. We welcome submissio
   </div>
 </div>
 
-## How to submit
+## Review
 
-Submit your abstract through the [scverse 2026 submission portal](https://dtu.events/scverse2026/signup.html?step=participants). The **abstract submission deadline is September 7, 2026**. Abstracts will be reviewed by the program committee, and submitting an abstract also makes you eligible to apply for a [travel grant](/conference2026/registration/#travel-grants).
+Abstracts were submitted through the scverse 2026 submission portal until **September 7, 2026**, and are reviewed by the program committee. Accepted talks and posters will appear in the [schedule](/conference2026/schedule/).
 
 Questions about submissions? Email [conference2026@scverse.org](mailto:conference2026@scverse.org).
