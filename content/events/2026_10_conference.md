@@ -4,7 +4,7 @@ date = 2026-10-12T00:00:00+01:00
 end_date = 2026-10-14
 event_type = "conference"
 location = "Copenhagen"
-image = "/img/events/2026_10_conference_bg.webp"
+image = "/img/events/2026_10_conference_bg_card.webp"
 description = "The third scverse conference"
 +++
 
