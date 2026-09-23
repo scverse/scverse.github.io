@@ -11,7 +11,7 @@ import initInteractiveViz from "./components/viz"
 const ecoRoot = document.querySelector<HTMLElement>("#ecosystem-packages")
 if (ecoRoot) initEcosystemRegistry(ecoRoot)
 
-const peopleRoot = document.querySelector<HTMLElement>("#people-directory")
+const peopleRoot = document.querySelector<HTMLElement>("#people-content")
 if (peopleRoot) initPeopleDirectory(peopleRoot)
 
 const contribMosaic = document.querySelector<HTMLElement>("#contributors")

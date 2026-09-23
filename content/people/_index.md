@@ -3,6 +3,7 @@ title = "People"
 description = "The core team, steering council, committees and contributors behind scverse."
 lead = "The people who build and govern scverse, in <a href='/about/roles'>a handful of different roles</a>."
 team_lead = "The following people hold an official role within scverse."
+groups_lead = "Working groups bring together people from inside and outside the team around one area of scverse."
 
 # ---------- roles, in the order they sort into the directory
 
@@ -25,12 +26,6 @@ team_lead = "The following people hold an official role within scverse."
 	text = "Trusted community members responsible for essential parts of scverse."
 
 [[roles]]
-	id = "proteomics"
-	short = "proteomics WG"
-	label = "Proteomics Working Group"
-	text = "A collaborative community advancing single-cell and spatial proteomics across methodology, software, and community engagement."
-
-[[roles]]
 	id = "management"
 	short = "management"
 	label = "Management Committee"
@@ -47,6 +42,15 @@ team_lead = "The following people hold an official role within scverse."
 	short = "alumni"
 	label = "Alumni"
 	text = "Former core team members who made essential contributions to scverse."
+
+# ---------- working groups, listed in their own section after the team
+
+[[roles]]
+	id = "proteomics"
+	working_group = true
+	short = "proteomics WG"
+	label = "Proteomics Working Group"
+	text = "A collaborative community advancing single-cell and spatial proteomics across methodology, software, and community engagement."
 
 # ---------- people, one entry per person, alphabetical by last name within each role
 #
