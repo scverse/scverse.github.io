@@ -147,18 +147,7 @@
                 id="{{ .name | lower }}-tile"
               >
                 <div class="icon-img">
-                  <!-- Store both image versions in data attributes -->
-                  <img
-                    src="{{ .img }}"
-                    alt="{{ .name }} logo"
-                    loading="lazy"
-                    data-icon="{{ .img }}"
-                    data-icon-with-text="{{ if .imgWithText }}
-                      {{ .imgWithText }}
-                    {{ else }}
-                      {{ .img }}
-                    {{ end }}"
-                  />
+                  <img src="{{ .img }}" alt="{{ .name }} logo" loading="lazy" />
                 </div>
                 <div class="icon-info">
                   <div class="icon-tile">
@@ -169,18 +158,7 @@
                   </div>
                   <div class="icon-links">
                     {{ range $k, $v := $e.links }}
-                      <!-- Add data attributes to store both versions of the URL -->
-                      <a
-                        href="{{ $v.url }}"
-                        target="_blank"
-                        class="icon-link"
-                        data-icon-url="{{ $v.url }}"
-                        data-with-text-url="{{ if $v.urlWithText }}
-                          {{ $v.urlWithText }}
-                        {{ else }}
-                          {{ $v.url }}
-                        {{ end }}"
-                      >
+                      <a href="{{ $v.url }}" target="_blank" class="icon-link">
                         {{ $v.text }}
                       </a>
                     {{ end }}
@@ -199,45 +177,4 @@
       </div>
     {{ end }}
   </article>
-{{ end }}
-
-{{ define "scripts" }}
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const toggleSwitch = document.getElementById("icon-display-mode")
-      const iconsList = document.getElementById("icons-list")
-
-      toggleSwitch.addEventListener("change", function () {
-        if (this.checked) {
-          // Switch to logos with text mode
-          iconsList.classList.remove("icons-only-mode")
-          iconsList.classList.add("icons-with-text-mode")
-
-          // Update all displayed images to the text version
-          document.querySelectorAll("#icons-list .icon-img img").forEach((img) => {
-            img.src = img.dataset.iconWithText
-          })
-
-          // Update download links to point to the text versions
-          document.querySelectorAll("#icons-list .icon-link").forEach((link) => {
-            link.href = link.dataset.withTextUrl
-          })
-        } else {
-          // Switch to icons only mode
-          iconsList.classList.remove("icons-with-text-mode")
-          iconsList.classList.add("icons-only-mode")
-
-          // Update all displayed images to the icon-only version
-          document.querySelectorAll("#icons-list .icon-img img").forEach((img) => {
-            img.src = img.dataset.icon
-          })
-
-          // Update download links to point to the icon-only versions
-          document.querySelectorAll("#icons-list .icon-link").forEach((link) => {
-            link.href = link.dataset.iconUrl
-          })
-        }
-      })
-    })
-  </script>
 {{ end }}

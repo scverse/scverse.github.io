@@ -1249,6 +1249,9 @@ body {
                     display: flex;
                     align-items: center;
                     text-decoration: none;
+                    box-sizing: content-box;
+                    padding: 0.5rem;
+                    margin: -0.5rem;
                     svg {
                         fill: $greydesc;
                     }
@@ -1300,10 +1303,13 @@ body {
                     overflow-x: auto;
                 }
             }
-            > table {
+            > .table-scroll {
+                margin: 1.5rem 0;
+                overflow-x: auto;
+            }
+            > .table-scroll > table {
                 width: 100%;
                 border-collapse: collapse;
-                margin: 1.5rem 0;
                 font-size: 1rem;
                 th,
                 td {
