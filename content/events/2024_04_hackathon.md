@@ -1,6 +1,9 @@
 +++
 title = "scverse Hackathon 2024-04 Boston"
 date = 2024-04-02T00:00:05+01:00
+end_date = 2024-04-04
+event_type = "hackathon"
+location = "Boston"
 description = "Hackathon on interactive analysis single-cell and spatial genomics"
 draft = false
 +++

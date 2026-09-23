@@ -1,7 +1,10 @@
 +++
 title = "scverse Conference 2024-09 Munich"
 date = 2024-09-10T00:00:05+01:00
-description = "scverse conference"
+end_date = 2024-09-12
+event_type = "conference"
+location = "Munich"
+description = "The first scverse conference"
 draft = false
 +++
 

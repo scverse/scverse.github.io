@@ -1,7 +1,10 @@
 +++
 title = "scverse Conference 2025-11 Stanford"
 date = 2025-11-17T00:00:00+01:00
-description = "scverse conference"
+end_date = 2025-11-19
+event_type = "conference"
+location = "Stanford"
+description = "The second scverse conference"
 draft = false
 +++
 

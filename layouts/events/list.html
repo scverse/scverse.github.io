@@ -1,42 +1,63 @@
-{{ define "upcoming" }}
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
-
-
-  <!-- Only show if there are any -->
-  {{ with where .Data.Pages "Date.Unix" ">" now.Unix }}
-    <h2>Upcoming events</h2>
-    {{ range . }}
-      <a href="{{ with .Params.link }}{{ . }}{{ else }}{{ .RelPermalink }}{{ end }}">
-        <article class="page-item">
-          <div class="page-item-date">
-            <span>{{ .Date.Format "January 02, 2006" }}</span>
-          </div>
-          <div class="page-item-content">
-            <h2>{{ .Title }}</h2>
-            <span>{{ .Description }}</span>
-          </div>
-        </article>
-      </a>
-    {{ end }}
-  {{ else }}
-    <!-- No upcoming events -->
-  {{ end }}
-{{ end }}
-
 {{ define "main" }}
-  <h2>Past events</h2>
-  {{ range where .Data.Pages "Date.Unix" "<=" now.Unix }}
-    <a href="{{ with .Params.link }}{{ . }}{{ else }}{{ .RelPermalink }}{{ end }}">
-      <article class="page-item">
-        <div class="page-item-date">
-          <span>{{ .Date.Format "January 02, 2006" }}</span>
-        </div>
-        <div class="page-item-content">
-          <h2>{{ .Title }}</h2>
-          <span>{{ .Description }}</span>
-        </div>
-      </article>
-    </a>
+  {{ $today := now.Format "2006-01-02" }}
+  {{ $upcoming := slice }}
+  {{ $past := slice }}
+  {{/* An event stays upcoming until its last day is over, so one in progress still leads the page. */}}
+  {{ range .Pages.ByDate }}
+    {{ $end := time.AsTime (.Params.end_date | default .Date) }}
+    {{ if ge ($end.Format "2006-01-02") $today }}
+      {{ $upcoming = $upcoming | append . }}
+    {{ else }}
+      {{ $past = $past | append . }}
+    {{ end }}
   {{ end }}
+  {{ $years := slice }}
+  {{ range $past }}
+    {{ $years = $years | append .Date.Year }}
+  {{ end }}
+
+
+  <div id="events-content">
+    <h1>{{ .Title }}</h1>
+    <p class="events-lead">{{ .Params.lead }}</p>
+
+    <h2 id="upcoming">Upcoming</h2>
+    <div class="events-upcoming">
+      {{ range $upcoming }}
+        {{ partial "events/card.html" (dict "page" . "featured" true) }}
+      {{ end }}
+      {{ with .Params.meeting }}
+        <section class="events-meeting" id="community-meeting">
+          <span class="events-meeting-icon"><i class="bi-camera-video" aria-hidden="true"></i></span>
+          <h3>{{ .title }}</h3>
+          <p class="events-meeting-schedule">{{ .schedule }}</p>
+          <p>{{ .text }}</p>
+          <ul class="events-meeting-links">
+            {{ range .links }}
+              <li>
+                <a href="{{ .url }}" {{ if hasPrefix .url "http" }}target="_blank" rel="noopener"{{ end }}>
+                  {{- .label -}}
+                </a>
+              </li>
+            {{ end }}
+          </ul>
+        </section>
+      {{ end }}
+    </div>
+
+    {{ with $past }}
+      <h2 id="past">Past events</h2>
+      {{ range sort (uniq $years) "value" "desc" }}
+        {{ $year := . }}
+        <section class="events-year">
+          <h3 id="past-{{ $year }}">{{ $year }}</h3>
+          <div class="events-grid">
+            {{ range sort (where $past "Date.Year" $year) "Date" "desc" }}
+              {{ partial "events/card.html" (dict "page" .) }}
+            {{ end }}
+          </div>
+        </section>
+      {{ end }}
+    {{ end }}
+  </div>
 {{ end }}

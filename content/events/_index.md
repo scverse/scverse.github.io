@@ -1,19 +1,18 @@
----
-title: Events 
-description: Upcoming and past scverse conferences, hackathons and community meetings.
----
++++
+title = "Events"
+description = "Upcoming and past scverse conferences, hackathons and community meetings."
+lead = "Conferences, hackathons and a community meeting every other week, all open to anyone working with scverse."
 
-## Open community meeting
+[meeting]
+	title = "Open community meeting"
+	schedule = "Every other Tuesday, 6pm CET"
+	text = "Open to everyone and a good way to meet the people behind scverse. Most meetings start with a short talk on a development topic or a new ecosystem package, and anyone can add to the agenda."
 
-Scverse community meetings happen **every two weeks on Tuesday at 6pm CET** and are open to
-everyone! If you are new to scverse, these meetings are a great way to get to know
-the people behind the project. 
+	[[meeting.links]]
+		label = "Agenda, notes and Zoom link"
+		url = "https://hackmd.io/VfVLKb3ETGKN2j_7tn8ZJQ?view"
 
-We usually start off the meetings with a short presentation about a development-related
-topic or a new [ecosystem package](/packages/#ecosystem). 
-
-The meetings have an [open agenda](https://hackmd.io/VfVLKb3ETGKN2j_7tn8ZJQ?edit). If
-you would like to bring up a topic, feel free to add it before or during the meeting!
-
-**Agenda**, **next dates**, **meeting notes** and **zoom link** are available from the
-[meeting document](https://hackmd.io/VfVLKb3ETGKN2j_7tn8ZJQ?view).
+	[[meeting.links]]
+		label = "Community calendar"
+		url = "/community-calendar"
++++

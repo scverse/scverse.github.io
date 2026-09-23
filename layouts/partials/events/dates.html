@@ -1,0 +1,13 @@
+{{- $start := .Date }}
+{{- $end := time.AsTime (.Params.end_date | default .Date) }}
+{{- if eq ($start.Format "2006-01-02") ($end.Format "2006-01-02") }}
+  {{- $start.Format "Jan 2, 2006" }}
+{{- else if eq ($start.Format "2006-01") ($end.Format "2006-01") }}
+  {{- $start.Format "Jan 2" }}–{{ $end.Format "2, 2006" }}
+{{- else if eq $start.Year $end.Year }}
+  {{- $start.Format "Jan 2" }} –
+  {{ $end.Format "Jan 2, 2006" }}
+{{- else }}
+  {{- $start.Format "Jan 2, 2006" }} –
+  {{ $end.Format "Jan 2, 2006" }}
+{{- end }}

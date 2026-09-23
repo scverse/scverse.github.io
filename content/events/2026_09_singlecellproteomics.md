@@ -1,6 +1,9 @@
 +++
 title = "Scverse x sc-Proteomics Hackathon 2026-09 Vienna"
 date = 2026-09-04T00:00:05+01:00
+end_date = 2026-09-05
+event_type = "hackathon"
+location = "Vienna"
 description = "scverse x single-cell proteomics hackathon"
 link = "https://scverse.org/sc-proteomics2026/"
 draft = false

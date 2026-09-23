@@ -1,6 +1,9 @@
 +++
 title = "scverse Hackathon 2025-03 Paris"
 date = 2025-03-17T00:00:05+01:00
+end_date = 2025-03-19
+event_type = "hackathon"
+location = "Paris"
 description = "scverse x Owkin hackathon"
 draft = false
 +++

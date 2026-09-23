@@ -1,6 +1,9 @@
 +++
 title = "scverse Hackathon 2026-03 Berlin"
 date = 2026-03-30T00:00:05+01:00
+end_date = 2026-03-31
+event_type = "hackathon"
+location = "Berlin"
 description = "scverse x proteomics hackathon"
 draft = false
 +++
