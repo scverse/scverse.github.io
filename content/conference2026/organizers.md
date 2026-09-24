@@ -38,7 +38,7 @@ Helping us bring the conference together on the ground at DTU, Copenhagen.
 <div class="org-grid">
   <div class="org-card"><a href="https://github.com/Schoof-Lab" target="_blank" rel="noopener"><img class="org-avatar" src="/img/events/conference2026/speakers/erwin-schoof.webp" alt="Erwin Schoof" loading="lazy" /></a><div class="org-name"><a href="https://github.com/Schoof-Lab" target="_blank" rel="noopener">Erwin Schoof</a></div><div class="org-role">DTU conference organizing partner</div></div>
   <div class="org-card"><div class="org-avatar org-avatar-fallback">DH</div><div class="org-name">David Nikolaus Hartlmayr</div><div class="org-role">DTU conference organizing partner</div></div>
-  <div class="org-card"><img class="org-avatar" src="/img/events/conference2026/speakers/leonardo-cobuccio.jpg" alt="Leonardo Cobuccio" loading="lazy" /><div class="org-name">Leonardo Cobuccio</div><div class="org-role">DTU conference organizing partner</div></div>
+  <div class="org-card"><img class="org-avatar" src="/img/events/conference2026/speakers/leonardo-cobuccio.png" alt="Leonardo Cobuccio" loading="lazy" /><div class="org-name">Leonardo Cobuccio</div><div class="org-role">DTU conference organizing partner</div></div>
 </div>
 
 ## Get involved
