@@ -2,16 +2,16 @@
 
 import { el, isInside } from "../lib/html"
 
-// Color clusters for UMAP visualization, using the same brand hues the package tiles below use instead of a generic chart-library palette.
+// Color clusters for UMAP visualization, using the brand hues from main.scss that the package tiles below use instead of a generic chart-library palette.
 const colorClusters = [
-  { color: "#40a9ff", count: 68, name: "Cluster A" },
-  { color: "#4ab274", count: 58, name: "Cluster B" },
-  { color: "#fbb822", count: 52, name: "Cluster C" },
-  { color: "#e5864b", count: 44, name: "Cluster D" },
-  { color: "#da347f", count: 54, name: "Cluster E" },
-  { color: "#969dea", count: 48, name: "Cluster F" },
-  { color: "#de367b", count: 38, name: "Cluster G" },
-  { color: "#6cf1a1", count: 62, name: "Cluster H" },
+  { color: "var(--spatialdata-blue)", count: 68, name: "Cluster A" },
+  { color: "var(--mudata-green)", count: 58, name: "Cluster B" },
+  { color: "var(--scvi-yellow)", count: 52, name: "Cluster C" },
+  { color: "var(--anndata-orange)", count: 44, name: "Cluster D" },
+  { color: "var(--scirpy-purple)", count: 54, name: "Cluster E" },
+  { color: "var(--squidpy-violet)", count: 48, name: "Cluster F" },
+  { color: "var(--scanpy-cerise)", count: 38, name: "Cluster G" },
+  { color: "var(--muon-aquamarine)", count: 62, name: "Cluster H" },
 ]
 
 // 3D tilt effect
@@ -121,7 +121,7 @@ export default function init(root: HTMLElement) {
 
     setTimeout(() => {
       statusCmd1.style.width = "100%"
-      runCmd1.style.backgroundColor = "#34A853"
+      runCmd1.style.backgroundColor = "var(--bs-success-bg)"
 
       setTimeout(() => {
         runCmd1.style.backgroundColor = ""
@@ -145,7 +145,7 @@ export default function init(root: HTMLElement) {
       generateUMAP()
 
       statusCmd2.style.width = "100%"
-      runCmd2.style.backgroundColor = "#34A853"
+      runCmd2.style.backgroundColor = "var(--bs-success-bg)"
 
       setTimeout(() => {
         runCmd2.style.backgroundColor = ""

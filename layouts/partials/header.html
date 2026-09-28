@@ -1,192 +1,173 @@
 <div class="container" style="max-width: 1200px;" data-pagefind-ignore>
-  <nav class="navbar navbar-expand-lg navbar-light">
+  <nav class="navbar md:navbar-expand">
     <div class="container-fluid" style="padding: 0;">
-      <a class="navbar-brand row align-items-center m-0" href="/">
-        <div id="scverse-logo" class="col"></div>
+      <a class="navbar-brand" href="/">
+        <div id="scverse-logo"></div>
         <span class="visually-hidden">scverse</span>
         <!--{{ if ne .Section `` }}
           <span class="logo-name col m-0 px-3">scverse</span>
         {{ end }}-->
       </a>
       <button
-        class="navbar-toggler"
+        class="btn-icon navbar-toggler"
         type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
+        data-bs-toggle="drawer"
+        data-bs-target="#navbar-drawer"
+        aria-controls="navbar-drawer"
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-        <ul class="navbar-nav mb-2 mb-lg-0 nav-buttons">
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle{{ if eq .Section `packages` }}
-                active
-              {{ end }}"
-              href="/packages"
-              id="packages-dropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Packages
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="packages-dropdown">
-              <li>
-                <a class="dropdown-item" href="/packages#core-packages">Core</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="/packages/#ecosystem">Ecosystem</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link{{ if eq .Section `learn` }}
-                active
-              {{ end }}"
-              href="/learn"
-              >Learn</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link{{ if eq .Section `people` }}
-                active
-              {{ end }}"
-              href="/people"
-              >People</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link{{ if eq .Section `blog` }}
-                active
-              {{ end }}"
-              href="/blog"
-              >Blog</a
-            >
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle{{ if or (eq .Section `events`) (eq .Section `community-calendar`) }}
-                active
-              {{ end }}"
-              href="/events"
-              id="events-dropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Events
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="events-dropdown">
-              <li>
-                <a class="dropdown-item" href="/events">Events</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="/community-calendar">Community Calendar</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link{{ if eq .Section `conference2026` }}
-                active
-              {{ end }}"
-              href="/conference2026"
-              >Conference</a
-            >
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle{{ if eq .Section `about` }}
-                active
-              {{ end }}"
-              href="/about"
-              id="about-dropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              About
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="about-dropdown">
-              <li>
-                <a class="dropdown-item" href="/about">About scverse</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="/about/mission">Mission statement</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="/about/roles">Roles</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="/about/code_of_conduct">Code of Conduct</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="/about/ai_policy">AI Policy</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="/stats">Statistics</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="/design">Media kit</a>
-              </li>
-              <li>
+      <dialog class="drawer drawer-end" id="navbar-drawer" aria-label="Site navigation">
+        <div class="drawer-header">
+          <button type="button" class="btn-close ms-auto" data-bs-dismiss="drawer" aria-label="Close"></button>
+        </div>
+        <div class="drawer-body">
+          <ul class="navbar-nav nav-buttons">
+            <li class="nav-item">
+              <a
+                class="nav-link{{ if eq .Section `packages` }}
+                  active
+                {{ end }}"
+                href="/packages"
+                id="packages-menu"
+                role="button"
+                data-bs-toggle="menu"
+                aria-expanded="false"
+              >
+                Packages <i class="bi bi-caret-down-fill nav-caret" aria-hidden="true"></i>
+              </a>
+              <div class="menu" aria-labelledby="packages-menu">
+                <a class="menu-item" href="/packages#core-packages">Core</a>
+                <a class="menu-item" href="/packages/#ecosystem">Ecosystem</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link{{ if eq .Section `learn` }}
+                  active
+                {{ end }}"
+                href="/learn"
+                >Learn</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link{{ if eq .Section `people` }}
+                  active
+                {{ end }}"
+                href="/people"
+                >People</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link{{ if eq .Section `blog` }}
+                  active
+                {{ end }}"
+                href="/blog"
+                >Blog</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link{{ if or (eq .Section `events`) (eq .Section `community-calendar`) }}
+                  active
+                {{ end }}"
+                href="/events"
+                id="events-menu"
+                role="button"
+                data-bs-toggle="menu"
+                aria-expanded="false"
+              >
+                Events <i class="bi bi-caret-down-fill nav-caret" aria-hidden="true"></i>
+              </a>
+              <div class="menu" aria-labelledby="events-menu">
+                <a class="menu-item" href="/events">Events</a>
+                <a class="menu-item" href="/community-calendar">Community Calendar</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link{{ if eq .Section `conference2026` }}
+                  active
+                {{ end }}"
+                href="/conference2026"
+                >Conference</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link{{ if eq .Section `about` }}
+                  active
+                {{ end }}"
+                href="/about"
+                id="about-menu"
+                role="button"
+                data-bs-toggle="menu"
+                aria-expanded="false"
+              >
+                About <i class="bi bi-caret-down-fill nav-caret" aria-hidden="true"></i>
+              </a>
+              <div class="menu" aria-labelledby="about-menu">
+                <a class="menu-item" href="/about">About scverse</a>
+                <a class="menu-item" href="/about/mission">Mission statement</a>
+                <a class="menu-item" href="/about/roles">Roles</a>
+                <a class="menu-item" href="/about/code_of_conduct">Code of Conduct</a>
+                <a class="menu-item" href="/about/ai_policy">AI Policy</a>
+                <a class="menu-item" href="/stats">Statistics</a>
+                <a class="menu-item" href="/design">Media kit</a>
                 <!-- This is just a second link to the /join page, but makes it more discoverable for people who think “I don’t want to join, just contact” -->
-                <a class="dropdown-item" href="/join">Contact</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item nav-social">
-            <a href="https://github.com/scverse" target="_blank" rel="noopener" aria-label="scverse on GitHub">
-              <i class="bi bi-github" aria-hidden="true"></i>
-            </a>
-            <a href="https://discourse.scverse.org" target="_blank" rel="noopener" aria-label="scverse on Discourse">
-              <i class="i-discourse" aria-hidden="true"></i>
-            </a>
-            <a href="https://scverse.zulipchat.com" target="_blank" rel="noopener" aria-label="scverse on Zulip">
-              <i class="i-zulip" aria-hidden="true"></i>
-            </a>
-            <a
-              href="https://bsky.app/profile/scverse.bsky.social"
-              target="_blank"
-              rel="noopener"
-              aria-label="scverse on Bluesky"
-            >
-              <i class="i-bluesky" aria-hidden="true"></i>
-            </a>
-            <a
-              href="https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA"
-              target="_blank"
-              rel="noopener"
-              aria-label="scverse on YouTube"
-            >
-              <i class="bi bi-youtube" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <button
-              type="button"
-              command="show-modal"
-              commandfor="search-dialog"
-              class="nav-link nav-search-button"
-              aria-label="Search this site"
-            >
-              <i class="bi bi-search" aria-hidden="true"></i>
-              <span class="nav-search-label">Search</span>
-              <kbd class="nav-search-kbd" aria-hidden="true">/</kbd>
-            </button>
-          </li>
-          <li class="nav-item">
-            <a id="join-button" class="nav-link nav-button-hl" href="/join">Join</a>
-          </li>
-        </ul>
-      </div>
+                <a class="menu-item" href="/join">Contact</a>
+              </div>
+            </li>
+            <li class="nav-item nav-social">
+              <a href="https://github.com/scverse" target="_blank" rel="noopener" aria-label="scverse on GitHub">
+                <i class="bi bi-github" aria-hidden="true"></i>
+              </a>
+              <a href="https://discourse.scverse.org" target="_blank" rel="noopener" aria-label="scverse on Discourse">
+                <i class="i-discourse" aria-hidden="true"></i>
+              </a>
+              <a href="https://scverse.zulipchat.com" target="_blank" rel="noopener" aria-label="scverse on Zulip">
+                <i class="i-zulip" aria-hidden="true"></i>
+              </a>
+              <a
+                href="https://bsky.app/profile/scverse.bsky.social"
+                target="_blank"
+                rel="noopener"
+                aria-label="scverse on Bluesky"
+              >
+                <i class="i-bluesky" aria-hidden="true"></i>
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA"
+                target="_blank"
+                rel="noopener"
+                aria-label="scverse on YouTube"
+              >
+                <i class="bi bi-youtube" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <button
+                type="button"
+                command="show-modal"
+                commandfor="search-dialog"
+                class="nav-link nav-search-button"
+                aria-label="Search this site"
+              >
+                <i class="bi bi-search" aria-hidden="true"></i>
+                <span class="nav-search-label">Search</span>
+                <kbd class="nav-search-kbd" aria-hidden="true">/</kbd>
+              </button>
+            </li>
+            <li class="nav-item">
+              <a id="join-button" class="nav-link nav-button-hl" href="/join">Join</a>
+            </li>
+          </ul>
+        </div>
+      </dialog>
     </div>
   </nav>
 </div>

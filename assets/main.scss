@@ -1,59 +1,51 @@
-$greydesc: #777777;
-$greyheader: #333333;
-$greyheaderhover: #555555;
+// Neutral colors come straight from Bootstrap’s tokens (--bs-bg-*, --bs-fg-*, --bs-border-*),
+// which carry their own dark values. Only the brand hues and a few measures live here.
+:root {
+    /* stylelint-disable color-no-hex -- the one place the brand hues are spelled out */
+    --anndata-orange: #e5864b;
+    --scanpy-cerise: #de367b;
+    --scanpy-mandy: #e05559;
+    --mudata-green: #4ab274;
+    --muon-aquamarine: #6cf1a1;
+    --spatialdata-blue: #40a9ff;
+    --squidpy-violet: #969dea;
+    --scirpy-purple: #da347f;
+    --scvi-yellow: #fbb822;
+    --scverse-deep-blue: #262fb5; // the darker end of the Join button gradient
+    --scverse-sky-blue: #74c8fa; // the lighter end
+    --scverse-gold: #d4ac00;
 
-$tilebg: #f0f0f0;
-$tilebg2: #d9d9d9;
-$tilebg3: #e0e0e0;
-$tilebg4: #f5f5f5;
-$tiletext: #333333;
-$tiletext2: #555555;
-$tiletext3: black;
+    --github-black: #171b21;
+    --discourse-yellow: #f7f0b1;
+    --youtube-red: #e03021;
+    --zulip-blue: #62a3f0;
+    --bluesky-blue: #0a7aff;
+    --linkedin-blue: #0a66c2;
+    /* stylelint-enable color-no-hex */
 
-$anndataorange: #e5864b;
-$scanpycerise: #de367b;
-$scanpymandy: #e05559;
-$mudatagreen: #4ab274;
-$muonaquamarine: #6cf1a1;
-$spatialdatablue: #40a9ff;
-$squidpyviolet: #969dea;
-$scirpypurple: #da347f;
-$scviyellow: #fbb822;
-$scversedeepblue: #262fb5; // the darker end of the Join button gradient
+    --max-width: 1200px;
+    --max-width-wide: 1400px;
+    --content-width: 80%;
+    --content-width-wide: 92%;
+    --card-radius: 0.75rem;
+}
 
-$overline: #e0e0e0;
-$github-black: #171b21;
-$discourse-yellow: #f7f0b1;
-$youtube-red: #e03021;
-$zulip-blue: #62a3f0;
-$bluesky-blue: #0a7aff;
-$linkedin-blue: #0a66c2;
-$linkunderline: #aaaaaa;
-$backtickbg: #f9f9f9;
+// Pages tint cards and icons with `data-hue="0"`…`"7"`, cycling through the package palette
+$-hues:
+    anndata-orange, scanpy-cerise, mudata-green, spatialdata-blue, squidpy-violet,
+    scirpy-purple, scvi-yellow, muon-aquamarine;
+@each $name in $-hues {
+    [data-hue="#{index($-hues, $name) - 1}"] {
+        --hue: var(--#{$name});
+    }
+}
 
-$navtext: #555555;
-$navtexthover: #000000;
-$navtextactive: #000000;
-$navbg: #ffffff00;
-$navbghover: $tilebg;
-$navbgactive: $tilebg3;
-
-$footerbg: #f0f0f0;
-$footertext: #333333;
-$footertextlight: #555555;
-$footertextmuted: #aaaaaa;
-
-$postlinktext: #333333;
-
-$maxwidth: 1200px;
-$maxwidthwide: 1400px;
-$contentwidth: 80%;
-$contentwidthwide: 92%;
-
-$card-radius: 0.75rem;
-$eco-hues:
-    $anndataorange, $scanpycerise, $mudatagreen, $spatialdatablue, $squidpyviolet,
-    $scirpypurple, $scviyellow, $muonaquamarine;
+// A hue dark enough to read as text on a light page, or light enough on a dark one
+@function hue-fg($color) {
+    @return unquote(
+        "light-dark(color-mix(in oklch, #{$color} 80%, var(--bs-black)), color-mix(in oklch, #{$color} 80%, var(--bs-white)))"
+    );
+}
 
 // scverse conference 2026 (scoped under .conference-page)
 @import "conference2026";
@@ -73,29 +65,20 @@ $eco-hues:
 // Global
 
 // Customise bootstrap
-.dropdown-menu {
-    margin-top: 0.3rem !important;
-    padding: 1rem 0.5rem 1rem 0.5rem;
-    background-color: $navbghover;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.05);
+// v6 dropped the `.dropdown-toggle` caret, so the toggles draw their own.
+// Nav links are flex boxes now: centre the caret there instead of on the baseline.
+.nav-buttons {
+    --bs-nav-link-align: center;
+    --bs-nav-link-gap: 0.3em;
+}
+.nav-caret {
+    font-size: 0.6em;
+}
 
-    $brdrd: 0.5rem;
-    border: 0;
-    border-radius: $brdrd;
-    transition: all 200ms ease-in-out !important;
-
-    a {
-        color: $navtext;
-        border-radius: $brdrd;
-        &:hover {
-            background-color: $navbghover;
-            color: $navtexthover;
-        }
-    }
-
-    a:hover {
-        background-color: $navbgactive;
-        color: $navtextactive;
+// Right-align the links once `md:navbar-expand` lays the drawer out as a row (the navbar is the query container)
+@container (width >= 768px) {
+    .navbar .drawer-body {
+        justify-content: flex-end;
     }
 }
 
@@ -107,23 +90,9 @@ $eco-hues:
         content: "";
         padding: 0;
         margin: 0;
-        background: url("/img/icons/#{$icon}.svg") no-repeat center / contain;
-        transition:
-            background 200ms ease-out,
-            filter 200ms ease-out;
-        opacity: 0.6666; // text color is #555
-        .card:hover & {
-            opacity: 1;
-        }
-    }
-}
-
-.card:hover {
-    // Not discord, since it’s light-colored
-    .i-zulip::before,
-    .i-bluesky::before,
-    .i-xcom::before {
-        filter: invert(100%);
+        // The glyphs are single-color, so paint them in the text colour like the Bootstrap icons
+        background-color: currentColor;
+        mask: url("/img/icons/#{$icon}.svg") no-repeat center / contain;
     }
 }
 
@@ -135,15 +104,15 @@ $eco-hues:
     .blog-lead {
         margin: 0 0 2rem;
         font-size: 1.1rem;
-        color: $tiletext2;
+        color: var(--bs-fg-2);
     }
 
     .blog-rss {
         margin-left: 0.4rem;
         font-size: 0.95rem;
-        color: $tiletext;
+        color: var(--bs-fg-1);
         text-decoration: underline;
-        text-decoration-color: $tilebg2;
+        text-decoration-color: var(--bs-border-emphasized);
         text-underline-offset: 0.2em;
     }
 
@@ -153,7 +122,7 @@ $eco-hues:
         align-items: center;
         gap: 0.5rem;
         font-size: 0.8rem;
-        color: $greydesc;
+        color: var(--bs-fg-3);
     }
 
     .blog-badge {
@@ -162,37 +131,37 @@ $eco-hues:
         font-weight: 700;
         letter-spacing: 0.05em;
         text-transform: uppercase;
-        color: white;
-        background-color: $tiletext;
+        color: var(--bs-inverse-contrast);
+        background-color: var(--bs-inverse-bg);
         border-radius: 0.25rem;
     }
 
     .blog-text {
         font-size: 0.95rem;
         line-height: 1.55;
-        color: $tiletext2;
+        color: var(--bs-fg-2);
     }
 
     .blog-author {
         font-size: 0.85rem;
         font-weight: 600;
-        color: $tiletext;
+        color: var(--bs-fg-1);
     }
 
     .blog-featured {
         display: grid;
         grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
         overflow: hidden;
-        color: $tiletext;
+        color: var(--bs-fg-1);
         text-decoration: none;
-        background-color: white;
-        border: 1px solid $overline;
-        border-radius: $card-radius;
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
+        border-radius: var(--card-radius);
         transition: all 200ms ease-in-out;
 
         &:hover {
-            border-color: $tilebg2;
-            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+            border-color: var(--bs-border-emphasized);
+            box-shadow: var(--bs-box-shadow);
             transform: translateY(-2px);
         }
         &:not(:has(.blog-featured-image)) {
@@ -205,7 +174,7 @@ $eco-hues:
         place-items: center;
         min-height: 16rem;
         padding: 1.5rem;
-        background-color: $tilebg4;
+        background-color: var(--bs-bg-1);
 
         img {
             max-width: 100%;
@@ -226,7 +195,7 @@ $eco-hues:
         font-size: 1.6rem;
         font-weight: 800;
         line-height: 1.25;
-        color: black;
+        color: var(--bs-fg-body);
     }
 
     .blog-year {
@@ -235,13 +204,13 @@ $eco-hues:
         gap: 1rem;
         margin-top: 2.5rem;
         padding-top: 1.5rem;
-        border-top: 1px solid $overline;
+        border-top: 1px solid var(--bs-border-color);
 
         h2 {
             margin: 0.9rem 0 0;
             font-size: 1.1rem;
             font-weight: 700;
-            color: $greydesc;
+            color: var(--bs-fg-3);
         }
     }
 
@@ -256,13 +225,13 @@ $eco-hues:
         flex-direction: column;
         gap: 0.3rem;
         padding: 0.9rem 1.1rem;
-        color: $tiletext;
+        color: var(--bs-fg-1);
         text-decoration: none;
-        border-radius: $card-radius;
+        border-radius: var(--card-radius);
         transition: background-color 200ms ease-in-out;
 
         &:hover {
-            background-color: $tilebg4;
+            background-color: var(--bs-bg-1);
         }
     }
 
@@ -270,7 +239,7 @@ $eco-hues:
         font-size: 1.15rem;
         font-weight: 700;
         line-height: 1.3;
-        color: black;
+        color: var(--bs-fg-body);
     }
 
     @media (max-width: 50rem) {
@@ -305,7 +274,7 @@ $eco-hues:
     .events-lead {
         margin: 0 0 2.5rem;
         font-size: 1.1rem;
-        color: $tiletext2;
+        color: var(--bs-fg-2);
     }
 
     h2 {
@@ -331,13 +300,13 @@ $eco-hues:
         grid-template-columns: 5rem 1fr;
         gap: 1rem;
         padding: 1.5rem 0;
-        border-top: 1px solid $overline;
+        border-top: 1px solid var(--bs-border-color);
 
         h3 {
             margin: 0.9rem 0 0;
             font-size: 1.1rem;
             font-weight: 700;
-            color: $greydesc;
+            color: var(--bs-fg-3);
         }
     }
 
@@ -345,16 +314,16 @@ $eco-hues:
         display: flex;
         flex-direction: column;
         overflow: hidden;
-        color: $tiletext;
+        color: var(--bs-fg-1);
         text-decoration: none;
-        background-color: white;
-        border: 1px solid $overline;
-        border-radius: $card-radius;
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
+        border-radius: var(--card-radius);
         transition: all 200ms ease-in-out;
 
         &:hover {
-            border-color: $tilebg2;
-            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+            border-color: var(--bs-border-emphasized);
+            box-shadow: var(--bs-box-shadow);
             transform: translateY(-2px);
         }
     }
@@ -383,7 +352,7 @@ $eco-hues:
         align-items: center;
         gap: 0.5rem;
         font-size: 0.8rem;
-        color: $greydesc;
+        color: var(--bs-fg-3);
     }
 
     .event-kind {
@@ -392,26 +361,26 @@ $eco-hues:
         font-weight: 700;
         letter-spacing: 0.05em;
         text-transform: uppercase;
-        border: 1px solid $overline;
+        border: 1px solid var(--bs-border-color);
         border-radius: 0.25rem;
     }
 
     .event-kind--conference {
-        color: white;
-        background-color: $tiletext;
-        border-color: $tiletext;
+        color: var(--bs-inverse-contrast);
+        background-color: var(--bs-inverse-bg);
+        border-color: var(--bs-inverse-bg);
     }
 
     .event-card-title {
         font-size: 1.15rem;
         font-weight: 700;
-        color: black;
+        color: var(--bs-fg-body);
     }
 
     .event-card-text {
         font-size: 0.9rem;
         line-height: 1.5;
-        color: $tiletext2;
+        color: var(--bs-fg-2);
     }
 
     .event-card--featured {
@@ -423,7 +392,7 @@ $eco-hues:
         }
         .event-date {
             font-weight: 600;
-            color: $tiletext;
+            color: var(--bs-fg-1);
         }
     }
 
@@ -431,9 +400,9 @@ $eco-hues:
         display: flex;
         flex-direction: column;
         padding: 1.5rem;
-        background-color: $tilebg4;
-        border: 1px solid $overline;
-        border-radius: $card-radius;
+        background-color: var(--bs-bg-1);
+        border: 1px solid var(--bs-border-color);
+        border-radius: var(--card-radius);
 
         h3 {
             margin: 0;
@@ -444,11 +413,11 @@ $eco-hues:
             margin: 0.35rem 0 0;
             font-size: 0.95rem;
             line-height: 1.55;
-            color: $tiletext2;
+            color: var(--bs-fg-2);
         }
         .events-meeting-schedule {
             font-weight: 600;
-            color: $tiletext;
+            color: var(--bs-fg-1);
         }
     }
 
@@ -459,8 +428,8 @@ $eco-hues:
         height: 2.75rem;
         margin-bottom: 1rem;
         font-size: 1.25rem;
-        color: darken($spatialdatablue, 12%);
-        background-color: rgba($spatialdatablue, 0.18);
+        color: hue-fg(var(--spatialdata-blue));
+        background-color: color-mix(in oklch, var(--spatialdata-blue) 18%, transparent);
         border-radius: 50%;
     }
 
@@ -475,8 +444,8 @@ $eco-hues:
         a {
             font-size: 0.95rem;
             font-weight: 500;
-            color: $tiletext;
-            text-decoration-color: $tilebg2;
+            color: var(--bs-fg-1);
+            text-decoration-color: var(--bs-border-emphasized);
             text-underline-offset: 0.2em;
 
             &:hover {
@@ -515,14 +484,14 @@ $eco-hues:
         display: flex;
         flex-direction: column;
         padding: 1.5rem;
-        background-color: $tilebg4;
-        border: 1px solid $overline;
-        border-radius: $card-radius;
+        background-color: var(--bs-bg-1);
+        border: 1px solid var(--bs-border-color);
+        border-radius: var(--card-radius);
         transition: all 200ms ease-in-out;
 
         &:hover {
-            border-color: $tilebg2;
-            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+            border-color: var(--bs-border-emphasized);
+            box-shadow: var(--bs-box-shadow);
             transform: translateY(-2px);
         }
     }
@@ -535,28 +504,26 @@ $eco-hues:
         margin-bottom: 1rem;
         font-size: 1.25rem;
         border-radius: 50%;
-        background-color: $tilebg;
-        color: $tiletext;
+        background-color: var(--bs-bg-2);
+        color: var(--bs-fg-1);
     }
 
-    @each $hue in $eco-hues {
-        .join-card[data-hue="#{index($eco-hues, $hue) - 1}"] .join-card-icon {
-            background-color: rgba($hue, 0.18);
-            color: darken($hue, 12%);
-        }
+    .join-card[data-hue] .join-card-icon {
+        background-color: color-mix(in oklch, var(--hue) 18%, transparent);
+        color: hue-fg(var(--hue));
     }
 
     .join-card h2.join-card-title {
         font-size: 1.1rem;
         font-weight: 700;
-        color: $tiletext;
+        color: var(--bs-fg-1);
         margin: 0 0 0.35rem;
     }
 
     .join-card-text {
         font-size: 0.95rem;
         line-height: 1.55;
-        color: $tiletext2;
+        color: var(--bs-fg-2);
         margin: 0;
     }
 
@@ -571,8 +538,8 @@ $eco-hues:
         a {
             font-size: 0.95rem;
             font-weight: 500;
-            color: $tiletext;
-            text-decoration-color: $tilebg2;
+            color: var(--bs-fg-1);
+            text-decoration-color: var(--bs-border-emphasized);
             text-underline-offset: 0.2em;
 
             &:hover {
@@ -584,13 +551,13 @@ $eco-hues:
     &.post-content h2.join-section-title {
         font-size: 1.1rem;
         font-weight: 700;
-        color: $tiletext;
+        color: var(--bs-fg-1);
         margin: 3rem 0 1rem;
     }
 
     .join-email-card {
         &:hover {
-            background: $tilebg4 !important;
+            background: var(--bs-bg-1) !important;
             transform: none;
         }
 
@@ -598,8 +565,8 @@ $eco-hues:
             font-family: "JetBrains Mono", Menlo, monospace;
             font-size: 0.95rem;
             font-weight: 600;
-            color: $tiletext;
-            text-decoration-color: $tilebg2;
+            color: var(--bs-fg-1);
+            text-decoration-color: var(--bs-border-emphasized);
             text-underline-offset: 0.2em;
 
             &:hover {
@@ -609,14 +576,14 @@ $eco-hues:
 
         .card-text {
             font-size: 0.95rem;
-            color: $tiletext2;
+            color: var(--bs-fg-2);
             margin: 0;
         }
     }
 
     .card {
         transition: all 200ms ease-in-out;
-        color: $navtext;
+        color: var(--bs-fg-2);
 
         h3.card-title {
             margin: 0 0 0.35rem;
@@ -625,33 +592,33 @@ $eco-hues:
         }
 
         &:hover {
-            background: #78cbd9 !important;
+            background: var(--bs-info-bg-subtle) !important;
             transform: scale(1.02);
         }
 
         &#github:hover {
-            background-color: $github-black !important;
-            color: white !important;
+            background-color: var(--github-black) !important;
+            color: var(--bs-white) !important;
         }
         &#discourse:hover {
-            background-color: $discourse-yellow !important;
-            color: black !important;
+            background-color: var(--discourse-yellow) !important;
+            color: var(--bs-black) !important;
         }
         &#zulip:hover {
-            background-color: $zulip-blue !important;
-            color: white !important;
+            background-color: var(--zulip-blue) !important;
+            color: var(--bs-white) !important;
         }
         &#bluesky:hover {
-            background-color: $bluesky-blue !important;
-            color: white !important;
+            background-color: var(--bluesky-blue) !important;
+            color: var(--bs-white) !important;
         }
         &#linkedin:hover {
-            background-color: $linkedin-blue !important;
-            color: white !important;
+            background-color: var(--linkedin-blue) !important;
+            color: var(--bs-white) !important;
         }
         &#youtube:hover {
-            background-color: $youtube-red !important;
-            color: white !important;
+            background-color: var(--youtube-red) !important;
+            color: var(--bs-white) !important;
         }
     }
 
@@ -684,7 +651,7 @@ a .more {
     margin: 0;
     font-size: 0.8rem;
     font-weight: 800;
-    color: $tiletext2;
+    color: var(--bs-fg-2);
     transition: all 200ms ease-in-out;
     padding: 0.5rem;
     margin-left: -0.5rem;
@@ -698,8 +665,8 @@ a .more {
     }
 
     &:hover {
-        color: $tiletext3;
-        background-color: $tilebg;
+        color: var(--bs-fg-body);
+        background-color: var(--bs-bg-2);
 
         &:after {
             padding-left: 0.4rem;
@@ -707,7 +674,7 @@ a .more {
     }
 
     @media (max-width: 50rem) {
-        background-color: $tilebg4;
+        background-color: var(--bs-bg-1);
     }
 }
 
@@ -730,7 +697,7 @@ body {
 }
 
 .nav-buttons > li > a {
-    color: $navtext;
+    color: var(--bs-fg-2);
 
     padding: 0.5rem 0.8rem !important;
     border-radius: 0.5rem;
@@ -739,21 +706,21 @@ body {
         transform 100ms ease-in-out;
     &:hover,
     &:active {
-        background-color: $navbghover;
-        color: $navtexthover;
+        background-color: var(--bs-bg-2);
+        color: var(--bs-fg-body);
     }
     &:active {
         transform: scale(0.95);
     }
 
     &:hover {
-        color: $navtexthover;
+        color: var(--bs-fg-body);
     }
 
     &.active {
         transform: scale(0.95);
-        background-color: $navbgactive;
-        color: $navtextactive;
+        background-color: var(--bs-bg-3);
+        color: var(--bs-fg-body);
     }
 }
 
@@ -763,7 +730,7 @@ body {
     gap: 0.15rem;
     padding: 0.5rem 0.25rem !important;
 
-    // Bootstrap's own collapse breakpoint (992px) isn't wide enough to also fit this row, so it overflows the nav between 992px and roughly 1180px; hide it there and rely on the footer.
+    // The navbar expands once its container is 960px wide (from a 1024px viewport, see `md:navbar-expand` in header.html), which isn't wide enough to also fit this row; hide it until 1200px and rely on the footer.
     @media (max-width: 1199px) {
         display: none;
     }
@@ -775,14 +742,14 @@ body {
         width: 2rem;
         height: 2rem;
         border-radius: 50%;
-        color: $navtext;
+        color: var(--bs-fg-2);
         font-size: 1rem;
         text-decoration: none;
         transition: all 200ms ease-in-out;
 
         &:hover {
-            background-color: $navbghover;
-            color: $navtexthover;
+            background-color: var(--bs-bg-2);
+            color: var(--bs-fg-body);
 
             i::before {
                 opacity: 1;
@@ -802,9 +769,12 @@ body {
 }
 
 #join-button {
-    color: white;
-    background-color: #4557c4;
-    background: linear-gradient(135deg, #262fb5, #74c8fa);
+    color: var(--bs-white);
+    background: linear-gradient(
+        135deg,
+        var(--scverse-deep-blue),
+        var(--scverse-sky-blue)
+    );
     position: relative;
     z-index: 1;
 
@@ -815,8 +785,12 @@ body {
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, #74c8fa, #d4ac00);
-        color: white;
+        background: linear-gradient(
+            135deg,
+            var(--scverse-sky-blue),
+            var(--scverse-gold)
+        );
+        color: var(--bs-white);
         opacity: 0;
         z-index: -1;
         border-radius: inherit;
@@ -842,7 +816,7 @@ body {
 }
 
 .logo-name {
-    color: black;
+    color: var(--bs-fg-body);
     font-size: 1.5rem;
     line-height: 1.5rem;
     font-weight: 900;
@@ -870,7 +844,7 @@ body {
             align-items: center;
             align-self: center;
             #cover {
-                max-width: $maxwidthwide;
+                max-width: var(--max-width-wide);
                 width: 100%;
                 padding: 0 1rem;
                 #cover-top-section {
@@ -880,7 +854,7 @@ body {
                 #cover-heading {
                     margin: 0 auto;
                     padding: 0;
-                    max-width: $maxwidthwide;
+                    max-width: var(--max-width-wide);
                     text-align: center;
                     #title {
                         #title-text {
@@ -898,7 +872,7 @@ body {
                             #title-desc {
                                 display: block;
                                 font-size: 1.4rem;
-                                color: $greyheader;
+                                color: var(--bs-fg-1);
                                 @media (max-width: 50rem) {
                                     font-size: 0.8rem;
                                 }
@@ -910,7 +884,7 @@ body {
                         margin: 1.5rem auto 0;
                         font-size: 1.1rem;
                         line-height: 1.6;
-                        color: $tiletext2;
+                        color: var(--bs-fg-2);
                         @media (max-width: 50rem) {
                             font-size: 0.95rem;
                         }
@@ -938,7 +912,7 @@ body {
                             transition: all 200ms ease-in-out;
 
                             &:hover {
-                                background-color: $tilebg4;
+                                background-color: var(--bs-bg-1);
                                 transform: translateY(-2px);
 
                                 .hero-point-icon {
@@ -955,27 +929,31 @@ body {
                             border-radius: 50%;
                             margin-bottom: 0.85rem;
                             font-size: 1.35rem;
-                            background-color: rgba($spatialdatablue, 0.16);
-                            color: darken($spatialdatablue, 12%);
+                            background-color: color-mix(
+                                in oklch,
+                                var(--spatialdata-blue) 16%,
+                                transparent
+                            );
+                            color: hue-fg(var(--spatialdata-blue));
                             transition: transform 200ms ease-in-out;
                         }
                         .hero-point-title {
                             font-size: 1.15rem;
                             font-weight: 800;
                             margin-bottom: 0.4rem;
-                            color: $tiletext;
+                            color: var(--bs-fg-1);
                         }
                         .hero-point-text {
                             margin: 0;
                             font-size: 0.9rem;
-                            color: $tiletext2;
+                            color: var(--bs-fg-2);
                         }
                     }
                 }
 
                 #chip-announcement {
                     margin: 0 auto 2rem;
-                    max-width: $maxwidthwide;
+                    max-width: var(--max-width-wide);
                     width: 100%;
                     @media (max-width: 50rem) {
                         margin: 0 auto 1.5rem;
@@ -990,18 +968,22 @@ body {
                     margin: 0 auto;
                     padding: 1rem 1.75rem;
                     border-radius: 1rem;
-                    background: linear-gradient(120deg, #0b0b12 0%, #22223a 100%);
-                    color: white;
+                    background: linear-gradient(
+                        120deg,
+                        var(--bs-gray-975) 0%,
+                        var(--bs-indigo-950) 100%
+                    );
+                    color: var(--bs-white);
                     text-decoration: none;
                     transition: all 200ms ease-in-out;
 
                     &:hover {
                         transform: translateY(-2px);
-                        box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.25);
+                        box-shadow: var(--bs-box-shadow-xl);
 
                         .conference-banner-cta {
-                            background-color: white;
-                            color: black;
+                            background-color: var(--bs-white);
+                            color: var(--bs-black);
 
                             .arrow {
                                 transform: translateX(0.2rem);
@@ -1025,14 +1007,15 @@ body {
                     flex-shrink: 0;
                     line-height: 1.1;
                     padding-right: 1.75rem;
-                    border-right: 1px solid rgba(255, 255, 255, 0.2);
+                    border-right: 1px solid
+                        color-mix(in oklch, var(--bs-white) 20%, transparent);
 
                     .conference-banner-month {
                         font-size: 0.85rem;
                         font-weight: 700;
                         text-transform: uppercase;
                         letter-spacing: 0.1em;
-                        color: rgba(255, 255, 255, 0.6);
+                        color: color-mix(in oklch, var(--bs-white) 60%, transparent);
                     }
 
                     .conference-banner-day {
@@ -1042,7 +1025,7 @@ body {
 
                     .conference-banner-year {
                         font-size: 0.85rem;
-                        color: rgba(255, 255, 255, 0.6);
+                        color: color-mix(in oklch, var(--bs-white) 60%, transparent);
                     }
 
                     @media (max-width: 50rem) {
@@ -1066,7 +1049,7 @@ body {
                     .conference-banner-desc {
                         margin: 0.2rem 0 0;
                         font-size: 0.9rem;
-                        color: rgba(255, 255, 255, 0.75);
+                        color: color-mix(in oklch, var(--bs-white) 75%, transparent);
                         max-width: 34rem;
                     }
                 }
@@ -1075,7 +1058,11 @@ body {
                     flex-shrink: 0;
                     padding: 0.7rem 1.4rem;
                     border-radius: 2rem;
-                    background-color: rgba(255, 255, 255, 0.12);
+                    background-color: color-mix(
+                        in oklch,
+                        var(--bs-white) 12%,
+                        transparent
+                    );
                     font-weight: 700;
                     white-space: nowrap;
                     transition: all 200ms ease-in-out;
@@ -1091,8 +1078,8 @@ body {
                 }
 
                 section {
-                    max-width: $maxwidthwide;
-                    width: $contentwidthwide;
+                    max-width: var(--max-width-wide);
+                    width: var(--content-width-wide);
                     margin: 0 auto;
                     margin-top: 5%;
                     @media (max-width: 50rem) {
@@ -1101,11 +1088,11 @@ body {
                     .section-heading {
                         font-size: 1.3rem;
                         text-transform: uppercase;
-                        color: $greyheader;
+                        color: var(--bs-fg-1);
                         font-weight: 700;
                         transition: all 200ms ease-in-out;
                         &.clickable-heading:hover {
-                            color: $greyheaderhover;
+                            color: var(--bs-fg-2);
                             cursor: pointer;
                         }
                     }
@@ -1127,7 +1114,7 @@ body {
                     margin-bottom: 3rem;
                 }
                 #feature-grid {
-                    background-color: $tilebg4;
+                    background-color: var(--bs-bg-1);
                     border-radius: 1.25rem;
                     padding: 2.5rem;
 
@@ -1166,20 +1153,24 @@ body {
                         justify-content: center;
                         border-radius: 50%;
                         font-size: 1.1rem;
-                        background-color: rgba($spatialdatablue, 0.16);
-                        color: darken($spatialdatablue, 12%);
+                        background-color: color-mix(
+                            in oklch,
+                            var(--spatialdata-blue) 16%,
+                            transparent
+                        );
+                        color: hue-fg(var(--spatialdata-blue));
                     }
 
                     .feature-item-title {
                         font-weight: 700;
-                        color: $tiletext;
+                        color: var(--bs-fg-1);
                         margin-bottom: 0.2rem;
                     }
 
                     .feature-item-text {
                         margin: 0;
                         font-size: 0.9rem;
-                        color: $tiletext2;
+                        color: var(--bs-fg-2);
                     }
                 }
                 #about-highlights {
@@ -1202,15 +1193,15 @@ body {
                     .about-card {
                         display: flex;
                         flex-direction: column;
-                        background-color: $tilebg4;
-                        border: 1px solid $overline;
-                        border-radius: $card-radius;
+                        background-color: var(--bs-bg-1);
+                        border: 1px solid var(--bs-border-color);
+                        border-radius: var(--card-radius);
                         padding: 1.75rem;
                         transition: all 200ms ease-in-out;
 
                         &:hover {
-                            border-color: $tilebg2;
-                            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+                            border-color: var(--bs-border-emphasized);
+                            box-shadow: var(--bs-box-shadow);
                             transform: translateY(-2px);
                         }
 
@@ -1229,29 +1220,30 @@ body {
                         border-radius: 50%;
                         margin-bottom: 1rem;
                         font-size: 1.3rem;
-                        background-color: $tilebg;
-                        color: $tiletext;
+                        background-color: var(--bs-bg-2);
+                        color: var(--bs-fg-1);
                     }
 
                     // Written as a descendant rather than nested under .about-card-icon: `&` there would carry the whole ancestor chain and put .about-card in front of #about-highlights.
-                    @each $hue in $eco-hues {
-                        .about-card[data-hue="#{index($eco-hues, $hue) - 1}"]
-                            .about-card-icon {
-                            background-color: rgba($hue, 0.16);
-                            color: darken($hue, 12%);
-                        }
+                    .about-card[data-hue] .about-card-icon {
+                        background-color: color-mix(
+                            in oklch,
+                            var(--hue) 16%,
+                            transparent
+                        );
+                        color: hue-fg(var(--hue));
                     }
 
                     .about-card-title {
                         font-size: 1.2rem;
                         font-weight: 700;
                         margin: 0 0 0.5rem;
-                        color: $tiletext;
+                        color: var(--bs-fg-1);
                     }
 
                     .about-card-text {
                         font-size: 1rem;
-                        color: $tiletext2;
+                        color: var(--bs-fg-2);
                         margin-bottom: 0.75rem;
                     }
                 }
@@ -1261,13 +1253,13 @@ body {
         p > a {
             text-decoration: none;
             color: inherit;
-            border-bottom: 1px solid $linkunderline;
+            border-bottom: 1px solid var(--bs-border-emphasized);
             transition:
                 border 200ms,
                 color 200ms;
             &:hover,
             &:active {
-                border-bottom: 1px solid black;
+                border-bottom: 1px solid var(--bs-fg-body);
             }
         }
     }
@@ -1284,18 +1276,23 @@ body {
         align-self: center;
 
         #banner {
-            $almostwhite: rgba(255, 255, 255, 0.8);
+            $almostwhite: color-mix(in oklch, var(--bs-white) 80%, transparent);
 
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #262fb5, #74c8fa);
+            background: linear-gradient(
+                135deg,
+                var(--scverse-deep-blue),
+                var(--scverse-sky-blue)
+            );
             color: $almostwhite;
             font-weight: 600;
             // text-transform: uppercase;
             padding: 1rem 0;
-            box-shadow: inset 0 -0.5rem 1rem 0.05rem rgba(0, 0, 0, 0.1);
+            box-shadow: inset 0 -0.5rem 1rem 0.05rem
+                color-mix(in oklch, var(--bs-black) 10%, transparent);
             margin-bottom: 1rem;
 
             a {
@@ -1304,8 +1301,8 @@ body {
                 border-bottom: 1px solid $almostwhite;
                 &:hover,
                 &:active {
-                    color: white;
-                    border-bottom: 1px solid white;
+                    color: var(--bs-white);
+                    border-bottom: 1px solid var(--bs-white);
                 }
             }
         }
@@ -1315,7 +1312,7 @@ body {
         height: auto;
         width: 100%;
         margin-top: 10rem;
-        background-color: $footerbg;
+        background-color: var(--bs-bg-2);
 
         display: flex;
         flex-direction: column;
@@ -1324,16 +1321,16 @@ body {
         align-self: center;
 
         #footer-content {
-            width: $contentwidth;
+            width: var(--content-width);
             @media (max-width: 50rem) {
-                width: $contentwidthwide;
+                width: var(--content-width-wide);
             }
             padding: 2%;
 
             div {
                 max-width: 1200px;
                 margin: 1rem auto;
-                color: $footertext;
+                color: var(--bs-fg-1);
                 text-align: left;
 
                 a,
@@ -1348,18 +1345,18 @@ body {
                     transition: color 200ms;
                 }
                 h2 {
-                    color: $footertextlight;
+                    color: var(--bs-fg-2);
                     font-size: 1.25rem;
                     font-weight: 500;
                     line-height: 1.2;
                     margin: 0 0 0.5rem;
                 }
                 li {
-                    color: $footertextmuted;
+                    color: var(--bs-fg-4);
                     a {
-                        color: $footertextlight;
+                        color: var(--bs-fg-2);
                         &:hover {
-                            color: black;
+                            color: var(--bs-fg-body);
                         }
                     }
                 }
@@ -1371,7 +1368,7 @@ body {
                     margin-top: 0;
                     p {
                         margin-top: 0;
-                        color: $footertextmuted;
+                        color: var(--bs-fg-4);
                     }
                 }
             }
@@ -1382,15 +1379,15 @@ body {
 #page-content {
     display: flex;
     flex-direction: column;
-    max-width: $maxwidth;
-    width: $contentwidth;
+    max-width: var(--max-width);
+    width: var(--content-width);
     margin-top: 3rem;
     h2 {
         margin: 2rem 0 1rem 0;
     }
     @media (max-width: 50rem) {
-        max-width: $maxwidthwide;
-        width: $contentwidthwide;
+        max-width: var(--max-width-wide);
+        width: var(--content-width-wide);
         gap: 1rem;
     }
     &.items-list {
@@ -1410,7 +1407,7 @@ body {
             justify-content: flex-start;
             line-height: 1.5rem;
             gap: 0.5rem;
-            color: $greydesc;
+            color: var(--bs-fg-3);
             .rss-icon {
                 width: 1rem;
                 height: auto;
@@ -1423,11 +1420,11 @@ body {
                     padding: 0.5rem;
                     margin: -0.5rem;
                     svg {
-                        fill: $greydesc;
+                        fill: var(--bs-fg-3);
                     }
                     &:hover {
                         svg {
-                            fill: $navtexthover;
+                            fill: var(--bs-fg-body);
                         }
                     }
                 }
@@ -1457,11 +1454,11 @@ body {
             }
             // Inline code: add a subtle background via box-shadow
             :not(pre) > code {
-                background-color: $backtickbg;
+                background-color: var(--bs-bg-1);
                 border-radius: 0.2rem;
                 box-shadow:
-                    0.15em 0 0 $backtickbg,
-                    -0.15em 0 0 $backtickbg;
+                    0.15em 0 0 var(--bs-bg-1),
+                    -0.15em 0 0 var(--bs-bg-1);
             }
             // Chroma code highlighting: add some padding
             .highlight {
@@ -1484,15 +1481,15 @@ body {
                 th,
                 td {
                     padding: 0.6rem 0.9rem;
-                    border: 1px solid $overline;
+                    border: 1px solid var(--bs-border-color);
                     text-align: left;
                 }
                 th {
-                    background-color: $tilebg;
+                    background-color: var(--bs-bg-2);
                     font-weight: 600;
                 }
                 tbody tr:nth-child(even) {
-                    background-color: $tilebg4;
+                    background-color: var(--bs-bg-1);
                 }
             }
             @media (max-width: 50rem) {
@@ -1506,9 +1503,9 @@ body {
             margin: 4rem 0 1rem 0;
         }
         a {
-            color: $postlinktext;
+            color: var(--bs-fg-1);
             &:hover {
-                color: black;
+                color: var(--bs-fg-body);
             }
         }
     }
@@ -1555,19 +1552,19 @@ body {
                 .package-tile {
                     // padding: 2rem;
                     border-radius: 1rem;
-                    // box-shadow: 0 .2rem .2rem .05rem rgba(0, 0, 0, .3);
+                    // box-shadow: 0 .2rem .2rem .05rem color-mix(in oklch, var(--bs-black) 30%, transparent);
                     .package-text {
                         .package-name {
                             font-size: 2rem;
                             font-weight: 800;
-                            color: black;
+                            color: var(--bs-fg-body);
                             display: block;
                         }
                         .package-details {
                             display: block;
                             font-size: 1.1rem;
                             margin: 1rem 0;
-                            color: $tiletext;
+                            color: var(--bs-fg-1);
                             @media (max-width: 50rem) {
                                 font-size: 1rem;
                                 line-height: 1.8rem;
@@ -1576,16 +1573,16 @@ body {
                     }
                 }
                 // #anndata-tile {
-                //  background-color: rgba(#fa8e4b, .9);
+                //  background-color: color-mix(in oklch, #fa8e4b 90%, transparent);
                 // }
                 // #mudata-tile {
-                //  background-color: rgba($mudatagreen, .7);
+                //  background-color: color-mix(in oklch, var(--mudata-green) 70%, transparent);
                 // }
                 // #scanpy-tile {
-                //  background-color: rgba($scanpymandy, .7);
+                //  background-color: color-mix(in oklch, var(--scanpy-mandy) 70%, transparent);
                 // }
                 // #muon-tile {
-                //  background-color: rgba($muonaquamarine, .8);
+                //  background-color: color-mix(in oklch, var(--muon-aquamarine) 80%, transparent);
                 // }
             }
         }
@@ -1597,10 +1594,10 @@ body {
     .package-links {
         a {
             display: inline-block;
-            background-color: $tilebg;
+            background-color: var(--bs-bg-2);
             text-decoration: none;
             font-size: 1rem;
-            color: $tiletext;
+            color: var(--bs-fg-1);
             padding: 0.4rem 0.8rem;
             margin: 0.5rem 0;
             text-align: center;
@@ -1608,8 +1605,8 @@ body {
             transition: all 200ms ease-in-out;
             &:hover,
             &:active {
-                color: $tiletext3;
-                background-color: $tilebg2;
+                color: var(--bs-fg-body);
+                background-color: var(--bs-bg-4);
             }
         }
     }
@@ -1650,7 +1647,7 @@ body {
             left: 1.1rem;
             width: 1.1rem;
             height: 1.1rem;
-            color: $greydesc;
+            color: var(--bs-fg-3);
             pointer-events: none;
         }
 
@@ -1659,21 +1656,22 @@ body {
             height: 3.25rem;
             padding: 0 2.9rem;
             font-size: 1rem;
-            color: $tiletext;
-            background-color: $backtickbg;
-            border: 1px solid $overline;
+            color: var(--bs-fg-1);
+            background-color: var(--bs-bg-1);
+            border: 1px solid var(--bs-border-color);
             border-radius: 2rem;
             outline: none;
             transition: all 200ms ease-in-out;
             text-overflow: ellipsis;
 
             &::placeholder {
-                color: $greydesc;
+                color: var(--bs-fg-3);
             }
             &:focus {
-                background-color: white;
-                border-color: $greydesc;
-                box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.04);
+                background-color: var(--bs-bg-body);
+                border-color: var(--bs-fg-3);
+                box-shadow: 0 0 0 0.25rem
+                    color-mix(in oklch, var(--bs-fg-body) 6%, transparent);
             }
             // The native affordance duplicates our own clear button
             &::-webkit-search-cancel-button {
@@ -1693,8 +1691,8 @@ body {
         padding: 0;
         border: 0;
         border-radius: 50%;
-        color: $tiletext2;
-        background-color: $tilebg;
+        color: var(--bs-fg-2);
+        background-color: var(--bs-bg-2);
         cursor: pointer;
         transition: all 200ms ease-in-out;
 
@@ -1703,15 +1701,15 @@ body {
             height: 0.7rem;
         }
         &:hover {
-            color: white;
-            background-color: $tiletext;
+            color: var(--bs-inverse-contrast);
+            background-color: var(--bs-inverse-bg);
         }
     }
 
     .eco-count {
         margin: 0;
         font-size: 0.95rem;
-        color: $greydesc;
+        color: var(--bs-fg-3);
         white-space: nowrap;
     }
 
@@ -1732,22 +1730,22 @@ body {
         gap: 0.4rem;
         padding: 0.35rem 0.85rem;
         font-size: 0.85rem;
-        color: $tiletext2;
-        background-color: white;
-        border: 1px solid $overline;
+        color: var(--bs-fg-2);
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
         border-radius: 2rem;
         cursor: pointer;
         transition: all 200ms ease-in-out;
 
         &:hover {
-            color: $tiletext3;
-            border-color: $tilebg2;
-            background-color: $tilebg4;
+            color: var(--bs-fg-body);
+            border-color: var(--bs-border-emphasized);
+            background-color: var(--bs-bg-1);
         }
         &.is-active {
-            color: white;
-            background-color: $tiletext;
-            border-color: $tiletext;
+            color: var(--bs-inverse-contrast);
+            background-color: var(--bs-inverse-bg);
+            border-color: var(--bs-inverse-bg);
         }
         .eco-chip-count {
             font-size: 0.75rem;
@@ -1770,14 +1768,14 @@ body {
         flex-direction: column;
         gap: 0.8rem;
         padding: 1.35rem;
-        background-color: white;
-        border: 1px solid $overline;
-        border-radius: $card-radius;
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
+        border-radius: var(--card-radius);
         transition: all 200ms ease-in-out;
 
         &:hover {
-            border-color: $tilebg2;
-            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+            border-color: var(--bs-border-emphasized);
+            box-shadow: var(--bs-box-shadow);
             transform: translateY(-2px);
         }
         &[hidden] {
@@ -1787,7 +1785,7 @@ body {
 
     // Packages maintained by the core team sort to the front and carry a wash of colour
     .eco-card--core {
-        background-color: rgba($scviyellow, 0.08);
+        background-color: color-mix(in oklch, var(--scvi-yellow) 8%, transparent);
     }
 
     .eco-card-head {
@@ -1804,7 +1802,7 @@ body {
         height: 2.75rem;
         overflow: hidden;
         border-radius: 0.6rem;
-        background-color: $tilebg4;
+        background-color: var(--bs-bg-1);
 
         img {
             width: 100%;
@@ -1817,12 +1815,10 @@ body {
     .eco-logo--mono {
         font-size: 1.3rem;
         font-weight: 800;
-        color: $tiletext;
+        color: var(--bs-fg-1);
 
-        @each $hue in $eco-hues {
-            &[data-hue="#{index($eco-hues, $hue) - 1}"] {
-                background-color: rgba($hue, 0.18);
-            }
+        &[data-hue] {
+            background-color: color-mix(in oklch, var(--hue) 18%, transparent);
         }
     }
 
@@ -1839,7 +1835,7 @@ body {
         overflow-wrap: anywhere;
 
         a {
-            color: black;
+            color: var(--bs-fg-body);
             text-decoration: none;
 
             // Make the whole card clickable without nesting interactive elements
@@ -1847,7 +1843,7 @@ body {
                 content: "";
                 position: absolute;
                 inset: 0;
-                border-radius: $card-radius;
+                border-radius: var(--card-radius);
             }
         }
     }
@@ -1859,7 +1855,7 @@ body {
         gap: 0.4rem;
         margin: 0.25rem 0 0;
         font-size: 0.75rem;
-        color: $greydesc;
+        color: var(--bs-fg-3);
 
         .eco-badge {
             padding: 0.05rem 0.35rem;
@@ -1867,13 +1863,13 @@ body {
             font-weight: 700;
             letter-spacing: 0.04em;
             text-transform: uppercase;
-            color: white;
-            background-color: $tiletext;
+            color: var(--bs-inverse-contrast);
+            background-color: var(--bs-inverse-bg);
             border-radius: 0.25rem;
         }
         .eco-badge--lang {
-            color: $tiletext;
-            background-color: $tilebg2;
+            color: var(--bs-fg-1);
+            background-color: var(--bs-bg-4);
         }
         .eco-version {
             font-family: "JetBrains Mono", Menlo, monospace;
@@ -1892,7 +1888,7 @@ body {
         margin: 0;
         font-size: 0.9rem;
         line-height: 1.55;
-        color: $tiletext2;
+        color: var(--bs-fg-2);
     }
 
     .eco-card-tags {
@@ -1909,20 +1905,20 @@ body {
         z-index: 1;
         padding: 0.2rem 0.5rem;
         font-size: 0.72rem;
-        color: $greydesc;
-        background-color: $tilebg4;
+        color: var(--bs-fg-3);
+        background-color: var(--bs-bg-1);
         border: 0;
         border-radius: 0.35rem;
         cursor: pointer;
         transition: all 200ms ease-in-out;
 
         &:hover {
-            color: $tiletext3;
-            background-color: $tilebg;
+            color: var(--bs-fg-body);
+            background-color: var(--bs-bg-2);
         }
         &.is-active {
-            color: white;
-            background-color: $tiletext;
+            color: var(--bs-inverse-contrast);
+            background-color: var(--bs-inverse-bg);
         }
     }
 
@@ -1941,9 +1937,9 @@ body {
             gap: 0.35rem;
             padding: 0.3rem 0.6rem;
             font-size: 0.78rem;
-            color: $tiletext2;
+            color: var(--bs-fg-2);
             text-decoration: none;
-            background-color: $tilebg4;
+            background-color: var(--bs-bg-1);
             border-radius: 0.4rem;
             transition: all 200ms ease-in-out;
 
@@ -1952,8 +1948,8 @@ body {
                 height: 0.85rem;
             }
             &:hover {
-                color: white;
-                background-color: $tiletext;
+                color: var(--bs-inverse-contrast);
+                background-color: var(--bs-inverse-bg);
             }
         }
     }
@@ -1961,11 +1957,11 @@ body {
     .eco-empty {
         padding: 4rem 0;
         text-align: center;
-        color: $greydesc;
+        color: var(--bs-fg-3);
 
         .eco-empty-reset {
             padding: 0;
-            color: $tiletext;
+            color: var(--bs-fg-1);
             background: none;
             border: 0;
             text-decoration: underline;
@@ -1988,7 +1984,7 @@ body {
 #stats-content {
     .stats-updated {
         font-size: 0.9rem;
-        color: $greydesc;
+        color: var(--bs-fg-3);
     }
 
     // The one number the page leads with
@@ -2006,7 +2002,7 @@ body {
         }
         .stats-hero-figure--second {
             padding-left: 3.5rem;
-            border-left: 1px solid $overline;
+            border-left: 1px solid var(--bs-border-color);
         }
         @media (max-width: 50rem) {
             .stats-hero-figure--second {
@@ -2019,15 +2015,15 @@ body {
             font-size: 4.5rem;
             font-weight: 800;
             line-height: 1;
-            color: black;
+            color: var(--bs-fg-body);
         }
         .stats-hero-label {
             font-size: 1.15rem;
-            color: $tiletext;
+            color: var(--bs-fg-1);
         }
         .stats-hero-hint {
             font-size: 0.9rem;
-            color: $greydesc;
+            color: var(--bs-fg-3);
         }
         @media (max-width: 50rem) {
             .stats-hero-value {
@@ -2047,20 +2043,20 @@ body {
         flex-direction: column;
         gap: 0.3rem;
         padding: 1.1rem 1.25rem;
-        background-color: $tilebg4;
-        border: 1px solid $overline;
+        background-color: var(--bs-bg-1);
+        border: 1px solid var(--bs-border-color);
         border-radius: 0.75rem;
 
         .stats-tile-value {
             font-size: 2rem;
             font-weight: 800;
             line-height: 1.1;
-            color: black;
+            color: var(--bs-fg-body);
         }
         .stats-tile-label {
             font-size: 0.85rem;
             line-height: 1.35;
-            color: $tiletext2;
+            color: var(--bs-fg-2);
         }
     }
 
@@ -2071,15 +2067,15 @@ body {
 
         &:hover,
         &:focus-visible {
-            background-color: $tilebg;
-            border-color: $tilebg2;
+            background-color: var(--bs-bg-2);
+            border-color: var(--bs-border-emphasized);
             transform: scale(1.02);
 
             .stats-tile-value {
-                color: black;
+                color: var(--bs-fg-body);
             }
             .stats-tile-label {
-                color: $tiletext;
+                color: var(--bs-fg-1);
             }
         }
     }
@@ -2098,13 +2094,13 @@ body {
             gap: 0.85rem;
             padding: 0.35rem 0.5rem;
             border-radius: 0.5rem;
-            color: $tiletext;
+            color: var(--bs-fg-1);
             text-decoration: none;
             transition: all 200ms ease-in-out;
 
             &:hover {
-                color: black;
-                background-color: $tilebg4;
+                color: var(--bs-fg-body);
+                background-color: var(--bs-bg-1);
             }
         }
         img {
@@ -2120,7 +2116,7 @@ body {
         // Thin recessive track, value anchored to the baseline with 4px ends
         .stats-contributor-bar {
             height: 0.5rem;
-            background-color: $tilebg;
+            background-color: var(--bs-bg-2);
             border-radius: 0.25rem;
 
             > span {
@@ -2128,13 +2124,13 @@ body {
                 min-width: 0.15rem;
                 height: 100%;
                 // A hue rather than a dark neutral, so extensions that invert the page keep the bar visible
-                background-color: $scversedeepblue;
+                background-color: var(--scverse-deep-blue);
                 border-radius: 0.25rem;
             }
         }
         .stats-contributor-count {
             font-size: 0.85rem;
-            color: $greydesc;
+            color: var(--bs-fg-3);
             font-variant-numeric: tabular-nums;
         }
 
@@ -2153,14 +2149,14 @@ body {
             width: fit-content;
             padding: 0.35rem 0.5rem;
             font-size: 0.9rem;
-            color: $tiletext2;
+            color: var(--bs-fg-2);
             border-radius: 0.5rem;
             cursor: pointer;
             transition: all 200ms ease-in-out;
 
             &:hover {
-                color: black;
-                background-color: $tilebg4;
+                color: var(--bs-fg-body);
+                background-color: var(--bs-bg-1);
             }
         }
         &[open] summary {
@@ -2181,12 +2177,12 @@ body {
         input {
             height: 3.2rem;
             outline: none;
-            border-color: #f0f0f0;
+            border-color: var(--bs-border-color);
             -webkit-box-shadow: none;
             box-shadow: none;
 
             &:focus {
-                border-color: #c0c0c0;
+                border-color: var(--bs-border-emphasized);
             }
         }
     }
@@ -2207,14 +2203,14 @@ body {
             $cardborder: 1rem;
             $cardpad: 1rem;
             border-radius: 1rem;
-            background-color: #fbfbfb;
+            background-color: var(--bs-bg-1);
 
             transition: all 200ms ease-in-out;
 
             justify-content: flex-start;
 
             a {
-                color: $navtext;
+                color: var(--bs-fg-2);
                 text-decoration: none;
                 display: flex;
                 flex-direction: column;
@@ -2233,14 +2229,14 @@ body {
 
             &:hover,
             &:active {
-                background-color: $tilebg;
-                // box-shadow: 0 0.2rem 1rem 0.05rem rgba(0, 0, 0, 0.1);
+                background-color: var(--bs-bg-2);
+                // box-shadow: 0 0.2rem 1rem 0.05rem color-mix(in oklch, var(--bs-black) 10%, transparent);
                 transform: scale(1.02);
                 h4 {
-                    color: black;
+                    color: var(--bs-fg-body);
                 }
                 p {
-                    color: black;
+                    color: var(--bs-fg-body);
                 }
             }
 
@@ -2295,15 +2291,15 @@ body {
 // Only worth a column when there is room for one beside the content
 @media (min-width: 75rem) {
     #page-content:has(.with-toc) {
-        max-width: $maxwidthwide;
-        width: $contentwidthwide;
+        max-width: var(--max-width-wide);
+        width: var(--content-width-wide);
     }
 
     // The extra width is for card grids. Prose keeps the normal column, or the measure sits in
     // the middle of it with all the slack pushed to one side.
     #page-content:has(.with-toc--prose) {
-        max-width: $maxwidth;
-        width: $contentwidth;
+        max-width: var(--max-width);
+        width: var(--content-width);
     }
 
     .with-toc {
@@ -2338,14 +2334,14 @@ body {
             font-weight: 700;
             letter-spacing: 0.06em;
             text-transform: uppercase;
-            color: $greydesc;
+            color: var(--bs-fg-3);
         }
 
         ul {
             margin: 0;
             padding: 0;
             list-style: none;
-            border-left: 1px solid $overline;
+            border-left: 1px solid var(--bs-border-color);
         }
 
         li a {
@@ -2355,16 +2351,16 @@ body {
             border-left: 2px solid transparent;
             font-size: 0.9rem;
             line-height: 1.35;
-            color: $greydesc;
+            color: var(--bs-fg-3);
             text-decoration: none;
             transition: all 200ms ease-in-out;
 
             &:hover {
-                color: black;
+                color: var(--bs-fg-body);
             }
             &.is-current {
-                color: black;
-                border-left-color: $tiletext;
+                color: var(--bs-fg-body);
+                border-left-color: var(--bs-fg-1);
             }
         }
 
@@ -2403,7 +2399,7 @@ body {
         margin: 0;
         font-size: 1.15rem;
         line-height: 1.6;
-        color: $tiletext2;
+        color: var(--bs-fg-2);
     }
 
     // Every contributor, at a size where 390 of them read as one picture
@@ -2418,7 +2414,7 @@ body {
         &.is-clipped {
             max-height: 19rem;
             overflow: hidden;
-            mask-image: linear-gradient(to bottom, black 55%, transparent);
+            mask-image: linear-gradient(to bottom, var(--bs-black) 55%, transparent);
         }
 
         a {
@@ -2431,12 +2427,12 @@ body {
             width: 2rem;
             height: 2rem;
             object-fit: cover;
-            background-color: $tilebg4;
+            background-color: var(--bs-bg-1);
             border-radius: 50%;
         }
         a:hover {
             transform: scale(1.6);
-            box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.25);
+            box-shadow: var(--bs-box-shadow);
         }
     }
 
@@ -2444,10 +2440,10 @@ body {
         margin: 0;
         font-size: 0.9rem;
         line-height: 1.6;
-        color: $greydesc;
+        color: var(--bs-fg-3);
 
         strong {
-            color: $tiletext;
+            color: var(--bs-fg-1);
         }
     }
 
@@ -2456,7 +2452,7 @@ body {
         margin-top: 0.6rem;
         padding: 0;
         font-size: 0.9rem;
-        color: $tiletext;
+        color: var(--bs-fg-1);
         background: none;
         border: 0;
         text-decoration: underline;
@@ -2481,7 +2477,7 @@ body {
         max-width: 52rem;
         margin: 0;
         font-size: 1rem;
-        color: $tiletext2;
+        color: var(--bs-fg-2);
     }
 
     .people-toolbar {
@@ -2503,7 +2499,7 @@ body {
             left: 1.1rem;
             width: 1.1rem;
             height: 1.1rem;
-            color: $greydesc;
+            color: var(--bs-fg-3);
             pointer-events: none;
         }
 
@@ -2512,21 +2508,22 @@ body {
             height: 3.25rem;
             padding: 0 2.9rem;
             font-size: 1rem;
-            color: $tiletext;
-            background-color: $backtickbg;
-            border: 1px solid $overline;
+            color: var(--bs-fg-1);
+            background-color: var(--bs-bg-1);
+            border: 1px solid var(--bs-border-color);
             border-radius: 2rem;
             outline: none;
             transition: all 200ms ease-in-out;
             text-overflow: ellipsis;
 
             &::placeholder {
-                color: $greydesc;
+                color: var(--bs-fg-3);
             }
             &:focus {
-                background-color: white;
-                border-color: $greydesc;
-                box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.04);
+                background-color: var(--bs-bg-body);
+                border-color: var(--bs-fg-3);
+                box-shadow: 0 0 0 0.25rem
+                    color-mix(in oklch, var(--bs-fg-body) 6%, transparent);
             }
             // The native affordance duplicates our own clear button
             &::-webkit-search-cancel-button {
@@ -2546,8 +2543,8 @@ body {
         padding: 0;
         border: 0;
         border-radius: 50%;
-        color: $tiletext2;
-        background-color: $tilebg;
+        color: var(--bs-fg-2);
+        background-color: var(--bs-bg-2);
         cursor: pointer;
         transition: all 200ms ease-in-out;
 
@@ -2556,15 +2553,15 @@ body {
             height: 0.7rem;
         }
         &:hover {
-            color: white;
-            background-color: $tiletext;
+            color: var(--bs-inverse-contrast);
+            background-color: var(--bs-inverse-bg);
         }
     }
 
     .people-count {
         margin: 0;
         font-size: 0.95rem;
-        color: $greydesc;
+        color: var(--bs-fg-3);
         white-space: nowrap;
     }
 
@@ -2581,9 +2578,9 @@ body {
         gap: 0.4rem;
         padding: 0.35rem 0.85rem;
         font-size: 0.85rem;
-        color: $tiletext2;
-        background-color: white;
-        border: 1px solid $overline;
+        color: var(--bs-fg-2);
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
         border-radius: 2rem;
         cursor: pointer;
         transition: all 200ms ease-in-out;
@@ -2594,14 +2591,14 @@ body {
             object-fit: contain;
         }
         &:hover {
-            color: $tiletext3;
-            border-color: $tilebg2;
-            background-color: $tilebg4;
+            color: var(--bs-fg-body);
+            border-color: var(--bs-border-emphasized);
+            background-color: var(--bs-bg-1);
         }
         &.is-active {
-            color: white;
-            background-color: $tiletext;
-            border-color: $tiletext;
+            color: var(--bs-inverse-contrast);
+            background-color: var(--bs-inverse-bg);
+            border-color: var(--bs-inverse-bg);
         }
         .people-chip-count {
             font-size: 0.75rem;
@@ -2618,7 +2615,7 @@ body {
         max-width: 42rem;
         margin: 1.25rem 0 0;
         font-size: 0.9rem;
-        color: $greydesc;
+        color: var(--bs-fg-3);
 
         &[hidden] {
             display: none;
@@ -2642,14 +2639,14 @@ body {
         gap: 0.4rem;
         padding: 1.6rem 1rem 1.2rem;
         text-align: center;
-        background-color: white;
-        border: 1px solid $overline;
-        border-radius: $card-radius;
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
+        border-radius: var(--card-radius);
         transition: all 200ms ease-in-out;
 
         &:hover {
-            border-color: $tilebg2;
-            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+            border-color: var(--bs-border-emphasized);
+            box-shadow: var(--bs-box-shadow);
             transform: translateY(-2px);
         }
         &[hidden] {
@@ -2666,7 +2663,7 @@ body {
         overflow: hidden;
         font-size: 1.5rem;
         border-radius: 50%;
-        background-color: $tilebg4;
+        background-color: var(--bs-bg-1);
     }
 
     .person-photo {
@@ -2682,12 +2679,10 @@ body {
         height: 100%;
         font-weight: 800;
         letter-spacing: 0.02em;
-        color: $tiletext;
+        color: var(--bs-fg-1);
 
-        @each $hue in $eco-hues {
-            &[data-hue="#{index($eco-hues, $hue) - 1}"] {
-                background-color: rgba($hue, 0.22);
-            }
+        &[data-hue] {
+            background-color: color-mix(in oklch, var(--hue) 22%, transparent);
         }
     }
 
@@ -2699,7 +2694,7 @@ body {
         overflow-wrap: anywhere;
 
         a {
-            color: black;
+            color: var(--bs-fg-body);
             text-decoration: none;
 
             // Make the whole card clickable without nesting interactive elements
@@ -2707,7 +2702,7 @@ body {
                 content: "";
                 position: absolute;
                 inset: 0;
-                border-radius: $card-radius;
+                border-radius: var(--card-radius);
             }
         }
     }
@@ -2728,8 +2723,8 @@ body {
         font-weight: 700;
         letter-spacing: 0.05em;
         text-transform: uppercase;
-        color: $greydesc;
-        border: 1px solid $overline;
+        color: var(--bs-fg-3);
+        border: 1px solid var(--bs-border-color);
         border-radius: 0.25rem;
     }
 
@@ -2737,20 +2732,20 @@ body {
     .person-role--council,
     .person-role--management,
     .person-role--advisory {
-        color: white;
-        background-color: $tiletext;
-        border-color: $tiletext;
+        color: var(--bs-inverse-contrast);
+        background-color: var(--bs-inverse-bg);
+        border-color: var(--bs-inverse-bg);
     }
 
     a.person-role--group {
         position: relative;
         z-index: 1;
-        color: $greydesc;
+        color: var(--bs-fg-3);
         text-decoration: none;
 
         &:hover {
-            color: $tiletext;
-            border-color: $tiletext2;
+            color: var(--bs-fg-1);
+            border-color: var(--bs-fg-2);
         }
     }
 
@@ -2758,7 +2753,7 @@ body {
         margin: 0.1rem 0 0;
         font-size: 0.78rem;
         line-height: 1.4;
-        color: $greydesc;
+        color: var(--bs-fg-3);
         text-wrap: balance;
     }
 
@@ -2769,8 +2764,8 @@ body {
         padding: 0.15rem 0.5rem;
         font-size: 0.72rem;
         line-height: 1.4;
-        color: $tiletext2;
-        background-color: $tilebg4;
+        color: var(--bs-fg-2);
+        background-color: var(--bs-bg-1);
         border-radius: 0.35rem;
 
         img {
@@ -2795,8 +2790,8 @@ body {
             place-items: center;
             width: 1.9rem;
             height: 1.9rem;
-            color: $greydesc;
-            background-color: $tilebg4;
+            color: var(--bs-fg-3);
+            background-color: var(--bs-bg-1);
             border-radius: 0.45rem;
             transition: all 200ms ease-in-out;
 
@@ -2805,8 +2800,8 @@ body {
                 height: 0.95rem;
             }
             &:hover {
-                color: white;
-                background-color: $tiletext;
+                color: var(--bs-inverse-contrast);
+                background-color: var(--bs-inverse-bg);
             }
         }
     }
@@ -2814,11 +2809,11 @@ body {
     .people-empty {
         padding: 4rem 0;
         text-align: center;
-        color: $greydesc;
+        color: var(--bs-fg-3);
 
         .people-empty-reset {
             padding: 0;
-            color: $tiletext;
+            color: var(--bs-fg-1);
             background: none;
             border: 0;
             text-decoration: underline;
@@ -2834,8 +2829,8 @@ body {
         gap: 1.5rem 2.5rem;
         margin-top: 2rem;
         padding: 1.75rem;
-        background-color: $tilebg4;
-        border-radius: $card-radius;
+        background-color: var(--bs-bg-1);
+        border-radius: var(--card-radius);
         scroll-margin-top: 6rem;
 
         &[hidden] {
@@ -2853,7 +2848,7 @@ body {
             margin: 0;
             font-size: 0.9rem;
             line-height: 1.5;
-            color: $tiletext2;
+            color: var(--bs-fg-2);
         }
         .people-group-count {
             margin-top: 0.75rem;
@@ -2861,7 +2856,7 @@ body {
             font-weight: 700;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            color: $greydesc;
+            color: var(--bs-fg-3);
         }
     }
 
@@ -2881,13 +2876,13 @@ body {
         align-items: center;
         gap: 0.7rem;
         padding: 0.55rem 0.7rem;
-        background-color: white;
-        border: 1px solid $overline;
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
         border-radius: 0.75rem;
         transition: border-color 200ms ease-in-out;
 
         &:hover {
-            border-color: $tilebg2;
+            border-color: var(--bs-border-emphasized);
         }
         &[hidden] {
             display: none;
@@ -2906,7 +2901,7 @@ body {
         a {
             font-size: 0.9rem;
             font-weight: 600;
-            color: black;
+            color: var(--bs-fg-body);
             text-decoration: none;
 
             &::after {
@@ -2954,7 +2949,7 @@ body {
 }
 
 #media-kit-content {
-    max-width: $maxwidth;
+    max-width: var(--max-width);
     margin: 0 auto;
 
     h2 {
@@ -2963,7 +2958,7 @@ body {
         font-weight: 800;
         letter-spacing: -0.02em;
         position: relative;
-        background: linear-gradient(15deg, #000000 0%, #777777 100%);
+        background: linear-gradient(15deg, var(--bs-fg-body) 0%, var(--bs-fg-3) 100%);
         display: inline-block;
         background-clip: text;
         -webkit-background-clip: text;
@@ -2975,7 +2970,11 @@ body {
             display: block;
             width: 3rem;
             height: 0.25rem;
-            background: linear-gradient(90deg, #000000 0%, #999999 100%);
+            background: linear-gradient(
+                90deg,
+                var(--bs-fg-body) 0%,
+                var(--bs-fg-4) 100%
+            );
             border-radius: 2px;
             margin-top: 0.75rem;
         }
@@ -3001,8 +3000,8 @@ body {
         .logo-section {
             background: linear-gradient(
                 135deg,
-                rgba(255, 255, 255, 0.9) 0%,
-                rgba(255, 255, 255, 0.5) 100%
+                color-mix(in oklch, var(--bs-bg-body) 90%, transparent) 0%,
+                color-mix(in oklch, var(--bs-bg-body) 50%, transparent) 100%
             );
             backdrop-filter: blur(10px);
             border-radius: 1.25rem;
@@ -3011,8 +3010,8 @@ body {
             display: flex;
             flex-direction: row;
             align-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid color-mix(in oklch, var(--bs-bg-body) 30%, transparent);
+            box-shadow: var(--bs-box-shadow-lg);
             position: relative;
             overflow: hidden;
 
@@ -3040,8 +3039,8 @@ body {
 
             &:hover {
                 transform: translateY(-8px);
-                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-                border-color: rgba(255, 255, 255, 0.5);
+                box-shadow: var(--bs-box-shadow-xl);
+                border-color: color-mix(in oklch, var(--bs-bg-body) 50%, transparent);
 
                 &::before {
                     opacity: 0.15;
@@ -3053,11 +3052,12 @@ body {
                 justify-content: center;
                 align-items: center;
                 padding: 2.5rem;
-                background-color: white;
+                // The logos are drawn for a light background
+                background-color: var(--bs-white);
                 border-radius: 1rem;
                 min-height: 180px;
                 min-width: 300px;
-                // box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+                // box-shadow: 0 10px 25px color-mix(in oklch, var(--bs-black) 6%, transparent);
                 position: relative;
                 overflow: hidden;
                 margin-right: 2.5rem;
@@ -3079,7 +3079,12 @@ body {
                     height: 100%;
                     background: linear-gradient(
                         135deg,
-                        rgba(var(--hover-color, transparent), 0.05) 0%,
+                        color-mix(
+                                in oklch,
+                                var(--hover-color, transparent) 5%,
+                                transparent
+                            )
+                            0%,
                         transparent 70%
                     );
                 }
@@ -3111,7 +3116,7 @@ body {
                         .logo-name {
                             font-weight: 700;
                             font-size: 1.5rem;
-                            color: $tiletext;
+                            color: var(--bs-fg-1);
                             margin-bottom: 1rem;
                             letter-spacing: -0.01em;
                             margin-left: 0;
@@ -3119,7 +3124,7 @@ body {
 
                         .logo-details {
                             font-size: 1rem;
-                            color: $tiletext2;
+                            color: var(--bs-fg-2);
                             line-height: 1.7;
                             max-width: 650px;
                         }
@@ -3137,22 +3142,27 @@ body {
                     a {
                         display: inline-block;
                         padding: 0.75rem 1.5rem;
-                        background-color: rgba(255, 255, 255, 0.5);
+                        background-color: color-mix(
+                            in oklch,
+                            var(--bs-bg-body) 50%,
+                            transparent
+                        );
                         border-radius: 3rem;
                         font-size: 0.9rem;
                         font-weight: 600;
-                        color: $tiletext;
+                        color: var(--bs-fg-1);
                         text-decoration: none;
                         transition: all 300ms cubic-bezier(0.25, 1, 0.5, 1);
-                        border: 1px solid rgba(255, 255, 255, 0.3);
+                        border: 1px solid
+                            color-mix(in oklch, var(--bs-bg-body) 30%, transparent);
                         backdrop-filter: blur(5px);
 
                         &:hover {
-                            background-color: #000;
-                            color: #fff;
+                            background-color: var(--bs-inverse-bg);
+                            color: var(--bs-inverse-contrast);
                             transform: translateY(-2px);
-                            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-                            border-color: #000;
+                            box-shadow: var(--bs-box-shadow);
+                            border-color: var(--bs-inverse-bg);
                         }
                     }
                 }
@@ -3175,14 +3185,14 @@ body {
         .dont-section {
             background: linear-gradient(
                 135deg,
-                rgba(255, 255, 255, 0.9) 0%,
-                rgba(255, 255, 255, 0.5) 100%
+                color-mix(in oklch, var(--bs-bg-body) 90%, transparent) 0%,
+                color-mix(in oklch, var(--bs-bg-body) 50%, transparent) 100%
             );
             backdrop-filter: blur(10px);
             border-radius: 1rem;
             padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: var(--bs-box-shadow-lg);
+            border: 1px solid color-mix(in oklch, var(--bs-bg-body) 30%, transparent);
             transition:
                 transform 300ms ease,
                 box-shadow 300ms ease;
@@ -3191,7 +3201,7 @@ body {
 
             &:hover {
                 transform: translateY(-5px);
-                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+                box-shadow: var(--bs-box-shadow-xl);
             }
 
             h3 {
@@ -3224,7 +3234,7 @@ body {
                 li {
                     margin-bottom: 1rem;
                     font-size: 1rem;
-                    color: $tiletext2;
+                    color: var(--bs-fg-2);
                     line-height: 1.6;
                     padding-left: 3rem;
                     position: relative;
@@ -3256,20 +3266,20 @@ body {
                 height: 100%;
                 background: linear-gradient(
                     135deg,
-                    rgba(46, 125, 50, 0.05) 0%,
+                    color-mix(in oklch, var(--bs-success-base) 5%, transparent) 0%,
                     transparent 70%
                 );
                 z-index: -1;
             }
 
             h3 {
-                color: #2e7d32; // Green for "Do's"
+                color: var(--bs-success-fg); // Green for "Do's"
             }
 
             ul li::before {
                 content: "✓";
-                background-color: rgba(46, 125, 50, 0.1);
-                color: #2e7d32;
+                background-color: var(--bs-success-bg-subtle);
+                color: var(--bs-success-fg);
             }
         }
 
@@ -3283,22 +3293,33 @@ body {
                 height: 100%;
                 background: linear-gradient(
                     135deg,
-                    rgba(198, 40, 40, 0.05) 0%,
+                    color-mix(in oklch, var(--bs-danger-base) 5%, transparent) 0%,
                     transparent 70%
                 );
                 z-index: -1;
             }
 
             h3 {
-                color: #c62828; // Red for "Don'ts"
+                color: var(--bs-danger-fg); // Red for "Don'ts"
             }
 
             ul li::before {
                 content: "✕";
-                background-color: rgba(198, 40, 40, 0.1);
-                color: #c62828;
+                background-color: var(--bs-danger-bg-subtle);
+                color: var(--bs-danger-fg);
             }
         }
+    }
+
+    .trademark-flair {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background: var(--bs-bg-2);
+        border-left: 5px solid var(--bs-primary-base);
+        border-radius: 0 8px 8px 0;
     }
 
     // Package Icons Section
@@ -3316,15 +3337,15 @@ body {
         .icon-section {
             background: linear-gradient(
                 135deg,
-                rgba(255, 255, 255, 0.9) 0%,
-                rgba(255, 255, 255, 0.5) 100%
+                color-mix(in oklch, var(--bs-bg-body) 90%, transparent) 0%,
+                color-mix(in oklch, var(--bs-bg-body) 50%, transparent) 100%
             );
             backdrop-filter: blur(10px);
             border-radius: 1rem;
             padding: 1.75rem;
             transition: all 300ms cubic-bezier(0.25, 1, 0.5, 1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid color-mix(in oklch, var(--bs-bg-body) 30%, transparent);
+            box-shadow: var(--bs-box-shadow-lg);
             position: relative;
             overflow: hidden;
 
@@ -3334,8 +3355,8 @@ body {
 
             &:hover {
                 transform: translateY(-6px);
-                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-                border-color: rgba(255, 255, 255, 0.5);
+                box-shadow: var(--bs-box-shadow-xl);
+                border-color: color-mix(in oklch, var(--bs-bg-body) 50%, transparent);
             }
 
             // Package-specific styling for each icon
@@ -3349,7 +3370,7 @@ body {
                     height: 100%;
                     background: linear-gradient(
                         135deg,
-                        rgba($anndataorange, 0.1) 0%,
+                        color-mix(in oklch, var(--anndata-orange) 10%, transparent) 0%,
                         transparent 80%
                     );
                     z-index: -1;
@@ -3357,7 +3378,7 @@ body {
 
                 &:hover {
                     .icon-name {
-                        color: $anndataorange;
+                        color: var(--anndata-orange);
                     }
                 }
             }
@@ -3372,7 +3393,7 @@ body {
                     height: 100%;
                     background: linear-gradient(
                         135deg,
-                        rgba($scanpymandy, 0.1) 0%,
+                        color-mix(in oklch, var(--scanpy-mandy) 10%, transparent) 0%,
                         transparent 80%
                     );
                     z-index: -1;
@@ -3380,7 +3401,7 @@ body {
 
                 &:hover {
                     .icon-name {
-                        color: $scanpymandy;
+                        color: var(--scanpy-mandy);
                     }
                 }
             }
@@ -3395,7 +3416,7 @@ body {
                     height: 100%;
                     background: linear-gradient(
                         135deg,
-                        rgba($mudatagreen, 0.1) 0%,
+                        color-mix(in oklch, var(--mudata-green) 10%, transparent) 0%,
                         transparent 80%
                     );
                     z-index: -1;
@@ -3403,7 +3424,7 @@ body {
 
                 &:hover {
                     .icon-name {
-                        color: $mudatagreen;
+                        color: var(--mudata-green);
                     }
                 }
             }
@@ -3418,7 +3439,7 @@ body {
                     height: 100%;
                     background: linear-gradient(
                         135deg,
-                        rgba($muonaquamarine, 0.1) 0%,
+                        color-mix(in oklch, var(--muon-aquamarine) 10%, transparent) 0%,
                         transparent 80%
                     );
                     z-index: -1;
@@ -3426,7 +3447,7 @@ body {
 
                 &:hover {
                     .icon-name {
-                        color: $muonaquamarine;
+                        color: var(--muon-aquamarine);
                     }
                 }
             }
@@ -3441,7 +3462,7 @@ body {
                     height: 100%;
                     background: linear-gradient(
                         135deg,
-                        rgba($spatialdatablue, 0.1) 0%,
+                        color-mix(in oklch, var(--spatialdata-blue) 10%, transparent) 0%,
                         transparent 80%
                     );
                     z-index: -1;
@@ -3449,7 +3470,7 @@ body {
 
                 &:hover {
                     .icon-name {
-                        color: $spatialdatablue;
+                        color: var(--spatialdata-blue);
                     }
                 }
             }
@@ -3464,7 +3485,7 @@ body {
                     height: 100%;
                     background: linear-gradient(
                         135deg,
-                        rgba($scirpypurple, 0.1) 0%,
+                        color-mix(in oklch, var(--scirpy-purple) 10%, transparent) 0%,
                         transparent 80%
                     );
                     z-index: -1;
@@ -3472,7 +3493,7 @@ body {
 
                 &:hover {
                     .icon-name {
-                        color: $scirpypurple;
+                        color: var(--scirpy-purple);
                     }
                 }
             }
@@ -3487,7 +3508,7 @@ body {
                     height: 100%;
                     background: linear-gradient(
                         135deg,
-                        rgba($squidpyviolet, 0.1) 0%,
+                        color-mix(in oklch, var(--squidpy-violet) 10%, transparent) 0%,
                         transparent 80%
                     );
                     z-index: -1;
@@ -3495,7 +3516,7 @@ body {
 
                 &:hover {
                     .icon-name {
-                        color: $squidpyviolet;
+                        color: var(--squidpy-violet);
                     }
                 }
             }
@@ -3510,7 +3531,7 @@ body {
                     height: 100%;
                     background: linear-gradient(
                         135deg,
-                        rgba($scviyellow, 0.1) 0%,
+                        color-mix(in oklch, var(--scvi-yellow) 10%, transparent) 0%,
                         transparent 80%
                     );
                     z-index: -1;
@@ -3518,7 +3539,7 @@ body {
 
                 &:hover {
                     .icon-name {
-                        color: $scviyellow;
+                        color: var(--scvi-yellow);
                     }
                 }
             }
@@ -3532,7 +3553,7 @@ body {
                 border-radius: 0.75rem;
                 margin-bottom: 1.25rem;
                 min-height: 110px;
-                //   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+                //   box-shadow: 0 10px 25px color-mix(in oklch, var(--bs-black) 5%, transparent);
                 position: relative;
                 overflow: hidden;
 
@@ -3567,7 +3588,7 @@ body {
                         .icon-name {
                             font-weight: 700;
                             font-size: 1.15rem;
-                            color: $tiletext;
+                            color: var(--bs-fg-1);
                             margin-bottom: 0.4rem;
                             letter-spacing: -0.01em;
                             transition: color 300ms ease;
@@ -3575,7 +3596,7 @@ body {
 
                         .icon-details {
                             font-size: 0.9rem;
-                            color: $tiletext2;
+                            color: var(--bs-fg-2);
                             line-height: 1.5;
                         }
                     }
@@ -3592,22 +3613,27 @@ body {
                     a {
                         display: inline-block;
                         padding: 0.55rem 1rem;
-                        background-color: rgba(255, 255, 255, 0.5);
+                        background-color: color-mix(
+                            in oklch,
+                            var(--bs-bg-body) 50%,
+                            transparent
+                        );
                         border-radius: 2.5rem;
                         font-size: 0.8rem;
                         font-weight: 600;
-                        color: $tiletext;
+                        color: var(--bs-fg-1);
                         text-decoration: none;
                         transition: all 300ms cubic-bezier(0.25, 1, 0.5, 1);
-                        border: 1px solid rgba(255, 255, 255, 0.3);
+                        border: 1px solid
+                            color-mix(in oklch, var(--bs-bg-body) 30%, transparent);
                         backdrop-filter: blur(5px);
 
                         &:hover {
-                            background-color: #000;
-                            color: #fff;
+                            background-color: var(--bs-inverse-bg);
+                            color: var(--bs-inverse-contrast);
                             transform: translateY(-2px);
-                            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-                            border-color: #000;
+                            box-shadow: var(--bs-box-shadow);
+                            border-color: var(--bs-inverse-bg);
                         }
                     }
                 }
@@ -3622,31 +3648,31 @@ body {
         a {
             text-decoration: none;
             color: inherit;
-            border-bottom: 1px solid $linkunderline;
+            border-bottom: 1px solid var(--bs-border-emphasized);
             transition:
                 border 200ms,
                 color 200ms;
             &:hover,
             &:active {
-                border-bottom: 1px solid black;
+                border-bottom: 1px solid var(--bs-fg-body);
             }
         }
 
         p {
             font-size: 1.05rem;
-            color: $tiletext2;
+            color: var(--bs-fg-2);
             line-height: 1.8;
             max-width: 700px;
             background: linear-gradient(
                 135deg,
-                rgba(255, 255, 255, 0.9) 0%,
-                rgba(255, 255, 255, 0.5) 100%
+                color-mix(in oklch, var(--bs-bg-body) 90%, transparent) 0%,
+                color-mix(in oklch, var(--bs-bg-body) 50%, transparent) 100%
             );
             backdrop-filter: blur(10px);
             padding: 2.5rem;
             border-radius: 1rem;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: var(--bs-box-shadow-lg);
+            border: 1px solid color-mix(in oklch, var(--bs-bg-body) 30%, transparent);
             position: relative;
             overflow: hidden;
 
@@ -3659,7 +3685,7 @@ body {
                 height: 100%;
                 background: linear-gradient(
                     135deg,
-                    rgba(69, 87, 196, 0.05) 0%,
+                    color-mix(in oklch, var(--scverse-deep-blue) 5%, transparent) 0%,
                     transparent 80%
                 );
                 z-index: -1;
@@ -3676,15 +3702,19 @@ body {
         width: 200%;
         height: 200%;
         background:
-            radial-gradient(circle, rgba(69, 87, 196, 0.02) 0%, transparent 60%),
+            radial-gradient(
+                circle,
+                color-mix(in oklch, var(--scverse-deep-blue) 2%, transparent) 0%,
+                transparent 60%
+            ),
             radial-gradient(
                 circle at 80% 20%,
-                rgba($anndataorange, 0.02) 0%,
+                color-mix(in oklch, var(--anndata-orange) 2%, transparent) 0%,
                 transparent 40%
             ),
             radial-gradient(
                 circle at 20% 80%,
-                rgba($scanpymandy, 0.02) 0%,
+                color-mix(in oklch, var(--scanpy-mandy) 2%, transparent) 0%,
                 transparent 50%
             );
         z-index: -1;
@@ -3700,7 +3730,7 @@ body {
 
         .toggle-label {
             font-size: 0.9rem;
-            color: $tiletext2;
+            color: var(--bs-fg-2);
             margin-right: 1rem;
         }
 
@@ -3716,7 +3746,7 @@ body {
                 position: absolute;
 
                 &:checked + .toggle-label {
-                    background: #000;
+                    background: var(--bs-inverse-bg);
 
                     .toggle-inner {
                         margin-left: 0;
@@ -3724,7 +3754,7 @@ body {
                         &:before {
                             content: attr(data-text-on);
                             left: 10px;
-                            color: white;
+                            color: var(--bs-inverse-contrast);
                         }
                     }
 
@@ -3742,7 +3772,7 @@ body {
                 cursor: pointer;
                 width: 100%;
                 height: 100%;
-                background: #eaeaea;
+                background: var(--bs-bg-3);
                 border-radius: 100px;
                 position: relative;
                 transition: background-color 0.2s;
@@ -3759,7 +3789,7 @@ body {
                         top: 50%;
                         transform: translateY(-50%);
                         right: 10px;
-                        color: #333;
+                        color: var(--bs-fg-1);
                         font-size: 0.8rem;
                         font-weight: 600;
                         transition: all 0.2s;
@@ -3774,8 +3804,8 @@ body {
                     height: 30px;
                     border-radius: 45px;
                     transition: 0.2s;
-                    background: #fff;
-                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                    background: var(--bs-bg-body);
+                    box-shadow: var(--bs-box-shadow-sm);
                 }
             }
         }
@@ -3828,7 +3858,7 @@ body {
                 padding-bottom: 66%; // 3:2 aspect ratio
                 position: relative;
                 overflow: hidden;
-                background-color: #f8f8f8;
+                background-color: var(--bs-bg-1);
                 border-radius: 1rem;
 
                 img {
@@ -3849,7 +3879,7 @@ body {
             .example-caption {
                 padding: 0.75rem 0.5rem;
                 font-size: 0.85rem;
-                color: $tiletext2;
+                color: var(--bs-fg-2);
                 line-height: 1.4;
                 text-align: left;
             }
@@ -3870,9 +3900,9 @@ body {
             height: 1px;
             background: linear-gradient(
                 90deg,
-                rgba(0, 0, 0, 0.05) 0%,
-                rgba(0, 0, 0, 0.1) 50%,
-                rgba(0, 0, 0, 0.05) 100%
+                color-mix(in oklch, var(--bs-fg-body) 5%, transparent) 0%,
+                color-mix(in oklch, var(--bs-fg-body) 10%, transparent) 50%,
+                color-mix(in oklch, var(--bs-fg-body) 5%, transparent) 100%
             );
         }
     }
@@ -3885,16 +3915,16 @@ body {
 
 #interactive-container {
     width: 100%;
-    max-width: $maxwidthwide;
+    max-width: var(--max-width-wide);
     margin: 0 auto;
     transform-style: preserve-3d;
     perspective: 1500px;
 }
 
 .interactive-card {
-    background-color: white;
+    background-color: var(--bs-bg-body);
     border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--bs-box-shadow-lg);
     overflow: hidden;
     transition:
         transform 0.6s ease-out,
@@ -3902,14 +3932,14 @@ body {
     will-change: transform;
 
     &:hover {
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+        box-shadow: var(--bs-box-shadow-xl);
     }
 }
 
 .demo-header {
-    background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
+    background: linear-gradient(135deg, var(--bs-bg-1) 0%, var(--bs-bg-2) 100%);
     padding: 25px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--bs-border-color);
     position: relative;
     z-index: 100;
 }
@@ -3917,7 +3947,7 @@ body {
 .command-input {
     display: flex;
     align-items: center;
-    background-color: #e8e8e8;
+    background-color: var(--bs-bg-3);
     padding: 12px 18px;
     border-radius: 10px;
     margin-bottom: 12px;
@@ -3930,7 +3960,7 @@ body {
     }
 
     &:hover {
-        background-color: #e0e0e0;
+        background-color: var(--bs-bg-4);
     }
 }
 
@@ -3938,7 +3968,7 @@ body {
     width: 32px;
     height: 32px;
     appearance: none;
-    background-color: #ccc;
+    background-color: var(--bs-fg-4);
     border: none;
     border-radius: 50%;
     display: flex;
@@ -3952,21 +3982,21 @@ body {
     transition: all 0.3s ease;
 
     &:hover {
-        background-color: #4285f4;
+        background-color: var(--bs-primary-bg);
         transform: scale(1.1);
     }
 
     svg {
         width: 14px;
         height: 14px;
-        fill: white;
+        fill: var(--bs-white);
     }
 }
 
 .command-text {
     font-family: "SF Mono", "Monaco", "Inconsolata", "Fira Code", monospace;
     font-size: 15px;
-    color: #333;
+    color: var(--bs-fg-1);
     flex-grow: 1;
     pointer-events: none;
     font-weight: 500;
@@ -3978,7 +4008,7 @@ body {
     height: 100%;
     left: 0;
     top: 0;
-    background-color: rgba(52, 168, 83, 0.15);
+    background-color: color-mix(in oklch, var(--bs-success-base) 15%, transparent);
     transition: width 0.8s ease-out;
     pointer-events: none;
 }
@@ -3987,7 +4017,7 @@ body {
     height: 500px;
     position: relative;
     padding: 30px;
-    background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+    background: linear-gradient(135deg, var(--bs-bg-1) 0%, var(--bs-bg-2) 100%);
     overflow: hidden;
     z-index: 1;
 
@@ -4006,7 +4036,7 @@ body {
             opacity 0.5s ease,
             box-shadow 0.3s ease;
         will-change: transform, opacity;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+        box-shadow: var(--bs-box-shadow-sm);
         cursor: pointer;
 
         &.is-visible {
@@ -4022,7 +4052,7 @@ body {
 
         &:hover .dot.is-visible {
             transform: scale(1.4);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+            box-shadow: var(--bs-box-shadow);
             z-index: 5;
         }
 
@@ -4051,7 +4081,7 @@ body {
     left: 0;
     width: 0%;
     height: 3px;
-    background: linear-gradient(90deg, #4285f4, #34a853);
+    background: linear-gradient(90deg, var(--bs-primary-bg), var(--bs-success-bg));
     transition: width 1s ease-in-out;
     pointer-events: none;
 }
@@ -4068,7 +4098,7 @@ body {
 }
 
 .command-icon:focus-visible {
-    outline: 3px solid #1a73e8;
+    outline: var(--bs-focus-ring);
     outline-offset: 2px;
 }
 
@@ -4093,27 +4123,27 @@ body {
     margin: 0 -1rem;
     padding: 1rem;
 
-    background-color: #ff000000;
+    background-color: transparent;
     transition: all 200ms ease-in-out;
     border-radius: 0.5rem;
 
     &:hover {
         cursor: pointer;
-        background-color: $tilebg3;
+        background-color: var(--bs-bg-3);
     }
 
     @media (max-width: 50rem) {
-        background-color: $tilebg4;
+        background-color: var(--bs-bg-1);
     }
 
     h2 {
-        color: $tiletext;
+        color: var(--bs-fg-1);
         margin: 0 0 0.5rem 0;
         line-height: 1.5rem;
     }
     span {
         font-size: 1rem;
-        color: $greydesc;
+        color: var(--bs-fg-3);
         line-height: 1.3rem;
     }
     .page-item-date {
@@ -4156,14 +4186,14 @@ body {
 
     .gov-node {
         padding: 0.6rem;
-        background-color: white;
-        border: 1px solid $overline;
-        border-radius: $card-radius;
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
+        border-radius: var(--card-radius);
     }
 
     // Community, the management committee and the advisory board sit at the same level
     .gov-node--top {
-        background-color: $backtickbg;
+        background-color: var(--bs-bg-1);
     }
 
     .gov-card {
@@ -4175,7 +4205,7 @@ body {
         transition: background-color 200ms ease-in-out;
 
         &:hover {
-            background-color: rgba(0, 0, 0, 0.02);
+            background-color: color-mix(in oklch, var(--bs-fg-body) 3%, transparent);
         }
     }
 
@@ -4187,15 +4217,13 @@ body {
         height: 2.25rem;
         font-size: 1.05rem;
         border-radius: 50%;
-        background-color: $tilebg;
-        color: $tiletext;
+        background-color: var(--bs-bg-2);
+        color: var(--bs-fg-1);
     }
 
-    @each $hue in $eco-hues {
-        .gov-card[data-hue="#{index($eco-hues, $hue) - 1}"] .gov-icon {
-            background-color: rgba($hue, 0.18);
-            color: darken($hue, 15%);
-        }
+    .gov-card[data-hue] .gov-icon {
+        background-color: color-mix(in oklch, var(--hue) 18%, transparent);
+        color: hue-fg(var(--hue));
     }
 
     .gov-body {
@@ -4206,12 +4234,12 @@ body {
     .gov-name {
         font-size: 0.95rem;
         font-weight: 700;
-        color: black;
+        color: var(--bs-fg-body);
         text-decoration: none;
         border-bottom: 1px solid transparent;
 
         &:hover {
-            border-bottom-color: $linkunderline;
+            border-bottom-color: var(--bs-border-emphasized);
         }
     }
 
@@ -4219,7 +4247,7 @@ body {
         margin: 0.15rem 0 0;
         font-size: 0.85rem;
         line-height: 1.5;
-        color: $tiletext2;
+        color: var(--bs-fg-2);
     }
 
     // The faces are the point of this link: the headcount is there for anyone who cannot see them
@@ -4235,8 +4263,8 @@ body {
         transition: all 200ms ease-in-out;
 
         &:hover {
-            border-color: $overline;
-            background-color: white;
+            border-color: var(--bs-border-color);
+            background-color: var(--bs-bg-body);
         }
     }
 
@@ -4251,7 +4279,7 @@ body {
     .gov-face {
         display: block;
         border-radius: 50%;
-        box-shadow: 0 0 0 2px white;
+        box-shadow: 0 0 0 2px var(--bs-bg-body);
 
         img,
         .person-monogram {
@@ -4267,13 +4295,11 @@ body {
             place-items: center;
             font-size: 0.6rem;
             font-weight: 800;
-            color: $tiletext;
-            background-color: $tilebg;
+            color: var(--bs-fg-1);
+            background-color: var(--bs-bg-2);
 
-            @each $hue in $eco-hues {
-                &[data-hue="#{index($eco-hues, $hue) - 1}"] {
-                    background-color: rgba($hue, 0.3);
-                }
+            &[data-hue] {
+                background-color: color-mix(in oklch, var(--hue) 30%, transparent);
             }
         }
     }
@@ -4282,7 +4308,7 @@ body {
         font-size: 0.85rem;
         font-weight: 700;
         font-variant-numeric: tabular-nums;
-        color: $tiletext2;
+        color: var(--bs-fg-2);
     }
 
     .gov-level--row {
@@ -4357,8 +4383,8 @@ body {
     margin: 1.25rem 0;
     padding: 0.6rem 0.7rem;
     font-size: 0.9rem;
-    color: $greydesc;
-    background-color: $tilebg4;
+    color: var(--bs-fg-3);
+    background-color: var(--bs-bg-1);
     border-radius: 0.5rem;
 
     .role-members-label {
@@ -4367,7 +4393,7 @@ body {
         font-weight: 700;
         letter-spacing: 0.06em;
         text-transform: uppercase;
-        color: $greydesc;
+        color: var(--bs-fg-3);
     }
 }
 
@@ -4379,15 +4405,15 @@ body {
     padding: 0.2rem 0.6rem 0.2rem 0.2rem;
     white-space: nowrap;
     font-size: 0.85rem;
-    color: $tiletext2;
-    background-color: white;
-    border: 1px solid $overline;
+    color: var(--bs-fg-2);
+    background-color: var(--bs-bg-body);
+    border: 1px solid var(--bs-border-color);
     border-radius: 2rem;
     transition: all 200ms ease-in-out;
 
     &:hover {
-        color: black;
-        border-color: $tilebg2;
+        color: var(--bs-fg-body);
+        border-color: var(--bs-border-emphasized);
     }
 
     .role-member-face {
@@ -4407,13 +4433,11 @@ body {
             place-items: center;
             font-size: 0.55rem;
             font-weight: 800;
-            color: $tiletext;
-            background-color: $tilebg;
+            color: var(--bs-fg-1);
+            background-color: var(--bs-bg-2);
 
-            @each $hue in $eco-hues {
-                &[data-hue="#{index($eco-hues, $hue) - 1}"] {
-                    background-color: rgba($hue, 0.3);
-                }
+            &[data-hue] {
+                background-color: color-mix(in oklch, var(--hue) 30%, transparent);
             }
         }
     }
@@ -4427,19 +4451,19 @@ body {
     gap: 0.4rem;
     background: none;
     border: 0;
-    color: $greyheader;
+    color: var(--bs-fg-1);
     font-size: inherit;
 
     &:hover {
-        color: $greyheaderhover;
+        color: var(--bs-fg-2);
     }
 
     .nav-search-kbd {
         padding: 0.05rem 0.4rem;
-        border: 1px solid $tilebg2;
+        border: 1px solid var(--bs-border-emphasized);
         border-radius: 0.25rem;
-        background-color: $tilebg4;
-        color: $greydesc;
+        background-color: var(--bs-bg-1);
+        color: var(--bs-fg-3);
         font-size: 0.75rem;
         line-height: 1.2;
 
@@ -4455,8 +4479,8 @@ body {
     overflow: hidden;
     border: none;
     border-radius: 0.75rem;
-    background-color: white;
-    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.3);
+    background-color: var(--bs-bg-body);
+    box-shadow: var(--bs-box-shadow-xl);
     width: calc(100vw - 2rem);
     max-width: 42rem;
     height: calc(100vh - 8rem);
@@ -4469,7 +4493,7 @@ body {
     }
 
     &::backdrop {
-        background-color: rgba(0, 0, 0, 0.45);
+        background-color: color-mix(in oklch, var(--bs-black) 45%, transparent);
     }
 }
 
@@ -4478,7 +4502,7 @@ body {
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 1.25rem;
-    color: $greydesc;
+    color: var(--bs-fg-3);
 }
 
 #search-input {
@@ -4486,7 +4510,7 @@ body {
     border: 0;
     outline: none;
     font-size: 1.15rem;
-    color: $tiletext;
+    color: var(--bs-fg-1);
 
     &::-webkit-search-cancel-button {
         display: none;
@@ -4495,17 +4519,17 @@ body {
 
 .search-close {
     padding: 0.1rem 0.45rem;
-    border: 1px solid $tilebg2;
+    border: 1px solid var(--bs-border-emphasized);
     border-radius: 0.25rem;
-    background-color: $tilebg4;
-    color: $greydesc;
+    background-color: var(--bs-bg-1);
+    color: var(--bs-fg-3);
     font-size: 0.8rem;
 }
 
 #search-status {
     margin: 0;
     padding: 0.6rem 1.25rem;
-    color: $greydesc;
+    color: var(--bs-fg-3);
     font-size: 0.9rem;
 
     &:empty {
@@ -4518,7 +4542,7 @@ body {
     padding: 0 0 0.5rem;
     overflow-y: auto;
     list-style: none;
-    border-top: 1px solid $tilebg;
+    border-top: 1px solid var(--bs-bg-2);
 
     &:empty {
         display: none;
@@ -4533,46 +4557,46 @@ body {
         &:hover,
         &:focus-visible,
         &[aria-selected="true"] {
-            background-color: $tilebg4;
+            background-color: var(--bs-bg-1);
             outline: none;
         }
     }
 
     .search-result-title {
-        color: $tiletext;
+        color: var(--bs-fg-1);
         font-weight: 600;
     }
 
     .search-result-url {
-        color: $mudatagreen;
+        color: var(--mudata-green);
         font-size: 0.8rem;
     }
 
     .search-result-kind {
         padding: 0.05rem 0.4rem;
         border-radius: 0.25rem;
-        background-color: rgba($scviyellow, 0.25);
-        color: $tiletext2;
+        background-color: color-mix(in oklch, var(--scvi-yellow) 25%, transparent);
+        color: var(--bs-fg-2);
         font-size: 0.75rem;
         white-space: nowrap;
     }
 
     .search-result-entity .search-result-title::after {
         content: " ↗";
-        color: $greydesc;
+        color: var(--bs-fg-3);
         font-weight: 400;
     }
 
     .search-result-excerpt {
         display: block;
         margin-top: 0.15rem;
-        color: $greydesc;
+        color: var(--bs-fg-3);
         font-size: 0.9rem;
         line-height: 1.35rem;
 
         mark {
             padding: 0;
-            background-color: rgba($scviyellow, 0.35);
+            background-color: color-mix(in oklch, var(--scvi-yellow) 35%, transparent);
             color: inherit;
         }
     }
@@ -4606,13 +4630,13 @@ body {
     .aside {
         max-width: var(--prose-measure, none);
         margin: 1.5rem 0;
-        background-color: $tilebg4;
-        border-radius: $card-radius;
+        background-color: var(--bs-bg-1);
+        border-radius: var(--card-radius);
 
         summary {
             padding: 0.8rem 1.1rem;
             font-weight: 700;
-            color: $tiletext;
+            color: var(--bs-fg-1);
             cursor: pointer;
             list-style: none;
 
@@ -4624,11 +4648,11 @@ body {
                 display: inline-block;
                 width: 1rem;
                 font-weight: 400;
-                color: $greydesc;
+                color: var(--bs-fg-3);
                 transition: transform 200ms ease-in-out;
             }
             &:hover {
-                color: black;
+                color: var(--bs-fg-body);
             }
         }
         &[open] summary::before {
@@ -4641,7 +4665,7 @@ body {
 
         p {
             margin: 0;
-            color: $tiletext2;
+            color: var(--bs-fg-2);
         }
     }
 
@@ -4665,14 +4689,14 @@ body {
         gap: 0.15rem;
         padding: 1.1rem 1.25rem;
         text-decoration: none;
-        background-color: white;
-        border: 1px solid $overline;
-        border-radius: $card-radius;
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
+        border-radius: var(--card-radius);
         transition: all 200ms ease-in-out;
 
         &:hover {
-            border-color: $tilebg2;
-            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+            border-color: var(--bs-border-emphasized);
+            box-shadow: var(--bs-box-shadow);
             transform: translateY(-2px);
         }
     }
@@ -4683,20 +4707,18 @@ body {
         line-height: 1.1;
         letter-spacing: -0.02em;
         font-variant-numeric: tabular-nums;
-        color: $tiletext;
+        color: var(--bs-fg-1);
     }
 
     // Written as a descendant rather than nested under .stat-value: `&` there would carry the
     // whole ancestor chain and put .stat in front of #about-content
-    @each $hue in $eco-hues {
-        .stat[data-hue="#{index($eco-hues, $hue) - 1}"] .stat-value {
-            color: darken($hue, 15%);
-        }
+    .stat[data-hue] .stat-value {
+        color: hue-fg(var(--hue));
     }
 
     .stat-label {
         font-size: 0.9rem;
-        color: $greydesc;
+        color: var(--bs-fg-3);
     }
 
     .principle-list {
@@ -4715,11 +4737,11 @@ body {
         column-gap: 1.2rem;
         align-items: start;
         padding: 1.1rem 1.2rem;
-        border-radius: $card-radius;
+        border-radius: var(--card-radius);
         transition: background-color 200ms ease-in-out;
 
         &:hover {
-            background-color: $tilebg4;
+            background-color: var(--bs-bg-1);
         }
 
         // Element selector included to beat the generic `#page-content .post h3` margins
@@ -4734,7 +4756,7 @@ body {
             margin: 0;
             max-width: none;
             line-height: 1.6;
-            color: $tiletext2;
+            color: var(--bs-fg-2);
         }
     }
 
@@ -4745,13 +4767,11 @@ body {
         width: 3rem;
         height: 3rem;
         font-size: 1.25rem;
-        color: $tiletext;
+        color: var(--bs-fg-1);
         border-radius: 50%;
 
-        @each $hue in $eco-hues {
-            &[data-hue="#{index($eco-hues, $hue) - 1}"] {
-                background-color: rgba($hue, 0.22);
-            }
+        &[data-hue] {
+            background-color: color-mix(in oklch, var(--hue) 22%, transparent);
         }
     }
 }
@@ -4761,8 +4781,8 @@ body {
 // The stack diagram and the card grids want more room than the prose pages under /about.
 @media (min-width: 75rem) {
     #page-content:has(#about-landing) {
-        max-width: $maxwidthwide;
-        width: $contentwidthwide;
+        max-width: var(--max-width-wide);
+        width: var(--content-width-wide);
     }
 }
 
@@ -4789,14 +4809,14 @@ body {
         margin: 0.75rem 0 2rem;
         font-size: 1.05rem;
         line-height: 1.7;
-        color: $tiletext2;
+        color: var(--bs-fg-2);
 
         a {
             color: inherit;
             text-decoration: none;
-            border-bottom: 1px solid $linkunderline;
+            border-bottom: 1px solid var(--bs-border-emphasized);
             &:hover {
-                border-bottom-color: black;
+                border-bottom-color: var(--bs-fg-body);
             }
         }
     }
@@ -4832,14 +4852,14 @@ body {
         line-height: 1.45;
         font-weight: 600;
         letter-spacing: -0.015em;
-        color: $tiletext3;
+        color: var(--bs-fg-body);
         margin: 0 0 1rem;
     }
 
     .about-hero-sub {
         font-size: 1.1rem;
         line-height: 1.7;
-        color: $tiletext2;
+        color: var(--bs-fg-2);
         margin: 0;
     }
 
@@ -4852,31 +4872,39 @@ body {
 
     .about-hero-link {
         padding: 0.65rem 1.25rem;
-        border: 1px solid $overline;
+        border: 1px solid var(--bs-border-color);
         border-radius: 2rem;
         font-weight: 600;
         font-size: 0.95rem;
-        color: $tiletext;
+        color: var(--bs-fg-1);
         text-decoration: none;
-        background-color: white;
+        background-color: var(--bs-bg-body);
         transition: all 200ms ease-in-out;
 
         &:hover {
-            border-color: $tilebg2;
-            background-color: $tilebg4;
+            border-color: var(--bs-border-emphasized);
+            background-color: var(--bs-bg-1);
             transform: translateY(-2px);
         }
     }
 
     // Same gradient as the Join button in the nav, so the one call to action on the page is recognisable as a button.
     .about-hero-link--primary {
-        color: white;
+        color: var(--bs-white);
         border-color: transparent;
-        background: linear-gradient(135deg, #262fb5, #74c8fa);
+        background: linear-gradient(
+            135deg,
+            var(--scverse-deep-blue),
+            var(--scverse-sky-blue)
+        );
 
         &:hover {
-            color: white;
-            background: linear-gradient(135deg, #74c8fa, #d4ac00);
+            color: var(--bs-white);
+            background: linear-gradient(
+                135deg,
+                var(--scverse-sky-blue),
+                var(--scverse-gold)
+            );
         }
     }
 
@@ -4886,9 +4914,9 @@ body {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1px;
-        background-color: $overline;
-        border: 1px solid $overline;
-        border-radius: $card-radius;
+        background-color: var(--bs-border-color);
+        border: 1px solid var(--bs-border-color);
+        border-radius: var(--card-radius);
         overflow: hidden;
     }
 
@@ -4897,12 +4925,12 @@ body {
         flex-direction: column;
         gap: 0.3rem;
         padding: 1.5rem;
-        background-color: white;
+        background-color: var(--bs-bg-body);
         text-decoration: none;
         transition: background-color 200ms ease-in-out;
 
         &:hover {
-            background-color: $tilebg4;
+            background-color: var(--bs-bg-1);
         }
     }
 
@@ -4912,20 +4940,18 @@ body {
         line-height: 1;
         letter-spacing: -0.03em;
         font-variant-numeric: tabular-nums;
-        color: $tiletext;
+        color: var(--bs-fg-1);
     }
 
     .about-figure-label {
         font-size: 0.9rem;
         line-height: 1.4;
-        color: $greydesc;
+        color: var(--bs-fg-3);
     }
 
     // Written as a descendant so `&` does not drag the whole ancestor chain in front of the class
-    @each $hue in $eco-hues {
-        .about-figure[data-hue="#{index($eco-hues, $hue) - 1}"] .about-figure-value {
-            color: darken($hue, 15%);
-        }
+    .about-figure[data-hue] .about-figure-value {
+        color: hue-fg(var(--hue));
     }
 
     // The stack
@@ -4936,7 +4962,7 @@ body {
         gap: 2rem;
         align-items: start;
         padding: 1.75rem;
-        border: 1px solid $overline;
+        border: 1px solid var(--bs-border-color);
         border-radius: 1.25rem;
 
         @media (max-width: 64rem) {
@@ -4947,13 +4973,13 @@ body {
 
     // Each layer is tinted by one of the package hues so the three read as a stack, deepest at the foundation.
     .stack-layer--eco {
-        background-color: rgba($muonaquamarine, 0.08);
+        background-color: color-mix(in oklch, var(--muon-aquamarine) 8%, transparent);
     }
     .stack-layer--core {
-        background-color: rgba($spatialdatablue, 0.08);
+        background-color: color-mix(in oklch, var(--spatialdata-blue) 8%, transparent);
     }
     .stack-layer--data {
-        background-color: rgba($scversedeepblue, 0.07);
+        background-color: color-mix(in oklch, var(--scverse-deep-blue) 7%, transparent);
     }
 
     .stack-layer-head {
@@ -4968,7 +4994,7 @@ body {
             margin: 0 0 0.75rem;
             font-size: 0.95rem;
             line-height: 1.6;
-            color: $tiletext2;
+            color: var(--bs-fg-2);
         }
     }
 
@@ -4977,19 +5003,19 @@ body {
         font-weight: 700;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: $greydesc;
+        color: var(--bs-fg-3);
     }
 
     .stack-layer-more {
         font-size: 0.9rem;
         font-weight: 600;
-        color: $tiletext;
+        color: var(--bs-fg-1);
         text-decoration: none;
-        border-bottom: 1px solid $linkunderline;
+        border-bottom: 1px solid var(--bs-border-emphasized);
         transition: border-color 200ms ease-in-out;
 
         &:hover {
-            border-bottom-color: black;
+            border-bottom-color: var(--bs-fg-body);
         }
     }
 
@@ -5003,13 +5029,13 @@ body {
         font-weight: 700;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        color: $greydesc;
+        color: var(--bs-fg-3);
     }
 
     .stack-joint-line {
         flex: 1;
         height: 1px;
-        background-color: $overline;
+        background-color: var(--bs-border-color);
     }
 
     // Layer 3: every registered ecosystem package, capped in height with a fade so the cloud reads as a texture.
@@ -5017,7 +5043,7 @@ body {
         position: relative;
         max-height: 11rem;
         overflow: hidden;
-        mask-image: linear-gradient(to bottom, black 65%, transparent);
+        mask-image: linear-gradient(to bottom, var(--bs-black) 65%, transparent);
     }
 
     .stack-cloud-inner {
@@ -5030,16 +5056,16 @@ body {
         padding: 0.3rem 0.7rem;
         font-size: 0.85rem;
         font-weight: 500;
-        color: $tiletext2;
+        color: var(--bs-fg-2);
         text-decoration: none;
-        background-color: white;
-        border: 1px solid $overline;
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
         border-radius: 2rem;
         transition: all 150ms ease-in-out;
 
         &:hover {
-            color: black;
-            border-color: $tilebg2;
+            color: var(--bs-fg-body);
+            border-color: var(--bs-border-emphasized);
             transform: translateY(-1px);
         }
     }
@@ -5058,10 +5084,10 @@ body {
         padding: 0.7rem 0.85rem;
         font-weight: 600;
         font-size: 0.95rem;
-        color: $tiletext;
+        color: var(--bs-fg-1);
         text-decoration: none;
-        background-color: white;
-        border: 1px solid $overline;
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
         border-radius: 0.6rem;
         transition: all 200ms ease-in-out;
 
@@ -5073,8 +5099,8 @@ body {
         }
 
         &:hover {
-            border-color: $tilebg2;
-            box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.06);
+            border-color: var(--bs-border-emphasized);
+            box-shadow: var(--bs-box-shadow);
             transform: translateY(-2px);
         }
     }
@@ -5092,8 +5118,8 @@ body {
         gap: 0.4rem;
         padding: 1.1rem;
         text-decoration: none;
-        background-color: white;
-        border: 1px solid $overline;
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
         border-radius: 0.75rem;
         transition: all 200ms ease-in-out;
 
@@ -5106,21 +5132,21 @@ body {
         }
 
         &:hover {
-            border-color: $tilebg2;
-            box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.06);
+            border-color: var(--bs-border-emphasized);
+            box-shadow: var(--bs-box-shadow);
             transform: translateY(-2px);
         }
     }
 
     .stack-card-name {
         font-weight: 700;
-        color: $tiletext;
+        color: var(--bs-fg-1);
     }
 
     .stack-card-text {
         font-size: 0.85rem;
         line-height: 1.5;
-        color: $tiletext2;
+        color: var(--bs-fg-2);
     }
 
     // Governance
@@ -5132,25 +5158,25 @@ body {
         gap: 0.6rem;
         margin: -1rem 0 2rem;
         font-size: 0.95rem;
-        color: $tiletext2;
+        color: var(--bs-fg-2);
 
         a {
             color: inherit;
             text-decoration: none;
             border-bottom: 1px solid transparent;
             &:hover {
-                border-bottom-color: $linkunderline;
+                border-bottom-color: var(--bs-border-emphasized);
             }
         }
 
         strong {
-            color: $tiletext;
+            color: var(--bs-fg-1);
             font-variant-numeric: tabular-nums;
         }
     }
 
     .about-inline-sep {
-        color: $tilebg2;
+        color: var(--bs-bg-4);
     }
 
     .doc-grid {
@@ -5171,14 +5197,14 @@ body {
         flex-direction: column;
         padding: 1.5rem;
         text-decoration: none;
-        background-color: $tilebg4;
-        border: 1px solid $overline;
-        border-radius: $card-radius;
+        background-color: var(--bs-bg-1);
+        border: 1px solid var(--bs-border-color);
+        border-radius: var(--card-radius);
         transition: all 200ms ease-in-out;
 
         &:hover {
-            border-color: $tilebg2;
-            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.06);
+            border-color: var(--bs-border-emphasized);
+            box-shadow: var(--bs-box-shadow);
             transform: translateY(-2px);
         }
     }
@@ -5191,28 +5217,26 @@ body {
         margin-bottom: 1rem;
         font-size: 1.25rem;
         border-radius: 50%;
-        background-color: $tilebg;
-        color: $tiletext;
+        background-color: var(--bs-bg-2);
+        color: var(--bs-fg-1);
     }
 
-    @each $hue in $eco-hues {
-        .doc-card[data-hue="#{index($eco-hues, $hue) - 1}"] .doc-card-icon {
-            background-color: rgba($hue, 0.18);
-            color: darken($hue, 12%);
-        }
+    .doc-card[data-hue] .doc-card-icon {
+        background-color: color-mix(in oklch, var(--hue) 18%, transparent);
+        color: hue-fg(var(--hue));
     }
 
     .doc-card-title {
         font-size: 1.1rem;
         font-weight: 700;
-        color: $tiletext;
+        color: var(--bs-fg-1);
         margin-bottom: 0.35rem;
     }
 
     .doc-card-text {
         font-size: 0.95rem;
         line-height: 1.55;
-        color: $tiletext2;
+        color: var(--bs-fg-2);
     }
 
     // Take part
@@ -5224,7 +5248,7 @@ body {
         align-items: center;
         padding: 2.5rem;
         border-radius: 1.25rem;
-        background-color: $tilebg4;
+        background-color: var(--bs-bg-1);
 
         @media (max-width: 64rem) {
             grid-template-columns: 1fr;
@@ -5236,7 +5260,7 @@ body {
             margin: 0.75rem 0 0;
             font-size: 1rem;
             line-height: 1.7;
-            color: $tiletext2;
+            color: var(--bs-fg-2);
         }
     }
 
@@ -5253,23 +5277,23 @@ body {
         padding: 0.6rem 1rem;
         font-size: 0.95rem;
         font-weight: 600;
-        color: $tiletext;
+        color: var(--bs-fg-1);
         text-decoration: none;
-        background-color: white;
-        border: 1px solid $overline;
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
         border-radius: 2rem;
         transition: all 200ms ease-in-out;
 
         &:hover {
-            border-color: $tilebg2;
-            box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.06);
+            border-color: var(--bs-border-emphasized);
+            box-shadow: var(--bs-box-shadow);
             transform: translateY(-2px);
         }
 
         i {
             display: inline-flex;
             font-size: 1rem;
-            color: $tiletext2;
+            color: var(--bs-fg-2);
         }
     }
 
@@ -5281,7 +5305,7 @@ body {
         gap: 2.5rem;
         align-items: center;
         padding: 2.5rem;
-        border: 1px solid $overline;
+        border: 1px solid var(--bs-border-color);
         border-radius: 1.25rem;
 
         @media (max-width: 64rem) {
@@ -5294,7 +5318,7 @@ body {
             margin: 0.75rem 0 0;
             font-size: 1rem;
             line-height: 1.7;
-            color: $tiletext2;
+            color: var(--bs-fg-2);
         }
 
         a {
@@ -5314,22 +5338,30 @@ body {
         padding: 0.65rem 1.25rem;
         font-weight: 600;
         font-size: 0.95rem;
-        color: white;
+        color: var(--bs-white);
         text-decoration: none;
         border-radius: 2rem;
-        background: linear-gradient(135deg, #262fb5, #74c8fa);
+        background: linear-gradient(
+            135deg,
+            var(--scverse-deep-blue),
+            var(--scverse-sky-blue)
+        );
         transition: background 200ms ease-in-out;
 
         &:hover {
-            color: white;
-            background: linear-gradient(135deg, #74c8fa, #d4ac00);
+            color: var(--bs-white);
+            background: linear-gradient(
+                135deg,
+                var(--scverse-sky-blue),
+                var(--scverse-gold)
+            );
         }
     }
 
     .sponsor-fineprint {
         font-size: 0.8rem !important;
         line-height: 1.6 !important;
-        color: $greydesc !important;
+        color: var(--bs-fg-3) !important;
         margin-top: 1.25rem !important;
         max-width: 44rem;
     }

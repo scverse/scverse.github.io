@@ -1,0 +1,18 @@
+{
+    "customSyntax": "postcss-scss",
+    "rules": {
+        "color-no-hex": true,
+        "color-named": "never",
+        "function-disallowed-list": [
+            "rgb",
+            "rgba",
+            "hsl",
+            "hsla",
+            "hwb",
+            "lab",
+            "lch",
+            "oklab",
+            "oklch"
+        ]
+    }
+}
