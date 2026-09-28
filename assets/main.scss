@@ -960,6 +960,7 @@ body {
                     }
                 }
 
+                // Inverse of the page: dark on a light page, light on a dark one
                 .conference-banner {
                     display: flex;
                     align-items: center;
@@ -970,10 +971,10 @@ body {
                     border-radius: 1rem;
                     background: linear-gradient(
                         120deg,
-                        var(--bs-gray-975) 0%,
-                        var(--bs-indigo-950) 100%
+                        light-dark(var(--bs-gray-975), var(--bs-gray-050)) 0%,
+                        light-dark(var(--bs-indigo-950), var(--bs-indigo-100)) 100%
                     );
-                    color: var(--bs-white);
+                    color: var(--bs-inverse-contrast);
                     text-decoration: none;
                     transition: all 200ms ease-in-out;
 
@@ -982,8 +983,8 @@ body {
                         box-shadow: var(--bs-box-shadow-xl);
 
                         .conference-banner-cta {
-                            background-color: var(--bs-white);
-                            color: var(--bs-black);
+                            background-color: var(--bs-inverse-contrast);
+                            color: var(--bs-inverse-bg);
 
                             .arrow {
                                 transform: translateX(0.2rem);
@@ -1008,14 +1009,18 @@ body {
                     line-height: 1.1;
                     padding-right: 1.75rem;
                     border-right: 1px solid
-                        color-mix(in oklch, var(--bs-white) 20%, transparent);
+                        color-mix(in oklch, var(--bs-inverse-contrast) 20%, transparent);
 
                     .conference-banner-month {
                         font-size: 0.85rem;
                         font-weight: 700;
                         text-transform: uppercase;
                         letter-spacing: 0.1em;
-                        color: color-mix(in oklch, var(--bs-white) 60%, transparent);
+                        color: color-mix(
+                            in oklch,
+                            var(--bs-inverse-contrast) 60%,
+                            transparent
+                        );
                     }
 
                     .conference-banner-day {
@@ -1025,7 +1030,11 @@ body {
 
                     .conference-banner-year {
                         font-size: 0.85rem;
-                        color: color-mix(in oklch, var(--bs-white) 60%, transparent);
+                        color: color-mix(
+                            in oklch,
+                            var(--bs-inverse-contrast) 60%,
+                            transparent
+                        );
                     }
 
                     @media (max-width: 50rem) {
@@ -1049,7 +1058,11 @@ body {
                     .conference-banner-desc {
                         margin: 0.2rem 0 0;
                         font-size: 0.9rem;
-                        color: color-mix(in oklch, var(--bs-white) 75%, transparent);
+                        color: color-mix(
+                            in oklch,
+                            var(--bs-inverse-contrast) 75%,
+                            transparent
+                        );
                         max-width: 34rem;
                     }
                 }
@@ -1060,7 +1073,7 @@ body {
                     border-radius: 2rem;
                     background-color: color-mix(
                         in oklch,
-                        var(--bs-white) 12%,
+                        var(--bs-inverse-contrast) 12%,
                         transparent
                     );
                     font-weight: 700;
