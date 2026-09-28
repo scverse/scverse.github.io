@@ -2490,6 +2490,16 @@ body {
         letter-spacing: -0.01em;
     }
 
+    .people-section h2 a,
+    .people-group-head h3 a {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
     // Search and filters
 
     .people-section-text {
@@ -2862,15 +2872,6 @@ body {
             margin: 0 0 0.5rem;
             font-size: 1.15rem;
             font-weight: 700;
-
-            a {
-                color: inherit;
-                text-decoration: none;
-
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
         }
         p {
             margin: 0;
