@@ -45,10 +45,6 @@
       {{ end }}
     {{ end }}
   {{ end }}
-  {{/* A sub-package rides its parent's chip: spatialdata-plot has no chip of its own, but the
-    spatialdata chip surfaces its people (see the |pkg- match in people.ts). It still shows as a
-    per-person badge.
-  */}}
   {{ $packages := slice }}
   {{ range $c := $candidates }}
     {{ $parented := false }}
