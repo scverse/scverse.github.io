@@ -16,6 +16,13 @@ repos:
         additional_dependencies: [typescript@7]
         files: \.ts$|^tsconfig\.json$
         pass_filenames: false
+      # Colors come from Bootstrap’s tokens or the brand variables in main.scss, so both modes work.
+      - id: stylelint
+        name: stylelint
+        entry: stylelint
+        language: node
+        additional_dependencies: [stylelint@16, postcss-scss@4]
+        files: \.scss$
   - repo: https://github.com/ericmjl/webp-pre-commit
     rev: v0.0.12
     hooks:

@@ -3,7 +3,13 @@
   <!-- Generator: Adobe Illustrator 29.1.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 142)  -->
   <defs>
     <style>
+      /* Outlines follow the embedding page's colour mode */
+      svg {
+        color-scheme: light dark;
+      }
+
       .st0 {
+        fill: light-dark(#000, #fff);
         font-family: ArialMT, Arial;
         font-size: 130.7px;
         isolation: isolate;
@@ -14,7 +20,7 @@
       }
 
       .st1, .st2, .st3 {
-        stroke: #000;
+        stroke: light-dark(#000, #fff);
         stroke-linejoin: round;
         stroke-width: 8.3px;
       }

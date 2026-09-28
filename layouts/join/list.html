@@ -27,8 +27,8 @@
         <h2 class="join-section-title">{{ .title }}</h2>
         <div class="row">
           {{ range .items }}
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-              <div class="card border-0 bg-light mb-4" id="{{ .id }}">
+            <div class="col-12 lg:col-6">
+              <div class="card border-0 bg-1 mb-7" id="{{ .id }}">
                 <div class="card-body">
                   <a href="{{ .link }}" class="stretched-link" target="_blank" rel="noopener"></a>
                   <h3 class="card-title">
@@ -46,8 +46,8 @@
         <h2 class="join-section-title">{{ .title }}</h2>
         <div class="row">
           {{ range .items }}
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-              <div class="card border-0 bg-light mb-4 h-100 join-email-card">
+            <div class="col-12 md:col-6 lg:col-4">
+              <div class="card border-0 bg-1 mb-7 h-100 join-email-card">
                 <div class="card-body">
                   <h3 class="card-title">
                     <a href="mailto:{{ .address }}">{{ .address }}</a>
