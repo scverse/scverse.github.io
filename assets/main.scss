@@ -3065,7 +3065,8 @@ body {
                 justify-content: center;
                 align-items: center;
                 padding: 2.5rem;
-                // The logos are drawn for a light background
+                // The logos are drawn for a light background, and adaptive ones must render that way
+                color-scheme: light;
                 background-color: var(--bs-white);
                 border-radius: 1rem;
                 min-height: 180px;
