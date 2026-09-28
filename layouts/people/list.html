@@ -37,24 +37,12 @@
   {{ $items = sort $items "sortkey" }}
 
   {{/* Only the work areas we ship a logo for get a chip — the rest would crowd the row out */}}
-  {{ $candidates := slice }}
+  {{ $packages := slice }}
   {{ range $items }}
     {{ range .works }}
-      {{ if and (fileExists (printf "static/img/icons/%s.svg" (lower .))) (not (in $candidates .)) }}
-        {{ $candidates = $candidates | append . }}
+      {{ if and (fileExists (printf "static/img/icons/%s.svg" (lower .))) (not (in $packages .)) }}
+        {{ $packages = $packages | append . }}
       {{ end }}
-    {{ end }}
-  {{ end }}
-  {{ $packages := slice }}
-  {{ range $c := $candidates }}
-    {{ $parented := false }}
-    {{ range $p := $candidates }}
-      {{ if and (ne $p $c) (hasPrefix $c (printf "%s-" $p)) }}
-        {{ $parented = true }}
-      {{ end }}
-    {{ end }}
-    {{ if not $parented }}
-      {{ $packages = $packages | append $c }}
     {{ end }}
   {{ end }}
   {{ $packages = sort $packages }}
