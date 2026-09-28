@@ -115,7 +115,7 @@
       </header>
 
       <section class="people-section" id="people-directory">
-        <h2 id="the-team">The team</h2>
+        <h2 id="the-team"><a href="#the-team">The team</a></h2>
         <p class="people-section-text">{{ .Params.team_lead }}</p>
 
         <div class="people-toolbar">
@@ -181,13 +181,13 @@
 
       {{ with $groups }}
         <section class="people-section" id="people-groups">
-          <h2 id="working-groups">Working groups</h2>
+          <h2 id="working-groups"><a href="#working-groups">Working groups</a></h2>
           <p class="people-section-text">{{ $.Params.groups_lead }}</p>
           {{ range . }}
             {{ $members := where $items "roles" "intersect" (slice .id) }}
             <div class="people-group" id="wg-{{ .id }}">
               <div class="people-group-head">
-                <h3>{{ .label }}</h3>
+                <h3><a href="#wg-{{ .id }}">{{ .label }}</a></h3>
                 <p>{{ .text }}</p>
                 <p class="people-group-count">{{ len $members }} members</p>
               </div>
