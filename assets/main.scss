@@ -14,7 +14,6 @@
     --scverse-deep-blue: #262fb5; // the darker end of the Join button gradient
     --scverse-sky-blue: #74c8fa; // the lighter end
     --scverse-gold: #d4ac00;
-
     --github-black: #171b21;
     --discourse-yellow: #f7f0b1;
     --youtube-red: #e03021;
@@ -22,6 +21,21 @@
     --bluesky-blue: #0a7aff;
     --linkedin-blue: #0a66c2;
     /* stylelint-enable color-no-hex */
+
+    // Call-to-action buttons: white on the blue gradient (its light end darkened to keep 4.5:1),
+    // black on the bright hover gradient
+    --cta-bg: linear-gradient(
+        135deg,
+        var(--scverse-deep-blue),
+        var(--scverse-sky-blue)
+    );
+    --cta-fg: var(--bs-white);
+    --cta-bg-hover: linear-gradient(
+        135deg,
+        var(--scverse-sky-blue),
+        var(--scverse-gold)
+    );
+    --cta-fg-hover: var(--bs-black);
 
     --max-width: 1200px;
     --max-width-wide: 1400px;
@@ -769,13 +783,9 @@ body {
 }
 
 #join-button {
-    color: var(--bs-white);
+    color: var(--cta-fg);
     border: 0;
-    background: linear-gradient(
-        135deg,
-        var(--scverse-deep-blue),
-        var(--scverse-sky-blue)
-    );
+    background: var(--cta-bg);
     position: relative;
     z-index: 1;
 
@@ -786,12 +796,7 @@ body {
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(
-            135deg,
-            var(--scverse-sky-blue),
-            var(--scverse-gold)
-        );
-        color: var(--bs-white);
+        background: var(--cta-bg-hover);
         opacity: 0;
         z-index: -1;
         border-radius: inherit;
@@ -799,6 +804,10 @@ body {
         transition:
             opacity 200ms ease-out,
             transform 100ms ease-out;
+    }
+
+    &:hover {
+        color: var(--cta-fg-hover);
     }
 
     &:hover::before {
@@ -1296,11 +1305,7 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(
-                135deg,
-                var(--scverse-deep-blue),
-                var(--scverse-sky-blue)
-            );
+            background: var(--cta-bg);
             color: $almostwhite;
             font-weight: 600;
             // text-transform: uppercase;
@@ -4905,21 +4910,15 @@ body {
 
     // Same gradient as the Join button in the nav, so the one call to action on the page is recognisable as a button.
     .about-hero-link--primary {
-        color: var(--bs-white);
+        color: var(--cta-fg);
         border-color: transparent;
-        background: linear-gradient(
-            135deg,
-            var(--scverse-deep-blue),
-            var(--scverse-sky-blue)
-        );
+        // Paint under the transparent border too, or it shows the gradient’s tiled edge
+        background: var(--cta-bg) border-box;
 
         &:hover {
-            color: var(--bs-white);
-            background: linear-gradient(
-                135deg,
-                var(--scverse-sky-blue),
-                var(--scverse-gold)
-            );
+            color: var(--cta-fg-hover);
+            border-color: transparent;
+            background: var(--cta-bg-hover) border-box;
         }
     }
 
@@ -5336,7 +5335,7 @@ body {
             color: var(--bs-fg-2);
         }
 
-        a {
+        a:not(.sponsor-button) {
             color: inherit;
         }
     }
@@ -5353,23 +5352,15 @@ body {
         padding: 0.65rem 1.25rem;
         font-weight: 600;
         font-size: 0.95rem;
-        color: var(--bs-white);
+        color: var(--cta-fg);
         text-decoration: none;
         border-radius: 2rem;
-        background: linear-gradient(
-            135deg,
-            var(--scverse-deep-blue),
-            var(--scverse-sky-blue)
-        );
+        background: var(--cta-bg);
         transition: background 200ms ease-in-out;
 
         &:hover {
-            color: var(--bs-white);
-            background: linear-gradient(
-                135deg,
-                var(--scverse-sky-blue),
-                var(--scverse-gold)
-            );
+            color: var(--cta-fg-hover);
+            background: var(--cta-bg-hover);
         }
     }
 
