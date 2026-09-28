@@ -42,7 +42,10 @@ export default function init(root: HTMLElement) {
       const visible =
         terms.every((term) => card.dataset.search!.includes(term)) &&
         (!activeRole || card.dataset.roles!.includes(`|${activeRole}|`)) &&
-        (!activePackage || card.dataset.works!.includes(`|${activePackage}|`))
+        // A package chip also matches its sub-packages: spatialdata catches spatialdata-plot, etc.
+        (!activePackage ||
+          card.dataset.works!.includes(`|${activePackage}|`) ||
+          card.dataset.works!.includes(`|${activePackage}-`))
       card.hidden = !visible
       if (visible) shown.add(card.dataset.person!)
     }
