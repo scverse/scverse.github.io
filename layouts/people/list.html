@@ -37,12 +37,27 @@
   {{ $items = sort $items "sortkey" }}
 
   {{/* Only the work areas we ship a logo for get a chip — the rest would crowd the row out */}}
-  {{ $packages := slice }}
+  {{ $candidates := slice }}
   {{ range $items }}
     {{ range .works }}
-      {{ if and (fileExists (printf "static/img/icons/%s.svg" (lower .))) (not (in $packages .)) }}
-        {{ $packages = $packages | append . }}
+      {{ if and (fileExists (printf "static/img/icons/%s.svg" (lower .))) (not (in $candidates .)) }}
+        {{ $candidates = $candidates | append . }}
       {{ end }}
+    {{ end }}
+  {{ end }}
+  {{/* A sub-package rides its parent's chip: spatialdata-plot has no chip of its own, but the
+       spatialdata chip surfaces its people (see the |pkg- match in people.ts). It still shows as a
+       per-person badge. */}}
+  {{ $packages := slice }}
+  {{ range $c := $candidates }}
+    {{ $parented := false }}
+    {{ range $p := $candidates }}
+      {{ if and (ne $p $c) (hasPrefix $c (printf "%s-" $p)) }}
+        {{ $parented = true }}
+      {{ end }}
+    {{ end }}
+    {{ if not $parented }}
+      {{ $packages = $packages | append $c }}
     {{ end }}
   {{ end }}
   {{ $packages = sort $packages }}
