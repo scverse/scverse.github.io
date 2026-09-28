@@ -29,6 +29,10 @@
     <p class="person-works">
       {{ range . }}
         {{ $icon := printf "img/icons/%s.svg" (lower .) }}
+        {{ if not (fileExists (printf "static/%s" $icon)) }}
+          {{ $parent := index (split (lower .) "-") 0 }}
+          {{ $icon = printf "img/icons/%s.svg" $parent }}
+        {{ end }}
         <span class="person-work">
           {{ if fileExists (printf "static/%s" $icon) }}
             <img src="/{{ $icon }}" alt="" loading="lazy" width="14" height="14" />
