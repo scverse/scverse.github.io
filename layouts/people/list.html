@@ -187,7 +187,7 @@
             {{ $members := where $items "roles" "intersect" (slice .id) }}
             <div class="people-group" id="wg-{{ .id }}">
               <div class="people-group-head">
-                <h3>{{ .label }}</h3>
+                <h3><a href="#wg-{{ .id }}">{{ .label }}</a></h3>
                 <p>{{ .text }}</p>
                 <p class="people-group-count">{{ len $members }} members</p>
               </div>
