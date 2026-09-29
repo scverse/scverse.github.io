@@ -70,7 +70,7 @@ Recent advances in biological imaging technologies, including cryo-electron tomo
 
 Finally, I will present our recent work on Phoenix, a generative AI framework for virtual spatial transcriptomics from routine histology. Phoenix integrates multimodal information across tissue morphology, cell states, and gene expression to infer spatially resolved single-cell molecular profiles in situ. Applied across large patient cohorts and disease contexts, Phoenix enables in silico analysis of treatment response, discovery of spatial biomarkers, and prediction of disease-associated tissue organization. This work extends quantitative biological imaging beyond image enhancement and object detection toward multimodal data integration and predictive modeling of molecular tissue states. Together, these approaches aim to enable scalable, quantitative, and predictive analysis of biological imaging data and facilitate new discoveries in structural, cellular, and spatial biology.
 
-### Decoding the tissue ecosystems of the human body
+### The Rosetta Stone for Human Disease
 
 **Muzlifah Haniffa** · Wellcome Sanger Institute & University of Cambridge
 
