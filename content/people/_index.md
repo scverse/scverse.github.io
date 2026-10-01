@@ -157,7 +157,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	name = "Mikaela Koutrouli"
 	url = "https://github.com/mikelkou"
 	email = "mikaela.koutrouli@scverse.org"
-	affiliation = "Genentech"
+	affiliation = "NVIDIA"
 	roles = ["core", "council"]
 	works_on = ["sc-proteomics", "operations"]
 
@@ -184,14 +184,6 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	affiliation = "Max Delbrück Center Berlin"
 	roles = ["core", "proteomics"]
 	works_on = ["sc-proteomics", "events"]
-
-[[people]]
-	name = "Giovanni Palla"
-	url = "https://github.com/giovp"
-	email = "giovanni.palla@scverse.org"
-	affiliation = "Lila Sciences"
-	roles = ["core"]
-	works_on = ["spatialdata", "squidpy"]
 
 [[people]]
 	name = "Roshan Sharma"
@@ -224,14 +216,6 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	affiliation = "EMBL Heidelberg"
 	roles = ["core"]
 	works_on = ["spatialdata"]
-
-[[people]]
-	name = "Isaac Virshup"
-	url = "https://github.com/ivirshup"
-	email = "isaac@scverse.org"
-	affiliation = "CZI"
-	roles = ["core", "council"]
-	works_on = ["anndata", "scanpy"]
 
 [[people]]
 	name = "Kai Zhang"
@@ -373,8 +357,18 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	roles = ["alumni"]
 
 [[people]]
+	name = "Giovanni Palla"
+	url = "https://github.com/giovp"
+	roles = ["alumni"]
+
+[[people]]
 	name = "Anna Schaar"
 	url = "https://github.com/AnnaChristina"
+	roles = ["alumni"]
+
+[[people]]
+	name = "Isaac Virshup"
+	url = "https://github.com/ivirshup"
 	roles = ["alumni"]
 
 # ----------
