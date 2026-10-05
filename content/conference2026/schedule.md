@@ -86,13 +86,19 @@ The revolution in single cell genomics, complemented by more recent developments
 
 Hands-on workshops run on Day 2 and Day 3. On Day 3, the opening session is plenary — for all participants — and the two later slots run as parallel tracks, so you can pick one in each.
 
-### 10x Genomics: intro and test-drive of the agentic analysis platform
+### From Data to Insight: Hands-On with Sentira Single Cell
 
 **10x Genomics** · Day 2
 
-An introduction and test-drive of 10x Genomics' agentic analysis platform, currently in development, which wraps many scverse tools.
+Join 10x Genomics for an exclusive, hands-on introduction to Sentira Single Cell — 10x Genomics' newly announced autonomous AI agent for Chromium analysis, designed to transform how you navigate high-dimensional omics data.
 
-<div class="placeholder-note">Full abstract to follow.</div>
+The exponential growth, scale, and resolution of single-cell and spatial omics have fundamentally transformed our understanding of biology and disease. However, the sheer size of some datasets remains a persistent bottleneck. While modern pipelines process data efficiently, they still demand deep intuition and significant technical acumen to select optimal analytical strategies.
+
+To overcome these barriers, 10x Genomics introduces Sentira Single Cell, a highly scalable framework that democratizes omics analysis through autonomous, LLM-driven workflows. Crucially, Sentira is built upon the trusted ecosystem of core scverse packages. By orchestrating popular tools like Scanpy, AnnData, and Azimuth under the hood, Sentira seamlessly bridges the gap between biological intuition and computational execution. We will walk through how the multi-agent system can decompose a user-specified hypothesis into a bounded execution plan, evaluate intermediate results against explicit success criteria, and adaptively replan to ensure robust, reproducible discoveries.
+
+**What to expect:** a fully immersive, interactive session where you use Sentira Single Cell for complex analytical tasks, with low-latency real-time visualization and interactive downstream analysis in a streamlined web interface. Participants will explore how Sentira translates natural language into execution, self-evaluates and adapts, and accelerates high-plex discovery.
+
+**Bring your own data:** following a brief overview of the platform's architecture, attendees are highly encouraged to bring their own single-cell data (e.g. scRNA-seq in `.h5` format) to run live through Sentira during the hands-on segment. For those without data on hand, 10x Genomics will provide benchmark datasets to explore and analyze.
 
 ### Hands-on single-cell analysis with Claude Science
 
