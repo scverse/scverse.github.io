@@ -12,27 +12,27 @@ We are grateful to the organisations supporting scverse conference 2026.
 <div class="sponsors">
   <div class="sponsor-tier is-platinum">
     <p class="sponsor-tier-label">Platinum</p>
-    <div class="sponsor-names"><span class="sponsor-name">10x Genomics</span></div>
+    <div class="sponsor-names"><img class="sponsor-logo" src="/img/events/conference2026/sponsors/10x-genomics.svg" alt="10x Genomics"></div>
   </div>
   <div class="sponsor-tier is-gold">
     <p class="sponsor-tier-label">Gold</p>
-    <div class="sponsor-names"><span class="sponsor-name">Stellaromics</span><span class="sponsor-name">Orakl Oncology</span></div>
+    <div class="sponsor-names"><img class="sponsor-logo" src="/img/events/conference2026/sponsors/stellaromics.svg" alt="Stellaromics"><img class="sponsor-logo" src="/img/events/conference2026/sponsors/orakl-oncology.svg" alt="Orakl Oncology"></div>
   </div>
   <div class="sponsor-tier">
     <p class="sponsor-tier-label">Silver</p>
-    <div class="sponsor-names"><span class="sponsor-name">Lamin</span><span class="sponsor-name">ZS</span></div>
+    <div class="sponsor-names"><img class="sponsor-logo" src="/img/events/conference2026/sponsors/lamin.svg" alt="Lamin"><img class="sponsor-logo" src="/img/events/conference2026/sponsors/zs.svg" alt="ZS"></div>
   </div>
   <div class="sponsor-tier">
     <p class="sponsor-tier-label">Philanthropic</p>
-    <div class="sponsor-names"><span class="sponsor-name">Helmholtz Munich</span><span class="sponsor-name">Broad Institute</span></div>
+    <div class="sponsor-names"><img class="sponsor-logo" src="/img/events/conference2026/sponsors/helmholtz-munich.webp" alt="Helmholtz Munich"><img class="sponsor-logo" src="/img/events/conference2026/sponsors/broad-institute.webp" alt="Broad Institute"></div>
   </div>
   <div class="sponsor-tier">
     <p class="sponsor-tier-label">Institutional partners</p>
-    <div class="sponsor-names"><span class="sponsor-name">NumFOCUS</span><span class="sponsor-name">DTU</span></div>
+    <div class="sponsor-names"><img class="sponsor-logo" src="/img/events/conference2026/sponsors/numfocus.webp" alt="NumFOCUS"><img class="sponsor-logo" src="/img/events/conference2026/sponsors/dtu.svg" alt="DTU"></div>
   </div>
   <div class="sponsor-tier">
     <p class="sponsor-tier-label">Prizes sponsored by</p>
-    <div class="sponsor-names"><span class="sponsor-name">Anthropic</span></div>
+    <div class="sponsor-names"><img class="sponsor-logo" src="/img/events/conference2026/sponsors/anthropic.svg" alt="Anthropic"></div>
   </div>
 </div>
 

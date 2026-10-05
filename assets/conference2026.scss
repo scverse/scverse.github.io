@@ -740,7 +740,7 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 0.5rem 2rem;
+            gap: 1.4rem 2.75rem;
         }
 
         .sponsor-name {
@@ -750,12 +750,29 @@
             color: $conf-ink;
         }
 
+        .sponsor-logo {
+            max-height: 46px;
+            max-width: 190px;
+            width: auto;
+            object-fit: contain;
+        }
+
         &.is-platinum .sponsor-name {
             font-size: 1.75rem;
         }
 
         &.is-gold .sponsor-name {
             font-size: 1.45rem;
+        }
+
+        &.is-platinum .sponsor-logo {
+            max-height: 66px;
+            max-width: 250px;
+        }
+
+        &.is-gold .sponsor-logo {
+            max-height: 56px;
+            max-width: 220px;
         }
     }
 
