@@ -23,10 +23,10 @@ This is a provisional programme: session times are indicative and may change, an
  &lt;div class="agenda-block is-talk"&gt;&lt;div class="agenda-time"&gt;09:00&lt;/div&gt;&lt;div class="agenda-session"&gt;Welcome &amp;amp; State of scverse&lt;/div&gt;&lt;/div&gt;
  &lt;div class="agenda-block is-keynote"&gt;&lt;div class="agenda-time"&gt;09:45 · Keynote&lt;/div&gt;&lt;div class="agenda-session"&gt;&lt;a href="https://scverse.org/conference2026/speakers/"&gt;Phil Ewels&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
  &lt;div class="agenda-brk"&gt;&lt;span&gt;10:30 · Coffee&lt;/span&gt;&lt;/div&gt;
- &lt;div class="agenda-block is-talk"&gt;&lt;div class="agenda-time"&gt;11:00&lt;/div&gt;&lt;div class="agenda-session"&gt;Contributed &amp;amp; sponsor talks&lt;/div&gt;&lt;/div&gt;
+ &lt;div class="agenda-block is-talk"&gt;&lt;div class="agenda-time"&gt;11:00 · Session 1&lt;/div&gt;&lt;div class="agenda-session"&gt;&lt;a href="#contributed-talks"&gt;Models, scaling &amp;amp; agents&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
  &lt;div class="agenda-brk"&gt;&lt;span&gt;12:00 · Lunch&lt;/span&gt;&lt;/div&gt;
  &lt;div class="agenda-block is-keynote"&gt;&lt;div class="agenda-time"&gt;13:30 · Keynote&lt;/div&gt;&lt;div class="agenda-session"&gt;&lt;a href="https://scverse.org/conference2026/speakers/"&gt;Tingying Peng&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
- &lt;div class="agenda-block is-talk"&gt;&lt;div class="agenda-time"&gt;14:15&lt;/div&gt;&lt;div class="agenda-session"&gt;Contributed talks&lt;/div&gt;&lt;/div&gt;
+ &lt;div class="agenda-block is-talk"&gt;&lt;div class="agenda-time"&gt;14:15 · Session 2&lt;/div&gt;&lt;div class="agenda-session"&gt;&lt;a href="#contributed-talks"&gt;Data structures &amp;amp; R/Python interop&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
  &lt;div class="agenda-brk"&gt;&lt;span&gt;15:00 · Coffee&lt;/span&gt;&lt;/div&gt;
  &lt;div class="agenda-block is-panel"&gt;&lt;div class="agenda-time"&gt;15:30&lt;/div&gt;&lt;div class="agenda-session"&gt;Panel discussion&lt;/div&gt;&lt;/div&gt;
  &lt;div class="agenda-block is-poster"&gt;&lt;div class="agenda-time"&gt;16:30&lt;/div&gt;&lt;div class="agenda-session"&gt;Poster session 1&lt;/div&gt;&lt;/div&gt;
@@ -37,11 +37,11 @@ This is a provisional programme: session times are indicative and may change, an
  &lt;div class="agenda-brk"&gt;&lt;span&gt;08:00 · Breakfast&lt;/span&gt;&lt;/div&gt;
  &lt;div class="agenda-block is-talk"&gt;&lt;div class="agenda-time"&gt;09:00&lt;/div&gt;&lt;div class="agenda-session"&gt;Opening &amp;amp; housekeeping&lt;/div&gt;&lt;/div&gt;
  &lt;div class="agenda-block is-keynote"&gt;&lt;div class="agenda-time"&gt;09:15 · Keynote&lt;/div&gt;&lt;div class="agenda-session"&gt;&lt;a href="https://scverse.org/conference2026/speakers/"&gt;Muzlifah Haniffa&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
- &lt;div class="agenda-block is-talk"&gt;&lt;div class="agenda-time"&gt;10:00&lt;/div&gt;&lt;div class="agenda-session"&gt;Contributed &amp;amp; sponsor talks&lt;/div&gt;&lt;/div&gt;
+ &lt;div class="agenda-block is-talk"&gt;&lt;div class="agenda-time"&gt;10:00 · Session 3&lt;/div&gt;&lt;div class="agenda-session"&gt;&lt;a href="#contributed-talks"&gt;Proteomics&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
  &lt;div class="agenda-block is-poster"&gt;&lt;div class="agenda-time"&gt;10:45&lt;/div&gt;&lt;div class="agenda-session"&gt;Poster session 2&lt;/div&gt;&lt;/div&gt;
  &lt;div class="agenda-brk"&gt;&lt;span&gt;12:00 · Lunch&lt;/span&gt;&lt;/div&gt;
  &lt;div class="agenda-block is-keynote"&gt;&lt;div class="agenda-time"&gt;13:30 · Keynote&lt;/div&gt;&lt;div class="agenda-session"&gt;&lt;a href="https://scverse.org/conference2026/speakers/"&gt;Erwin Schoof&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
- &lt;div class="agenda-block is-talk"&gt;&lt;div class="agenda-time"&gt;14:15&lt;/div&gt;&lt;div class="agenda-session"&gt;Contributed &amp;amp; sponsor talks&lt;/div&gt;&lt;/div&gt;
+ &lt;div class="agenda-block is-talk"&gt;&lt;div class="agenda-time"&gt;14:15 · Session 4&lt;/div&gt;&lt;div class="agenda-session"&gt;&lt;a href="#contributed-talks"&gt;Spatial omics&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
  &lt;div class="agenda-brk"&gt;&lt;span&gt;15:15 · Coffee&lt;/span&gt;&lt;/div&gt;
  &lt;div class="agenda-block is-workshop"&gt;&lt;div class="agenda-time"&gt;15:45 · Workshop&lt;/div&gt;&lt;div class="agenda-session"&gt;10x Genomics&lt;/div&gt;&lt;/div&gt;
  &lt;div class="agenda-block is-talk"&gt;&lt;div class="agenda-time"&gt;16:30&lt;/div&gt;&lt;div class="agenda-session"&gt;Closing remarks&lt;/div&gt;&lt;/div&gt;
