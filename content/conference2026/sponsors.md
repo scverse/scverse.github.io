@@ -5,6 +5,37 @@ type = "conference2026"
 weight = 6
 +++
 
+## Our sponsors
+
+We are grateful to the organisations supporting scverse conference 2026.
+
+<div class="sponsors">
+  <div class="sponsor-tier is-platinum">
+    <p class="sponsor-tier-label">Platinum</p>
+    <div class="sponsor-names"><span class="sponsor-name">10x Genomics</span></div>
+  </div>
+  <div class="sponsor-tier is-gold">
+    <p class="sponsor-tier-label">Gold</p>
+    <div class="sponsor-names"><span class="sponsor-name">Stellaromics</span><span class="sponsor-name">Orakl Oncology</span></div>
+  </div>
+  <div class="sponsor-tier">
+    <p class="sponsor-tier-label">Silver</p>
+    <div class="sponsor-names"><span class="sponsor-name">Lamin</span><span class="sponsor-name">ZS</span></div>
+  </div>
+  <div class="sponsor-tier">
+    <p class="sponsor-tier-label">Philanthropic</p>
+    <div class="sponsor-names"><span class="sponsor-name">Helmholtz Munich</span><span class="sponsor-name">Broad Institute</span></div>
+  </div>
+  <div class="sponsor-tier">
+    <p class="sponsor-tier-label">Institutional partners</p>
+    <div class="sponsor-names"><span class="sponsor-name">NumFOCUS</span><span class="sponsor-name">DTU</span></div>
+  </div>
+  <div class="sponsor-tier">
+    <p class="sponsor-tier-label">Prizes sponsored by</p>
+    <div class="sponsor-names"><span class="sponsor-name">Anthropic</span></div>
+  </div>
+</div>
+
 ## Partner with scverse
 
 scverse® builds the foundational, interoperable open-source tools for single-cell and spatial omics — including **Scanpy, AnnData, squidpy, and scvi-tools** — used by labs worldwide and described in journals such as *Nature Biotechnology*. scverse is a non-profit, fiscally sponsored project of [NumFOCUS](https://numfocus.org/project/scverse).

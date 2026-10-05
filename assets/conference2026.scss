@@ -717,6 +717,48 @@
         color: var(--bs-fg-3);
     }
 
+    // ── Sponsors (confirmed) ────────────────────────────────────────
+    .sponsors {
+        margin: 1.25rem 0 2.5rem;
+        text-align: center;
+    }
+
+    .sponsor-tier {
+        margin: 0 0 1.75rem;
+
+        .sponsor-tier-label {
+            margin: 0 0 0.5rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: $conf-muted;
+        }
+
+        .sponsor-names {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem 2rem;
+        }
+
+        .sponsor-name {
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            color: $conf-ink;
+        }
+
+        &.is-platinum .sponsor-name {
+            font-size: 1.75rem;
+        }
+
+        &.is-gold .sponsor-name {
+            font-size: 1.45rem;
+        }
+    }
+
     // Speakers
     .speaker-grid {
         display: grid;
