@@ -53,10 +53,14 @@ This is a provisional programme: session times are indicative and may change, an
   <div class="agenda-col is-day3">
     <div class="agenda-colhead">Day 3 · Wed<span class="agenda-coldate">14 October</span></div>
     <div class="agenda-brk"><span>08:30 · Arrival</span></div>
-    <div class="agenda-block is-workshop"><div class="agenda-time">09:00 · Workshop</div><div class="agenda-session">Workshops &amp; tutorials</div></div>
-    <div class="agenda-brk"><span>12:00 · Lunch</span></div>
-    <div class="agenda-block is-workshop"><div class="agenda-time">13:00 · Workshop</div><div class="agenda-session">Workshops &amp; tutorials</div></div>
-    <div class="agenda-block is-social"><div class="agenda-time">14:00</div><div class="agenda-session">Networking &amp; close</div></div>
+    <div class="agenda-block is-workshop"><div class="agenda-time">09:00 · Workshop</div><div class="agenda-session">Anthropic</div></div>
+    <div class="agenda-brk"><span>10:30 · Coffee</span></div>
+    <div class="agenda-block is-workshop"><div class="agenda-time">11:00 · Parallel</div><div class="agenda-session">NVIDIA</div></div>
+    <div class="agenda-block is-workshop"><div class="agenda-time">11:00 · Parallel</div><div class="agenda-session">Can Ergen</div></div>
+    <div class="agenda-brk"><span>12:30 · Lunch</span></div>
+    <div class="agenda-block is-workshop"><div class="agenda-time">13:30 · Parallel</div><div class="agenda-session">Matthias Meyer Bender</div></div>
+    <div class="agenda-block is-workshop"><div class="agenda-time">13:30 · Parallel</div><div class="agenda-session">Stellaromics</div></div>
+    <div class="agenda-block is-social"><div class="agenda-time">14:30</div><div class="agenda-session">Networking &amp; close</div></div>
   </div>
 </div>
 
