@@ -46,7 +46,7 @@ This is a provisional programme: session times are indicative and may change, an
     <div class="agenda-block is-keynote"><div class="agenda-time">13:30 · Keynote</div><div class="agenda-session"><a href="/conference2026/speakers/">Erwin Schoof</a></div></div>
     <div class="agenda-block is-talk"><div class="agenda-time">14:15</div><div class="agenda-session">Contributed &amp; sponsor talks</div></div>
     <div class="agenda-brk"><span>15:15 · Coffee</span></div>
-    <div class="agenda-block is-workshop"><div class="agenda-time">15:45 · Workshop</div><div class="agenda-session">Workshop</div></div>
+    <div class="agenda-block is-workshop"><div class="agenda-time">15:45 · Workshop</div><div class="agenda-session">10x Genomics</div></div>
     <div class="agenda-block is-talk"><div class="agenda-time">16:30</div><div class="agenda-session">Closing remarks</div></div>
     <div class="agenda-block is-social"><div class="agenda-time">18:30</div><div class="agenda-session">Evening social event (Optional)</div></div>
   </div>
@@ -84,7 +84,15 @@ The revolution in single cell genomics, complemented by more recent developments
 
 ## Workshops
 
-Day 3 is built around hands-on workshops. The opening session is plenary — for all participants — and the two later slots run as parallel tracks, so you can pick one in each.
+Hands-on workshops run on Day 2 and Day 3. On Day 3, the opening session is plenary — for all participants — and the two later slots run as parallel tracks, so you can pick one in each.
+
+### 10x Genomics: intro and test-drive of the agentic analysis platform
+
+**10x Genomics** · Day 2
+
+An introduction and test-drive of 10x Genomics' agentic analysis platform, currently in development, which wraps many scverse tools.
+
+<div class="placeholder-note">Full abstract to follow.</div>
 
 ### Hands-on single-cell analysis with Claude Science
 
