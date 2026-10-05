@@ -468,6 +468,122 @@
         }
     }
 
+    // ── Contributed talks ───────────────────────────────────────────
+    .talks {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem 1.25rem;
+        margin: 1rem 0 2rem;
+    }
+
+    .talk-session {
+        min-width: 0;
+        padding: 0.9rem 1.1rem 0.6rem;
+        border: 1px solid var(--bs-border-color);
+        border-top: 3px solid var(--conf-accent);
+        border-radius: 9px;
+        background: var(--bs-bg-2);
+
+        &.is-s1 {
+            border-top-color: var(--squidpy-violet);
+        }
+        &.is-s2 {
+            border-top-color: var(--spatialdata-blue);
+        }
+        &.is-s3 {
+            border-top-color: var(--anndata-orange);
+        }
+        &.is-s4 {
+            border-top-color: var(--mudata-green);
+        }
+    }
+
+    .talk-session-head {
+        margin-bottom: 0.6rem;
+
+        .talk-session-day {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--bs-fg-3);
+        }
+
+        .talk-session-title {
+            margin: 0.15rem 0 0.1rem;
+            font-size: 1.05rem;
+            font-weight: 800;
+            line-height: 1.25;
+            color: var(--bs-fg-1);
+        }
+
+        .talk-session-time {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--bs-fg-3);
+        }
+    }
+
+    .talk-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .talk {
+        display: flex;
+        gap: 0.7rem;
+        padding: 0.4rem 0;
+        border-top: 1px solid var(--bs-border-color);
+
+        &:first-child {
+            border-top: 0;
+        }
+
+        .talk-time {
+            flex: 0 0 3rem;
+            padding-top: 0.1rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            font-variant-numeric: tabular-nums;
+            color: var(--bs-fg-3);
+        }
+
+        .talk-main {
+            min-width: 0;
+        }
+
+        .talk-name {
+            display: block;
+            font-size: 0.92rem;
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--bs-fg-1);
+        }
+
+        .talk-who {
+            display: block;
+            font-size: 0.82rem;
+            color: var(--bs-fg-3);
+        }
+
+        .talk-tag {
+            display: inline-block;
+            margin-left: 0.35rem;
+            padding: 0.03rem 0.42rem;
+            border-radius: 999px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            vertical-align: middle;
+            color: var(--spatialdata-blue);
+            background: color-mix(in oklch, var(--spatialdata-blue) 15%, transparent);
+        }
+    }
+
     // ── Venue & travel ──────────────────────────────────────────────
     .venue-addr {
         font-size: 1rem;
