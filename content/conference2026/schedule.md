@@ -116,11 +116,13 @@ We introduce SegTraQ, a Python-based framework for segmentation and transcript a
 
 In this workshop, we demonstrate how these metrics can be used to compare different segmentations, both between samples and between algorithms.
 
-### NVIDIA
+### GPU-Accelerated Single-Cell Genomics: Tools, Workflows, and Spatial Analysis
 
-**NVIDIA**
+**NVIDIA** · Trainers: Severin Dicks, Lukas Heumos, Sara Jimenez · Support: Heidi Shin
 
-<div class="placeholder-note">Full abstract to follow.</div>
+**Objective:** participants will understand how to GPU-accelerate single-cell and spatial workloads using the scverse ecosystem through a familiar single-cell workflow run using RAPIDS-singlecell.
+
+Single-cell genomics datasets have grown exponentially, from thousands of cells per sample to millions in a single experimental design. This shift moves the field from method development to method acceleration, enabling researchers to answer existing biological questions at previously impossible scale. NVIDIA develops software libraries and open models to support this acceleration, including CUDA-X, Parabricks, and BioNemo. Together with scverse, we introduce rapids-singlecell, a GPU-accelerated implementation of foundational single-cell tools like scanpy, squidpy, pertpy, and decoupler. Through scverse-backends, users can seamlessly switch between CPU and GPU analysis based on computational needs and data scale. This workshop combines short lectures with hands-on examples. We demonstrate a real-world case study using 10x Genomics' Atera technology — a high-throughput image-based platform generating whole-transcriptome data. We walk through the complete analysis pipeline step-by-step, highlighting new functionalities for spatial niche detection and evaluation.
 
 ### 3D spatial transcriptomics with Stellaromics
 
