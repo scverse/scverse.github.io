@@ -1,0 +1,30 @@
+{{ define "main" }}
+  <div id="partners-content">
+    <h1>{{ .Title }}</h1>
+    <p class="partners-lead">{{ .Params.lead }}</p>
+
+    {{ range .Params.partners }}
+      <section class="partner-card" id="{{ .name | urlize }}">
+        <a class="partner-logo" href="{{ .url }}" target="_blank" rel="noopener">
+          <img src="{{ .logo }}" alt="{{ .name }}" loading="lazy" />
+        </a>
+        <div class="partner-body">
+          <h2>{{ .name }}</h2>
+          <p>{{ .text | markdownify }}</p>
+          <ul class="card-links">
+            {{ range .links }}
+              <li>
+                <a href="{{ .url }}" {{ if hasPrefix .url "http" }}target="_blank" rel="noopener"{{ end }}>
+                  {{- .label -}}
+                </a>
+              </li>
+            {{ end }}
+          </ul>
+        </div>
+      </section>
+    {{ end }}
+
+
+    <p class="partners-contact">{{ .Params.contact | markdownify }}</p>
+  </div>
+{{ end }}
