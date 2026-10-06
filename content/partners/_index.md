@@ -1,8 +1,9 @@
 +++
 title = "Partners"
-description = "Organisations scverse works with to build tools and infrastructure for its community."
-lead = "Organisations we work with to build tools and infrastructure for the scverse community."
-contact = "Interested in partnering with scverse? Write to the [steering council](mailto:steering-council@scverse.org)."
+description = "Organisations that support scverse with compute credits, developer time or joint projects."
+lead = """Organisations that support scverse with compute credits, developer time or joint projects.
+Their contributions go into building and maintaining tools for the whole community."""
+contact = "Want to partner with scverse? Write to the [core team](mailto:core@scverse.org)."
 
 [[partners]]
 	name = "BioContextAI"

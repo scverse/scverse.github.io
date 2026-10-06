@@ -1,7 +1,7 @@
 {{ define "main" }}
   <div id="partners-content">
     <h1>{{ .Title }}</h1>
-    <p class="partners-lead">{{ .Params.lead }}</p>
+    <p class="partners-lead">{{ .Params.lead | markdownify }}</p>
 
     {{ range .Params.partners }}
       <section class="partner-card" id="{{ .name | urlize }}">
