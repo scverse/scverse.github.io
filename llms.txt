@@ -171,6 +171,7 @@ Foundational packages maintained by the scverse core team.
 - [Roles and governance](https://scverse.org/about/roles/): Core team, steering council, and how the project is run.
 - [Code of conduct](https://scverse.org/about/code_of_conduct/): Community standards for participation.
 - [AI policy](https://scverse.org/about/ai_policy/): Expectations for contributing AI-assisted code to scverse projects.
+- [Partners](https://scverse.org/partners/): Organisations that support scverse with compute credits, developer time or joint projects.
 
 ## Community
 - [GitHub](https://github.com/scverse): Source code for all scverse packages.
