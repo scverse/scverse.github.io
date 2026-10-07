@@ -32,7 +32,7 @@
           <h3>{{ .title }}</h3>
           <p class="events-meeting-schedule">{{ .schedule }}</p>
           <p>{{ .text }}</p>
-          <ul class="events-meeting-links">
+          <ul class="card-links">
             {{ range .links }}
               <li>
                 <a href="{{ .url }}" {{ if hasPrefix .url "http" }}target="_blank" rel="noopener"{{ end }}>
