@@ -442,6 +442,14 @@
             }
         }
 
+        .agenda-room {
+            margin-top: 0.15rem;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: var(--bs-fg-4);
+        }
+
         &.is-talk {
             background: color-mix(in oklch, var(--spatialdata-blue) 12%, transparent);
             border-left-color: var(--spatialdata-blue);
