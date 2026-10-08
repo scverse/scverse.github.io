@@ -9,7 +9,7 @@ weight = 3
 
 The conference runs over three days at DTU, Copenhagen.
 Session times are indicative and may change.
-The full line-up is below the overview — jump to the [contributed talks](#contributed-talks), [keynote abstracts](#keynote-talks), or [workshops](#workshops).
+The full line-up is below the overview — jump to the [contributed talks](#contributed-talks), [keynote abstracts](#keynote-talks), [workshops](#workshops), or [poster guidelines](#posters).
 
 <div class="agenda-legend">
   <span class="agenda-legend-item"><span class="agenda-dot is-keynote"></span>Keynote</span>
@@ -161,6 +161,11 @@ To overcome these barriers, 10x Genomics introduces Sentira Single Cell, a highl
 
 **Bring your own data:** following a brief overview of the platform's architecture, attendees are highly encouraged to bring their own single-cell data (e.g. scRNA-seq in `.h5` format) to run live through Sentira during the hands-on segment. For those without data on hand, 10x Genomics will provide benchmark datasets to explore and analyze.
 
+**Prepare in advance.** To take part in the hands-on segment, please complete both of these before the session:
+
+- Sign up for a 10x Cloud Analysis account — [sign up or sign in](https://www.10xgenomics.com/products/cloud-analysis).
+- Request early access for Sentira — [10xgenomics.com/software/sentira](https://www.10xgenomics.com/software/sentira).
+
 ### Hands-on single-cell analysis with Claude Science
 
 **Anthropic**
@@ -206,3 +211,9 @@ Single-cell genomics datasets have grown exponentially, from thousands of cells 
 A hands-on tutorial working with 3D spatial transcriptomics data from the Stellaromics commercial platform.
 
 <div class="placeholder-note">Full abstract to follow.</div>
+
+## Posters
+
+Poster boards are **160 × 120 cm (W × H)**, in landscape orientation.
+Please keep your poster to a maximum of **155 × 115 cm (W × H)** so it fits the board.
+In the A series, **A0 landscape (118.9 × 84.1 cm)** fits comfortably.
