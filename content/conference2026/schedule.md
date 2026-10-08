@@ -196,6 +196,10 @@ We introduce SegTraQ, a Python-based framework for segmentation and transcript a
 
 In this workshop, we demonstrate how these metrics can be used to compare different segmentations, both between samples and between algorithms.
 
+The session opens with a 15-minute introduction to the topic, after which participants work through a notebook hands-on with the data and packages.
+
+**Prepare in advance.** The workshop materials are on [GitHub](https://github.com/MeyerBender/segtraq_workshop). Please download the dataset (~600 MB) [from here](https://oc.embl.de/index.php/s/bBj36ET5S3v5VMW) before the session — depending on network capacity on the day, there may also be time to download it on-site.
+
 ### GPU-Accelerated Single-Cell Genomics: Tools, Workflows, and Spatial Analysis
 
 **NVIDIA** · Trainers: Severin Dicks, Lukas Heumos, Sara Jimenez · Support: Heidi Shin
