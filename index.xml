@@ -7,7 +7,8 @@
  &lt;p class="speaker-affiliation"&gt;Seqera&lt;/p&gt;
  &lt;p class="speaker-bio"&gt;Product Manager for Open Source at Seqera, with a PhD in Molecular Biology from the University of Cambridge. He previously worked at the National Genomics Infrastructure (SciLifeLab, Stockholm) and the Babraham Institute in Cambridge. Phil co-founded the nf-core community and authored MultiQC, RustQC, and SRA-Explorer, and is a passionate advocate for user-friendly open-source software.&lt;/p&gt;</description></item><item><title>Schedule</title><link>https://scverse.org/conference2026/schedule/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://scverse.org/conference2026/schedule/</guid><description>&lt;h2 id="program-at-a-glance"&gt;Program at a glance&lt;/h2&gt;
 &lt;p&gt;The conference runs over three days at DTU, Copenhagen.
-This is a provisional programme: session times are indicative and may change, and contributed and sponsor talks will be listed here once the programme is finalised.&lt;/p&gt;
+Session times are indicative and may change.
+The full line-up is below the overview — jump to the &lt;a href="#contributed-talks"&gt;contributed talks&lt;/a&gt;, &lt;a href="#keynote-talks"&gt;keynote abstracts&lt;/a&gt;, or &lt;a href="#workshops"&gt;workshops&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="agenda-legend"&gt;
  &lt;span class="agenda-legend-item"&gt;&lt;span class="agenda-dot is-keynote"&gt;&lt;/span&gt;Keynote&lt;/span&gt;
  &lt;span class="agenda-legend-item"&gt;&lt;span class="agenda-dot is-talk"&gt;&lt;/span&gt;Talk&lt;/span&gt;
@@ -60,9 +61,9 @@ This is a provisional programme: session times are indicative and may change, an
  &lt;div class="agenda-block is-social"&gt;&lt;div class="agenda-time"&gt;14:30&lt;/div&gt;&lt;div class="agenda-session"&gt;Networking &amp;amp; close&lt;/div&gt;&lt;div class="agenda-room"&gt;Demant&lt;/div&gt;&lt;/div&gt;
  &lt;/div&gt;
 &lt;/div&gt;
-&lt;h2 id="keynote-talks"&gt;Keynote talks&lt;/h2&gt;
-&lt;h3 id="ai-for-image-based-systems-biology-from-cryo-electron-tomography-to-virtual-spatial-transcriptomics"&gt;AI for Image-based Systems Biology: From Cryo-Electron Tomography to Virtual Spatial Transcriptomics&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Tingying Peng&lt;/strong&gt; · Helmholtz Munich&lt;/p&gt;</description></item><item><title>Registration</title><link>https://scverse.org/conference2026/registration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://scverse.org/conference2026/registration/</guid><description>&lt;div class="status-banner"&gt;Registration is now open — &lt;a href="https://dtu.events/scverse2026/signup.html?step=participants"&gt;sign up here&lt;/a&gt;.&lt;/div&gt;
+&lt;h2 id="contributed-talks"&gt;Contributed talks&lt;/h2&gt;
+&lt;p&gt;Contributed and flash talks run across four themed sessions on Days 1 and 2, selected from the submitted abstracts.
+Full abstracts for every talk will be available in the final programme.&lt;/p&gt;</description></item><item><title>Registration</title><link>https://scverse.org/conference2026/registration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://scverse.org/conference2026/registration/</guid><description>&lt;div class="status-banner"&gt;Registration is now open — &lt;a href="https://dtu.events/scverse2026/signup.html?step=participants"&gt;sign up here&lt;/a&gt;.&lt;/div&gt;
 &lt;h2 id="registration"&gt;Registration&lt;/h2&gt;
 &lt;p&gt;Registration for scverse conference 2026 is now open. &lt;a href="https://dtu.events/scverse2026/signup.html?step=participants"&gt;&lt;strong&gt;Register here&lt;/strong&gt;&lt;/a&gt;. Capacity is limited, so we recommend registering early.&lt;/p&gt;
 &lt;p&gt;Sign up for announcements via &lt;a href="https://scverse.zulipchat.com/"&gt;Zulip&lt;/a&gt; or follow us on social media for the latest updates.&lt;/p&gt;
