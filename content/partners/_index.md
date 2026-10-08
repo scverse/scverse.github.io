@@ -6,6 +6,21 @@ Their contributions go into building and maintaining tools for the whole communi
 contact = "Want to partner with scverse? Write to the [core team](mailto:core@scverse.org)."
 
 [[partners]]
+	name = "Bioconductor"
+	url = "https://bioconductor.org/"
+	logo = "/img/partners/bioconductor.svg"
+	text = """Bioconductor is the open source project for the analysis and comprehension of genomic data in R.
+Together we work on interoperability between the R and Python ecosystems, so that data and analyses move freely between Bioconductor and scverse tools."""
+
+	[[partners.links]]
+		label = "anndataR on Bioconductor"
+		url = "https://bioconductor.org/packages/anndataR"
+
+	[[partners.links]]
+		label = "anndataR on GitHub"
+		url = "https://github.com/scverse/anndataR"
+
+[[partners]]
 	name = "BioContextAI"
 	url = "https://biocontext.ai/"
 	logo = "/img/partners/biocontextai.svg"
