@@ -50,7 +50,7 @@ Hands-on sessions are on the [Workshops](/conference2026/workshops/) page.
     <div class="agenda-brk"><span>15:15 · Coffee · Demant Hall</span></div>
     <div class="agenda-block is-workshop"><div class="agenda-time">15:45 · Workshop</div><div class="agenda-session"><a href="/conference2026/workshops/">10x Genomics</a></div><div class="agenda-room">Glass Hall (Glassalen)</div></div>
     <div class="agenda-block is-talk"><div class="agenda-time">16:30</div><div class="agenda-session">Closing remarks</div><div class="agenda-room">Glass Hall (Glassalen)</div></div>
-    <div class="agenda-block is-social"><div class="agenda-time">18:30</div><div class="agenda-session">Evening social event (Optional)</div></div>
+    <div class="agenda-block is-social"><div class="agenda-time">Evening</div><div class="agenda-session">Evening at leisure</div><div class="agenda-room">No formal programme — explore Copenhagen at your own pace</div></div>
   </div>
   <div class="agenda-col is-day3">
     <div class="agenda-colhead">Day 3 · Wed<span class="agenda-coldate">14 October</span></div>
