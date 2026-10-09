@@ -36,6 +36,16 @@ Claude Science is Anthropic's new AI workbench for scientific research, currentl
 
 In this workshop we will go over a real-life application in the single-cell space. Starting from public data or your own, we will showcase Claude Science with an end-to-end analysis of single-cell data that leads to biological insight, driven by conversation and built on scverse tools. Along the way we will look at how Claude plans an analysis, how it writes and runs real code you can read and keep, how it checks its own work, and where a scientist still needs to step in and steer. The session is aimed at people with light coding experience and a strong interest in getting answers out of single-cell experiments. If you can describe the biological question, we will show you how far Claude Science can take you toward the analysis, and how to stay in control of what it did and why.
 
+**Who it's for.** Little or no coding experience is needed — and even experienced computational biologists will get a lot out of it.
+
+**Prepare in advance.** To follow along hands-on, please install Claude Science before the session:
+
+- Install the app from [claude.com/science](https://claude.com/science) and sign in. The first launch takes a few minutes to set up, so open it once beforehand.
+- You will need a Claude account on a **Pro** or **Max** plan, or a **Team / Enterprise** plan whose owning institution has enabled Claude Science.
+- Requirements: macOS 13 or later, Windows, or 64-bit Linux, and about 5 GB of free disk space. See the [install guide and system requirements](https://claude.com/docs/claude-science).
+- Bring a laptop (macOS, Windows or Linux) and its charger, and a reliable, fast internet connection — Claude Science sends prompts to Anthropic's models and pulls from public scientific databases during the analysis.
+- Optionally, bring a single-cell dataset of your own; otherwise we will work from a public dataset. Anyone who cannot install the app can still follow along on the main screen.
+
 ### scviva-tools: From Niche Embeddings to Gene Modules
 
 **Can Ergen** · scverse

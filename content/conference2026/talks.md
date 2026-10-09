@@ -91,3 +91,5 @@ The revolution in single cell genomics, complemented by more recent developments
 Poster boards are **160 × 120 cm (W × H)**, in landscape orientation.
 Please keep your poster to a maximum of **155 × 115 cm (W × H)** so it fits the board.
 In the A series, **A0 landscape (118.9 × 84.1 cm)** fits comfortably.
+
+Browse the [poster booklet](https://docs.google.com/document/d/1QzrzrSs2fKOHtp5omhNdgktSRwLpPesK/edit?usp=sharing) for the full list of posters.
