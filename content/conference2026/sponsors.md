@@ -2,7 +2,7 @@
 title = "Sponsors"
 url = "/conference2026/sponsors"
 type = "conference2026"
-weight = 6
+weight = 8
 +++
 
 ## Our sponsors

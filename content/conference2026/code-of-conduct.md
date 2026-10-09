@@ -2,7 +2,7 @@
 title = "Code of Conduct"
 url = "/conference2026/code-of-conduct"
 type = "conference2026"
-weight = 8
+weight = 10
 +++
 
 This code of conduct was developed for the scverse conferences. For more details, see the full [scverse Code of Conduct](/about/code_of_conduct).

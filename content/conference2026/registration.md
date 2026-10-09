@@ -2,7 +2,7 @@
 title = "Registration"
 url = "/conference2026/registration"
 type = "conference2026"
-weight = 4
+weight = 6
 +++
 
 <div class="status-banner">Registration is now open — <a href="https://dtu.events/scverse2026/signup.html?step=participants">sign up here</a>.</div>
