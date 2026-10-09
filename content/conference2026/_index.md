@@ -5,7 +5,7 @@ type = "conference2026"
 weight = 1
 
 # Hero
-label = "Registration open"
+label = "Registration closed"
 conferenceDates = "October 12 – 14, 2026"
 conferenceLocation = "DTU, Copenhagen, Denmark"
 backgroundImage = "/img/events/2026_10_conference_bg.webp"
@@ -13,16 +13,16 @@ subtitle = "The third scverse conference brings together the single-cell and spa
 
 # Call-to-action buttons (first is primary)
 [[buttons]]
-name = "Register"
-url = "https://dtu.events/scverse2026/signup.html?step=participants"
-[[buttons]]
-name = "Schedule"
+name = "View the programme"
 url = "/conference2026/schedule/"
+[[buttons]]
+name = "Venue & travel"
+url = "/conference2026/travel/"
 
 # Key dates timeline (placeholder — to be confirmed)
 [[keyDates]]
-date = "Open now"
-event = "Registration open"
+date = "Closed"
+event = "Registration"
 [[keyDates]]
 date = "August 20, 2026"
 event = "Travel-grant application deadline (closed)"
@@ -48,6 +48,6 @@ After Munich (2024) and Stanford (2025), the **third scverse conference** comes 
 
 Expect keynote talks, contributed talks and posters, hands-on workshops and tutorials, and plenty of time to connect with the people building and using the scverse ecosystem.
 
-> **Registration is open, and our first speakers have been announced.** The full program and remaining details will be posted here as they are confirmed. Follow us on [Zulip](https://scverse.zulipchat.com/), [Bluesky](https://bsky.app/profile/scverse.bsky.social), [LinkedIn](https://linkedin.com/company/scverse), or [X](https://x.com/scverse_team) to stay up to date.
+> **Registration has closed and the full programme is now live.** We look forward to welcoming everyone to Copenhagen on October 12 – 14. Follow us on [Zulip](https://scverse.zulipchat.com/), [Bluesky](https://bsky.app/profile/scverse.bsky.social), [LinkedIn](https://linkedin.com/company/scverse), or [X](https://x.com/scverse_team) for on-site updates.
 
 Questions? Email us at [conference2026@scverse.org](mailto:conference2026@scverse.org).
