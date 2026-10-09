@@ -2,7 +2,7 @@
 title = "Call for proposals"
 url = "/conference2026/call-for-proposals"
 type = "conference2026"
-weight = 5
+weight = 7
 +++
 
 <div class="status-banner">Abstract submission closed on <strong>September 7, 2026</strong>. Thank you to everyone who submitted.</div>

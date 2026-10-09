@@ -2,7 +2,7 @@
 title = "Registration"
 url = "/conference2026/registration"
 type = "conference2026"
-weight = 4
+weight = 6
 +++
 
 <div class="status-banner">Registration has closed. We look forward to welcoming registered attendees in Copenhagen.</div>

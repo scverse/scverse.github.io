@@ -2,7 +2,7 @@
 title = "Organizers"
 url = "/conference2026/organizers"
 type = "conference2026"
-weight = 9
+weight = 11
 +++
 
 ## Organizing committee

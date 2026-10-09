@@ -450,6 +450,22 @@
             color: var(--bs-fg-4);
         }
 
+        .agenda-tracks {
+            display: flex;
+            gap: 0.55rem;
+            margin-top: 0.1rem;
+        }
+
+        .agenda-track {
+            flex: 1 1 0;
+            min-width: 0;
+
+            & + & {
+                padding-left: 0.55rem;
+                border-left: 1px solid var(--bs-border-emphasized);
+            }
+        }
+
         &.is-talk {
             background: color-mix(in oklch, var(--spatialdata-blue) 12%, transparent);
             border-left-color: var(--spatialdata-blue);

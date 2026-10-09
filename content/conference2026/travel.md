@@ -2,7 +2,7 @@
 title = "Venue & travel"
 url = "/conference2026/travel"
 type = "conference2026"
-weight = 7
+weight = 9
 +++
 
 scverse conference 2026 · DTU Lyngby Campus, Kongens Lyngby · 12–14 October 2026
