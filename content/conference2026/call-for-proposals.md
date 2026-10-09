@@ -9,7 +9,7 @@ weight = 5
 
 ## Share your work
 
-The scverse conference program is built with the community. We welcome submissions from researchers, developers, and users across the single-cell and spatial omics ecosystem. Submission types include:
+The scverse conference program is built with the community. The programme is built with contributions from researchers, developers, and users across the single-cell and spatial omics ecosystem. Submission types were:
 
 <div class="card-grid">
   <div class="info-card">
@@ -28,6 +28,6 @@ The scverse conference program is built with the community. We welcome submissio
 
 ## Review
 
-Abstracts were submitted through the scverse 2026 submission portal until **September 7, 2026**, and are reviewed by the program committee. Accepted talks and posters will appear in the [schedule](/conference2026/schedule/).
+Abstracts were submitted through the scverse 2026 submission portal until **September 7, 2026**, and were reviewed by the program committee. Accepted talks and posters appear in the [schedule](/conference2026/schedule/).
 
 Questions about submissions? Email [conference2026@scverse.org](mailto:conference2026@scverse.org).
