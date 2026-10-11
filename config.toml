@@ -25,8 +25,11 @@ baseName = "search-entities"
 isPlainText = true
 notAlternative = true
 
+[markup.goldmark.parser.attribute]
+block = true
+
 [markup.goldmark.renderer]
-unsafe= true
+unsafe = true
 
 [outputFormats.llms]
 mediaType = "text/plain"

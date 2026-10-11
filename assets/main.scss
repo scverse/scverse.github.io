@@ -745,6 +745,16 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+q {
+    font-style: italic;
+    &::before {
+        content: "\201C";
+    }
+    &::after {
+        content: "\201D";
+    }
+}
+
 // Nav bar
 
 .nav-buttons > li {

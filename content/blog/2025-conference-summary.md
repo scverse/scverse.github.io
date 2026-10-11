@@ -147,31 +147,25 @@ Each sponsor provided an outlook of the latest technologies in perturbation scre
 
 ### Testimonials
 
-<blockquote style="font-size: 1.4rem; font-style: italic; border-left: 4px solid #3b82f6; padding: 1rem 1.5rem; margin: 2rem 0; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 0 8px 8px 0;">
-"scverse is the conference to be at to stay up-to-date on all the current happenings in the single-cell community"
-</blockquote>
+> scverse is the conference to be at to stay up-to-date on all the current happenings in the single-cell community
+{.blockquote}
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+<div class="grid gap-4 fst-italic" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))">
 
-<div style="background: #f8fafc; border-radius: 8px; padding: 1.25rem; border: 1px solid #e2e8f0;">
-<p style="font-style: italic; margin: 0 0 0.5rem 0; line-height: 1.6;">"Exceptional conference! The scverse conference achieved true single-human resolution with every attendee perfectly clustered, well-annotated, and deeply engaged."</p>
-</div>
+<p class="card card-body">
+<q>Exceptional conference! The scverse conference achieved true single-human resolution with every attendee perfectly clustered, well-annotated, and deeply engaged.</q>
 
-<div style="background: #f8fafc; border-radius: 8px; padding: 1.25rem; border: 1px solid #e2e8f0;">
-<p style="font-style: italic; margin: 0 0 0.5rem 0; line-height: 1.6;">"As a user rather than a developer of computational tools, I discovered several resources, methods, and workflows that I did not know existed, which will directly improve the way I approach my analyses. What stood out most was how open and collaborative the community is, making advanced tools accessible even for those who focus primarily on applying, rather than building, computational methods."</p>
-</div>
+<p class="card card-body">
+<q>As a user rather than a developer of computational tools, I discovered several resources, methods, and workflows that I did not know existed, which will directly improve the way I approach my analyses. What stood out most was how open and collaborative the community is, making advanced tools accessible even for those who focus primarily on applying, rather than building, computational methods.</q>
 
-<div style="background: #f8fafc; border-radius: 8px; padding: 1.25rem; border: 1px solid #e2e8f0;">
-<p style="font-style: italic; margin: 0 0 0.5rem 0; line-height: 1.6;">"A good mix of industry and academic presence, the conference provided an insight into the bleeding edge of methods but also the ways in which they are being used."</p>
-</div>
+<p class="card card-body">
+<q>A good mix of industry and academic presence, the conference provided an insight into the bleeding edge of methods but also the ways in which they are being used.</q>
 
-<div style="background: #f8fafc; border-radius: 8px; padding: 1.25rem; border: 1px solid #e2e8f0;">
-<p style="font-style: italic; margin: 0 0 0.5rem 0; line-height: 1.6;">"The scverse community has accelerated science by crafting solutions to core, underappreciated problems. I admire the team's commitment to openness and transparency, and how that promotes scientific integrity in their growing community."</p>
-</div>
+<p class="card card-body">
+<q>The scverse community has accelerated science by crafting solutions to core, underappreciated problems. I admire the team's commitment to openness and transparency, and how that promotes scientific integrity in their growing community.</q>
 
-<div style="background: #f8fafc; border-radius: 8px; padding: 1.25rem; border: 1px solid #e2e8f0;">
-<p style="font-style: italic; margin: 0 0 0.5rem 0; line-height: 1.6;">"The workshops were amazing, the science was top-tier, and the smaller setting made it so easy to connect with people. The scverse organizers were incredibly hardworking and thoughtful—they made the entire experience smooth, generous, and deliciously well-catered."</p>
-</div>
+<p class="card card-body">
+<q>The workshops were amazing, the science was top-tier, and the smaller setting made it so easy to connect with people. The scverse organizers were incredibly hardworking and thoughtful—they made the entire experience smooth, generous, and deliciously well-catered.</q>
 
 </div>
 
