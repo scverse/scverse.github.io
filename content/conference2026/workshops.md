@@ -80,10 +80,12 @@ The session opens with a 15-minute introduction to the topic, after which partic
 
 Single-cell genomics datasets have grown exponentially, from thousands of cells per sample to millions in a single experimental design. This shift moves the field from method development to method acceleration, enabling researchers to answer existing biological questions at previously impossible scale. NVIDIA develops software libraries and open models to support this acceleration, including CUDA-X, Parabricks, and BioNemo. Together with scverse, we introduce rapids-singlecell, a GPU-accelerated implementation of foundational single-cell tools like scanpy, squidpy, pertpy, and decoupler. Through scverse-backends, users can seamlessly switch between CPU and GPU analysis based on computational needs and data scale. This workshop combines short lectures with hands-on examples. We demonstrate a real-world case study using 10x Genomics' Atera technology — a high-throughput image-based platform generating whole-transcriptome data. We walk through the complete analysis pipeline step-by-step, highlighting new functionalities for spatial niche detection and evaluation.
 
-### 3D spatial transcriptomics with Stellaromics
+### Keeping humans in the loop: hands-on with 3D spatial omics
 
 **Stellaromics**
 
-A hands-on tutorial working with 3D spatial transcriptomics data from the Stellaromics commercial platform.
+AI agents can now run tools and perform data analysis faster than ever before. However, it is up to humans to provide the right data, context, and ultimately come to our own conclusions.
 
-<div class="placeholder-note">Full abstract to follow.</div>
+In this session we give the first public, hands-on look at 3D, single-molecule-resolved spatial transcriptomics from the Stellaromics Pyxa platform, using a colorectal cancer sample. Participants explore the tissue interactively in 3D, select what stands out by eye, and carry those selections straight into analysis, whether they or an agent takes the next step. They leave with a clearer sense of when 3D context matters, and with new tools to empower their own science.
+
+**Prepare in advance.** Bring a laptop and an internet connection. No installs needed.
