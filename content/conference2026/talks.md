@@ -7,6 +7,18 @@ weight = 4
 
 Contributed talks, keynote abstracts, and poster guidelines for scverse conference 2026.
 See the [schedule](/conference2026/schedule/) for the full day-by-day programme.
+**The best talks and posters win Claude credits**, sponsored by Anthropic — see [prizes](#prizes).
+
+## Prizes
+
+Anthropic is sponsoring prizes in **Claude credits** for the strongest contributed work.
+
+| | 🥇 1st | 🥈 2nd | 🥉 3rd |
+| --- | :---: | :---: | :---: |
+| **Best talk** | 5,000 | 3,000 | 1,000 |
+| **Best poster** | 3,000 | 2,000 | 1,000 |
+
+*Amounts in Claude credits.*
 
 ## Contributed talks
 
