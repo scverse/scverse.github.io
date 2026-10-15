@@ -63,6 +63,8 @@ They are granted additional rights so they can more easily carry on with their s
 These rights include: merging approved pull requests, voting for and against contested pull-requests, and being involved in deciding major changes to the API.
 Core developers are on our `scverse/core-devs` GitHub team.
 
+{{< role-members "core-devs" >}}
+
 All core packages must have at least one core developer as a maintainer.
 New core developers can be nominated by any existing core developer. 
 While there is no hard-and-fast rule about who can be nominated, ideally, they should have: 

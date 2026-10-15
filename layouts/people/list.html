@@ -6,8 +6,10 @@
     {{ $groupIDs = $groupIDs | append .id }}
   {{ end }}
   {{ $labels := dict }}
+  {{ $parents := dict }}
   {{ range .Params.roles }}
     {{ $labels = merge $labels (dict .id .short) }}
+    {{ if .parent }}{{ $parents = merge $parents (dict .id .parent) }}{{ end }}
   {{ end }}
 
   {{/* One record per person, so nobody is duplicated: the role sections below are views over the
@@ -17,8 +19,10 @@
   {{ range $i, $person := .Params.people }}
     {{ $works := $person.works_on | default slice }}
     {{ $roleNames := slice }}
+    {{ $implied := slice }}
     {{ range $person.roles }}
       {{ $roleNames = $roleNames | append (index $labels .) }}
+      {{ with index $parents . }}{{ $implied = $implied | append . }}{{ end }}
     {{ end }}
     {{ $search := lower (printf "%s %s %s %s"
       $person.name ($person.affiliation | default "") (delimit $works " ") (delimit $roleNames " "))
@@ -30,7 +34,7 @@
     {{ end }}
     {{ $items = $items | append (merge $person (dict
       "index" $i "works" $works "search" $search "sortkey" (printf "%d %04d" $rank $i)
-      "team" (lt $rank (len $roles))
+      "team" (lt $rank (len $roles)) "badges" (complement $implied $person.roles)
       ))
     }}
   {{ end }}

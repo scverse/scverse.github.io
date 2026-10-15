@@ -2692,7 +2692,6 @@ body {
     }
 
     .people-note {
-        max-width: 42rem;
         margin: 1.25rem 0 0;
         font-size: 0.9rem;
         color: var(--bs-fg-3);
@@ -4402,8 +4401,8 @@ body {
         }
     }
 
-    // The three sub-teams are names only; the document describes just one of them, and a chip row
-    // reads as a set rather than as three cards with a hole where the text would be.
+    // The three sub-teams are names and headcounts only; the document describes just one of them, and a
+    // chip row reads as a set rather than as three cards with a hole where the text would be.
     .gov-level--subteams > .gov-node > .gov-card {
         padding: 0.4rem 0.5rem;
 
@@ -4411,6 +4410,9 @@ body {
             width: 1.85rem;
             height: 1.85rem;
             font-size: 0.9rem;
+        }
+        .gov-faces {
+            display: none;
         }
     }
 

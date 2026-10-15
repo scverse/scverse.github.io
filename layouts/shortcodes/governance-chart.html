@@ -16,7 +16,7 @@
 {{ end }}
 
 {{ $role := dict }}
-{{ range slice "core" "council" "management" "advisory" }}
+{{ range slice "core" "core-devs" "core-community" "core-governance" "council" "management" "advisory" }}
   {{ $role = merge $role (dict . (dict "id" . "count" (index $count .) "members" (index $members .))) }}
 {{ end }}
 
@@ -55,20 +55,23 @@
               <ul class="gov-level gov-level--row gov-level--subteams">
                 <li class="gov-node gov-node--leaf">
                   {{ partial "governance/node.html" (dict
-                    "name" "Core Developers" "anchor" "core-developers" "icon" "bi-braces" "hue" 5
+                    "name" (index $label "core-devs") "anchor" "core-developers" "icon" "bi-braces" "hue" 5
+                    "role" (index $role "core-devs")
                     )
                   }}
                 </li>
                 {{/* The document has no section for these two yet, so they point at their parent */}}
                 <li class="gov-node gov-node--leaf">
                   {{ partial "governance/node.html" (dict
-                    "name" "Core Community" "anchor" "core-team" "icon" "bi-chat-square-heart" "hue" 4
+                    "name" (index $label "core-community") "anchor" "core-team" "icon" "bi-chat-square-heart" "hue" 4
+                    "role" (index $role "core-community")
                     )
                   }}
                 </li>
                 <li class="gov-node">
                   {{ partial "governance/node.html" (dict
-                    "name" "Core Governance" "anchor" "core-team" "icon" "bi-clipboard-check" "hue" 6
+                    "name" (index $label "core-governance") "anchor" "core-team" "icon" "bi-clipboard-check" "hue" 6
+                    "role" (index $role "core-governance")
                     )
                   }}
                   <ul class="gov-level">
