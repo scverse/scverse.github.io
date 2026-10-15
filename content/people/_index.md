@@ -18,7 +18,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	parent = "core"
 	short = "core devs"
 	label = "Core Developers"
-	text = "Core Developers are core team members who have made significant code contributions to scverse and maintain its core packages."
+	text = "Core Developers are core team members who make significant code contributions to scverse and maintain its core packages."
 
 [[roles]]
 	id = "core-community"
