@@ -14,6 +14,27 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	text = "The Core Team governs scverse and is deeply involved in developing and maintaining scverse packages."
 
 [[roles]]
+	id = "core-devs"
+	parent = "core"
+	short = "core devs"
+	label = "Core Developers"
+	text = "Core Developers are core team members who have made significant code contributions to scverse and maintain its core packages."
+
+[[roles]]
+	id = "core-community"
+	parent = "core"
+	short = "core community"
+	label = "Core Community"
+	text = "Core Community members grow and support the scverse community through events, workshops and outreach."
+
+[[roles]]
+	id = "core-governance"
+	parent = "core"
+	short = "core governance"
+	label = "Core Governance"
+	text = "Core Governance coordinates across the core team and takes care of funding and the day-to-day running of scverse."
+
+[[roles]]
 	id = "council"
 	short = "steering council"
 	label = "Steering Council"
@@ -62,7 +83,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/flying-sheep"
 	email = "philipp.angerer@scverse.org"
 	affiliation = "Helmholtz Munich"
-	roles = ["core"]
+	roles = ["core", "core-devs", "core-governance"]
 	works_on = ["anndata", "scanpy"]
 
 [[people]]
@@ -70,7 +91,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/PauBadiaM"
 	email = "paubim@scverse.org"
 	affiliation = "Stanford University"
-	roles = ["core"]
+	roles = ["core", "core-devs", "core-governance"]
 	works_on = ["decoupler"]
 
 [[people]]
@@ -78,7 +99,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/gtca"
 	email = "danila.bredikhin@scverse.org"
 	affiliation = "Stanford University"
-	roles = ["core", "council"]
+	roles = ["core", "core-community", "core-governance", "council"]
 	works_on = ["mudata", "muon"]
 
 [[people]]
@@ -86,7 +107,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/emdann"
 	email = "emma.dann@scverse.org"
 	affiliation = "Stanford University"
-	roles = ["core"]
+	roles = ["core", "core-community", "core-governance"]
 	works_on = ["community", "events"]
 
 [[people]]
@@ -94,7 +115,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/Intron7"
 	email = "severin.dicks@scverse.org"
 	affiliation = "NVIDIA"
-	roles = ["core"]
+	roles = ["core", "core-devs", "core-governance"]
 	works_on = ["rapids-singlecell"]
 
 [[people]]
@@ -102,7 +123,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/canergen"
 	email = "can.ergen@scverse.org"
 	affiliation = "Helmholtz Munich & University of Würzburg"
-	roles = ["core"]
+	roles = ["core", "core-community", "core-governance"]
 	works_on = ["scvi-tools"]
 
 [[people]]
@@ -110,7 +131,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://jfoltzlab.org/"
 	email = "jennifer.foltz@scverse.org"
 	affiliation = "Washington University"
-	roles = ["core"]
+	roles = ["core", "core-community", "core-governance"]
 	works_on = ["community"]
 
 [[people]]
@@ -118,7 +139,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/ilan-gold"
 	email = "ilan.gold@scverse.org"
 	affiliation = "Memorial Sloan Kettering Cancer Center"
-	roles = ["core"]
+	roles = ["core", "core-devs", "core-governance"]
 	works_on = ["anndata", "scanpy"]
 
 [[people]]
@@ -126,7 +147,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/muskanhashim"
 	email = "muskan.hashim@scverse.org"
 	affiliation = "Helmholtz Munich"
-	roles = ["core"]
+	roles = ["core", "core-community", "core-governance"]
 	works_on = ["community"]
 
 [[people]]
@@ -134,7 +155,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/Zethson"
 	email = "lukas.heumos@scverse.org"
 	affiliation = "NVIDIA"
-	roles = ["core", "council"]
+	roles = ["core", "core-devs", "core-community", "core-governance", "council"]
 	works_on = ["pertpy", "operations"]
 
 [[people]]
@@ -142,7 +163,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/sarajimenez"
 	email = "sara.jimenez@scverse.org"
 	affiliation = "NVIDIA"
-	roles = ["core"]
+	roles = ["core", "core-community", "core-governance"]
 	works_on = ["grants", "workshops"]
 
 [[people]]
@@ -150,7 +171,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/ilia-kats"
 	email = "ilia.kats@scverse.org"
 	affiliation = "German Cancer Research Center (DKFZ)"
-	roles = ["core"]
+	roles = ["core", "core-devs"]
 	works_on = ["mudata", "muon"]
 
 [[people]]
@@ -158,7 +179,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/mikelkou"
 	email = "mikaela.koutrouli@scverse.org"
 	affiliation = "NVIDIA"
-	roles = ["core", "council"]
+	roles = ["core", "core-devs", "core-community", "core-governance", "council"]
 	works_on = ["sc-proteomics", "operations"]
 
 [[people]]
@@ -166,7 +187,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/ori-kron-wis"
 	email = "ori.kronfeld@scverse.org"
 	affiliation = "Weizmann Institute of Science"
-	roles = ["core"]
+	roles = ["core", "core-devs"]
 	works_on = ["scvi-tools"]
 
 [[people]]
@@ -174,7 +195,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/LucaMarconato"
 	email = "luca.marconato@scverse.org"
 	affiliation = "EMBL Heidelberg"
-	roles = ["core"]
+	roles = ["core", "core-devs", "core-governance"]
 	works_on = ["spatialdata"]
 
 [[people]]
@@ -182,7 +203,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/josenimo"
 	email = "jose.nimo@scverse.org"
 	affiliation = "Max Delbrück Center Berlin"
-	roles = ["core", "proteomics"]
+	roles = ["core", "core-community", "core-governance", "proteomics"]
 	works_on = ["sc-proteomics", "events"]
 
 [[people]]
@@ -190,7 +211,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/roshan9128"
 	email = "roshan.sharma@scverse.org"
 	affiliation = "Memorial Sloan Kettering Cancer Center"
-	roles = ["core"]
+	roles = ["core", "core-community", "core-governance"]
 	works_on = ["grants", "workshops"]
 
 [[people]]
@@ -198,7 +219,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/grst"
 	email = "gregor.sturm@scverse.org"
 	affiliation = "Boehringer Ingelheim"
-	roles = ["core"]
+	roles = ["core", "core-devs"]
 	works_on = ["scirpy"]
 
 [[people]]
@@ -206,7 +227,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/timtreis"
 	email = "tim.treis@scverse.org"
 	affiliation = "Helmholtz Munich"
-	roles = ["core"]
+	roles = ["core", "core-devs", "core-community", "core-governance"]
 	works_on = ["spatialdata-plot", "squidpy"]
 
 [[people]]
@@ -214,7 +235,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/melonora"
 	email = "michiel.vierdag@scverse.org"
 	affiliation = "EMBL Heidelberg"
-	roles = ["core"]
+	roles = ["core", "core-devs", "core-governance"]
 	works_on = ["spatialdata"]
 
 [[people]]
@@ -222,7 +243,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://lab.kaizhang.org/"
 	email = "zhangkai33@westlake.edu.cn"
 	affiliation = "Westlake University"
-	roles = ["core"]
+	roles = ["core", "core-devs"]
 	works_on = ["snapatac2"]
 
 [[people]]

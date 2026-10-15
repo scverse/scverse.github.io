@@ -14,7 +14,7 @@
     <a href="{{ $person.url }}" target="_blank" rel="noopener">{{ $person.name }}</a>
   </h3>
   <p class="person-roles">
-    {{ range $person.roles }}
+    {{ range $person.badges }}
       {{ if in $.groups . }}
         <a class="person-role person-role--group" href="#wg-{{ . }}">{{ index $.labels . }}</a>
       {{ else }}
