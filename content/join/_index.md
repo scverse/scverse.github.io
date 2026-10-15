@@ -131,6 +131,6 @@ description = "How to get help with scverse, contribute code, add a package to t
 	text = "the [steering council](/about/roles#steering-council), including sponsorship questions"
 
 [[email.items]]
-	address = "conference2026@scverse.org"
-	text = "the [next conference](/conference2026)"
+	address = "conference2027@scverse.org"
+	text = "the [next conference](/conference2027)"
 +++
