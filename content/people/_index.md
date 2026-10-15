@@ -179,7 +179,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/mikelkou"
 	email = "mikaela.koutrouli@scverse.org"
 	affiliation = "NVIDIA"
-	roles = ["core", "core-devs", "core-community", "core-governance", "council"]
+	roles = ["core", "core-community", "core-governance", "council"]
 	works_on = ["sc-proteomics", "operations"]
 
 [[people]]
