@@ -624,7 +624,7 @@ $-hues:
         }
     }
 
-    // Partner logos are drawn for a light background, like the ones in the media kit
+    // Partner logos are drawn for a light background
     .partner-logo {
         display: grid;
         place-items: center;
@@ -3131,9 +3131,7 @@ body {
                 justify-content: center;
                 align-items: center;
                 padding: 2.5rem;
-                // The logos are drawn for a light background, and adaptive ones must render that way
-                color-scheme: light;
-                background-color: var(--bs-white);
+                background-color: var(--bs-bg-1);
                 border-radius: 1rem;
                 min-height: 180px;
                 min-width: 300px;
