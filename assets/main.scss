@@ -624,14 +624,12 @@ $-hues:
         }
     }
 
-    // Partner logos are drawn for a light background
     .partner-logo {
         display: grid;
         place-items: center;
         aspect-ratio: 3 / 2;
         padding: 1.5rem;
-        color-scheme: light;
-        background-color: var(--bs-white);
+        background-color: var(--bs-bg-1);
         border-radius: var(--card-radius);
 
         img {
