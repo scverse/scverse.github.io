@@ -73,6 +73,13 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	label = "Proteomics Working Group"
 	text = "A collaborative community advancing single-cell and spatial proteomics across methodology, software, and community engagement."
 
+[[roles]]
+	id = "agentic"
+	working_group = true
+	short = "agentic WG"
+	label = "Agentic Working Group"
+	text = "Making scverse agent ready, so that AI agents can discover and use scverse packages and documentation."
+
 # ---------- people, one entry per person, alphabetical by last name within each role
 #
 # `works_on` entries that name a package we ship an icon for (static/img/icons) render with its
@@ -91,7 +98,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/PauBadiaM"
 	email = "paubim@scverse.org"
 	affiliation = "Stanford University"
-	roles = ["core", "core-devs", "core-governance"]
+	roles = ["core", "core-devs", "core-governance", "agentic"]
 	works_on = ["decoupler"]
 
 [[people]]
@@ -115,7 +122,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/Intron7"
 	email = "severin.dicks@scverse.org"
 	affiliation = "NVIDIA"
-	roles = ["core", "core-devs", "core-governance"]
+	roles = ["core", "core-devs", "core-governance", "agentic"]
 	works_on = ["rapids-singlecell"]
 
 [[people]]
@@ -227,7 +234,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	url = "https://github.com/timtreis"
 	email = "tim.treis@scverse.org"
 	affiliation = "Helmholtz Munich"
-	roles = ["core", "core-devs", "core-community", "core-governance"]
+	roles = ["core", "core-devs", "core-community", "core-governance", "agentic"]
 	works_on = ["spatialdata-plot", "squidpy"]
 
 [[people]]
