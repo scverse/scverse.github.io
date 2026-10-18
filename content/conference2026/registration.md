@@ -5,7 +5,7 @@ type = "conference2026"
 weight = 6
 +++
 
-<div class="status-banner">Registration has closed. We look forward to welcoming registered attendees in Copenhagen.</div>
+<div class="status-banner">Registration has closed. Thank you to everyone who joined us in Copenhagen.</div>
 
 ## Registration
 
