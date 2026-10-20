@@ -20,6 +20,16 @@ Anthropic is sponsoring prizes in **Claude credits** for the strongest contribut
 
 *Amounts in Claude credits.*
 
+### Selection committee
+
+Winners are chosen by the best-talk and best-poster selection committee:
+
+- **Gregor Sturm** · Boehringer Ingelheim
+- **Pau Badia i Mompel** · Stanford University
+- **Erwin Schoof** · Technical University of Denmark
+- **David Nikolaus Hartlmayr** · Technical University of Denmark
+- **Michaela Sadibolova** · Technical University of Denmark
+
 ## Contributed talks
 
 Contributed and flash talks run across four themed sessions on Days 1 and 2, selected from the submitted abstracts.
