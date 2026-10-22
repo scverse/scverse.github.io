@@ -1,6 +1,6 @@
 // Neutral colors come straight from Bootstrap’s tokens (--bs-bg-*, --bs-fg-*, --bs-border-*),
 // which carry their own dark values. Only the brand hues and a few measures live here.
-// The package accents come from accents.json, passed in by layouts/partials/head.html.
+// The scverse and package accents come from accents.json, passed in by layouts/partials/head.html.
 @import "hugo:vars";
 :root {
     @each $pkg, $colors in $accents {
@@ -8,11 +8,7 @@
             --#{$pkg}-#{$name}: #{$color};
         }
     }
-    /* stylelint-disable function-disallowed-list -- the one place the brand hues are spelled out */
-    // the darker and lighter ends of the Join button gradient
-    --scverse-deep-blue: oklch(0.405 0.205 270);
-    --scverse-sky-blue: oklch(0.799 0.108 236);
-    --scverse-gold: oklch(0.758 0.2 92);
+    /* stylelint-disable function-disallowed-list -- the one place the third-party brand hues are spelled out */
     --github-black: oklch(0.22 0.013 258);
     --discourse-yellow: oklch(0.9458 0.08 102);
     --youtube-red: oklch(0.59 0.213 29.7);
