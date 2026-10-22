@@ -10,6 +10,7 @@
     --spatialdata-blue: #40a9ff;
     --squidpy-violet: #969dea;
     --scirpy-purple: #da347f;
+    --pertpy-blue: #30679a;
     --scvi-yellow: #fbb822;
     --scverse-deep-blue: #262fb5; // the darker end of the Join button gradient
     --scverse-sky-blue: #74c8fa; // the lighter end
@@ -3616,6 +3617,29 @@ body {
                 &:hover {
                     .icon-name {
                         color: var(--scvi-yellow);
+                    }
+                }
+            }
+
+            &#pertpy-tile {
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(
+                        135deg,
+                        color-mix(in oklch, var(--pertpy-blue) 10%, transparent) 0%,
+                        transparent 80%
+                    );
+                    z-index: -1;
+                }
+
+                &:hover {
+                    .icon-name {
+                        color: var(--pertpy-blue);
                     }
                 }
             }
