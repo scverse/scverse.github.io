@@ -11,6 +11,7 @@
     --squidpy-violet: #969dea;
     --scirpy-purple: #da347f;
     --pertpy-blue: #30679a;
+    --pertpy-red: #d2455e;
     --scvi-yellow: #fbb822;
     --scverse-deep-blue: #262fb5; // the darker end of the Join button gradient
     --scverse-sky-blue: #74c8fa; // the lighter end
@@ -3632,6 +3633,7 @@ body {
                     background: linear-gradient(
                         135deg,
                         color-mix(in oklch, var(--pertpy-blue) 10%, transparent) 0%,
+                        color-mix(in oklch, var(--pertpy-red) 10%, transparent) 40%,
                         transparent 80%
                     );
                     z-index: -1;
