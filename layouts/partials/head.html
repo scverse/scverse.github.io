@@ -8,8 +8,10 @@
 <link rel="canonical" href="{{ .Permalink }}" />
 
 {{/* accents.json → Sass map (pkg: (name: oklch(…), …), …); JSON objects are unordered, so each package lists [name, [L, C, H]] pairs, primary first */}}
+{{ $accentsJSON := resources.Get "accents.json" }}
+{{ $accentsJSON.Publish }}{{/* served at /accents.json for other sites to reuse */}}
 {{ $accents := slice }}
-{{ range $pkg, $colors := resources.Get "accents.json" | transform.Unmarshal }}
+{{ range $pkg, $colors := $accentsJSON | transform.Unmarshal }}
   {{ $pairs := slice }}
   {{ range $colors }}
     {{ $pairs = $pairs | append (printf "%s: oklch(%s)" (index . 0) (delimit (index . 1) " ")) }}
