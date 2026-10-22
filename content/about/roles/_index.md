@@ -78,6 +78,18 @@ After nomination, admission will be decided by two-thirds majority vote on a pri
 
 Primary maintainers of new core packages, who are not already core developers, will be invited to join.
 
+#### Core Community
+
+Core community members are members of the core team who grow and support the scverse community through events, workshops and outreach.
+
+{{< role-members "core-community" >}}
+
+#### Core Governance
+
+Core governance members are members of the core team who coordinate across the core team and take care of funding and the day-to-day running of scverse.
+
+{{< role-members "core-governance" >}}
+
 ### Steering Council
 
 The Steering Council (SC) members are core team members who have additional responsibilities to ensure the smooth running of the project.
