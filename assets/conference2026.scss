@@ -393,9 +393,9 @@
         gap: 0.5rem;
         margin: 0.15rem 0;
         padding: 0.1rem 0.2rem;
-        font-size: 0.72rem;
+        font-size: 0.8rem;
         letter-spacing: 0.03em;
-        color: var(--bs-fg-4);
+        color: var(--bs-fg-3);
 
         &::before,
         &::after {
@@ -444,10 +444,10 @@
 
         .agenda-room {
             margin-top: 0.15rem;
-            font-size: 0.68rem;
+            font-size: 0.75rem;
             font-weight: 600;
             letter-spacing: 0.02em;
-            color: var(--bs-fg-4);
+            color: var(--bs-fg-3);
         }
 
         .agenda-tracks {

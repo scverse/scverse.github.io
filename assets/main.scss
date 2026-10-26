@@ -63,11 +63,13 @@ $-hues:
 @font-face {
     font-family: "Inter";
     src: url("fonts/Inter/Inter-VariableFont_slnt,wght.woff2") format("woff2");
+    font-weight: 100 900;
     font-display: swap;
 }
 @font-face {
     font-family: "JetBrains Mono";
     src: url("fonts/JetBrainsMono/JetBrainsMono[wght].woff2") format("woff2");
+    font-weight: 100 800;
     font-display: swap;
 }
 
@@ -731,11 +733,8 @@ body {
     width: 100%;
     height: 100%;
     font-family: "Inter", sans-serif;
-
-    -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
     -webkit-scroll-behavior: smooth;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 q {
@@ -1431,7 +1430,7 @@ body {
                     margin-top: 0;
                     p {
                         margin-top: 0;
-                        color: var(--bs-fg-4);
+                        color: var(--bs-fg-3);
                     }
                 }
             }
@@ -2503,7 +2502,7 @@ body {
         margin: 0;
         font-size: 0.9rem;
         line-height: 1.6;
-        color: var(--bs-fg-3);
+        color: var(--bs-fg-2);
 
         strong {
             color: var(--bs-fg-1);
@@ -2634,7 +2633,7 @@ body {
     .people-count {
         margin: 0;
         font-size: 0.95rem;
-        color: var(--bs-fg-3);
+        color: var(--bs-fg-2);
         white-space: nowrap;
     }
 
@@ -2674,8 +2673,8 @@ body {
             border-color: var(--bs-inverse-bg);
         }
         .people-chip-count {
-            font-size: 0.75rem;
-            opacity: 0.55;
+            font-size: 0.8rem;
+            opacity: 0.75;
         }
     }
 
@@ -2687,7 +2686,7 @@ body {
     .people-note {
         margin: 1.25rem 0 0;
         font-size: 0.9rem;
-        color: var(--bs-fg-3);
+        color: var(--bs-fg-2);
 
         &[hidden] {
             display: none;
@@ -2791,11 +2790,11 @@ body {
     // Repeated on every card in a section, so the default badge stays quiet
     .person-role {
         padding: 0.05rem 0.35rem;
-        font-size: 0.62rem;
+        font-size: 0.72rem;
         font-weight: 700;
         letter-spacing: 0.05em;
         text-transform: uppercase;
-        color: var(--bs-fg-3);
+        color: var(--bs-fg-2);
         border: 1px solid var(--bs-border-color);
         border-radius: 0.25rem;
     }
@@ -2812,7 +2811,7 @@ body {
     a.person-role--group {
         position: relative;
         z-index: 1;
-        color: var(--bs-fg-3);
+        color: var(--bs-fg-2);
         text-decoration: none;
 
         &:hover {
@@ -2823,9 +2822,9 @@ body {
 
     .person-affiliation {
         margin: 0.1rem 0 0;
-        font-size: 0.78rem;
+        font-size: 0.875rem;
         line-height: 1.4;
-        color: var(--bs-fg-3);
+        color: var(--bs-fg-2);
         text-wrap: balance;
     }
 
@@ -2834,7 +2833,7 @@ body {
         align-items: center;
         gap: 0.3rem;
         padding: 0.15rem 0.5rem;
-        font-size: 0.72rem;
+        font-size: 0.8rem;
         line-height: 1.4;
         color: var(--bs-fg-2);
         background-color: var(--bs-bg-1);
@@ -2881,7 +2880,7 @@ body {
     .people-empty {
         padding: 4rem 0;
         text-align: center;
-        color: var(--bs-fg-3);
+        color: var(--bs-fg-2);
 
         .people-empty-reset {
             padding: 0;
@@ -2924,11 +2923,11 @@ body {
         }
         .people-group-count {
             margin-top: 0.75rem;
-            font-size: 0.72rem;
+            font-size: 0.8rem;
             font-weight: 700;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            color: var(--bs-fg-3);
+            color: var(--bs-fg-2);
         }
     }
 
@@ -2968,7 +2967,7 @@ body {
         .person-affiliation {
             display: block;
             margin: 0;
-            font-size: 0.72rem;
+            font-size: 0.8rem;
         }
         a {
             font-size: 0.9rem;
