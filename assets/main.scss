@@ -42,7 +42,7 @@
 // Pages tint cards and icons with `data-hue="0"`…`"7"`, cycling through the package palette
 $-hues:
     anndata-orange, scanpy-cerise, mudata-green, spatialdata-blue, squidpy-violet,
-    scirpy-purple, scvi-yellow, muon-aquamarine;
+    scirpy-purple, scvi-tools-yellow, muon-aquamarine;
 @each $name in $-hues {
     [data-hue="#{index($-hues, $name) - 1}"] {
         --hue: var(--#{$name});
@@ -1848,7 +1848,7 @@ body {
 
     // Packages maintained by the core team sort to the front and carry a wash of colour
     .eco-card--core {
-        background-color: color-mix(in oklch, var(--scvi-yellow) 8%, transparent);
+        background-color: color-mix(in oklch, var(--scvi-tools-yellow) 8%, transparent);
     }
 
     .eco-card-head {
@@ -3430,212 +3430,40 @@ body {
                 border-color: color-mix(in oklch, var(--bs-bg-body) 50%, transparent);
             }
 
-            // Package-specific styling for each icon
-            &#anndata-tile {
-                &::before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: linear-gradient(
-                        135deg,
-                        color-mix(in oklch, var(--anndata-orange) 10%, transparent) 0%,
-                        transparent 80%
-                    );
-                    z-index: -1;
-                }
-
-                &:hover {
-                    .icon-name {
-                        color: var(--anndata-orange);
-                    }
-                }
+            &::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: var(--tile-gradient, none);
+                z-index: -1;
             }
 
-            &#scanpy-tile {
-                &::before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: linear-gradient(
-                        135deg,
-                        color-mix(in oklch, var(--scanpy-mandy) 10%, transparent) 0%,
-                        transparent 80%
-                    );
-                    z-index: -1;
-                }
-
-                &:hover {
-                    .icon-name {
-                        color: var(--scanpy-mandy);
-                    }
-                }
+            &:hover .icon-name {
+                color: var(--tile-accent);
             }
 
-            &#mudata-tile {
-                &::before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: linear-gradient(
+            // Package tints from accents.json: its colors spread over the first 40%, the primary one on hover
+            @each $pkg, $colors in $accents {
+                $n: length($colors);
+                $stops: ();
+                $i: 0;
+                @each $name, $color in $colors {
+                    $pos: if($n == 1, 0%, $i * 40% / ($n - 1));
+                    $stops: append(
+                        $stops,
+                        color-mix(in oklch, var(--#{$pkg}-#{$name}) 10%, transparent)
+                            $pos,
+                        comma
+                    );
+                    $i: $i + 1;
+                }
+                &##{$pkg}-tile {
+                    --tile-accent: var(--#{$pkg}-#{nth(nth($colors, 1), 1)});
+                    --tile-gradient: linear-gradient(
                         135deg,
-                        color-mix(in oklch, var(--mudata-green) 10%, transparent) 0%,
+                        #{$stops},
                         transparent 80%
                     );
-                    z-index: -1;
-                }
-
-                &:hover {
-                    .icon-name {
-                        color: var(--mudata-green);
-                    }
-                }
-            }
-
-            &#muon-tile {
-                &::before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: linear-gradient(
-                        135deg,
-                        color-mix(in oklch, var(--muon-aquamarine) 10%, transparent) 0%,
-                        transparent 80%
-                    );
-                    z-index: -1;
-                }
-
-                &:hover {
-                    .icon-name {
-                        color: var(--muon-aquamarine);
-                    }
-                }
-            }
-
-            &#spatialdata-tile {
-                &::before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: linear-gradient(
-                        135deg,
-                        color-mix(in oklch, var(--spatialdata-blue) 10%, transparent) 0%,
-                        transparent 80%
-                    );
-                    z-index: -1;
-                }
-
-                &:hover {
-                    .icon-name {
-                        color: var(--spatialdata-blue);
-                    }
-                }
-            }
-
-            &#scirpy-tile {
-                &::before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: linear-gradient(
-                        135deg,
-                        color-mix(in oklch, var(--scirpy-purple) 10%, transparent) 0%,
-                        transparent 80%
-                    );
-                    z-index: -1;
-                }
-
-                &:hover {
-                    .icon-name {
-                        color: var(--scirpy-purple);
-                    }
-                }
-            }
-
-            &#squidpy-tile {
-                &::before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: linear-gradient(
-                        135deg,
-                        color-mix(in oklch, var(--squidpy-violet) 10%, transparent) 0%,
-                        transparent 80%
-                    );
-                    z-index: -1;
-                }
-
-                &:hover {
-                    .icon-name {
-                        color: var(--squidpy-violet);
-                    }
-                }
-            }
-
-            &#scvi-tools-tile {
-                &::before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: linear-gradient(
-                        135deg,
-                        color-mix(in oklch, var(--scvi-yellow) 10%, transparent) 0%,
-                        transparent 80%
-                    );
-                    z-index: -1;
-                }
-
-                &:hover {
-                    .icon-name {
-                        color: var(--scvi-yellow);
-                    }
-                }
-            }
-
-            &#pertpy-tile {
-                &::before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: linear-gradient(
-                        135deg,
-                        color-mix(in oklch, var(--pertpy-blue) 10%, transparent) 0%,
-                        color-mix(in oklch, var(--pertpy-red) 10%, transparent) 40%,
-                        transparent 80%
-                    );
-                    z-index: -1;
-                }
-
-                &:hover {
-                    .icon-name {
-                        color: var(--pertpy-blue);
-                    }
                 }
             }
 
@@ -4673,7 +4501,11 @@ body {
     .search-result-kind {
         padding: 0.05rem 0.4rem;
         border-radius: 0.25rem;
-        background-color: color-mix(in oklch, var(--scvi-yellow) 25%, transparent);
+        background-color: color-mix(
+            in oklch,
+            var(--scvi-tools-yellow) 25%,
+            transparent
+        );
         color: var(--bs-fg-2);
         font-size: 0.75rem;
         white-space: nowrap;
@@ -4694,7 +4526,11 @@ body {
 
         mark {
             padding: 0;
-            background-color: color-mix(in oklch, var(--scvi-yellow) 35%, transparent);
+            background-color: color-mix(
+                in oklch,
+                var(--scvi-tools-yellow) 35%,
+                transparent
+            );
             color: inherit;
         }
     }

@@ -6,7 +6,7 @@ import { el, isInside } from "../lib/html"
 const colorClusters = [
   { color: "var(--spatialdata-blue)", count: 68, name: "Cluster A" },
   { color: "var(--mudata-green)", count: 58, name: "Cluster B" },
-  { color: "var(--scvi-yellow)", count: 52, name: "Cluster C" },
+  { color: "var(--scvi-tools-yellow)", count: 52, name: "Cluster C" },
   { color: "var(--anndata-orange)", count: 44, name: "Cluster D" },
   { color: "var(--scirpy-purple)", count: 54, name: "Cluster E" },
   { color: "var(--squidpy-violet)", count: 48, name: "Cluster F" },
