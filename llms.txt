@@ -26,6 +26,7 @@ Foundational packages maintained by the scverse core team.
 
 ## Ecosystem packages: scRNA-seq
 
+- [AnnZarro](https://annzarro.readthedocs.io/): Read-only browser viewer for AnnData (Zarr, h5ad) built around cell-by-cell and gene-by-gene matrices: linked cell and gene plots and tables, focus and selection across panels, and shareable deep links, as a web server or a desktop app. It scales to atlas size: every cell of Tahoe-100M (95.6 million) is drawn in one plot on a laptop in about six seconds, and a billion-cell store opens in seconds and stays explorable through subsets streamed from disk, with the server under 3 GiB of memory. Install: `pip install annzarro`. Tutorials: https://annzarro.readthedocs.io/page/tutorials/tour.html. Tags: visualization, scRNA-seq.
 - [benGRN](https://www.jkobject.com/benGRN): Benchmarking tool for gene network inference from single cell RNAseq methods. It uses the grnndata/anndata modality and only contains biological ground truth networks. Install: `pip install bengrn`. Tags: scRNA-seq, gene regulatory networks, benchmarking.
 - [biolord](https://biolord.readthedocs.io/): biolord (biological representation disentanglement) is a deep generative framework for disentangling known and unknown attributes in single-cell data. Install: `pip install biolord`. Tags: dimensionality reduction, perturbation, deep learning.
 - [Cell_BLAST](https://cblast.readthedocs.io/): Cell BLAST is a cell querying tool for single-cell transcriptomics data. Install: `pip install Cell-BLAST`. Tags: data integration, cell-type annotation.
