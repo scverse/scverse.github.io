@@ -153,15 +153,16 @@ Foundational packages maintained by the scverse core team.
 - [flowsom](https://flowsom.readthedocs.io/): The complete FlowSOM package known from R, now available in Python! Analyze high-dimensional cytometry data using FlowSOM, a clustering and visualization algorithm based on a self-organizing map (SOM). FlowSOM is used to distinguish cell populations from cytometry data in an unsupervised way and can help to gain deeper insights in fields such as immunology and oncology. Install: `conda install -c conda-forge flowsom`. Tutorials: https://flowsom.readthedocs.io/page/notebooks/example.html. Tags: flow cytometry, clustering.
 - [scyan](https://prism-oncology.github.io/scyan/): Biology-driven deep generative model for cell-type annotation in cytometry. Scyan is an interpretable model that also corrects batch-effect and can be used for debarcoding or population discovery. Install: `pip install scyan`. Tutorials: https://prism-oncology.github.io/scyan/tutorials/usage/. Tags: flow cytometry, data integration, cell-type annotation.
 
+## Ecosystem packages: Imaging
+
+- [LazySlide](https://lazyslide.readthedocs.io/): LazySlide is a Python framework for whole slide image (WSI) analysis that integrates with the scverse ecosystem. It covers preprocessing, tissue and cell segmentation, feature extraction with pathology foundation models, and multimodal integration of histology with omics and text. Install: `pip install lazyslide`. Tutorials: https://lazyslide.readthedocs.io/page/tutorials/index.html. Tags: imaging, preprocessing, segmentation, deep learning, foundation model, multimodal, visualization.
+- [mantispy](https://mantispy.readthedocs.io/): mantispy brings Cell Painting and other image-based profiling data into the scverse ecosystem, from reading what a pipeline wrote through quality control, normalization and batch correction to calling hits and evaluating what survived. Profiles are AnnData objects and the images behind them SpatialData objects. Install: `pip install mantispy`. Tutorials: https://mantispy.readthedocs.io/page/tutorials/general.html. Tags: imaging, preprocessing, quality control, data integration, perturbation.
+- [PathML](https://pathml.readthedocs.io/): An open-source toolkit for computational pathology and machine learning. Install: `pip install pathml`. Tags: imaging.
+
 ## Ecosystem packages: Adaptive immune cell receptor
 
 - [dandelion](https://sc-dandelion.readthedocs.io/): dandelion - A single cell BCR/TCR V(D)J-seq analysis package for 10X Chromium 5’ data. It streamlines the pre-processing, leveraging some tools from immcantation suite, and integrates with scanpy/anndata for single-cell BCR/TCR analysis. It also includes a couple of functions for visualization. Install: `pip install sc-dandelion`. Tags: immune receptor.
 - [scXpand](https://scxpand.readthedocs.io/): scXpand is a machine learning framework for pan-cancer detection of T-cell clonal expansion directly from single-cell RNA sequencing (scRNA-seq), without paired T-cell receptor (TCR) sequencing. Install: `pip install scxpand`. Tags: scRNA-seq, immune receptor, deep learning.
-
-## Ecosystem packages: Imaging
-
-- [LazySlide](https://lazyslide.readthedocs.io/): LazySlide is a Python framework for whole slide image (WSI) analysis that integrates with the scverse ecosystem. It covers preprocessing, tissue and cell segmentation, feature extraction with pathology foundation models, and multimodal integration of histology with omics and text. Install: `pip install lazyslide`. Tutorials: https://lazyslide.readthedocs.io/page/tutorials/index.html. Tags: imaging, preprocessing, segmentation, deep learning, foundation model, multimodal, visualization.
-- [PathML](https://pathml.readthedocs.io/): An open-source toolkit for computational pathology and machine learning. Install: `pip install pathml`. Tags: imaging.
 
 ## Learn
 - [Tutorials](https://scverse.org/learn/): Getting-started tutorials for the core packages.
