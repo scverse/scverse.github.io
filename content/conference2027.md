@@ -7,7 +7,7 @@ url: "/conference2027"
 # Conference Details
 label: "Save the date"
 conferenceTitle: "scverse conference 2027"
-conferenceDates: "November 9 – 11, 2027"
+conferenceDates: "November 2027"
 conferenceLocation: "New York City, USA"
 subtitle: "The fourth scverse conference comes to New York City. Follow us on our channels to hear about the venue, programme and registration as soon as they are announced."
 

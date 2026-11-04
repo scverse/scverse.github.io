@@ -1,3 +1,4 @@
+{{- with .Params.date_label }}{{ . }}{{ else }}
 {{- $start := .Date }}
 {{- $end := time.AsTime (.Params.end_date | default .Date) }}
 {{- if eq ($start.Format "2006-01-02") ($end.Format "2006-01-02") }}
@@ -10,4 +11,5 @@
 {{- else }}
   {{- $start.Format "Jan 2, 2006" }} –
   {{ $end.Format "Jan 2, 2006" }}
+{{- end }}
 {{- end }}

@@ -2,7 +2,7 @@
   <article class="post">
     <h1 class="post-title">{{ .Title }}</h1>
     <div class="post-subtitle">
-      <span class="post-date">{{ .Date.Format "January 02, 2006" }}</span>
+      <span class="post-date">{{ .Params.date_label | default (.Date.Format "January 02, 2006") }}</span>
       <div class="rss-icon">
         <a href="/events/index.xml" aria-label="Events RSS feed">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
