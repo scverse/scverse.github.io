@@ -140,9 +140,9 @@
                 </symbol>
               </svg>
 
-              <div class="eco-toolbar">
-                <div class="eco-search">
-                  <svg class="eco-search-icon" aria-hidden="true" focusable="false">
+              <div class="filter-toolbar">
+                <div class="filter-search">
+                  <svg class="filter-search-icon" aria-hidden="true" focusable="false">
                     <use href="#eco-i-search" />
                   </svg>
                   <label class="visually-hidden" for="eco-filter">Search ecosystem packages</label>
@@ -152,33 +152,33 @@
                     autocomplete="off"
                     placeholder="Search {{ len $items }} packages by name, description or tag…"
                   />
-                  <button type="button" id="eco-clear" class="eco-search-clear" hidden aria-label="Clear filters">
+                  <button type="button" id="eco-clear" class="filter-search-clear" hidden aria-label="Clear filters">
                     <svg aria-hidden="true" focusable="false"><use href="#eco-i-close" /></svg>
                   </button>
                 </div>
-                <p class="eco-count" role="status">
+                <p class="filter-count" role="status">
                   <span id="eco-count">{{ len $items }}</span> of {{ len $items }} packages
                 </p>
               </div>
 
-              <div class="eco-chips" id="eco-chips" role="group" aria-label="Filter by category">
-                <button type="button" class="eco-chip is-active" data-category="" aria-pressed="true">All</button>
+              <div class="filter-chips" id="eco-chips" role="group" aria-label="Filter by category">
+                <button type="button" class="filter-chip is-active" data-category="" aria-pressed="true">All</button>
                 {{ range $categoryCounts }}
-                  <button type="button" class="eco-chip" data-category="{{ .name }}" aria-pressed="false">
+                  <button type="button" class="filter-chip" data-category="{{ .name }}" aria-pressed="false">
                     {{ .name }}
-                    <span class="eco-chip-count">{{ .count }}</span>
+                    <span class="filter-chip-count">{{ .count }}</span>
                   </button>
                 {{ end }}
               </div>
 
-              <div class="eco-chips" id="eco-languages" role="group" aria-label="Filter by language">
-                <button type="button" class="eco-chip is-active" data-language="" aria-pressed="true">
+              <div class="filter-chips" id="eco-languages" role="group" aria-label="Filter by language">
+                <button type="button" class="filter-chip is-active" data-language="" aria-pressed="true">
                   Any language
                 </button>
                 {{ range $languageCounts }}
-                  <button type="button" class="eco-chip" data-language="{{ .name }}" aria-pressed="false">
+                  <button type="button" class="filter-chip" data-language="{{ .name }}" aria-pressed="false">
                     {{ .name }}
-                    <span class="eco-chip-count">{{ .count }}</span>
+                    <span class="filter-chip-count">{{ .count }}</span>
                   </button>
                 {{ end }}
               </div>
@@ -313,9 +313,9 @@
                 {{ end }}
               </div>
 
-              <p class="eco-empty" id="eco-empty" hidden>
+              <p class="filter-empty" id="eco-empty" hidden>
                 No packages match your filters.
-                <button type="button" class="eco-empty-reset">Reset</button>
+                <button type="button" class="filter-empty-reset">Reset</button>
               </p>
             </div>
           {{ end }}

@@ -49,6 +49,15 @@ $-hues:
     }
 }
 
+// Cards and pill links rise a little on hover
+@mixin lift-on-hover {
+    &:hover {
+        border-color: var(--bs-border-emphasized);
+        box-shadow: var(--bs-box-shadow);
+        transform: translateY(-2px);
+    }
+}
+
 // A hue dark enough to read as text on a light page, or light enough on a dark one
 @function hue-fg($color) {
     @return unquote(
@@ -86,14 +95,30 @@ $-hues:
     font-size: 0.6em;
 }
 
-// Right-align the links once `md:navbar-expand` lays the drawer out as a row (the navbar is the query container)
-@container (width >= 768px) {
-    .navbar .drawer-body {
-        justify-content: flex-end;
+// One fluid cap instead of Bootstrap’s fixed per-breakpoint widths
+.container {
+    max-width: var(--max-width);
+}
+
+// Buttons start narrow enough for the whole row to fit at the `lg:navbar-expand` breakpoint, then grow to fill it
+.navbar {
+    --bs-navbar-nav-link-padding-x: 0.5rem;
+}
+@container (width >= 1024px) {
+    .navbar-nav,
+    .nav-buttons > li,
+    .nav-buttons > li > .nav-link {
+        flex-grow: 1;
+    }
+    .nav-buttons > li {
+        justify-content: center;
+    }
+    .nav-buttons > li > .nav-link {
+        justify-content: center;
     }
 }
 
-@each $icon in zulip, discourse, bluesky, xcom {
+@each $icon in zulip, discourse, bluesky {
     .i-#{$icon}::before {
         display: inline-block;
         height: 1rem;
@@ -122,9 +147,6 @@ $-hues:
         margin-left: 0.4rem;
         font-size: 0.95rem;
         color: var(--bs-fg-1);
-        text-decoration: underline;
-        text-decoration-color: var(--bs-border-emphasized);
-        text-underline-offset: 0.2em;
     }
 
     .blog-meta {
@@ -156,7 +178,6 @@ $-hues:
     .blog-author {
         font-size: 0.85rem;
         font-weight: 600;
-        color: var(--bs-fg-1);
     }
 
     .blog-featured {
@@ -164,17 +185,12 @@ $-hues:
         grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
         overflow: hidden;
         color: var(--bs-fg-1);
-        text-decoration: none;
         background-color: var(--bs-bg-body);
         border: 1px solid var(--bs-border-color);
         border-radius: var(--card-radius);
         transition: all 200ms ease-in-out;
 
-        &:hover {
-            border-color: var(--bs-border-emphasized);
-            box-shadow: var(--bs-box-shadow);
-            transform: translateY(-2px);
-        }
+        @include lift-on-hover;
         &:not(:has(.blog-featured-image)) {
             grid-template-columns: 1fr;
         }
@@ -237,7 +253,6 @@ $-hues:
         gap: 0.3rem;
         padding: 0.9rem 1.1rem;
         color: var(--bs-fg-1);
-        text-decoration: none;
         border-radius: var(--card-radius);
         transition: background-color 200ms ease-in-out;
 
@@ -289,7 +304,6 @@ $-hues:
     }
 
     h2 {
-        margin: 3rem 0 1rem;
         font-size: 1.5rem;
         font-weight: 800;
     }
@@ -326,26 +340,19 @@ $-hues:
         flex-direction: column;
         overflow: hidden;
         color: var(--bs-fg-1);
-        text-decoration: none;
         background-color: var(--bs-bg-body);
         border: 1px solid var(--bs-border-color);
         border-radius: var(--card-radius);
         transition: all 200ms ease-in-out;
 
-        &:hover {
-            border-color: var(--bs-border-emphasized);
-            box-shadow: var(--bs-box-shadow);
-            transform: translateY(-2px);
-        }
+        @include lift-on-hover;
     }
 
     .event-card-image {
-        display: block;
         aspect-ratio: 16 / 7;
 
         img {
             width: 100%;
-            height: 100%;
             object-fit: cover;
         }
     }
@@ -390,7 +397,6 @@ $-hues:
 
     .event-card-text {
         font-size: 0.9rem;
-        line-height: 1.5;
         color: var(--bs-fg-2);
     }
 
@@ -479,11 +485,7 @@ $-hues:
         border-radius: var(--card-radius);
         transition: all 200ms ease-in-out;
 
-        &:hover {
-            border-color: var(--bs-border-emphasized);
-            box-shadow: var(--bs-box-shadow);
-            transform: translateY(-2px);
-        }
+        @include lift-on-hover;
     }
 
     .join-card-icon {
@@ -494,8 +496,6 @@ $-hues:
         margin-bottom: 1rem;
         font-size: 1.25rem;
         border-radius: 50%;
-        background-color: var(--bs-bg-2);
-        color: var(--bs-fg-1);
     }
 
     .join-card[data-hue] .join-card-icon {
@@ -534,9 +534,7 @@ $-hues:
             font-family: "JetBrains Mono", Menlo, monospace;
             font-size: 0.95rem;
             font-weight: 600;
-            color: var(--bs-fg-1);
             text-decoration-color: var(--bs-border-emphasized);
-            text-underline-offset: 0.2em;
 
             &:hover {
                 text-decoration-color: currentColor;
@@ -545,8 +543,6 @@ $-hues:
 
         .card-text {
             font-size: 0.95rem;
-            color: var(--bs-fg-2);
-            margin: 0;
         }
     }
 
@@ -669,7 +665,6 @@ $-hues:
         font-weight: 500;
         color: var(--bs-fg-1);
         text-decoration-color: var(--bs-border-emphasized);
-        text-underline-offset: 0.2em;
 
         &:hover {
             text-decoration-color: currentColor;
@@ -686,19 +681,8 @@ input[type="search"] {
     min-width: 0;
 }
 
-// Main page
-.section-paragraph {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    strong {
-        font-weight: 475;
-        font-size: 1.2rem;
-    }
-}
-
 a .more {
     display: inline-block;
-    margin: 0;
     font-size: 0.8rem;
     font-weight: 800;
     color: var(--bs-fg-2);
@@ -738,7 +722,6 @@ body {
 }
 
 q {
-    font-style: italic;
     &::before {
         content: "\201C";
     }
@@ -749,48 +732,29 @@ q {
 
 // Nav bar
 
-.nav-buttons > li {
-    padding: 0.5rem 0.5rem;
-}
-
 .nav-buttons > li > a {
     color: var(--bs-fg-2);
-
-    padding: 0.5rem 0.8rem !important;
-    border-radius: 0.5rem;
     transition:
         all 300ms ease-in-out,
         transform 100ms ease-in-out;
+
     &:hover,
     &:active {
-        background-color: var(--bs-bg-2);
         color: var(--bs-fg-body);
     }
-    &:active {
-        transform: scale(0.95);
-    }
-
     &:hover {
-        color: var(--bs-fg-body);
+        background-color: var(--bs-bg-2);
     }
-
     &.active {
         transform: scale(0.95);
         background-color: var(--bs-bg-3);
-        color: var(--bs-fg-body);
     }
 }
 
 .nav-social {
-    display: flex;
     align-items: center;
     gap: 0.15rem;
     padding: 0.5rem 0.25rem !important;
-
-    // The navbar expands once its container is 960px wide (from a 1024px viewport, see `md:navbar-expand` in header.html), which isn't wide enough to also fit this row; hide it until 1200px and rely on the footer.
-    @media (max-width: 1199px) {
-        display: none;
-    }
 
     a {
         display: flex;
@@ -799,8 +763,6 @@ q {
         width: 2rem;
         height: 2rem;
         border-radius: 50%;
-        color: var(--bs-fg-2);
-        font-size: 1rem;
         text-decoration: none;
         transition: all 200ms ease-in-out;
 
@@ -818,8 +780,6 @@ q {
         // a 1rem flex box takes the baseline out of it so all six line up.
         i {
             display: flex;
-            width: 1rem;
-            height: 1rem;
             line-height: 1;
         }
     }
@@ -835,7 +795,6 @@ q {
     &::before {
         content: "";
         position: absolute;
-        top: 0;
         left: 0;
         width: 100%;
         height: 100%;
@@ -869,12 +828,9 @@ q {
 }
 
 .logo-name {
-    color: var(--bs-fg-body);
     font-size: 1.5rem;
     line-height: 1.5rem;
-    font-weight: 900;
     letter-spacing: 0.15rem;
-    margin-left: 1rem;
     transition: background 200ms ease-in-out;
 }
 
@@ -898,15 +854,12 @@ body {
             align-self: center;
             #cover {
                 max-width: var(--max-width-wide);
-                width: 100%;
                 padding: 0 1rem;
                 #cover-top-section {
                     margin-top: 0.5rem;
                     padding: 2rem 0;
                 }
                 #cover-heading {
-                    margin: 0 auto;
-                    padding: 0;
                     max-width: var(--max-width-wide);
                     text-align: center;
                     #title {
@@ -919,7 +872,6 @@ body {
                                 @media (max-width: 50rem) {
                                     letter-spacing: 0.15rem;
                                     font-size: 3.5rem;
-                                    font-weight: 900;
                                 }
                             }
                             #title-desc {
@@ -1007,7 +959,6 @@ body {
                 #chip-announcement {
                     margin: 0 auto 2rem;
                     max-width: var(--max-width-wide);
-                    width: 100%;
                     @media (max-width: 50rem) {
                         margin: 0 auto 1.5rem;
                     }
@@ -1081,15 +1032,6 @@ body {
                         font-weight: 800;
                     }
 
-                    .conference-banner-year {
-                        font-size: 0.85rem;
-                        color: color-mix(
-                            in oklch,
-                            var(--bs-inverse-contrast) 60%,
-                            transparent
-                        );
-                    }
-
                     @media (max-width: 50rem) {
                         flex-direction: row;
                         align-items: baseline;
@@ -1157,19 +1099,6 @@ body {
                         color: var(--bs-fg-1);
                         font-weight: 700;
                         transition: all 200ms ease-in-out;
-                        &.clickable-heading:hover {
-                            color: var(--bs-fg-2);
-                            cursor: pointer;
-                        }
-                    }
-                    .section-content {
-                        margin-top: 1rem;
-                        .tiles-list {
-                            display: grid;
-                            a {
-                                text-decoration: none;
-                            }
-                        }
                     }
                 }
                 // The wide gap under the hero used to live on #packages, which put it
@@ -1265,11 +1194,7 @@ body {
                         padding: 1.75rem;
                         transition: all 200ms ease-in-out;
 
-                        &:hover {
-                            border-color: var(--bs-border-emphasized);
-                            box-shadow: var(--bs-box-shadow);
-                            transform: translateY(-2px);
-                        }
+                        @include lift-on-hover;
 
                         // Pins the "more" link to the card's bottom edge regardless of how many lines the paragraph above it takes.
                         > a {
@@ -1286,8 +1211,6 @@ body {
                         border-radius: 50%;
                         margin-bottom: 1rem;
                         font-size: 1.3rem;
-                        background-color: var(--bs-bg-2);
-                        color: var(--bs-fg-1);
                     }
 
                     // Written as a descendant rather than nested under .about-card-icon: `&` there would carry the whole ancestor chain and put .about-card in front of #about-highlights.
@@ -1308,7 +1231,6 @@ body {
                     }
 
                     .about-card-text {
-                        font-size: 1rem;
                         color: var(--bs-fg-2);
                         margin-bottom: 0.75rem;
                     }
@@ -1332,7 +1254,6 @@ body {
 
     // Direct child only: this is the site chrome, not any <header> a page happens to use
     > header {
-        height: auto;
         width: 100%;
 
         display: flex;
@@ -1340,38 +1261,9 @@ body {
         justify-content: center;
         align-items: center;
         align-self: center;
-
-        #banner {
-            $almostwhite: color-mix(in oklch, var(--bs-white) 80%, transparent);
-
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: var(--cta-bg);
-            color: $almostwhite;
-            font-weight: 600;
-            // text-transform: uppercase;
-            padding: 1rem 0;
-            box-shadow: inset 0 -0.5rem 1rem 0.05rem
-                color-mix(in oklch, var(--bs-black) 10%, transparent);
-            margin-bottom: 1rem;
-
-            a {
-                color: inherit;
-                text-decoration: none;
-                border-bottom: 1px solid $almostwhite;
-                &:hover,
-                &:active {
-                    color: var(--bs-white);
-                    border-bottom: 1px solid var(--bs-white);
-                }
-            }
-        }
     }
 
     footer {
-        height: auto;
         width: 100%;
         margin-top: 10rem;
         background-color: var(--bs-bg-2);
@@ -1383,56 +1275,39 @@ body {
         align-self: center;
 
         #footer-content {
-            width: var(--content-width);
-            @media (max-width: 50rem) {
-                width: var(--content-width-wide);
+            padding-block: 2rem 1rem;
+            color: var(--bs-fg-1);
+
+            .row {
+                --bs-gutter-y: 1rem;
             }
-            padding: 2%;
-
-            div {
-                max-width: 1200px;
-                margin: 1rem auto;
-                color: var(--bs-fg-1);
-                text-align: left;
-
-                a,
-                p {
-                    margin: 0.2rem 0;
-                    font-weight: 500;
-                    font-size: 0.9rem;
-                }
+            a,
+            p {
+                margin: 0.2rem 0;
+                font-weight: 500;
+                font-size: 0.9rem;
+            }
+            a {
+                text-decoration: none;
+                transition: color 200ms;
+            }
+            h2 {
+                color: var(--bs-fg-2);
+                font-size: 1.25rem;
+                margin: 0 0 0.5rem;
+            }
+            li {
+                color: var(--bs-fg-4);
                 a {
-                    color: inherit;
-                    text-decoration: none;
-                    transition: color 200ms;
-                }
-                h2 {
                     color: var(--bs-fg-2);
-                    font-size: 1.25rem;
-                    font-weight: 500;
-                    line-height: 1.2;
-                    margin: 0 0 0.5rem;
-                }
-                li {
-                    color: var(--bs-fg-4);
-                    a {
-                        color: var(--bs-fg-2);
-                        &:hover {
-                            color: var(--bs-fg-body);
-                        }
+                    &:hover {
+                        color: var(--bs-fg-body);
                     }
                 }
-                &.signature {
-                    margin-bottom: 0;
-                    text-align: right;
-                }
-                &.acknowledgement {
-                    margin-top: 0;
-                    p {
-                        margin-top: 0;
-                        color: var(--bs-fg-3);
-                    }
-                }
+            }
+            .signature {
+                margin-top: 2rem;
+                text-align: right;
             }
         }
     }
@@ -1460,24 +1335,18 @@ body {
             // }
         }
     }
-    // TODO: Much of this does nothing AFAICT
     .post {
         .post-subtitle {
             display: flex;
-            flex-direction: row;
             align-items: center;
             justify-content: flex-start;
-            line-height: 1.5rem;
             gap: 0.5rem;
             color: var(--bs-fg-3);
             .rss-icon {
                 width: 1rem;
-                height: auto;
                 a {
-                    width: 100%;
                     display: flex;
                     align-items: center;
-                    text-decoration: none;
                     box-sizing: content-box;
                     padding: 0.5rem;
                     margin: -0.5rem;
@@ -1529,7 +1398,6 @@ body {
                     margin: 0;
                     padding: 1rem 1.25rem;
                     border-radius: 0.5rem;
-                    overflow-x: auto;
                 }
             }
             > .table-scroll {
@@ -1538,7 +1406,6 @@ body {
             }
             > .table-scroll > table {
                 width: 100%;
-                border-collapse: collapse;
                 font-size: 1rem;
                 th,
                 td {
@@ -1582,7 +1449,6 @@ body {
         gap: 5rem;
         .package-section {
             display: flex;
-            flex-direction: row;
             margin: 0.5rem 0;
             &:first-of-type {
                 margin-top: 2rem;
@@ -1619,17 +1485,14 @@ body {
                         .package-name {
                             font-size: 2rem;
                             font-weight: 800;
-                            color: var(--bs-fg-body);
                             display: block;
                         }
                         .package-details {
                             display: block;
-                            font-size: 1.1rem;
                             margin: 1rem 0;
                             color: var(--bs-fg-1);
                             @media (max-width: 50rem) {
                                 font-size: 1rem;
-                                line-height: 1.8rem;
                             }
                         }
                     }
@@ -1659,7 +1522,6 @@ body {
             background-color: var(--bs-bg-2);
             text-decoration: none;
             font-size: 1rem;
-            color: var(--bs-fg-1);
             padding: 0.4rem 0.8rem;
             margin: 0.5rem 0;
             text-align: center;
@@ -1674,15 +1536,10 @@ body {
     }
 }
 
-// Specific to /packages#ecosystem — the community package registry
+// Search, filter chips and empty state shared by /packages#ecosystem and /people
 
-#ecosystem-packages {
-    margin: 2rem 0 4rem;
-
-    .eco-sprite {
-        display: none;
-    }
-
+#ecosystem-packages,
+#people-content {
     svg {
         fill: none;
         stroke: currentColor;
@@ -1691,20 +1548,20 @@ body {
         stroke-linejoin: round;
     }
 
-    .eco-toolbar {
+    .filter-toolbar {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         gap: 0.5rem 1.5rem;
     }
 
-    .eco-search {
+    .filter-search {
         position: relative;
         display: flex;
         align-items: center;
         flex: 1 1 22rem;
 
-        .eco-search-icon {
+        .filter-search-icon {
             position: absolute;
             left: 1.1rem;
             width: 1.1rem;
@@ -1742,7 +1599,7 @@ body {
         }
     }
 
-    .eco-search-clear {
+    .filter-search-clear {
         position: absolute;
         right: 0.9rem;
         display: flex;
@@ -1755,7 +1612,6 @@ body {
         border-radius: 50%;
         color: var(--bs-fg-2);
         background-color: var(--bs-bg-2);
-        cursor: pointer;
         transition: all 200ms ease-in-out;
 
         svg {
@@ -1768,25 +1624,25 @@ body {
         }
     }
 
-    .eco-count {
+    .filter-count {
         margin: 0;
         font-size: 0.95rem;
-        color: var(--bs-fg-3);
+        color: var(--bs-fg-2);
         white-space: nowrap;
-    }
 
-    .eco-chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem;
-        margin: 1.25rem 0 2rem;
-
-        &:has(+ .eco-chips) {
-            margin-bottom: 0.4rem;
+        @media (max-width: 50rem) {
+            order: -1;
         }
     }
 
-    .eco-chip {
+    .filter-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 1.25rem;
+    }
+
+    .filter-chip {
         display: inline-flex;
         align-items: center;
         gap: 0.4rem;
@@ -1796,9 +1652,13 @@ body {
         background-color: var(--bs-bg-body);
         border: 1px solid var(--bs-border-color);
         border-radius: 2rem;
-        cursor: pointer;
         transition: all 200ms ease-in-out;
 
+        img {
+            width: 0.9rem;
+            height: 0.9rem;
+            object-fit: contain;
+        }
         &:hover {
             color: var(--bs-fg-body);
             border-color: var(--bs-border-emphasized);
@@ -1809,10 +1669,51 @@ body {
             background-color: var(--bs-inverse-bg);
             border-color: var(--bs-inverse-bg);
         }
-        .eco-chip-count {
-            font-size: 0.75rem;
-            opacity: 0.55;
+        .filter-chip-count {
+            font-size: 0.8rem;
+            opacity: 0.75;
         }
+    }
+
+    .filter-empty {
+        padding: 4rem 0;
+        text-align: center;
+        color: var(--bs-fg-2);
+
+        .filter-empty-reset {
+            padding: 0;
+            color: var(--bs-fg-1);
+            background: none;
+            border: 0;
+            text-decoration: underline;
+        }
+    }
+}
+
+// Specific to /packages#ecosystem — the community package registry
+
+#ecosystem-packages {
+    margin: 2rem 0 4rem;
+
+    .eco-sprite {
+        display: none;
+    }
+
+    .filter-count {
+        color: var(--bs-fg-3);
+    }
+
+    .filter-chips {
+        margin-bottom: 2rem;
+
+        &:has(+ .filter-chips) {
+            margin-bottom: 0.4rem;
+        }
+    }
+
+    .filter-chip .filter-chip-count {
+        font-size: 0.75rem;
+        opacity: 0.55;
     }
 
     .eco-grid {
@@ -1835,11 +1736,7 @@ body {
         border-radius: var(--card-radius);
         transition: all 200ms ease-in-out;
 
-        &:hover {
-            border-color: var(--bs-border-emphasized);
-            box-shadow: var(--bs-box-shadow);
-            transform: translateY(-2px);
-        }
+        @include lift-on-hover;
         &[hidden] {
             display: none;
         }
@@ -1971,7 +1868,6 @@ body {
         background-color: var(--bs-bg-1);
         border: 0;
         border-radius: 0.35rem;
-        cursor: pointer;
         transition: all 200ms ease-in-out;
 
         &:hover {
@@ -2016,27 +1912,13 @@ body {
         }
     }
 
-    .eco-empty {
-        padding: 4rem 0;
-        text-align: center;
+    .filter-empty {
         color: var(--bs-fg-3);
-
-        .eco-empty-reset {
-            padding: 0;
-            color: var(--bs-fg-1);
-            background: none;
-            border: 0;
-            text-decoration: underline;
-            cursor: pointer;
-        }
     }
 
     @media (max-width: 50rem) {
         .eco-grid {
             grid-template-columns: 1fr;
-        }
-        .eco-count {
-            order: -1;
         }
     }
 }
@@ -2077,7 +1959,6 @@ body {
             font-size: 4.5rem;
             font-weight: 800;
             line-height: 1;
-            color: var(--bs-fg-body);
         }
         .stats-hero-label {
             font-size: 1.15rem;
@@ -2156,7 +2037,6 @@ body {
             gap: 0.85rem;
             padding: 0.35rem 0.5rem;
             border-radius: 0.5rem;
-            color: var(--bs-fg-1);
             text-decoration: none;
             transition: all 200ms ease-in-out;
 
@@ -2213,7 +2093,6 @@ body {
             font-size: 0.9rem;
             color: var(--bs-fg-2);
             border-radius: 0.5rem;
-            cursor: pointer;
             transition: all 200ms ease-in-out;
 
             &:hover {
@@ -2230,16 +2109,10 @@ body {
 // Specific to /tutorials
 
 #tutorials-content {
-    h1,
-    h2 {
-        margin-bottom: 1rem !important;
-    }
-
     #ecosystem-tutorials {
         input {
             height: 3.2rem;
             outline: none;
-            border-color: var(--bs-border-color);
             -webkit-box-shadow: none;
             box-shadow: none;
 
@@ -2316,9 +2189,6 @@ body {
                 }
 
                 p {
-                    width: 100%;
-                    margin-bottom: 0;
-
                     overflow: hidden;
                     display: -webkit-box;
                     -webkit-line-clamp: 4;
@@ -2440,21 +2310,10 @@ body {
 }
 
 #people-content {
-    // The hero mosaic and the directory both want the full column, not the prose measure
-    margin: 2rem 0 4rem;
-
-    svg {
-        fill: none;
-        stroke: currentColor;
-        stroke-width: 1.8;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-
-        // The GitHub mark is a filled glyph rather than a line drawing
-        &.is-solid {
-            fill: currentColor;
-            stroke: none;
-        }
+    // The GitHub mark is a filled glyph rather than a line drawing
+    svg.is-solid {
+        fill: currentColor;
+        stroke: none;
     }
 
     .people-lead {
@@ -2480,14 +2339,11 @@ body {
         }
 
         a {
-            display: block;
             line-height: 0;
             border-radius: 50%;
             transition: all 200ms ease-in-out;
         }
         img {
-            width: 2rem;
-            height: 2rem;
             object-fit: cover;
             background-color: var(--bs-bg-1);
             border-radius: 50%;
@@ -2518,7 +2374,6 @@ body {
         background: none;
         border: 0;
         text-decoration: underline;
-        cursor: pointer;
     }
 
     .people-section {
@@ -2552,133 +2407,11 @@ body {
         color: var(--bs-fg-2);
     }
 
-    .people-toolbar {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0.5rem 1.5rem;
+    .filter-toolbar {
         margin-top: 1.5rem;
     }
 
-    .people-search {
-        position: relative;
-        display: flex;
-        align-items: center;
-        flex: 1 1 22rem;
-
-        .people-search-icon {
-            position: absolute;
-            left: 1.1rem;
-            width: 1.1rem;
-            height: 1.1rem;
-            color: var(--bs-fg-3);
-            pointer-events: none;
-        }
-
-        input {
-            width: 100%;
-            height: 3.25rem;
-            padding: 0 2.9rem;
-            font-size: 1rem;
-            color: var(--bs-fg-1);
-            background-color: var(--bs-bg-1);
-            border: 1px solid var(--bs-border-color);
-            border-radius: 2rem;
-            outline: none;
-            transition: all 200ms ease-in-out;
-            text-overflow: ellipsis;
-
-            &::placeholder {
-                color: var(--bs-fg-3);
-            }
-            &:focus {
-                background-color: var(--bs-bg-body);
-                border-color: var(--bs-fg-3);
-                box-shadow: 0 0 0 0.25rem
-                    color-mix(in oklch, var(--bs-fg-body) 6%, transparent);
-            }
-            // The native affordance duplicates our own clear button
-            &::-webkit-search-cancel-button {
-                display: none;
-            }
-        }
-    }
-
-    .people-search-clear {
-        position: absolute;
-        right: 0.9rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 1.6rem;
-        height: 1.6rem;
-        padding: 0;
-        border: 0;
-        border-radius: 50%;
-        color: var(--bs-fg-2);
-        background-color: var(--bs-bg-2);
-        cursor: pointer;
-        transition: all 200ms ease-in-out;
-
-        svg {
-            width: 0.7rem;
-            height: 0.7rem;
-        }
-        &:hover {
-            color: var(--bs-inverse-contrast);
-            background-color: var(--bs-inverse-bg);
-        }
-    }
-
-    .people-count {
-        margin: 0;
-        font-size: 0.95rem;
-        color: var(--bs-fg-2);
-        white-space: nowrap;
-    }
-
-    .people-chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem;
-        margin-top: 1.25rem;
-    }
-
-    .people-chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.35rem 0.85rem;
-        font-size: 0.85rem;
-        color: var(--bs-fg-2);
-        background-color: var(--bs-bg-body);
-        border: 1px solid var(--bs-border-color);
-        border-radius: 2rem;
-        cursor: pointer;
-        transition: all 200ms ease-in-out;
-
-        img {
-            width: 0.9rem;
-            height: 0.9rem;
-            object-fit: contain;
-        }
-        &:hover {
-            color: var(--bs-fg-body);
-            border-color: var(--bs-border-emphasized);
-            background-color: var(--bs-bg-1);
-        }
-        &.is-active {
-            color: var(--bs-inverse-contrast);
-            background-color: var(--bs-inverse-bg);
-            border-color: var(--bs-inverse-bg);
-        }
-        .people-chip-count {
-            font-size: 0.8rem;
-            opacity: 0.75;
-        }
-    }
-
-    .people-chips--packages .people-chip {
+    .filter-chips--packages .filter-chip {
         font-size: 0.8rem;
         padding: 0.3rem 0.7rem;
     }
@@ -2687,10 +2420,6 @@ body {
         margin: 1.25rem 0 0;
         font-size: 0.9rem;
         color: var(--bs-fg-2);
-
-        &[hidden] {
-            display: none;
-        }
     }
 
     // Person cards
@@ -2715,11 +2444,7 @@ body {
         border-radius: var(--card-radius);
         transition: all 200ms ease-in-out;
 
-        &:hover {
-            border-color: var(--bs-border-emphasized);
-            box-shadow: var(--bs-box-shadow);
-            transform: translateY(-2px);
-        }
+        @include lift-on-hover;
         &[hidden] {
             display: none;
         }
@@ -2812,7 +2537,6 @@ body {
         position: relative;
         z-index: 1;
         color: var(--bs-fg-2);
-        text-decoration: none;
 
         &:hover {
             color: var(--bs-fg-1);
@@ -2877,21 +2601,6 @@ body {
         }
     }
 
-    .people-empty {
-        padding: 4rem 0;
-        text-align: center;
-        color: var(--bs-fg-2);
-
-        .people-empty-reset {
-            padding: 0;
-            color: var(--bs-fg-1);
-            background: none;
-            border: 0;
-            text-decoration: underline;
-            cursor: pointer;
-        }
-    }
-
     // Working groups
 
     .people-group {
@@ -2927,7 +2636,6 @@ body {
             font-weight: 700;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            color: var(--bs-fg-2);
         }
     }
 
@@ -3013,9 +2721,6 @@ body {
             width: 4.5rem;
             height: 4.5rem;
         }
-        .people-count {
-            order: -1;
-        }
     }
 }
 
@@ -3024,7 +2729,6 @@ body {
     margin: 0 auto;
 
     h2 {
-        margin-top: 6rem;
         font-size: 2.25rem;
         font-weight: 800;
         letter-spacing: -0.02em;
@@ -3034,7 +2738,6 @@ body {
         background-clip: text;
         -webkit-background-clip: text;
         color: transparent;
-        -webkit-text-fill-color: transparent;
 
         &::after {
             content: "";
@@ -3051,7 +2754,6 @@ body {
         }
 
         @media (max-width: 50rem) {
-            margin-top: 4rem;
             font-size: 1.75rem;
         }
     }
@@ -3210,7 +2912,6 @@ body {
                     margin-left: -1.5rem;
 
                     a {
-                        display: inline-block;
                         padding: 0.75rem 1.5rem;
                         background-color: color-mix(
                             in oklch,
@@ -3220,7 +2921,6 @@ body {
                         border-radius: 3rem;
                         font-size: 0.9rem;
                         font-weight: 600;
-                        color: var(--bs-fg-1);
                         text-decoration: none;
                         transition: all 300ms cubic-bezier(0.25, 1, 0.5, 1);
                         border: 1px solid
@@ -3421,7 +3121,6 @@ body {
 
             display: flex;
             flex-direction: column;
-            height: 100%;
 
             &:hover {
                 transform: translateY(-6px);
@@ -3471,7 +3170,6 @@ body {
                 justify-content: center;
                 align-items: center;
                 padding: 1.5rem;
-                background-color: transparent;
                 border-radius: 0.75rem;
                 margin-bottom: 1.25rem;
                 min-height: 110px;
@@ -3480,7 +3178,6 @@ body {
                 overflow: hidden;
 
                 img {
-                    max-width: 100%;
                     max-height: 85px;
                     object-fit: contain;
                     transition: transform 300ms ease;
@@ -3543,7 +3240,6 @@ body {
                         border-radius: 2.5rem;
                         font-size: 0.8rem;
                         font-weight: 600;
-                        color: var(--bs-fg-1);
                         text-decoration: none;
                         transition: all 300ms cubic-bezier(0.25, 1, 0.5, 1);
                         border: 1px solid
@@ -3643,108 +3339,9 @@ body {
         pointer-events: none;
     }
 
-    // Toggle switch for package icons display mode
-    .icon-display-toggle {
-        display: flex;
-        align-items: center;
-        margin: 2rem 0 1rem;
-        justify-content: flex-start;
-
-        .toggle-label {
-            font-size: 0.9rem;
-            color: var(--bs-fg-2);
-            margin-right: 1rem;
-        }
-
-        .toggle-switch {
-            position: relative;
-            width: 8rem;
-            height: 34px;
-
-            .toggle-checkbox {
-                height: 0;
-                width: 0;
-                visibility: hidden;
-                position: absolute;
-
-                &:checked + .toggle-label {
-                    background: var(--bs-inverse-bg);
-
-                    .toggle-inner {
-                        margin-left: 0;
-
-                        &:before {
-                            content: attr(data-text-on);
-                            left: 10px;
-                            color: var(--bs-inverse-contrast);
-                        }
-                    }
-
-                    .toggle-switch-button {
-                        left: calc(100% - 2px);
-                        transform: translateX(-100%);
-                    }
-                }
-            }
-
-            .toggle-label {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                cursor: pointer;
-                width: 100%;
-                height: 100%;
-                background: var(--bs-bg-3);
-                border-radius: 100px;
-                position: relative;
-                transition: background-color 0.2s;
-                padding: 0 5px;
-
-                .toggle-inner {
-                    display: block;
-                    width: 100%;
-                    height: 100%;
-
-                    &:before {
-                        content: attr(data-text-off);
-                        position: absolute;
-                        top: 50%;
-                        transform: translateY(-50%);
-                        right: 10px;
-                        color: var(--bs-fg-1);
-                        font-size: 0.8rem;
-                        font-weight: 600;
-                        transition: all 0.2s;
-                    }
-                }
-
-                .toggle-switch-button {
-                    position: absolute;
-                    top: 2px;
-                    left: 2px;
-                    width: 30px;
-                    height: 30px;
-                    border-radius: 45px;
-                    transition: 0.2s;
-                    background: var(--bs-bg-body);
-                    box-shadow: var(--bs-box-shadow-sm);
-                }
-            }
-        }
-    }
-
     // Icons display modes
     #icons-list {
         &.icons-only-mode {
-            .icon-img {
-                img {
-                    height: 6rem;
-                    max-width: 90%;
-                }
-            }
-        }
-
-        &.icons-with-text-mode {
             .icon-img {
                 img {
                     height: 6rem;
@@ -3775,8 +3372,6 @@ body {
             }
 
             .example-image {
-                width: 100%;
-                height: 0;
                 padding-bottom: 66%; // 3:2 aspect ratio
                 position: relative;
                 overflow: hidden;
@@ -3785,8 +3380,6 @@ body {
 
                 img {
                     position: absolute;
-                    top: 0;
-                    left: 0;
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
@@ -3810,14 +3403,12 @@ body {
 
     // Add a subtle separator line between sections
     #logo-examples {
-        position: relative;
         margin-top: 6rem;
 
         &:before {
             content: "";
             position: absolute;
             top: -3rem;
-            left: 0;
             width: 100%;
             height: 1px;
             background: linear-gradient(
@@ -3831,14 +3422,9 @@ body {
 }
 
 // Interactive UMAP Visualization Styles
-#interactive-demo-section {
-    margin-top: 8%;
-}
 
 #interactive-container {
-    width: 100%;
     max-width: var(--max-width-wide);
-    margin: 0 auto;
     transform-style: preserve-3d;
     perspective: 1500px;
 }
@@ -3898,7 +3484,6 @@ body {
     align-items: center;
     margin-right: 12px;
     flex-shrink: 0;
-    cursor: pointer;
     position: relative;
     z-index: 10;
     transition: all 0.3s ease;
@@ -4026,67 +3611,6 @@ body {
 
 // Hoisted out of #page-content: the landing page shows one of these and uses #cover.
 
-.page-item {
-    display: flex;
-    flex-direction: row;
-
-    @media (max-width: 50rem) {
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        h2 {
-            margin: 0.5rem 0 !important;
-        }
-        margin: 0 -0.5rem;
-        padding: 0.5rem;
-        padding-bottom: 1.3rem;
-    }
-
-    margin: 0 -1rem;
-    padding: 1rem;
-
-    background-color: transparent;
-    transition: all 200ms ease-in-out;
-    border-radius: 0.5rem;
-
-    &:hover {
-        cursor: pointer;
-        background-color: var(--bs-bg-3);
-    }
-
-    @media (max-width: 50rem) {
-        background-color: var(--bs-bg-1);
-    }
-
-    h2 {
-        color: var(--bs-fg-1);
-        margin: 0 0 0.5rem 0;
-        line-height: 1.5rem;
-    }
-    span {
-        font-size: 1rem;
-        color: var(--bs-fg-3);
-        line-height: 1.3rem;
-    }
-    .page-item-date {
-        flex: 1;
-        line-height: 1.3rem;
-    }
-    .page-item-content {
-        flex: 2;
-        display: flex;
-        flex-direction: column;
-        font-size: 1rem;
-        h2 {
-            font-size: 1.4rem;
-        }
-    }
-}
-
-.page-item-author {
-    font-weight: 600;
-}
-
 // Specific to /about/roles: an index of the governance sections, not a summary of them
 
 .gov-chart {
@@ -4139,8 +3663,6 @@ body {
         height: 2.25rem;
         font-size: 1.05rem;
         border-radius: 50%;
-        background-color: var(--bs-bg-2);
-        color: var(--bs-fg-1);
     }
 
     .gov-card[data-hue] .gov-icon {
@@ -4156,7 +3678,6 @@ body {
     .gov-name {
         font-size: 0.95rem;
         font-weight: 700;
-        color: var(--bs-fg-body);
         text-decoration: none;
         border-bottom: 1px solid transparent;
 
@@ -4217,8 +3738,6 @@ body {
             place-items: center;
             font-size: 0.6rem;
             font-weight: 800;
-            color: var(--bs-fg-1);
-            background-color: var(--bs-bg-2);
 
             &[data-hue] {
                 background-color: color-mix(in oklch, var(--hue) 30%, transparent);
@@ -4236,7 +3755,6 @@ body {
     .gov-level--row {
         flex-direction: row;
         flex-wrap: wrap;
-        align-items: flex-start;
 
         > .gov-node {
             flex: 1 1 14rem;
@@ -4318,7 +3836,6 @@ body {
         font-weight: 700;
         letter-spacing: 0.06em;
         text-transform: uppercase;
-        color: var(--bs-fg-3);
     }
 }
 
@@ -4342,7 +3859,6 @@ body {
     }
 
     .role-member-face {
-        display: block;
         flex-shrink: 0;
 
         img,
@@ -4359,7 +3875,6 @@ body {
             font-size: 0.55rem;
             font-weight: 800;
             color: var(--bs-fg-1);
-            background-color: var(--bs-bg-2);
 
             &[data-hue] {
                 background-color: color-mix(in oklch, var(--hue) 30%, transparent);
@@ -4371,13 +3886,10 @@ body {
 // ---- Global search ------------------------------------------------------
 
 .nav-search-button {
-    display: flex;
-    align-items: center;
     gap: 0.4rem;
     background: none;
     border: 0;
     color: var(--bs-fg-1);
-    font-size: inherit;
 
     &:hover {
         color: var(--bs-fg-2);
@@ -4386,10 +3898,8 @@ body {
     .nav-search-kbd {
         padding: 0.05rem 0.4rem;
         border: 1px solid var(--bs-border-emphasized);
-        border-radius: 0.25rem;
         background-color: var(--bs-bg-1);
         color: var(--bs-fg-3);
-        font-size: 0.75rem;
         line-height: 1.2;
 
         @media (max-width: 62rem) {
@@ -4627,11 +4137,7 @@ body {
         border-radius: var(--card-radius);
         transition: all 200ms ease-in-out;
 
-        &:hover {
-            border-color: var(--bs-border-emphasized);
-            box-shadow: var(--bs-box-shadow);
-            transform: translateY(-2px);
-        }
+        @include lift-on-hover;
     }
 
     .stat-value {
@@ -4640,7 +4146,6 @@ body {
         line-height: 1.1;
         letter-spacing: -0.02em;
         font-variant-numeric: tabular-nums;
-        color: var(--bs-fg-1);
     }
 
     // Written as a descendant rather than nested under .stat-value: `&` there would carry the
@@ -4658,7 +4163,6 @@ body {
         display: flex;
         flex-direction: column;
         gap: 0.35rem;
-        max-width: var(--prose-measure, none);
         margin: 1.75rem 0 2.5rem;
         padding: 0;
         list-style: none;
@@ -4687,7 +4191,6 @@ body {
 
         p {
             margin: 0;
-            max-width: none;
             line-height: 1.6;
             color: var(--bs-fg-2);
         }
@@ -4697,7 +4200,6 @@ body {
         grid-row: span 2;
         display: grid;
         place-items: center;
-        width: 3rem;
         height: 3rem;
         font-size: 1.25rem;
         color: var(--bs-fg-1);
@@ -4773,7 +4275,6 @@ body {
 
         h1 {
             font-size: clamp(2.4rem, 6vw, 3.75rem);
-            font-weight: 800;
             letter-spacing: -0.035em;
             line-height: 1.05;
             margin: 0 0 1.5rem;
@@ -4785,8 +4286,6 @@ body {
         line-height: 1.45;
         font-weight: 600;
         letter-spacing: -0.015em;
-        color: var(--bs-fg-body);
-        margin: 0 0 1rem;
     }
 
     .about-hero-sub {
@@ -4867,7 +4366,6 @@ body {
         line-height: 1;
         letter-spacing: -0.03em;
         font-variant-numeric: tabular-nums;
-        color: var(--bs-fg-1);
     }
 
     .about-figure-label {
@@ -5019,17 +4517,11 @@ body {
         transition: all 200ms ease-in-out;
 
         img {
-            width: 1.75rem;
-            height: 1.75rem;
             object-fit: contain;
             flex-shrink: 0;
         }
 
-        &:hover {
-            border-color: var(--bs-border-emphasized);
-            box-shadow: var(--bs-box-shadow);
-            transform: translateY(-2px);
-        }
+        @include lift-on-hover;
     }
 
     // Layer 1: the three data structures get room for a line of explanation
@@ -5051,18 +4543,12 @@ body {
         transition: all 200ms ease-in-out;
 
         img {
-            width: 2.5rem;
-            height: 2.5rem;
             object-fit: contain;
             object-position: left;
             margin-bottom: 0.2rem;
         }
 
-        &:hover {
-            border-color: var(--bs-border-emphasized);
-            box-shadow: var(--bs-box-shadow);
-            transform: translateY(-2px);
-        }
+        @include lift-on-hover;
     }
 
     .stack-card-name {
@@ -5072,7 +4558,6 @@ body {
 
     .stack-card-text {
         font-size: 0.85rem;
-        line-height: 1.5;
         color: var(--bs-fg-2);
     }
 
@@ -5088,8 +4573,6 @@ body {
         color: var(--bs-fg-2);
 
         a {
-            color: inherit;
-            text-decoration: none;
             border-bottom: 1px solid transparent;
             &:hover {
                 border-bottom-color: var(--bs-border-emphasized);
@@ -5129,11 +4612,7 @@ body {
         border-radius: var(--card-radius);
         transition: all 200ms ease-in-out;
 
-        &:hover {
-            border-color: var(--bs-border-emphasized);
-            box-shadow: var(--bs-box-shadow);
-            transform: translateY(-2px);
-        }
+        @include lift-on-hover;
     }
 
     .doc-card-icon {
@@ -5144,8 +4623,6 @@ body {
         margin-bottom: 1rem;
         font-size: 1.25rem;
         border-radius: 50%;
-        background-color: var(--bs-bg-2);
-        color: var(--bs-fg-1);
     }
 
     .doc-card[data-hue] .doc-card-icon {
@@ -5168,14 +4645,14 @@ body {
 
     // Take part
 
-    .about-take-part {
+    // Shared by the take-part and sponsorship panels
+    .about-panel {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         gap: 2.5rem;
         align-items: center;
         padding: 2.5rem;
         border-radius: 1.25rem;
-        background-color: var(--bs-bg-1);
+        grid-template-columns: var(--panel-columns);
 
         @media (max-width: 64rem) {
             grid-template-columns: 1fr;
@@ -5185,10 +4662,14 @@ body {
 
         p {
             margin: 0.75rem 0 0;
-            font-size: 1rem;
             line-height: 1.7;
             color: var(--bs-fg-2);
         }
+    }
+
+    .about-take-part {
+        --panel-columns: minmax(0, 1fr) minmax(0, 1fr);
+        background-color: var(--bs-bg-1);
     }
 
     .take-part-links {
@@ -5211,11 +4692,7 @@ body {
         border-radius: 2rem;
         transition: all 200ms ease-in-out;
 
-        &:hover {
-            border-color: var(--bs-border-emphasized);
-            box-shadow: var(--bs-box-shadow);
-            transform: translateY(-2px);
-        }
+        @include lift-on-hover;
 
         i {
             display: inline-flex;
@@ -5227,26 +4704,8 @@ body {
     // Sponsorship
 
     .about-sponsor {
-        display: grid;
-        grid-template-columns: 14rem minmax(0, 1fr);
-        gap: 2.5rem;
-        align-items: center;
-        padding: 2.5rem;
+        --panel-columns: 14rem minmax(0, 1fr);
         border: 1px solid var(--bs-border-color);
-        border-radius: 1.25rem;
-
-        @media (max-width: 64rem) {
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            padding: 1.75rem;
-        }
-
-        p {
-            margin: 0.75rem 0 0;
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--bs-fg-2);
-        }
 
         a:not(.sponsor-button) {
             color: inherit;
@@ -5254,7 +4713,6 @@ body {
     }
 
     .sponsor-mark img {
-        width: 100%;
         max-width: 13rem;
         height: auto;
     }

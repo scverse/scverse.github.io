@@ -78,16 +78,16 @@ export default function init(root: HTMLElement) {
     reset()
     input.focus()
   })
-  empty.querySelector(".people-empty-reset")!.addEventListener("click", reset)
+  empty.querySelector(".filter-empty-reset")!.addEventListener("click", reset)
 
   roleRow.addEventListener("click", (event) => {
-    const chip = (event.target as HTMLElement).closest<HTMLElement>(".people-chip")
+    const chip = (event.target as HTMLElement).closest<HTMLElement>(".filter-chip")
     if (!chip) return
     activeRole = activeRole === chip.dataset.role ? "" : chip.dataset.role!
     apply()
   })
   packageRow.addEventListener("click", (event) => {
-    const chip = (event.target as HTMLElement).closest<HTMLElement>(".people-chip")
+    const chip = (event.target as HTMLElement).closest<HTMLElement>(".filter-chip")
     if (!chip) return
     activePackage = activePackage === chip.dataset.package ? "" : chip.dataset.package!
     apply()
