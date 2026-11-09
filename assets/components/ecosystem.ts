@@ -36,7 +36,7 @@ export default function init(root: HTMLElement) {
   }
 
   const syncChips = (row: HTMLElement, key: "category" | "language", active: string | null) => {
-    for (const chip of row.querySelectorAll<HTMLElement>(".eco-chip")) {
+    for (const chip of row.querySelectorAll<HTMLElement>(".filter-chip")) {
       const isActive = (chip.dataset[key] || null) === active
       chip.classList.toggle("is-active", isActive)
       chip.setAttribute("aria-pressed", String(isActive))
@@ -61,10 +61,10 @@ export default function init(root: HTMLElement) {
     reset()
     input.focus()
   })
-  empty.querySelector(".eco-empty-reset")!.addEventListener("click", reset)
+  empty.querySelector(".filter-empty-reset")!.addEventListener("click", reset)
 
   chipRow.addEventListener("click", (event) => {
-    const chip = (event.target as HTMLElement).closest<HTMLElement>(".eco-chip")
+    const chip = (event.target as HTMLElement).closest<HTMLElement>(".filter-chip")
     if (!chip) return
     const category = chip.dataset.category || null
     activeCategory = activeCategory === category ? null : category
@@ -73,7 +73,7 @@ export default function init(root: HTMLElement) {
   })
 
   languageRow.addEventListener("click", (event) => {
-    const chip = (event.target as HTMLElement).closest<HTMLElement>(".eco-chip")
+    const chip = (event.target as HTMLElement).closest<HTMLElement>(".filter-chip")
     if (!chip) return
     const language = chip.dataset.language || null
     activeLanguage = activeLanguage === language ? null : language

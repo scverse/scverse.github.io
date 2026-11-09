@@ -122,9 +122,9 @@
         <h2 id="the-team"><a href="#the-team">The team</a></h2>
         <p class="people-section-text">{{ .Params.team_lead }}</p>
 
-        <div class="people-toolbar">
-          <div class="people-search">
-            <svg class="people-search-icon" aria-hidden="true" focusable="false">
+        <div class="filter-toolbar">
+          <div class="filter-search">
+            <svg class="filter-search-icon" aria-hidden="true" focusable="false">
               <use href="#p-i-search" />
             </svg>
             <label class="visually-hidden" for="people-filter">Search people</label>
@@ -134,30 +134,30 @@
               autocomplete="off"
               placeholder="Search {{ len $items }} people by name, institute or package…"
             />
-            <button type="button" id="people-clear" class="people-search-clear" hidden aria-label="Clear filters">
+            <button type="button" id="people-clear" class="filter-search-clear" hidden aria-label="Clear filters">
               <svg aria-hidden="true" focusable="false"><use href="#p-i-close" /></svg>
             </button>
           </div>
-          <p class="people-count" role="status">
+          <p class="filter-count" role="status">
             <span id="people-count">{{ len $items }}</span> of {{ len $items }} people
           </p>
         </div>
 
-        <div class="people-chips" id="people-roles">
-          <button type="button" class="people-chip is-active" data-role="" aria-pressed="true">All</button>
+        <div class="filter-chips" id="people-roles">
+          <button type="button" class="filter-chip is-active" data-role="" aria-pressed="true">All</button>
           {{ range $roles }}
             {{ $count := len (where $items "roles" "intersect" (slice .id)) }}
-            <button type="button" class="people-chip" data-role="{{ .id }}" aria-pressed="false">
+            <button type="button" class="filter-chip" data-role="{{ .id }}" aria-pressed="false">
               {{ .label }}
-              <span class="people-chip-count">{{ $count }}</span>
+              <span class="filter-chip-count">{{ $count }}</span>
             </button>
           {{ end }}
         </div>
 
-        <div class="people-chips people-chips--packages" id="people-packages">
-          <button type="button" class="people-chip" data-package="" aria-pressed="false">All packages</button>
+        <div class="filter-chips filter-chips--packages" id="people-packages">
+          <button type="button" class="filter-chip" data-package="" aria-pressed="false">All packages</button>
           {{ range $packages }}
-            <button type="button" class="people-chip" data-package="{{ . }}" aria-pressed="false">
+            <button type="button" class="filter-chip" data-package="{{ . }}" aria-pressed="false">
               <img src="/img/icons/{{ lower . }}.svg" alt="" loading="lazy" width="14" height="14" />
               {{ . }}
             </button>
@@ -177,9 +177,9 @@
           {{ end }}
         </div>
 
-        <p class="people-empty" id="people-empty" hidden>
+        <p class="filter-empty" id="people-empty" hidden>
           Nobody matches your filters.
-          <button type="button" class="people-empty-reset">Reset</button>
+          <button type="button" class="filter-empty-reset">Reset</button>
         </p>
       </section>
 

@@ -49,6 +49,15 @@ $-hues:
     }
 }
 
+// Cards and pill links rise a little on hover
+@mixin lift-on-hover {
+    &:hover {
+        border-color: var(--bs-border-emphasized);
+        box-shadow: var(--bs-box-shadow);
+        transform: translateY(-2px);
+    }
+}
+
 // A hue dark enough to read as text on a light page, or light enough on a dark one
 @function hue-fg($color) {
     @return unquote(
@@ -181,11 +190,7 @@ $-hues:
         border-radius: var(--card-radius);
         transition: all 200ms ease-in-out;
 
-        &:hover {
-            border-color: var(--bs-border-emphasized);
-            box-shadow: var(--bs-box-shadow);
-            transform: translateY(-2px);
-        }
+        @include lift-on-hover;
         &:not(:has(.blog-featured-image)) {
             grid-template-columns: 1fr;
         }
@@ -340,11 +345,7 @@ $-hues:
         border-radius: var(--card-radius);
         transition: all 200ms ease-in-out;
 
-        &:hover {
-            border-color: var(--bs-border-emphasized);
-            box-shadow: var(--bs-box-shadow);
-            transform: translateY(-2px);
-        }
+        @include lift-on-hover;
     }
 
     .event-card-image {
@@ -484,11 +485,7 @@ $-hues:
         border-radius: var(--card-radius);
         transition: all 200ms ease-in-out;
 
-        &:hover {
-            border-color: var(--bs-border-emphasized);
-            box-shadow: var(--bs-box-shadow);
-            transform: translateY(-2px);
-        }
+        @include lift-on-hover;
     }
 
     .join-card-icon {
@@ -1229,11 +1226,7 @@ body {
                         padding: 1.75rem;
                         transition: all 200ms ease-in-out;
 
-                        &:hover {
-                            border-color: var(--bs-border-emphasized);
-                            box-shadow: var(--bs-box-shadow);
-                            transform: translateY(-2px);
-                        }
+                        @include lift-on-hover;
 
                         // Pins the "more" link to the card's bottom edge regardless of how many lines the paragraph above it takes.
                         > a {
@@ -1402,7 +1395,6 @@ body {
             // }
         }
     }
-    // TODO: Much of this does nothing AFAICT
     .post {
         .post-subtitle {
             display: flex;
@@ -1604,15 +1596,10 @@ body {
     }
 }
 
-// Specific to /packages#ecosystem — the community package registry
+// Search, filter chips and empty state shared by /packages#ecosystem and /people
 
-#ecosystem-packages {
-    margin: 2rem 0 4rem;
-
-    .eco-sprite {
-        display: none;
-    }
-
+#ecosystem-packages,
+#people-content {
     svg {
         fill: none;
         stroke: currentColor;
@@ -1621,20 +1608,20 @@ body {
         stroke-linejoin: round;
     }
 
-    .eco-toolbar {
+    .filter-toolbar {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         gap: 0.5rem 1.5rem;
     }
 
-    .eco-search {
+    .filter-search {
         position: relative;
         display: flex;
         align-items: center;
         flex: 1 1 22rem;
 
-        .eco-search-icon {
+        .filter-search-icon {
             position: absolute;
             left: 1.1rem;
             width: 1.1rem;
@@ -1672,7 +1659,7 @@ body {
         }
     }
 
-    .eco-search-clear {
+    .filter-search-clear {
         position: absolute;
         right: 0.9rem;
         display: flex;
@@ -1697,25 +1684,25 @@ body {
         }
     }
 
-    .eco-count {
+    .filter-count {
         margin: 0;
         font-size: 0.95rem;
-        color: var(--bs-fg-3);
+        color: var(--bs-fg-2);
         white-space: nowrap;
-    }
 
-    .eco-chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem;
-        margin: 1.25rem 0 2rem;
-
-        &:has(+ .eco-chips) {
-            margin-bottom: 0.4rem;
+        @media (max-width: 50rem) {
+            order: -1;
         }
     }
 
-    .eco-chip {
+    .filter-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 1.25rem;
+    }
+
+    .filter-chip {
         display: inline-flex;
         align-items: center;
         gap: 0.4rem;
@@ -1727,6 +1714,11 @@ body {
         border-radius: 2rem;
         transition: all 200ms ease-in-out;
 
+        img {
+            width: 0.9rem;
+            height: 0.9rem;
+            object-fit: contain;
+        }
         &:hover {
             color: var(--bs-fg-body);
             border-color: var(--bs-border-emphasized);
@@ -1737,10 +1729,51 @@ body {
             background-color: var(--bs-inverse-bg);
             border-color: var(--bs-inverse-bg);
         }
-        .eco-chip-count {
-            font-size: 0.75rem;
-            opacity: 0.55;
+        .filter-chip-count {
+            font-size: 0.8rem;
+            opacity: 0.75;
         }
+    }
+
+    .filter-empty {
+        padding: 4rem 0;
+        text-align: center;
+        color: var(--bs-fg-2);
+
+        .filter-empty-reset {
+            padding: 0;
+            color: var(--bs-fg-1);
+            background: none;
+            border: 0;
+            text-decoration: underline;
+        }
+    }
+}
+
+// Specific to /packages#ecosystem — the community package registry
+
+#ecosystem-packages {
+    margin: 2rem 0 4rem;
+
+    .eco-sprite {
+        display: none;
+    }
+
+    .filter-count {
+        color: var(--bs-fg-3);
+    }
+
+    .filter-chips {
+        margin-bottom: 2rem;
+
+        &:has(+ .filter-chips) {
+            margin-bottom: 0.4rem;
+        }
+    }
+
+    .filter-chip-count {
+        font-size: 0.75rem;
+        opacity: 0.55;
     }
 
     .eco-grid {
@@ -1763,11 +1796,7 @@ body {
         border-radius: var(--card-radius);
         transition: all 200ms ease-in-out;
 
-        &:hover {
-            border-color: var(--bs-border-emphasized);
-            box-shadow: var(--bs-box-shadow);
-            transform: translateY(-2px);
-        }
+        @include lift-on-hover;
         &[hidden] {
             display: none;
         }
@@ -1943,26 +1972,13 @@ body {
         }
     }
 
-    .eco-empty {
-        padding: 4rem 0;
-        text-align: center;
+    .filter-empty {
         color: var(--bs-fg-3);
-
-        .eco-empty-reset {
-            padding: 0;
-            color: var(--bs-fg-1);
-            background: none;
-            border: 0;
-            text-decoration: underline;
-        }
     }
 
     @media (max-width: 50rem) {
         .eco-grid {
             grid-template-columns: 1fr;
-        }
-        .eco-count {
-            order: -1;
         }
     }
 }
@@ -2354,20 +2370,10 @@ body {
 }
 
 #people-content {
-    // The hero mosaic and the directory both want the full column, not the prose measure
-
-    svg {
-        fill: none;
-        stroke: currentColor;
-        stroke-width: 1.8;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-
-        // The GitHub mark is a filled glyph rather than a line drawing
-        &.is-solid {
-            fill: currentColor;
-            stroke: none;
-        }
+    // The GitHub mark is a filled glyph rather than a line drawing
+    svg.is-solid {
+        fill: currentColor;
+        stroke: none;
     }
 
     .people-lead {
@@ -2461,131 +2467,11 @@ body {
         color: var(--bs-fg-2);
     }
 
-    .people-toolbar {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0.5rem 1.5rem;
+    .filter-toolbar {
         margin-top: 1.5rem;
     }
 
-    .people-search {
-        position: relative;
-        display: flex;
-        align-items: center;
-        flex: 1 1 22rem;
-
-        .people-search-icon {
-            position: absolute;
-            left: 1.1rem;
-            width: 1.1rem;
-            height: 1.1rem;
-            color: var(--bs-fg-3);
-            pointer-events: none;
-        }
-
-        input {
-            width: 100%;
-            height: 3.25rem;
-            padding: 0 2.9rem;
-            font-size: 1rem;
-            color: var(--bs-fg-1);
-            background-color: var(--bs-bg-1);
-            border: 1px solid var(--bs-border-color);
-            border-radius: 2rem;
-            outline: none;
-            transition: all 200ms ease-in-out;
-            text-overflow: ellipsis;
-
-            &::placeholder {
-                color: var(--bs-fg-3);
-            }
-            &:focus {
-                background-color: var(--bs-bg-body);
-                border-color: var(--bs-fg-3);
-                box-shadow: 0 0 0 0.25rem
-                    color-mix(in oklch, var(--bs-fg-body) 6%, transparent);
-            }
-            // The native affordance duplicates our own clear button
-            &::-webkit-search-cancel-button {
-                display: none;
-            }
-        }
-    }
-
-    .people-search-clear {
-        position: absolute;
-        right: 0.9rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 1.6rem;
-        height: 1.6rem;
-        padding: 0;
-        border: 0;
-        border-radius: 50%;
-        color: var(--bs-fg-2);
-        background-color: var(--bs-bg-2);
-        transition: all 200ms ease-in-out;
-
-        svg {
-            width: 0.7rem;
-            height: 0.7rem;
-        }
-        &:hover {
-            color: var(--bs-inverse-contrast);
-            background-color: var(--bs-inverse-bg);
-        }
-    }
-
-    .people-count {
-        margin: 0;
-        font-size: 0.95rem;
-        color: var(--bs-fg-2);
-        white-space: nowrap;
-    }
-
-    .people-chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem;
-        margin-top: 1.25rem;
-    }
-
-    .people-chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.35rem 0.85rem;
-        font-size: 0.85rem;
-        color: var(--bs-fg-2);
-        background-color: var(--bs-bg-body);
-        border: 1px solid var(--bs-border-color);
-        border-radius: 2rem;
-        transition: all 200ms ease-in-out;
-
-        img {
-            width: 0.9rem;
-            height: 0.9rem;
-            object-fit: contain;
-        }
-        &:hover {
-            color: var(--bs-fg-body);
-            border-color: var(--bs-border-emphasized);
-            background-color: var(--bs-bg-1);
-        }
-        &.is-active {
-            color: var(--bs-inverse-contrast);
-            background-color: var(--bs-inverse-bg);
-            border-color: var(--bs-inverse-bg);
-        }
-        .people-chip-count {
-            font-size: 0.8rem;
-            opacity: 0.75;
-        }
-    }
-
-    .people-chips--packages .people-chip {
+    .filter-chips--packages .filter-chip {
         font-size: 0.8rem;
         padding: 0.3rem 0.7rem;
     }
@@ -2618,11 +2504,7 @@ body {
         border-radius: var(--card-radius);
         transition: all 200ms ease-in-out;
 
-        &:hover {
-            border-color: var(--bs-border-emphasized);
-            box-shadow: var(--bs-box-shadow);
-            transform: translateY(-2px);
-        }
+        @include lift-on-hover;
         &[hidden] {
             display: none;
         }
@@ -2779,20 +2661,6 @@ body {
         }
     }
 
-    .people-empty {
-        padding: 4rem 0;
-        text-align: center;
-        color: var(--bs-fg-2);
-
-        .people-empty-reset {
-            padding: 0;
-            color: var(--bs-fg-1);
-            background: none;
-            border: 0;
-            text-decoration: underline;
-        }
-    }
-
     // Working groups
 
     .people-group {
@@ -2912,9 +2780,6 @@ body {
         .person-avatar {
             width: 4.5rem;
             height: 4.5rem;
-        }
-        .people-count {
-            order: -1;
         }
     }
 }
@@ -4492,11 +4357,7 @@ body {
         border-radius: var(--card-radius);
         transition: all 200ms ease-in-out;
 
-        &:hover {
-            border-color: var(--bs-border-emphasized);
-            box-shadow: var(--bs-box-shadow);
-            transform: translateY(-2px);
-        }
+        @include lift-on-hover;
     }
 
     .stat-value {
@@ -4880,11 +4741,7 @@ body {
             flex-shrink: 0;
         }
 
-        &:hover {
-            border-color: var(--bs-border-emphasized);
-            box-shadow: var(--bs-box-shadow);
-            transform: translateY(-2px);
-        }
+        @include lift-on-hover;
     }
 
     // Layer 1: the three data structures get room for a line of explanation
@@ -4911,11 +4768,7 @@ body {
             margin-bottom: 0.2rem;
         }
 
-        &:hover {
-            border-color: var(--bs-border-emphasized);
-            box-shadow: var(--bs-box-shadow);
-            transform: translateY(-2px);
-        }
+        @include lift-on-hover;
     }
 
     .stack-card-name {
@@ -4979,11 +4832,7 @@ body {
         border-radius: var(--card-radius);
         transition: all 200ms ease-in-out;
 
-        &:hover {
-            border-color: var(--bs-border-emphasized);
-            box-shadow: var(--bs-box-shadow);
-            transform: translateY(-2px);
-        }
+        @include lift-on-hover;
     }
 
     .doc-card-icon {
@@ -5016,14 +4865,14 @@ body {
 
     // Take part
 
-    .about-take-part {
+    // Shared by the take-part and sponsorship panels
+    .about-panel {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         gap: 2.5rem;
         align-items: center;
         padding: 2.5rem;
         border-radius: 1.25rem;
-        background-color: var(--bs-bg-1);
+        grid-template-columns: var(--panel-columns);
 
         @media (max-width: 64rem) {
             grid-template-columns: 1fr;
@@ -5036,6 +4885,11 @@ body {
             line-height: 1.7;
             color: var(--bs-fg-2);
         }
+    }
+
+    .about-take-part {
+        --panel-columns: minmax(0, 1fr) minmax(0, 1fr);
+        background-color: var(--bs-bg-1);
     }
 
     .take-part-links {
@@ -5058,11 +4912,7 @@ body {
         border-radius: 2rem;
         transition: all 200ms ease-in-out;
 
-        &:hover {
-            border-color: var(--bs-border-emphasized);
-            box-shadow: var(--bs-box-shadow);
-            transform: translateY(-2px);
-        }
+        @include lift-on-hover;
 
         i {
             display: inline-flex;
@@ -5074,25 +4924,8 @@ body {
     // Sponsorship
 
     .about-sponsor {
-        display: grid;
-        grid-template-columns: 14rem minmax(0, 1fr);
-        gap: 2.5rem;
-        align-items: center;
-        padding: 2.5rem;
+        --panel-columns: 14rem minmax(0, 1fr);
         border: 1px solid var(--bs-border-color);
-        border-radius: 1.25rem;
-
-        @media (max-width: 64rem) {
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            padding: 1.75rem;
-        }
-
-        p {
-            margin: 0.75rem 0 0;
-            line-height: 1.7;
-            color: var(--bs-fg-2);
-        }
 
         a:not(.sponsor-button) {
             color: inherit;
