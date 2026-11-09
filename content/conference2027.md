@@ -24,8 +24,6 @@ buttons:
 
 # Social Links
 socialLinks:
-  - name: "X / Twitter"
-    url: "https://x.com/scverse_team"
   - name: "Bluesky"
     url: "https://bsky.app/profile/scverse.bsky.social"
   - name: "LinkedIn"
