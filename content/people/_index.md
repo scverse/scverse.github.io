@@ -110,6 +110,14 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	works_on = ["mudata", "muon"]
 
 [[people]]
+	name = "Vincenth Brennsteiner"
+	url = "https://github.com/vbrennsteiner"
+	email = "vincenth.brennsteiner@scverse.org"
+	affiliation = "Max Planck Institute of Biochemistry"
+	roles = ["core", "core-devs", "proteomics"]
+	works_on = ["alphapepttools", "sc-proteomics"]
+
+[[people]]
 	name = "Emma Dann"
 	url = "https://github.com/emdann"
 	email = "emma.dann@scverse.org"
@@ -124,6 +132,14 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	affiliation = "NVIDIA"
 	roles = ["core", "core-devs", "core-governance", "agentic"]
 	works_on = ["rapids-singlecell"]
+
+[[people]]
+	name = "Lucas Diedrich"
+	url = "https://github.com/lucas-diedrich"
+	email = "lucas.diedrich@scverse.org"
+	affiliation = "Max Planck Institute of Biochemistry"
+	roles = ["core", "core-devs", "proteomics"]
+	works_on = ["alphapepttools", "sc-proteomics"]
 
 [[people]]
 	name = "Can Ergen-Behr"
@@ -277,16 +293,6 @@ groups_lead = "Working groups bring together people from inside and outside the 
 [[people]]
 	name = "Pedro Aragon"
 	url = "https://www.linkedin.com/in/pedro-aragon-fernandez-188851206/"
-	roles = ["proteomics"]
-
-[[people]]
-	name = "Vincenth Brennsteiner"
-	url = "https://www.linkedin.com/in/vincenth-brennsteiner-1a4ba21b0/"
-	roles = ["proteomics"]
-
-[[people]]
-	name = "Lucas Diedrich"
-	url = "https://github.com/lucas-diedrich/"
 	roles = ["proteomics"]
 
 [[people]]
