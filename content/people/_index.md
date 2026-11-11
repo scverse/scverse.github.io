@@ -214,6 +214,14 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	works_on = ["scvi-tools"]
 
 [[people]]
+	name = "Ajayrama Kumaraswamy"
+	url = "https://github.com/ajkswamy"
+	email = "ajayrama.kumaraswamy@scverse.org"
+	affiliation = "EMBL Heidelberg"
+	roles = ["core", "core-devs"]
+	works_on = ["spatialdata"]
+
+[[people]]
 	name = "Luca Marconato"
 	url = "https://github.com/LucaMarconato"
 	email = "luca.marconato@scverse.org"
@@ -252,6 +260,14 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	affiliation = "Helmholtz Munich"
 	roles = ["core", "core-devs", "core-community", "core-governance", "agentic"]
 	works_on = ["spatialdata-plot", "squidpy"]
+
+[[people]]
+	name = "Tomaz Vieira"
+	url = "https://github.com/Tomaz-Vieira"
+	email = "tomaz.vieira@scverse.org"
+	affiliation = "EMBL Heidelberg"
+	roles = ["core", "core-devs"]
+	works_on = ["spatialdata"]
 
 [[people]]
 	name = "Wouter-Michiel Vierdag"
