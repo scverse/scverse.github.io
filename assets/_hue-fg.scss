@@ -1,0 +1,7 @@
+// A hue dark enough to read as text on a light page, or light enough on a dark one
+@function hue-fg($color) {
+    @return light-dark(
+        color-mix(in oklch, $color 80%, var(--bs-black)),
+        color-mix(in oklch, $color 80%, var(--bs-white))
+    );
+}

@@ -21,7 +21,7 @@ Look inside [`/layout`](/layout) for that. [Hugo Templating](https://gohugo.io/t
 
 ## Running locally
 
-To build the website (with hot reload), [install Hugo](https://gohugo.io/getting-started/installing/) and run
+To build the website (with hot reload), [install Hugo](https://gohugo.io/getting-started/installing/) and [Dart Sass](https://gohugo.io/functions/css/sass/#dart-sass) (the `sass` executable must be on your `PATH`), and run
 
 ```sh
 hugo server -D
