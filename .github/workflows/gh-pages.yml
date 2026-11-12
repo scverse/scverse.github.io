@@ -16,11 +16,25 @@ jobs:
           submodules: true # Fetch Hugo themes (true OR recursive)
           fetch-depth: 1 # Fetch all history for .GitInfo and .Lastmod
 
+      - name: Use Netlify’s build environment (tool versions), so previews match production
+        shell: python
+        run: |
+          import os, tomllib
+          with open("netlify.toml", "rb") as f:
+              env = tomllib.load(f)["build"]["environment"]
+          with open(os.environ["GITHUB_ENV"], "a") as f:
+              f.writelines(f"{k}={v}\n" for k, v in env.items())
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: "0.164.0" # keep in step with netlify.toml, so previews match production
+          hugo-version: ${{ env.HUGO_VERSION }}
           extended: true
+
+      - name: Setup Dart Sass
+        run: |
+          curl -sSfL "https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz" | tar -xz -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/dart-sass" >> "$GITHUB_PATH"
 
       - name: Build
         run: hugo --buildFuture --minify

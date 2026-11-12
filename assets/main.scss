@@ -1,7 +1,11 @@
 // Neutral colors come straight from Bootstrap’s tokens (--bs-bg-*, --bs-fg-*, --bs-border-*),
 // which carry their own dark values. Only the brand hues and a few measures live here.
 // The scverse and package accents come from accents.json, passed in by layouts/partials/head.html.
-@import "hugo:vars";
+@use "sass:list";
+@use "sass:math";
+@use "sass:meta";
+@use "hugo:vars" as *;
+@use "hue-fg" as *;
 :root {
     @each $pkg, $colors in $accents {
         @each $name, $color in $colors {
@@ -44,7 +48,7 @@ $-hues:
     anndata-orange, scanpy-cerise, mudata-green, spatialdata-blue, squidpy-violet,
     scirpy-purple, scvi-tools-yellow, muon-aquamarine;
 @each $name in $-hues {
-    [data-hue="#{index($-hues, $name) - 1}"] {
+    [data-hue="#{list.index($-hues, $name) - 1}"] {
         --hue: var(--#{$name});
     }
 }
@@ -58,15 +62,8 @@ $-hues:
     }
 }
 
-// A hue dark enough to read as text on a light page, or light enough on a dark one
-@function hue-fg($color) {
-    @return unquote(
-        "light-dark(color-mix(in oklch, #{$color} 80%, var(--bs-black)), color-mix(in oklch, #{$color} 80%, var(--bs-white)))"
-    );
-}
-
 // scverse conference 2026 (scoped under .conference-page)
-@import "conference2026";
+@include meta.load-css("conference2026");
 
 // Font stack: these two have well matching cap- and x-heights
 @font-face {
@@ -821,10 +818,10 @@ q {
     width: 3rem;
     height: 3rem;
     background: url("/img/icons/scverse-bw-logo.svg") no-repeat top left;
+    transition: all 200ms ease-in-out;
     &:hover {
         transform: scale(1.1);
     }
-    transition: all 200ms ease-in-out;
 }
 
 .logo-name {
@@ -1450,12 +1447,13 @@ body {
         .package-section {
             display: flex;
             margin: 0.5rem 0;
+            gap: 3rem;
             &:first-of-type {
                 margin-top: 2rem;
             }
-            gap: 3rem;
             .package-img {
                 flex: 1;
+                transition: all 200ms ease-in-out;
                 img {
                     display: block;
                     padding: 0.5rem;
@@ -1466,7 +1464,6 @@ body {
                     max-width: 100%;
                     max-height: 140px;
                 }
-                transition: all 200ms ease-in-out;
                 @media (max-width: 50rem) {
                     display: none;
                 }
@@ -3142,12 +3139,15 @@ body {
 
             // Package tints from accents.json: its colors spread over the first 40%, the primary one on hover
             @each $pkg, $colors in $accents {
-                $n: length($colors);
+                $n: list.length($colors);
                 $stops: ();
                 $i: 0;
                 @each $name, $color in $colors {
-                    $pos: if($n == 1, 0%, $i * 40% / ($n - 1));
-                    $stops: append(
+                    $pos: 0%;
+                    @if $n > 1 {
+                        $pos: math.div($i * 40%, $n - 1);
+                    }
+                    $stops: list.append(
                         $stops,
                         color-mix(in oklch, var(--#{$pkg}-#{$name}) 10%, transparent)
                             $pos,
@@ -3156,7 +3156,7 @@ body {
                     $i: $i + 1;
                 }
                 &##{$pkg}-tile {
-                    --tile-accent: var(--#{$pkg}-#{nth(nth($colors, 1), 1)});
+                    --tile-accent: var(--#{$pkg}-#{list.nth(list.nth($colors, 1), 1)});
                     --tile-gradient: linear-gradient(
                         135deg,
                         #{$stops},

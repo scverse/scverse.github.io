@@ -1,9 +1,14 @@
-# Deploy previews used to build with Netlify's default Hugo (0.97.2, from 2022), so they did not reflect what gets published: .github/workflows/gh-pages.yml builds with `latest`, which currently resolves to 0.164.0.
-# Pin previews to that, and bump both together from here on.
+# Single source of truth for tool versions: .github/workflows/gh-pages.yml reads [build.environment] too, so deploy previews match production.
 [build]
 # Netlify's Hugo preset stops at `hugo`; the search index is built after it.
-command = "hugo --buildFuture --minify && npx --yes pagefind@1.5.2 --site public"
+# Netlify has no Dart Sass, so fetch it first (Hugo looks for `sass` on the PATH).
+command = """
+curl -sSfL https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz | tar -xz -C /tmp \
+&& export PATH=/tmp/dart-sass:$PATH \
+&& hugo --buildFuture --minify && npx --yes pagefind@1.5.2 --site public
+"""
 publish = "public"
 
 [build.environment]
 HUGO_VERSION = "0.164.0"
+DART_SASS_VERSION = "1.106.1"
