@@ -98,23 +98,42 @@ The whole plot type collapses to an aggregation feeding a data-first element, wi
 
 Drawing every cell as its own glyph gets slow, and overplotted points hide where cells actually are.
 Since `sc.pl` functions return plain HoloViews objects, you can hand any of them to HoloViews' [Datashader operations](https://holoviews.org/user_guide/Large_Data.html).
-They aggregate the points into an image on the server and recompute it as you pan and zoom:
+They aggregate the points into an image on the server and recompute it as you pan and zoom.
+
+Here are 4.2 million cells from the Allen Institute's whole mouse brain MERFISH atlas ([animal 1, coronal sections](https://datasets.cellxgene.cziscience.com/aeaa6e77-7f6e-4d8c-b217-4c1e777cc0be.h5ad), a 2.7 GB `.h5ad` from [CELLxGENE](https://cellxgene.cziscience.com/)), shown both in UMAP space and in brain coordinates, rendered by HoloViews with the code below:
+
+<img src="/img/blog/scanpy_holoviews_datashader.svg" style="max-width: 100%;" alt="4.2 million mouse brain cells colored by major brain region, datashaded: a UMAP on the left and a side view of the brain in Allen CCF coordinates on the right" />
+
+`anndata.experimental.read_lazy` opens the file without reading the 4.2 million × 1,120 expression matrix, so only the two embeddings and one `obs` column end up in memory:
 
 ```python
+import anndata as ad
 import datashader as ds
-from holoviews.operation.datashader import rasterize, datashade, dynspread
+import holoviews as hv
+from holoviews.operation.datashader import datashade, dynspread
 
-# continuous values: average expression per pixel, colormapped on the client
-umap_lyz = sc.pl.umap(adata, color=A.X[:, "LYZ"])
-rasterize(umap_lyz, aggregator=ds.mean("LYZ")).opts(cmap="viridis", colorbar=True)
+lazy = ad.experimental.read_lazy("aeaa6e77-7f6e-4d8c-b217-4c1e777cc0be.h5ad")
+adata = ad.AnnData(
+    obs=lazy.obs[["major_brain_region"]].to_memory(),
+    obsm={"umap": lazy.obsm["X_umap"].compute(), "ccf": lazy.obsm["X_CCF"].compute()},
+)
+adata = adata[adata.obs["major_brain_region"].notna()]  # keep the 3.7 million labeled cells
 
-# categories: count cells per label per pixel and blend the label colors
-umap_labels = sc.pl.umap(adata, color=A.obs["bulk_labels"])
-dynspread(datashade(umap_labels, aggregator=ds.count_cat("bulk_labels")))
+# count cells per region in each pixel and blend the region colors
+by_region = ds.count_cat("major_brain_region")
+umap = sc.pl.umap(adata, color=A.obs["major_brain_region"])
+brain = hv.Points(adata, [A.obsm["ccf"][0], A.obsm["ccf"][1]], [A.obs["major_brain_region"]])
+dynspread(datashade(umap, aggregator=by_region)) + dynspread(
+    datashade(brain, aggregator=by_region)
+).opts(invert_yaxis=True, data_aspect=1)
 ```
 
-`rasterize` keeps the result as data, so hover and colorbars keep working.
-`datashade` goes all the way to an RGB image, which is how categories get mixed colors where they overlap, and `dynspread` keeps isolated cells visible when zoomed out.
+The figure above is exactly what HoloViews renders from this code, with only a fixed `color_key` added to match the legend.
+On an 8-core desktop (AMD Ryzen 7 3700X), opening the file lazily takes 10 seconds and loading the embeddings and labels another 5.
+HoloViews then datashades all 3.7 million cells in under a second per panel (0.8 s for the UMAP, 0.6 s for the brain), and again every time you pan or zoom.
+
+`datashade` goes all the way to an RGB image, which is how regions get mixed colors where they overlap, and `dynspread` keeps isolated cells visible when zoomed out.
+For continuous values such as gene expression, `rasterize(plot, aggregator=ds.mean("GENE"))` stops one step earlier, keeping the result as data so hover and colorbars keep working.
 
 ## Linked brushing
 
