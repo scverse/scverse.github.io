@@ -1,0 +1,42 @@
+// Biome handles everything without Go templates (assets/ and config files); Prettier the rest.
+{
+    "$schema": "https://biomejs.dev/schemas/2.6.7/schema.json",
+    "vcs": {
+        "enabled": true,
+        "clientKind": "git",
+        "useIgnoreFile": true,
+    },
+    "files": {
+        "includes": ["assets/**", "*.json", "*.jsonc", ".vscode/*.json"],
+    },
+    "formatter": {
+        "useEditorconfig": true,
+        // Biome ignores .editorconfig’s max_line_length, so the widths are repeated here
+        "lineWidth": 88,
+    },
+    "javascript": {
+        "formatter": {
+            "lineWidth": 120,
+            "semicolons": "asNeeded",
+        },
+    },
+    "overrides": [
+        {
+            "includes": [".vscode/*.json", "**/*.jsonc", "tsconfig.json"],
+            "json": {
+                "formatter": {
+                    "trailingCommas": "all",
+                },
+                "parser": {
+                    "allowComments": true,
+                    "allowTrailingCommas": true,
+                },
+            },
+        },
+        {
+            // Biome doesn’t resolve functions from Sass modules (e.g. hue-fg)
+            "includes": ["**/*.scss"],
+            "linter": { "rules": { "correctness": { "noUnknownFunction": "off" } } },
+        },
+    ],
+}

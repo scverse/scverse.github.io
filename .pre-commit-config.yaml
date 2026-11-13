@@ -6,6 +6,12 @@ repos:
         additional_dependencies:
           - prettier
           - prettier-plugin-go-template
+  # Biome formats and lints what has no Go templates (see biome.jsonc and .prettierignore)
+  - repo: https://github.com/biomejs/pre-commit
+    rev: v2.6.7
+    hooks:
+      - id: biome-check
+        files: ^(assets/|[^/]+\.jsonc?$|\.vscode/[^/]+\.json$)
   - repo: local
     hooks:
       # js.Build only strips the types, so nothing else would catch a type error.

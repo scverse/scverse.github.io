@@ -12,12 +12,5 @@ module.exports = {
                 parser: "go-template",
             },
         },
-        {
-            files: [".vscode/*.json"],
-            options: {
-                parser: "jsonc",
-                trailingComma: "all",
-            },
-        },
     ],
 }

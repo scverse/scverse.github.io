@@ -46,8 +46,14 @@
 
 // Pages tint cards and icons with `data-hue="0"`…`"7"`, cycling through the package palette
 $-hues:
-    anndata-orange, scanpy-cerise, mudata-green, spatialdata-blue, squidpy-violet,
-    scirpy-purple, scvi-tools-yellow, muon-aquamarine;
+    anndata-orange,
+    scanpy-cerise,
+    mudata-green,
+    spatialdata-blue,
+    squidpy-violet,
+    scirpy-purple,
+    scvi-tools-yellow,
+    muon-aquamarine;
 @each $name in $-hues {
     [data-hue="#{list.index($-hues, $name) - 1}"] {
         --hue: var(--#{$name});
