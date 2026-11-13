@@ -1,7 +1,7 @@
 // Blog index (layouts/blog/list.html); layouts/partials/head.html loads it only in the blog section
-@use "../lib/lift-on-hover" as *;
+@use "../lib/breakpoints" as *;
 
-#blog-content {
+.blog-content {
     h1 {
         margin-bottom: 0.5rem;
     }
@@ -35,7 +35,7 @@
         text-transform: uppercase;
         color: var(--bs-inverse-contrast);
         background-color: var(--bs-inverse-bg);
-        border-radius: 0.25rem;
+        border-radius: var(--bs-radius-3);
     }
 
     .blog-text {
@@ -57,9 +57,7 @@
         background-color: var(--bs-bg-body);
         border: 1px solid var(--bs-border-color);
         border-radius: var(--card-radius);
-        transition: all 200ms ease-in-out;
 
-        @include lift-on-hover;
         &:not(:has(.blog-featured-image)) {
             grid-template-columns: 1fr;
         }
@@ -123,7 +121,7 @@
         padding: 0.9rem 1.1rem;
         color: var(--bs-fg-1);
         border-radius: var(--card-radius);
-        transition: background-color 200ms ease-in-out;
+        transition: background-color var(--transition);
 
         &:hover {
             background-color: var(--bs-bg-1);
@@ -137,7 +135,7 @@
         color: var(--bs-fg-body);
     }
 
-    @media (max-width: 50rem) {
+    @include media-down(md) {
         .blog-featured {
             grid-template-columns: 1fr;
         }

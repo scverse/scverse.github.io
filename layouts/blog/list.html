@@ -1,6 +1,6 @@
 {{ define "main" }}
   {{ $posts := .Pages.ByDate.Reverse }}
-  <div id="blog-content">
+  <div class="blog-content">
     <h1>{{ .Title }}</h1>
     <p class="blog-lead">
       {{ .Params.lead }}
@@ -13,7 +13,7 @@
       {{ with findRESubmatch `<img[^>]+src="([^"]+)"` .Content 1 }}
         {{ $image = index (index . 0) 1 }}
       {{ end }}
-      <a class="blog-featured" href="{{ .RelPermalink }}">
+      <a class="blog-featured hover-lift" href="{{ .RelPermalink }}">
         {{ with $image }}
           <span class="blog-featured-image"><img src="{{ . }}" alt="" /></span>
         {{ end }}

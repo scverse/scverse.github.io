@@ -1,0 +1,29 @@
+// Bootstrap 6’s breakpoints. Its Sass isn’t vendored (static/bootstrap is the prebuilt CSS), so they’re mirrored here.
+@use "sass:map";
+
+$breakpoints: (
+    sm: 576px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1280px,
+    "2xl": 1536px,
+);
+
+@function bp($name) {
+    @return map.get($breakpoints, $name);
+}
+
+/* stylelint-disable media-feature-name-disallowed-list -- the one place width queries are spelled out */
+// Like Bootstrap’s `md:` prefix: from this breakpoint up
+@mixin media-up($name) {
+    @media (width >= #{bp($name)}) {
+        @content;
+    }
+}
+
+// Below this breakpoint, i.e. where Bootstrap’s `md:` classes don’t apply yet
+@mixin media-down($name) {
+    @media (width < #{bp($name)}) {
+        @content;
+    }
+}

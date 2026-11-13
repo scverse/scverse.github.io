@@ -1,7 +1,7 @@
 {{ $person := .person }}
 {{ $isGitHub := in ($person.url | default "") "github.com" }}
 <article
-  class="person-card"
+  class="person-card hover-lift"
   data-person="{{ $person.index }}"
   data-search="{{ $person.search }}"
   data-roles="|{{ delimit $person.roles "|" }}|"

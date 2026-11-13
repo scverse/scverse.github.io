@@ -1,7 +1,7 @@
 {{ define "main" }}
   <h1>{{ .Title }}</h1>
   <article class="post">
-    <div class="post-content" id="stats-content">
+    <div class="post-content stats-content">
       {{ $base := "https://scverse-stats-dev.s3.eu-west-1.amazonaws.com/" }}
       {{ $stats := dict }}
       {{ $contributors := dict }}

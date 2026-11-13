@@ -1,6 +1,6 @@
 {{ $page := .page }}
 <a
-  class="event-card {{ if .featured }}event-card--featured{{ end }}"
+  class="event-card hover-lift {{ if .featured }}event-card--featured{{ end }}"
   href="{{ $page.Params.link | default $page.RelPermalink }}"
 >
   {{ with and .featured $page.Params.image }}

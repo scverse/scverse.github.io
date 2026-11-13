@@ -1,15 +1,15 @@
-<div id="cover-heading">
-  <div id="title">
-    <div id="title-text" class="align-top">
-      <h1 id="title-name">{{ .Title }}</h1>
-      <span id="title-desc">{{ .Description }}</span>
+<div class="cover-heading">
+  <div>
+    <div class="align-top">
+      <h1 class="title-name">{{ .Title }}</h1>
+      <span class="title-desc">{{ .Description }}</span>
     </div>
   </div>
   {{ with .Params.hero }}
-    <p id="hero-lede">{{ .text | markdownify }}</p>
-    <div id="hero-points">
+    <p class="hero-lede">{{ .text | markdownify }}</p>
+    <div class="hero-points">
       {{ range $i, $p := .points }}
-        <a class="hero-point" href="{{ $p.link }}" data-hue="{{ $i }}">
+        <a class="hero-point hover-lift" href="{{ $p.link }}" data-hue="{{ $i }}">
           <div class="hero-point-icon"><i class="bi {{ $p.icon }}" aria-hidden="true"></i></div>
           <div class="hero-point-title">{{ $p.title }}</div>
           <p class="hero-point-text">{{ $p.text }}</p>

@@ -1,7 +1,7 @@
 <div class="container" data-pagefind-ignore>
   <nav class="navbar lg:navbar-expand">
     <a class="navbar-brand" href="/">
-      <div id="scverse-logo"></div>
+      <div class="scverse-logo"></div>
       <span class="visually-hidden">scverse</span>
       <!--{{ if ne .Section `` }}
         <span class="logo-name col m-0 px-3">scverse</span>
@@ -163,7 +163,7 @@
             </button>
           </li>
           <li class="nav-item">
-            <a id="join-button" class="nav-link nav-button-hl" href="/join">Join</a>
+            <a class="nav-link nav-button-hl join-button" href="/join">Join</a>
           </li>
         </ul>
       </div>
@@ -171,13 +171,14 @@
   </nav>
 </div>
 
-<dialog aria-modal="true" aria-labelledby="search-label" id="search-dialog">
+<dialog aria-modal="true" aria-labelledby="search-label" id="search-dialog" class="search-dialog">
   <label class="visually-hidden" for="search-input" id="search-label">Search scverse.org</label>
   <div class="search-field">
     <i class="bi bi-search" aria-hidden="true"></i>
     <input
       type="search"
       id="search-input"
+      class="search-input"
       autofocus
       placeholder="Search packages, tutorials, events, blog posts…"
       autocomplete="off"
@@ -195,6 +196,6 @@
       Esc
     </button>
   </div>
-  <p id="search-status" role="status" aria-live="polite"></p>
-  <ul id="search-results"></ul>
+  <p id="search-status" class="search-status" role="status" aria-live="polite"></p>
+  <ul id="search-results" class="search-results"></ul>
 </dialog>

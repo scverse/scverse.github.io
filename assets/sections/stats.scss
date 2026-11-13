@@ -1,6 +1,7 @@
 // Specific to /stats
+@use "../lib/breakpoints" as *;
 
-#stats-content {
+.stats-content {
     .stats-updated {
         font-size: 0.9rem;
         color: var(--bs-fg-3);
@@ -23,7 +24,7 @@
             padding-left: 3.5rem;
             border-left: 1px solid var(--bs-border-color);
         }
-        @media (max-width: 50rem) {
+        @include media-down(md) {
             .stats-hero-figure--second {
                 padding-left: 0;
                 border-left: 0;
@@ -43,7 +44,7 @@
             font-size: 0.9rem;
             color: var(--bs-fg-3);
         }
-        @media (max-width: 50rem) {
+        @include media-down(md) {
             .stats-hero-value {
                 font-size: 3rem;
             }
@@ -63,7 +64,7 @@
         padding: 1.1rem 1.25rem;
         background-color: var(--bs-bg-1);
         border: 1px solid var(--bs-border-color);
-        border-radius: 0.75rem;
+        border-radius: var(--card-radius);
 
         .stats-tile-value {
             font-size: 2rem;
@@ -81,7 +82,10 @@
     // Only tiles that lead somewhere get the affordance
     a.stats-tile {
         text-decoration: none;
-        transition: all 200ms ease-in-out;
+        transition:
+            background-color var(--transition),
+            border-color var(--transition),
+            transform var(--transition);
 
         &:hover,
         &:focus-visible {
@@ -111,9 +115,11 @@
             align-items: center;
             gap: 0.85rem;
             padding: 0.35rem 0.5rem;
-            border-radius: 0.5rem;
+            border-radius: var(--bs-radius-5);
             text-decoration: none;
-            transition: all 200ms ease-in-out;
+            transition:
+                color var(--transition),
+                background-color var(--transition);
 
             &:hover {
                 color: var(--bs-fg-body);
@@ -134,7 +140,7 @@
         .stats-contributor-bar {
             height: 0.5rem;
             background-color: var(--bs-bg-2);
-            border-radius: 0.25rem;
+            border-radius: var(--bs-radius-3);
 
             > span {
                 display: block;
@@ -142,7 +148,7 @@
                 height: 100%;
                 // A hue rather than a dark neutral, so extensions that invert the page keep the bar visible
                 background-color: var(--scverse-deep-blue);
-                border-radius: 0.25rem;
+                border-radius: var(--bs-radius-3);
             }
         }
         .stats-contributor-count {
@@ -151,7 +157,7 @@
             font-variant-numeric: tabular-nums;
         }
 
-        @media (max-width: 50rem) {
+        @include media-down(md) {
             a {
                 grid-template-columns: 2.5rem 1fr auto;
             }
@@ -167,8 +173,10 @@
             padding: 0.35rem 0.5rem;
             font-size: 0.9rem;
             color: var(--bs-fg-2);
-            border-radius: 0.5rem;
-            transition: all 200ms ease-in-out;
+            border-radius: var(--bs-radius-5);
+            transition:
+                color var(--transition),
+                background-color var(--transition);
 
             &:hover {
                 color: var(--bs-fg-body);

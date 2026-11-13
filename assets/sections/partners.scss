@@ -1,4 +1,6 @@
-#partners-content {
+@use "../lib/breakpoints" as *;
+
+.partners-content {
     .partners-lead {
         margin: 0 0 2.5rem;
         font-size: 1.1rem;
@@ -16,7 +18,7 @@
         border: 1px solid var(--bs-border-color);
         border-radius: var(--card-radius);
 
-        @media (max-width: 50rem) {
+        @include media-down(md) {
             grid-template-columns: 1fr;
             gap: 1.5rem;
             padding: 1.5rem;

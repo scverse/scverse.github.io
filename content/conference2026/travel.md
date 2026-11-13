@@ -54,30 +54,30 @@ The suggestions below are starting points rather than endorsements, and are grou
   <div class="stay-tier-head"><span class="stay-price">€</span><span class="stay-tier-name">Budget hotels and hostels</span></div>
   <p class="stay-tier-sub">Most of these have private rooms as well as dorm beds.</p>
   <div class="stay-chips">
-    <a class="stay-chip" href="https://www.google.com/maps/search/?api=1&query=Steel%20House%20Copenhagen%2C%20Herholdtsgade%206" target="_blank" rel="noopener"><span class="n">Steel House Copenhagen</span><span class="a">Herholdtsgade 6</span></a>
-    <a class="stay-chip" href="https://www.google.com/maps/search/?api=1&query=Next%20House%20Copenhagen%2C%20Bernstorffsgade%2027" target="_blank" rel="noopener"><span class="n">Next House Copenhagen</span><span class="a">Bernstorffsgade 27, beside Central Station</span></a>
-    <a class="stay-chip" href="https://www.google.com/maps/search/?api=1&query=CityHub%2C%20Vesterbrogade%2097B%2C%20Copenhagen" target="_blank" rel="noopener"><span class="n">CityHub</span><span class="a">Vesterbrogade 97B</span></a>
-    <a class="stay-chip" href="https://www.google.com/maps/search/?api=1&query=Cabinn%20Scandinavia%2C%20Vodroffsvej%2055%2C%20Frederiksberg" target="_blank" rel="noopener"><span class="n">Cabinn Scandinavia</span><span class="a">Vodroffsvej 55, Frederiksberg</span></a>
-    <a class="stay-chip" href="https://www.google.com/maps/search/?api=1&query=Copenhagen%20Downtown%20Hostel%2C%20Vandkunsten%205" target="_blank" rel="noopener"><span class="n">Copenhagen Downtown Hostel</span><span class="a">Vandkunsten 5</span></a>
-    <a class="stay-chip" href="https://www.google.com/maps/search/?api=1&query=Sleep%20in%20Heaven%2C%20Struenseegade%207%2C%20N%C3%B8rrebro" target="_blank" rel="noopener"><span class="n">Sleep in Heaven</span><span class="a">Struenseegade 7, Nørrebro</span></a>
+    <a class="stay-chip hover-lift" href="https://www.google.com/maps/search/?api=1&query=Steel%20House%20Copenhagen%2C%20Herholdtsgade%206" target="_blank" rel="noopener"><span class="n">Steel House Copenhagen</span><span class="a">Herholdtsgade 6</span></a>
+    <a class="stay-chip hover-lift" href="https://www.google.com/maps/search/?api=1&query=Next%20House%20Copenhagen%2C%20Bernstorffsgade%2027" target="_blank" rel="noopener"><span class="n">Next House Copenhagen</span><span class="a">Bernstorffsgade 27, beside Central Station</span></a>
+    <a class="stay-chip hover-lift" href="https://www.google.com/maps/search/?api=1&query=CityHub%2C%20Vesterbrogade%2097B%2C%20Copenhagen" target="_blank" rel="noopener"><span class="n">CityHub</span><span class="a">Vesterbrogade 97B</span></a>
+    <a class="stay-chip hover-lift" href="https://www.google.com/maps/search/?api=1&query=Cabinn%20Scandinavia%2C%20Vodroffsvej%2055%2C%20Frederiksberg" target="_blank" rel="noopener"><span class="n">Cabinn Scandinavia</span><span class="a">Vodroffsvej 55, Frederiksberg</span></a>
+    <a class="stay-chip hover-lift" href="https://www.google.com/maps/search/?api=1&query=Copenhagen%20Downtown%20Hostel%2C%20Vandkunsten%205" target="_blank" rel="noopener"><span class="n">Copenhagen Downtown Hostel</span><span class="a">Vandkunsten 5</span></a>
+    <a class="stay-chip hover-lift" href="https://www.google.com/maps/search/?api=1&query=Sleep%20in%20Heaven%2C%20Struenseegade%207%2C%20N%C3%B8rrebro" target="_blank" rel="noopener"><span class="n">Sleep in Heaven</span><span class="a">Struenseegade 7, Nørrebro</span></a>
   </div>
 </div>
 
 <div class="stay-tier t2">
   <div class="stay-tier-head"><span class="stay-price">€€</span><span class="stay-tier-name">Mid-range</span></div>
   <div class="stay-chips">
-    <a class="stay-chip" href="https://www.google.com/maps/search/?api=1&query=Scandic%20N%C3%B8rreport%2C%20Frederiksborggade%2018" target="_blank" rel="noopener"><span class="n">Scandic Nørreport</span><span class="a">Frederiksborggade 18, opposite Nørreport station</span></a>
-    <a class="stay-chip" href="https://www.google.com/maps/search/?api=1&query=Venders%20Copenhagen%2C%20N%C3%B8rre%20Voldgade%2011" target="_blank" rel="noopener"><span class="n">Venders Copenhagen</span><span class="a">Nørre Voldgade 11, apartment-style, also at Nørreport</span></a>
-    <a class="stay-chip" href="https://www.google.com/maps/search/?api=1&query=Henrik%27s%20Hotel%2C%20Studiestr%C3%A6de%2057%2C%20Copenhagen" target="_blank" rel="noopener"><span class="n">Henrik's Hotel</span><span class="a">Studiestræde 57, central and recently refurbished</span></a>
-    <a class="stay-chip" href="https://www.google.com/maps/search/?api=1&query=Hotel%20Frihavnen%2C%20%C3%85rhusgade%20124B%2C%20Copenhagen" target="_blank" rel="noopener"><span class="n">Hotel Frihavnen</span><span class="a">Århusgade 124B, Nordhavn, quieter and near the metro</span></a>
+    <a class="stay-chip hover-lift" href="https://www.google.com/maps/search/?api=1&query=Scandic%20N%C3%B8rreport%2C%20Frederiksborggade%2018" target="_blank" rel="noopener"><span class="n">Scandic Nørreport</span><span class="a">Frederiksborggade 18, opposite Nørreport station</span></a>
+    <a class="stay-chip hover-lift" href="https://www.google.com/maps/search/?api=1&query=Venders%20Copenhagen%2C%20N%C3%B8rre%20Voldgade%2011" target="_blank" rel="noopener"><span class="n">Venders Copenhagen</span><span class="a">Nørre Voldgade 11, apartment-style, also at Nørreport</span></a>
+    <a class="stay-chip hover-lift" href="https://www.google.com/maps/search/?api=1&query=Henrik%27s%20Hotel%2C%20Studiestr%C3%A6de%2057%2C%20Copenhagen" target="_blank" rel="noopener"><span class="n">Henrik's Hotel</span><span class="a">Studiestræde 57, central and recently refurbished</span></a>
+    <a class="stay-chip hover-lift" href="https://www.google.com/maps/search/?api=1&query=Hotel%20Frihavnen%2C%20%C3%85rhusgade%20124B%2C%20Copenhagen" target="_blank" rel="noopener"><span class="n">Hotel Frihavnen</span><span class="a">Århusgade 124B, Nordhavn, quieter and near the metro</span></a>
   </div>
 </div>
 
 <div class="stay-tier t3">
   <div class="stay-tier-head"><span class="stay-price">€€€</span><span class="stay-tier-name">Higher end</span></div>
   <div class="stay-chips">
-    <a class="stay-chip" href="https://www.google.com/maps/search/?api=1&query=25hours%20Hotel%20Indre%20By%2C%20Pilestr%C3%A6de%2065" target="_blank" rel="noopener"><span class="n">25hours Hotel Indre By</span><span class="a">Pilestræde 65</span></a>
-    <a class="stay-chip" href="https://www.google.com/maps/search/?api=1&query=1%20Hotel%20Copenhagen%2C%20Krystalgade%2022" target="_blank" rel="noopener"><span class="n">1 Hotel Copenhagen</span><span class="a">Krystalgade 22</span></a>
+    <a class="stay-chip hover-lift" href="https://www.google.com/maps/search/?api=1&query=25hours%20Hotel%20Indre%20By%2C%20Pilestr%C3%A6de%2065" target="_blank" rel="noopener"><span class="n">25hours Hotel Indre By</span><span class="a">Pilestræde 65</span></a>
+    <a class="stay-chip hover-lift" href="https://www.google.com/maps/search/?api=1&query=1%20Hotel%20Copenhagen%2C%20Krystalgade%2022" target="_blank" rel="noopener"><span class="n">1 Hotel Copenhagen</span><span class="a">Krystalgade 22</span></a>
   </div>
 </div>
 
