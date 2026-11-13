@@ -5,7 +5,7 @@
       "pagefind": "/pagefind/pagefind.js"
     }
   }
-</script><script type=module src=/main.js></script><script data-goatcounter=https://scverse.goatcounter.com/count async src=//gc.zgo.at/count.js></script></head><body><header><div class=container data-pagefind-ignore><nav class="navbar lg:navbar-expand"><a class=navbar-brand href=/><div id=scverse-logo></div><span class=visually-hidden>scverse</span>
+</script><script type=module src=/main.js></script><script data-goatcounter=https://scverse.goatcounter.com/count async src=//gc.zgo.at/count.js></script></head><body><header><div class=container data-pagefind-ignore><nav class="navbar lg:navbar-expand"><a class=navbar-brand href=/><div class=scverse-logo></div><span class=visually-hidden>scverse</span>
 </a><button class="btn-icon navbar-toggler" type=button data-bs-toggle=drawer data-bs-target=#navbar-drawer aria-controls=navbar-drawer aria-expanded=false aria-label="Toggle navigation">
 <span class=navbar-toggler-icon aria-hidden=true></span>
 </button>
@@ -27,75 +27,75 @@ active" href=/about id=about-menu role=button data-bs-toggle=menu aria-expanded=
 </a><a href=https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA target=_blank rel=noopener aria-label="scverse on YouTube"><i class="bi bi-youtube" aria-hidden=true></i></a></li><li class=nav-item><button type=button command=show-modal commandfor=search-dialog class="nav-link nav-search-button" aria-label="Search this site">
 <i class="bi bi-search" aria-hidden=true></i>
 <span class=nav-search-label>Search</span>
-<kbd class=nav-search-kbd aria-hidden=true>/</kbd></button></li><li class=nav-item><a id=join-button class="nav-link nav-button-hl" href=/join>Join</a></li></ul></div></dialog></nav></div><dialog aria-modal=true aria-labelledby=search-label id=search-dialog><label class=visually-hidden for=search-input id=search-label>Search scverse.org</label><div class=search-field><i class="bi bi-search" aria-hidden=true></i>
-<input type=search id=search-input autofocus placeholder="Search packages, tutorials, events, blog posts…" autocomplete=off spellcheck=false aria-describedby=search-status aria-controls=search-results>
+<kbd class=nav-search-kbd aria-hidden=true>/</kbd></button></li><li class=nav-item><a class="nav-link nav-button-hl join-button" href=/join>Join</a></li></ul></div></dialog></nav></div><dialog aria-modal=true aria-labelledby=search-label id=search-dialog class=search-dialog><label class=visually-hidden for=search-input id=search-label>Search scverse.org</label><div class=search-field><i class="bi bi-search" aria-hidden=true></i>
+<input type=search id=search-input class=search-input autofocus placeholder="Search packages, tutorials, events, blog posts…" autocomplete=off spellcheck=false aria-describedby=search-status aria-controls=search-results>
 <button type=button class=search-close commandfor=search-dialog command=close-modal aria-label="Close search">
-Esc</button></div><p id=search-status role=status aria-live=polite></p><ul id=search-results></ul></dialog></header><div id=wrapper><div id=content><div id=page-content><div id=about-landing><div class=about-top><section class=about-hero><h1>About scverse</h1><p class=about-hero-lead>scverse® is a consortium of foundational packages for the analysis of omics data in the life sciences.</p><p class=about-hero-sub>Scanpy, AnnData and the tools around them each started out in a single lab. The consortium was founded to keep them alive well past that, and to extend the same interoperable tooling to new modalities: shared maintenance in one organisation, around a common set of data structures.</p><div class=about-hero-links><a class="about-hero-link about-hero-link--primary" href=/about/mission/>Read the mission statement</a>
-<a class=about-hero-link href=/packages/>Browse the packages</a>
-<a class=about-hero-link href=/people/>Meet the team</a></div></section><section class=about-figures aria-label="scverse in numbers"><a class=about-figure href=/stats data-hue=0><span class=about-figure-value>71M</span>
+Esc</button></div><p id=search-status class=search-status role=status aria-live=polite></p><ul id=search-results class=search-results></ul></dialog></header><main class=site-main><div class=page-content><div class=about-landing><div class=about-top><section class=about-hero><h1>About scverse</h1><p class=about-hero-lead>scverse® is a consortium of foundational packages for the analysis of omics data in the life sciences.</p><p class=about-hero-sub>Scanpy, AnnData and the tools around them each started out in a single lab. The consortium was founded to keep them alive well past that, and to extend the same interoperable tooling to new modalities: shared maintenance in one organisation, around a common set of data structures.</p><div class=about-hero-links><a class="about-hero-link about-hero-link--primary hover-lift" href=/about/mission/>Read the mission statement</a>
+<a class="about-hero-link hover-lift" href=/packages/>Browse the packages</a>
+<a class="about-hero-link hover-lift" href=/people/>Meet the team</a></div></section><section class=about-figures aria-label="scverse in numbers"><a class=about-figure href=/stats data-hue=0><span class=about-figure-value>71M</span>
 <span class=about-figure-label>downloads of the core packages</span>
 </a><a class=about-figure href=/packages data-hue=3><span class=about-figure-value>137</span>
 <span class=about-figure-label>packages in the registry</span>
 </a><a class=about-figure href=/stats#contributors data-hue=6><span class=about-figure-value>424</span>
 <span class=about-figure-label>people have contributed code</span>
 </a><a class=about-figure href=/stats data-hue=1><span class=about-figure-value>12,280</span>
-<span class=about-figure-label>citations of scverse papers</span></a></section></div><section class=about-stack><h2>How the pieces fit together</h2><p class=about-section-intro>Every package agrees on the same data structures, so an AnnData object written by scanpy can be passed straight to scvi-tools, squidpy or anything in the ecosystem.</p><div class="stack-layer stack-layer--data"><div class=stack-layer-head><span class=stack-layer-tag>Layer 1</span><h3>Data structures</h3><p>Annotated data matrices with documented on-disk formats. Every package below reads and writes them, and that is what makes the ecosystem interoperable.</p><a class=stack-layer-more href=/packages/#datastructures>Read the format docs</a></div><div class=stack-cards><a class=stack-card href=/packages/#anndata-tile><img src=https://scverse.org/ecosystem-packages/anndata/logo.svg alt loading=lazy width=40 height=40>
+<span class=about-figure-label>citations of scverse papers</span></a></section></div><section class=about-stack><h2>How the pieces fit together</h2><p class=about-section-intro>Every package agrees on the same data structures, so an AnnData object written by scanpy can be passed straight to scvi-tools, squidpy or anything in the ecosystem.</p><div class="stack-layer stack-layer--data"><div class=stack-layer-head><span class=stack-layer-tag>Layer 1</span><h3>Data structures</h3><p>Annotated data matrices with documented on-disk formats. Every package below reads and writes them, and that is what makes the ecosystem interoperable.</p><a class=stack-layer-more href=/packages/#datastructures>Read the format docs</a></div><div class=stack-cards><a class="stack-card hover-lift" href=/packages/#anndata-tile><img src=https://scverse.org/ecosystem-packages/anndata/logo.svg alt loading=lazy width=40 height=40>
 <span class=stack-card-name>AnnData</span>
 <span class=stack-card-text>anndata is a Python package for handling annotated data matrices in memory and on disk,
 positioned between pandas and xarray.
-</span></a><a class=stack-card href=/packages/#mudata-tile><img src=https://scverse.org/ecosystem-packages/mudata/logo.svg alt loading=lazy width=40 height=40>
+</span></a><a class="stack-card hover-lift" href=/packages/#mudata-tile><img src=https://scverse.org/ecosystem-packages/mudata/logo.svg alt loading=lazy width=40 height=40>
 <span class=stack-card-name>MuData</span>
 <span class=stack-card-text>MuData is a format for annotated multimodal datasets where each modality is represented
 by an AnnData object.
-</span></a><a class=stack-card href=/packages/#spatialdata-tile><img src=https://scverse.org/ecosystem-packages/spatialdata/logo.svg alt loading=lazy width=40 height=40>
+</span></a><a class="stack-card hover-lift" href=/packages/#spatialdata-tile><img src=https://scverse.org/ecosystem-packages/spatialdata/logo.svg alt loading=lazy width=40 height=40>
 <span class=stack-card-name>SpatialData</span>
 <span class=stack-card-text>SpatialData is a data framework that comprises a FAIR storage format and a collection of
 python libraries for performant access, alignment, and processing of uni- and multi-modal
 spatial omics datasets.</span></a></div></div><div class=stack-joint aria-hidden=true><span class=stack-joint-line></span>
 <span class=stack-joint-word>used by</span>
-<span class=stack-joint-line></span></div><div class="stack-layer stack-layer--core"><div class=stack-layer-head><span class=stack-layer-tag>Layer 2</span><h3>Core frameworks</h3><p>Analysis toolkits under the shared maintenance of the core team, each covering a modality or an analysis task.</p><a class=stack-layer-more href=/packages/#frameworks>See what each one does</a></div><div class=stack-tiles><a class=stack-tile href=/packages/#scanpy-tile title="Scanpy is a scalable toolkit for analyzing single-cell gene expression data built jointly
+<span class=stack-joint-line></span></div><div class="stack-layer stack-layer--core"><div class=stack-layer-head><span class=stack-layer-tag>Layer 2</span><h3>Core frameworks</h3><p>Analysis toolkits under the shared maintenance of the core team, each covering a modality or an analysis task.</p><a class=stack-layer-more href=/packages/#frameworks>See what each one does</a></div><div class=stack-tiles><a class="stack-tile hover-lift" href=/packages/#scanpy-tile title="Scanpy is a scalable toolkit for analyzing single-cell gene expression data built jointly
 with anndata. It includes preprocessing, visualization, clustering, trajectory inference
 and differential expression testing. The Python-based implementation efficiently deals
 with datasets of more than one million cells.
 "><img src=https://scverse.org/ecosystem-packages/scanpy/logo.svg alt loading=lazy width=28 height=28>
 <span>Scanpy</span>
-</a><a class=stack-tile href=/packages/#muon-tile title="muon is a Python framework for multimodal omics analysis. It provides functionality
+</a><a class="stack-tile hover-lift" href=/packages/#muon-tile title="muon is a Python framework for multimodal omics analysis. It provides functionality
 for working with multimodal data, including preprocessing, integration, and visualization.
 "><img src=https://scverse.org/ecosystem-packages/muon/logo.svg alt loading=lazy width=28 height=28>
 <span>Muon</span>
-</a><a class=stack-tile href=/packages/#squidpy-tile title="Squidpy is a tool for the analysis and visualization of spatial molecular data. It builds
+</a><a class="stack-tile hover-lift" href=/packages/#squidpy-tile title="Squidpy is a tool for the analysis and visualization of spatial molecular data. It builds
 on top of scanpy and anndata, from which it inherits modularity and scalability. It provides
 analysis tools that leverages the spatial coordinates of the data, as well as tissue images
 if available.
 "><img src=https://scverse.org/ecosystem-packages/squidpy/logo.svg alt loading=lazy width=28 height=28>
 <span>Squidpy</span>
-</a><a class=stack-tile href=/packages/#scvi-tools-tile title="scvi-tools is a library for developing and deploying machine learning models based on
+</a><a class="stack-tile hover-lift" href=/packages/#scvi-tools-tile title="scvi-tools is a library for developing and deploying machine learning models based on
 PyTorch and AnnData. With an emphasis on probabilistic models, scvi-tools streamlines
 the development process via training, data management, and user interface abstractions.
 scvi-tools also contains easy-to-use implementations of more than 14 state-of-the-art
 probabilistic models in the field.
 "><img src=https://scverse.org/ecosystem-packages/scvi-tools/logo.svg alt loading=lazy width=28 height=28>
 <span>scvi-tools</span>
-</a><a class=stack-tile href=/packages/#scirpy-tile title="Scirpy is a scalable toolkit to analyse T-cell receptor or B-cell receptor repertoires
+</a><a class="stack-tile hover-lift" href=/packages/#scirpy-tile title="Scirpy is a scalable toolkit to analyse T-cell receptor or B-cell receptor repertoires
 from single-cell RNA sequencing data. It seamlessly integrates with scanpy and provides
 various modules for data import, analysis and visualization.
 "><img src=https://scverse.org/ecosystem-packages/scirpy/logo.svg alt loading=lazy width=28 height=28>
 <span>Scirpy</span>
-</a><a class=stack-tile href=/packages/#snapatac2-tile title="SnapATAC2 is a scalable and modular pipeline for analyzing single-cell ATAC-seq data,
+</a><a class="stack-tile hover-lift" href=/packages/#snapatac2-tile title="SnapATAC2 is a scalable and modular pipeline for analyzing single-cell ATAC-seq data,
 enabling efficient preprocessing, dimensionality reduction, clustering, and integration
 with single-cell RNA-seq.
 "><img src=https://scverse.org/ecosystem-packages/SnapATAC2/logo.svg alt loading=lazy width=28 height=28>
 <span>SnapATAC2</span>
-</a><a class=stack-tile href=/packages/#rapids-singlecell-tile title="rapids-singlecell is a GPU-accelerated single-cell analysis library that serves as a
+</a><a class="stack-tile hover-lift" href=/packages/#rapids-singlecell-tile title="rapids-singlecell is a GPU-accelerated single-cell analysis library that serves as a
 drop-in replacement for scanpy, squidpy, and decoupler.
 "><img src=https://scverse.org/ecosystem-packages/rapids-singlecell/logo.svg alt loading=lazy width=28 height=28>
 <span>rapids-singlecell</span>
-</a><a class=stack-tile href=/packages/#pertpy-tile title="Pertpy is a framework for analyzing large-scale single-cell perturbation experiments.
+</a><a class="stack-tile hover-lift" href=/packages/#pertpy-tile title="Pertpy is a framework for analyzing large-scale single-cell perturbation experiments.
 It harmonizes datasets, automates metadata annotation, calculates perturbation distances,
 and analyzes cellular responses to genetic modifications, drugs, and environmental changes.
 "><img src=https://scverse.org/ecosystem-packages/pertpy/logo.svg alt loading=lazy width=28 height=28>
 <span>Pertpy</span>
-</a><a class=stack-tile href=/packages/#decoupler-tile title="decoupler is a framework containing different enrichment statistical methods to extract
+</a><a class="stack-tile hover-lift" href=/packages/#decoupler-tile title="decoupler is a framework containing different enrichment statistical methods to extract
 biologically driven scores from omics data within a unified framework.
 "><img src=https://scverse.org/ecosystem-packages/decoupler/logo.svg alt loading=lazy width=28 height=28>
 <span>decoupler</span></a></div></div><div class=stack-joint aria-hidden=true><span class=stack-joint-line></span>
@@ -218,30 +218,30 @@ biologically driven scores from omics data within a unified framework.
 </a><span class=about-inline-sep aria-hidden=true>·</span>
 <a href=https://github.com/orgs/scverse/people target=_blank rel=noopener><strong>77</strong> GitHub organisation members
 </a><span class=about-inline-sep aria-hidden=true>·</span>
-<a href=/stats><strong>2,408</strong> pull requests in the last year</a></p><div class=doc-grid><a class=doc-card href=/about/mission/ data-hue=0><span class=doc-card-icon><i class="bi bi-compass" aria-hidden=true></i></span>
+<a href=/stats><strong>2,408</strong> pull requests in the last year</a></p><div class=doc-grid><a class="doc-card hover-lift" href=/about/mission/ data-hue=0><span class=doc-card-icon><i class="bi bi-compass" aria-hidden=true></i></span>
 <span class=doc-card-title>Mission statement</span>
 <span class=doc-card-text>The goals we hold ourselves to, and the vision behind the consortium.</span>
-</a><a class=doc-card href=/about/roles/ data-hue=1><span class=doc-card-icon><i class="bi bi-diagram-3" aria-hidden=true></i></span>
+</a><a class="doc-card hover-lift" href=/about/roles/ data-hue=1><span class=doc-card-icon><i class="bi bi-diagram-3" aria-hidden=true></i></span>
 <span class=doc-card-title>Roles and decisions</span>
 <span class=doc-card-text>Contributors, core team, steering council, and how decisions are reached.</span>
-</a><a class=doc-card href=/about/code_of_conduct/ data-hue=2><span class=doc-card-icon><i class="bi bi-shield-check" aria-hidden=true></i></span>
+</a><a class="doc-card hover-lift" href=/about/code_of_conduct/ data-hue=2><span class=doc-card-icon><i class="bi bi-shield-check" aria-hidden=true></i></span>
 <span class=doc-card-title>Code of conduct</span>
 <span class=doc-card-text>The NumFOCUS code of conduct we all sign up to, and how to report a violation.</span>
-</a><a class=doc-card href=/about/ai_policy/ data-hue=3><span class=doc-card-icon><i class="bi bi-robot" aria-hidden=true></i></span>
+</a><a class="doc-card hover-lift" href=/about/ai_policy/ data-hue=3><span class=doc-card-icon><i class="bi bi-robot" aria-hidden=true></i></span>
 <span class=doc-card-title>AI policy</span>
 <span class=doc-card-text>Where we stand on AI-assisted contributions, and what we ask of you before you open the pull request.</span>
-</a><a class=doc-card href=/people/ data-hue=4><span class=doc-card-icon><i class="bi bi-people" aria-hidden=true></i></span>
+</a><a class="doc-card hover-lift" href=/people/ data-hue=4><span class=doc-card-icon><i class="bi bi-people" aria-hidden=true></i></span>
 <span class=doc-card-title>People</span>
 <span class=doc-card-text>Everyone holding a role in the project today, and the packages they work on.</span>
-</a><a class=doc-card href=/stats/ data-hue=5><span class=doc-card-icon><i class="bi bi-graph-up" aria-hidden=true></i></span>
+</a><a class="doc-card hover-lift" href=/stats/ data-hue=5><span class=doc-card-icon><i class="bi bi-graph-up" aria-hidden=true></i></span>
 <span class=doc-card-title>Statistics</span>
-<span class=doc-card-text>Downloads, contributors and repository activity, collected automatically and published in full.</span></a></div></section><section class="about-panel about-take-part"><div class=take-part-body><h2>Take part</h2><p>Questions, bug reports and pull requests are all welcome, and so is turning up to ask a question. The forum and the chat are the quickest way to reach the people who maintain the packages.</p></div><div class=take-part-links><a class=take-part-link href=https://scverse.zulipchat.com/ target=_blank rel=noopener><i class=i-zulip aria-hidden=true></i>
+<span class=doc-card-text>Downloads, contributors and repository activity, collected automatically and published in full.</span></a></div></section><section class="about-panel about-take-part"><div class=take-part-body><h2>Take part</h2><p>Questions, bug reports and pull requests are all welcome, and so is turning up to ask a question. The forum and the chat are the quickest way to reach the people who maintain the packages.</p></div><div class=take-part-links><a class="take-part-link hover-lift" href=https://scverse.zulipchat.com/ target=_blank rel=noopener><i class=i-zulip aria-hidden=true></i>
 <span>Zulip chat</span>
-</a><a class=take-part-link href=https://discourse.scverse.org/ target=_blank rel=noopener><i class=i-discourse aria-hidden=true></i>
+</a><a class="take-part-link hover-lift" href=https://discourse.scverse.org/ target=_blank rel=noopener><i class=i-discourse aria-hidden=true></i>
 <span>Discourse forum</span>
-</a><a class=take-part-link href=https://github.com/scverse target=_blank rel=noopener><i class="bi bi-github" aria-hidden=true></i>
+</a><a class="take-part-link hover-lift" href=https://github.com/scverse target=_blank rel=noopener><i class="bi bi-github" aria-hidden=true></i>
 <span>GitHub</span>
-</a><a class=take-part-link href=/events/><i class="bi bi-calendar-event" aria-hidden=true></i>
+</a><a class="take-part-link hover-lift" href=/events/><i class="bi bi-calendar-event" aria-hidden=true></i>
 <span>Events and workshops</span>
-</a><a class=take-part-link href=/join/><i class="bi bi-envelope" aria-hidden=true></i>
-<span>Contact us</span></a></div></section><section class="about-panel about-sponsor"><div class=sponsor-mark><a href=https://numfocus.org/project/scverse target=_blank rel=noopener><img src=/img/numfocus-logo.png alt="NumFOCUS logo" loading=lazy width=480 height=160></a></div><div class=sponsor-body><h2>Fiscal sponsorship</h2><p>scverse is a fiscally sponsored project of <a href=https://numfocus.org/project/scverse>NumFOCUS</a>, a nonprofit dedicated to supporting the open-source scientific computing community. If you like scverse and want to support our mission, please consider making a donation to support our efforts.</p><a class=sponsor-button href=https://numfocus.org/donate-to-scverse target=_blank rel=noopener>Donate to scverse</a><p class=sponsor-fineprint>NumFOCUS is a 501(c)(3) non-profit charity in the United States; as such, donations to NumFOCUS are tax-deductible as allowed by law. As with any donation, you should consult with your personal tax adviser or the IRS about your particular tax situation.</p></div></section></div></div></div></div><footer data-pagefind-ignore><div id=footer-content class=container><div class=row><div class="col-12 md:col-6 lg:col-3"><h2>Pages</h2><ul class=list-unstyled><li><a href=/packages>Packages</a></li><li><a href=/learn>Learn</a></li><li><a href=/people>People</a></li><li><a href=/blog>Blog</a></li><li><a href=/events>Events</a></li><li><a href=/community-calendar>Community calendar</a></li><li><a href=/about>About</a></li><li><a href=/partners>Partners</a></li><li><a href=/design>Media kit</a></li></ul></div><div class="col-12 md:col-6 lg:col-3"><h2>Governance</h2><ul class=list-unstyled><li><a href=/about/mission/>Mission statement</a></li><li><a href=/about/roles>Roles</a></li><li><a href=/about/code_of_conduct>Code of conduct</a></li><li><a href=/about/ai_policy>AI policy</a></li></ul></div><div class="col-12 md:col-6 lg:col-3"><h2>Conference</h2><ul class=list-unstyled><li><a href=/conference2027>scverse conference 2027</a></li><li><a href=/conference2026>scverse conference 2026</a></li></ul></div><div class="col-12 md:col-6 lg:col-3"><h2>Join scverse</h2><ul class=list-unstyled><li><a href=https://github.com/scverse target=_blank>GitHub</a></li><li><a href=https://discourse.scverse.org/ target=_blank>Discourse</a></li><li><a href=https://scverse.zulipchat.com/ target=_blank>Zulip</a></li><li><a href=https://bsky.app/profile/scverse.bsky.social target=_blank>Bluesky</a></li><li><a href=https://www.linkedin.com/company/scverse target=_blank>LinkedIn</a></li><li><a href=https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA target=_blank>YouTube</a></li><li><a href=/blog/index.xml>Blog RSS feed</a></li><li><a href=https://numfocus.org/donate-to-scverse target=_blank>Donate</a></li></ul></div></div><div class=signature><p>scverse® core team, 2026</p></div></div></footer></body></html>
+</a><a class="take-part-link hover-lift" href=/join/><i class="bi bi-envelope" aria-hidden=true></i>
+<span>Contact us</span></a></div></section><section class="about-panel about-sponsor"><div class=sponsor-mark><a href=https://numfocus.org/project/scverse target=_blank rel=noopener><img src=/img/numfocus-logo.png alt="NumFOCUS logo" loading=lazy width=480 height=160></a></div><div class=sponsor-body><h2>Fiscal sponsorship</h2><p>scverse is a fiscally sponsored project of <a href=https://numfocus.org/project/scverse>NumFOCUS</a>, a nonprofit dedicated to supporting the open-source scientific computing community. If you like scverse and want to support our mission, please consider making a donation to support our efforts.</p><a class=sponsor-button href=https://numfocus.org/donate-to-scverse target=_blank rel=noopener>Donate to scverse</a><p class=sponsor-fineprint>NumFOCUS is a 501(c)(3) non-profit charity in the United States; as such, donations to NumFOCUS are tax-deductible as allowed by law. As with any donation, you should consult with your personal tax adviser or the IRS about your particular tax situation.</p></div></section></div></div></main><footer data-pagefind-ignore><div class="footer-content container"><div class=row><div class="col-12 md:col-6 lg:col-3"><h2>Pages</h2><ul class=list-unstyled><li><a href=/packages>Packages</a></li><li><a href=/learn>Learn</a></li><li><a href=/people>People</a></li><li><a href=/blog>Blog</a></li><li><a href=/events>Events</a></li><li><a href=/community-calendar>Community calendar</a></li><li><a href=/about>About</a></li><li><a href=/partners>Partners</a></li><li><a href=/design>Media kit</a></li></ul></div><div class="col-12 md:col-6 lg:col-3"><h2>Governance</h2><ul class=list-unstyled><li><a href=/about/mission/>Mission statement</a></li><li><a href=/about/roles>Roles</a></li><li><a href=/about/code_of_conduct>Code of conduct</a></li><li><a href=/about/ai_policy>AI policy</a></li></ul></div><div class="col-12 md:col-6 lg:col-3"><h2>Conference</h2><ul class=list-unstyled><li><a href=/conference2027>scverse conference 2027</a></li><li><a href=/conference2026>scverse conference 2026</a></li></ul></div><div class="col-12 md:col-6 lg:col-3"><h2>Join scverse</h2><ul class=list-unstyled><li><a href=https://github.com/scverse target=_blank>GitHub</a></li><li><a href=https://discourse.scverse.org/ target=_blank>Discourse</a></li><li><a href=https://scverse.zulipchat.com/ target=_blank>Zulip</a></li><li><a href=https://bsky.app/profile/scverse.bsky.social target=_blank>Bluesky</a></li><li><a href=https://www.linkedin.com/company/scverse target=_blank>LinkedIn</a></li><li><a href=https://www.youtube.com/channel/UCpsvsIAW3R5OdftJKKuLNMA target=_blank>YouTube</a></li><li><a href=/blog/index.xml>Blog RSS feed</a></li><li><a href=https://numfocus.org/donate-to-scverse target=_blank>Donate</a></li></ul></div></div><div class=signature><p>scverse® core team, 2026</p></div></div></footer></body></html>
