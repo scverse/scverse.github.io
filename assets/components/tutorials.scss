@@ -1,0 +1,100 @@
+// Specific to /tutorials
+
+#tutorials-content {
+    #ecosystem-tutorials {
+        input {
+            height: 3.2rem;
+            outline: none;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+
+            &:focus {
+                border-color: var(--bs-border-emphasized);
+            }
+        }
+    }
+
+    .tutorials-list {
+        display: grid;
+        flex-wrap: wrap;
+        margin-bottom: 5rem;
+
+        grid-auto-flow: row;
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+        gap: 1rem;
+        @media (max-width: 50rem) {
+            grid-template-columns: 1fr;
+        }
+
+        .tutorial-item {
+            $cardborder: 1rem;
+            $cardpad: 1rem;
+            border-radius: 1rem;
+            background-color: var(--bs-bg-1);
+
+            transition: all 200ms ease-in-out;
+
+            justify-content: flex-start;
+
+            a {
+                color: var(--bs-fg-2);
+                text-decoration: none;
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+            }
+
+            img {
+                width: auto;
+                max-width: 60%;
+                align-self: center;
+
+                height: 5rem;
+                object-fit: contain;
+                margin: $cardpad $cardborder 0.2rem $cardborder;
+            }
+
+            &:hover,
+            &:active {
+                background-color: var(--bs-bg-2);
+                // box-shadow: 0 0.2rem 1rem 0.05rem color-mix(in oklch, var(--bs-black) 10%, transparent);
+                transform: scale(1.02);
+                h4 {
+                    color: var(--bs-fg-body);
+                }
+                p {
+                    color: var(--bs-fg-body);
+                }
+            }
+
+            .card-body {
+                flex: 1;
+                overflow: hidden;
+                padding: 0.5rem $cardpad $cardpad;
+
+                h4 {
+                    font-size: 1rem;
+                    font-weight: 900;
+                    margin-top: 0;
+                    margin-bottom: 0.35rem;
+                    transition: all 200ms ease-in-out;
+                }
+
+                p {
+                    overflow: hidden;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 4;
+                    -webkit-box-orient: vertical;
+
+                    font-size: 0.8rem;
+                    line-height: 1.4;
+                    transition: all 200ms ease-in-out;
+                }
+            }
+
+            .card-body > p {
+                font-size: 0.8rem;
+            }
+        }
+    }
+}

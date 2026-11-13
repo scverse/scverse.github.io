@@ -1,6 +1,6 @@
 // ── scverse conference 2026 ─────────────────────────────────────────────
 // Scoped under .conference-page so it never leaks into the rest of the site.
-@use "hue-fg" as *;
+@use "../lib/hue-fg" as *;
 
 .conference-page {
     --conf-accent: var(--spatialdata-blue);

@@ -1,2 +1,8 @@
+# Biome formats these (see biome.jsonc)
+/assets/**
+/*.json
+/*.jsonc
+/.vscode/*.json
+
 /static/**
 *.md

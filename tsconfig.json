@@ -5,7 +5,7 @@
         "module": "esnext",
         "moduleResolution": "bundler",
         "lib": ["esnext", "dom", "dom.iterable"],
-        "noEmit": true
+        "noEmit": true,
     },
-    "include": ["assets/**/*.ts"]
+    "include": ["assets/**/*.ts"],
 }

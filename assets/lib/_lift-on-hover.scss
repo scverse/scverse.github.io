@@ -1,0 +1,8 @@
+// Cards and pill links rise a little on hover
+@mixin lift-on-hover {
+    &:hover {
+        border-color: var(--bs-border-emphasized);
+        box-shadow: var(--bs-box-shadow);
+        transform: translateY(-2px);
+    }
+}

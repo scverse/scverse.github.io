@@ -1,0 +1,235 @@
+@use "../lib/lift-on-hover" as *;
+@use "filter";
+
+// Specific to /packages#ecosystem — the community package registry
+
+#ecosystem-packages {
+    margin: 2rem 0 4rem;
+
+    .eco-sprite {
+        display: none;
+    }
+
+    .filter-count {
+        color: var(--bs-fg-3);
+    }
+
+    .filter-chips {
+        margin-bottom: 2rem;
+
+        &:has(+ .filter-chips) {
+            margin-bottom: 0.4rem;
+        }
+    }
+
+    .filter-chip .filter-chip-count {
+        font-size: 0.75rem;
+        opacity: 0.55;
+    }
+
+    .eco-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+        gap: 1.25rem;
+    }
+
+    .eco-card {
+        // All 120 registry entries are in the DOM so the filter can work offline.
+        content-visibility: auto;
+        contain-intrinsic-size: auto 14rem;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 1.35rem;
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
+        border-radius: var(--card-radius);
+        transition: all 200ms ease-in-out;
+
+        @include lift-on-hover;
+        &[hidden] {
+            display: none;
+        }
+    }
+
+    // Packages maintained by the core team sort to the front and carry a wash of colour
+    .eco-card--core {
+        background-color: color-mix(in oklch, var(--scvi-tools-yellow) 8%, transparent);
+    }
+
+    .eco-card-head {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+    }
+
+    .eco-logo {
+        display: grid;
+        place-items: center;
+        flex: 0 0 auto;
+        width: 2.75rem;
+        height: 2.75rem;
+        overflow: hidden;
+        border-radius: 0.6rem;
+        background-color: var(--bs-bg-1);
+
+        img {
+            width: 100%;
+            height: 100%;
+            padding: 0.3rem;
+            object-fit: contain;
+        }
+    }
+
+    .eco-logo--mono {
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: var(--bs-fg-1);
+
+        &[data-hue] {
+            background-color: color-mix(in oklch, var(--hue) 18%, transparent);
+        }
+    }
+
+    .eco-card-heading {
+        min-width: 0;
+    }
+
+    // Element selector included to beat the generic `#page-content .post h3` margins
+    .eco-card h3.eco-card-name {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 800;
+        line-height: 1.3;
+        overflow-wrap: anywhere;
+
+        a {
+            color: var(--bs-fg-body);
+            text-decoration: none;
+
+            // Make the whole card clickable without nesting interactive elements
+            &::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border-radius: var(--card-radius);
+            }
+        }
+    }
+
+    .eco-card-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.4rem;
+        margin: 0.25rem 0 0;
+        font-size: 0.75rem;
+        color: var(--bs-fg-3);
+
+        .eco-badge {
+            padding: 0.05rem 0.35rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--bs-inverse-contrast);
+            background-color: var(--bs-inverse-bg);
+            border-radius: 0.25rem;
+        }
+        .eco-badge--lang {
+            color: var(--bs-fg-1);
+            background-color: var(--bs-bg-4);
+        }
+        .eco-version {
+            font-family: "JetBrains Mono", Menlo, monospace;
+        }
+        .eco-version + .eco-license::before {
+            content: "·";
+            margin-right: 0.4rem;
+        }
+    }
+
+    .eco-card-desc {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin: 0;
+        font-size: 0.9rem;
+        line-height: 1.55;
+        color: var(--bs-fg-2);
+    }
+
+    .eco-card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .eco-tag {
+        position: relative;
+        z-index: 1;
+        padding: 0.2rem 0.5rem;
+        font-size: 0.72rem;
+        color: var(--bs-fg-3);
+        background-color: var(--bs-bg-1);
+        border: 0;
+        border-radius: 0.35rem;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            color: var(--bs-fg-body);
+            background-color: var(--bs-bg-2);
+        }
+        &.is-active {
+            color: var(--bs-inverse-contrast);
+            background-color: var(--bs-inverse-bg);
+        }
+    }
+
+    .eco-card-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: auto;
+        padding-top: 0.3rem;
+
+        a {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.3rem 0.6rem;
+            font-size: 0.78rem;
+            color: var(--bs-fg-2);
+            text-decoration: none;
+            background-color: var(--bs-bg-1);
+            border-radius: 0.4rem;
+            transition: all 200ms ease-in-out;
+
+            svg {
+                width: 0.85rem;
+                height: 0.85rem;
+            }
+            &:hover {
+                color: var(--bs-inverse-contrast);
+                background-color: var(--bs-inverse-bg);
+            }
+        }
+    }
+
+    .filter-empty {
+        color: var(--bs-fg-3);
+    }
+
+    @media (max-width: 50rem) {
+        .eco-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+}

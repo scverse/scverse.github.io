@@ -18,12 +18,20 @@
   {{ end }}
   {{ $accents = $accents | append (printf `"%s": (%s)` $pkg (delimit $pairs ", ")) }}
 {{ end }}
-{{ $styles := resources.Get "main.scss" | toCSS (dict "transpiler" "dartsass" "vars" (dict "accents" (css.Unquoted (printf "(%s)" (delimit $accents ", "))))) | minify }}
+{{ $sassOpts := dict "transpiler" "dartsass" "vars" (dict "accents" (css.Unquoted (printf "(%s)" (delimit $accents ", ")))) }}
+{{ $styles := resources.Get "main.scss" | toCSS $sassOpts | minify }}
+{{/* Section-only styles from assets/sections/<section>.scss; home.scss for the landing page */}}
+{{ $sectionStyles := "" }}
+{{ with cond .IsHome "home" .Section }}
+  {{ with resources.Get (printf "sections/%s.scss" .) }}{{ $sectionStyles = . | toCSS $sassOpts | minify }}{{ end }}
+{{ end }}
 {{ $script := resources.Get "main.ts" | js.Build (dict "format" "esm" "minify" true "sourceMap" "linked" "externals" (slice "bootstrap" "pagefind")) }}
 <link rel="preload" as="font" type="font/woff2" href="/fonts/Inter/Inter-VariableFont_slnt,wght.woff2" crossorigin />
 <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/bootstrap/icons/bootstrap-icons.min.css" />
 <link rel="stylesheet" type="text/css" href="{{ $styles.RelPermalink }}" />
+{{ with $sectionStyles }}<link rel="stylesheet" type="text/css" href="{{ .RelPermalink }}" />{{ end }}
+
 
 <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png" />

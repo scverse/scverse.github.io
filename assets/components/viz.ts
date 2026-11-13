@@ -59,7 +59,7 @@ export default function init(root: HTMLElement) {
     const height = visualization.clientHeight
 
     // One wrapper per cluster: hover, dimming and the click pulse are all .cluster rules in
-    // main.scss, so the only thing left to do here is place the dots.
+    // viz.scss, so the only thing left to do here is place the dots.
     visualization.replaceChildren(
       ...colorClusters.map((cluster) => {
         const centerX = Math.random() * 0.6 * width + 0.2 * width
@@ -105,7 +105,7 @@ export default function init(root: HTMLElement) {
     )
   }
 
-  // Clicking a dot focuses its cluster, which pulses it via :focus in main.scss. Dropping the focus
+  // Clicking a dot focuses its cluster, which pulses it via :focus in viz.scss. Dropping the focus
   // again once the pulse has run is what makes a second click on the same cluster pulse it again.
   const cluster = (event: Event) => (event.target as HTMLElement).closest<HTMLElement>(".cluster")
   visualization.addEventListener("click", (event) => cluster(event)?.focus())
