@@ -221,30 +221,30 @@
     <text x="771" y="458" text-anchor="middle" font-size="27" font-weight="600" fill="#dbe6ff">query layer</text>
   </g>
 
-<rect id="dbs-bg" x="989" y="144" width="543" height="486" rx="22" fill="#ffffff" stroke="#c4d4f1" stroke-width="2"></rect>
-<g transform="translate(1030,178)" fill="#3b6ff5">
-    <ellipse cx="11" cy="5" rx="11" ry="5"></ellipse>
-    <path d="M0 9 a11 5 0 0 0 22 0 v6 a11 5 0 0 1 -22 0 Z"></path>
-    <path d="M0 20 a11 5 0 0 0 22 0 v6 a11 5 0 0 1 -22 0 Z"></path>
-</g>
-<text id="dbs-title" x="1068" y="203" font-size="28" font-weight="800" letter-spacing="1.4" fill="#3a4a6b">20+ REFERENCE DATABASES</text>
+  <rect id="dbs-bg" x="989" y="144" width="543" height="486" rx="22" fill="#ffffff" stroke="#c4d4f1" stroke-width="2"></rect>
+  <g transform="translate(1030,178)" fill="#3b6ff5">
+      <ellipse cx="11" cy="5" rx="11" ry="5"></ellipse>
+      <path d="M0 9 a11 5 0 0 0 22 0 v6 a11 5 0 0 1 -22 0 Z"></path>
+      <path d="M0 20 a11 5 0 0 0 22 0 v6 a11 5 0 0 1 -22 0 Z"></path>
+  </g>
+  <text id="dbs-title" x="1068" y="203" font-size="28" font-weight="800" letter-spacing="1.4" fill="#3a4a6b">20+ REFERENCE DATABASES</text>
 
-<text x="1026" y="255" font-size="22" font-weight="700" letter-spacing="1.6" fill="#96a2bd">GENES &amp; ANNOTATION</text>
-<g class="pill"><rect x="1026" y="271" width="134" height="45" rx="11" fill="#ffffff" stroke="#dce5f4" stroke-width="2"></rect><text x="1093" y="301" text-anchor="middle" font-size="27" font-weight="700" fill="#1e2a47">Ensembl</text></g>
-<g class="pill"><rect x="1174" y="271" width="94" height="45" rx="11" fill="#ffffff" stroke="#dce5f4" stroke-width="2"></rect><text x="1221" y="301" text-anchor="middle" font-size="27" font-weight="700" fill="#1e2a47">NCBI</text></g>
-<g class="pill"><rect x="1282" y="271" width="104" height="45" rx="11" fill="#ffffff" stroke="#dce5f4" stroke-width="2"></rect><text x="1334" y="301" text-anchor="middle" font-size="27" font-weight="700" fill="#1e2a47">UCSC</text></g>
+  <text x="1026" y="255" font-size="22" font-weight="700" letter-spacing="1.6" fill="#96a2bd">GENES &amp; ANNOTATION</text>
+  <g class="pill"><rect x="1026" y="271" width="134" height="45" rx="11" fill="#ffffff" stroke="#dce5f4" stroke-width="2"></rect><text x="1093" y="301" text-anchor="middle" font-size="27" font-weight="700" fill="#1e2a47">Ensembl</text></g>
+  <g class="pill"><rect x="1174" y="271" width="94" height="45" rx="11" fill="#ffffff" stroke="#dce5f4" stroke-width="2"></rect><text x="1221" y="301" text-anchor="middle" font-size="27" font-weight="700" fill="#1e2a47">NCBI</text></g>
+  <g class="pill"><rect x="1282" y="271" width="104" height="45" rx="11" fill="#ffffff" stroke="#dce5f4" stroke-width="2"></rect><text x="1334" y="301" text-anchor="middle" font-size="27" font-weight="700" fill="#1e2a47">UCSC</text></g>
 
-<text x="1026" y="362" font-size="22" font-weight="700" letter-spacing="1.6" fill="#96a2bd">PROTEINS &amp; STRUCTURE</text>
-<g class="pill"><rect x="1026" y="379" width="128" height="45" rx="11" fill="#ffffff" stroke="#dce5f4" stroke-width="2"></rect><text x="1090" y="409" text-anchor="middle" font-size="27" font-weight="700" fill="#1e2a47">UniProt</text></g>
-<g class="pill"><rect x="1168" y="379" width="148" height="45" rx="11" fill="#ffffff" stroke="#dce5f4" stroke-width="2"></rect><text x="1242" y="409" text-anchor="middle" font-size="27" font-weight="700" fill="#1e2a47">AlphaFold</text></g>
+  <text x="1026" y="362" font-size="22" font-weight="700" letter-spacing="1.6" fill="#96a2bd">PROTEINS &amp; STRUCTURE</text>
+  <g class="pill"><rect x="1026" y="379" width="128" height="45" rx="11" fill="#ffffff" stroke="#dce5f4" stroke-width="2"></rect><text x="1090" y="409" text-anchor="middle" font-size="27" font-weight="700" fill="#1e2a47">UniProt</text></g>
+  <g class="pill"><rect x="1168" y="379" width="148" height="45" rx="11" fill="#ffffff" stroke="#dce5f4" stroke-width="2"></rect><text x="1242" y="409" text-anchor="middle" font-size="27" font-weight="700" fill="#1e2a47">AlphaFold</text></g>
 
-<text x="1026" y="469" font-size="22" font-weight="700" letter-spacing="1.6" fill="#96a2bd">EXPRESSION &amp; FUNCTION</text>
-<g class="pill"><rect x="1026" y="485" width="156" height="45" rx="11" fill="#ffffff" stroke="#dce5f4" stroke-width="2"></rect><text x="1104" y="515" text-anchor="middle" font-size="27" font-weight="700" fill="#1e2a47">CellxGene</text></g>
-<g class="pill"><rect x="1196" y="485" width="132" height="45" rx="11" fill="#ffffff" stroke="#dce5f4" stroke-width="2"></rect><text x="1262" y="515" text-anchor="middle" font-size="27" font-weight="700" fill="#1e2a47">ARCHS4</text></g>
-<g class="pill"><rect x="1342" y="485" width="118" height="45" rx="11" fill="#ffffff" stroke="#dce5f4" stroke-width="2"></rect><text x="1401" y="515" text-anchor="middle" font-size="27" font-weight="700" fill="#1e2a47">Enrichr</text></g>
-<g class="pill"><rect x="1026" y="545" width="188" height="45" rx="11" fill="#ffffff" stroke="#dce5f4" stroke-width="2"></rect><text x="1120" y="575" text-anchor="middle" font-size="27" font-weight="700" fill="#1e2a47">Open Targets</text></g>
-<g class="pill"><rect x="1228" y="545" width="132" height="45" rx="11" fill="#ffffff" stroke="#dce5f4" stroke-width="2"></rect><text x="1294" y="575" text-anchor="middle" font-size="27" font-weight="700" fill="#1e2a47">COSMIC</text></g>
-<g id="more"><rect x="1374" y="545" width="120" height="45" rx="11" fill="#eef4ff" stroke="#9db4e8" stroke-width="2" stroke-dasharray="6 5"></rect><text x="1434" y="575" text-anchor="middle" font-size="25" font-weight="700" fill="#6f8bcd">&amp; more</text></g>
+  <text x="1026" y="469" font-size="22" font-weight="700" letter-spacing="1.6" fill="#96a2bd">EXPRESSION &amp; FUNCTION</text>
+  <g class="pill"><rect x="1026" y="485" width="156" height="45" rx="11" fill="#ffffff" stroke="#dce5f4" stroke-width="2"></rect><text x="1104" y="515" text-anchor="middle" font-size="27" font-weight="700" fill="#1e2a47">CellxGene</text></g>
+  <g class="pill"><rect x="1196" y="485" width="132" height="45" rx="11" fill="#ffffff" stroke="#dce5f4" stroke-width="2"></rect><text x="1262" y="515" text-anchor="middle" font-size="27" font-weight="700" fill="#1e2a47">ARCHS4</text></g>
+  <g class="pill"><rect x="1342" y="485" width="118" height="45" rx="11" fill="#ffffff" stroke="#dce5f4" stroke-width="2"></rect><text x="1401" y="515" text-anchor="middle" font-size="27" font-weight="700" fill="#1e2a47">Enrichr</text></g>
+  <g class="pill"><rect x="1026" y="545" width="188" height="45" rx="11" fill="#ffffff" stroke="#dce5f4" stroke-width="2"></rect><text x="1120" y="575" text-anchor="middle" font-size="27" font-weight="700" fill="#1e2a47">Open Targets</text></g>
+  <g class="pill"><rect x="1228" y="545" width="132" height="45" rx="11" fill="#ffffff" stroke="#dce5f4" stroke-width="2"></rect><text x="1294" y="575" text-anchor="middle" font-size="27" font-weight="700" fill="#1e2a47">COSMIC</text></g>
+  <g id="more"><rect x="1374" y="545" width="120" height="45" rx="11" fill="#eef4ff" stroke="#9db4e8" stroke-width="2" stroke-dasharray="6 5"></rect><text x="1434" y="575" text-anchor="middle" font-size="25" font-weight="700" fill="#6f8bcd">&amp; more</text></g>
 
   <g fill="none" stroke="#14a085" stroke-width="8" stroke-linecap="round">
     <path d="M1258 632 L1258 726 Q1258 750 1234 750 L1095 750"></path>
