@@ -27,11 +27,21 @@
         display: flex;
         flex-wrap: wrap;
         gap: 0.25rem;
-        margin: 2.5rem 0 0.9rem;
+        --avatar-size: 2rem;
+        --hover-scale: 1.6;
+        // The fold’s overflow and mask both crop at the border box, so pad it out by a hovered
+        // avatar’s overshoot plus its scaled shadow (--bs-box-shadow’s widest layer reaches 1.25rem).
+        // The bottom row is faded out anyway.
+        --hover-room: calc(
+            var(--hover-scale) * (var(--avatar-size) / 2 + 1.25rem) - var(--avatar-size)
+                / 2
+        );
+        padding: var(--hover-room) var(--hover-room) 0;
+        margin: calc(2.5rem - var(--hover-room)) calc(-1 * var(--hover-room)) 0.9rem;
 
         // 390 avatars are ten rows on a laptop and thirty on a phone, so the wall opens folded
         &.is-clipped {
-            max-height: 19rem;
+            max-height: calc(19rem + var(--hover-room));
             overflow: hidden;
             mask-image: linear-gradient(to bottom, var(--bs-black) 55%, transparent);
         }
@@ -44,12 +54,14 @@
                 box-shadow var(--transition);
         }
         img {
+            width: var(--avatar-size);
+            height: var(--avatar-size);
             object-fit: cover;
             background-color: var(--bs-bg-1);
             border-radius: 50%;
         }
         a:hover {
-            transform: scale(1.6);
+            transform: scale(var(--hover-scale));
             box-shadow: var(--bs-box-shadow);
         }
     }
@@ -401,12 +413,9 @@
             padding: 1.25rem;
         }
         .people-mosaic {
-            img {
-                width: 1.6rem;
-                height: 1.6rem;
-            }
+            --avatar-size: 1.6rem;
             &.is-clipped {
-                max-height: 10rem;
+                max-height: calc(10rem + var(--hover-room));
             }
         }
         .people-grid {
