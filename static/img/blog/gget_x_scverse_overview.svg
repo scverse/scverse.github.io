@@ -7,7 +7,17 @@
       <feDropShadow dx="0" dy="6" stdDeviation="9" flood-color="#1c3a6e" flood-opacity="0.16"></feDropShadow>
     </filter>
   </defs>
-  <rect width="1626" height="870" fill="#ffffff"></rect>
+  <style>
+    @media (prefers-color-scheme: dark) {
+      circle[r="240"] { fill: #1a2440; }
+      rect[x="989"] { fill: #151c2d; stroke: #2c3a5c; }
+      rect[stroke="#dce5f4"] { fill: #1e2740; stroke: #34446a; }
+      rect[fill="#eef4ff"] { fill: #1c2a4a; }
+      text[fill="#1e2a47"] { fill: #e3e9f7; }
+      text[fill="#3a4a6b"] { fill: #c4d0ea; }
+      text[stroke="#ffffff"] { stroke: oklch(14.4% .005 245); }
+    }
+  </style>
 
   <circle cx="320" cy="410" r="240" fill="#e6edfc"></circle>
   <g>
