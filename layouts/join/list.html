@@ -1,10 +1,10 @@
 {{ define "main" }}
   <h1>{{ .Title }}</h1>
   <article class="post">
-    <div class="post-content" id="join-content">
+    <div class="post-content join-content">
       <div class="join-grid">
         {{ range $i, $path := .Params.paths }}
-          <section class="join-card" id="{{ $path.id }}" data-hue="{{ mod $i 8 }}">
+          <section class="join-card hover-lift" id="{{ $path.id }}" data-hue="{{ mod $i 8 }}">
             <span class="join-card-icon"><i class="{{ $path.icon }}" aria-hidden="true"></i></span>
             <h2 class="join-card-title">{{ $path.title }}</h2>
             <p class="join-card-text">{{ $path.text }}</p>
@@ -28,7 +28,7 @@
         <div class="row">
           {{ range .items }}
             <div class="col-12 lg:col-6">
-              <div class="card border-0 bg-1 mb-7" id="{{ .id }}">
+              <div class="card border-0 mb-7 join-follow-card join-follow-card--{{ .id }}">
                 <div class="card-body">
                   <a href="{{ .link }}" class="stretched-link" target="_blank" rel="noopener"></a>
                   <h3 class="card-title">

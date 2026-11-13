@@ -4,7 +4,7 @@
     <div class="with-toc-body">
       <h1>{{ .Title }}</h1>
       <article class="post">
-        <div class="post-content" id="tutorials-content">
+        <div class="post-content tutorials-content">
           {{ if .Params.tutorials }}
             {{ .Params.tutorials_intro | markdownify }}
 
@@ -15,7 +15,7 @@
 
               <h2 id="tutorials">Tutorials</h2>
 
-              <div id="ecosystem-tutorials">
+              <div id="ecosystem-tutorials" class="ecosystem-tutorials">
                 <input
                   type="text"
                   class="form-control"

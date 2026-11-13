@@ -1,5 +1,5 @@
+@use "../lib/breakpoints" as *;
 @use "../lib/hue-fg" as *;
-@use "../lib/lift-on-hover" as *;
 @use "../components/toc";
 
 // Specific to /about/roles: an index of the governance sections, not a summary of them
@@ -38,8 +38,8 @@
         align-items: center;
         gap: 0.85rem;
         padding: 0.55rem 0.7rem;
-        border-radius: 0.6rem;
-        transition: background-color 200ms ease-in-out;
+        border-radius: var(--bs-radius-6);
+        transition: background-color var(--transition);
 
         &:hover {
             background-color: color-mix(in oklch, var(--bs-fg-body) 3%, transparent);
@@ -92,9 +92,11 @@
         flex-shrink: 0;
         padding: 0.3rem 0.5rem 0.3rem 0.3rem;
         text-decoration: none;
-        border-radius: 2rem;
+        border-radius: var(--bs-radius-pill);
         border: 1px solid transparent;
-        transition: all 200ms ease-in-out;
+        transition:
+            border-color var(--transition),
+            background-color var(--transition);
 
         &:hover {
             border-color: var(--bs-border-color);
@@ -181,7 +183,7 @@
     }
 
     // Five levels of nesting is enough padding already
-    @media (max-width: 50rem) {
+    @include media-down(md) {
         // A column, so the row's flex-basis would set the height of each box rather than its width
         .gov-level--row,
         .gov-level--subteams {
@@ -219,7 +221,7 @@
     font-size: 0.9rem;
     color: var(--bs-fg-3);
     background-color: var(--bs-bg-1);
-    border-radius: 0.5rem;
+    border-radius: var(--bs-radius-5);
 
     .role-members-label {
         margin: 0 0.3rem 0 0.3rem;
@@ -230,8 +232,9 @@
     }
 }
 
-// A face beside every name, the same portraits the chart above uses
-#page-content p.role-members > a.role-member {
+// A face beside every name, the same portraits the chart above uses.
+// The child combinator outranks the generic `.site-main p > a` underline.
+.role-members > .role-member {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
@@ -241,8 +244,10 @@
     color: var(--bs-fg-2);
     background-color: var(--bs-bg-body);
     border: 1px solid var(--bs-border-color);
-    border-radius: 2rem;
-    transition: all 200ms ease-in-out;
+    border-radius: var(--bs-radius-pill);
+    transition:
+        color var(--transition),
+        border-color var(--transition);
 
     &:hover {
         color: var(--bs-fg-body);
@@ -276,7 +281,7 @@
 
 // Specific to /about — long-form prose pages
 
-#about-content {
+.about-content {
     // Without this the body falls back to the browser default and the section reads as four
     // descending sizes: lead, body, callout, rows
     font-size: 1.05rem;
@@ -321,7 +326,7 @@
                 width: 1rem;
                 font-weight: 400;
                 color: var(--bs-fg-3);
-                transition: transform 200ms ease-in-out;
+                transition: transform var(--transition);
             }
             &:hover {
                 color: var(--bs-fg-body);
@@ -341,7 +346,7 @@
         }
     }
 
-    @media (max-width: 50rem) {
+    @include media-down(md) {
         font-size: 1rem;
     }
 
@@ -355,7 +360,7 @@
         margin: 1.75rem 0 2rem;
     }
 
-    a.stat {
+    .stat {
         display: flex;
         flex-direction: column;
         gap: 0.15rem;
@@ -364,9 +369,6 @@
         background-color: var(--bs-bg-body);
         border: 1px solid var(--bs-border-color);
         border-radius: var(--card-radius);
-        transition: all 200ms ease-in-out;
-
-        @include lift-on-hover;
     }
 
     .stat-value {
@@ -378,7 +380,7 @@
     }
 
     // Written as a descendant rather than nested under .stat-value: `&` there would carry the
-    // whole ancestor chain and put .stat in front of #about-content
+    // whole ancestor chain and put .stat in front of .about-content
     .stat[data-hue] .stat-value {
         color: hue-fg(var(--hue));
     }
@@ -404,13 +406,12 @@
         align-items: start;
         padding: 1.1rem 1.2rem;
         border-radius: var(--card-radius);
-        transition: background-color 200ms ease-in-out;
+        transition: background-color var(--transition);
 
         &:hover {
             background-color: var(--bs-bg-1);
         }
 
-        // Element selector included to beat the generic `#page-content .post h3` margins
         h3 {
             margin: 0 0 0.3rem;
             font-size: 1.05rem;
@@ -443,14 +444,14 @@
 // Specific to /about: the landing page (layouts/about/landing.html)
 
 // The stack diagram and the card grids want more room than the prose pages under /about.
-@media (min-width: 75rem) {
-    #page-content:has(#about-landing) {
+@include media-up(xl) {
+    .page-content:has(.about-landing) {
         max-width: var(--max-width-wide);
         width: var(--content-width-wide);
     }
 }
 
-#about-landing {
+.about-landing {
     --about-gap: 5rem;
 
     display: flex;
@@ -458,7 +459,7 @@
     gap: var(--about-gap);
     text-wrap: pretty;
 
-    @media (max-width: 50rem) {
+    @include media-down(md) {
         --about-gap: 3.5rem;
     }
 
@@ -493,7 +494,7 @@
         gap: 3.5rem;
         align-items: center;
 
-        @media (max-width: 75rem) {
+        @include media-down(xl) {
             grid-template-columns: 1fr;
             gap: 2.5rem;
         }
@@ -534,18 +535,23 @@
     .about-hero-link {
         padding: 0.65rem 1.25rem;
         border: 1px solid var(--bs-border-color);
-        border-radius: 2rem;
+        border-radius: var(--bs-radius-pill);
         font-weight: 600;
         font-size: 0.95rem;
         color: var(--bs-fg-1);
         text-decoration: none;
         background-color: var(--bs-bg-body);
-        transition: all 200ms ease-in-out;
+        // Also lifts (.hover-lift), whose transition this replaces
+        transition:
+            transform var(--transition),
+            box-shadow var(--transition),
+            border-color var(--transition),
+            background-color var(--transition),
+            color var(--transition);
 
         &:hover {
             border-color: var(--bs-border-emphasized);
             background-color: var(--bs-bg-1);
-            transform: translateY(-2px);
         }
     }
 
@@ -582,7 +588,7 @@
         padding: 1.5rem;
         background-color: var(--bs-bg-body);
         text-decoration: none;
-        transition: background-color 200ms ease-in-out;
+        transition: background-color var(--transition);
 
         &:hover {
             background-color: var(--bs-bg-1);
@@ -617,9 +623,9 @@
         align-items: start;
         padding: 1.75rem;
         border: 1px solid var(--bs-border-color);
-        border-radius: 1.25rem;
+        border-radius: var(--bs-radius-9);
 
-        @media (max-width: 64rem) {
+        @include media-down(lg) {
             grid-template-columns: 1fr;
             gap: 1.25rem;
         }
@@ -666,7 +672,7 @@
         color: var(--bs-fg-1);
         text-decoration: none;
         border-bottom: 1px solid var(--bs-border-emphasized);
-        transition: border-color 200ms ease-in-out;
+        transition: border-color var(--transition);
 
         &:hover {
             border-bottom-color: var(--bs-fg-body);
@@ -714,13 +720,15 @@
         text-decoration: none;
         background-color: var(--bs-bg-body);
         border: 1px solid var(--bs-border-color);
-        border-radius: 2rem;
-        transition: all 150ms ease-in-out;
+        border-radius: var(--bs-radius-pill);
+        // No lift: the cloud clips its overflow, which would cut off the top row
+        transition:
+            color var(--transition),
+            border-color var(--transition);
 
         &:hover {
             color: var(--bs-fg-body);
             border-color: var(--bs-border-emphasized);
-            transform: translateY(-1px);
         }
     }
 
@@ -742,15 +750,12 @@
         text-decoration: none;
         background-color: var(--bs-bg-body);
         border: 1px solid var(--bs-border-color);
-        border-radius: 0.6rem;
-        transition: all 200ms ease-in-out;
+        border-radius: var(--bs-radius-6);
 
         img {
             object-fit: contain;
             flex-shrink: 0;
         }
-
-        @include lift-on-hover;
     }
 
     // Layer 1: the three data structures get room for a line of explanation
@@ -768,16 +773,13 @@
         text-decoration: none;
         background-color: var(--bs-bg-body);
         border: 1px solid var(--bs-border-color);
-        border-radius: 0.75rem;
-        transition: all 200ms ease-in-out;
+        border-radius: var(--card-radius);
 
         img {
             object-fit: contain;
             object-position: left;
             margin-bottom: 0.2rem;
         }
-
-        @include lift-on-hover;
     }
 
     .stack-card-name {
@@ -823,10 +825,10 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 1rem;
 
-        @media (max-width: 64rem) {
+        @include media-down(lg) {
             grid-template-columns: repeat(2, minmax(0, 1fr));
         }
-        @media (max-width: 50rem) {
+        @include media-down(md) {
             grid-template-columns: 1fr;
         }
     }
@@ -839,9 +841,6 @@
         background-color: var(--bs-bg-1);
         border: 1px solid var(--bs-border-color);
         border-radius: var(--card-radius);
-        transition: all 200ms ease-in-out;
-
-        @include lift-on-hover;
     }
 
     .doc-card-icon {
@@ -880,10 +879,10 @@
         gap: 2.5rem;
         align-items: center;
         padding: 2.5rem;
-        border-radius: 1.25rem;
+        border-radius: var(--bs-radius-9);
         grid-template-columns: var(--panel-columns);
 
-        @media (max-width: 64rem) {
+        @include media-down(lg) {
             grid-template-columns: 1fr;
             gap: 1.5rem;
             padding: 1.75rem;
@@ -893,6 +892,14 @@
             margin: 0.75rem 0 0;
             line-height: 1.7;
             color: var(--bs-fg-2);
+        }
+
+        .sponsor-fineprint {
+            max-width: 44rem;
+            margin-top: 1.25rem;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: var(--bs-fg-3);
         }
     }
 
@@ -918,10 +925,7 @@
         text-decoration: none;
         background-color: var(--bs-bg-body);
         border: 1px solid var(--bs-border-color);
-        border-radius: 2rem;
-        transition: all 200ms ease-in-out;
-
-        @include lift-on-hover;
+        border-radius: var(--bs-radius-pill);
 
         i {
             display: inline-flex;
@@ -954,21 +958,13 @@
         font-size: 0.95rem;
         color: var(--cta-fg);
         text-decoration: none;
-        border-radius: 2rem;
+        border-radius: var(--bs-radius-pill);
         background: var(--cta-bg);
-        transition: background 200ms ease-in-out;
+        transition: background var(--transition);
 
         &:hover {
             color: var(--cta-fg-hover);
             background: var(--cta-bg-hover);
         }
-    }
-
-    .sponsor-fineprint {
-        font-size: 0.8rem !important;
-        line-height: 1.6 !important;
-        color: var(--bs-fg-3) !important;
-        margin-top: 1.25rem !important;
-        max-width: 44rem;
     }
 }

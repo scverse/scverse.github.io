@@ -4,8 +4,8 @@
 @use "sass:list";
 @use "sass:math";
 @use "hugo:vars" as *;
+@use "lib/breakpoints" as *;
 @use "lib/hue-fg" as *;
-@use "lib/lift-on-hover" as *;
 @use "components/search";
 :root {
     @each $pkg, $colors in $accents {
@@ -41,7 +41,22 @@
     --max-width-wide: 1400px;
     --content-width: 80%;
     --content-width-wide: 92%;
-    --card-radius: 0.75rem;
+    --card-radius: var(--bs-radius-7);
+    // Timing for hover and state changes; list the properties, e.g. `color var(--transition), …`
+    --transition: 200ms ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        // biome-ignore-start lint/complexity/noImportantStyles: must beat every component’s animations and transitions
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+        // biome-ignore-end lint/complexity/noImportantStyles: must beat every component’s animations and transitions
+    }
 }
 
 // Pages tint cards and icons with `data-hue="0"`…`"7"`, cycling through the package palette
@@ -96,7 +111,7 @@ $-hues:
 .navbar {
     --bs-navbar-nav-link-padding-x: 0.5rem;
 }
-@container (width >= 1024px) {
+@container (width >= #{bp(lg)}) {
     .navbar-nav,
     .nav-buttons > li,
     .nav-buttons > li > .nav-link {
@@ -158,15 +173,17 @@ a .more {
     font-size: 0.8rem;
     font-weight: 800;
     color: var(--bs-fg-2);
-    transition: all 200ms ease-in-out;
+    transition:
+        color var(--transition),
+        background-color var(--transition);
     padding: 0.5rem;
     margin-left: -0.5rem;
-    border-radius: 0.5rem;
+    border-radius: var(--bs-radius-5);
 
-    &:after {
+    &::after {
         content: "\232A";
         font-size: 0.6rem;
-        transition: all 200ms ease-in-out;
+        transition: padding-left var(--transition);
         padding-left: 0.2rem;
     }
 
@@ -174,12 +191,12 @@ a .more {
         color: var(--bs-fg-body);
         background-color: var(--bs-bg-2);
 
-        &:after {
+        &::after {
             padding-left: 0.4rem;
         }
     }
 
-    @media (max-width: 50rem) {
+    @include media-down(md) {
         background-color: var(--bs-bg-1);
     }
 }
@@ -190,7 +207,6 @@ body {
     height: 100%;
     font-family: "Inter", sans-serif;
     scroll-behavior: smooth;
-    -webkit-scroll-behavior: smooth;
 }
 
 q {
@@ -204,10 +220,12 @@ q {
 
 // Nav bar
 
-.nav-buttons > li > a {
+// The Join button has its own colours
+.nav-buttons > li > a:not(.join-button) {
     color: var(--bs-fg-2);
     transition:
-        all 300ms ease-in-out,
+        color var(--transition),
+        background-color var(--transition),
         transform 100ms ease-in-out;
 
     &:hover,
@@ -226,7 +244,7 @@ q {
 .nav-social {
     align-items: center;
     gap: 0.15rem;
-    padding: 0.5rem 0.25rem !important;
+    padding: 0.5rem 0.25rem;
 
     a {
         display: flex;
@@ -236,7 +254,9 @@ q {
         height: 2rem;
         border-radius: 50%;
         text-decoration: none;
-        transition: all 200ms ease-in-out;
+        transition:
+            color var(--transition),
+            background-color var(--transition);
 
         &:hover {
             background-color: var(--bs-bg-2);
@@ -257,7 +277,7 @@ q {
     }
 }
 
-#join-button {
+.join-button {
     color: var(--cta-fg);
     border: 0;
     background: var(--cta-bg);
@@ -289,11 +309,11 @@ q {
     }
 }
 
-#scverse-logo {
+.scverse-logo {
     width: 3rem;
     height: 3rem;
     background: url("/img/icons/scverse-bw-logo.svg") no-repeat top left;
-    transition: all 200ms ease-in-out;
+    transition: transform var(--transition);
     &:hover {
         transform: scale(1.1);
     }
@@ -303,105 +323,98 @@ q {
     font-size: 1.5rem;
     line-height: 1.5rem;
     letter-spacing: 0.15rem;
-    transition: background 200ms ease-in-out;
+    transition: background var(--transition);
 }
 
 // Custom
 
 body {
     margin: 0;
-
     display: flex;
     flex-direction: column;
+}
 
-    #wrapper {
-        width: 100%;
-        flex: 1;
+// Direct children only: this is the site chrome, not any <header>/<footer> a page happens to use
+body > header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
 
-        #content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            align-self: center;
-        }
+// Grows to push the footer down, and centres the page’s column
+.site-main {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-        p > a {
-            text-decoration: none;
-            color: inherit;
-            border-bottom: 1px solid var(--bs-border-emphasized);
-            transition:
-                border 200ms,
-                color 200ms;
-            &:hover,
-            &:active {
-                border-bottom: 1px solid var(--bs-fg-body);
-            }
-        }
-    }
-
-    // Direct child only: this is the site chrome, not any <header> a page happens to use
-    > header {
-        width: 100%;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        align-self: center;
-    }
-
-    footer {
-        width: 100%;
-        margin-top: 10rem;
-        background-color: var(--bs-bg-2);
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        align-self: center;
-
-        #footer-content {
-            padding-block: 2rem 1rem;
-            color: var(--bs-fg-1);
-
-            .row {
-                --bs-gutter-y: 1rem;
-            }
-            a,
-            p {
-                margin: 0.2rem 0;
-                font-weight: 500;
-                font-size: 0.9rem;
-            }
-            a {
-                text-decoration: none;
-                transition: color 200ms;
-            }
-            h2 {
-                color: var(--bs-fg-2);
-                font-size: 1.25rem;
-                margin: 0 0 0.5rem;
-            }
-            li {
-                color: var(--bs-fg-4);
-                a {
-                    color: var(--bs-fg-2);
-                    &:hover {
-                        color: var(--bs-fg-body);
-                    }
-                }
-            }
-            .signature {
-                margin-top: 2rem;
-                text-align: right;
-            }
+    p > a {
+        text-decoration: none;
+        color: inherit;
+        border-bottom: 1px solid var(--bs-border-emphasized);
+        transition:
+            border-color var(--transition),
+            color var(--transition);
+        &:hover,
+        &:active {
+            border-bottom-color: var(--bs-fg-body);
         }
     }
 }
 
-#page-content {
+body > footer {
+    width: 100%;
+    margin-top: 10rem;
+    background-color: var(--bs-bg-2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.footer-content {
+    padding-block: 2rem 1rem;
+    color: var(--bs-fg-1);
+
+    .row {
+        --bs-gutter-y: 1rem;
+    }
+    a,
+    p {
+        margin: 0.2rem 0;
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+    a {
+        text-decoration: none;
+        transition: color var(--transition);
+    }
+    h2 {
+        color: var(--bs-fg-2);
+        font-size: 1.25rem;
+        margin: 0 0 0.5rem;
+    }
+    li {
+        color: var(--bs-fg-4);
+    }
+    li a {
+        color: var(--bs-fg-2);
+        &:hover {
+            color: var(--bs-fg-body);
+        }
+    }
+    .signature {
+        margin-top: 2rem;
+        text-align: right;
+    }
+}
+
+.page-content {
     display: flex;
     flex-direction: column;
     max-width: var(--max-width);
@@ -410,120 +423,118 @@ body {
     h2 {
         margin: 2rem 0 1rem 0;
     }
-    @media (max-width: 50rem) {
+    @include media-down(md) {
         max-width: var(--max-width-wide);
         width: var(--content-width-wide);
         gap: 1rem;
     }
-    &.items-list {
-        a {
-            text-decoration: none;
-            // &:first-of-type {
-            //     margin-top: 1rem;
-            // }
+    &.items-list a {
+        text-decoration: none;
+    }
+}
+
+// Article pages: blog posts, events and most section pages
+.post {
+    h2,
+    h3,
+    h4 {
+        margin: 4rem 0 1rem 0;
+    }
+    a {
+        color: var(--bs-fg-1);
+        &:hover {
+            color: var(--bs-fg-body);
         }
     }
-    .post {
-        .post-subtitle {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 0.5rem;
-            color: var(--bs-fg-3);
-            .rss-icon {
-                width: 1rem;
-                a {
-                    display: flex;
-                    align-items: center;
-                    box-sizing: content-box;
-                    padding: 0.5rem;
-                    margin: -0.5rem;
-                    svg {
-                        fill: var(--bs-fg-3);
-                    }
-                    &:hover {
-                        svg {
-                            fill: var(--bs-fg-body);
-                        }
-                    }
-                }
-            }
+}
+
+.post-subtitle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    color: var(--bs-fg-3);
+}
+
+.rss-icon {
+    width: 1rem;
+    a {
+        display: flex;
+        align-items: center;
+        box-sizing: content-box;
+        padding: 0.5rem;
+        margin: -0.5rem;
+    }
+    svg {
+        fill: var(--bs-fg-3);
+    }
+    a:hover svg {
+        fill: var(--bs-fg-body);
+    }
+}
+
+.post-content {
+    margin: 3rem 0;
+    font-size: 1.1rem;
+    text-wrap: pretty;
+    @include media-down(md) {
+        font-size: 1rem;
+        line-height: 1.8rem;
+    }
+    > img,
+    > p > img {
+        margin-bottom: 1.5rem;
+    }
+    p,
+    div,
+    ul,
+    ol {
+        font-family:
+            "Inter",
+            Open Sans,
+            sans-serif;
+    }
+    code {
+        font-family: "JetBrains Mono", Menlo, monospace;
+        // Undo bootstrap’s shrinking so font heights match
+        font-size: 1em;
+    }
+    // Inline code: add a subtle background via box-shadow
+    :not(pre) > code {
+        background-color: var(--bs-bg-1);
+        border-radius: var(--bs-radius-2);
+        box-shadow:
+            0.15em 0 0 var(--bs-bg-1),
+            -0.15em 0 0 var(--bs-bg-1);
+    }
+    // Chroma code highlighting: add some padding
+    .highlight {
+        margin: 1rem 0; // matches bootstrap’s <p> margin
+        pre {
+            margin: 0;
+            padding: 1rem 1.25rem;
+            border-radius: var(--bs-radius-5);
         }
-        .post-content {
-            margin: 3rem 0;
-            font-size: 1.1rem;
-            text-wrap: pretty;
-            > img,
-            > p > img {
-                margin-bottom: 1.5rem;
-            }
-            p,
-            div,
-            ul,
-            ol {
-                font-family:
-                    "Inter",
-                    Open Sans,
-                    sans-serif;
-            }
-            code {
-                font-family: "JetBrains Mono", Menlo, monospace;
-                // Undo bootstrap’s shrinking so font heights match
-                font-size: 1em;
-            }
-            // Inline code: add a subtle background via box-shadow
-            :not(pre) > code {
-                background-color: var(--bs-bg-1);
-                border-radius: 0.2rem;
-                box-shadow:
-                    0.15em 0 0 var(--bs-bg-1),
-                    -0.15em 0 0 var(--bs-bg-1);
-            }
-            // Chroma code highlighting: add some padding
-            .highlight {
-                margin: 1rem 0; // matches bootstrap’s <p> margin
-                pre {
-                    margin: 0;
-                    padding: 1rem 1.25rem;
-                    border-radius: 0.5rem;
-                }
-            }
-            > .table-scroll {
-                margin: 1.5rem 0;
-                overflow-x: auto;
-            }
-            > .table-scroll > table {
-                width: 100%;
-                font-size: 1rem;
-                th,
-                td {
-                    padding: 0.6rem 0.9rem;
-                    border: 1px solid var(--bs-border-color);
-                    text-align: left;
-                }
-                th {
-                    background-color: var(--bs-bg-2);
-                    font-weight: 600;
-                }
-                tbody tr:nth-child(even) {
-                    background-color: var(--bs-bg-1);
-                }
-            }
-            @media (max-width: 50rem) {
-                font-size: 1rem;
-                line-height: 1.8rem;
-            }
+    }
+    > .table-scroll {
+        margin: 1.5rem 0;
+        overflow-x: auto;
+    }
+    > .table-scroll > table {
+        width: 100%;
+        font-size: 1rem;
+        th,
+        td {
+            padding: 0.6rem 0.9rem;
+            border: 1px solid var(--bs-border-color);
+            text-align: left;
         }
-        h2,
-        h3,
-        h4 {
-            margin: 4rem 0 1rem 0;
+        th {
+            background-color: var(--bs-bg-2);
+            font-weight: 600;
         }
-        a {
-            color: var(--bs-fg-1);
-            &:hover {
-                color: var(--bs-fg-body);
-            }
+        tbody tr:nth-child(even) {
+            background-color: var(--bs-bg-1);
         }
     }
 }

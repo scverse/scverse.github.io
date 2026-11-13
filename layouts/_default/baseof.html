@@ -8,13 +8,11 @@
     <header>
       {{ partial "header" . }}
     </header>
-    <div id="wrapper">
-      <div id="content">
-        <div id="page-content">
-          {{ block "main" . }}{{ end }}
-        </div>
+    <main class="site-main">
+      <div class="page-content">
+        {{ block "main" . }}{{ end }}
       </div>
-    </div>
+    </main>
     {{ partial "footer" . }}
     {{ block "scripts" . }}{{ end }}
   </body>

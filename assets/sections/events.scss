@@ -1,7 +1,7 @@
+@use "../lib/breakpoints" as *;
 @use "../lib/hue-fg" as *;
-@use "../lib/lift-on-hover" as *;
 
-#events-content {
+.events-content {
     h1 {
         margin-bottom: 0.5rem;
     }
@@ -52,9 +52,6 @@
         background-color: var(--bs-bg-body);
         border: 1px solid var(--bs-border-color);
         border-radius: var(--card-radius);
-        transition: all 200ms ease-in-out;
-
-        @include lift-on-hover;
     }
 
     .event-card-image {
@@ -89,7 +86,7 @@
         letter-spacing: 0.05em;
         text-transform: uppercase;
         border: 1px solid var(--bs-border-color);
-        border-radius: 0.25rem;
+        border-radius: var(--bs-radius-3);
     }
 
     .event-kind--conference {
@@ -159,7 +156,7 @@
         border-radius: 50%;
     }
 
-    @media (max-width: 50rem) {
+    @include media-down(md) {
         .events-upcoming {
             grid-template-columns: 1fr;
         }

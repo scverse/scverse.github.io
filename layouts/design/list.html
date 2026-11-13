@@ -3,19 +3,15 @@
   <article class="post">
     {{ if .Params.sections }}
       {{ $sections := index .Params.sections 0 }}
-      <div class="post-content" id="media-kit-content">
+      <div class="post-content media-kit-content">
         {{ if or .Params.primarylogos .Params.packageicons }}
           <h2 id="primary-logos">Primary Logos</h2>
           <br />{{ $sections.primary_logos | markdownify }}
           {{ if .Params.primarylogos }}
-            <div id="logos-list">
+            <div class="logos-list">
               {{ $primarylogos := .Params.primarylogos }}
               {{ range $i, $e := $primarylogos }}
-                <div
-                  class="logo-section"
-                  style="--hover-color: var(--{{ .name | lower }}-color);"
-                  id="{{ .name | lower }}-tile"
-                >
+                <div class="logo-section hover-lift" style="--hover-color: var(--{{ .name | lower }}-color);">
                   <div class="logo-img">
                     <img src="{{ .img }}" alt="{{ .name }}" loading="lazy" />
                   </div>
@@ -28,7 +24,7 @@
                     </div>
                     <div class="logo-links">
                       {{ range $k, $v := $e.links }}
-                        <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
+                        <a class="hover-lift" href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
                       {{ end }}
                     </div>
                   </div>
@@ -37,14 +33,10 @@
             </div>
           {{ end }} <br />{{ $sections.trademark | markdownify }}<br />
           {{ if .Params.trademarkedlogos }}
-            <div id="trademarked-logos-list">
+            <div class="logos-list">
               {{ $trademarkedlogos := .Params.trademarkedlogos }}
               {{ range $i, $e := $trademarkedlogos }}
-                <div
-                  class="logo-section"
-                  style="--hover-color: var(--{{ .name | lower }}-color);"
-                  id="{{ .name | lower }}-tile"
-                >
+                <div class="logo-section hover-lift" style="--hover-color: var(--{{ .name | lower }}-color);">
                   <div class="logo-img">
                     <img src="{{ .img }}" alt="{{ .name }}" loading="lazy" />
                   </div>
@@ -57,7 +49,7 @@
                     </div>
                     <div class="logo-links">
                       {{ range $k, $v := $e.links }}
-                        <a href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
+                        <a class="hover-lift" href="{{ $v.url }}" target="_blank">{{ $v.text }}</a>
                       {{ end }}
                     </div>
                   </div>
@@ -68,11 +60,11 @@
           <h2 id="logo-guidelines">Logo Usage Guidelines</h2>
           <br />{{ $sections.logo_guidelines | markdownify }}
           <div class="guidelines-container">
-            <div class="do-section">
+            <div class="do-section hover-lift">
               <h3>Do's</h3>
               {{ $sections.do_guidelines | markdownify }}
             </div>
-            <div class="dont-section">
+            <div class="dont-section hover-lift">
               <h3>Don'ts</h3>
               {{ $sections.dont_guidelines | markdownify }}
             </div>
@@ -87,9 +79,9 @@
               </div>
             </div>
           </div>
-          <h2 id="logo-examples">Logo in Action</h2>
+          <h2 id="logo-examples" class="logo-examples">Logo in Action</h2>
           <div class="logo-examples-gallery">
-            <div class="example-item">
+            <div class="example-item hover-lift">
               <div class="example-image">
                 <img
                   src="../img/logo/scverse-bridge-sketch.webp"
@@ -101,7 +93,7 @@
                 <strong>Conference Branding</strong> - scverse conference in the Bay Area in 2025
               </div>
             </div>
-            <div class="example-item">
+            <div class="example-item hover-lift">
               <div class="example-image">
                 <img src="../img/logo/scverse-lettering.webp" alt="scverse lettering (no logo)" loading="lazy" />
               </div>
@@ -109,7 +101,7 @@
                 <strong>Conference Branding</strong> - scverse lettering for the 2025 conference (no icon)
               </div>
             </div>
-            <div class="example-item">
+            <div class="example-item hover-lift">
               <div class="example-image">
                 <img src="../img/logo/scverse-munich.webp" alt="scverse logo - Munich example" loading="lazy" />
               </div>
@@ -117,13 +109,13 @@
                 <strong>Conference Branding</strong> - scverse conference in Munich in 2024
               </div>
             </div>
-            <div class="example-item">
+            <div class="example-item hover-lift">
               <div class="example-image">
                 <img src="../img/logo/scverse-slide.webp" alt="scverse logo - Example slide" loading="lazy" />
               </div>
               <div class="example-caption"><strong>Slide Branding</strong> - example scverse-branded slide</div>
             </div>
-            <div class="example-item">
+            <div class="example-item hover-lift">
               <div class="example-image">
                 <img src="../img/logo/scverse-palms.webp" alt="scverse logo - Palm tree example" loading="lazy" />
               </div>
@@ -135,13 +127,13 @@
           </div>
           <h2 id="package-icons">Package Logos</h2>
           <br />{{ $sections.package_icons | markdownify }}
-          <div id="icons-list" class="icons-only-mode">
+          <div class="icons-list icons-only-mode">
             {{ $packageicons := .Params.packageicons }}
             {{ range $i, $e := $packageicons }}
               <div
-                class="icon-section"
+                class="icon-section hover-lift"
                 style="--hover-color: var(--{{ .name | lower }}-color);"
-                id="{{ .name | lower }}-tile"
+                data-pkg="{{ .name | lower }}"
               >
                 <div class="icon-img">
                   <img src="{{ .img }}" alt="{{ .name }} logo" loading="lazy" />
@@ -155,7 +147,7 @@
                   </div>
                   <div class="icon-links">
                     {{ range $k, $v := $e.links }}
-                      <a href="{{ $v.url }}" target="_blank" class="icon-link">
+                      <a href="{{ $v.url }}" target="_blank" class="icon-link hover-lift">
                         {{ $v.text }}
                       </a>
                     {{ end }}
@@ -167,7 +159,7 @@
         {{ end }}
 
 
-        <div id="contact">
+        <div id="contact" class="contact">
           <h2>Contact</h2>
           <br />{{ $sections.contact | markdownify }}
         </div>

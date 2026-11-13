@@ -1,9 +1,9 @@
-@use "../lib/lift-on-hover" as *;
+@use "../lib/breakpoints" as *;
 @use "filter";
 
 // Specific to /packages#ecosystem — the community package registry
 
-#ecosystem-packages {
+.ecosystem-packages {
     margin: 2rem 0 4rem;
 
     .eco-sprite {
@@ -45,9 +45,7 @@
         background-color: var(--bs-bg-body);
         border: 1px solid var(--bs-border-color);
         border-radius: var(--card-radius);
-        transition: all 200ms ease-in-out;
 
-        @include lift-on-hover;
         &[hidden] {
             display: none;
         }
@@ -71,7 +69,7 @@
         width: 2.75rem;
         height: 2.75rem;
         overflow: hidden;
-        border-radius: 0.6rem;
+        border-radius: var(--bs-radius-6);
         background-color: var(--bs-bg-1);
 
         img {
@@ -96,8 +94,7 @@
         min-width: 0;
     }
 
-    // Element selector included to beat the generic `#page-content .post h3` margins
-    .eco-card h3.eco-card-name {
+    .eco-card-name {
         margin: 0;
         font-size: 1.15rem;
         font-weight: 800;
@@ -135,7 +132,7 @@
             text-transform: uppercase;
             color: var(--bs-inverse-contrast);
             background-color: var(--bs-inverse-bg);
-            border-radius: 0.25rem;
+            border-radius: var(--bs-radius-3);
         }
         .eco-badge--lang {
             color: var(--bs-fg-1);
@@ -178,8 +175,10 @@
         color: var(--bs-fg-3);
         background-color: var(--bs-bg-1);
         border: 0;
-        border-radius: 0.35rem;
-        transition: all 200ms ease-in-out;
+        border-radius: var(--bs-radius-4);
+        transition:
+            color var(--transition),
+            background-color var(--transition);
 
         &:hover {
             color: var(--bs-fg-body);
@@ -209,8 +208,10 @@
             color: var(--bs-fg-2);
             text-decoration: none;
             background-color: var(--bs-bg-1);
-            border-radius: 0.4rem;
-            transition: all 200ms ease-in-out;
+            border-radius: var(--bs-radius-4);
+            transition:
+                color var(--transition),
+                background-color var(--transition);
 
             svg {
                 width: 0.85rem;
@@ -227,7 +228,7 @@
         color: var(--bs-fg-3);
     }
 
-    @media (max-width: 50rem) {
+    @include media-down(md) {
         .eco-grid {
             grid-template-columns: 1fr;
         }

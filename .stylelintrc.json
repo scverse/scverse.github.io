@@ -13,6 +13,12 @@
             "lch",
             "oklab",
             "oklch"
+        ],
+        "media-feature-name-disallowed-list": [
+            ["width", "min-width", "max-width"],
+            {
+                "message": "Use the breakpoint mixins from lib/_breakpoints.scss"
+            }
         ]
     }
 }

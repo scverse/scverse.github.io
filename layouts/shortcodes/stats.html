@@ -15,16 +15,16 @@
 
 
 <div class="stat-row">
-  <a class="stat" href="/packages/" data-hue="0">
+  <a class="stat hover-lift" href="/packages/" data-hue="0">
     <span class="stat-value">{{ $core }}</span>
     <span class="stat-label">core packages</span>
   </a>
-  <a class="stat" href="/packages/#ecosystem" data-hue="3">
+  <a class="stat hover-lift" href="/packages/#ecosystem" data-hue="3">
     <span class="stat-value">{{ $eco }}</span>
     <span class="stat-label">ecosystem packages</span>
   </a>
   {{ with $contributors }}
-    <a class="stat" href="/people/" data-hue="2">
+    <a class="stat hover-lift" href="/people/" data-hue="2">
       <span class="stat-value">{{ len . }}</span>
       <span class="stat-label">contributors</span>
     </a>

@@ -1,7 +1,8 @@
-// Search, filter chips and empty state shared by /packages#ecosystem and /people
+// Search, filter chips and empty state on a `.filterable` root (/packages#ecosystem and /people).
+// Page-specific overrides live in ecosystem.scss and people.scss.
+@use "../lib/breakpoints" as *;
 
-#ecosystem-packages,
-#people-content {
+.filterable {
     svg {
         fill: none;
         stroke: currentColor;
@@ -40,9 +41,12 @@
             color: var(--bs-fg-1);
             background-color: var(--bs-bg-1);
             border: 1px solid var(--bs-border-color);
-            border-radius: 2rem;
+            border-radius: var(--bs-radius-pill);
             outline: none;
-            transition: all 200ms ease-in-out;
+            transition:
+                background-color var(--transition),
+                border-color var(--transition),
+                box-shadow var(--transition);
             text-overflow: ellipsis;
 
             &::placeholder {
@@ -74,7 +78,9 @@
         border-radius: 50%;
         color: var(--bs-fg-2);
         background-color: var(--bs-bg-2);
-        transition: all 200ms ease-in-out;
+        transition:
+            color var(--transition),
+            background-color var(--transition);
 
         svg {
             width: 0.7rem;
@@ -92,7 +98,7 @@
         color: var(--bs-fg-2);
         white-space: nowrap;
 
-        @media (max-width: 50rem) {
+        @include media-down(md) {
             order: -1;
         }
     }
@@ -113,8 +119,11 @@
         color: var(--bs-fg-2);
         background-color: var(--bs-bg-body);
         border: 1px solid var(--bs-border-color);
-        border-radius: 2rem;
-        transition: all 200ms ease-in-out;
+        border-radius: var(--bs-radius-pill);
+        transition:
+            color var(--transition),
+            background-color var(--transition),
+            border-color var(--transition);
 
         img {
             width: 0.9rem;

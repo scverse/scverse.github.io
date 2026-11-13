@@ -10,17 +10,15 @@
     <header>
       {{ partial "header" . }}
     </header>
-    <div id="wrapper">
-      <div id="content">
-        <div id="page-content" class="items-list">
-          {{ block "upcoming" . }}
-          {{ end }}
+    <main class="site-main">
+      <div class="page-content items-list">
+        {{ block "upcoming" . }}
+        {{ end }}
 
-          {{ block "main" . }}
-          {{ end }}
-        </div>
+        {{ block "main" . }}
+        {{ end }}
       </div>
-    </div>
+    </main>
     {{ partial "footer" . }}
   </body>
 </html>

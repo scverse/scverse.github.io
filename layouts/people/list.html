@@ -58,7 +58,7 @@
 
 
   <article class="post">
-    <div class="post-content" id="people-content">
+    <div class="post-content people-content" id="people-content">
       <svg class="people-sprite" aria-hidden="true" focusable="false">
         <symbol id="p-i-github" viewBox="0 0 24 24">
           <path
@@ -114,11 +114,13 @@
             reporting bugs, answering questions and providing feedback that are not explicitly listed here.
             {{ $.Params.contributors.text | safeHTML }}
           </p>
-          <button type="button" id="contributor-expand" aria-expanded="false">Show everyone</button>
+          <button type="button" id="contributor-expand" class="contributor-expand" aria-expanded="false">
+            Show everyone
+          </button>
         {{ end }}
       </header>
 
-      <section class="people-section" id="people-directory">
+      <section class="people-section filterable" id="people-directory">
         <h2 id="the-team"><a href="#the-team">The team</a></h2>
         <p class="people-section-text">{{ .Params.team_lead }}</p>
 
