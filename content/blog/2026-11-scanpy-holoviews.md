@@ -104,7 +104,7 @@ Here are 4.2 million cells from the Allen Institute's whole mouse brain MERFISH 
 
 <img src="/img/blog/scanpy_holoviews_datashader.svg" style="max-width: 100%;" alt="4.2 million mouse brain cells colored by major brain region, datashaded: a UMAP on the left and a side view of the brain in Allen CCF coordinates on the right" />
 
-`anndata.experimental.read_lazy` opens the file without reading the 4.2 million × 1,120 expression matrix, so only the two embeddings and one `obs` column end up in memory:
+We converted the file to Zarr once, then opened it with `anndata.experimental.read_lazy`, which skips the 4.2 million × 1,120 expression matrix, so only the two embeddings and one `obs` column end up in memory:
 
 ```python
 import anndata as ad
@@ -112,7 +112,10 @@ import datashader as ds
 import holoviews as hv
 from holoviews.operation.datashader import datashade, dynspread
 
-lazy = ad.experimental.read_lazy("aeaa6e77-7f6e-4d8c-b217-4c1e777cc0be.h5ad")
+# one-time conversion (needs to hold the whole dataset in memory)
+ad.read_h5ad("aeaa6e77-7f6e-4d8c-b217-4c1e777cc0be.h5ad").write_zarr("merfish.zarr")
+
+lazy = ad.experimental.read_lazy("merfish.zarr")
 adata = ad.AnnData(
     obs=lazy.obs[["major_brain_region"]].to_memory(),
     obsm={"umap": lazy.obsm["X_umap"].compute(), "ccf": lazy.obsm["X_CCF"].compute()},
@@ -129,8 +132,8 @@ dynspread(datashade(umap, aggregator=by_region)) + dynspread(
 ```
 
 The figure above is exactly what HoloViews renders from this code, with only a fixed `color_key` added to match the legend.
-On an 8-core desktop (AMD Ryzen 7 3700X), opening the file lazily takes 10 seconds and loading the embeddings and labels another 5.
-HoloViews then datashades all 3.7 million cells in under a second per panel (0.8 s for the UMAP, 0.6 s for the brain), and again every time you pan or zoom.
+On an 8-core desktop (AMD Ryzen 7 3700X), opening the Zarr store lazily takes 4 seconds and loading the embeddings and labels another 2.5, about twice as fast as the original `.h5ad` (10 s and 5 s).
+HoloViews then datashades all 3.7 million cells in 0.7 s for the UMAP and 1 s for the larger brain panel, and again every time you pan or zoom (the very first call adds about half a second while Datashader compiles its kernels).
 
 `datashade` goes all the way to an RGB image, which is how regions get mixed colors where they overlap, and `dynspread` keeps isolated cells visible when zoomed out.
 For continuous values such as gene expression, `rasterize(plot, aggregator=ds.mean("GENE"))` stops one step earlier, keeping the result as data so hover and colorbars keep working.
