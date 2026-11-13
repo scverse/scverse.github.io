@@ -1,0 +1,974 @@
+@use "../lib/hue-fg" as *;
+@use "../lib/lift-on-hover" as *;
+@use "../components/toc";
+
+// Specific to /about/roles: an index of the governance sections, not a summary of them
+
+.gov-chart {
+    margin: 2.5rem 0 3rem;
+
+    .gov-level {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    // Nesting is the whole point: each level sits visibly inside its parent
+    .gov-node .gov-level {
+        margin-top: 0.6rem;
+    }
+
+    .gov-node {
+        padding: 0.6rem;
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
+        border-radius: var(--card-radius);
+    }
+
+    // Community, the management committee and the advisory board sit at the same level
+    .gov-node--top {
+        background-color: var(--bs-bg-1);
+    }
+
+    .gov-card {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        padding: 0.55rem 0.7rem;
+        border-radius: 0.6rem;
+        transition: background-color 200ms ease-in-out;
+
+        &:hover {
+            background-color: color-mix(in oklch, var(--bs-fg-body) 3%, transparent);
+        }
+    }
+
+    .gov-icon {
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        width: 2.25rem;
+        height: 2.25rem;
+        font-size: 1.05rem;
+        border-radius: 50%;
+    }
+
+    .gov-card[data-hue] .gov-icon {
+        background-color: color-mix(in oklch, var(--hue) 18%, transparent);
+        color: hue-fg(var(--hue));
+    }
+
+    .gov-body {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .gov-name {
+        font-size: 0.95rem;
+        font-weight: 700;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+
+        &:hover {
+            border-bottom-color: var(--bs-border-emphasized);
+        }
+    }
+
+    .gov-text {
+        margin: 0.15rem 0 0;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        color: var(--bs-fg-2);
+    }
+
+    // The faces are the point of this link: the headcount is there for anyone who cannot see them
+    .gov-people {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        flex-shrink: 0;
+        padding: 0.3rem 0.5rem 0.3rem 0.3rem;
+        text-decoration: none;
+        border-radius: 2rem;
+        border: 1px solid transparent;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            border-color: var(--bs-border-color);
+            background-color: var(--bs-bg-body);
+        }
+    }
+
+    .gov-faces {
+        display: flex;
+
+        .gov-face + .gov-face {
+            margin-left: -0.55rem;
+        }
+    }
+
+    .gov-face {
+        display: block;
+        border-radius: 50%;
+        box-shadow: 0 0 0 2px var(--bs-bg-body);
+
+        img,
+        .person-monogram {
+            display: block;
+            width: 1.75rem;
+            height: 1.75rem;
+            border-radius: 50%;
+        }
+
+        // Committee members who link to a lab site rather than to GitHub fall back to initials
+        .person-monogram {
+            display: grid;
+            place-items: center;
+            font-size: 0.6rem;
+            font-weight: 800;
+
+            &[data-hue] {
+                background-color: color-mix(in oklch, var(--hue) 30%, transparent);
+            }
+        }
+    }
+
+    .gov-count {
+        font-size: 0.85rem;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+        color: var(--bs-fg-2);
+    }
+
+    .gov-level--row {
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        > .gov-node {
+            flex: 1 1 14rem;
+        }
+    }
+
+    // The three sub-teams are names and headcounts only; the document describes just one of them, and a
+    // chip row reads as a set rather than as three cards with a hole where the text would be.
+    .gov-level--subteams > .gov-node > .gov-card {
+        padding: 0.4rem 0.5rem;
+
+        .gov-icon {
+            width: 1.85rem;
+            height: 1.85rem;
+            font-size: 0.9rem;
+        }
+        .gov-faces {
+            display: none;
+        }
+    }
+
+    // Core Developers and Core Community stack in one column so the council card beside them,
+    // which is a good deal taller, does not leave a hole under the two chips.
+    .gov-level--subteams {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+        align-items: start;
+
+        > .gov-node:nth-child(3) {
+            grid-column: 2;
+            grid-row: 1 / span 2;
+        }
+    }
+
+    // Five levels of nesting is enough padding already
+    @media (max-width: 50rem) {
+        // A column, so the row's flex-basis would set the height of each box rather than its width
+        .gov-level--row,
+        .gov-level--subteams {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+
+            > .gov-node {
+                flex: 0 0 auto;
+            }
+        }
+        .gov-node {
+            padding: 0.4rem;
+        }
+        .gov-card {
+            gap: 0.6rem;
+            padding: 0.5rem;
+        }
+        // The headcount still fits; five faces beside it do not
+        .gov-faces {
+            display: none;
+        }
+    }
+}
+
+// A roster, not a sentence: set apart from the prose it follows so the names do not read as
+// part of it
+.role-members {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 1.25rem 0;
+    padding: 0.6rem 0.7rem;
+    font-size: 0.9rem;
+    color: var(--bs-fg-3);
+    background-color: var(--bs-bg-1);
+    border-radius: 0.5rem;
+
+    .role-members-label {
+        margin: 0 0.3rem 0 0.3rem;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+}
+
+// A face beside every name, the same portraits the chart above uses
+#page-content p.role-members > a.role-member {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.2rem 0.6rem 0.2rem 0.2rem;
+    white-space: nowrap;
+    font-size: 0.85rem;
+    color: var(--bs-fg-2);
+    background-color: var(--bs-bg-body);
+    border: 1px solid var(--bs-border-color);
+    border-radius: 2rem;
+    transition: all 200ms ease-in-out;
+
+    &:hover {
+        color: var(--bs-fg-body);
+        border-color: var(--bs-border-emphasized);
+    }
+
+    .role-member-face {
+        flex-shrink: 0;
+
+        img,
+        .person-monogram {
+            display: block;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+        }
+
+        .person-monogram {
+            display: grid;
+            place-items: center;
+            font-size: 0.55rem;
+            font-weight: 800;
+            color: var(--bs-fg-1);
+
+            &[data-hue] {
+                background-color: color-mix(in oklch, var(--hue) 30%, transparent);
+            }
+        }
+    }
+}
+
+// Specific to /about — long-form prose pages
+
+#about-content {
+    // Without this the body falls back to the browser default and the section reads as four
+    // descending sizes: lead, body, callout, rows
+    font-size: 1.05rem;
+    line-height: 1.75;
+    text-wrap: pretty;
+
+    // The column is sized for card grids; prose needs a readable measure inside it
+    > p,
+    > ul,
+    > ol,
+    > blockquote {
+        max-width: var(--prose-measure, none);
+    }
+
+    > p {
+        margin-bottom: 1.15rem;
+    }
+
+    // One size for all prose. Hierarchy is the headings' job; varying paragraph sizes within a
+    // section reads as inconsistency rather than emphasis.
+
+    // Optional elaboration, folded away so it does not interrupt the argument
+    .aside {
+        max-width: var(--prose-measure, none);
+        margin: 1.5rem 0;
+        background-color: var(--bs-bg-1);
+        border-radius: var(--card-radius);
+
+        summary {
+            padding: 0.8rem 1.1rem;
+            font-weight: 700;
+            color: var(--bs-fg-1);
+            cursor: pointer;
+            list-style: none;
+
+            &::-webkit-details-marker {
+                display: none;
+            }
+            &::before {
+                content: "›";
+                display: inline-block;
+                width: 1rem;
+                font-weight: 400;
+                color: var(--bs-fg-3);
+                transition: transform 200ms ease-in-out;
+            }
+            &:hover {
+                color: var(--bs-fg-body);
+            }
+        }
+        &[open] summary::before {
+            transform: rotate(90deg);
+        }
+    }
+
+    .aside-body {
+        padding: 0 1.1rem 1rem 2.1rem;
+
+        p {
+            margin: 0;
+            color: var(--bs-fg-2);
+        }
+    }
+
+    @media (max-width: 50rem) {
+        font-size: 1rem;
+    }
+
+    // Five principles with uneven text: any multi-column grid strands one card and leaves the
+    // short ones half empty, so these are rows, which align by construction.
+    .stat-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+        gap: 1rem;
+        max-width: var(--prose-measure, none);
+        margin: 1.75rem 0 2rem;
+    }
+
+    a.stat {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+        padding: 1.1rem 1.25rem;
+        text-decoration: none;
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
+        border-radius: var(--card-radius);
+        transition: all 200ms ease-in-out;
+
+        @include lift-on-hover;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        font-variant-numeric: tabular-nums;
+    }
+
+    // Written as a descendant rather than nested under .stat-value: `&` there would carry the
+    // whole ancestor chain and put .stat in front of #about-content
+    .stat[data-hue] .stat-value {
+        color: hue-fg(var(--hue));
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+        color: var(--bs-fg-3);
+    }
+
+    .principle-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        margin: 1.75rem 0 2.5rem;
+        padding: 0;
+        list-style: none;
+    }
+
+    .principle {
+        display: grid;
+        grid-template-columns: 3rem 1fr;
+        column-gap: 1.2rem;
+        align-items: start;
+        padding: 1.1rem 1.2rem;
+        border-radius: var(--card-radius);
+        transition: background-color 200ms ease-in-out;
+
+        &:hover {
+            background-color: var(--bs-bg-1);
+        }
+
+        // Element selector included to beat the generic `#page-content .post h3` margins
+        h3 {
+            margin: 0 0 0.3rem;
+            font-size: 1.05rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+
+        p {
+            margin: 0;
+            line-height: 1.6;
+            color: var(--bs-fg-2);
+        }
+    }
+
+    .principle-icon {
+        grid-row: span 2;
+        display: grid;
+        place-items: center;
+        height: 3rem;
+        font-size: 1.25rem;
+        color: var(--bs-fg-1);
+        border-radius: 50%;
+
+        &[data-hue] {
+            background-color: color-mix(in oklch, var(--hue) 22%, transparent);
+        }
+    }
+}
+
+// Specific to /about: the landing page (layouts/about/landing.html)
+
+// The stack diagram and the card grids want more room than the prose pages under /about.
+@media (min-width: 75rem) {
+    #page-content:has(#about-landing) {
+        max-width: var(--max-width-wide);
+        width: var(--content-width-wide);
+    }
+}
+
+#about-landing {
+    --about-gap: 5rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--about-gap);
+    text-wrap: pretty;
+
+    @media (max-width: 50rem) {
+        --about-gap: 3.5rem;
+    }
+
+    h2 {
+        font-size: clamp(1.5rem, 2.6vw, 2rem);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin: 0;
+    }
+
+    .about-section-intro {
+        margin: 0.75rem 0 2rem;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: var(--bs-fg-2);
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid var(--bs-border-emphasized);
+            &:hover {
+                border-bottom-color: var(--bs-fg-body);
+            }
+        }
+    }
+
+    // The statement on the left, the live figures beside it, so the page opens with both what scverse is and how big it has got.
+
+    .about-top {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(21rem, 0.75fr);
+        gap: 3.5rem;
+        align-items: center;
+
+        @media (max-width: 75rem) {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+    }
+
+    .about-hero {
+        max-width: 42rem;
+
+        h1 {
+            font-size: clamp(2.4rem, 6vw, 3.75rem);
+            letter-spacing: -0.035em;
+            line-height: 1.05;
+            margin: 0 0 1.5rem;
+        }
+    }
+
+    .about-hero-lead {
+        font-size: clamp(1.2rem, 2.3vw, 1.55rem);
+        line-height: 1.45;
+        font-weight: 600;
+        letter-spacing: -0.015em;
+    }
+
+    .about-hero-sub {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: var(--bs-fg-2);
+        margin: 0;
+    }
+
+    .about-hero-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 2rem;
+    }
+
+    .about-hero-link {
+        padding: 0.65rem 1.25rem;
+        border: 1px solid var(--bs-border-color);
+        border-radius: 2rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--bs-fg-1);
+        text-decoration: none;
+        background-color: var(--bs-bg-body);
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            border-color: var(--bs-border-emphasized);
+            background-color: var(--bs-bg-1);
+            transform: translateY(-2px);
+        }
+    }
+
+    // Same gradient as the Join button in the nav, so the one call to action on the page is recognisable as a button.
+    .about-hero-link--primary {
+        color: var(--cta-fg);
+        border-color: transparent;
+        // Paint under the transparent border too, or it shows the gradient’s tiled edge
+        background: var(--cta-bg) border-box;
+
+        &:hover {
+            color: var(--cta-fg-hover);
+            border-color: transparent;
+            background: var(--cta-bg-hover) border-box;
+        }
+    }
+
+    // Figures
+
+    .about-figures {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1px;
+        background-color: var(--bs-border-color);
+        border: 1px solid var(--bs-border-color);
+        border-radius: var(--card-radius);
+        overflow: hidden;
+    }
+
+    .about-figure {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        padding: 1.5rem;
+        background-color: var(--bs-bg-body);
+        text-decoration: none;
+        transition: background-color 200ms ease-in-out;
+
+        &:hover {
+            background-color: var(--bs-bg-1);
+        }
+    }
+
+    .about-figure-value {
+        font-size: clamp(1.9rem, 3vw, 2.4rem);
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .about-figure-label {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        color: var(--bs-fg-3);
+    }
+
+    // Written as a descendant so `&` does not drag the whole ancestor chain in front of the class
+    .about-figure[data-hue] .about-figure-value {
+        color: hue-fg(var(--hue));
+    }
+
+    // The stack
+
+    .stack-layer {
+        display: grid;
+        grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+        gap: 2rem;
+        align-items: start;
+        padding: 1.75rem;
+        border: 1px solid var(--bs-border-color);
+        border-radius: 1.25rem;
+
+        @media (max-width: 64rem) {
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+    }
+
+    // Each layer is tinted by one of the package hues so the three read as a stack, deepest at the foundation.
+    .stack-layer--eco {
+        background-color: color-mix(in oklch, var(--muon-aquamarine) 8%, transparent);
+    }
+    .stack-layer--core {
+        background-color: color-mix(in oklch, var(--spatialdata-blue) 8%, transparent);
+    }
+    .stack-layer--data {
+        background-color: color-mix(in oklch, var(--scverse-deep-blue) 7%, transparent);
+    }
+
+    .stack-layer-head {
+        h3 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin: 0.5rem 0 0.5rem;
+        }
+
+        p {
+            margin: 0 0 0.75rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--bs-fg-2);
+        }
+    }
+
+    .stack-layer-tag {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--bs-fg-3);
+    }
+
+    .stack-layer-more {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--bs-fg-1);
+        text-decoration: none;
+        border-bottom: 1px solid var(--bs-border-emphasized);
+        transition: border-color 200ms ease-in-out;
+
+        &:hover {
+            border-bottom-color: var(--bs-fg-body);
+        }
+    }
+
+    // The joint between two layers, so the diagram reads bottom-up as one thing
+    .stack-joint {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin: 0.4rem 0;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--bs-fg-3);
+    }
+
+    .stack-joint-line {
+        flex: 1;
+        height: 1px;
+        background-color: var(--bs-border-color);
+    }
+
+    // Layer 3: every registered ecosystem package, capped in height with a fade so the cloud reads as a texture.
+    .stack-cloud {
+        position: relative;
+        max-height: 11rem;
+        overflow: hidden;
+        mask-image: linear-gradient(to bottom, var(--bs-black) 65%, transparent);
+    }
+
+    .stack-cloud-inner {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .stack-chip {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--bs-fg-2);
+        text-decoration: none;
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
+        border-radius: 2rem;
+        transition: all 150ms ease-in-out;
+
+        &:hover {
+            color: var(--bs-fg-body);
+            border-color: var(--bs-border-emphasized);
+            transform: translateY(-1px);
+        }
+    }
+
+    // Layer 2: the core frameworks, logo and name only
+    .stack-tiles {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+        gap: 0.6rem;
+    }
+
+    .stack-tile {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.7rem 0.85rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--bs-fg-1);
+        text-decoration: none;
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
+        border-radius: 0.6rem;
+        transition: all 200ms ease-in-out;
+
+        img {
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        @include lift-on-hover;
+    }
+
+    // Layer 1: the three data structures get room for a line of explanation
+    .stack-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+        gap: 0.75rem;
+    }
+
+    .stack-card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        padding: 1.1rem;
+        text-decoration: none;
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
+        border-radius: 0.75rem;
+        transition: all 200ms ease-in-out;
+
+        img {
+            object-fit: contain;
+            object-position: left;
+            margin-bottom: 0.2rem;
+        }
+
+        @include lift-on-hover;
+    }
+
+    .stack-card-name {
+        font-weight: 700;
+        color: var(--bs-fg-1);
+    }
+
+    .stack-card-text {
+        font-size: 0.85rem;
+        color: var(--bs-fg-2);
+    }
+
+    // Governance
+
+    .about-inline-counts {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.6rem;
+        margin: -1rem 0 2rem;
+        font-size: 0.95rem;
+        color: var(--bs-fg-2);
+
+        a {
+            border-bottom: 1px solid transparent;
+            &:hover {
+                border-bottom-color: var(--bs-border-emphasized);
+            }
+        }
+
+        strong {
+            color: var(--bs-fg-1);
+            font-variant-numeric: tabular-nums;
+        }
+    }
+
+    .about-inline-sep {
+        color: var(--bs-bg-4);
+    }
+
+    .doc-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+
+        @media (max-width: 64rem) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        @media (max-width: 50rem) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .doc-card {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        text-decoration: none;
+        background-color: var(--bs-bg-1);
+        border: 1px solid var(--bs-border-color);
+        border-radius: var(--card-radius);
+        transition: all 200ms ease-in-out;
+
+        @include lift-on-hover;
+    }
+
+    .doc-card-icon {
+        display: grid;
+        place-items: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+        border-radius: 50%;
+    }
+
+    .doc-card[data-hue] .doc-card-icon {
+        background-color: color-mix(in oklch, var(--hue) 18%, transparent);
+        color: hue-fg(var(--hue));
+    }
+
+    .doc-card-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--bs-fg-1);
+        margin-bottom: 0.35rem;
+    }
+
+    .doc-card-text {
+        font-size: 0.95rem;
+        line-height: 1.55;
+        color: var(--bs-fg-2);
+    }
+
+    // Take part
+
+    // Shared by the take-part and sponsorship panels
+    .about-panel {
+        display: grid;
+        gap: 2.5rem;
+        align-items: center;
+        padding: 2.5rem;
+        border-radius: 1.25rem;
+        grid-template-columns: var(--panel-columns);
+
+        @media (max-width: 64rem) {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 1.75rem;
+        }
+
+        p {
+            margin: 0.75rem 0 0;
+            line-height: 1.7;
+            color: var(--bs-fg-2);
+        }
+    }
+
+    .about-take-part {
+        --panel-columns: minmax(0, 1fr) minmax(0, 1fr);
+        background-color: var(--bs-bg-1);
+    }
+
+    .take-part-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+    }
+
+    .take-part-link {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.6rem 1rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--bs-fg-1);
+        text-decoration: none;
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
+        border-radius: 2rem;
+        transition: all 200ms ease-in-out;
+
+        @include lift-on-hover;
+
+        i {
+            display: inline-flex;
+            font-size: 1rem;
+            color: var(--bs-fg-2);
+        }
+    }
+
+    // Sponsorship
+
+    .about-sponsor {
+        --panel-columns: 14rem minmax(0, 1fr);
+        border: 1px solid var(--bs-border-color);
+
+        a:not(.sponsor-button) {
+            color: inherit;
+        }
+    }
+
+    .sponsor-mark img {
+        max-width: 13rem;
+        height: auto;
+    }
+
+    .sponsor-button {
+        display: inline-block;
+        margin-top: 1.25rem;
+        padding: 0.65rem 1.25rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--cta-fg);
+        text-decoration: none;
+        border-radius: 2rem;
+        background: var(--cta-bg);
+        transition: background 200ms ease-in-out;
+
+        &:hover {
+            color: var(--cta-fg-hover);
+            background: var(--cta-bg-hover);
+        }
+    }
+
+    .sponsor-fineprint {
+        font-size: 0.8rem !important;
+        line-height: 1.6 !important;
+        color: var(--bs-fg-3) !important;
+        margin-top: 1.25rem !important;
+        max-width: 44rem;
+    }
+}

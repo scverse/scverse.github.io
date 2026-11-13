@@ -1,0 +1,175 @@
+@use "../lib/hue-fg" as *;
+@use "../lib/lift-on-hover" as *;
+
+#events-content {
+    h1 {
+        margin-bottom: 0.5rem;
+    }
+
+    .events-lead {
+        margin: 0 0 2.5rem;
+        font-size: 1.1rem;
+        color: var(--bs-fg-2);
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        font-weight: 800;
+    }
+
+    .events-upcoming {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .events-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+        gap: 1rem;
+    }
+
+    .events-year {
+        display: grid;
+        grid-template-columns: 5rem 1fr;
+        gap: 1rem;
+        padding: 1.5rem 0;
+        border-top: 1px solid var(--bs-border-color);
+
+        h3 {
+            margin: 0.9rem 0 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--bs-fg-3);
+        }
+    }
+
+    .event-card {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        color: var(--bs-fg-1);
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
+        border-radius: var(--card-radius);
+        transition: all 200ms ease-in-out;
+
+        @include lift-on-hover;
+    }
+
+    .event-card-image {
+        aspect-ratio: 16 / 7;
+
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .event-card-body {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        padding: 1.1rem 1.25rem 1.25rem;
+    }
+
+    .event-card-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        color: var(--bs-fg-3);
+    }
+
+    .event-kind {
+        padding: 0.05rem 0.4rem;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        border: 1px solid var(--bs-border-color);
+        border-radius: 0.25rem;
+    }
+
+    .event-kind--conference {
+        color: var(--bs-inverse-contrast);
+        background-color: var(--bs-inverse-bg);
+        border-color: var(--bs-inverse-bg);
+    }
+
+    .event-card-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--bs-fg-body);
+    }
+
+    .event-card-text {
+        font-size: 0.9rem;
+        color: var(--bs-fg-2);
+    }
+
+    .event-card--featured {
+        .event-card-body {
+            padding: 1.35rem 1.5rem 1.5rem;
+        }
+        .event-card-title {
+            font-size: 1.5rem;
+        }
+        .event-date {
+            font-weight: 600;
+            color: var(--bs-fg-1);
+        }
+    }
+
+    .events-meeting {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        background-color: var(--bs-bg-1);
+        border: 1px solid var(--bs-border-color);
+        border-radius: var(--card-radius);
+
+        h3 {
+            margin: 0;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+        p {
+            margin: 0.35rem 0 0;
+            font-size: 0.95rem;
+            line-height: 1.55;
+            color: var(--bs-fg-2);
+        }
+        .events-meeting-schedule {
+            font-weight: 600;
+            color: var(--bs-fg-1);
+        }
+    }
+
+    .events-meeting-icon {
+        display: grid;
+        place-items: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+        color: hue-fg(var(--spatialdata-blue));
+        background-color: color-mix(in oklch, var(--spatialdata-blue) 18%, transparent);
+        border-radius: 50%;
+    }
+
+    @media (max-width: 50rem) {
+        .events-upcoming {
+            grid-template-columns: 1fr;
+        }
+        .events-year {
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+
+            h3 {
+                margin: 0;
+            }
+        }
+    }
+}

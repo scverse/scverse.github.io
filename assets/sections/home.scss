@@ -1,0 +1,377 @@
+@use "../lib/hue-fg" as *;
+@use "../lib/lift-on-hover" as *;
+@use "../components/viz";
+
+// The landing page (layouts/index.html, partials/main/cover.html)
+body #wrapper #content #cover {
+    max-width: var(--max-width-wide);
+    padding: 0 1rem;
+    #cover-top-section {
+        margin-top: 0.5rem;
+        padding: 2rem 0;
+    }
+    #cover-heading {
+        max-width: var(--max-width-wide);
+        text-align: center;
+        #title {
+            #title-text {
+                #title-name {
+                    margin: 0;
+                    font-size: 6rem;
+                    font-weight: 900;
+                    letter-spacing: 0.2rem;
+                    @media (max-width: 50rem) {
+                        letter-spacing: 0.15rem;
+                        font-size: 3.5rem;
+                    }
+                }
+                #title-desc {
+                    display: block;
+                    font-size: 1.4rem;
+                    color: var(--bs-fg-1);
+                    @media (max-width: 50rem) {
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+        }
+
+        #hero-lede {
+            margin: 1.5rem auto 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--bs-fg-2);
+            @media (max-width: 50rem) {
+                font-size: 0.95rem;
+            }
+        }
+
+        #hero-points {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem auto 0;
+            @media (max-width: 50rem) {
+                gap: 1.25rem;
+                margin-top: 1.5rem;
+            }
+            .hero-point {
+                flex: 1 1 14rem;
+                max-width: 18rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-decoration: none;
+                border-radius: 1rem;
+                padding: 1.25rem 1rem;
+                transition: all 200ms ease-in-out;
+
+                &:hover {
+                    background-color: var(--bs-bg-1);
+                    transform: translateY(-2px);
+
+                    .hero-point-icon {
+                        transform: scale(1.08);
+                    }
+                }
+            }
+            .hero-point-icon {
+                width: 3rem;
+                height: 3rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                margin-bottom: 0.85rem;
+                font-size: 1.35rem;
+                background-color: color-mix(
+                    in oklch,
+                    var(--spatialdata-blue) 16%,
+                    transparent
+                );
+                color: hue-fg(var(--spatialdata-blue));
+                transition: transform 200ms ease-in-out;
+            }
+            .hero-point-title {
+                font-size: 1.15rem;
+                font-weight: 800;
+                margin-bottom: 0.4rem;
+                color: var(--bs-fg-1);
+            }
+            .hero-point-text {
+                margin: 0;
+                font-size: 0.9rem;
+                color: var(--bs-fg-2);
+            }
+        }
+    }
+
+    #chip-announcement {
+        margin: 0 auto 2rem;
+        max-width: var(--max-width-wide);
+        @media (max-width: 50rem) {
+            margin: 0 auto 1.5rem;
+        }
+    }
+
+    // Inverse of the page: dark on a light page, light on a dark one
+    .conference-banner {
+        display: flex;
+        align-items: center;
+        gap: 1.75rem;
+        width: 92%;
+        margin: 0 auto;
+        padding: 1rem 1.75rem;
+        border-radius: 1rem;
+        background: linear-gradient(
+            120deg,
+            light-dark(var(--bs-gray-975), var(--bs-gray-050)) 0%,
+            light-dark(var(--bs-indigo-950), var(--bs-indigo-100)) 100%
+        );
+        color: var(--bs-inverse-contrast);
+        text-decoration: none;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--bs-box-shadow-xl);
+
+            .conference-banner-cta {
+                background-color: var(--bs-inverse-contrast);
+                color: var(--bs-inverse-bg);
+
+                .arrow {
+                    transform: translateX(0.2rem);
+                }
+            }
+        }
+
+        @media (max-width: 50rem) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+        }
+    }
+
+    .conference-banner-date {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-shrink: 0;
+        line-height: 1.1;
+        padding-right: 1.75rem;
+        border-right: 1px solid
+            color-mix(in oklch, var(--bs-inverse-contrast) 20%, transparent);
+
+        .conference-banner-month {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: color-mix(in oklch, var(--bs-inverse-contrast) 60%, transparent);
+        }
+
+        .conference-banner-day {
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+
+        @media (max-width: 50rem) {
+            flex-direction: row;
+            align-items: baseline;
+            gap: 0.4rem;
+            padding-right: 0;
+            border-right: none;
+        }
+    }
+
+    .conference-banner-body {
+        flex: 1;
+        min-width: 0;
+
+        .conference-banner-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+        }
+
+        .conference-banner-desc {
+            margin: 0.2rem 0 0;
+            font-size: 0.9rem;
+            color: color-mix(in oklch, var(--bs-inverse-contrast) 75%, transparent);
+            max-width: 34rem;
+        }
+    }
+
+    .conference-banner-cta {
+        flex-shrink: 0;
+        padding: 0.7rem 1.4rem;
+        border-radius: 2rem;
+        background-color: color-mix(
+            in oklch,
+            var(--bs-inverse-contrast) 12%,
+            transparent
+        );
+        font-weight: 700;
+        white-space: nowrap;
+        transition: all 200ms ease-in-out;
+
+        .arrow {
+            display: inline-block;
+            transition: transform 200ms ease;
+        }
+
+        @media (max-width: 50rem) {
+            align-self: flex-start;
+        }
+    }
+
+    section {
+        max-width: var(--max-width-wide);
+        width: var(--content-width-wide);
+        margin: 0 auto;
+        margin-top: 5%;
+        @media (max-width: 50rem) {
+            margin-top: 15%;
+        }
+        .section-heading {
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            color: var(--bs-fg-1);
+            font-weight: 700;
+            transition: all 200ms ease-in-out;
+        }
+    }
+    // The wide gap under the hero used to live on #packages, which put it
+    // between whatever section came after the demo and the packages.
+    #interactive-demo-section {
+        // Overrides the generic `section` rule's margin-top: 5%, which stacked with #cover-top-section's padding into an oversized gap.
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+    }
+    #feature-grid {
+        background-color: var(--bs-bg-1);
+        border-radius: 1.25rem;
+        padding: 2.5rem;
+
+        @media (max-width: 50rem) {
+            padding: 1.5rem;
+        }
+
+        .section-heading {
+            margin-bottom: 1.5rem;
+        }
+
+        #feature-grid-items {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            column-gap: 3rem;
+            row-gap: 2rem;
+
+            @media (max-width: 50rem) {
+                grid-template-columns: 1fr;
+                row-gap: 1.5rem;
+            }
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .feature-item-icon {
+            flex-shrink: 0;
+            width: 2.25rem;
+            height: 2.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            background-color: color-mix(
+                in oklch,
+                var(--spatialdata-blue) 16%,
+                transparent
+            );
+            color: hue-fg(var(--spatialdata-blue));
+        }
+
+        .feature-item-title {
+            font-weight: 700;
+            color: var(--bs-fg-1);
+            margin-bottom: 0.2rem;
+        }
+
+        .feature-item-text {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--bs-fg-2);
+        }
+    }
+    #about-highlights {
+        .about-card-grid {
+            display: grid;
+            // A fixed 3-column count rather than auto-fit: on a wide viewport auto-fit would squeeze in a 4th column and break the 3+3 layout of 6 cards.
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.5rem;
+
+            @media (max-width: 64rem) {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            @media (max-width: 50rem) {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        .about-card {
+            display: flex;
+            flex-direction: column;
+            background-color: var(--bs-bg-1);
+            border: 1px solid var(--bs-border-color);
+            border-radius: var(--card-radius);
+            padding: 1.75rem;
+            transition: all 200ms ease-in-out;
+
+            @include lift-on-hover;
+
+            // Pins the "more" link to the card's bottom edge regardless of how many lines the paragraph above it takes.
+            > a {
+                margin-top: auto;
+            }
+        }
+
+        .about-card-icon {
+            width: 2.75rem;
+            height: 2.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        // Written as a descendant rather than nested under .about-card-icon: `&` there would carry the whole ancestor chain and put .about-card in front of #about-highlights.
+        .about-card[data-hue] .about-card-icon {
+            background-color: color-mix(in oklch, var(--hue) 16%, transparent);
+            color: hue-fg(var(--hue));
+        }
+
+        .about-card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem;
+            color: var(--bs-fg-1);
+        }
+
+        .about-card-text {
+            color: var(--bs-fg-2);
+            margin-bottom: 0.75rem;
+        }
+    }
+}

@@ -1,0 +1,98 @@
+@use "../components/toc";
+@use "../components/ecosystem";
+
+// Specific to /packages
+
+#packages-content {
+    .packages-list {
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+        .package-section {
+            display: flex;
+            margin: 0.5rem 0;
+            gap: 3rem;
+            &:first-of-type {
+                margin-top: 2rem;
+            }
+            .package-img {
+                flex: 1;
+                transition: all 200ms ease-in-out;
+                img {
+                    display: block;
+                    padding: 0.5rem;
+                    flex: 0 0 auto;
+                    align-self: center;
+                    object-fit: contain;
+                    margin: auto;
+                    max-width: 100%;
+                    max-height: 140px;
+                }
+                @media (max-width: 50rem) {
+                    display: none;
+                }
+            }
+            .package-info {
+                flex: 3;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                .package-tile {
+                    // padding: 2rem;
+                    border-radius: 1rem;
+                    // box-shadow: 0 .2rem .2rem .05rem color-mix(in oklch, var(--bs-black) 30%, transparent);
+                    .package-text {
+                        .package-name {
+                            font-size: 2rem;
+                            font-weight: 800;
+                            display: block;
+                        }
+                        .package-details {
+                            display: block;
+                            margin: 1rem 0;
+                            color: var(--bs-fg-1);
+                            @media (max-width: 50rem) {
+                                font-size: 1rem;
+                            }
+                        }
+                    }
+                }
+                // #anndata-tile {
+                //  background-color: color-mix(in oklch, #fa8e4b 90%, transparent);
+                // }
+                // #mudata-tile {
+                //  background-color: color-mix(in oklch, var(--mudata-green) 70%, transparent);
+                // }
+                // #scanpy-tile {
+                //  background-color: color-mix(in oklch, var(--scanpy-mandy) 70%, transparent);
+                // }
+                // #muon-tile {
+                //  background-color: color-mix(in oklch, var(--muon-aquamarine) 80%, transparent);
+                // }
+            }
+        }
+    }
+    // margin-top: 1rem !important;
+    // h2:first-of-type {
+    //  margin-top: 0 !important;
+    // }
+    .package-links {
+        a {
+            display: inline-block;
+            background-color: var(--bs-bg-2);
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.4rem 0.8rem;
+            margin: 0.5rem 0;
+            text-align: center;
+            border-radius: 0.5rem;
+            transition: all 200ms ease-in-out;
+            &:hover,
+            &:active {
+                color: var(--bs-fg-body);
+                background-color: var(--bs-bg-4);
+            }
+        }
+    }
+}

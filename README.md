@@ -12,7 +12,12 @@ To modify the contents of the tutorials page, for example, one has to look insid
 
 ### Styles
 
-For style sheets, [SCSS](https://sass-lang.com/) is used. Modify [`/assets/main.scss`](/assets/main.scss) to change styles.
+For style sheets, [SCSS](https://sass-lang.com/) is used:
+
+- [`/assets/main.scss`](/assets/main.scss): site-wide styles, loaded on every page.
+- [`/assets/sections/`](/assets/sections/): one file per section (`about.scss` for `/about/…`, `home.scss` for the landing page), loaded only there.
+- [`/assets/components/`](/assets/components/): styles for a script component, next to its `.ts` file, imported by the section files that use it.
+- [`/assets/lib/`](/assets/lib/): shared Sass functions and mixins.
 
 ### Layout
 

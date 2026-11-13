@@ -1,0 +1,153 @@
+// Search, filter chips and empty state shared by /packages#ecosystem and /people
+
+#ecosystem-packages,
+#people-content {
+    svg {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    .filter-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem 1.5rem;
+    }
+
+    .filter-search {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex: 1 1 22rem;
+
+        .filter-search-icon {
+            position: absolute;
+            left: 1.1rem;
+            width: 1.1rem;
+            height: 1.1rem;
+            color: var(--bs-fg-3);
+            pointer-events: none;
+        }
+
+        input {
+            width: 100%;
+            height: 3.25rem;
+            padding: 0 2.9rem;
+            font-size: 1rem;
+            color: var(--bs-fg-1);
+            background-color: var(--bs-bg-1);
+            border: 1px solid var(--bs-border-color);
+            border-radius: 2rem;
+            outline: none;
+            transition: all 200ms ease-in-out;
+            text-overflow: ellipsis;
+
+            &::placeholder {
+                color: var(--bs-fg-3);
+            }
+            &:focus {
+                background-color: var(--bs-bg-body);
+                border-color: var(--bs-fg-3);
+                box-shadow: 0 0 0 0.25rem
+                    color-mix(in oklch, var(--bs-fg-body) 6%, transparent);
+            }
+            // The native affordance duplicates our own clear button
+            &::-webkit-search-cancel-button {
+                display: none;
+            }
+        }
+    }
+
+    .filter-search-clear {
+        position: absolute;
+        right: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.6rem;
+        height: 1.6rem;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        color: var(--bs-fg-2);
+        background-color: var(--bs-bg-2);
+        transition: all 200ms ease-in-out;
+
+        svg {
+            width: 0.7rem;
+            height: 0.7rem;
+        }
+        &:hover {
+            color: var(--bs-inverse-contrast);
+            background-color: var(--bs-inverse-bg);
+        }
+    }
+
+    .filter-count {
+        margin: 0;
+        font-size: 0.95rem;
+        color: var(--bs-fg-2);
+        white-space: nowrap;
+
+        @media (max-width: 50rem) {
+            order: -1;
+        }
+    }
+
+    .filter-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 1.25rem;
+    }
+
+    .filter-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.35rem 0.85rem;
+        font-size: 0.85rem;
+        color: var(--bs-fg-2);
+        background-color: var(--bs-bg-body);
+        border: 1px solid var(--bs-border-color);
+        border-radius: 2rem;
+        transition: all 200ms ease-in-out;
+
+        img {
+            width: 0.9rem;
+            height: 0.9rem;
+            object-fit: contain;
+        }
+        &:hover {
+            color: var(--bs-fg-body);
+            border-color: var(--bs-border-emphasized);
+            background-color: var(--bs-bg-1);
+        }
+        &.is-active {
+            color: var(--bs-inverse-contrast);
+            background-color: var(--bs-inverse-bg);
+            border-color: var(--bs-inverse-bg);
+        }
+        .filter-chip-count {
+            font-size: 0.8rem;
+            opacity: 0.75;
+        }
+    }
+
+    .filter-empty {
+        padding: 4rem 0;
+        text-align: center;
+        color: var(--bs-fg-2);
+
+        .filter-empty-reset {
+            padding: 0;
+            color: var(--bs-fg-1);
+            background: none;
+            border: 0;
+            text-decoration: underline;
+        }
+    }
+}
