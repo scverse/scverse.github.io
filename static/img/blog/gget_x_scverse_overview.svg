@@ -223,9 +223,9 @@
 
   <rect id="dbs-bg" x="989" y="144" width="543" height="486" rx="22" fill="#ffffff" stroke="#c4d4f1" stroke-width="2"></rect>
   <g transform="translate(1030,178)" fill="#3b6ff5">
-      <ellipse cx="11" cy="5" rx="11" ry="5"></ellipse>
-      <path d="M0 9 a11 5 0 0 0 22 0 v6 a11 5 0 0 1 -22 0 Z"></path>
-      <path d="M0 20 a11 5 0 0 0 22 0 v6 a11 5 0 0 1 -22 0 Z"></path>
+    <ellipse cx="11" cy="5" rx="11" ry="5"></ellipse>
+    <path d="M0 9 a11 5 0 0 0 22 0 v6 a11 5 0 0 1 -22 0 Z"></path>
+    <path d="M0 20 a11 5 0 0 0 22 0 v6 a11 5 0 0 1 -22 0 Z"></path>
   </g>
   <text id="dbs-title" x="1068" y="203" font-size="28" font-weight="800" letter-spacing="1.4" fill="#3a4a6b">20+ REFERENCE DATABASES</text>
 
