@@ -1,4 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="960" viewBox="0 0 1600 960" font-family="IBM Plex Sans, Segoe UI, Helvetica, Arial, sans-serif">
+<style>
+  /* dark mode: recolor by the light-mode color, so the generated markup stays untouched */
+  @media (prefers-color-scheme: dark) {
+    [fill="#ffffff"] { fill: oklch(14.4% .005 245); }
+    [stroke="#ffffff"] { stroke: oklch(14.4% .005 245); }
+    [fill="#fdfdfe"] { fill: #1d1f27; }
+    [fill="#f4f4f7"] { fill: #1a1c23; }
+    [stroke="#e9e9ef"], [stroke="#d5d5de"], [stroke="#e4e4ea"], [stroke="#dcdce4"], [stroke="#d5d5df"] { stroke: #3a3c48; }
+    [fill="#16161d"], [fill="#2a2a36"], [fill="#3a3a48"], [fill="#3d3d48"], [fill="#4a4a58"] { fill: #e3e4ee; }
+    [stroke="#55555f"] { stroke: #b0b0bc; }
+    [stroke="#6f6f80"] { stroke: #a0a0b0; }
+    [stroke="#9a9aa6"] { stroke: #6a6a78; }
+    [stroke="#d9d9e1"] { stroke: #3a3c48; }
+    [fill="#f3edfe"] { fill: #241a3d; }
+    [fill="#e3d8fb"] { fill: #2f2350; }
+    [stroke="#cbbdf5"], [stroke="#c3b0f2"], [stroke="#cfc0f6"] { stroke: #4a3a7a; }
+    [fill="#2f1b8a"] { fill: #d4c6ff; }
+    [fill="#5b3fd0"] { fill: #a893f0; }
+    [fill="#4b2fbf"] { fill: #b29dff; }
+    [fill="#eef4fd"] { fill: #16213a; }
+    [fill="#eef7f1"] { fill: #132a1e; }
+    [fill="#fdf2e9"] { fill: #2e1f12; }
+    text[fill="#1f5fd0"] { fill: #6a9cf0; }
+    text[fill="#1c7a4a"] { fill: #4fbf85; }
+    text[fill="#d2600f"] { fill: #f08a45; }
+    [stroke="#2b3a8f"] { stroke: #7083d8; }
+    [fill="#2b3a8f"] { fill: #7083d8; }
+    [fill="#c02f2f"] { fill: #ff7a7a; }
+    [fill="#c85a1e"] { fill: #f0905a; }
+  }
+</style>
 <rect x="8" y="8" width="1584" height="944" rx="22" fill="#ffffff" stroke="#e9e9ef"></rect>
 
 <rect x="415" y="38" width="880" height="66" rx="10" fill="#fdfdfe" stroke="#d5d5de"></rect>
