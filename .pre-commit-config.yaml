@@ -11,7 +11,7 @@ repos:
     rev: v2.6.7
     hooks:
       - id: biome-check
-        files: ^(assets/|[^/]+\.jsonc?$|\.vscode/[^/]+\.json$)
+        files: "" # the hook’s default omits .scss; biome.jsonc’s `files.includes` decides
   - repo: local
     hooks:
       # js.Build only strips the types, so nothing else would catch a type error.
