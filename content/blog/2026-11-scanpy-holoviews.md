@@ -1,9 +1,8 @@
 +++
 title = "A new plotting backend for Scanpy: HoloViews"
-date = 2026-08-27T00:00:05+01:00
+date = 2026-11-13T00:00:05+01:00
 description = "An opt-in HoloViews plotting backend for Scanpy, in preview."
 author = "Muskan Hashim, Philipp Angerer"
-draft = true
 +++
 
 <img src="/img/blog/scanpy_holoviews_overview.svg" style="max-width: 100%;" alt="One sc.pl.umap call producing one HoloViews object, rendered through the Bokeh, Matplotlib and Plotly backends" />
@@ -69,7 +68,7 @@ You reference `A.obsm["umap"]`, `A.obs["bulk_labels"]`, or `A.X[:, "GENE"]` dire
 The AnnData object stays the single source of truth, in line with the scverse philosophy of organizing workflows around a shared, interoperable data structure.
 
 On top of the interface, hv-anndata ships single-cell-aware components: a ManifoldMap for embeddings, a Dotmap, and a ClusterMap.
-The `sc.pl` plotting functions (scatter, umap, heatmap, violin, stacked_violin, matrixplot, tracksplot, and more) are in Scanpy from 1.13.0a1 onward, available once you set the `ScanpyV2Preview` preset; each function's [docs page](https://scanpy.scverse.org/en/latest/api/generated/scanpy.pl.scatter.html) has New and Legacy tabs for both backends.
+The `sc.pl` plotting functions (scatter, umap, heatmap, violin, stacked_violin, matrixplot, tracksplot, and more) ship with Scanpy 1.13, available once you set the `ScanpyV2Preview` preset; each function's [docs page](https://scanpy.scverse.org/en/latest/api/generated/scanpy.pl.scatter.html) has New and Legacy tabs for both backends.
 
 Because scanpy's own tools return tidy data, they compose straight into HoloViews.
 `sc.pl.dotplot`, for example, aggregates once with `sc.get.aggregate` and maps the result onto a HoloViews `Points` element, with mean expression as color and the fraction of expressing cells as dot size:
@@ -89,11 +88,33 @@ The whole plot type collapses to an aggregation feeding a data-first element, wi
 - **Interactivity for free.**
   With Bokeh, mouse over a cell in a UMAP to read its cluster, gene expression, or any `obs` field with no re-running.
 - **Scales to millions of cells.**
-  [Datashader](https://datashader.org/) rasterizes the points into a faithful image and re-renders as you zoom, and turning it on can be as simple as `datashade=True`.
+  [Datashader](https://datashader.org/) rasterizes the points into a faithful image and re-renders as you zoom, and it works on any `sc.pl` plot (see [below](#scaling-to-millions-of-cells)).
 - **Composable.**
   Overlay with `*`, lay out side by side with `+`, and add a marginal histogram with `.hist()`, so `scatter * centroids + expression_violin` replaces a page of axes management.
 - **Existing plots are covered.**
   There's an equivalent for most of the matplotlib functions you rely on.
+
+## Scaling to millions of cells
+
+Drawing every cell as its own glyph gets slow, and overplotted points hide where cells actually are.
+Since `sc.pl` functions return plain HoloViews objects, you can hand any of them to HoloViews' [Datashader operations](https://holoviews.org/user_guide/Large_Data.html).
+They aggregate the points into an image on the server and recompute it as you pan and zoom:
+
+```python
+import datashader as ds
+from holoviews.operation.datashader import rasterize, datashade, dynspread
+
+# continuous values: average expression per pixel, colormapped on the client
+umap_lyz = sc.pl.umap(adata, color=A.X[:, "LYZ"])
+rasterize(umap_lyz, aggregator=ds.mean("LYZ")).opts(cmap="viridis", colorbar=True)
+
+# categories: count cells per label per pixel and blend the label colors
+umap_labels = sc.pl.umap(adata, color=A.obs["bulk_labels"])
+dynspread(datashade(umap_labels, aggregator=ds.count_cat("bulk_labels")))
+```
+
+`rasterize` keeps the result as data, so hover and colorbars keep working.
+`datashade` goes all the way to an RGB image, which is how categories get mixed colors where they overlap, and `dynspread` keeps isolated cells visible when zoomed out.
 
 ## Linked brushing
 
@@ -106,7 +127,7 @@ import panel as pn
 import hv_anndata
 
 ls = hv.link_selections.instance()
-mm = hv_anndata.ManifoldMap(adata=adata, reduction="X_umap", ls=ls)
+mm = hv_anndata.ManifoldMap(adata=adata, reduction="umap", ls=ls)
 
 marker_genes = {"B cells": ["CD79A", "CD79B"], "Monocytes": ["LYZ", "CST3"]}
 dm = hv_anndata.dotmap_from_manifoldmap(mm, marker_genes=marker_genes, groupby="bulk_labels")
@@ -120,7 +141,13 @@ pn.Column(mm, dm)
 
 ## Try it
 
-The new backend is an opt-in preview.
+The new backend is an opt-in preview in Scanpy 1.13.
+Install it with the `scanpy2` extra:
+
+```bash
+pip install "scanpy[scanpy2]"
+```
+
 The legacy matplotlib path and the new HoloViews one live behind the same `sc.pl` functions, so one setting chooses which is active:
 
 ```python
