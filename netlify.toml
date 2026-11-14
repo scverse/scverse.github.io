@@ -1,4 +1,4 @@
-# Single source of truth for tool versions: .github/workflows/gh-pages.yml reads [build.environment] too, so deploy previews match production.
+# Single source of truth for tool versions: .github/actions/setup-hugo reads [build.environment] too, so deploy previews match production.
 [build]
 # Netlify's Hugo preset stops at `hugo`; the search index is built after it.
 # Netlify has no Dart Sass, so fetch it first (Hugo looks for `sass` on the PATH).

@@ -25,11 +25,13 @@ baseName = "search-entities"
 isPlainText = true
 notAlternative = true
 
-[markup.goldmark.parser.attribute]
-block = true
+[markup.highlight]
+style = "github"  # ignored by hugo since noClasses is false, but read by scripts/highlight_styles.py
+noClasses = false  # use stylesheet
 
-[markup.goldmark.renderer]
-unsafe = true
+[markup.goldmark]
+parser.attribute.block = true
+renderer.unsafe = true
 
 [outputFormats.llms]
 mediaType = "text/plain"
