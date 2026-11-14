@@ -1,4 +1,14 @@
 repos:
+  # Before the formatters, so they check its output. Needs `hugo` on the PATH.
+  - repo: local
+    hooks:
+      - id: highlight-styles
+        name: generate assets/chroma.css
+        entry: python scripts/highlight_styles.py
+        language: python
+        additional_dependencies: [tinycss2>=1.4]
+        files: ^(config\.toml|netlify\.toml|scripts/highlight_styles\.py|assets/chroma\.css)$
+        pass_filenames: false
   - repo: https://github.com/rbubley/mirrors-prettier
     rev: v3.9.10
     hooks:
