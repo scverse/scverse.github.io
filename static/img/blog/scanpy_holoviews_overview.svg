@@ -12,12 +12,10 @@
     [stroke="#6f6f80"] { stroke: #a0a0b0; }
     [stroke="#9a9aa6"] { stroke: #6a6a78; }
     [stroke="#d9d9e1"] { stroke: #3a3c48; }
-    [fill="#f3edfe"] { fill: #241a3d; }
-    [fill="#e3d8fb"] { fill: #2f2350; }
-    [stroke="#cbbdf5"], [stroke="#c3b0f2"], [stroke="#cfc0f6"] { stroke: #4a3a7a; }
-    [fill="#2f1b8a"] { fill: #d4c6ff; }
-    [fill="#5b3fd0"] { fill: #a893f0; }
-    [fill="#4b2fbf"] { fill: #b29dff; }
+    [fill="#fdf0f2"] { fill: #33141d; }
+    [stroke="#f0c2cb"] { stroke: #6a2a3a; }
+    [fill="#7a1730"] { fill: #ffc7d2; }
+    [fill="#c21c39"] { fill: #ff8095; }
     [fill="#eef4fd"] { fill: #16213a; }
     [fill="#eef7f1"] { fill: #132a1e; }
     [fill="#fdf2e9"] { fill: #2e1f12; }
@@ -41,10 +39,10 @@
 <line x1="855" y1="196" x2="855" y2="214" stroke="#8a8a99" stroke-width="1.6"></line>
 <path d="M851 214 L855 222 L859 214 Z" fill="#8a8a99"></path>
 
-<rect x="500" y="222" width="620" height="176" rx="16" fill="#f3edfe" stroke="#cbbdf5" stroke-width="1.5"></rect>
-<g><polygon points="600.0,256.0 646.8,283.0 646.8,337.0 600.0,364.0 553.2,337.0 553.2,283.0" fill="#e3d8fb" stroke="#c3b0f2" stroke-width="1.5"></polygon><polygon points="600.0,273.3 631.8,291.6 631.8,328.4 600.0,346.7 568.2,328.4 568.2,291.6" fill="#f3edfe" stroke="#cfc0f6" stroke-width="1.2"></polygon><text x="600" y="324.0" font-family="IBM Plex Sans, Segoe UI, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#4b2fbf" text-anchor="middle">H</text></g>
-<text x="690" y="292" font-size="31" font-weight="700" fill="#2f1b8a">one HoloViews object</text>
-<text x="866" y="342" font-size="26" fill="#5b3fd0" text-anchor="middle">Declare once, render anywhere.</text>
+<rect x="500" y="222" width="620" height="176" rx="16" fill="#fdf0f2" stroke="#f0c2cb" stroke-width="1.5"></rect>
+<svg x="515" y="235" width="150" height="150" viewBox="0 0 500 500"><style type="text/css"> .st0{fill:url(#SVGID_1_);} .st1{opacity:0.2;fill:url(#SVGID_2_);} .st2{fill:url(#SVGID_3_);} .st3{opacity:0.2;fill:url(#SVGID_4_);} .st4{fill:url(#SVGID_5_);} .st5{fill:url(#SVGID_6_);} .st6{fill:url(#SVGID_7_);} .st7{fill:url(#SVGID_8_);} </style> <g> <g> <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-4245.2314" y1="55.0994" x2="-4245.2314" y2="270.0156" gradientTransform="matrix(-1 0 0 1 -3885.9946 0)"> <stop offset="0" style="stop-color:#E80589"/> <stop offset="0.2561" style="stop-color:#D11359"/> <stop offset="0.4598" style="stop-color:#C21C39"/> <stop offset="0.5727" style="stop-color:#BC202D"/> <stop offset="0.9586" style="stop-color:#5B1F2D"/> </linearGradient> <polygon class="st0" points="468.5,141.1 250,55.1 250,80.9 442.3,156.5 "/> <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="-4354.4678" y1="105.8109" x2="-4135.9946" y2="105.8109" gradientTransform="matrix(-1 0 0 1 -3885.9946 0)"> <stop offset="0" style="stop-color:#E80589"/> <stop offset="0.2561" style="stop-color:#D11359"/> <stop offset="0.4598" style="stop-color:#C21C39"/> <stop offset="0.5727" style="stop-color:#BC202D"/> <stop offset="0.9586" style="stop-color:#5B1F2D"/> </linearGradient> <polygon class="st1" points="468.5,141.1 250,55.1 250,80.9 442.3,156.5 "/> <linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="-4221.3354" y1="55.0994" x2="-4221.3354" y2="270.0156" gradientTransform="matrix(-1 0 0 1 -3885.9946 0)"> <stop offset="0" style="stop-color:#E80589"/> <stop offset="0.2561" style="stop-color:#D11359"/> <stop offset="0.4598" style="stop-color:#C21C39"/> <stop offset="0.5727" style="stop-color:#BC202D"/> <stop offset="0.9586" style="stop-color:#5B1F2D"/> </linearGradient> <polygon class="st2" points="250,270 420.7,169.3 250,102.1 "/> <linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="-4354.4678" y1="186.0641" x2="-4135.9946" y2="186.0641" gradientTransform="matrix(-1 0 0 1 -3885.9946 0)"> <stop offset="0" style="stop-color:#E80589"/> <stop offset="0.2561" style="stop-color:#D11359"/> <stop offset="0.4598" style="stop-color:#C21C39"/> <stop offset="0.5727" style="stop-color:#BC202D"/> <stop offset="0.9586" style="stop-color:#5B1F2D"/> </linearGradient> <polygon class="st3" points="250,270 420.7,169.3 250,102.1 "/> </g> <g> <linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="249.9735" y1="331.9526" x2="31.5" y2="331.9526"> <stop offset="0" style="stop-color:#F9AF41"/> <stop offset="0.3445" style="stop-color:#F5C23C"/> <stop offset="0.3603" style="stop-color:#F5C33C"/> <stop offset="0.6377" style="stop-color:#F2D534"/> </linearGradient> <polygon class="st4" points="250,314.9 250,314.9 87.5,219 250,444.9 "/> <linearGradient id="SVGID_6_" gradientUnits="userSpaceOnUse" x1="249.9735" y1="216.4939" x2="31.5" y2="216.4939"> <stop offset="0" style="stop-color:#F9AF41"/> <stop offset="0.3494" style="stop-color:#F6C23B"/> <stop offset="0.6377" style="stop-color:#F2D534"/> </linearGradient> <polygon class="st5" points="250,270 31.5,141.1 58.9,179.1 250,291.9 "/> <linearGradient id="SVGID_7_" gradientUnits="userSpaceOnUse" x1="468.5" y1="216.494" x2="249.9735" y2="216.494"> <stop offset="0.4804" style="stop-color:#EE4036"/> <stop offset="0.7038" style="stop-color:#F16129"/> <stop offset="0.8577" style="stop-color:#F27322"/> </linearGradient> <polygon class="st6" points="250,291.9 441.1,179.1 468.5,141.1 250,270 250,291.9 "/> <linearGradient id="SVGID_8_" gradientUnits="userSpaceOnUse" x1="468.5" y1="331.952" x2="249.9735" y2="331.952"> <stop offset="0.4804" style="stop-color:#EE4036"/> <stop offset="0.7038" style="stop-color:#F16129"/> <stop offset="0.8577" style="stop-color:#F27322"/> </linearGradient> <polygon class="st7" points="250,444.9 412.4,219 250,314.9 "/> </g> </g></svg>
+<text x="690" y="292" font-size="31" font-weight="700" fill="#7a1730">one HoloViews object</text>
+<text x="866" y="342" font-size="26" fill="#c21c39" text-anchor="middle">Declare once, render anywhere.</text>
 
 <g fill="none" stroke-width="2.2" mask="url(#gaps)">
   <path d="M810 400 L810 438" stroke="#2f8f8f"></path>
