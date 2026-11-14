@@ -58,7 +58,7 @@
 
 
   <article class="post">
-    <div class="post-content people-content" id="people-content">
+    <people-directory class="post-content">
       <svg class="people-sprite" aria-hidden="true" focusable="false">
         <symbol id="p-i-github" viewBox="0 0 24 24">
           <path
@@ -87,11 +87,11 @@
       {{/* The contributor wall is the truest picture of who builds scverse, so it opens the page
         rather than closing it.
       */}}
-      <header class="people-hero">
+      <people-hero>
         <h1>{{ .Title }}</h1>
         <p class="people-lead">{{ .Params.lead | safeHTML }}</p>
         {{ with $contributors }}
-          <div class="people-mosaic is-clipped" id="contributors">
+          <div class="people-mosaic is-clipped">
             {{ range . }}
               {{/* The name rides on the link: 390 alt texts render as a wall of overlapping
                 words while the avatars are still loading.
@@ -114,13 +114,11 @@
             reporting bugs, answering questions and providing feedback that are not explicitly listed here.
             {{ $.Params.contributors.text | safeHTML }}
           </p>
-          <button type="button" id="contributor-expand" class="contributor-expand" aria-expanded="false">
-            Show everyone
-          </button>
+          <button type="button" class="contributor-expand" aria-expanded="false">Show everyone</button>
         {{ end }}
-      </header>
+      </people-hero>
 
-      <section class="people-section filterable" id="people-directory">
+      <section class="people-section filterable">
         <h2 id="the-team"><a href="#the-team">The team</a></h2>
         <p class="people-section-text">{{ .Params.team_lead }}</p>
 
@@ -136,16 +134,16 @@
               autocomplete="off"
               placeholder="Search {{ len $items }} people by name, institute or package…"
             />
-            <button type="button" id="people-clear" class="filter-search-clear" hidden aria-label="Clear filters">
+            <button type="button" class="filter-search-clear" hidden aria-label="Clear filters">
               <svg aria-hidden="true" focusable="false"><use href="#p-i-close" /></svg>
             </button>
           </div>
           <p class="filter-count" role="status">
-            <span id="people-count">{{ len $items }}</span> of {{ len $items }} people
+            <span class="people-count">{{ len $items }}</span> of {{ len $items }} people
           </p>
         </div>
 
-        <div class="filter-chips" id="people-roles">
+        <div class="filter-chips people-roles">
           <button type="button" class="filter-chip is-active" data-role="" aria-pressed="true">All</button>
           {{ range $roles }}
             {{ $count := len (where $items "roles" "intersect" (slice .id)) }}
@@ -156,7 +154,7 @@
           {{ end }}
         </div>
 
-        <div class="filter-chips filter-chips--packages" id="people-packages">
+        <div class="filter-chips filter-chips--packages people-packages">
           <button type="button" class="filter-chip" data-package="" aria-pressed="false">All packages</button>
           {{ range $packages }}
             <button type="button" class="filter-chip" data-package="{{ . }}" aria-pressed="false">
@@ -173,20 +171,20 @@
         {{ end }}
 
 
-        <div class="people-grid" id="people-grid">
+        <div class="people-grid">
           {{ range where $items "team" true }}
             {{ partial "people/card.html" (dict "person" . "labels" $labels "groups" $groupIDs) }}
           {{ end }}
         </div>
 
-        <p class="filter-empty" id="people-empty" hidden>
+        <p class="filter-empty" hidden>
           Nobody matches your filters.
           <button type="button" class="filter-empty-reset">Reset</button>
         </p>
       </section>
 
       {{ with $groups }}
-        <section class="people-section" id="people-groups">
+        <section class="people-section people-groups">
           <h2 id="working-groups"><a href="#working-groups">Working groups</a></h2>
           <p class="people-section-text">{{ $.Params.groups_lead }}</p>
           {{ range . }}
@@ -220,6 +218,6 @@
           {{ end }}
         </section>
       {{ end }}
-    </div>
+    </people-directory>
   </article>
 {{ end }}

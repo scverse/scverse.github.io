@@ -171,31 +171,33 @@
   </nav>
 </div>
 
-<dialog aria-modal="true" aria-labelledby="search-label" id="search-dialog" class="search-dialog">
-  <label class="visually-hidden" for="search-input" id="search-label">Search scverse.org</label>
-  <div class="search-field">
-    <i class="bi bi-search" aria-hidden="true"></i>
-    <input
-      type="search"
-      id="search-input"
-      class="search-input"
-      autofocus
-      placeholder="Search packages, tutorials, events, blog posts…"
-      autocomplete="off"
-      spellcheck="false"
-      aria-describedby="search-status"
-      aria-controls="search-results"
-    />
-    <button
-      type="button"
-      class="search-close"
-      commandfor="search-dialog"
-      command="close-modal"
-      aria-label="Close search"
-    >
-      Esc
-    </button>
-  </div>
-  <p id="search-status" class="search-status" role="status" aria-live="polite"></p>
-  <ul id="search-results" class="search-results"></ul>
-</dialog>
+<search-dialog>
+  <dialog aria-modal="true" aria-labelledby="search-label" id="search-dialog" class="search-dialog">
+    <label class="visually-hidden" for="search-input" id="search-label">Search scverse.org</label>
+    <div class="search-field">
+      <i class="bi bi-search" aria-hidden="true"></i>
+      <input
+        type="search"
+        id="search-input"
+        class="search-input"
+        autofocus
+        placeholder="Search packages, tutorials, events, blog posts…"
+        autocomplete="off"
+        spellcheck="false"
+        aria-describedby="search-status"
+        aria-controls="search-results"
+      />
+      <button
+        type="button"
+        class="search-close"
+        commandfor="search-dialog"
+        command="close-modal"
+        aria-label="Close search"
+      >
+        Esc
+      </button>
+    </div>
+    <p id="search-status" class="search-status" role="status" aria-live="polite"></p>
+    <ul id="search-results" class="search-results"></ul>
+  </dialog>
+</search-dialog>

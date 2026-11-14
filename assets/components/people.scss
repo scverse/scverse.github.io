@@ -7,7 +7,8 @@
     display: none;
 }
 
-.people-content {
+people-directory {
+    display: block;
     // The GitHub mark is a filled glyph rather than a line drawing
     svg.is-solid {
         fill: currentColor;

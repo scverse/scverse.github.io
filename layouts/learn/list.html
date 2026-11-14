@@ -1,5 +1,5 @@
 {{ define "main" }}
-  <div class="with-toc">
+  <with-toc>
     {{ partial "toc.html" . }}
     <div class="with-toc-body">
       <h1>{{ .Title }}</h1>
@@ -15,11 +15,10 @@
 
               <h2 id="tutorials">Tutorials</h2>
 
-              <div id="ecosystem-tutorials" class="ecosystem-tutorials">
+              <tutorial-list>
                 <input
                   type="text"
                   class="form-control"
-                  id="tutorial-filter"
                   placeholder="Search through {{ len $content.tutorials }} tutorials"
                   title="Type in your search query"
                 />
@@ -67,12 +66,12 @@
                   {{ end }}
                 {{ end }}
 
-              </div>
+              </tutorial-list>
             {{ end }}
 
           {{ end }}
         </div>
       </article>
     </div>
-  </div>
+  </with-toc>
 {{ end }}

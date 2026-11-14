@@ -1,7 +1,7 @@
 // Table of contents sidebar, used by the long pages (see partials/toc.html)
 @use "../lib/breakpoints" as *;
 
-.with-toc,
+with-toc,
 .with-toc-body {
     display: flex;
     flex-direction: column;
@@ -14,7 +14,7 @@
 
 // Only worth a column when there is room for one beside the content
 @include media-up(xl) {
-    .page-content:has(.with-toc) {
+    .page-content:has(with-toc) {
         max-width: var(--max-width-wide);
         width: var(--content-width-wide);
     }
@@ -26,7 +26,7 @@
         width: var(--content-width);
     }
 
-    .with-toc {
+    with-toc {
         display: grid;
         grid-template-columns: 13rem minmax(0, 1fr);
         gap: 3.5rem;
@@ -34,7 +34,7 @@
         --prose-measure: 54rem;
     }
 
-    .with-toc:has(.toc[hidden]) {
+    with-toc:has(.toc[hidden]) {
         grid-template-columns: minmax(0, 1fr);
         --prose-measure: none;
     }

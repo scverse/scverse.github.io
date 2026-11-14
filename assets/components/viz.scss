@@ -1,7 +1,8 @@
 // Interactive UMAP Visualization Styles
 @use "../lib/breakpoints" as *;
 
-.interactive-container {
+interactive-viz {
+    display: block;
     max-width: var(--max-width-wide);
     transform-style: preserve-3d;
     perspective: 1500px;

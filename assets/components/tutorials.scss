@@ -1,7 +1,11 @@
 // Specific to /tutorials
 @use "../lib/breakpoints" as *;
 
-.ecosystem-tutorials input {
+tutorial-list {
+    display: block;
+}
+
+tutorial-list input {
     height: 3.2rem;
     outline: none;
     box-shadow: none;

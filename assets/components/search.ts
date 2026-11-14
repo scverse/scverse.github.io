@@ -1,8 +1,7 @@
 /** biome-ignore-all lint/style/noNonNullAssertion: easy to debug misspelling */
 
+import { $, el, isInside } from "lib/html"
 import type { PagefindDocument } from "pagefind"
-
-import { el, isInside } from "../lib/html"
 
 type Pagefind = typeof import("pagefind")
 
@@ -13,132 +12,136 @@ interface Entity {
   url: string
 }
 
-export default function init(dialog: HTMLDialogElement) {
-  const input = dialog.querySelector<HTMLInputElement>("#search-input")!
-  const status = dialog.querySelector<HTMLElement>("#search-status")!
-  const results = dialog.querySelector<HTMLElement>("#search-results")!
+export class SearchDialog extends HTMLElement {
+  constructor() {
+    super()
+    const dialog = $("dialog", HTMLDialogElement, this)
+    const input = $(".search-input", HTMLInputElement, dialog)
+    const status = $(".search-status", HTMLElement, dialog)
+    const results = $(".search-results", HTMLElement, dialog)
 
-  let lastQuery = ""
-  let selected = -1
+    let lastQuery = ""
+    let selected = -1
 
-  function setSelected(next: number) {
-    const items = results.querySelectorAll("a")
-    if (!items.length) return
-    if (selected >= 0 && items[selected]) items[selected].removeAttribute("aria-selected")
-    selected = (next + items.length) % items.length
-    items[selected].setAttribute("aria-selected", "true")
-    items[selected].scrollIntoView({ block: "nearest" })
-  }
-
-  // Pagefind matches when an indexed word is a prefix of the search term, so
-  // "xylophone" comes back matching "x" on seventeen pages.
-  function relevant(hit: PagefindDocument): boolean {
-    const terms = normalise(lastQuery)
-    if (!terms.length) return true
-    const matched = [...hit.excerpt.matchAll(/<mark>(.*?)<\/mark>/g)].flatMap((m) => normalise(m[1]))
-    return terms.some((term) => matched.some((word) => word.startsWith(term)))
-  }
-
-  async function render(query: string) {
-    if (query === lastQuery) return
-    lastQuery = query
-    selected = -1
-
-    if (query.length < 2) {
-      results.replaceChildren()
-      status.textContent = ""
-      return
-    }
-
-    const pinned = matchEntities(await loadEntities(), query)
-    if (query !== lastQuery) return
-
-    const engine = await loadPagefind(status)
-    if (!engine) return
-
-    status.textContent = "Searching…"
-    const search = await engine.search(query)
-    if (query !== lastQuery) return
-
-    const candidates = await Promise.all(search.results.slice(0, 30).map((result) => result.data()))
-    if (query !== lastQuery) return
-
-    const top = candidates.filter(relevant).slice(0, 12)
-
-    results.replaceChildren(
-      ...pinned.map((entity) =>
-        resultRow({
-          link: { href: entity.url, target: "_blank", rel: "noopener", className: "search-result-entity" },
-          title: entity.name,
-          labelClass: "kind",
-          label: entity.kind,
-          excerpt: { textContent: entity.detail },
-        }),
-      ),
-      ...top.map((hit) =>
-        resultRow({
-          link: { href: hit.url },
-          title: hit.meta.title || hit.url,
-          labelClass: "url",
-          label: hit.url,
-          excerpt: { innerHTML: hit.excerpt },
-        }),
-      ),
-    )
-
-    const n = results.childNodes.length
-    status.textContent = n ? `${n} result${n === 1 ? "" : "s"}` : `No results for “${query}”`
-  }
-
-  // close dialog when clicking backdrop
-  dialog.addEventListener("click", (event) => {
-    if (!isInside(dialog, event)) dialog.close()
-  })
-
-  let debounce: ReturnType<typeof setTimeout>
-  input.addEventListener("input", () => {
-    clearTimeout(debounce)
-    debounce = setTimeout(() => render(input.value.trim()), 150)
-  })
-
-  dialog.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowDown") {
-      event.preventDefault()
-      setSelected(selected + 1)
-    } else if (event.key === "ArrowUp") {
-      event.preventDefault()
-      setSelected(selected - 1)
-    } else if (event.key === "Enter") {
+    function setSelected(next: number) {
       const items = results.querySelectorAll("a")
-      if (selected >= 0 && items[selected]) {
-        event.preventDefault()
-        items[selected].click()
-      }
-    } else if (event.key === "Tab") {
-      // Keep focus inside the dialog while it is open.
-      const focusable = dialog.querySelectorAll<HTMLElement>("input, button, a")
-      const first = focusable[0]
-      const last = focusable[focusable.length - 1]
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault()
-        last.focus()
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault()
-        first.focus()
-      }
+      if (!items.length) return
+      if (selected >= 0 && items[selected]) items[selected].removeAttribute("aria-selected")
+      selected = (next + items.length) % items.length
+      items[selected].setAttribute("aria-selected", "true")
+      items[selected].scrollIntoView({ block: "nearest" })
     }
-  })
 
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      dialog.close()
-    } else if (event.key === "/" || ((event.metaKey || event.ctrlKey) && event.key === "k")) {
-      const tag = document.activeElement?.tagName
-      if (tag === "INPUT" || tag === "TEXTAREA") return
-      event.preventDefault()
-      dialog.showModal()
+    // Pagefind matches when an indexed word is a prefix of the search term, so
+    // "xylophone" comes back matching "x" on seventeen pages.
+    function relevant(hit: PagefindDocument): boolean {
+      const terms = normalise(lastQuery)
+      if (!terms.length) return true
+      const matched = [...hit.excerpt.matchAll(/<mark>(.*?)<\/mark>/g)].flatMap((m) => normalise(m[1]))
+      return terms.some((term) => matched.some((word) => word.startsWith(term)))
     }
-  })
+
+    async function render(query: string) {
+      if (query === lastQuery) return
+      lastQuery = query
+      selected = -1
+
+      if (query.length < 2) {
+        results.replaceChildren()
+        status.textContent = ""
+        return
+      }
+
+      const pinned = matchEntities(await loadEntities(), query)
+      if (query !== lastQuery) return
+
+      const engine = await loadPagefind(status)
+      if (!engine) return
+
+      status.textContent = "Searching…"
+      const search = await engine.search(query)
+      if (query !== lastQuery) return
+
+      const candidates = await Promise.all(search.results.slice(0, 30).map((result) => result.data()))
+      if (query !== lastQuery) return
+
+      const top = candidates.filter(relevant).slice(0, 12)
+
+      results.replaceChildren(
+        ...pinned.map((entity) =>
+          resultRow({
+            link: { href: entity.url, target: "_blank", rel: "noopener", className: "search-result-entity" },
+            title: entity.name,
+            labelClass: "kind",
+            label: entity.kind,
+            excerpt: { textContent: entity.detail },
+          }),
+        ),
+        ...top.map((hit) =>
+          resultRow({
+            link: { href: hit.url },
+            title: hit.meta.title || hit.url,
+            labelClass: "url",
+            label: hit.url,
+            excerpt: { innerHTML: hit.excerpt },
+          }),
+        ),
+      )
+
+      const n = results.childNodes.length
+      status.textContent = n ? `${n} result${n === 1 ? "" : "s"}` : `No results for “${query}”`
+    }
+
+    // close dialog when clicking backdrop
+    dialog.addEventListener("click", (event) => {
+      if (!isInside(dialog, event)) dialog.close()
+    })
+
+    let debounce: ReturnType<typeof setTimeout>
+    input.addEventListener("input", () => {
+      clearTimeout(debounce)
+      debounce = setTimeout(() => render(input.value.trim()), 150)
+    })
+
+    dialog.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowDown") {
+        event.preventDefault()
+        setSelected(selected + 1)
+      } else if (event.key === "ArrowUp") {
+        event.preventDefault()
+        setSelected(selected - 1)
+      } else if (event.key === "Enter") {
+        const items = results.querySelectorAll("a")
+        if (selected >= 0 && items[selected]) {
+          event.preventDefault()
+          items[selected].click()
+        }
+      } else if (event.key === "Tab") {
+        // Keep focus inside the dialog while it is open.
+        const focusable = dialog.querySelectorAll<HTMLElement>("input, button, a")
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault()
+          last.focus()
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault()
+          first.focus()
+        }
+      }
+    })
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        dialog.close()
+      } else if (event.key === "/" || ((event.metaKey || event.ctrlKey) && event.key === "k")) {
+        const tag = document.activeElement?.tagName
+        if (tag === "INPUT" || tag === "TEXTAREA") return
+        event.preventDefault()
+        dialog.showModal()
+      }
+    })
+  }
 }
 
 let _entitiesPromise: Promise<Entity[]> | null = null
@@ -218,3 +221,7 @@ const resultRow = (row: {
       span("excerpt", row.excerpt),
     ),
   )
+
+export default function init() {
+  customElements.define("search-dialog", SearchDialog)
+}

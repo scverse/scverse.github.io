@@ -1,5 +1,5 @@
 {{ define "main" }}
-  <div class="with-toc">
+  <with-toc>
     {{ partial "toc.html" . }}
     <div class="with-toc-body">
       <h1>{{ .Title }}</h1>
@@ -41,7 +41,6 @@
           {{ $sections.ecosystem | markdownify }}
 
           {{ if $pkgs }}
-
             {{/* Categories and tags are a controlled vocabulary in the registry schema, so there is nothing to normalise here: https://github.com/scverse/ecosystem-packages/blob/main/scripts/src/ecosystem_scripts/schema.json */}}
             {{ $items := slice }}
             {{ $categories := slice }}
@@ -98,7 +97,7 @@
             {{ $languageCounts = sort $languageCounts "count" "desc" }}
 
 
-            <div id="ecosystem-packages" class="ecosystem-packages filterable" data-total="{{ len $items }}">
+            <ecosystem-registry class="filterable" data-total="{{ len $items }}">
               <svg class="eco-sprite" aria-hidden="true" focusable="false">
                 <symbol id="eco-i-search" viewBox="0 0 24 24">
                   <circle cx="11" cy="11" r="7" />
@@ -152,16 +151,16 @@
                     autocomplete="off"
                     placeholder="Search {{ len $items }} packages by name, description or tag…"
                   />
-                  <button type="button" id="eco-clear" class="filter-search-clear" hidden aria-label="Clear filters">
+                  <button type="button" class="filter-search-clear" hidden aria-label="Clear filters">
                     <svg aria-hidden="true" focusable="false"><use href="#eco-i-close" /></svg>
                   </button>
                 </div>
                 <p class="filter-count" role="status">
-                  <span id="eco-count">{{ len $items }}</span> of {{ len $items }} packages
+                  <span class="eco-count">{{ len $items }}</span> of {{ len $items }} packages
                 </p>
               </div>
 
-              <div class="filter-chips" id="eco-chips" role="group" aria-label="Filter by category">
+              <div class="filter-chips eco-chips" role="group" aria-label="Filter by category">
                 <button type="button" class="filter-chip is-active" data-category="" aria-pressed="true">All</button>
                 {{ range $categoryCounts }}
                   <button type="button" class="filter-chip" data-category="{{ .name }}" aria-pressed="false">
@@ -171,7 +170,7 @@
                 {{ end }}
               </div>
 
-              <div class="filter-chips" id="eco-languages" role="group" aria-label="Filter by language">
+              <div class="filter-chips eco-languages" role="group" aria-label="Filter by language">
                 <button type="button" class="filter-chip is-active" data-language="" aria-pressed="true">
                   Any language
                 </button>
@@ -183,7 +182,7 @@
                 {{ end }}
               </div>
 
-              <div class="eco-grid" id="eco-grid">
+              <div class="eco-grid">
                 {{ range $i, $e := $items }}
                   {{ $home := $e.project_home }}
                   {{ $isGitHub := in ($home | default "") "github.com" }}
@@ -313,14 +312,14 @@
                 {{ end }}
               </div>
 
-              <p class="filter-empty" id="eco-empty" hidden>
+              <p class="filter-empty" hidden>
                 No packages match your filters.
                 <button type="button" class="filter-empty-reset">Reset</button>
               </p>
-            </div>
+            </ecosystem-registry>
           {{ end }}
         </div>
       </article>
     </div>
-  </div>
+  </with-toc>
 {{ end }}
