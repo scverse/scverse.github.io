@@ -39,12 +39,15 @@ event = "scverse conference 2026 — Copenhagen"
 
 ## About the conference
 
-scverse® is a consortium of foundational, community-developed tools for the analysis of omics data in the life sciences — including [AnnData](/packages), [scanpy](/packages), [muon](/packages), [scvi-tools](/packages), and [SpatialData](/packages). The annual scverse conference is where this community meets in person.
+scverse® is a consortium of foundational, community-developed tools for the analysis of omics data in the life sciences — including [AnnData](/packages), [scanpy](/packages), [muon](/packages), [scvi-tools](/packages), and [SpatialData](/packages).
+The annual scverse conference is where this community meets in person.
 
 After Munich (2024) and Stanford (2025), the **third scverse conference** came to Europe — hosted at the **Technical University of Denmark (DTU)** in **Copenhagen**, on **October 12 – 14, 2026**.
 
 The programme featured keynote talks, contributed talks and posters, hands-on workshops and tutorials, and plenty of time to connect with the people building and using the scverse ecosystem.
 
-> **Thank you to everyone who joined us in Copenhagen.** Recordings and highlights will be shared here when available. Follow us on [Zulip](https://scverse.zulipchat.com/), [Bluesky](https://bsky.app/profile/scverse.bsky.social), [LinkedIn](https://linkedin.com/company/scverse), or [X](https://x.com/scverse_team) to stay in touch.
+> **Thank you to everyone who joined us in Copenhagen.** Recordings and highlights will be shared here when available.
+> Follow us on [Zulip](https://scverse.zulipchat.com/), [Bluesky](https://bsky.app/profile/scverse.bsky.social), [LinkedIn](https://linkedin.com/company/scverse), or [X](https://x.com/scverse_team) to stay in touch.
 
-Questions? Email us at [conference2026@scverse.org](mailto:conference2026@scverse.org).
+Questions?
+Email us at [conference2026@scverse.org](mailto:conference2026@scverse.org).

@@ -11,11 +11,14 @@ draft = false
 ## Welcome
 
 Join us for the scverse Hackathon taking place from **Monday, May 2nd, 9:00 AM** to **Tuesday, May 3rd, afternoon** In Munich.
-The scverse hackathon is free. The event was invite only. We will try to make future editions open to everyone.
+The scverse hackathon is free.
+The event was invite only.
+We will try to make future editions open to everyone.
 
 ## Hackathon checklist
 
 - Check that you agree with the [scverse code of conduct](/about/code_of_conduct/).
 - Ensure that you have a [Github](https://github.com/) account.
-- Join our [zulip](https://scverse.zulipchat.com/) where you'll be added to the hackathon stream. [Say hi](https://scverse.zulipchat.com/#narrow/stream/319076-introductions) if this is your first time on the scverse zulip!
+- Join our [zulip](https://scverse.zulipchat.com/) where you'll be added to the hackathon stream.
+  [Say hi](https://scverse.zulipchat.com/#narrow/stream/319076-introductions) if this is your first time on the scverse zulip!
 - Have [python](https://www.python.org/) and any scverse package that you might work on installed.

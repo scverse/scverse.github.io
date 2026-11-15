@@ -7,7 +7,9 @@ weight = 11
 
 ## Organizing committee
 
-The scverse conference 2026 is organized by members of the [scverse community](/people), together with our local partners at DTU, Copenhagen. scverse is a community-developed, non-profit project, fiscally sponsored by [NumFOCUS](https://numfocus.org/project/scverse). The conference is run by the people who build and maintain the ecosystem.
+The scverse conference 2026 is organized by members of the [scverse community](/people), together with our local partners at DTU, Copenhagen.
+scverse is a community-developed, non-profit project, fiscally sponsored by [NumFOCUS](https://numfocus.org/project/scverse).
+The conference is run by the people who build and maintain the ecosystem.
 
 <div class="org-grid">
   <div class="org-card"><a href="https://github.com/flying-sheep" target="_blank" rel="noopener"><img class="org-avatar" src="https://github.com/flying-sheep.png?size=160" alt="Philipp Angerer" loading="lazy" /></a><div class="org-name"><a href="https://github.com/flying-sheep" target="_blank" rel="noopener">Philipp Angerer</a></div><div class="org-role">anndata, scanpy</div></div>
@@ -43,6 +45,7 @@ Helping us bring the conference together on the ground at DTU, Copenhagen.
 
 ## Get involved
 
-The conference is a community effort. If you would like to help organise, volunteer during the event, or host a satellite session, reach out to us at [conference2026@scverse.org](mailto:conference2026@scverse.org).
+The conference is a community effort.
+If you would like to help organise, volunteer during the event, or host a satellite session, reach out to us at [conference2026@scverse.org](mailto:conference2026@scverse.org).
 
 You can also learn more about the people behind scverse on the [People](/people) page and about the project on our [About](/about) page.

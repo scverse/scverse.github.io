@@ -57,4 +57,5 @@ We are delighted to announce the following speakers for scverse conference 2026,
 
 ## Contributed talks & posters
 
-A large part of the program is built from the community: contributed talks and posters were selected from submitted abstracts. See the [schedule](/conference2026/schedule/) for the full line-up.
+A large part of the program is built from the community: contributed talks and posters were selected from submitted abstracts.
+See the [schedule](/conference2026/schedule/) for the full line-up.

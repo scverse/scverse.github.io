@@ -1,3 +1,7 @@
 {
-    "recommendations": ["budparr.language-hugo-vscode", "biomejs.biome"],
+    "recommendations": [
+        "budparr.language-hugo-vscode",
+        "biomejs.biome",
+        "jolars.panache",
+    ],
 }

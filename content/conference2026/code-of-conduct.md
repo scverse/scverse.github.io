@@ -5,7 +5,8 @@ type = "conference2026"
 weight = 10
 +++
 
-This code of conduct was developed for the scverse conferences. For more details, see the full [scverse Code of Conduct](/about/code_of_conduct).
+This code of conduct was developed for the scverse conferences.
+For more details, see the full [scverse Code of Conduct](/about/code_of_conduct).
 
 ## Our pledge
 
@@ -33,12 +34,18 @@ Intimidation and bullying include, but are not limited to:
 
 ## Enforcement
 
-Participants asked to stop any harassing behavior are expected to comply immediately. If a participant engages in harassing behavior, event organizers retain the right to take any actions to keep the event a welcoming environment for all participants. This includes warning the offender or expulsion from the conference with no refund.
+Participants asked to stop any harassing behavior are expected to comply immediately.
+If a participant engages in harassing behavior, event organizers retain the right to take any actions to keep the event a welcoming environment for all participants.
+This includes warning the offender or expulsion from the conference with no refund.
 
-Event organizers may take action to redress anything designed to, or with the clear impact of, disrupting the event or making the environment hostile for any participants. We expect participants to follow these rules at all event venues and event-related online activities.
+Event organizers may take action to redress anything designed to, or with the clear impact of, disrupting the event or making the environment hostile for any participants.
+We expect participants to follow these rules at all event venues and event-related online activities.
 
 ## Reporting
 
-If someone makes you or anyone else feel unsafe or unwelcome, please report it as soon as possible. Harassment and other code of conduct violations reduce the value of our event for everyone.
+If someone makes you or anyone else feel unsafe or unwelcome, please report it as soon as possible.
+Harassment and other code of conduct violations reduce the value of our event for everyone.
 
-You can make a report either personally or anonymously. Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at [steering-council@scverse.org](mailto:steering-council@scverse.org). All complaints will be reviewed and investigated promptly and fairly.
+You can make a report either personally or anonymously.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at [steering-council@scverse.org](mailto:steering-council@scverse.org).
+All complaints will be reviewed and investigated promptly and fairly.

@@ -16,13 +16,10 @@ In earlier versions of rapids-singlecell, all GPU kernels were written as CuPy R
 These were compiled the first time you called them — in your environment, on your machine.
 That worked, but it came with friction:
 
-- **First-call latency.**
-  The initial invocation of a kernel-backed function could take several seconds while nvrtc compiled the CUDA source.
-- **Silent dtype/layout mismatches.**
-  A RawKernel receives raw pointers.
+- **First-call latency.** The initial invocation of a kernel-backed function could take several seconds while nvrtc compiled the CUDA source.
+- **Silent dtype/layout mismatches.** A RawKernel receives raw pointers.
   If the input array had the wrong dtype or wasn't C-contiguous, the kernel might silently produce garbage rather than raising an error.
-- **CUDA code trapped in Python strings.**
-  RawKernels are defined as CUDA source inside Python string literals.
+- **CUDA code trapped in Python strings.** RawKernels are defined as CUDA source inside Python string literals.
   That means no syntax highlighting, no autocomplete, and no compiler warnings in your editor — debugging C++ code buried in a Python string is nobody's idea of a good time.
 
 Starting with 0.15.0, these kernels are compiled once at build time and shipped as nanobind/CUDA C++ extension modules inside the wheel.
@@ -34,12 +31,10 @@ The GPU kernels that were previously CuPy RawKernels are now nanobind C++ extens
 This gives us:
 
 - **No runtime compilation** for any migrated kernel — the compiled code is in the wheel.
-- **Typed bindings at the Python/C++ boundary.**
-  nanobind enforces dtype (e.g. float32 vs float64) and memory layout (C-contiguous vs F-contiguous) before the kernel launches, so mismatches raise a clear `TypeError` instead of producing wrong results.
+- **Typed bindings at the Python/C++ boundary.** nanobind enforces dtype (e.g. float32 vs float64) and memory layout (C-contiguous vs F-contiguous) before the kernel launches, so mismatches raise a clear `TypeError` instead of producing wrong results.
 - **A conventional C++/CUDA project structure** with headers, shared helpers, and room for larger fused or fully C++ GPU routines.
   Harmony2, shipping in this release, is the first example of a more complex function built on this foundation.
-- **CUDA-versioned wheel packaging.**
-  CI builds separate wheels for each CUDA major version — `rapids-singlecell-cu12` and `rapids-singlecell-cu13` — each with a `[rapids]` dependency extra that pulls in the matching RAPIDS and CuPy packages.
+- **CUDA-versioned wheel packaging.** CI builds separate wheels for each CUDA major version — `rapids-singlecell-cu12` and `rapids-singlecell-cu13` — each with a `[rapids]` dependency extra that pulls in the matching RAPIDS and CuPy packages.
 
 The Python API and import name are unchanged:
 
@@ -54,10 +49,10 @@ Your existing analysis scripts should work without modification.
 Because the kernels are now compiled binaries, we need to ship one wheel per CUDA major version.
 (Python wheel tags don't encode CUDA version, so we encode it in the package name — the same approach used by CuPy, PyTorch, and other CUDA-dependent packages.)
 
-| Package                  | Build CUDA | Runtime CUDA | Blackwell (B200, GB200) |
-| :----------------------- | :--------: | :----------: | :---------------------- |
-| `rapids-singlecell-cu12` |    12.2    | 12.2 – 12.9+ | Supported via PTX JIT   |
-| `rapids-singlecell-cu13` |    13.0    |    13.0+     | Native binaries         |
+  | Package                  | Build CUDA | Runtime CUDA | Blackwell (B200, GB200) |
+  | :----------------------- | :--------: | :----------: | :---------------------- |
+  | `rapids-singlecell-cu12` |    12.2    | 12.2 – 12.9+ | Supported via PTX JIT   |
+  | `rapids-singlecell-cu13` |    13.0    |    13.0+     | Native binaries         |
 
 Both wheels are available for **x86_64** and **aarch64** on Linux.
 
@@ -100,7 +95,8 @@ conda env create -f conda/rsc_rapids_26.04_cuda13.yml   # Python 3.14, CUDA 13
 conda env create -f conda/rsc_rapids_26.04_cuda12.yml   # Python 3.14, CUDA 12
 ```
 
-> **Note:** RAPIDS currently does not support `channel_priority: strict`. Use `channel_priority: flexible` instead.
+> **Note:** RAPIDS currently does not support `channel_priority: strict`.
+> Use `channel_priority: flexible` instead.
 
 ##### Docker / Apptainer
 
@@ -122,12 +118,9 @@ apptainer run --nv rsc.sif
 
 For most users, upgrading is straightforward:
 
-1. **Change your pip install command.**
-   Replace `pip install rapids-singlecell` with `pip install rapids-singlecell-cu12` or `rapids-singlecell-cu13`, depending on your CUDA version.
-2. **No code changes needed.**
-   The `import rapids_singlecell as rsc` import and all public APIs remain the same.
-3. **Check your CUDA version.**
-   Run `nvidia-smi` or `nvcc --version` to confirm whether you're on CUDA 12.x or CUDA 13.x, and install the matching wheel.
+1. **Change your pip install command.** Replace `pip install rapids-singlecell` with `pip install rapids-singlecell-cu12` or `rapids-singlecell-cu13`, depending on your CUDA version.
+2. **No code changes needed.** The `import rapids_singlecell as rsc` import and all public APIs remain the same.
+3. **Check your CUDA version.** Run `nvidia-smi` or `nvcc --version` to confirm whether you're on CUDA 12.x or CUDA 13.x, and install the matching wheel.
    If you're using conda, make sure the CUDA runtime library version in your environment matches the wheel you install — e.g., `cuda-cudart` from the `nvidia` channel should be 12.x for the cu12 wheel or 13.x for the cu13 wheel.
 
 #### What about `pip install rapids-singlecell`?
@@ -205,7 +198,7 @@ A big thank you to everyone who tested the pre-releases and helped surface issue
 
 For questions and bug reports, visit the [GitHub issue tracker](https://github.com/scverse/rapids-singlecell/issues).
 
----
+--------------------------------------------------------------------------------
 
 *rapids-singlecell is part of the [scverse](https://scverse.org) ecosystem.
 If you use it in your research, please cite the project.*

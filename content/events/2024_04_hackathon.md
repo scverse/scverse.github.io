@@ -12,7 +12,9 @@ draft = false
 
 Join us for the scverse Hackathon taking place from **Tuesday, April 2nd, 09:00 AM** to **Thursday, April 4th, 06:00 PM** at **Harvard Medical School** ([Boston, MA](https://hms.harvard.edu/about-hms/contact-hms/harvard-longwood-campus-maps-directions)).
 
-The scverse hackathon is free. Local and international attendees could register through an open application. More information can be found at the [website](https://hms-dbmi.github.io/scverse-hackathon-spring-2024/)
+The scverse hackathon is free.
+Local and international attendees could register through an open application.
+More information can be found at the [website](https://hms-dbmi.github.io/scverse-hackathon-spring-2024/)
 
 ## Hackathon Tasks
 

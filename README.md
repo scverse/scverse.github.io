@@ -22,7 +22,8 @@ For style sheets, [SCSS](https://sass-lang.com/) is used:
 ### Layout
 
 Modifying layout is only required when pages have to be restuctured or new pages are to be added.
-Look inside [`/layout`](/layout) for that. [Hugo Templating](https://gohugo.io/templates/introduction/) is used to work with content from [`/content`](/content).
+Look inside [`/layout`](/layout) for that.
+[Hugo Templating](https://gohugo.io/templates/introduction/) is used to work with content from [`/content`](/content).
 
 ## Running locally
 

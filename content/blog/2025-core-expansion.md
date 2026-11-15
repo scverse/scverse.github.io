@@ -15,15 +15,16 @@ Single-cell analysis is evolving rapidly, with new experimental modalities and l
 To keep up with this, we’re expanding scverse to support more domains, more data types, and more scalable computing backends.
 By bringing these mature, well-maintained tools into the core, we aim to provide a consistent and interoperable foundation across all stages of single-cell analysis.
 
-We're also welcoming the following lead maintainers to the scverse core developer team:  
+We're also welcoming the following lead maintainers to the scverse core developer team:
+
 - **Kai Zhang** for **snapatac2**
 - **Pau Badia i Mompel** for **decoupler**
 
 ### SnapATAC2
 
-[SnapATAC2](https://github.com/scverse/snapatac2) enables fast, scalable analysis of single-cell ATAC-seq and related epigenomic data.  
-Built in Rust with a Python front end, it handles millions of cells efficiently.  
-The package offers preprocessing, dimensionality reduction, clustering, and visualization methods.  
+[SnapATAC2](https://github.com/scverse/snapatac2) enables fast, scalable analysis of single-cell ATAC-seq and related epigenomic data.\
+Built in Rust with a Python front end, it handles millions of cells efficiently.\
+The package offers preprocessing, dimensionality reduction, clustering, and visualization methods.\
 All outputs are stored in AnnData and integrate seamlessly with scanpy and other scverse frameworks.
 
 <img src="/img/blog/snapatac2_overview.webp" style="max-width: 100%;" alt="SnapATAC2 overview" />
@@ -42,16 +43,16 @@ For more details, we refer to a recent blog post by NVIDIA: [Driving Toward Bill
 
 ### pertpy
 
-[pertpy](https://github.com/scverse/pertpy) focuses on single-cell perturbation screens, including CRISPR and compound treatments.  
-It supports differential analysis, signature scoring, and dose-response modeling.  
-Metadata handling and visualization are tailored for perturbation-specific use cases.  
+[pertpy](https://github.com/scverse/pertpy) focuses on single-cell perturbation screens, including CRISPR and compound treatments.\
+It supports differential analysis, signature scoring, and dose-response modeling.\
+Metadata handling and visualization are tailored for perturbation-specific use cases.\
 Built on AnnData and scverse libraries, pertpy fits smoothly into existing pipelines.
 
 <img src="https://github.com/user-attachments/assets/d2e32d69-b767-4be3-a938-77a9dce45d3f" alt="pertpy overview" style="max-width: 100%;" />
 
 ### decoupler
 
-[decoupler](https://github.com/scverse/decoupler) enables the inference of enrichment scores from omics data using prior knowledge.  
+[decoupler](https://github.com/scverse/decoupler) enables the inference of enrichment scores from omics data using prior knowledge.\
 It maps omics profiles to annotated biological sets, such as transcription factors, pathways, or kinases, using methods like GSEA, GSVA, and linear models.
 Designed for bulk, single-cell and spatial data, decoupler works directly with our scverse core data structures.
 
@@ -74,7 +75,7 @@ Please reach out!
 
 ### Thank you
 
-We’re grateful to the maintainers of these packages for their work and commitment to open, reusable tools.  
+We’re grateful to the maintainers of these packages for their work and commitment to open, reusable tools.\
 Their contributions help make the scverse ecosystem more useful, inclusive, and sustainable.
 We’re also thankful to the community for using, testing, and contributing to these tools — your feedback drives everything we do.
 

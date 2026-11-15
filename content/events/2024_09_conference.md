@@ -8,7 +8,8 @@ description = "The first scverse conference"
 draft = false
 +++
 
-Join us for the first scverse conference taking place from **Tuesday, September 10** to **Thursday, September 12** in **Munich, Germany**. Stay tuned for the registrations, speaker announcements, and more!
+Join us for the first scverse conference taking place from **Tuesday, September 10** to **Thursday, September 12** in **Munich, Germany**.
+Stay tuned for the registrations, speaker announcements, and more!
 
 [Read the conference summary on our blog](/blog/2024-conference-summary/)
 

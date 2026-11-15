@@ -67,8 +67,8 @@ Core developers are on our `scverse/core-devs` GitHub team.
 {{< role-members "core-devs" >}}
 
 All core packages must have at least one core developer as a maintainer.
-New core developers can be nominated by any existing core developer. 
-While there is no hard-and-fast rule about who can be nominated, ideally, they should have: 
+New core developers can be nominated by any existing core developer.
+While there is no hard-and-fast rule about who can be nominated, ideally, they should have:
 
 * Been part of the community for a significant amount of time
 * Contributed significant changes of their own
@@ -94,13 +94,14 @@ Core governance members are members of the core team who coordinate across the c
 ### Steering Council
 
 The Steering Council (SC) members are core team members who have additional responsibilities to ensure the smooth running of the project.
-SC members are expected to participate in strategic planning, approve changes to the governance model, and make decisions about funding granted to scverse itself (funding to community members is theirs to pursue and manage). Changes that impact the full project require analysis informed by extensive experience with both the project and the larger ecosystem.
+SC members are expected to participate in strategic planning, approve changes to the governance model, and make decisions about funding granted to scverse itself (funding to community members is theirs to pursue and manage).
+Changes that impact the full project require analysis informed by extensive experience with both the project and the larger ecosystem.
 When the core team (including the SC members) fails to reach a consensus in a reasonable timeframe, the SC is the entity that resolves the issue.
 
 Members of the steering council also have the "owner" role within the [scverse GitHub organization](https://github.com/scverse/) and are ultimately responsible for managing the [scverse](https://github.com/scverse) GitHub account, the [@scverse_team](https://x.com/scverse_team) account on X, the [scverse website](https://scverse.org), and other similar scverse-owned resources.
 
 The steering council is currently fixed in size to three members.
-This number will be increased as our community grows and diversifies, but will always be an odd number to ensure a simple majority vote outcome is always possible. 
+This number will be increased as our community grows and diversifies, but will always be an odd number to ensure a simple majority vote outcome is always possible.
 
 The SC membership is revisited every January.
 SC members who do not actively engage with the SC duties are expected to resign.
@@ -115,7 +116,8 @@ The scverse steering council may be contacted at [steering-council@scverse.org](
 
 ### Management Committee
 
-The management committee consists of PIs that support the development of scverse core projects. Members of the management committee are expected to secure funding and allocate resources to the continuous development of one or more core projects. 
+The management committee consists of PIs that support the development of scverse core projects.
+Members of the management committee are expected to secure funding and allocate resources to the continuous development of one or more core projects.
 
 PIs supervising the development of new core packages, who are not already part of the management committee, will be invited to join.
 
@@ -123,7 +125,8 @@ PIs supervising the development of new core packages, who are not already part o
 
 ### Scientific Advisory Board
 
-The scientific advisory board consists of highly experienced scientists devoted to research in single cell omics analysis. In an annual meeting, the scientific advisory board assesses the progress of scverse and suggests priorities for the next year based on the latest developments in the field. 
+The scientific advisory board consists of highly experienced scientists devoted to research in single cell omics analysis.
+In an annual meeting, the scientific advisory board assesses the progress of scverse and suggests priorities for the next year based on the latest developments in the field.
 
 Members of the scientific advisory board are nominated by the core team.
 
