@@ -1,6 +1,7 @@
 +++
 title = "gget joins the scverse ecosystem"
 date = 2026-06-30T00:00:05+01:00
+aliases = ["/blog/2026-gget-joins-scverse/"]
 description = "scverse adds programmatic access to genomic reference databases through gget."
 author = "Muskan Hashim, Laura Luebbert, Lukas Heumos"
 draft = false

@@ -1,6 +1,7 @@
 +++
 title = "Four new scverse core packages"
 date = 2025-07-01T00:00:05+01:00
+aliases = ["/blog/2025-core-expansion/"]
 description = "scverse expands with new core packages."
 author = "Lukas Heumos"
 draft = false

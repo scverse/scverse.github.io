@@ -1,6 +1,7 @@
 +++
 title = "Highlights from the scverse conference 2025"
 date = 2025-11-20T00:00:05-08:00
+aliases = ["/blog/2025-conference-summary/"]
 description = "A recap from the second scverse conference at Stanford University"
 author = "Giovanni Palla"
 draft = false
@@ -186,7 +187,7 @@ Each sponsor provided an outlook of the latest technologies in perturbation scre
 
 ### Conclusion
 
-This was the second time we organized the scverse conference — you can read about [the first edition in Munich](/blog/2024-conference-summary/).
+This was the second time we organized the scverse conference — you can read about [the first edition in Munich](/blog/2024-11-conference-summary/).
 We're looking forward to seeing you at future scverse events!
 In the meantime, you can engage with the community on [Zulip](https://scverse.zulipchat.com/) and at our community meetings.
 Look out for announcements on our social media channels ([X](https://x.com/scverse_team), [Bluesky](https://bsky.app/profile/scverse.bsky.social), [LinkedIn](https://www.linkedin.com/company/scverse/)).

@@ -1,6 +1,7 @@
 +++
 title = "Highlights from the inaugural scverse conference"
 date = 2024-11-14T00:00:05+01:00
+aliases = ["/blog/2024-conference-summary/"]
 description = "A recap from the very first scverse conference"
 author = "Roshan Sharma"
 draft = false

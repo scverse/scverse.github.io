@@ -1,4 +1,5 @@
 +++
+aliases = ["/events/2026_09_singlecellproteomics/"]
 title = "Scverse x sc-Proteomics Hackathon 2026-09 Vienna"
 date = 2026-09-04T00:00:05+01:00
 end_date = 2026-09-05

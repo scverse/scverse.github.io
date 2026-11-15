@@ -1,6 +1,7 @@
 +++
 title = "Hello world"
 date = 2022-05-17T00:00:05+01:00
+aliases = ["/blog/hello-world/"]
 description = "Introducing scverse"
 draft = false
 +++

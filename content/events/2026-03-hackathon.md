@@ -1,4 +1,5 @@
 +++
+aliases = ["/events/2026_03_hackathon/"]
 title = "scverse Hackathon 2026-03 Berlin"
 date = 2026-03-30T00:00:05+01:00
 end_date = 2026-03-31
