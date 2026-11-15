@@ -1,28 +1,29 @@
 +++
 title = "gget joins the scverse ecosystem"
 date = 2026-06-30T00:00:05+01:00
+aliases = ["/blog/2026-gget-joins-scverse/"]
 description = "scverse adds programmatic access to genomic reference databases through gget."
 author = "Muskan Hashim, Laura Luebbert, Lukas Heumos"
 draft = false
 +++
 
-Querying genomic reference databases is something every bioinformatician does constantly, and doing it well has historically required juggling a patchwork of APIs, file formats, and web interfaces. 
+Querying genomic reference databases is something every bioinformatician does constantly, and doing it well has historically required juggling a patchwork of APIs, file formats, and web interfaces.
 [gget](https://github.com/scverse/gget) was built to fix that, and is now officially part of the scverse ecosystem.
 
 <img src="/img/blog/gget_x_scverse_overview.svg" style="max-width: 100%;" alt="gget x scverse Overview." />
 
 ## What is gget?
 
-gget is a Python package and command-line tool for programmatic access to biological databases. 
+gget is a Python package and command-line tool for programmatic access to biological databases.
 It was published in [*Bioinformatics* in 2023](https://academic.oup.com/bioinformatics/article/39/1/btac836/6971843) from the Pachter Lab at Caltech, and provides a unified interface to more than 20 reference databases such as Ensembl, UniProt, NCBI, UCSC, AlphaFold, and more through a consistent API.
 
 ### gget enables biological interpretation within scverse workflows
 
-Analyses built on scverse tools can be the starting point for biological interpretation. 
+Analyses built on scverse tools can be the starting point for biological interpretation.
 For example, after clustering with [Scanpy](https://scanpy.scverse.org/) and identifying marker genes, you might want to understand what those genes do, how they are expressed across tissues, whether they are associated with disease, and how their protein products are structured.
 Without tooling answering these questions means leaving Python and visiting several web portals.
 
-gget closes that loop and is designed for exactly the questions arising at the end of a scverse analysis. 
+gget closes that loop and is designed for exactly the questions arising at the end of a scverse analysis.
 It returns results in formats that fit back into the analysis environment.
 
 ```py
@@ -81,16 +82,15 @@ AnnData object with n_obs × n_vars = 29010 × 3
 ## Alignment with the scverse mission
 
 scverse is a modular, open, and interoperable foundation for biology.
-Individual packages focus on what they do best, use shared data structures, and compose naturally with one another. 
+Individual packages focus on what they do best, use shared data structures, and compose naturally with one another.
 The addition of gget to our ecosystem complements our existing tooling by interoperating with the most widely used metadata & dataset databases.
 
-Someone studying spatial transcriptomics with [Squidpy](https://squidpy.readthedocs.io/en/stable/) may want to fetch ligand-receptor protein structures from PDB, or pull disease associations from Open Targets, or BLAST a sequence of interest. 
+Someone studying spatial transcriptomics with [Squidpy](https://squidpy.readthedocs.io/en/stable/) may want to fetch ligand-receptor protein structures from PDB, or pull disease associations from Open Targets, or BLAST a sequence of interest.
 The integration of gget makes each of those a one-liner by being the layer helping you handle external reference databases alongside those analyses.
-
 
 ## What joining the scverse ecosystem means
 
-For gget, joining scverse means adopting shared community infrastructure: the [scverse package template](https://github.com/scverse/cookiecutter-scverse), continuous integration conventions, as well as the documentation and testing practices the ecosystem shares. 
+For gget, joining scverse means adopting shared community infrastructure: the [scverse package template](https://github.com/scverse/cookiecutter-scverse), continuous integration conventions, as well as the documentation and testing practices the ecosystem shares.
 It also means participating in the same community spaces where the broader ecosystem is discussed and developed.
 
 For users, it means gget is where you would expect to find it: listed as one of our ecosystem packages at [scverse.org/packages](https://scverse.org/packages), discussed in the [scverse Zulip](https://scverse.zulipchat.com/) and [Discourse](https://discourse.scverse.org/), and maintained with the same expectations of quality and openness that apply across the ecosystem.
@@ -103,10 +103,10 @@ gget is available on PyPI:
 pip install gget
 ```
 
-The [documentation](https://scverse.org/gget/) covers all modules with worked examples. 
+The [documentation](https://scverse.org/gget/) covers all modules with worked examples.
 The [GitHub repository](https://github.com/scverse/gget) is the best place to report issues, propose new database integrations, or contribute.
 
-If you are new to the scverse ecosystem, [scverse.org/join](/join/) is the place to start. 
+If you are new to the scverse ecosystem, [scverse.org/join](/join/) is the place to start.
 We’re excited to see what the community builds together.
 
 <br>

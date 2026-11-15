@@ -24,9 +24,10 @@ If you are unsure about something, that’s fine – help us clean up code that 
 We are also mindful that coders come to our projects at all levels, and we hope that, in the process of our review, you will learn our best practices.
 From our side, you can expect us to be patient as you learn.
 However, this process fundamentally does not take place when you feed an LLM our hand-crafted PR reviews.
-As a general rule of thumb, it should not take a human longer to review the code than it does for you to write it. 
+As a general rule of thumb, it should not take a human longer to review the code than it does for you to write it.
 
-You are responsible for the code you submit. This also includes the licensing of the submitted code. 
+You are responsible for the code you submit.
+This also includes the licensing of the submitted code.
 
 ## Repeated submission of low-quality code
 

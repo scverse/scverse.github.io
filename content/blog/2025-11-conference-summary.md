@@ -1,6 +1,7 @@
 +++
 title = "Highlights from the scverse conference 2025"
 date = 2025-11-20T00:00:05-08:00
+aliases = ["/blog/2025-conference-summary/"]
 description = "A recap from the second scverse conference at Stanford University"
 author = "Giovanni Palla"
 draft = false
@@ -47,23 +48,20 @@ Thanks to our generous sponsors, the scverse conference was also able to provide
   <figcaption style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 0.5rem;">John Marioni, Genentech</figcaption>
 </figure>
 
-**John Marioni**
-*Senior VP and Head of Computation at Genentech Research and Early Development*
+**John Marioni** *Senior VP and Head of Computation at Genentech Research and Early Development*
 
 In his talk *"Adventures at the interface between computational biology, AI and drug discovery"* he discussed the intersection of computational biology, artificial intelligence, and pharmaceutical drug discovery.
 
-**Panos Roussos**
-*Professor at Icahn School of Medicine at Mount Sinai*
+**Panos Roussos** *Professor at Icahn School of Medicine at Mount Sinai*
 
 Panos Roussos presented advances from large-scale single-cell and spatial transcriptomic studies in neurodegenerative and neuropsychiatric diseases in his talk *"Deciphering Interindividual Variability in Brain Transcriptomes Through Single-Cell Analysis"*.
 
-**Erika Alden DeBenedictis**
-*Co-founder of The Align Foundation & CEO of Pioneer Labs*
+**Erika Alden DeBenedictis** *Co-founder of The Align Foundation & CEO of Pioneer Labs*
 
-In her talk *"How do we make the next PDB? Introducing Align's Data Platform"* she described [Align Foundation](https://alignbio.org/)'s mission and their end-to-end data generation process: community roadmapping → protocol standardization → reproducible data collection → model benchmarking.
+In her talk *"How do we make the next PDB?
+Introducing Align's Data Platform"* she described [Align Foundation](https://alignbio.org/)'s mission and their end-to-end data generation process: community roadmapping → protocol standardization → reproducible data collection → model benchmarking.
 
-**Elham Azizi**
-*Associate Professor of Cancer Data Research and Biomedical Engineering at Columbia University*
+**Elham Azizi** *Associate Professor of Cancer Data Research and Biomedical Engineering at Columbia University*
 
 In her talk *"Machine Learning for Decoding Tumor Microenvironment Dynamics"* she discussed the latest work from her lab on how machine learning frameworks in spatial transcriptomics, histology imaging, and single-cell sequencing are providing new insights in how the tumor microenvironment (TME) shapes cancer progression and therapy response.
 
@@ -71,11 +69,16 @@ In her talk *"Machine Learning for Decoding Tumor Microenvironment Dynamics"* sh
 
 #### Day 1: Perturbation Profiling, Functional & Regulatory Genomics
 
-The first day centered on advances in perturbation screening and regulatory genomics. Several talks explored innovations in Perturb-seq technology, including clonal lineage tracking to reveal lineage-specific responses to genetic perturbations, Bayesian frameworks for scalable differential expression analysis and optimal experimental design in CRISPR screens, and minute-scale automated scRNA-seq for real-time perturbation profiling. The afternoon shifted toward regulatory genomics and machine learning applications, featuring zero-shot prediction of regulatory element activity across tissues, interpretable deep learning for mapping genetic effects at cellular resolution in population-scale data, and attention-based methods for predicting CAR T-cell therapy outcomes from single-cell data.
+The first day centered on advances in perturbation screening and regulatory genomics.
+Several talks explored innovations in Perturb-seq technology, including clonal lineage tracking to reveal lineage-specific responses to genetic perturbations, Bayesian frameworks for scalable differential expression analysis and optimal experimental design in CRISPR screens, and minute-scale automated scRNA-seq for real-time perturbation profiling.
+The afternoon shifted toward regulatory genomics and machine learning applications, featuring zero-shot prediction of regulatory element activity across tissues, interpretable deep learning for mapping genetic effects at cellular resolution in population-scale data, and attention-based methods for predicting CAR T-cell therapy outcomes from single-cell data.
 
 #### Day 2: Alternative Splicing, Spatial Biology & Tools
 
-The second day broadened the scope to RNA splicing, spatial technologies, and ecosystem tooling. A pair of talks addressed the often-overlooked dimension of alternative splicing — one revealing isoform landscapes in spatial transcriptomics, the other tackling robust integration of sparse splicing and expression data. Large-scale perturbation datasets for training dose-dependent foundation models and methods for decoding sequence determinants of gene expression were also presented. The afternoon highlighted tool development across modalities: an updated peak caller adapted for single-cell genomics, graph-based frameworks for spatial and subcellular proteomics, surface-based cell interaction analysis in 3D spatial omics, and interactive visualization tools bridging the scverse ecosystem with modern web-based interfaces.
+The second day broadened the scope to RNA splicing, spatial technologies, and ecosystem tooling.
+A pair of talks addressed the often-overlooked dimension of alternative splicing — one revealing isoform landscapes in spatial transcriptomics, the other tackling robust integration of sparse splicing and expression data.
+Large-scale perturbation datasets for training dose-dependent foundation models and methods for decoding sequence determinants of gene expression were also presented.
+The afternoon highlighted tool development across modalities: an updated peak caller adapted for single-cell genomics, graph-based frameworks for spatial and subcellular proteomics, surface-based cell interaction analysis in 3D spatial omics, and interactive visualization tools bridging the scverse ecosystem with modern web-based interfaces.
 
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;">
   <figure style="margin: 0;">
@@ -90,7 +93,8 @@ The second day broadened the scope to RNA splicing, spatial technologies, and ec
 
 ### Agentic Workflows in Bioinformatics Panel Discussion
 
-At the end of the first day, the conference hosted a panel discussion on agentic workflows in bioinformatics, providing an opportunity to the audience to hear from leaders in the field on the state of the art of agentic systems in biological data analysis. The panel consisted of:
+At the end of the first day, the conference hosted a panel discussion on agentic workflows in bioinformatics, providing an opportunity to the audience to hear from leaders in the field on the state of the art of agentic systems in biological data analysis.
+The panel consisted of:
 
 - **Loic Royer**: Research Director and Group Leader at Biohub San Francisco
 - **Vega Shah**: NVIDIA Ventures Portfolio Manager
@@ -114,15 +118,25 @@ The discussion revolved around diverse topics, from technical discussions on [Mo
 
 #### Processing and Modeling Large-Scale Single-Cell Perturbation Data with Machine Learning @ Arc Institute
 
-The Arc Institute workshop provided an end-to-end journey through Perturb-seq workflows. The morning covered practical considerations for designing and running Perturb-seq experiments, followed by sessions on data processing including a new evaluation suite for single-cell perturbation models, differential expression analysis approaches, and strategies for working with large AnnData stores. The afternoon shifted to machine learning, featuring an AI-agent curated resource of uniformly processed single-cell data spanning over 500 million cells, perturbation effect modeling with [scvi-tools](https://scvi-tools.org/), modular tokenization frameworks for single-cell foundation models, and methods for predicting perturbation effects across diverse cellular contexts. The day concluded with a panel discussion evaluating progress toward a virtual cell and planning for the next [Virtual Cell Challenge](https://virtualcellchallenge.org/).
+The Arc Institute workshop provided an end-to-end journey through Perturb-seq workflows.
+The morning covered practical considerations for designing and running Perturb-seq experiments, followed by sessions on data processing including a new evaluation suite for single-cell perturbation models, differential expression analysis approaches, and strategies for working with large AnnData stores.
+The afternoon shifted to machine learning, featuring an AI-agent curated resource of uniformly processed single-cell data spanning over 500 million cells, perturbation effect modeling with [scvi-tools](https://scvi-tools.org/), modular tokenization frameworks for single-cell foundation models, and methods for predicting perturbation effects across diverse cellular contexts.
+The day concluded with a panel discussion evaluating progress toward a virtual cell and planning for the next [Virtual Cell Challenge](https://virtualcellchallenge.org/).
 
 #### Multimodal And Spatial Single Cell Data: From Data APIs to AI-driven Biological Discovery @ Biohub
 
-The Biohub workshop balanced infrastructure, acceleration, and community-driven tool development. Sessions introduced the CELLxGENE foundation and community landscape, followed by a deep dive into GPU-accelerated single-cell analysis in collaboration with NVIDIA. Community showcase sessions highlighted diverse contributions: handling 3D spatial omics data, accessible whole slide image analysis integrated with the scverse ecosystem, and a trio of tools spanning graph-based single-cell analysis, proteomics imaging, and spatial visualization. Additional sessions covered the [Virtual Cell Platform](https://virtualcellmodels.cziscience.com/) model development ecosystem, benchmarking approaches, and AI workspaces for collaborative research.
+The Biohub workshop balanced infrastructure, acceleration, and community-driven tool development.
+Sessions introduced the CELLxGENE foundation and community landscape, followed by a deep dive into GPU-accelerated single-cell analysis in collaboration with NVIDIA.
+Community showcase sessions highlighted diverse contributions: handling 3D spatial omics data, accessible whole slide image analysis integrated with the scverse ecosystem, and a trio of tools spanning graph-based single-cell analysis, proteomics imaging, and spatial visualization.
+Additional sessions covered the [Virtual Cell Platform](https://virtualcellmodels.cziscience.com/) model development ecosystem, benchmarking approaches, and AI workspaces for collaborative research.
 
 #### Disease Biology and Therapeutics in the Age of Frontier Datasets @ Tahoe Therapeutics
 
-The Tahoe workshop emphasized computational scalability and the emerging role of AI agents in single-cell analysis. Morning sessions covered GPU-accelerated analysis at scale with rapids-singlecell and scalable data loading pipelines for deep learning on large single-cell datasets. A notable thread focused on AI agents and LLM-based tools, including building custom MCP servers, an agent for drug response signature interpretation, and agents for large-scale biomedical dataset mining. The afternoon featured Tahoe-x1, a perturbation-trained single-cell foundation model scaled to 3 billion parameters, alongside a practical session on enrichment analysis with decoupler. A panel discussion closed the day.
+The Tahoe workshop emphasized computational scalability and the emerging role of AI agents in single-cell analysis.
+Morning sessions covered GPU-accelerated analysis at scale with rapids-singlecell and scalable data loading pipelines for deep learning on large single-cell datasets.
+A notable thread focused on AI agents and LLM-based tools, including building custom MCP servers, an agent for drug response signature interpretation, and agents for large-scale biomedical dataset mining.
+The afternoon featured Tahoe-x1, a perturbation-trained single-cell foundation model scaled to 3 billion parameters, alongside a practical session on enrichment analysis with decoupler.
+A panel discussion closed the day.
 
 ### Poster Session
 
@@ -147,8 +161,10 @@ Each sponsor provided an outlook of the latest technologies in perturbation scre
 
 ### Testimonials
 
+<!-- panache-ignore-format-start -->
 > scverse is the conference to be at to stay up-to-date on all the current happenings in the single-cell community
 {.blockquote}
+<!-- panache-ignore-format-end -->
 
 <div class="grid gap-4 fst-italic" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))">
 
@@ -171,6 +187,9 @@ Each sponsor provided an outlook of the latest technologies in perturbation scre
 
 ### Conclusion
 
-This was the second time we organized the scverse conference — you can read about [the first edition in Munich](/blog/2024-conference-summary/). We're looking forward to seeing you at future scverse events! In the meantime, you can engage with the community on [Zulip](https://scverse.zulipchat.com/) and at our community meetings. Look out for announcements on our social media channels ([X](https://x.com/scverse_team), [Bluesky](https://bsky.app/profile/scverse.bsky.social), [LinkedIn](https://www.linkedin.com/company/scverse/)).
+This was the second time we organized the scverse conference — you can read about [the first edition in Munich](/blog/2024-11-conference-summary/).
+We're looking forward to seeing you at future scverse events!
+In the meantime, you can engage with the community on [Zulip](https://scverse.zulipchat.com/) and at our community meetings.
+Look out for announcements on our social media channels ([X](https://x.com/scverse_team), [Bluesky](https://bsky.app/profile/scverse.bsky.social), [LinkedIn](https://www.linkedin.com/company/scverse/)).
 
 *Photo credits: Vivekanandan Ramalingam (Vivek), Research Scientist at Stanford Genetics.*

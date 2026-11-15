@@ -1,4 +1,5 @@
 +++
+aliases = ["/events/2025_11_conference/"]
 title = "scverse Conference 2025-11 Stanford"
 date = 2025-11-17T00:00:00+01:00
 end_date = 2025-11-19

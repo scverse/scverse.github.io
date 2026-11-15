@@ -1,4 +1,5 @@
 +++
+aliases = ["/events/2026_09_cellpainting/"]
 title = "scverse x Cell Painting Hackathon 2026-09 Berlin"
 date = 2026-09-02T00:00:00+02:00
 end_date = 2026-09-04

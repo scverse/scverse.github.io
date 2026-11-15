@@ -22,7 +22,7 @@ buttons:
   - name: "Join scverse Zulip"
     url: "https://scverse.zulipchat.com/"
 
-# Social Links
+    # Social Links
 socialLinks:
   - name: "Bluesky"
     url: "https://bsky.app/profile/scverse.bsky.social"

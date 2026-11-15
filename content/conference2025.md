@@ -27,4 +27,3 @@ socialLinks:
   - name: "Zulip"
     url: "https://scverse.zulipchat.com/"
 ---
-

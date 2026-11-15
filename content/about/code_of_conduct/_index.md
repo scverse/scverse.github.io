@@ -4,14 +4,15 @@ title = "Code of Conduct"
 
 ## NUMFOCUS CODE OF CONDUCT
 
-You can find the whole document [here][NumFOCUS Code of Conduct]. 
+You can find the whole document [here][NumFOCUS Code of Conduct].
 
 ### THE SHORT VERSION
 
 NumFOCUS is dedicated to providing a harassment-free community for everyone, regardless of gender, sexual orientation, gender identity and expression, disability, physical appearance, body size, race, or religion.
 We do not tolerate harassment of community members in any form.
 
-Be kind to others. Do not insult or put down others.
+Be kind to others.
+Do not insult or put down others.
 Behave professionally.
 Remember that harassment and sexist, racist, or exclusionary jokes are not appropriate for NumFOCUS.
 

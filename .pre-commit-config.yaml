@@ -16,6 +16,11 @@ repos:
         additional_dependencies:
           - prettier
           - prettier-plugin-go-template
+  # Markdown isn’t formatted by prettier or biome (see .prettierignore and biome.jsonc); flavor in panache.toml
+  - repo: https://github.com/jolars/panache-pre-commit
+    rev: v3.18.0
+    hooks:
+      - id: panache-format
   # Biome formats and lints what has no Go templates (see biome.jsonc and .prettierignore)
   - repo: https://github.com/biomejs/pre-commit
     rev: v2.6.7
