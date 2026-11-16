@@ -2,3 +2,4 @@ flavor = "hugo"
 
 [format]
 wrap = "sentence"
+smart-punctuation = "unicode"

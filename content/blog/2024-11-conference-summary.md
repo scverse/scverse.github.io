@@ -44,7 +44,7 @@ You can learn more about what each of our speakers discussed by checking out the
 
 The conference also featured several 15-minute short talks, each followed by a Q\&A session.
 These talks were carefully selected from 72 abstract submissions based on their relevance, impact, and contribution to the field.
-The topics spanned a wide range of computational techniques in single-cell genomics, including methods for scaling analyses to millions of cells, integrating single-cell data with dynamic models to develop *velocyto*\-like metrics, user-friendly exploration of epigenomic data, and innovative approaches for representing and analyzing spatial data.
+The topics spanned a wide range of computational techniques in single-cell genomics, including methods for scaling analyses to millions of cells, integrating single-cell data with dynamic models to develop *velocyto*-like metrics, user-friendly exploration of epigenomic data, and innovative approaches for representing and analyzing spatial data.
 
 The presenters were primarily graduate students and postdoctoral researchers from various academic labs.
 We believe that providing opportunities for junior scientists to showcase their work and receive constructive feedback is crucial to fostering their growth.
@@ -90,23 +90,23 @@ The conference also provided an excellent opportunity for participants to networ
 > Hearing the speakers discuss their thought processes and motivations behind developing bioinformatics tools gave me a deeper understanding of the development process and reinforced my desire to create my own tools in the future.
 > This conference has inspired me to explore new frontiers in single-cell and spatial transcriptomics research, and I look forward to future opportunities to share my work and learn from others in the field.
 
-Yejin Kwak \- Pusan National University (KOR)
+Yejin Kwak – Pusan National University (KOR)
 
 > One of the highlights of the conference was the carefully curated series of workshops.
 > These sessions provided not just immediate skill acquisition, but also valuable resources for continued learning post-conference.
-> My only regret is that I couldn't attend all of them at the same time.
-> For future events, I echo the suggestion made in Zulip that recording these workshops would be great for attendees who couldn't participate in person.
+> My only regret is that I couldn’t attend all of them at the same time.
+> For future events, I echo the suggestion made in Zulip that recording these workshops would be great for attendees who couldn’t participate in person.
 
-Jiri Bruthans \- Charles University Prague (CZE)
+Jiri Bruthans – Charles University Prague (CZE)
 
 > My software is still very much in the early stages of development, and I went through a period of doubts before applying to present at a poster session during the conference.
 > In the end, I’m pleased I pushed past my hesitation and showcased my project.
-> \[...\] The conference provided an excellent platform to present my research and gather invaluable feedback from peers.
+> \[…\] The conference provided an excellent platform to present my research and gather invaluable feedback from peers.
 > Since this was my first time presenting at a bioinformatics conference, I had plenty of beginner-level questions on “how to…” present research where the method itself is the main deliverable.
 > Engaging with the bioinformatics community was a fantastic opportunity, and I’m now motivated to integrate the constructive feedback I received to improve its functionality.
 > It was also nice to find colleagues working in the same field who proposed their datasets to test the functionality of my software.
 
-Anna Diamant \- IPMC, Université Nice Côte d'Azur (FRA)
+Anna Diamant – IPMC, Université Nice Côte d’Azur (FRA)
 
 ### Conclusion
 

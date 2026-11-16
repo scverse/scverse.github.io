@@ -28,8 +28,8 @@ Harassment includes, but is not limited to:
 Intimidation and bullying include, but are not limited to:
 
 * Aggressive or browbeating behavior directed at someone during a public presentation
-* Mocking or insulting another person's intellect, work, perspective, or question/comment
-* Making reference to someone's gender, gender identity and expression, sexual orientation, disability, physical appearance, body size, race, age, religion, or other personal attributes in the context of a scientific discussion
+* Mocking or insulting another person’s intellect, work, perspective, or question/comment
+* Making reference to someone’s gender, gender identity and expression, sexual orientation, disability, physical appearance, body size, race, age, religion, or other personal attributes in the context of a scientific discussion
 * Deliberately making someone feel unwelcome
 
 ## Enforcement

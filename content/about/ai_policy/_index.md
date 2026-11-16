@@ -18,8 +18,7 @@ When we look at a line of code two years down the line, it helps greatly if that
 
 Time is always a limited resource.
 Every hour we spend reviewing submitted code, we are not writing code ourselves.
-Therefore, we request that users be respectful of our time and ask themselves, "Would you want to review this PR?"
-Generally, whether AI touched the PR or not, it should present your best attempt to improve a publicly shared resource with clean, thoughtful code and concise and accurate PR descriptions.
+Therefore, we request that users be respectful of our time and ask themselves, “Would you want to review this PR?” Generally, whether AI touched the PR or not, it should present your best attempt to improve a publicly shared resource with clean, thoughtful code and concise and accurate PR descriptions.
 If you are unsure about something, that’s fine – help us clean up code that you don’t fully understand by drawing our attention to it with a review or code comment, and clearly mark which parts of your PR comments are just speculation or AI output.
 We are also mindful that coders come to our projects at all levels, and we hope that, in the process of our review, you will learn our best practices.
 From our side, you can expect us to be patient as you learn.
@@ -33,7 +32,7 @@ This also includes the licensing of the submitted code.
 
 You might say that a user can submit bad code repeatedly without an LLM, which is true.
 Indeed, if you were to submit a PR every 5 minutes that added “sadlkjfalsdjkfhasf” to all of our docs, that would also be bad.
-But an LLM can submit a PR every 5 minutes that looks reasonable and thus isn't easy to detect as spam.
+But an LLM can submit a PR every 5 minutes that looks reasonable and thus isn’t easy to detect as spam.
 As stated previously, we do not review code only to improve what makes it into our repo; we also review to improve your ability to code, if you may need that.
 
 We thus reserve the right to call out any PR we believe violates this policy with a warning.

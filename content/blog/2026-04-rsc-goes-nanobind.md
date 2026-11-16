@@ -19,9 +19,9 @@ That worked, but it came with friction:
 
 - **First-call latency.** The initial invocation of a kernel-backed function could take several seconds while nvrtc compiled the CUDA source.
 - **Silent dtype/layout mismatches.** A RawKernel receives raw pointers.
-  If the input array had the wrong dtype or wasn't C-contiguous, the kernel might silently produce garbage rather than raising an error.
+  If the input array had the wrong dtype or wasn’t C-contiguous, the kernel might silently produce garbage rather than raising an error.
 - **CUDA code trapped in Python strings.** RawKernels are defined as CUDA source inside Python string literals.
-  That means no syntax highlighting, no autocomplete, and no compiler warnings in your editor — debugging C++ code buried in a Python string is nobody's idea of a good time.
+  That means no syntax highlighting, no autocomplete, and no compiler warnings in your editor — debugging C++ code buried in a Python string is nobody’s idea of a good time.
 
 Starting with 0.15.0, these kernels are compiled once at build time and shipped as nanobind/CUDA C++ extension modules inside the wheel.
 The result is a more conventional compiled-extension workflow: you `pip install` the package and every kernel is ready immediately.
@@ -48,7 +48,7 @@ Your existing analysis scripts should work without modification.
 #### CUDA-specific wheels
 
 Because the kernels are now compiled binaries, we need to ship one wheel per CUDA major version.
-(Python wheel tags don't encode CUDA version, so we encode it in the package name — the same approach used by CuPy, PyTorch, and other CUDA-dependent packages.)
+(Python wheel tags don’t encode CUDA version, so we encode it in the package name — the same approach used by CuPy, PyTorch, and other CUDA-dependent packages.)
 
   | Package                  | Build CUDA | Runtime CUDA | Blackwell (B200, GB200) |
   | :----------------------- | :--------: | :----------: | :---------------------- |
@@ -85,7 +85,7 @@ pip install 'rapids-singlecell-cu12[rapids]' --extra-index-url=https://pypi.nvid
 
 Note: on the prebuilt wheels, the dependency extra is always `[rapids]`.
 The CUDA version is determined by which package name you install — `rapids-singlecell-cu12` or `rapids-singlecell-cu13`.
-If you're building from source instead, the extras are `[rapids-cu12]` and `[rapids-cu13]`.
+If you’re building from source instead, the extras are `[rapids-cu12]` and `[rapids-cu13]`.
 
 ##### Conda / Mamba
 
@@ -121,8 +121,8 @@ For most users, upgrading is straightforward:
 
 1. **Change your pip install command.** Replace `pip install rapids-singlecell` with `pip install rapids-singlecell-cu12` or `rapids-singlecell-cu13`, depending on your CUDA version.
 2. **No code changes needed.** The `import rapids_singlecell as rsc` import and all public APIs remain the same.
-3. **Check your CUDA version.** Run `nvidia-smi` or `nvcc --version` to confirm whether you're on CUDA 12.x or CUDA 13.x, and install the matching wheel.
-   If you're using conda, make sure the CUDA runtime library version in your environment matches the wheel you install — e.g., `cuda-cudart` from the `nvidia` channel should be 12.x for the cu12 wheel or 13.x for the cu13 wheel.
+3. **Check your CUDA version.** Run `nvidia-smi` or `nvcc --version` to confirm whether you’re on CUDA 12.x or CUDA 13.x, and install the matching wheel.
+   If you’re using conda, make sure the CUDA runtime library version in your environment matches the wheel you install — e.g., `cuda-cudart` from the `nvidia` channel should be 12.x for the cu12 wheel or 13.x for the cu13 wheel.
 
 #### What about `pip install rapids-singlecell`?
 
@@ -139,7 +139,7 @@ pip install 'rapids-singlecell[rapids-cu12]' --extra-index-url=https://pypi.nvid
 Or install the RAPIDS stack separately before or after the build.
 
 For most users, we recommend the prebuilt CUDA wheels.
-They're faster to install and don't require a local compiler toolchain.
+They’re faster to install and don’t require a local compiler toolchain.
 For more details on source builds — including how to target custom GPU architectures — see the [installation docs](https://rapids-singlecell.readthedocs.io/en/latest/installation.html).
 
 Source builds are the right choice if you are:
@@ -147,7 +147,7 @@ Source builds are the right choice if you are:
 - **Contributing to rapids-singlecell** and need to iterate on C++ kernel code.
 - **Debugging CUDA extensions** and want to compile with debug flags or sanitizers.
 - **Targeting a custom GPU architecture** not covered by the prebuilt wheels (e.g. a future compute capability).
-- **On a platform we don't publish wheels for** (though we cover x86_64 and aarch64 Linux).
+- **On a platform we don’t publish wheels for** (though we cover x86_64 and aarch64 Linux).
 
 If none of those apply to you, use the prebuilt wheel.
 
@@ -163,7 +163,7 @@ This is also the first example of a more complex routine built on the new compil
 
 #### Contrast-based energy distance
 
-Perturbation experiments typically don't need a full k×k distance matrix between all groups — you want to compare each perturbation against one or two controls, possibly stratified by cell type.
+Perturbation experiments typically don’t need a full k×k distance matrix between all groups — you want to compare each perturbation against one or two controls, possibly stratified by cell type.
 The new `contrast_distances()` API ([#603](https://github.com/scverse/rapids-singlecell/pull/603)) lets you express exactly that.
 You build a contrasts DataFrame — either with the `Distance.create_contrasts()` helper or by hand — where each row is a (target, reference) comparison, optionally stratified by `split_by` columns (e.g., cell type).
 Under the hood, the kernel deduplicates shared distance pairs across contrasts, subsets the embedding to only the referenced cells before transferring to GPU, and launches a single kernel call for all unique pairs.
