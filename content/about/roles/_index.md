@@ -72,7 +72,7 @@ While there is no hard-and-fast rule about who can be nominated, ideally, they s
 
 * Been part of the community for a significant amount of time
 * Contributed significant changes of their own
-* Contributed to the discussion and review of others' work
+* Contributed to the discussion and review of others’ work
 * Collaborated in a way befitting our community values
 
 After nomination, admission will be decided by two-thirds majority vote on a private mailing list by the core team.
@@ -98,7 +98,7 @@ SC members are expected to participate in strategic planning, approve changes to
 Changes that impact the full project require analysis informed by extensive experience with both the project and the larger ecosystem.
 When the core team (including the SC members) fails to reach a consensus in a reasonable timeframe, the SC is the entity that resolves the issue.
 
-Members of the steering council also have the "owner" role within the [scverse GitHub organization](https://github.com/scverse/) and are ultimately responsible for managing the [scverse](https://github.com/scverse) GitHub account, the [@scverse_team](https://x.com/scverse_team) account on X, the [scverse website](https://scverse.org), and other similar scverse-owned resources.
+Members of the steering council also have the “owner” role within the [scverse GitHub organization](https://github.com/scverse/) and are ultimately responsible for managing the [scverse](https://github.com/scverse) GitHub account, the [@scverse_team](https://x.com/scverse_team) account on X, the [scverse website](https://scverse.org), and other similar scverse-owned resources.
 
 The steering council is currently fixed in size to three members.
 This number will be increased as our community grows and diversifies, but will always be an odd number to ensure a simple majority vote outcome is always possible.

@@ -50,20 +50,20 @@ Thanks to our generous sponsors, the scverse conference was also able to provide
 
 **John Marioni** *Senior VP and Head of Computation at Genentech Research and Early Development*
 
-In his talk *"Adventures at the interface between computational biology, AI and drug discovery"* he discussed the intersection of computational biology, artificial intelligence, and pharmaceutical drug discovery.
+In his talk *“Adventures at the interface between computational biology, AI and drug discovery”* he discussed the intersection of computational biology, artificial intelligence, and pharmaceutical drug discovery.
 
 **Panos Roussos** *Professor at Icahn School of Medicine at Mount Sinai*
 
-Panos Roussos presented advances from large-scale single-cell and spatial transcriptomic studies in neurodegenerative and neuropsychiatric diseases in his talk *"Deciphering Interindividual Variability in Brain Transcriptomes Through Single-Cell Analysis"*.
+Panos Roussos presented advances from large-scale single-cell and spatial transcriptomic studies in neurodegenerative and neuropsychiatric diseases in his talk *“Deciphering Interindividual Variability in Brain Transcriptomes Through Single-Cell Analysis”*.
 
 **Erika Alden DeBenedictis** *Co-founder of The Align Foundation & CEO of Pioneer Labs*
 
-In her talk *"How do we make the next PDB?
-Introducing Align's Data Platform"* she described [Align Foundation](https://alignbio.org/)'s mission and their end-to-end data generation process: community roadmapping → protocol standardization → reproducible data collection → model benchmarking.
+In her talk *“How do we make the next PDB?
+Introducing Align’s Data Platform”* she described [Align Foundation](https://alignbio.org/)’s mission and their end-to-end data generation process: community roadmapping → protocol standardization → reproducible data collection → model benchmarking.
 
 **Elham Azizi** *Associate Professor of Cancer Data Research and Biomedical Engineering at Columbia University*
 
-In her talk *"Machine Learning for Decoding Tumor Microenvironment Dynamics"* she discussed the latest work from her lab on how machine learning frameworks in spatial transcriptomics, histology imaging, and single-cell sequencing are providing new insights in how the tumor microenvironment (TME) shapes cancer progression and therapy response.
+In her talk *“Machine Learning for Decoding Tumor Microenvironment Dynamics”* she discussed the latest work from her lab on how machine learning frameworks in spatial transcriptomics, histology imaging, and single-cell sequencing are providing new insights in how the tumor microenvironment (TME) shapes cancer progression and therapy response.
 
 ### Short Talks Summary
 
@@ -188,7 +188,7 @@ Each sponsor provided an outlook of the latest technologies in perturbation scre
 ### Conclusion
 
 This was the second time we organized the scverse conference — you can read about [the first edition in Munich](/blog/2024-11-conference-summary/).
-We're looking forward to seeing you at future scverse events!
+We’re looking forward to seeing you at future scverse events!
 In the meantime, you can engage with the community on [Zulip](https://scverse.zulipchat.com/) and at our community meetings.
 Look out for announcements on our social media channels ([X](https://x.com/scverse_team), [Bluesky](https://bsky.app/profile/scverse.bsky.social), [LinkedIn](https://www.linkedin.com/company/scverse/)).
 

@@ -377,7 +377,7 @@ groups_lead = "Working groups bring together people from inside and outside the 
 	roles = ["advisory"]
 
 [[people]]
-	name = "Dana Pe'er"
+	name = "Dana Peʼer"
 	url = "https://www.mskcc.org/research/ski/labs/dana-pe-er"
 	roles = ["advisory"]
 

@@ -15,7 +15,7 @@ See the [schedule](/conference2026/schedule/) for timings and rooms.
 
 **10x Genomics** · Day 2
 
-Join 10x Genomics for an exclusive, hands-on introduction to Sentira Single Cell — 10x Genomics' newly announced autonomous AI agent for Chromium analysis, designed to transform how you navigate high-dimensional omics data.
+Join 10x Genomics for an exclusive, hands-on introduction to Sentira Single Cell — 10x Genomics’ newly announced autonomous AI agent for Chromium analysis, designed to transform how you navigate high-dimensional omics data.
 
 The exponential growth, scale, and resolution of single-cell and spatial omics have fundamentally transformed our understanding of biology and disease.
 However, the sheer size of some datasets remains a persistent bottleneck.
@@ -29,7 +29,7 @@ We will walk through how the multi-agent system can decompose a user-specified h
 **What to expect:** a fully immersive, interactive session where you use Sentira Single Cell for complex analytical tasks, with low-latency real-time visualization and interactive downstream analysis in a streamlined web interface.
 Participants will explore how Sentira translates natural language into execution, self-evaluates and adapts, and accelerates high-plex discovery.
 
-**Bring your own data:** following a brief overview of the platform's architecture, attendees are highly encouraged to bring their own single-cell data (e.g. scRNA-seq in `.h5` format) to run live through Sentira during the hands-on segment.
+**Bring your own data:** following a brief overview of the platform’s architecture, attendees are highly encouraged to bring their own single-cell data (e.g. scRNA-seq in `.h5` format) to run live through Sentira during the hands-on segment.
 For those without data on hand, 10x Genomics will provide benchmark datasets to explore and analyze.
 
 **Prepare in advance.** To take part in the hands-on segment, please complete both of these before the session:
@@ -41,7 +41,7 @@ For those without data on hand, 10x Genomics will provide benchmark datasets to 
 
 **Anthropic**
 
-Claude Science is Anthropic's new AI workbench for scientific research, currently in public beta.
+Claude Science is Anthropic’s new AI workbench for scientific research, currently in public beta.
 It runs on your own laptop or server with the standard Claude models, and adds what a researcher needs around them, including persistent Python and R sessions that you can drive with varying levels of coding experience, connections to more than 60 public scientific databases, and analysis specialists for single-cell, genomics, proteomics and other domains.
 Everything it produces is saved with the code, environment and reasoning that generated it, so a result can be reproduced and audited by you or anyone in your lab long after the session ends.
 
@@ -51,7 +51,7 @@ Along the way we will look at how Claude plans an analysis, how it writes and ru
 The session is aimed at people with light coding experience and a strong interest in getting answers out of single-cell experiments.
 If you can describe the biological question, we will show you how far Claude Science can take you toward the analysis, and how to stay in control of what it did and why.
 
-**Who it's for.** Little or no coding experience is needed — and even experienced computational biologists will get a lot out of it.
+**Who it’s for.** Little or no coding experience is needed — and even experienced computational biologists will get a lot out of it.
 
 **Prepare in advance.** To follow along hands-on, please install Claude Science before the session:
 
@@ -60,7 +60,7 @@ If you can describe the biological question, we will show you how far Claude Sci
 - You will need a Claude account on a **Pro** or **Max** plan, or a **Team / Enterprise** plan whose owning institution has enabled Claude Science.
 - Requirements: macOS 13 or later, Windows, or 64-bit Linux, and about 5 GB of free disk space.
   See the [install guide and system requirements](https://claude.com/docs/claude-science).
-- Bring a laptop (macOS, Windows or Linux) and its charger, and a reliable, fast internet connection — Claude Science sends prompts to Anthropic's models and pulls from public scientific databases during the analysis.
+- Bring a laptop (macOS, Windows or Linux) and its charger, and a reliable, fast internet connection — Claude Science sends prompts to Anthropic’s models and pulls from public scientific databases during the analysis.
 - Optionally, bring a single-cell dataset of your own; otherwise we will work from a public dataset.
   Anyone who cannot install the app can still follow along on the main screen.
 
@@ -71,10 +71,10 @@ If you can describe the biological question, we will show you how far Claude Sci
 scviva-tools is a consolidated, scverse-native spatial transcriptomics toolkit built on scvi-tools, unifying probabilistic models and downstream analysis under one pip-installable API.
 The model layer includes ResolVI (denoising and segmentation-error correction), DestVI (multi-resolution cell-type deconvolution), scVIVA (niche-aware representation learning), DiagVI, gimVI, Stereoscope, and Tangram, with more models added as the community contributes.
 The downstream layer consumes these outputs, or raw annotated spatial data directly, to answer targeted biological questions: Harreman infers metabolic exchange and cell-cell communication, CSDE recovers de-biased differential expression, VIVS identifies genes conditionally dependent on an external response, and VISION scores gene signatures for spatial autocorrelation.
-Every downstream tool reads directly from a model's output written into the datamodule's .obs/.layers/latent space, so results compose without custom glue code.
+Every downstream tool reads directly from a model’s output written into the datamodule’s .obs/.layers/latent space, so results compose without custom glue code.
 In this one hour workshop we focus on one complete pipeline rather than a full tour of the toolkit.
-Participants will run scVIVA on a spatial dataset to learn niche-aware representations, then feed that embedding directly into Harreman to identify gene modules underlying cell-cell communication within those niches with no custom glue code required, since Harreman reads straight from scVIVA's output in the shared datamodule.
-Along the way we'll show how the rest of scviva-tools extends from this same foundation, so participants leave with a working local install, a runnable scVIVA to Harreman notebook they can adapt to their own data, and a clear sense of where the other models and tools fit in.
+Participants will run scVIVA on a spatial dataset to learn niche-aware representations, then feed that embedding directly into Harreman to identify gene modules underlying cell-cell communication within those niches with no custom glue code required, since Harreman reads straight from scVIVA’s output in the shared datamodule.
+Along the way we’ll show how the rest of scviva-tools extends from this same foundation, so participants leave with a working local install, a runnable scVIVA to Harreman notebook they can adapt to their own data, and a clear sense of where the other models and tools fit in.
 
 ### SegTraQ: A toolbox to assess segmentation and transcript assignment quality in spatial transcriptomics data
 
@@ -113,7 +113,7 @@ NVIDIA develops software libraries and open models to support this acceleration,
 Together with scverse, we introduce rapids-singlecell, a GPU-accelerated implementation of foundational single-cell tools like scanpy, squidpy, pertpy, and decoupler.
 Through scverse-backends, users can seamlessly switch between CPU and GPU analysis based on computational needs and data scale.
 This workshop combines short lectures with hands-on examples.
-We demonstrate a real-world case study using 10x Genomics' Atera technology — a high-throughput image-based platform generating whole-transcriptome data.
+We demonstrate a real-world case study using 10x Genomics’ Atera technology — a high-throughput image-based platform generating whole-transcriptome data.
 We walk through the complete analysis pipeline step-by-step, highlighting new functionalities for spatial niche detection and evaluation.
 
 ### Keeping humans in the loop: hands-on with 3D spatial omics

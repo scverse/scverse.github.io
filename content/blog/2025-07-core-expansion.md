@@ -9,14 +9,14 @@ draft = false
 
 ## Four new core packages in scverse
 
-We're happy to announce that four new packages have joined the scverse core ecosystem: [SnapATAC2](https://github.com/scverse/snapatac2), [rapids-singlecell](https://github.com/scverse/rapids-singlecell), [pertpy](https://github.com/scverse/pertpy), and [decoupler](https://github.com/scverse/decoupler).
+We’re happy to announce that four new packages have joined the scverse core ecosystem: [SnapATAC2](https://github.com/scverse/snapatac2), [rapids-singlecell](https://github.com/scverse/rapids-singlecell), [pertpy](https://github.com/scverse/pertpy), and [decoupler](https://github.com/scverse/decoupler).
 This broadens the scope of scverse beyond our so far supported modalities and brings in new functionality for epigenomics, perturbation screens, GPU acceleration, and functional inference.
 
 Single-cell analysis is evolving rapidly, with new experimental modalities and larger datasets becoming the norm.
 To keep up with this, we’re expanding scverse to support more domains, more data types, and more scalable computing backends.
 By bringing these mature, well-maintained tools into the core, we aim to provide a consistent and interoperable foundation across all stages of single-cell analysis.
 
-We're also welcoming the following lead maintainers to the scverse core developer team:
+We’re also welcoming the following lead maintainers to the scverse core developer team:
 
 - **Kai Zhang** for **snapatac2**
 - **Pau Badia i Mompel** for **decoupler**
@@ -61,17 +61,17 @@ Designed for bulk, single-cell and spatial data, decoupler works directly with o
 
 ### What this means
 
-We're continuing to support a modular but coherent ecosystem where high-quality tools can interoperate.
+We’re continuing to support a modular but coherent ecosystem where high-quality tools can interoperate.
 These additions bring coverage of new data types and analysis goals while staying within the same technical foundations.
 All packages use our scverse core data structures, follow shared conventions, and benefit from a growing set of shared infrastructure and community practices.
 We aim to keep development decentralized and open while improving alignment across projects.
 
 ### Get involved
 
-If you're building something new, we'd love to have your work be a part of the [scverse ecosystem](https://github.com/scverse/ecosystem-packages).
-If you're our tools, please share feedback or ideas via the respective issue trackers.
+If you’re building something new, we’d love to have your work be a part of the [scverse ecosystem](https://github.com/scverse/ecosystem-packages).
+If you’re our tools, please share feedback or ideas via the respective issue trackers.
 The best places to start are [scverse.org](https://scverse.org), [github.com/scverse](https://github.com/scverse), and our [scverse zulip chat](https://scverse.zulipchat.com/).
-We're always looking for more contributors to our packages but especially also for community related work.
+We’re always looking for more contributors to our packages but especially also for community related work.
 Please reach out!
 
 ### Thank you

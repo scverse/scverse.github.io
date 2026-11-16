@@ -28,7 +28,7 @@ As we grow, we are hoping to recruit more members into governance roles as well 
 There are already a few visible outcomes of our joint work including improved [mudata performance](https://mudata.readthedocs.io/stable/changelog.html#v0-1-2) and [mudata documentation](https://mudata.readthedocs.io/stable/).
 Additionally, [scvi-tools is now using MuData](https://github.com/scverse/scvi-tools/pull/1444) for the representation of multimodal data.
 [Scanpy has gained new workshop notebooks](https://github.com/scverse/scanpy-tutorials/pull/52), and, moreover, we have started [a collection of learning resources for scverse libraries](/learn/).
-We've also prepared [a template for developers](https://github.com/scverse/cookiecutter-scverse) to help them to jump-start their new libraries.
+We’ve also prepared [a template for developers](https://github.com/scverse/cookiecutter-scverse) to help them to jump-start their new libraries.
 
 ## Who is a part of scverse?
 
@@ -41,11 +41,11 @@ The core developers have made significant contributions to the ecosystem and are
 
 Our management committee, consisting of [Fabian Theis](https://www.helmholtz-munich.de/en/icb/fabian-theis), [Oliver Stegle](https://www.embl.org/groups/stegle/), [Nir Yosef](https://yoseflab.github.io/), [Alex Wolf](https://falexwolf.me/) and [Francesca Finotello](https://computationalbiomedicinegroup.github.io/), are providing resources and academic freedom to scverse to develop our tools.
 
-[Aviv Regev](https://www.gene.com/scientists/our-scientists/aviv-regev), [Sarah Teichmann](https://www.sanger.ac.uk/group/teichmann-group/), [Dana Pe'er](https://www.mskcc.org/research/ski/labs/dana-pe-er) and [Bonnie Berger](https://people.csail.mit.edu/bab/) are our scientific advisory board which helps shaping the overall vision and defining the right priorities.
+[Aviv Regev](https://www.gene.com/scientists/our-scientists/aviv-regev), [Sarah Teichmann](https://www.sanger.ac.uk/group/teichmann-group/), [Dana Peʼer](https://www.mskcc.org/research/ski/labs/dana-pe-er) and [Bonnie Berger](https://people.csail.mit.edu/bab/) are our scientific advisory board which helps shaping the overall vision and defining the right priorities.
 
 ## How can I join and contribute?
 
-We're particularly excited about the community coming together for this effort with so many brilliant people involved who design tools, write code, manage and analyse data and visualise results.
+We’re particularly excited about the community coming together for this effort with so many brilliant people involved who design tools, write code, manage and analyse data and visualise results.
 Please ask usage questions on [our Discourse forum](https://discourse.scverse.org/), developer questions on [our Zulip chat](https://scverse.zulipchat.com/) and make sure to [follow us on Twitter](https://twitter.com/scverse_team) to keep track of scverse updates.
 
 Scverse is very much open to contributions in all areas by **everyone**.
