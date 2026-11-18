@@ -12,3 +12,23 @@ publish = "public"
 [build.environment]
 HUGO_VERSION = "0.164.0"
 DART_SASS_VERSION = "1.106.1"
+
+# Old media kit paths (the PNGs used to be dark on light only)
+[[redirects]]
+from = "/img/logo/scverse.svg"
+to = "/img/logo/scverse-logo.svg"
+[[redirects]]
+from = "/img/logo/scverse.png"
+to = "/img/logo/scverse-logo-light.png"
+[[redirects]]
+from = "/img/logo/scverse-symbol.svg"
+to = "/img/logo/scverse-logomark.svg"
+[[redirects]]
+from = "/img/logo/scverse-symbol.png"
+to = "/img/logo/scverse-logomark-light.png"
+[[redirects]]
+from = "/img/icons/scverse-bw-logo.svg"
+to = "/img/logo/scverse-logomark-reg.svg"
+[[redirects]]
+from = "/img/icons/scverse-blue-logo.svg"
+to = "/img/logo/scverse-logomark-blue.svg"

@@ -3,7 +3,7 @@ title = "Media Kit"
 aliases = ["/brand/", "/logo/"]
 
 [[sections]]
-	primary_logos = """scverse&#174; logo is a signature pair of letters **sc**, originally derived from 'single-cell', smoothly interwoven to create perception of a third dimension.
+	primary_logos = """The scverse&#174; logomark is a signature pair of letters **sc**, originally derived from 'single-cell', smoothly interwoven to create perception of a third dimension.
 	
 Our logo is available in several formats for different use cases. Please use these official versions and follow our guidelines when representing our brand.
 """
@@ -32,39 +32,51 @@ Yes, you are encouraged to use the scverse and package logos in your publication
 	contact = "For questions about logo usage or requests for additional formats, please contact us at [core@scverse.org](mailto:core@scverse.org). For more information about scverse, please visit our [About page](/about/)."
 
 [[primarylogos]]
-	name = "Primary Logo"
-	description = "Primary logo with text"
-	img = "../img/logo/scverse.svg"
+	name = "Logo"
+	description = "Logomark with logotype (combination mark)"
+	img = "../img/logo/scverse-logo.svg"
 	details = """
-Our primary logo combines our icon with the full name. Use this version when introducing our brand or in more formal contexts. Use the PT Sans font.
+Our logo (or combination mark) combines our logomark with the logotype, i.e. the name “scverse”. Use this version when introducing our brand or in more formal contexts. Use the PT Sans font.
 """
 	[[primarylogos.links]]
 	text = "Download SVG"
-	url = "../img/logo/scverse.svg"
+	url = "../img/logo/scverse-logo.svg"
 	[[primarylogos.links]]
-	text = "Download PNG"
-	url = "../img/logo/scverse.png"
+	text = "Download PNG (dark on light)"
+	url = "../img/logo/scverse-logo-light.png"
+	[[primarylogos.links]]
+	text = "Download PNG (light on dark)"
+	url = "../img/logo/scverse-logo-dark.png"
 
 [[primarylogos]]
-	name = "Icon Only"
-	description = "Logo mark without text"
-	img = "../img/logo/scverse-symbol.svg"
-	details = "Our icon can be used independently when space is limited or when our brand is already well-established in context."
+	name = "Logomark"
+	description = "Logomark without logotype"
+	img = "../img/logo/scverse-logomark.svg"
+	details = "Our logomark can be used on its own when space is limited or when our brand is already well-established in context."
 	[[primarylogos.links]]
 	text = "Download SVG"
-	url = "../img/logo/scverse-symbol.svg"
+	url = "../img/logo/scverse-logomark.svg"
 	[[primarylogos.links]]
-	text = "Download PNG"
-	url = "../img/logo/scverse-symbol.png"
+	text = "Download PNG (dark on light)"
+	url = "../img/logo/scverse-logomark-light.png"
+	[[primarylogos.links]]
+	text = "Download PNG (light on dark)"
+	url = "../img/logo/scverse-logomark-dark.png"
 
 [[trademarkedlogos]]
-	name = "Icon (® version)"
-	description = "Icon trademarked"
-	img = "../img/icons/scverse-bw-logo.svg"
+	name = "Logomark (® version)"
+	description = "Trademarked logomark"
+	img = "../img/logo/scverse-logomark-reg.svg"
 	details = "Use this version to indicate that scverse is a registered trademark in formal or legal contexts."
 	[[trademarkedlogos.links]]
 	text = "Download SVG"
-	url = "../img/icons/scverse-bw-logo.svg"
+	url = "../img/logo/scverse-logomark-reg.svg"
+	[[trademarkedlogos.links]]
+	text = "Download PNG (dark on light)"
+	url = "../img/logo/scverse-logomark-reg-light.png"
+	[[trademarkedlogos.links]]
+	text = "Download PNG (light on dark)"
+	url = "../img/logo/scverse-logomark-reg-dark.png"
 
 [[packageicons]]
 	name = "anndata"
