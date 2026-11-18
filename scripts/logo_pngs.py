@@ -4,7 +4,8 @@
 The SVGs pick their outline colors with light-dark(), which resvg doesn’t support,
 so each mode’s value is substituted before rendering.
 Writes <name>-light.png (dark on light) and <name>-dark.png (light on dark) next to each SVG,
-only when the bytes change, so prek fails exactly when a PNG is out of date. Needs `resvg` on the PATH.
+only when the bytes change, so prek fails exactly when a PNG is out of date.
+Needs `resvg` on the PATH, which the prek hook installs (see .pre-commit-config.yaml).
 """
 
 import re
