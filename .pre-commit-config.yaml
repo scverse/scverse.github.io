@@ -14,7 +14,7 @@ repos:
         name: render media kit logo PNGs
         entry: python scripts/logo_pngs.py
         language: python
-        files: ^(scripts/logo_pngs\.py|static/img/logo/scverse-(logo|logomark|logomark-reg)(\.svg|-(light|dark)\.png))$
+        files: ^(scripts/logo_pngs\.py|static/img/logo/scverse-.*)$
         pass_filenames: false
   - repo: https://github.com/rbubley/mirrors-prettier
     rev: v3.9.10
