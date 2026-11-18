@@ -111,6 +111,8 @@ $-hues:
 // Buttons start narrow enough for the whole row to fit at the `lg:navbar-expand` breakpoint, then grow to fill it
 .navbar {
     --bs-navbar-nav-link-padding-x: 0.5rem;
+    // Not sticky, so let page backgrounds (e.g. the design page’s tint) show through
+    --bs-navbar-bg: transparent;
 }
 @container (width >= #{bp(lg)}) {
     .navbar-nav,
