@@ -143,6 +143,14 @@
         }
     }
 
+    // Preview the PNG variants: SVG and background both use light-dark()
+    .logo-section:has(a[href$="-light.png"]:is(:hover, :focus-visible)) .logo-img {
+        color-scheme: light;
+    }
+    .logo-section:has(a[href$="-dark.png"]:is(:hover, :focus-visible)) .logo-img {
+        color-scheme: dark;
+    }
+
     .logo-info {
         flex: 1;
     }
