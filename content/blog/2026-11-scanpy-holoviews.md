@@ -111,6 +111,7 @@ from holoviews.operation.datashader import datashade, dynspread
 ad.read_h5ad("aeaa6e77-7f6e-4d8c-b217-4c1e777cc0be.h5ad").write_zarr("merfish.zarr")
 
 lazy = ad.experimental.read_lazy("merfish.zarr")
+# compute(): small enough to keep in memory, and slightly faster to re-render
 adata = ad.AnnData(
     obs=lazy.obs[["major_brain_region"]].to_memory(),
     obsm={"umap": lazy.obsm["X_umap"].compute(), "ccf": lazy.obsm["X_CCF"].compute()},
@@ -138,16 +139,18 @@ For continuous values such as gene expression, `rasterize(plot, aggregator=ds.me
 Select a group of cells in a UMAP and watch them highlight in a dotplot or a second embedding; the plots share one selection.
 hv-anndata wires this up between its ManifoldMap and Dotmap using HoloViews’ `link_selections`:
 
+<video src="/img/blog/scanpy_holoviews_brushing.mp4" autoplay loop muted playsinline style="max-width: 100%;" aria-label="Box-selecting the monocyte cluster in a UMAP highlights those cells’ marker gene expression in the linked dotplot below"></video>
+
 ```python
 import holoviews as hv
 import panel as pn
-import hv_anndata
+from hv_anndata.plotting import ManifoldMap, dotmap_from_manifoldmap
 
 ls = hv.link_selections.instance()
-mm = hv_anndata.ManifoldMap(adata=adata, reduction="umap", ls=ls)
+mm = ManifoldMap(adata=adata, reduction="umap", ls=ls, datashade=False)
 
 marker_genes = {"B cells": ["CD79A", "CD79B"], "Monocytes": ["LYZ", "CST3"]}
-dm = hv_anndata.dotmap_from_manifoldmap(mm, marker_genes=marker_genes, groupby="bulk_labels")
+dm = dotmap_from_manifoldmap(mm, marker_genes=marker_genes, groupby="bulk_labels")
 
 pn.Column(mm, dm)
 
@@ -164,6 +167,8 @@ Install it with the `scanpy2` extra:
 ```bash
 pip install "scanpy[scanpy2]"
 ```
+
+Add `datashader` for [large data](#scaling-to-millions-of-cells), and `datashader`, `"hv-anndata[panel]"` and `shapely` for [linked brushing](#linked-brushing).
 
 The legacy matplotlib path and the new HoloViews one live behind the same `sc.pl` functions, so one setting chooses which is active:
 
